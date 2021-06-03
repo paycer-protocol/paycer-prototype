@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const StyledContainer = styled.div`
   margin: 1rem;
@@ -8,6 +10,8 @@ const StyledContainer = styled.div`
 `
 
 export default function Home() {
+  const { t } = useTranslation('common')
+
   return (
     <div className="container">
       <main>
@@ -16,7 +20,7 @@ export default function Home() {
         </h1>
 
         <StyledContainer>
-          Styled components
+          {t('hello')}
         </StyledContainer>
 
         <div className="awesome awesome-blue mb-3">
@@ -220,3 +224,9 @@ export default function Home() {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'footer']),
+  },
+})
