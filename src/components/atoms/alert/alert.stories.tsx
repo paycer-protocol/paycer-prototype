@@ -1,11 +1,11 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 import theme from '../../../config/theme'
-import Alert, { AlertProps } from './alert'
+import AlertComponent, { AlertProps } from './alert'
 
 export default {
     title: 'Atom/Alert',
-    component: Alert,
+    component: AlertComponent,
     argTypes: {
         dismissible: {
             control: 'boolean',
@@ -23,8 +23,7 @@ export default {
 } as Meta
 
 const VariantTemplate: (args) => JSX.Element[] = (args: AlertProps) => (
-    theme.colors.map((variant) => <Alert variant={variant} {...args} className="mr-2">{variant}</Alert>)
+    theme.colors.map((variant) => <AlertComponent variant={variant} {...args} className="mr-2">{variant}</AlertComponent>)
 )
 
-export const Variant = VariantTemplate.bind({})
-Variant.args = {}
+export const Alert = VariantTemplate.bind({})
