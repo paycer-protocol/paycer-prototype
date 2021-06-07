@@ -1,7 +1,5 @@
-// Bootstrap
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/variables';
+// Functions, mixins and variables
+@import 'utilities';
 
 // Bootstrap core
 @import '~bootstrap/scss/root';

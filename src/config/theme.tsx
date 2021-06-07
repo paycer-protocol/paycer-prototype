@@ -25,5 +25,6 @@ export default {
         'md',
         'lg',
         'xl',
+        'xxl',
     ],
 }
