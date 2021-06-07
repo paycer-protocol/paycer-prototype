@@ -31,12 +31,12 @@ const OutlineTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
     theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
 )
 
-export const ButtonVariant = VariantTemplate.bind({})
-ButtonVariant.args = {
+export const Variant = VariantTemplate.bind({})
+Variant.args = {
     size: 'md',
 }
 
-export const ButtonOutline = OutlineTemplate.bind({})
-ButtonOutline.args = {
+export const Outline = OutlineTemplate.bind({})
+Outline.args = {
     size: 'md',
 }
