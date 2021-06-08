@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react'
 import MoneyComponent , { MoneyProps } from './money'
 
 export default {
-    title: 'Atom/Money',
+    title: 'Atom/Number/Money',
     component: MoneyComponent,
     argTypes: {
         value: { control: 'number' },
