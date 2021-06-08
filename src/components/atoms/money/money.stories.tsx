@@ -18,8 +18,8 @@ const Template: (args: MoneyProps) => JSX.Element = (args: MoneyProps) => (
     <MoneyComponent {...args} className="mr-2" />
 )
 
-export const Image = Template.bind({})
-Image.args = {
+export const Money = Template.bind({})
+Money.args = {
     value: 10000,
     currency: 'usd',
 }
