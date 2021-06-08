@@ -1,3 +1,4 @@
+import './addon/intl'
 import '../assets/scss/theme.scss'
 
 export const parameters = {
