@@ -26,6 +26,15 @@ const WithTextTemplate: (args) => JSX.Element = (args) => (
 const WithImageTemplate: (args) => JSX.Element = (args) => (
     <Media {...args}>
         <Image
+            width={300}
+            className="mr-3"
+            src="https://images.unsplash.com/photo-1546640646-89b557854b23?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"/>
+    </Media>
+)
+
+const WithImageTextTemplate: (args) => JSX.Element = (args) => (
+    <Media {...args}>
+        <Image
             width={100}
             className="mr-3"
             src="https://images.unsplash.com/photo-1546640646-89b557854b23?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"/>
@@ -47,4 +56,7 @@ WithText.args = {}
 
 export const WithImage = WithImageTemplate.bind({})
 WithImage.args = {}
+
+export const WithImageText = WithImageTextTemplate.bind({})
+WithImageText.args = {}
 
