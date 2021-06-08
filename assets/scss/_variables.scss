@@ -1,4 +1,6 @@
+//
 // Avatar
+//
 $avatar-size-base: 3rem !default;
 $avatar-size-xs: 1.625rem !default;
 $avatar-size-sm: 2.5rem !default;
@@ -8,3 +10,11 @@ $avatar-size-xxl: 8rem !default;
 
 $avatar-title-bg: $gray-500 !default;
 $avatar-title-color: $white !default;
+
+
+//
+// Divided
+//
+$divider-content-color:  $gray-700;
+$divider-content-bg:     $body-bg;
+$divider-before-bg:      $gray-200;
