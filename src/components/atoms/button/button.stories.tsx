@@ -23,7 +23,7 @@ export default {
   },
 } as Meta
 
-const VariantTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
+const DefaultTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
     theme.colors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
 )
 
@@ -31,8 +31,8 @@ const OutlineTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
     theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
 )
 
-export const Variant = VariantTemplate.bind({})
-Variant.args = {
+export const Default = DefaultTemplate.bind({})
+Default.args = {
     size: 'md',
 }
 

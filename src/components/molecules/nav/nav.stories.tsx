@@ -8,7 +8,7 @@ export default {
     argTypes: {
         variant: {
             control: 'radio',
-            options: ['tabs', 'pills'],
+            options: ['default', 'tabs', 'pills'],
         },
         activeKey: {
             control: 'text',

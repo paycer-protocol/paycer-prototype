@@ -9,7 +9,7 @@ export default {
     argTypes: {}
 } as Meta
 
-const HorizontalTemplate: (args: DividerProps) => JSX.Element = (args: DividerProps) => (
+const DefaultTemplate: (args: DividerProps) => JSX.Element = (args: DividerProps) => (
     <Divider {...args} />
 )
 
@@ -33,8 +33,8 @@ const WithNavTemplate: (args: DividerProps) => JSX.Element = (args: DividerProps
     </Divider>
 )
 
-export const Horizontal = HorizontalTemplate.bind({})
-Horizontal.args = {}
+export const Default = DefaultTemplate.bind({})
+Default.args = {}
 
 export const WithHeading = WithHeadingTemplate.bind({})
 WithHeading.args = {}
