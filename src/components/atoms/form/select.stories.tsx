@@ -7,7 +7,7 @@ import Form, { FormSelectFieldProps } from './form'
 import Button from '../button'
 
 export default {
-    title: 'Atom/Form/Range',
+    title: 'Atom/Form/Select',
     component: Form.Select,
     subcomponents: { Form }
 } as Meta
