@@ -1,32 +1,32 @@
 import React from 'react'
 import * as yup from 'yup'
+import { FormikConfig, FormikValues } from 'formik'
 import { action } from '@storybook/addon-actions'
 import { Story, Meta } from '@storybook/react'
-import { FormikConfig, FormikValues } from 'formik'
-import Form, { FormInputFieldProps } from './form'
+import Form, { FormTextareaFieldProps } from './form'
 import Button from '../button'
 
 export default {
-    title: 'Atom/Form/Input',
-    component: Form.Input,
+    title: 'Atom/Form/Textarea',
+    component: Form.Textarea,
     subcomponents: { Form }
 } as Meta
 
-const label = 'Input field'
+const label = 'Textarea field'
 
 const helpText =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et orci diam. Donec rutrum odio sit amet ante porta, sed tempus est varius.'
 
 type StoryOptions = Partial<FormikConfig<FormikValues>> &
-    Partial<FormInputFieldProps>
+    Partial<FormTextareaFieldProps>
 
 const Template: Story<StoryOptions> = ({
    name = 'foo',
-   type,
    label,
    helpText,
    placeholder,
    required,
+   rows,
    initialValues = { [name]: '' },
    initialErrors,
    initialTouched,
@@ -39,12 +39,12 @@ const Template: Story<StoryOptions> = ({
         validationSchema={validationSchema}
         onSubmit={action('onSubmit')}
     >
-        <Form.Input
+        <Form.Textarea
             name={name}
-            type={type}
             label={label}
             helpText={helpText}
             placeholder={placeholder}
+            rows={rows}
             onChange={action('onChange')}
             required={required}
         />
@@ -62,16 +62,16 @@ Label.args = {
     label
 }
 
+export const CustomRows = Template.bind({})
+CustomRows.args = {
+    label,
+    rows: 10
+}
+
 export const Placeholder = Template.bind({})
 Placeholder.args = {
     label,
     placeholder: 'Please enter some text...'
-}
-
-export const CustomType = Template.bind({})
-CustomType.args = {
-    type: 'number',
-    label: 'Numeric input'
 }
 
 export const InitialValues = Template.bind({})

@@ -1,4 +1,4 @@
-# Paycer prototype
+# Paycer Prototype
 
 The Paycer Prototype repository contains an MVP of the decentralized Paycer platform.
 

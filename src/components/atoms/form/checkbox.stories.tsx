@@ -3,31 +3,29 @@ import * as yup from 'yup'
 import { action } from '@storybook/addon-actions'
 import { Story, Meta } from '@storybook/react'
 import { FormikConfig, FormikValues } from 'formik'
-import Form, { FormInputFieldProps } from './form'
+import Form, { FormCheckboxFieldProps, FormGroupFieldProps} from '../form'
 import Button from '../button'
 
 export default {
-    title: 'Atom/Form/Input',
-    component: Form.Input,
-    subcomponents: { Form }
+    title: 'Atom/Form/Checkbox',
+    component: Form.Checkbox,
+    subcomponents: { Form, Group: Form.Group }
 } as Meta
 
-const label = 'Input field'
+const label = 'Select from the options below'
 
 const helpText =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et orci diam. Donec rutrum odio sit amet ante porta, sed tempus est varius.'
 
 type StoryOptions = Partial<FormikConfig<FormikValues>> &
-    Partial<FormInputFieldProps>
+    Partial<FormGroupFieldProps> &
+    Partial<FormCheckboxFieldProps>
 
 const Template: Story<StoryOptions> = ({
    name = 'foo',
-   type,
    label,
    helpText,
-   placeholder,
-   required,
-   initialValues = { [name]: '' },
+   initialValues = { [name]: [] },
    initialErrors,
    initialTouched,
    validationSchema
@@ -39,15 +37,20 @@ const Template: Story<StoryOptions> = ({
         validationSchema={validationSchema}
         onSubmit={action('onSubmit')}
     >
-        <Form.Input
-            name={name}
-            type={type}
-            label={label}
-            helpText={helpText}
-            placeholder={placeholder}
-            onChange={action('onChange')}
-            required={required}
-        />
+        <Form.Group name={name} label={label} helpText={helpText}>
+            <Form.Checkbox
+                name='checkbox1'
+                label='Checkbox 1'
+                onChange={action('onChange')}
+                custom
+            />
+            <Form.Checkbox
+                name='checkbox2'
+                label='Checkbox 2'
+                onChange={action('onChange')}
+                custom
+            />
+        </Form.Group>
         <div className='d-flex justify-content-start'>
             <Button type='submit'>Submit</Button>
         </div>
@@ -62,22 +65,10 @@ Label.args = {
     label
 }
 
-export const Placeholder = Template.bind({})
-Placeholder.args = {
-    label,
-    placeholder: 'Please enter some text...'
-}
-
-export const CustomType = Template.bind({})
-CustomType.args = {
-    type: 'number',
-    label: 'Numeric input'
-}
-
 export const InitialValues = Template.bind({})
 InitialValues.args = {
     label,
-    initialValues: { foo: 'Hello, World!' }
+    initialValues: { foo: ['checkbox2'] }
 }
 
 export const HelpText = Template.bind({})
@@ -89,8 +80,9 @@ HelpText.args = {
 export const ErrorFeedback = Template.bind({})
 ErrorFeedback.args = {
     label,
-    required: true,
-    initialErrors: { foo: 'This field is required' },
+    initialErrors: { foo: 'You must select at least one option' },
     initialTouched: { foo: true },
-    validationSchema: yup.object({ foo: yup.string().required() })
+    validationSchema: yup.object({
+        foo: yup.array().of(yup.string().required()).min(1).required()
+    })
 }
