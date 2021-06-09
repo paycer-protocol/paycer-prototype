@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Button from '../components/atoms/button'
 
 const StyledContainer = styled.div`
   margin: 1rem;
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div className="container">
       <main>
+        <Button />
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

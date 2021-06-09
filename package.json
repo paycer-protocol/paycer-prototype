@@ -1,7 +1,9 @@
 {
-  "name": "learn-starter",
+  "name": "paycer-prototype",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "author": "rvo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -37,6 +39,7 @@
     "css-loader": "^5.2.6",
     "fibers": "^5.0.0",
     "file-loader": "^6.2.0",
+    "formik": "^2.2.9",
     "next-i18next": "^8.4.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "react-bootstrap": "^1.6.1",
@@ -45,6 +48,7 @@
     "sass-loader": "10",
     "storybook-addon-intl": "^2.4.1",
     "style-loader": "^2.0.0",
-    "typescript": "4.2.2"
+    "typescript": "4.2.2",
+    "yup": "^0.32.9"
   }
 }
