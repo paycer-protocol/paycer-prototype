@@ -17,12 +17,12 @@ const validationSchema = yup.object({
     password: yup.string().required('You must enter your password')
 }).required()
 
-const Template: (args: FormProps<object>) => JSX.Element = (props: FormProps<object>) => (
+export const Form = (args: FormProps<object>) => (
     <FormComponent
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={action('onSubmit')}
-        {...props}
+        {...args}
     >
         <FormComponent.Input
             name="email"
@@ -40,5 +40,3 @@ const Template: (args: FormProps<object>) => JSX.Element = (props: FormProps<obj
         </div>
     </FormComponent>
 )
-
-export const Form = Template.bind({})
