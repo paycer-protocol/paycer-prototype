@@ -45,4 +45,11 @@ export type FormCheckboxFieldProps = Omit<FormControlProps, 'type'> &
     JSX.IntrinsicElements['input'] & {
     name: string
     label: string
+    isSwitch?: boolean
+}
+
+export type FormSwitchFieldProps = Omit<FormControlProps, 'type'> &
+    JSX.IntrinsicElements['input'] & {
+    name: string
+    label: string
 }

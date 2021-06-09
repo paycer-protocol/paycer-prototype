@@ -25,6 +25,7 @@ const Template: Story<StoryOptions> = ({
    name = 'foo',
    label,
    helpText,
+   isSwitch = false,
    initialValues = { [name]: [] },
    initialErrors,
    initialTouched,
@@ -42,12 +43,14 @@ const Template: Story<StoryOptions> = ({
                 name='checkbox1'
                 label='Checkbox 1'
                 onChange={action('onChange')}
+                isSwitch={isSwitch}
                 custom
             />
             <Form.Checkbox
                 name='checkbox2'
                 label='Checkbox 2'
                 onChange={action('onChange')}
+                isSwitch={isSwitch}
                 custom
             />
         </Form.Group>
@@ -58,7 +61,9 @@ const Template: Story<StoryOptions> = ({
 )
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+    isSwitch: false,
+}
 
 export const Label = Template.bind({})
 Label.args = {

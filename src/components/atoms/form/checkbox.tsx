@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { GroupContext } from './group'
 import { FormCheckboxFieldProps } from './types'
 
-export const Checkbox: FC<FormCheckboxFieldProps> = ({ custom, ...props }: FormCheckboxFieldProps) => {
+export const Checkbox: FC<FormCheckboxFieldProps> = ({ custom, isSwitch, ...props }: FormCheckboxFieldProps) => {
     const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>()
     const { name: groupName = '' } = useContext(GroupContext)
     const [{ name, onBlur }] = useField(props)
@@ -23,17 +23,18 @@ export const Checkbox: FC<FormCheckboxFieldProps> = ({ custom, ...props }: FormC
         },
         [groupName, isChecked, name, props, setFieldTouched, setFieldValue, values]
     )
+
     return (
         <Form.Check
             {...props}
             id={name}
-            type='checkbox'
+            type={isSwitch ? 'switch' : 'checkbox'}
             className={classnames({ 'is-invalid': isInvalid })}
             custom={custom}
         >
             <Form.Check.Input
                 {...props}
-                type='checkbox'
+                type="checkbox"
                 checked={isChecked}
                 isInvalid={isInvalid}
                 onChange={handleChange}
