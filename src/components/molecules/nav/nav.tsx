@@ -8,8 +8,11 @@ export interface NavProps extends BaseNavProps {}
 export interface NavItemProps extends BaseNavItemProps {}
 export interface NavLinkProps extends BaseNavLinkProps {}
 
-const Nav: React.FC<NavProps> = (props) => <BaseNav {...props} />
-export const NavItem: React.FC<NavItemProps> = (props) => <BaseNavItem {...props} />
-export const NavLink: React.FC<NavLinkProps> = (props) => <BaseNavLink {...props} />
+const Nav = (props: NavProps) => <BaseNav {...props} />
+export const NavItem = (props: NavItemProps) => <BaseNavItem {...props} />
+export const NavLink = (props: NavLinkProps) => <BaseNavLink {...props} />
+
+Nav.Item = NavItem
+Nav.Link = NavLink
 
 export default Nav
