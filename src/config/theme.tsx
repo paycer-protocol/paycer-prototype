@@ -20,6 +20,7 @@ export default {
         'outline-light',
     ],
     sizes: [
+        'default',
         'xs',
         'sm',
         'md',
