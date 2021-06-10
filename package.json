@@ -27,8 +27,6 @@
     "@storybook/react": "^6.2.9",
     "@styled-icons/bootstrap": "^10.34.0",
     "@styled-icons/crypto": "^10.34.0",
-    "@styled-icons/fa-regular": "^10.34.0",
-    "@styled-icons/fa-solid": "^10.34.0",
     "@types/node": "^15.12.1",
     "@types/react": "^17.0.9",
     "autoprefixer": "^10.2.6",

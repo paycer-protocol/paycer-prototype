@@ -1,5 +1,4 @@
 import React from 'react'
-import { BsPrefixRefForwardingComponent } from 'react-bootstrap/helpers'
 import BaseCard, { CardProps as BaseCardProps } from 'react-bootstrap/Card'
 import BaseCardImg, { CardImgProps as BaseCardImgProps } from 'react-bootstrap/CardImg'
 import BaseCardColumns from 'react-bootstrap/CardColumns'

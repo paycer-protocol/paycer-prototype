@@ -2,7 +2,6 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 import IconComponent , { IconProps } from './icon'
 import * as BootstrapIconsSet from '@styled-icons/bootstrap'
-import * as FaIconsSet from '@styled-icons/fa-solid'
 import * as CryptoIconsSet from '@styled-icons/crypto'
 
 export default {
@@ -56,19 +55,8 @@ const CryptoTemplate: (args: IconProps) => JSX.Element = (args: IconProps) => (
 )
 
 
-const FontawesomeTemplate: (args: IconProps) => JSX.Element = (args: IconProps) => (
-    <div>
-        <h3>Fontawesome Icons</h3>
-        {buildIcons(FaIconsSet, args)}
-    </div>
-)
-
-
 export const Bootstrap = BootstrapTemplate.bind({})
 Bootstrap.args = { size: 25, color: 'black' }
-
-export const Fontawesome = FontawesomeTemplate.bind({})
-Fontawesome.args = { size: 25, color: 'black' }
 
 export const Crypto = CryptoTemplate.bind({})
 Crypto.args = { size: 45, color: 'black' }
