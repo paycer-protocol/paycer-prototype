@@ -7,16 +7,12 @@ import BaseDropdownMenu, { DropdownMenuProps as BaseDropdownMenuProps } from 're
 import './dropdown.styles.scss'
 
 export interface DropdownProps extends BaseDropdownProps {}
-
 export interface DropdownToggleProps extends BaseDropdownToggleProps {}
-
 export interface DropdownButtonProps extends BaseDropdownButtonProps {}
-
 export interface DropdownItemProps extends BaseDropdownItemProps {}
-
 export interface DropdownMenuProps extends BaseDropdownMenuProps {}
 
-const Dropdown = ({ children, ...restProps}) => (
+const Dropdown = ({ children, ...restProps}: DropdownProps) => (
     <BaseDropdown {...restProps}>
         {children}
     </BaseDropdown>
