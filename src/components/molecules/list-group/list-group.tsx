@@ -3,11 +3,24 @@ import BaseListGroup, { ListGroupProps as BaseListGroupProps } from 'react-boots
 import BaseListGroupItem, { ListGroupItemProps as BaseListGroupItemProps } from 'react-bootstrap/ListGroupItem'
 import './list-group.styles.scss'
 
-export interface ListGroupProps extends BaseListGroupProps {}
-export interface ListGroupItemProps extends BaseListGroupItemProps {}
+export interface ListGroupProps extends BaseListGroupProps {
+    children: any
+}
 
-const ListGroup = (props: ListGroupProps) => <BaseListGroup {...props} />
-export const ListGroupItem = (props: ListGroupItemProps) => <BaseListGroupItem {...props} />
+export interface ListGroupItemProps extends BaseListGroupItemProps {
+    children: any
+}
+
+const ListGroup = ({ children, ...props }: ListGroupProps) => (
+    <BaseListGroup {...props}>
+        {children}
+    </BaseListGroup>
+)
+export const ListGroupItem = ({ children, ...props }: ListGroupItemProps) => (
+    <BaseListGroupItem {...props}>
+        {children}
+    </BaseListGroupItem>
+)
 
 ListGroup.Item = ListGroupItem
 

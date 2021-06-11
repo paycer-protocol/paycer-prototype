@@ -1,17 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
-import WalletConnectComponent, { WalletConnectProps } from './wallet-connect'
-import theme from "../../../config/theme";
+import AccountComponent, { AccountProps } from './account'
+import theme from '../../../config/theme'
 
 export default {
-    title: 'Organism/Crypto',
+    title: 'Organism/Web3',
     argTypes: {
         variant: { control: 'select', options: theme.colors },
     },
 } as Meta
 
-type StoryOptions = Partial<WalletConnectProps>
+type StoryOptions = Partial<AccountProps>
 
 const config: Config = {
     readOnlyChainId: ChainId.Mainnet,
@@ -22,9 +22,9 @@ const config: Config = {
 
 const Template: Story<StoryOptions> = (props: StoryOptions) => (
     <DAppProvider config={config}>
-        <WalletConnectComponent {...props} />
+        <AccountComponent {...props} />
     </DAppProvider>
 )
 
-export const WalletConnect = Template.bind({})
-WalletConnect.args = {}
+export const Account = Template.bind({})
+Account.args = {}

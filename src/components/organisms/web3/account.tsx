@@ -5,12 +5,12 @@ import Button from '../../atoms/button'
 import Dropdown from '../../atoms/dropdown'
 import useWallet from './hooks/useWallet'
 
-export interface WalletConnectProps {
+export interface AccountProps {
     buttonVariant?: ButtonVariant
     dropdownVariant?: ButtonVariant
 }
 
-const WalletConnect = (props: WalletConnectProps) => {
+const Account = (props: AccountProps) => {
     const {
         buttonVariant = 'outline-dark',
         dropdownVariant = 'outline-dark',
@@ -20,15 +20,22 @@ const WalletConnect = (props: WalletConnectProps) => {
 
     if (!wallet.isConnected) {
         return (
-            <Button variant={buttonVariant} className="px-5" onClick={wallet.connect}>
-                Connect
+            <Button
+                variant={buttonVariant}
+                className="px-5"
+                onClick={wallet.connect}
+            >
+                Connect to a Wallet
             </Button>
         )
     }
 
     return (
         <Dropdown>
-            <Dropdown.Toggle variant={dropdownVariant} className="d-flex align-items-center justify-content-center">
+            <Dropdown.Toggle
+                variant={dropdownVariant}
+                className="d-flex align-items-center justify-content-center"
+            >
                 <div className="mr-3">
                     {wallet.shortenAddress}
                 </div>
@@ -47,4 +54,4 @@ const WalletConnect = (props: WalletConnectProps) => {
     )
 }
 
-export default WalletConnect
+export default Account
