@@ -13,7 +13,7 @@ const image = 'https://images.unsplash.com/photo-1546640646-89b557854b23?ixid=Mn
 
 export function Default () {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card fill style={{ width: '18rem' }}>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>

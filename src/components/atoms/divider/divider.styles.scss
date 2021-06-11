@@ -1,5 +1,12 @@
 @import '../../../../assets/scss/_utilities';
 
+//
+// Divided
+//
+$divider-content-color:  $gray-700;
+$divider-content-bg:     $body-bg;
+$divider-before-bg:      $gray-200;
+
 .divider {
   position: relative;
   font-size: 12px;
