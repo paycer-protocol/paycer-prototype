@@ -5,7 +5,7 @@ import DashValueComponent, { DashValueProps } from './dash-value'
 import theme from '../../../config/theme'
 
 export default {
-    title: 'Molecule/Dashboard',
+    title: 'Organism/Dashboard',
     argTypes: {
         title: { control: 'text' },
         value: { control: 'text' },

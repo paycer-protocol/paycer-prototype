@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledIcon } from '@styled-icons/styled-icon'
 import { Variant } from 'react-bootstrap/types'
 import Icon from '../../atoms/icon'
-import Card from '../card'
+import Card from '../../molecules/card'
 
 export interface DashValueProps {
     title: string
