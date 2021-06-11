@@ -12,6 +12,7 @@
     "storybook:build": "build-storybook -s public"
   },
   "dependencies": {
+    "@usedapp/core": "^0.3.24",
     "bootstrap": "4.6.0",
     "next": "^10.0.0",
     "react": "17.0.1",
