@@ -1,28 +1,21 @@
 import React from 'react'
 import useWallet from './hooks/useWallet'
 import Button from '../../atoms/button'
+import Alert from '../../atoms/alert'
+import Spinner from '../../atoms/spinner'
 import ListGroup from '../../molecules/list-group'
 import Modal from '../../molecules/modal'
+import { Provider } from './providers'
 
-export interface Provider {
-    connector: any
-    name: string
-    description?: string
-    icon: string
-}
 
 export interface WalletProviderProps {
     providers: Provider[]
 }
 
+
 const WalletProvider = (props: WalletProviderProps) => {
     const { providers = [] } = props
     const wallet = useWallet()
-
-
-    const handleConnect = (provider: Provider) => {
-        wallet.connect(provider.connector)
-    }
 
     return (
         <Modal.Dialog>
@@ -30,20 +23,39 @@ const WalletProvider = (props: WalletProviderProps) => {
                 <Modal.Title>Connect to a wallet</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <Alert variant="danger" show={!!wallet.errorMessage}>
+                    {wallet.errorMessage}
+                </Alert>
                 <ListGroup>
-                    {providers.map(item => (
-                        <Button key={item.name} variant="outline-dark" className="mb-2" onClick={() => handleConnect(item)}>
-                            <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                                <div className="text-left">
-                                    <strong>{item.name}</strong>
-                                    <p className="text-muted mb-0">
-                                        <small>{item.description}</small>
-                                    </p>
+                    {providers.map(item => {
+                        const isActivating = wallet.activatingConnector && wallet.activatingConnector === item.connector
+                        const isDisabled = wallet.activatingConnector && wallet.activatingConnector !== item.connector
+
+                        return (
+                            <Button
+                                key={item.name}
+                                variant="outline-dark"
+                                className="mb-2"
+                                active={isActivating}
+                                disabled={isDisabled}
+                                onClick={() => wallet.connect(item)}
+                            >
+                                <div className="d-flex align-items-center justify-content-between py-3 px-2">
+                                    <div className="text-left">
+                                        <strong>{item.name}</strong>
+                                        <p className="text-muted mb-0">
+                                            <small>{item.description}</small>
+                                        </p>
+                                    </div>
+                                    {
+                                        isActivating
+                                            ? <Spinner animation="border" />
+                                            : <img src={item.icon} alt={item.name} width="24" height="24" />
+                                    }
                                 </div>
-                                <img src={item.icon} alt={item.name} width="24" height="24" />
-                            </div>
-                        </Button>
-                    ))}
+                            </Button>
+                        )
+                    })}
                 </ListGroup>
             </Modal.Body>
         </Modal.Dialog>

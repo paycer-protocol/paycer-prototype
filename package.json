@@ -32,6 +32,8 @@
     "@types/react": "^17.0.9",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/ledger-connector": "^6.1.9",
+    "@web3-react/trezor-connector": "^6.1.9",
     "@web3-react/walletconnect-connector": "^6.2.0",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
