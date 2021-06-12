@@ -3,7 +3,7 @@ import { useEtherBalance, useEthers, shortenIfAddress, CHAIN_NAMES } from '@used
 import { formatEther } from '@ethersproject/units'
 import { UnsupportedChainIdError} from '@web3-react/core'
 import { NoEthereumProviderError} from '@web3-react/injected-connector'
-import { ChainSymbol } from '../providers'
+import { ChainSymbol, BlockchainExplorer } from '../providers'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
@@ -55,6 +55,7 @@ export default function useWallet() {
         etherBalance: formatEther(etherBalance || 0),
         etherSymbol: ChainSymbol[chainId] || ChainSymbol.default, // FIXME: chainId not changed on network switch
         chainName: CHAIN_NAMES[chainId] || '',
+        explorerUrl: `${BlockchainExplorer[chainId] || ''}/address/${account}`,
         chainId,
         activatingConnector,
         errorMessage
