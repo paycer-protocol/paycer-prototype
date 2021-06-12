@@ -1,6 +1,6 @@
 import { ChainId } from '@usedapp/core'
 
-export const BlockchainExplorer = {
+export const explorers = {
     [ChainId.Mainnet]: 'https://etherscan.io',
     [ChainId.Ropsten]: 'https://ropsten.etherscan.io',
     [ChainId.Kovan]: 'https://kovan.etherscan.io',
@@ -10,6 +10,4 @@ export const BlockchainExplorer = {
     [ChainId.xDai]: 'https://blockscout.com/xdai/mainnet',
     [ChainId.Polygon]: 'https://polygon-explorer-mainnet.chainstacklabs.com',
     [ChainId.Mumbai]: 'https://polygon-explorer-mumbai.chainstacklabs.com',
-    [ChainId.Localhost]: '',
-    [ChainId.Hardhat]: '',
 }

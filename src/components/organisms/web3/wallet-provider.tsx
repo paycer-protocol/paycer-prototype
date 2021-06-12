@@ -5,13 +5,11 @@ import Alert from '../../atoms/alert'
 import Spinner from '../../atoms/spinner'
 import ListGroup from '../../molecules/list-group'
 import Modal from '../../molecules/modal'
-import { Provider } from './providers'
-
+import { IConnectorProvider } from './providers'
 
 export interface WalletProviderProps {
-    providers: Provider[]
+    providers: IConnectorProvider[]
 }
-
 
 const WalletProvider = (props: WalletProviderProps) => {
     const { providers = [] } = props
@@ -43,14 +41,14 @@ const WalletProvider = (props: WalletProviderProps) => {
                                 <div className="d-flex align-items-center justify-content-between py-3 px-2">
                                     <div className="text-left">
                                         <strong>{item.name}</strong>
-                                        <p className="text-muted mb-0">
+                                        <p className="mb-0">
                                             <small>{item.description}</small>
                                         </p>
                                     </div>
                                     {
                                         isActivating
                                             ? <Spinner animation="border" />
-                                            : <img src={item.icon} alt={item.name} width="24" height="24" />
+                                            : <img src={item.icon} alt={item.name} width="28" />
                                     }
                                 </div>
                             </Button>

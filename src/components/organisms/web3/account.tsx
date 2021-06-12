@@ -4,6 +4,7 @@ import Avatar, { generateAvatarSource } from '../../atoms/avatar'
 import Button from '../../atoms/button'
 import Dropdown from '../../atoms/dropdown'
 import useWallet from './hooks/useWallet'
+import { connectors } from './providers'
 
 export interface AccountProps {
     buttonVariant?: ButtonVariant
@@ -23,7 +24,7 @@ const Account = (props: AccountProps) => {
             <Button
                 variant={buttonVariant}
                 className="px-5"
-                onClick={wallet.connect}
+                onClick={() => wallet.connect(connectors[0])}
             >
                 Connect to a Wallet
             </Button>

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useEtherBalance, useEthers, shortenIfAddress, CHAIN_NAMES } from '@usedapp/core'
+import { useEffect, useState } from 'react'
+import { CHAIN_NAMES, ChainId, getExplorerAddressLink, shortenIfAddress, useEtherBalance, useEthers } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
-import { UnsupportedChainIdError} from '@web3-react/core'
-import { NoEthereumProviderError} from '@web3-react/injected-connector'
-import { ChainSymbol, BlockchainExplorer } from '../providers'
+import { UnsupportedChainIdError } from '@web3-react/core'
+import { NoEthereumProviderError } from '@web3-react/injected-connector'
+import {Symbols, IConnectorProvider} from '../providers'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
@@ -17,12 +17,12 @@ export default function useWallet() {
         }
     }, [activatingConnector, connector])
 
-    const handleConnect = async (provider) => {
+    const handleConnect = async (provider: IConnectorProvider) => {
         try {
-            const connector = provider.beforeConnect(provider)
+            const nextConnector = provider.beforeConnect(provider)
             setErrorMessage(null)
-            setActivatingConnector(connector)
-            await activate(connector, undefined, true)
+            setActivatingConnector(nextConnector)
+            await activate(nextConnector, undefined, true)
         } catch (e) {
             handleConnectError(provider, e)
         }
@@ -41,11 +41,13 @@ export default function useWallet() {
             message = 'An unknown error occurred. Please try again.'
         }
 
+        console.log(error instanceof UnsupportedChainIdError, error)
         setActivatingConnector(undefined)
         setErrorMessage(message)
     }
 
     return {
+        connector,
         address: account,
         shortenAddress: shortenIfAddress(account),
         isActive: active,
@@ -53,11 +55,11 @@ export default function useWallet() {
         connect: handleConnect,
         disconnect: () => deactivate(),
         etherBalance: formatEther(etherBalance || 0),
-        etherSymbol: ChainSymbol[chainId] || ChainSymbol.default, // FIXME: chainId not changed on network switch
-        chainName: CHAIN_NAMES[chainId] || '',
-        explorerUrl: `${BlockchainExplorer[chainId] || ''}/address/${account}`,
-        chainId,
+        etherSymbol: Symbols[chainId] || Symbols[ChainId.Mainnet],
+        chainName: CHAIN_NAMES[chainId] || CHAIN_NAMES[ChainId.Mainnet],
+        explorerUrl: getExplorerAddressLink(account, chainId),
         activatingConnector,
-        errorMessage
+        errorMessage,
+        chainId
     }
 }

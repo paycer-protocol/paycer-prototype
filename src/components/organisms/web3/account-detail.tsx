@@ -1,20 +1,18 @@
 import React from 'react'
-import {ChainId} from '@usedapp/core'
-import {Eth, Bnb} from '@styled-icons/crypto'
-import {CheckCircle} from '@styled-icons/bootstrap'
+import { ChainId } from '@usedapp/core'
+import { Eth, Bnb } from '@styled-icons/crypto'
+import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '../../atoms/button'
 import Icon from '../../atoms/icon'
 import Modal from '../../molecules/modal'
 import useWallet from './hooks/useWallet'
 import useCopyClipboard from '../../../hooks/useCopyClipboard'
 import ListGroup from '../../molecules/list-group'
-import Account from './account'
+import { connectors } from './providers'
 import './account-detail.styles.scss'
 
 
-export interface AccountDetailProps {
-}
-
+export interface AccountDetailProps {}
 
 const IconMap = {
     [ChainId.BSC]: Bnb,
@@ -45,25 +43,7 @@ const AccountAction = (props: ListGroupItemProps) => {
             <div className="d-flex align-items-center justify-content-between py-3 px-2">
                 <div className="text-left">
                     <strong>{name}</strong>
-                    <p className="text-muted mb-0">
-                        <small>{description}</small>
-                    </p>
-                </div>
-                {children}
-            </div>
-        </Button>
-    )
-}
-
-const AccountContent = (props: ListGroupItemProps) => {
-    const { name, description, onClick, href, target, variant = 'outline-dark', children } = props
-
-    return (
-        <Button variant={variant} className="mb-2" href={href} target={target} onClick={onClick}>
-            <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                <div className="text-left">
-                    <strong>{name}</strong>
-                    <p className="text-muted mb-0">
+                    <p className="mb-0">
                         <small>{description}</small>
                     </p>
                 </div>
@@ -75,16 +55,20 @@ const AccountContent = (props: ListGroupItemProps) => {
 
 const AccountBalance = () => {
     const wallet = useWallet()
+    const iconComponent = IconMap[wallet.chainName] || IconMap.default
+    let etherBalance = Number(wallet.etherBalance || 0).toFixed(4)
+    etherBalance += ' '
+    etherBalance += wallet.etherSymbol
 
     return (
-        <div className='d-flex align-items-center justify-content-between py-3 px-2'>
-            <div className='text-left'>
+        <div className="d-flex align-items-center justify-content-between py-3 px-2">
+            <div className="text-left">
                 <strong>Balance</strong>
-                <p className='text-muted mb-0'>
-                    <small>{Number(wallet.etherBalance || 0).toFixed(4)}&nbsp;{wallet.etherSymbol}</small>
+                <p className="text-muted mb-0">
+                    <small>{etherBalance}</small>
                 </p>
             </div>
-            <Icon component={IconMap[wallet.chainName] || IconMap.default} size={35} />
+            <Icon component={iconComponent} size={35} />
         </div>
     )
 }
@@ -121,7 +105,7 @@ const AccountDetail = (props: AccountDetailProps) => {
                         <AccountBalance />
                         <ListGroup>
                             <AccountAction
-                                name="View"
+                                name="Explorer"
                                 description="View your wallet in Blockchain Explorer"
                                 href={wallet.explorerUrl}
                                 target="_blank"
@@ -147,7 +131,7 @@ const AccountDetail = (props: AccountDetailProps) => {
                 )}
                 {!wallet.isConnected && (
                     <div className="d-flex justify-content-center">
-                        <Button variant="outline-primary" className="px-5" onClick={wallet.connect}>
+                        <Button variant="outline-primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
                             Connect to a Wallet
                         </Button>
                     </div>

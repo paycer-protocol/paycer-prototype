@@ -1,14 +1,16 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
-import WalletProviderComponent, { WalletProviderProps } from './wallet-provider'
-import { connectors } from './providers'
+import NetworkProviderComponent, { NetworkProviderProps } from './network-provider'
+import theme from '../../../config/theme'
+import { mainNetProviders } from './providers'
 
 export default {
     title: 'Organism/Web3',
+    argTypes: { variant: { control: 'select', options: theme.colors }, },
 } as Meta
 
-type StoryOptions = Partial<WalletProviderProps>
+type StoryOptions = Partial<NetworkProviderProps>
 
 const config: Config = {
     readOnlyChainId: ChainId.Mainnet,
@@ -19,12 +21,12 @@ const config: Config = {
 
 const Template: Story<StoryOptions> = (props: StoryOptions) => (
     <DAppProvider config={config}>
-        <WalletProviderComponent
-            providers={connectors}
+        <NetworkProviderComponent
+            providers={mainNetProviders}
             {...props}
         />
     </DAppProvider>
 )
 
-export const WalletProvider = Template.bind({})
-WalletProvider.args = {}
+export const NetworkProvider = Template.bind({})
+NetworkProvider.args = {}

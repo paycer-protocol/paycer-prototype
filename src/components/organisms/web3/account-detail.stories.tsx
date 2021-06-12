@@ -2,11 +2,9 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
 import AccountDetailComponent, { AccountDetailProps } from './account-detail'
-import theme from '../../../config/theme'
 
 export default {
     title: 'Organism/Web3',
-    argTypes: { variant: { control: 'select', options: theme.colors }, },
 } as Meta
 
 type StoryOptions = Partial<AccountDetailProps>
