@@ -7,6 +7,8 @@ The Paycer Prototype repository contains an MVP of the decentralized Paycer plat
 - Yarn
 - Git
 
+# Obtain RPC URLs and add them in dotenv 
+- https://www.alchemy.com/
 
 # Getting started
 ```
@@ -16,7 +18,7 @@ yarn install
 # start developing
 yarn dev
 
-# start styleguide
+# start developing isolated components in the styleguide
 yarn storybook
 ```
 
