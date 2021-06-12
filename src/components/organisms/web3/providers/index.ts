@@ -3,6 +3,7 @@ import { WalletConnectConnector, UserRejectedRequestError as  WalletConnectRejec
 import { LedgerConnector } from '@web3-react/ledger-connector'
 import { TrezorConnector } from '@web3-react/trezor-connector'
 import { ChainId } from '@usedapp/core'
+export { ChainSymbol } from './chain-symbol'
 
 const APP_URL = process.env.APP_URL
 const APP_EMAIL = process.env.APP_EMAIL

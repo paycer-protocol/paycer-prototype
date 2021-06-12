@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useEtherBalance, useEthers, shortenIfAddress } from '@usedapp/core'
+import { useEtherBalance, useEthers, shortenIfAddress, CHAIN_NAMES } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
 import { UnsupportedChainIdError} from '@web3-react/core'
 import { NoEthereumProviderError} from '@web3-react/injected-connector'
+import { ChainSymbol } from '../providers'
 
 export default function useWallet() {
-    const { connector, active, activate, account, deactivate } = useEthers()
+    const { connector, active, activate, account, deactivate, chainId } = useEthers()
     const etherBalance = useEtherBalance(account)
     const [activatingConnector, setActivatingConnector] = useState(undefined)
     const [errorMessage, setErrorMessage] = useState(null)
@@ -52,6 +53,9 @@ export default function useWallet() {
         connect: handleConnect,
         disconnect: () => deactivate(),
         etherBalance: formatEther(etherBalance || 0),
+        etherSymbol: ChainSymbol[chainId] || ChainSymbol.default, // FIXME: chainId not changed on network switch
+        chainName: CHAIN_NAMES[chainId] || '',
+        chainId,
         activatingConnector,
         errorMessage
     }
