@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ButtonVariant } from 'react-bootstrap/types'
 import Avatar, { generateAvatarSource } from '../../atoms/avatar'
 import Button from '../../atoms/button'
 import Dropdown from '../../atoms/dropdown'
 import useWallet from './hooks/useWallet'
+import WalletProvider from '../web3/wallet-provider'
 import { connectors } from './providers'
 
 export interface AccountProps {
@@ -12,22 +13,27 @@ export interface AccountProps {
 }
 
 const Account = (props: AccountProps) => {
-    const {
-        buttonVariant = 'outline-dark',
-        dropdownVariant = 'outline-dark',
-    } = props
-
+    const { buttonVariant = 'outline-dark', dropdownVariant = 'outline-dark' } = props
+    const [showModal, setShowModal] = useState(false)
     const wallet = useWallet()
 
     if (!wallet.isConnected) {
         return (
-            <Button
-                variant={buttonVariant}
-                className="px-4 text-nowrap"
-                onClick={() => wallet.connect(connectors[0])}
-            >
-                Connect to a Wallet
-            </Button>
+            <>
+                <Button
+                    variant={buttonVariant}
+                    className="px-4 text-nowrap"
+                    onClick={() => setShowModal(true)}
+                >
+                    Connect to a Wallet
+                </Button>
+                <WalletProvider
+                    providers={connectors}
+                    onHide={() => setShowModal(false)}
+                    show={showModal}
+                />
+            </>
+
         )
     }
 

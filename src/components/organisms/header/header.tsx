@@ -1,8 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 import Image from '../../atoms/image'
 import Navbar from '../../molecules/navbar'
 import Nav from '../../molecules/nav'
 import Account from '../web3/account'
+
+const StyledBrand = styled(Navbar.Brand)`
+  margin-top: -10px;
+  
+  img {
+    max-height: 40px;
+  }
+`
 
 export interface HeaderProps {}
 
@@ -13,9 +22,9 @@ const Header = (props: HeaderProps) => {
     return (
         <header>
             <Navbar variant="dark" bg="dark">
-                <Navbar.Brand href="#home" className="px-3 py-0" style={{ marginTop: '-10px'}}>
-                    <Image src="/assets/logo.svg" alt="Paycer" height="40"/>
-                </Navbar.Brand>
+                <StyledBrand href="#home" className="px-3 py-0">
+                    <Image src="/assets/logo.svg" alt="Paycer" />
+                </StyledBrand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Navbar variant="dark" className="ml-auto">
@@ -28,9 +37,12 @@ const Header = (props: HeaderProps) => {
                         <Nav.Link  className="mr-3" href="/docs">
                             Docs
                         </Nav.Link>
-                        <Nav.Link>
-                            <Account buttonVariant="outline-light" />
-                        </Nav.Link>
+                        <Nav.Item>
+                            <Account
+                                buttonVariant="outline-light"
+                                dropdownVariant="outline-light"
+                            />
+                        </Nav.Item>
                     </Navbar>
                 </Navbar.Collapse>
             </Navbar>

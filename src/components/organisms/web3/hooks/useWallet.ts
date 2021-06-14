@@ -24,6 +24,7 @@ export default function useWallet() {
             setActivatingConnector(nextConnector)
             await activate(nextConnector, undefined, true)
         } catch (e) {
+            console.log(e)
             handleConnectError(provider, e)
         }
     }

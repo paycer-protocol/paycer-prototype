@@ -9,14 +9,16 @@ import { IConnectorProvider } from './providers'
 
 export interface WalletProviderProps {
     providers: IConnectorProvider[]
+    show: boolean
+    onHide: any
 }
 
 const WalletProvider = (props: WalletProviderProps) => {
-    const { providers = [] } = props
+    const { providers = [], show = false, onHide } = props
     const wallet = useWallet()
 
     return (
-        <Modal.Dialog>
+        <Modal show={show} onHide={onHide}>
             <Modal.Header closeButton>
                 <Modal.Title>Connect to a wallet</Modal.Title>
             </Modal.Header>
@@ -56,7 +58,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                     })}
                 </ListGroup>
             </Modal.Body>
-        </Modal.Dialog>
+        </Modal>
     )
 }
 
