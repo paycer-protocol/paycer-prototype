@@ -23,7 +23,7 @@ const Account = (props: AccountProps) => {
         return (
             <Button
                 variant={buttonVariant}
-                className="px-5"
+                className="px-4 text-nowrap"
                 onClick={() => wallet.connect(connectors[0])}
             >
                 Connect to a Wallet

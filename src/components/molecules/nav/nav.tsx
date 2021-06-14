@@ -2,6 +2,7 @@ import React from 'react'
 import BaseNav, { NavProps as BaseNavProps } from 'react-bootstrap/Nav'
 import BaseNavItem, { NavItemProps as BaseNavItemProps } from 'react-bootstrap/NavItem'
 import BaseNavLink, { NavLinkProps as BaseNavLinkProps } from 'react-bootstrap/NavLink'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import './nav.styles.scss'
 
 export interface NavProps extends BaseNavProps {}
@@ -14,5 +15,6 @@ export const NavLink = (props: NavLinkProps) => <BaseNavLink {...props} />
 
 Nav.Item = NavItem
 Nav.Link = NavLink
+Nav.Dropdown = NavDropdown
 
 export default Nav
