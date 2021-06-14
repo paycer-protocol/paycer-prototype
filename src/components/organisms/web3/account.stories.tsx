@@ -1,8 +1,8 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { DAppProvider, Config, ChainId } from '@usedapp/core'
-import AccountComponent, { AccountProps } from './account'
 import theme from '../../../config/theme'
+import AccountComponent, { AccountProps } from './account'
+import Web3Context from './web3-context'
 
 export default {
     title: 'Organism/Web3/Account/Default',
@@ -14,17 +14,10 @@ export default {
 
 type StoryOptions = Partial<AccountProps>
 
-const config: Config = {
-    readOnlyChainId: ChainId.Mainnet,
-    readOnlyUrls: {
-        [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
-    },
-}
-
 const Template: Story<StoryOptions> = (props: StoryOptions) => (
-    <DAppProvider config={config}>
+    <Web3Context>
         <AccountComponent {...props} />
-    </DAppProvider>
+    </Web3Context>
 )
 
 export const Default = Template.bind({})

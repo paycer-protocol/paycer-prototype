@@ -1,8 +1,8 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { DAppProvider, Config, ChainId } from '@usedapp/core'
 import NetworkProviderComponent, { NetworkProviderProps } from './network-provider'
 import theme from '../../../config/theme'
+import Web3Context from './web3-context'
 import { mainNetProviders } from './providers'
 
 export default {
@@ -13,20 +13,13 @@ export default {
 
 type StoryOptions = Partial<NetworkProviderProps>
 
-const config: Config = {
-    readOnlyChainId: ChainId.Mainnet,
-    readOnlyUrls: {
-        [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
-    },
-}
-
 const Template: Story<StoryOptions> = (props: StoryOptions) => (
-    <DAppProvider config={config}>
+    <Web3Context>
         <NetworkProviderComponent
             providers={mainNetProviders}
             {...props}
         />
-    </DAppProvider>
+    </Web3Context>
 )
 
 export const Network = Template.bind({})
