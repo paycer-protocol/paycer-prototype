@@ -5,7 +5,7 @@ export interface IRpcUrl {
 }
 
 export const rpcUrls: IRpcUrl = {
-    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3',
+    [ChainId.Mainnet]: process.env.ALCHEMYAPI_MAINNET,
     [ChainId.Ropsten]: process.env.ALCHEMYAPI_REPOSTEN,
     [ChainId.Rinkeby]: process.env.ALCHEMYAPI_RINKEBY,
     [ChainId.Goerli]: process.env.ALCHEMYAPI_GOERLI,

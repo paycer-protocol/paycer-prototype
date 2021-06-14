@@ -3,7 +3,7 @@ import { CHAIN_NAMES, ChainId, getExplorerAddressLink, shortenIfAddress, useEthe
 import { formatEther } from '@ethersproject/units'
 import { UnsupportedChainIdError } from '@web3-react/core'
 import { NoEthereumProviderError } from '@web3-react/injected-connector'
-import {Symbols, IConnectorProvider} from '../providers'
+import { Symbols, IConnectorProvider } from '../providers'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
@@ -41,7 +41,6 @@ export default function useWallet() {
             message = 'An unknown error occurred. Please try again.'
         }
 
-        console.log(error instanceof UnsupportedChainIdError, error)
         setActivatingConnector(undefined)
         setErrorMessage(message)
     }
