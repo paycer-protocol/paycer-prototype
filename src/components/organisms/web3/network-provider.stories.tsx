@@ -6,7 +6,8 @@ import theme from '../../../config/theme'
 import { mainNetProviders } from './providers'
 
 export default {
-    title: 'Organism/Web3',
+    title: 'Organism/Web3/Provider/Network',
+    component: NetworkProviderComponent,
     argTypes: { variant: { control: 'select', options: theme.colors }, },
 } as Meta
 
@@ -28,5 +29,5 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
     </DAppProvider>
 )
 
-export const NetworkProvider = Template.bind({})
-NetworkProvider.args = {}
+export const Network = Template.bind({})
+Network.args = {}

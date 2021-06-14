@@ -5,7 +5,8 @@ import AccountComponent, { AccountProps } from './account'
 import theme from '../../../config/theme'
 
 export default {
-    title: 'Organism/Web3',
+    title: 'Organism/Web3/Account/Default',
+    component: AccountComponent,
     argTypes: {
         variant: { control: 'select', options: theme.colors },
     },
@@ -26,5 +27,5 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
     </DAppProvider>
 )
 
-export const Account = Template.bind({})
-Account.args = {}
+export const Default = Template.bind({})
+Default.args = {}

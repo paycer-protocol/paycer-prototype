@@ -5,7 +5,8 @@ import WalletProviderComponent, { WalletProviderProps } from './wallet-provider'
 import { connectors } from './providers'
 
 export default {
-    title: 'Organism/Web3',
+    title: 'Organism/Web3/Provider/Wallet',
+    component: WalletProviderComponent
 } as Meta
 
 type StoryOptions = Partial<WalletProviderProps>
@@ -22,9 +23,10 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
         <WalletProviderComponent
             providers={connectors}
             {...props}
+            show
         />
     </DAppProvider>
 )
 
-export const WalletProvider = Template.bind({})
-WalletProvider.args = {}
+export const Wallet = Template.bind({})
+Wallet.args = {}

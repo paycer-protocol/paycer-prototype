@@ -10,7 +10,7 @@ import { IConnectorProvider } from './providers'
 export interface WalletProviderProps {
     providers: IConnectorProvider[]
     show: boolean
-    onHide: any
+    onHide?: any
 }
 
 const WalletProvider = (props: WalletProviderProps) => {

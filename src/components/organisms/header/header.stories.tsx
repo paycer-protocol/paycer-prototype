@@ -2,7 +2,6 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
 import HeaderComponent, { HeaderProps } from './header'
-import theme from '../../../config/theme'
 
 export default {
     title: 'Organism/Header',

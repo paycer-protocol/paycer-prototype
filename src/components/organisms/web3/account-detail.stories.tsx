@@ -4,7 +4,8 @@ import { DAppProvider, Config, ChainId } from '@usedapp/core'
 import AccountDetailComponent, { AccountDetailProps } from './account-detail'
 
 export default {
-    title: 'Organism/Web3',
+    title: 'Organism/Web3/Account/Detail',
+    component: AccountDetailComponent,
 } as Meta
 
 type StoryOptions = Partial<AccountDetailProps>
@@ -22,5 +23,5 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
     </DAppProvider>
 )
 
-export const AccountDetail = Template.bind({})
-AccountDetail.args = {}
+export const Detail = Template.bind({})
+Detail.args = {}
