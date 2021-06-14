@@ -1,0 +1,47 @@
+@import '../../../../assets/scss/_utilities';
+
+$header-margin-bottom: 2rem !default;
+$header-spacing-y: 1.5rem !default;
+$header-body-border-width: 1px !default;
+$header-body-border-color: $border-color !default;
+$header-body-border-color-dark: fade-out($header-body-border-color, .9) !default;
+
+// Header
+//
+// General styles
+
+.page-header {
+  margin-bottom: $header-margin-bottom;
+}
+
+.page-header-img-top {
+  width: 100%; height: auto;
+}
+
+.page-header-body {
+  padding-top: $header-spacing-y;
+  padding-bottom: $header-spacing-y;
+  border-bottom: $header-body-border-width solid $header-body-border-color;
+}
+
+.page-header.bg-dark .header-body,
+.page-header.bg-hero .header-body {
+  border-bottom-color: $header-body-border-color-dark;
+}
+
+.page-header-footer {
+  padding-top: $header-spacing-y;
+  padding-bottom: $header-spacing-y;
+}
+
+.page-header-title {
+  margin-bottom: 0;
+}
+
+.page-header-subtitle {
+  margin-top: map-get($spacers, 2);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: $text-muted;
+}
