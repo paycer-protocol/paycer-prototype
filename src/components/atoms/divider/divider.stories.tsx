@@ -1,7 +1,7 @@
 import React from 'react'
 import {Meta} from '@storybook/react'
 import Divider, { DividerProps } from './divider'
-import Nav, { NavLink, NavItem } from '../../molecules/nav'
+import Nav, { NavLink, NavItem } from '@components/molecules/nav'
 
 export default {
     title: 'Atom/Divider',

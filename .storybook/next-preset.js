@@ -1,4 +1,6 @@
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
+
 
 module.exports = {
   webpackFinal: async (baseConfig, options) => {
@@ -38,6 +40,10 @@ module.exports = {
       test: /\.(png|svg|jpg|gif)$/,
       loaders: ['file-loader'],
     });
+
+    [].push.apply(newConfig.resolve.plugins, [
+      new TsconfigPathsPlugin({extensions: newConfig.resolve.extensions})
+    ])
 
     // If you are using CSS Modules, check out the setup from Justin (justincy)
     // Many thanks to Justin for the inspiration

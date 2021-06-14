@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
-import Button from '../../atoms/button'
+import Button from '@components/atoms/button'
 import Modal, { ModalProps } from './modal'
 import theme from '../../../config/theme'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { DAppProvider, Config, ChainId } from '@usedapp/core'
+import Web3Context from '@components/organisms/web3/web3-context'
 import LayoutComponent, { LayoutProps } from './layout'
 
 export default {
@@ -11,15 +11,8 @@ export default {
 
 type StoryOptions = Partial<LayoutProps>
 
-const config: Config = {
-    readOnlyChainId: ChainId.Mainnet,
-    readOnlyUrls: {
-        [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
-    },
-}
-
 const Template: Story<StoryOptions> = (props: StoryOptions) => (
-    <DAppProvider config={config}>
+    <Web3Context>
         <LayoutComponent {...props}>
             <div className="container">
                 <div className="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow">
@@ -103,7 +96,7 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
                 </div>
             </div>
         </LayoutComponent>
-    </DAppProvider>
+    </Web3Context>
 )
 
 export const Layout = Template.bind({})

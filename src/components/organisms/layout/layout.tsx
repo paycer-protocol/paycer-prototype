@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../organisms/header'
+import Header from '@components/organisms/header'
 
 export interface LayoutProps {
     children: any

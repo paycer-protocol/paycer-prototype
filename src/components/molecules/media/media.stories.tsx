@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 import Media from './media'
-import Image from '../../atoms/image'
+import Image from '@components/atoms/image'
 
 export default {
     title: 'Molecule/Media',

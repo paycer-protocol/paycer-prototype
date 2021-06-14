@@ -1,10 +1,10 @@
 import React from 'react'
 import useWallet from './hooks/useWallet'
 import useNetwork from './hooks/useNetwork'
-import Button from '../../atoms/button'
-import Alert from '../../atoms/alert'
-import ListGroup from '../../molecules/list-group'
-import Modal from '../../molecules/modal'
+import Button from '@components/atoms/button'
+import Alert from '@components/atoms/alert'
+import ListGroup from '@components/molecules/list-group'
+import Modal from '@components/molecules/modal'
 import { INetworkProvider } from './providers'
 
 export interface NetworkProviderProps {

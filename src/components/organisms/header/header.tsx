@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from '../../atoms/image'
-import Navbar from '../../molecules/navbar'
-import Nav from '../../molecules/nav'
+import Image from '@components/atoms/image'
+import Navbar from '@components/molecules/navbar'
+import Nav from '@components/molecules/nav'
 import Account from '../web3/account'
 
 const StyledBrand = styled(Navbar.Brand)`

@@ -1,10 +1,10 @@
 import React from 'react'
 import useWallet from './hooks/useWallet'
-import Button from '../../atoms/button'
-import Alert from '../../atoms/alert'
-import Spinner from '../../atoms/spinner'
-import ListGroup from '../../molecules/list-group'
-import Modal from '../../molecules/modal'
+import Button from '@components/atoms/button'
+import Alert from '@components/atoms/alert'
+import Spinner from '@components/atoms/spinner'
+import ListGroup from '@components/molecules/list-group'
+import Modal from '@components/molecules/modal'
 import { IConnectorProvider } from './providers'
 
 export interface WalletProviderProps {

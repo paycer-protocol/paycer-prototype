@@ -1,6 +1,6 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
-import Button from '../../atoms/button'
+import Button from '@components/atoms/button'
 import Card from './card'
 
 export default {
