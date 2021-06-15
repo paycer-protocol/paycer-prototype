@@ -10,6 +10,7 @@
         "displayName": true,
         "preprocess": false
       }
-    ]
+    ],
+    "macros"
   ]
 }

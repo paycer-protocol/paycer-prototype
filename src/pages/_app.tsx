@@ -1,17 +1,10 @@
 import { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { appWithTranslation } from 'next-i18next'
-import { IntlProvider } from 'react-intl'
+import I18nProvider from '../locales/i18n'
 
-const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter()
-  const { locale, defaultLocale } = router
-
-  return (
-      <IntlProvider locale={locale} defaultLocale={defaultLocale}>
+const App = ({ Component, pageProps }: AppProps) => (
+    <I18nProvider>
         <Component {...pageProps} />
-      </IntlProvider>
-  )
-}
+    </I18nProvider>
+)
 
-export default appWithTranslation(App)
+export default App

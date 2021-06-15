@@ -1,7 +1,5 @@
-import Head from 'next/head'
 import styled from 'styled-components'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { t } from '@lingui/macro'
 import Button from '../components/atoms/button'
 
 const StyledContainer = styled.div`
@@ -11,7 +9,6 @@ const StyledContainer = styled.div`
 `
 
 export default function Home() {
-  const { t } = useTranslation('common')
 
   return (
     <div className="container">
@@ -22,7 +19,7 @@ export default function Home() {
         </h1>
 
         <StyledContainer>
-          {t('hello')}
+          {t`Hello`}
         </StyledContainer>
 
         <div className="awesome awesome-blue mb-3">
@@ -227,8 +224,3 @@ export default function Home() {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common', 'footer']),
-  },
-})
