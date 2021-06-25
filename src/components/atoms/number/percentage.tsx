@@ -7,7 +7,7 @@ export interface PercentageProps extends FormatNumberOptions {
     className?: string;
 }
 
-const Percentage = ({ value = 0, fractionDigits = 2, ...restProps }: PercentageProps) => (
+export const Percentage = ({ value = 0, fractionDigits = 2, ...restProps }: PercentageProps) => (
     <FormattedNumber
         value={value || 0}
         style="percent"

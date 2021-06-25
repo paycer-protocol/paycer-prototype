@@ -1,1 +1,2 @@
-export { default } from './money'
+export * from './money'
+export * from './percentage'
