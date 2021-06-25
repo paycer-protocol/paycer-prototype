@@ -1,7 +1,6 @@
 import React from 'react'
 import BaseListGroup, { ListGroupProps as BaseListGroupProps } from 'react-bootstrap/ListGroup'
 import BaseListGroupItem, { ListGroupItemProps as BaseListGroupItemProps } from 'react-bootstrap/ListGroupItem'
-import './list-group.styles.scss'
 
 export interface ListGroupProps extends BaseListGroupProps {
     children: any

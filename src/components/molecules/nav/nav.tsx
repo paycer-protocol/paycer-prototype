@@ -3,7 +3,6 @@ import BaseNav, { NavProps as BaseNavProps } from 'react-bootstrap/Nav'
 import BaseNavItem, { NavItemProps as BaseNavItemProps } from 'react-bootstrap/NavItem'
 import BaseNavLink, { NavLinkProps as BaseNavLinkProps } from 'react-bootstrap/NavLink'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import './nav.styles.scss'
 
 export interface NavProps extends BaseNavProps {}
 export interface NavItemProps extends BaseNavItemProps {}

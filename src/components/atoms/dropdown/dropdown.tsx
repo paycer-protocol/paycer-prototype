@@ -4,7 +4,6 @@ import BaseDropdownToggle, { DropdownToggleProps as BaseDropdownToggleProps } fr
 import BaseDropdownButton, { DropdownButtonProps as BaseDropdownButtonProps } from 'react-bootstrap/DropdownButton'
 import BaseDropdownItem, { DropdownItemProps as BaseDropdownItemProps } from 'react-bootstrap/DropdownItem'
 import BaseDropdownMenu, { DropdownMenuProps as BaseDropdownMenuProps } from 'react-bootstrap/DropdownMenu'
-import './dropdown.styles.scss'
 
 export interface DropdownProps extends BaseDropdownProps {}
 export interface DropdownToggleProps extends BaseDropdownToggleProps {}

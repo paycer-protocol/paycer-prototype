@@ -1,6 +1,5 @@
 import React from 'react'
 import BaseProgressBar, { ProgressBarProps as BaseProgressBarProps } from 'react-bootstrap/ProgressBar'
-import './progress-bars.styles.scss'
 
 export interface ProgressBarProps extends BaseProgressBarProps {}
 

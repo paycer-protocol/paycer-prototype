@@ -1,6 +1,5 @@
 import React from 'react'
 import BaseAlert, { AlertProps as BaseAlertProps } from 'react-bootstrap/Alert'
-import './alert.styles.scss'
 
 export interface AlertProps extends BaseAlertProps {}
 

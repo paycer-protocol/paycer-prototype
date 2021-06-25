@@ -5,7 +5,6 @@ import BaseCardImg, { CardImgProps as BaseCardImgProps } from 'react-bootstrap/C
 import BaseCardColumns from 'react-bootstrap/CardColumns'
 import BaseCardDeck from 'react-bootstrap/CardDeck'
 import BaseCardGroup from 'react-bootstrap/CardGroup'
-import './card.styles.scss'
 
 export interface CardProps extends BaseCardProps {
     style?: object

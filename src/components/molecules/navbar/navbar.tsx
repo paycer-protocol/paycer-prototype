@@ -5,7 +5,6 @@ import BaseNavbarBrand from 'react-bootstrap/NavbarBrand'
 import BaseNavbarCollapse from 'react-bootstrap/NavbarCollapse'
 import BaseNavbarContext from 'react-bootstrap/NavbarContext'
 import BaseNavbarToggle from 'react-bootstrap/NavbarToggle'
-import './navbar.styles.scss'
 
 export interface NavbarProps extends BaseNavbarProps {}
 

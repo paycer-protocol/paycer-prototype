@@ -1,7 +1,6 @@
 import React from 'react'
 import BasePagination, { PaginationProps as BasePaginationProps } from 'react-bootstrap/Pagination'
 import BasePageItem, { Ellipsis, First, Last, Next, Prev } from 'react-bootstrap/PageItem'
-import './pagination.styles.scss'
 
 export interface PaginationProps extends BasePaginationProps {}
 

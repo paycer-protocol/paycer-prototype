@@ -6,7 +6,6 @@ import ModalDialog from 'react-bootstrap/ModalDialog'
 import ModalTitle from 'react-bootstrap/ModalTitle'
 import ModalFooter from 'react-bootstrap/ModalFooter'
 import ModalHeader from 'react-bootstrap/ModalHeader'
-import './modal.styles.scss'
 
 export interface ModalProps extends BaseModalProps {}
 
