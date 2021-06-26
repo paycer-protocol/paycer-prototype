@@ -6,21 +6,21 @@ export interface PageHeaderProps {
 }
 
 const Subtitle = ({ children }) => (
-    <h6 className="page-header-subtitle">
+    <h6 className="header-pretitle">
         {children}
     </h6>
 )
 
 const Title = ({ children }) => (
-    <h1 className="page-header-title">
+    <h1 className="header-title">
         {children}
     </h1>
 )
 
 const PageHeader = ({ children }: PageHeaderProps) => {
     return (
-        <div className="page-header">
-            <div className="page-header-body">
+        <div className="header">
+            <div className="header-body">
                 {children}
             </div>
         </div>

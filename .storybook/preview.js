@@ -1,5 +1,5 @@
 import './addon/intl'
-import '../assets/scss/theme.scss'
+import '../assets/theme-dark.scss'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

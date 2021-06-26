@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import Nav from '@components/molecules/nav'
@@ -13,7 +14,9 @@ const StyledBrand = styled(Navbar.Brand)`
   }
 `
 
-export interface HeaderProps {}
+
+export interface HeaderProps {
+}
 
 
 const Header = (props: HeaderProps) => {
@@ -21,30 +24,49 @@ const Header = (props: HeaderProps) => {
 
     return (
         <header>
-            <Navbar variant="dark" bg="dark">
-                <StyledBrand href="#home" className="px-3 py-0">
-                    <Image src="/assets/logo.svg" alt="Paycer" />
-                </StyledBrand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Navbar variant="dark" className="ml-auto">
-                        <Nav.Link className="mr-2" href="/dashboard">
-                            Dashboard
-                        </Nav.Link>
-                        <Nav.Link className="mr-2" href="/invest">
-                            Invest
-                        </Nav.Link>
-                        <Nav.Link  className="mr-3" href="/docs">
-                            Docs
-                        </Nav.Link>
-                        <Nav.Item>
-                            <Account
-                                buttonVariant="outline-light"
-                                dropdownVariant="outline-light"
-                            />
-                        </Nav.Item>
-                    </Navbar>
-                </Navbar.Collapse>
+            <Navbar>
+                <div className="container">
+                    <Link href="/">
+                        <a>
+                            <StyledBrand className="px-3 py-0">
+                                <Image src="/assets/logo.svg" alt="Paycer" />
+                            </StyledBrand>
+                        </a>
+                    </Link>
+
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <ul className="navbar-nav me-lg-auto">
+                            <li className="nav-item me-3">
+                                <Link href="/">
+                                    <a className="nav-link" title="Dashboard">
+                                        Dashboard
+                                    </a>
+                                </Link>
+                            </li>
+                            <li className="nav-item me-3">
+                                <Link href="/invest">
+                                    <a className="nav-link" title="Dashboard">
+                                        Invest
+                                    </a>
+                                </Link>
+                            </li>
+                            <li className="nav-item me-4">
+                                <Link href="/docs">
+                                    <a className="nav-link" title="Documentation">
+                                        Docs
+                                    </a>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Account
+                                    buttonVariant="outline-primary"
+                                    dropdownVariant="outline-primary"
+                                />
+                            </li>
+                        </ul>
+                    </Navbar.Collapse>
+                </div>
             </Navbar>
         </header>
     )

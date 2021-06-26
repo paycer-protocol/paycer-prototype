@@ -1,38 +1,38 @@
-@import '../../../../assets/scss/_utilities';
-
-$header-margin-bottom: 1rem !default;
-$header-spacing-y: 1.5rem !default;
-
-// Header
+//@import '../../../../assets/scss/_utilities';
 //
-// General styles
-
-.page-header {
-  margin-bottom: $header-margin-bottom;
-}
-
-.page-header-img-top {
-  width: 100%; height: auto;
-}
-
-.page-header-body {
-  padding-top: $header-spacing-y;
-  padding-bottom: $header-spacing-y;
-}
-
-.page-header-footer {
-  padding-top: $header-spacing-y;
-  padding-bottom: $header-spacing-y;
-}
-
-.page-header-title {
-  margin-bottom: 0;
-}
-
-.page-header-subtitle {
-  margin-top: map-get($spacers, 2);
-  margin-bottom: 0;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  color: $text-muted;
-}
+//$header-margin-bottom: 1rem !default;
+//$header-spacing-y: 1.5rem !default;
+//
+//// Header
+////
+//// General styles
+//
+//.page-header {
+//  margin-bottom: $header-margin-bottom;
+//}
+//
+//.page-header-img-top {
+//  width: 100%; height: auto;
+//}
+//
+//.page-header-body {
+//  padding-top: $header-spacing-y;
+//  padding-bottom: $header-spacing-y;
+//}
+//
+//.page-header-footer {
+//  padding-top: $header-spacing-y;
+//  padding-bottom: $header-spacing-y;
+//}
+//
+//.page-header-title {
+//  margin-bottom: 0;
+//}
+//
+//.page-header-subtitle {
+//  margin-top: map-get($spacers, 2);
+//  margin-bottom: 0;
+//  text-transform: uppercase;
+//  letter-spacing: .08em;
+//  color: $text-muted;
+//}

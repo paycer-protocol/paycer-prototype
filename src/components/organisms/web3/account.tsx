@@ -13,7 +13,7 @@ export interface AccountProps {
 }
 
 const Account = (props: AccountProps) => {
-    const { buttonVariant = 'outline-dark', dropdownVariant = 'outline-dark' } = props
+    const { buttonVariant = 'outline-primary', dropdownVariant = 'outline-primary' } = props
     const [showModal, setShowModal] = useState(false)
     const wallet = useWallet()
 
@@ -43,14 +43,7 @@ const Account = (props: AccountProps) => {
                 variant={dropdownVariant}
                 className="d-flex align-items-center justify-content-center"
             >
-                <div className="mr-3">
-                    {wallet.shortenAddress}
-                </div>
-                <Avatar
-                    src={generateAvatarSource(wallet.shortenAddress)}
-                    alt={wallet.shortenAddress}
-                    size="xs"
-                />
+                {wallet.shortenAddress}
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 <Dropdown.Item onClick={wallet.disconnect}>

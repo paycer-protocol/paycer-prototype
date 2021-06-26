@@ -1,33 +1,3 @@
-//
-// user.scss
-// Use this to write your custom SCSS
-//
-
-.navbar-expand {
-  @each $breakpoint, $value in $grid-breakpoints {
-    &-#{$breakpoint} {
-      @include media-breakpoint-up(#{$breakpoint}) {
-        .navbar-collapse {
-          visibility: visible !important;
-        }
-      }
-    }
-  }
-}
-
-.navbar-vertical .navbar-nav .nav-link[aria-expanded] {
-  &:after {
-    display: block;
-    content: '\e92e';
-    font-family: 'Feather';
-    margin-left: auto;
-    transition: transform 0.2s;
-  }
-
-  // Expanded
-  &[aria-expanded='true'] {
-    &:after {
-      transform: rotate(-180deg);
-    }
-  }
+a {
+  cursor: pointer;
 }

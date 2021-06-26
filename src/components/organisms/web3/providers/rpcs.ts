@@ -5,11 +5,11 @@ export interface IRpcUrl {
 }
 
 export const rpcUrls: IRpcUrl = {
-    [ChainId.Mainnet]: process.env.ALCHEMYAPI_MAINNET,
-    [ChainId.Ropsten]: process.env.ALCHEMYAPI_REPOSTEN,
-    [ChainId.Rinkeby]: process.env.ALCHEMYAPI_RINKEBY,
-    [ChainId.Goerli]: process.env.ALCHEMYAPI_GOERLI,
-    [ChainId.Kovan]: process.env.ALCHEMYAPI_KOVAN,
+    [ChainId.Mainnet]: 'https://eth-mainnet.alchemyapi.io/v2/q1gSNoSMEzJms47Qn93f9-9Xg5clkmEC',
+    [ChainId.Ropsten]: 'https://eth-ropsten.alchemyapi.io/v2/cidKix2Xr-snU3f6f6Zjq_rYdalKKHmW',
+    [ChainId.Rinkeby]: 'https://eth-rinkeby.alchemyapi.io/v2/XVLwDlhGP6ApBXFz_lfv0aZ6VmurWhYD',
+    [ChainId.Goerli]: 'https://eth-goerli.alchemyapi.io/v2/Dkk5d02QjttYEoGmhZnJG37rKt8Yl3Im',
+    [ChainId.Kovan]: 'https://eth-kovan.alchemyapi.io/v2/6OVAa_B_rypWWl9HqtiYK26IRxXiYqER',
     [ChainId.BSC]: 'https://bsc-dataseed.binance.org',
     [ChainId.Polygon]: 'https://rpc-mainnet.maticvigil.com',
     [ChainId.Mumbai]: 'https://rpc-mumbai.maticvigil.com',
