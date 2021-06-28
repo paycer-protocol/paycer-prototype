@@ -4,7 +4,7 @@ import { Variant } from 'react-bootstrap/types'
 import Icon from '@components/atoms/icon'
 import Card from '@components/molecules/card'
 
-export interface DashValueProps {
+export interface DashCardProps {
     title: string
     value: number | string | null
     variant?: Variant
@@ -15,7 +15,7 @@ export interface DashValueProps {
 }
 
 
-const DashValue = (props: DashValueProps) => {
+const DashCard = (props: DashCardProps) => {
     const {
         title,
         value,
@@ -60,4 +60,4 @@ const DashValue = (props: DashValueProps) => {
     )
 }
 
-export default DashValue
+export default DashCard

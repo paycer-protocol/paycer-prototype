@@ -10,8 +10,8 @@ const StackedIcons = styled.div`
   align-items: center;
   
   img {
-      width: 35px;
-      height: 35px;
+      width: 32px;
+      height: 32px;
       margin-right: -12px;
   }
 `
@@ -19,53 +19,46 @@ const StackedIcons = styled.div`
 const InvestCard = () => (
     <Card border="dark" className="box-shadow">
         <Card.Body>
-            <h4 className="text-uppercase text-center my-4">
+            <h6 className="text-uppercase text-center text-muted my-4">
                 Basic plan
-            </h4>
-
-            <div className="d-flex align-items-center justify-content-center">
-                <div className="h5 text-muted m-0">%</div>
-                <div className="display-1">19</div>
+            </h6>
+            <div className="row g-0 align-items-center justify-content-center">
+                <div className="col-auto">
+                    <div className="h2 mb-0">%</div>
+                </div>
+                <div className="col-auto">
+                    <div className="display-2 mb-0">19</div>
+                </div>
             </div>
             <div className="h6 text-uppercase text-center text-muted mb-5">
                 / APR
             </div>
-
-            <div className="d-flex flex-column mb-4">
-                <div className="d-flex align-items-center justify-content-between mb-4">
-                    <strong>Assets</strong>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                    <small className="text-muted">Assets</small>
                     <StackedIcons>
                         <img src="assets/token/svg/color/usdt.svg" alt="usdt" />
                         <img src="assets/token/svg/color/usdc.svg" alt="usdc" />
                         <img src="assets/token/svg/color/bnb.svg" alt="busd" />
                     </StackedIcons>
-                </div>
-                <div className="d-flex align-items-center justify-content-between mb-4">
-                    <strong>TVL</strong>
-                    <span><Money value={48398090.938} /></span>
-                </div>
-                <div className="d-flex align-items-center justify-content-between mb-4">
-                    <strong>Deposited</strong>
-                    <span className="d-flex align-items-center">
-                        <span className="mr-1">
-                            <Money value={1283.59} />
-                        </span>
-                        <span className="text-muted">
-                            (<Percentage value={0.3} />)
-                        </span>
-                    </span>
-                </div>
-                <div className="d-flex align-items-center justify-content-between mb-4">
-                    <strong>Earned</strong>
-                    <span><Money value={150} currency="PCR" /></span>
-                </div>
-            </div>
-            <div className="d-grid">
-                <Button variant="dark" block>
-                    Invest
-                </Button>
-            </div>
+                </li>
+                <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                    <small className="text-muted">TVL</small>
+                    <span className="text-muted"><Money value={48398090.938} /></span>
+                </li>
+                <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                    <small className="text-muted">Deposited</small>
+                    <span className="text-muted"><Money value={1283.59} /></span>
+                </li>
+                <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                    <small className="text-muted">Earned</small>
+                    <span className="text-muted"><Money value={150} currency="PCR" /></span>
+                </li>
+            </ul>
 
+            <Button variant="light" className="w-100">
+                Start with Basic
+            </Button>
         </Card.Body>
     </Card>
 )

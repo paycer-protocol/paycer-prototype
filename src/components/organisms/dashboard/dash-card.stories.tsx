@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { CurrencyDollar } from '@styled-icons/bootstrap'
-import DashValueComponent, { DashValueProps } from './dash-value'
+import DashCardComponent, { DashCardProps } from './dash-card'
 import theme from '../../../config/theme'
 
 export default {
@@ -13,10 +13,10 @@ export default {
     },
 } as Meta
 
-type StoryOptions = Partial<DashValueProps>
+type StoryOptions = Partial<DashCardProps>
 
 const Template: Story<StoryOptions> = ({ title = 'Dash KPI', value = 100, variant }: StoryOptions) => (
-    <DashValueComponent
+    <DashCardComponent
         title={title}
         value={value}
         variant={variant}
@@ -25,5 +25,5 @@ const Template: Story<StoryOptions> = ({ title = 'Dash KPI', value = 100, varian
     />
 )
 
-export const DashValue = Template.bind({})
-DashValue.args = {}
+export const DashCard = Template.bind({})
+DashCard.args = {}

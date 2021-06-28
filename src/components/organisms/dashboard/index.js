@@ -1,1 +1,1 @@
-export { default } from './dash-value'
+export { default } from './dash-card'

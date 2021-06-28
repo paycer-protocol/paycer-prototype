@@ -60,8 +60,8 @@ const Header = (props: HeaderProps) => {
                             </li>
                             <li className="nav-item">
                                 <Account
-                                    buttonVariant="outline-primary"
-                                    dropdownVariant="outline-primary"
+                                    buttonVariant="light"
+                                    dropdownVariant="light"
                                 />
                             </li>
                         </ul>
