@@ -32,12 +32,15 @@ export default function useWallet() {
     const handleConnectError = (provider, error: Error) => {
         let message
 
+        console.log(error.message)
         if (error instanceof NoEthereumProviderError) {
             message = 'No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.'
         } else if (error instanceof UnsupportedChainIdError) {
             message = "You're connected to an unsupported network."
         } else if (provider.rejectedError && error instanceof provider.rejectedError) {
             message = 'Please authorize this website to access your Ethereum account.'
+        } else if (error.message.includes('already pending')) {
+            message = 'Please open your wallet and connect your account.'
         } else {
             message = 'An unknown error occurred. Please try again.'
         }

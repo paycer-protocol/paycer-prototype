@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { ButtonVariant } from 'react-bootstrap/types'
-import Avatar, { generateAvatarSource } from '@components/atoms/avatar'
 import Button from '@components/atoms/button'
-import Dropdown from '@components/atoms/dropdown'
 import useWallet from './hooks/useWallet'
 import WalletProvider from '../web3/wallet-provider'
+import AccountDetail from './account-detail'
 import { connectors } from './providers'
 
 export interface AccountProps {
@@ -14,7 +13,8 @@ export interface AccountProps {
 
 const Account = (props: AccountProps) => {
     const { buttonVariant = 'outline-primary', dropdownVariant = 'outline-primary' } = props
-    const [showModal, setShowModal] = useState(false)
+    const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
+    const [showAccountModal, setShowAccountModal] = useState(false)
     const wallet = useWallet()
 
     if (!wallet.isConnected) {
@@ -23,14 +23,14 @@ const Account = (props: AccountProps) => {
                 <Button
                     variant={buttonVariant}
                     className="px-4 text-nowrap"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => setShowWalletProviderModal(true)}
                 >
                     Connect to a Wallet
                 </Button>
                 <WalletProvider
                     providers={connectors}
-                    onHide={() => setShowModal(false)}
-                    show={showModal}
+                    onHide={() => setShowWalletProviderModal(false)}
+                    show={showWalletProviderModal}
                 />
             </>
 
@@ -38,19 +38,19 @@ const Account = (props: AccountProps) => {
     }
 
     return (
-        <Dropdown>
-            <Dropdown.Toggle
+        <>
+            <Button
                 variant={dropdownVariant}
                 className="d-flex align-items-center justify-content-center"
+                onClick={() => setShowAccountModal(true)}
             >
                 {wallet.shortenAddress}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-                <Dropdown.Item onClick={wallet.disconnect}>
-                    Disconnect
-                </Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
+            </Button>
+            <AccountDetail
+                onHide={() => setShowAccountModal(false)}
+                show={showAccountModal}
+            />
+        </>
     )
 }
 

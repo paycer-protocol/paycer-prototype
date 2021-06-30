@@ -5,11 +5,29 @@ import ModalContext from 'react-bootstrap/ModalContext'
 import ModalDialog from 'react-bootstrap/ModalDialog'
 import ModalTitle from 'react-bootstrap/ModalTitle'
 import ModalFooter from 'react-bootstrap/ModalFooter'
-import ModalHeader from 'react-bootstrap/ModalHeader'
+import BaseModalHeader, { ModalHeaderProps } from 'react-bootstrap/ModalHeader'
+import { XLg } from '@styled-icons/bootstrap'
+import Icon from '@components/atoms/icon'
+
 
 export interface ModalProps extends BaseModalProps {}
 
 const Modal = (props: ModalProps) => <BaseModal {...props} />
+
+const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
+    <BaseModalHeader>
+        {children}
+        {closeButton && (
+            <a className="text-white" onClick={onHide}>
+                <Icon
+                    onClick={onHide}
+                    component={XLg}
+                    size={18}
+                />
+            </a>
+        )}
+    </BaseModalHeader>
+)
 
 Modal.Body = ModalBody
 Modal.Context = ModalContext

@@ -50,7 +50,7 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
                             commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
                         </p>
                     </div>
-                    <small className="d-block text-right mt-3">
+                    <small className="d-block text-end mt-3">
                         <a href="#">All updates</a>
                     </small>
                 </div>
@@ -90,7 +90,7 @@ const Template: Story<StoryOptions> = (props: StoryOptions) => (
                             <span className="d-block">@username</span>
                         </div>
                     </div>
-                    <small className="d-block text-right mt-3">
+                    <small className="d-block text-end mt-3">
                         <a href="#">All suggestions</a>
                     </small>
                 </div>

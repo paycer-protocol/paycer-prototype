@@ -6,23 +6,23 @@ import Card from '@components/molecules/card'
 
 export interface DashCardProps {
     title: string
-    value: number | string | null
     variant?: Variant
     iconComponent?: StyledIcon
     iconSize?: number
     iconColor?: string
     style?: object
+    children?: any
 }
 
 
 const DashCard = (props: DashCardProps) => {
     const {
         title,
-        value,
         variant,
         iconComponent,
         iconSize = 30,
         iconColor = null,
+        children,
         ...restProps
     } = props
 
@@ -41,7 +41,7 @@ const DashCard = (props: DashCardProps) => {
                             {title}
                         </h6>
                         <span className="h2 mb-0">
-                          {value}
+                            {children}
                         </span>
                     </div>
                     {iconComponent && (

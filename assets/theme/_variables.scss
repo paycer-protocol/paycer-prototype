@@ -1,9 +1,9 @@
-// 
+//
 // variables.scss
 // Extended from Bootstrap
 //
 
-// 
+//
 // Bootstrap Overrides ===================================
 //
 
@@ -83,7 +83,7 @@ $theme-colors: map-merge(
     "light": $light,
     "dark": $dark,
     "white": $white
-  ), 
+  ),
 $theme-colors);
 /* beautify ignore:end */
 
@@ -241,7 +241,7 @@ $display-font-sizes: (
   2: 3.25rem,
   3: 2.625rem,
   4: 2rem,
-) !default; 
+) !default;
 /* beautify ignore:end */
 
 $display-font-weight: 600 !default;
@@ -541,8 +541,8 @@ $modal-inner-padding: 1.5rem !default;
 
 $modal-content-border-color: transparent !default;
 
-$modal-header-border-color: $border-color !default;
-$modal-footer-border-color: $border-color !default;
+$modal-header-border-color: transparent !default;
+$modal-footer-border-color: transparent !default;
 $modal-header-padding-y: 1rem !default;
 $modal-header-padding: $modal-header-padding-y $modal-inner-padding !default;
 
@@ -606,7 +606,7 @@ $code-font-size: 87.5% !default;
 $code-color: $blue !default;
 
 
-// 
+//
 // Theme =====================================
 //
 
@@ -921,7 +921,7 @@ $path-to-fonts: '../fonts' !default;
 $path-to-img: '../img' !default;
 
 
-// 
+//
 // Utilities =====================================
 //
 

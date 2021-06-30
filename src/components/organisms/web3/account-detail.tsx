@@ -6,17 +6,26 @@ import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import Modal from '@components/molecules/modal'
 import useWallet from './hooks/useWallet'
-import useCopyClipboard from '../../../hooks/useCopyClipboard'
+import useCopyClipboard from '@hooks/useCopyClipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from './providers'
 import './account-detail.styles.scss'
 
 
-export interface AccountDetailProps {}
+export interface AccountDetailProps {
+    show: boolean
+    onHide?: any
+}
 
 const IconMap = {
     [ChainId.BSC]: Bnb,
     default: Eth
+}
+
+declare global {
+    interface Window {
+        ethereum: any
+    }
 }
 
 type ListGroupItemProps = {
@@ -29,21 +38,15 @@ type ListGroupItemProps = {
     children?: any
 }
 
-declare global {
-    interface Window {
-        ethereum: any
-    }
-}
-
 const AccountAction = (props: ListGroupItemProps) => {
-    const { name, description, onClick, href, target, variant = 'outline-dark', children } = props
+    const { name, description, onClick, href, target, variant = 'light', children } = props
 
     return (
         <Button variant={variant} className="mb-2" href={href} target={target} onClick={onClick}>
             <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                <div className="text-left">
+                <div className="text-start">
                     <strong>{name}</strong>
-                    <p className="mb-0">
+                    <p className="text-muted mb-0">
                         <small>{description}</small>
                     </p>
                 </div>
@@ -61,11 +64,11 @@ const AccountBalance = () => {
     etherBalance += wallet.etherSymbol
 
     return (
-        <div className="d-flex align-items-center justify-content-between py-3 px-2">
-            <div className="text-left">
+        <div className="d-flex align-items-center justify-content-between mb-5 px-2">
+            <div className="text-start">
                 <strong>Balance</strong>
                 <p className="text-muted mb-0">
-                    <small>{etherBalance}</small>
+                    <span className="h1">{etherBalance}</span>
                 </p>
             </div>
             <Icon component={iconComponent} size={35} />
@@ -73,9 +76,8 @@ const AccountBalance = () => {
     )
 }
 
-
 const AccountDetail = (props: AccountDetailProps) => {
-    const {} = props
+    const { show, onHide } = props
     const wallet = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
     const isMetaMask = window?.ethereum?.isMetaMask
@@ -93,8 +95,8 @@ const AccountDetail = (props: AccountDetailProps) => {
     }
 
     return (
-        <Modal.Dialog>
-            <Modal.Header closeButton>
+        <Modal show={show} onHide={onHide}>
+            <Modal.Header closeButton onHide={onHide}>
                 <Modal.Title>
                     {determineModalTitle()}
                 </Modal.Title>
@@ -137,7 +139,7 @@ const AccountDetail = (props: AccountDetailProps) => {
                     </div>
                 )}
             </Modal.Body>
-        </Modal.Dialog>
+        </Modal>
     )
 }
 

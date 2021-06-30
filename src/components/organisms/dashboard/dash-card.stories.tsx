@@ -18,11 +18,12 @@ type StoryOptions = Partial<DashCardProps>
 const Template: Story<StoryOptions> = ({ title = 'Dash KPI', value = 100, variant }: StoryOptions) => (
     <DashCardComponent
         title={title}
-        value={value}
         variant={variant}
         iconComponent={CurrencyDollar}
         style={{ width: '300px' }}
-    />
+    >
+        {value}
+    </DashCardComponent>
 )
 
 export const DashCard = Template.bind({})

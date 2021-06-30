@@ -41,7 +41,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                                 onClick={() => network.changeNetwork(provider)}
                             >
                                 <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                                    <div className="text-left">
+                                    <div className="text-start">
                                         <strong>{provider.chainName}</strong>
                                     </div>
                                 </div>

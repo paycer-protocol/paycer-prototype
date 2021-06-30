@@ -19,7 +19,7 @@ const WalletProvider = (props: WalletProviderProps) => {
 
     return (
         <Modal show={show} onHide={onHide}>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onHide={onHide}>
                 <Modal.Title>Connect to a wallet</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -34,14 +34,14 @@ const WalletProvider = (props: WalletProviderProps) => {
                         return (
                             <Button
                                 key={item.name}
-                                variant="outline-dark"
+                                variant="light"
                                 className="mb-2"
                                 active={isActivating}
                                 disabled={isDisabled}
                                 onClick={() => wallet.connect(item)}
                             >
                                 <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                                    <div className="text-left">
+                                    <div className="text-start">
                                         <strong>{item.name}</strong>
                                         <p className="mb-0">
                                             <small>{item.description}</small>
