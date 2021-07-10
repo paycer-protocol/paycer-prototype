@@ -3,14 +3,24 @@ import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import Button from '@components/atoms/button'
 import useWallet from '@components/organisms/web3/hooks/useWallet'
+import {ChainId} from "@usedapp/core";
+import {Bnb, Eth} from "@styled-icons/crypto";
+import Icon from "@components/atoms/icon";
 
 export interface DepositProps {
+}
+
+const IconMap = {
+    [ChainId.BSC]: Bnb,
+    default: Eth
 }
 
 const Deposit = (
     {
     }: DepositProps) => {
-    const { etherBalance } = useWallet()
+    const wallet = useWallet()
+    const etherBalance = Number(wallet.etherBalance || 0).toFixed(4)
+    const iconComponent = IconMap[wallet.chainName] || IconMap.default
     const feeDivider = 44
     const gainsPerMonthDivider = 10
     const [quickDepositPercentage, setQuickDepositPercentage] = useState(0)
@@ -44,9 +54,13 @@ const Deposit = (
         <>
             <Card className="shadow-none mb-0">
                 <Card.Header className="font-size-lg">
-                    <Trans>Available</Trans>
-                    :&nbsp;
-                    <strong>{etherBalance}</strong>
+                    <div className="d-flex align-items-center">
+                        <strong><Trans>Balance</Trans></strong>:&nbsp;&nbsp;
+                        <span className="text-success">{etherBalance}</span>
+                        <div className="m-lg-3">
+                            <Icon component={iconComponent} size={28} />
+                        </div>
+                    </div>
                 </Card.Header>
                 <Card.Body>
                     <div className="mb-5">
@@ -94,6 +108,10 @@ const Deposit = (
                         <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                             <span className=""><Trans>Fee</Trans></span>
                             {depositFee}
+                        </li>
+                        <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                            <span className=""><Trans>Balance after</Trans></span>
+                            {depositValue > 0 ? etherBalance - depositValue - depositFee : 0}
                         </li>
                     </ul>
                 </Card.Body>

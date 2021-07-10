@@ -2,14 +2,26 @@ import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import Button from '@components/atoms/button'
+import Icon from "@components/atoms/icon";
+import {ChainId} from "@usedapp/core";
+import {Bnb, Eth} from "@styled-icons/crypto";
+import useWallet from "@components/organisms/web3/hooks/useWallet";
 
 export interface WithdrawProps {
+}
+
+const IconMap = {
+  [ChainId.BSC]: Bnb,
+  default: Eth
 }
 
 const Withdraw = (
   {
   }: WithdrawProps) => {
-  const currentDeposit = 0.2
+  const wallet = useWallet()
+  const etherBalance = Number(wallet.etherBalance || 0).toFixed(4)
+  const iconComponent = IconMap[wallet.chainName] || IconMap.default
+  const currentDeposit = 50
   const withDrawRewardsDivider = 10
   const feeDivider = 40
 
@@ -41,9 +53,20 @@ const Withdraw = (
     <>
       <Card className="shadow-none mb-0">
         <Card.Header className="font-size-lg">
-          <Trans>Available</Trans>
-          :&nbsp;
-          <strong>{currentDeposit}</strong>
+          <div className="d-flex align-items-center">
+            <strong><Trans>Current Invest</Trans></strong>:&nbsp;&nbsp;
+            <span className="text-success">{currentDeposit}</span>
+            <div className="m-lg-3">
+              <Icon component={iconComponent} size={28} />
+            </div>
+          </div>
+          <div className="d-flex align-items-center">
+            <strong><Trans>Balance</Trans></strong>:&nbsp;&nbsp;
+            <span className="text-success">{etherBalance}</span>
+            <div className="m-lg-3">
+              <Icon component={iconComponent} size={28} />
+            </div>
+          </div>
         </Card.Header>
         <Card.Body>
           <div className="mb-5">
@@ -90,6 +113,14 @@ const Withdraw = (
             <li className="list-group-item d-flex align-items-center justify-content-between px-0">
               <span className=""><Trans>Fee</Trans></span>
               {withdrawFee}
+            </li>
+            <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+              <span className=""><Trans>Invest after</Trans></span>
+              {withdrawValue > 0 ? currentDeposit - withdrawValue : ''}
+            </li>
+            <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+              <span className=""><Trans>Balance after</Trans></span>
+              {withdrawValue > 0 ? withdrawValue + parseFloat(etherBalance): ''}
             </li>
           </ul>
         </Card.Body>
