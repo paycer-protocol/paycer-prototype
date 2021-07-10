@@ -120,7 +120,7 @@ const Withdraw = (
             </li>
             <li className="list-group-item d-flex align-items-center justify-content-between px-0">
               <span className=""><Trans>Balance after</Trans></span>
-              {withdrawValue > 0 ? withdrawValue + parseFloat(etherBalance): ''}
+              {withdrawValue > 0 ? withdrawValue + parseFloat(etherBalance) - withdrawFee : ''}
             </li>
           </ul>
         </Card.Body>
