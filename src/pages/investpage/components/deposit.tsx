@@ -63,42 +63,33 @@ const Deposit = (
                     </div>
                 </Card.Header>
                 <Card.Body>
-                    <div className="mb-5">
-                        <input value={depositValue} onChange={handleChange} type="number" className="form-control mb-5" placeholder="Form control" />
-                        <input value={depositValue} onChange={handleChange} step="0.01" type="range" className="mb-5" min="0" max={etherBalance} placeholder="Form control" />
-                        <div className="row mb-5">
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary w-100'}>
-                                    <Trans>25%</Trans>
-                                </Button>
-                            </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary w-100'}>
-                                    <Trans>50%</Trans>
-                                </Button>
-                            </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary w-100'}>
-                                    <Trans>75%</Trans>
-                                </Button>
-                            </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary w-100'}>
-                                    <Trans>100%</Trans>
-                                </Button>
-                            </div>
+                    <input value={depositValue} onChange={handleChange} type="number" className="form-control mb-5" placeholder="Form control" />
+                    <input value={depositValue} onChange={handleChange} step="0.01" type="range" className="mb-5" min="0" max={etherBalance} placeholder="Form control" />
+                    <div className="row">
+                        <div className="col-3">
+                            <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary w-100'}>
+                                <Trans>25%</Trans>
+                            </Button>
+                        </div>
+                        <div className="col-3">
+                            <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary w-100'}>
+                                <Trans>50%</Trans>
+                            </Button>
+                        </div>
+                        <div className="col-3">
+                            <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary w-100'}>
+                                <Trans>75%</Trans>
+                            </Button>
+                        </div>
+                        <div className="col-3">
+                            <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary w-100'}>
+                                <Trans>100%</Trans>
+                            </Button>
                         </div>
                     </div>
-
-                    <Button onClick={() => handleDepositSubmit()} variant="outline-primary" className={!depositValue ? 'disabled w-100' : 'w-100'}>
-                        <Trans>Deposit</Trans>
-                    </Button>
                 </Card.Body>
             </Card>
             <Card className="mt-4 shadow-none mb-0">
-                <Card.Header className="font-size-lg">
-                    <Trans>Summary</Trans>
-                </Card.Header>
                 <Card.Body className="pb-0 pt-0">
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -111,11 +102,14 @@ const Deposit = (
                         </li>
                         <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                             <span className=""><Trans>Balance after</Trans></span>
-                            {depositValue > 0 ? etherBalance - depositValue - depositFee : 0}
+                            {depositValue > 0 ? etherBalance - depositValue - depositFee : ''}
                         </li>
                     </ul>
                 </Card.Body>
             </Card>
+            <Button onClick={() => handleDepositSubmit()} variant="outline-primary mt-4" className={!depositValue ? 'disabled w-100' : 'w-100'}>
+                <Trans>Deposit</Trans>
+            </Button>
         </>
     )
 }
