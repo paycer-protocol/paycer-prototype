@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import Button from "@components/atoms/button";
-import useWallet from "@components/organisms/web3/hooks/useWallet";
-import {Money} from "@components/atoms/number";
+import Button from '@components/atoms/button'
+import useWallet from '@components/organisms/web3/hooks/useWallet'
 
 export interface DepositProps {
 }
@@ -24,7 +23,7 @@ const Deposit = (
         alert(depositValue)
     }
 
-    const handleDepositInput = (e) => {
+    const handleChange = (e) => {
         let value = e.target.value
         if (value > 1000) {
             value = etherBalance
@@ -52,26 +51,26 @@ const Deposit = (
                 </Card.Header>
                 <Card.Body>
                     <div className="mb-5">
-                        <input value={depositValue} onChange={handleDepositInput} type="number" className="form-control mb-5" placeholder="Form control" />
-                        <input value={depositValue} onChange={handleDepositInput} step="0.01" type="range" className="mb-5" min="0" max={etherBalance} placeholder="Form control" />
+                        <input value={depositValue} onChange={handleChange} type="number" className="form-control mb-5" placeholder="Form control" />
+                        <input value={depositValue} onChange={handleChange} step="0.01" type="range" className="mb-5" min="0" max={etherBalance} placeholder="Form control" />
                         <div className="row mb-5">
                             <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary w-100'} className={etherBalance == 0 ? 'disabled' : ''}>
+                                <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary w-100'}>
                                     <Trans>25%</Trans>
                                 </Button>
                             </div>
                             <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary w-100'} className={etherBalance == 0 ? 'disabled' : ''}>
+                                <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary w-100'}>
                                     <Trans>50%</Trans>
                                 </Button>
                             </div>
                             <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary w-100'} className={etherBalance == 0 ? 'disabled' : ''}>
+                                <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary w-100'}>
                                     <Trans>75%</Trans>
                                 </Button>
                             </div>
                             <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary w-100'} className={etherBalance == 0 ? 'disabled' : ''}>
+                                <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary w-100'}>
                                     <Trans>100%</Trans>
                                 </Button>
                             </div>
