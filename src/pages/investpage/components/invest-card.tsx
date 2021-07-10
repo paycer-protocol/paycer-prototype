@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { BookmarkCheck } from '@styled-icons/bootstrap'
 import styled from 'styled-components'
 import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
@@ -7,7 +6,6 @@ import InvestModal from './invest-modal'
 import { Money } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import useWallet from '@components/organisms/web3/hooks/useWallet'
-import Icon from "@components/atoms/icon";
 
 const StackedIcons = styled.div`
   display: flex;
@@ -18,13 +16,6 @@ const StackedIcons = styled.div`
       height: 32px;
       margin-right: -12px;
   }
-`
-
-const BookMarkIcon = styled.div`
-    position: absolute;
-    top: 1px;
-    right: 20px;
-    
 `
 
 export interface InvestCardProps {
@@ -48,13 +39,13 @@ const InvestCard = (
         currency
     }: InvestCardProps) => {
 
-    const onHide = () => {
-        setShowInvestModal(false)
-    }
-
     const wallet = useWallet()
     const { isConnected } = wallet
     const [showInvestModal, setShowInvestModal] = useState(false)
+
+    const onHide = () => {
+        setShowInvestModal(false)
+    }
     return (
         <Card className="box-shadow" border={deposited > 0 ? 'success' : ''}>
             <Card.Body>
