@@ -10,8 +10,7 @@ export interface DepositProps {
 const Deposit = (
     {
     }: DepositProps) => {
-    const wallet = useWallet()
-    const { etherBalance } = wallet
+    const { etherBalance } = useWallet()
     const feeDivider = 44
     const gainsPerMonthDivider = 10
     const [quickDepositPercentage, setQuickDepositPercentage] = useState(0)
@@ -25,7 +24,7 @@ const Deposit = (
 
     const handleChange = (e) => {
         let value = e.target.value
-        if (value > 1000) {
+        if (value > etherBalance) {
             value = etherBalance
         }
         setDepositValue(value)
