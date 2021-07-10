@@ -14,7 +14,6 @@ export interface DashCardProps {
     children?: any
 }
 
-
 const DashCard = (props: DashCardProps) => {
     const {
         title,

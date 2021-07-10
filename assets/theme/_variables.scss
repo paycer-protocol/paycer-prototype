@@ -59,7 +59,7 @@ $green: #00D97E !default;
 $teal: #02a8b5 !default; // NOT USED
 $cyan: #39afd1 !default;
 
-$primary: $blue !default;
+$primary: $gray-400;
 $secondary: $gray-700 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -575,6 +575,7 @@ $list-group-border-color: $gray-200 !default;
 
 $list-group-item-padding-y: 1rem !default;
 $list-group-item-padding-x: 1.25rem !default;
+$list-group-item-color: $gray-500;
 
 $list-group-action-color: $body-color !default;
 
