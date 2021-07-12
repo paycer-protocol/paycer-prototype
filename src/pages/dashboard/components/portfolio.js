@@ -11,7 +11,7 @@ import Icon from '../../../components/atoms/icon'
 const portfolioFixtures = [
   {
     symbolName: 'ChainLink',
-    symbolShorthand: 'chain',
+    symbolImageId: 'chain',
     symbolShort: 'LINK',
     balanceSymbol: 16.5,
     balanceUSD: 1200,
@@ -38,6 +38,7 @@ const portfolioFixtures = [
   },
   {
     symbolName: 'Aave',
+    symbolImageId: 'aave',
     symbolShort: 'AAVE',
     balanceSymbol: 16.5,
     balanceUSD: 234324,
@@ -64,30 +65,84 @@ const portfolioFixtures = [
   },
   {
     symbolName: 'Tehter',
+    symbolImageId: 'theta',
     symbolShort: 'USDT',
     balanceSymbol: 16.5,
     balanceUSD: 2342,
     priceUSD: 0.25,
     priceUSDChanged: 0.25,
     totalVolume: 1223892.23,
+    stepsProgressBar: {
+      progress: 50,
+      steps: [
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        }
+      ]
+    }
   },
   {
     symbolName: 'USD Coin',
+    symbolImageId: 'usdc',
     symbolShort: 'USDC',
     balanceSymbol: 16.5,
     balanceUSD: 234323,
     priceUSD: 0.25,
     priceUSDChanged: 0.25,
     totalVolume: 1223892.23,
+    stepsProgressBar: {
+      progress: 50,
+      steps: [
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        }
+      ]
+    }
   },
   {
     symbolName: '1Inche Token',
+    symbolImageId: 'usdc',
     symbolShort: 'INCH',
     balanceSymbol: 16.5,
     balanceUSD: 234234,
     priceUSD: 0.25,
     priceUSDChanged: 0.25,
     totalVolume: 1223892.23,
+    stepsProgressBar: {
+      progress: 50,
+      steps: [
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        },
+        {
+          imgPath: 'assets/token/svg/color/usdt.svg',
+          label: 'Lorem Yspsum',
+        }
+      ]
+    }
   },
 ]
 
@@ -191,7 +246,7 @@ export default function Portfolio() {
                             steps={data?.stepsProgressBar?.steps}
                             progress={data?.stepsProgressBar?.progress}
                             symbolName={data.symbolName}
-                            symbolShorthand={data.symbolShorthand}
+                            symbolImageId={data.symbolImageId}
                           />
                         </div>
                       </Accordion.Collapse>
