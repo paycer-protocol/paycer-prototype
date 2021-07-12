@@ -24,13 +24,13 @@ const Transaction = (
         deposited
     }: DepositProps) => {
     const wallet = useWallet()
+    const etherBalance = Number(wallet.etherBalance || 0).toFixed(4) as any
     const iconComponent = IconMap[wallet.chainName] || IconMap.default
     const [quickDepositPercentage, setQuickDepositPercentage] = useState(0)
     const [fee, setFee] = useState<any | null>(0)
     const [deposit, setDeposit] = useState<any | null>(Number(deposited * 0.00047).toFixed(4));
     const [gainsPerWeek, setGainsPerWeek] = useState<any | null>((Number((deposited * 0.00047) * gainsPerYearkMP) / 365 * 7).toFixed(8))
     const [gainsPerYear, setGainsPerYear] = useState<any | null>(Number((deposited * 0.00047) * gainsPerYearkMP).toFixed(8))
-    const etherBalance = Number(wallet.etherBalance || 0).toFixed(4) as any
     const [newDeposit, setNewDeposit] = useState<any | null>(0);
     const [balance, setBalance] = useState(etherBalance)
 
