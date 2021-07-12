@@ -98,7 +98,7 @@ const InvestCard = (
                     </li>
                 </ul>
 
-                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => {}} variant={deposited ? 'invest' : 'balance'} className={!isConnected ? 'disabled w-100' : 'w-100'}>
+                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => {}} variant={deposited ? 'invest' : 'primary'} className={!isConnected ? 'disabled w-100' : 'w-100'}>
                     <Trans>
                         {deposited ? 'Edit invest' : 'Start invest'}
                     </Trans>

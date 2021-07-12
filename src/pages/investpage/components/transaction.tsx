@@ -238,7 +238,7 @@ const Transaction = (
                 </Card.Body>
             </Card>
             <Button onClick={() => handleDepositSubmit()} variant="primary mt-4" className={!deposit ? 'disabled w-100' : 'w-100'}>
-                <Trans>Deposit</Trans>
+                <Trans>Invest</Trans>
             </Button>
         </>
     )
