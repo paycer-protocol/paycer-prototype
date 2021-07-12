@@ -51,11 +51,14 @@ export default function Rewards() {
           </div>
         </div>
 
-        <div className="d-flex align-items-center justify-content-center">
-          <Button variant="light" className="w-100">
-            Claim Rewards
-          </Button>
+        <div className="row">
+          <div className="d-flex align-items-center justify-content-center col-md-5 m-auto">
+            <Button variant="light" className="w-100">
+              Claim Rewards
+            </Button>
+          </div>
         </div>
+
       </div>
     </div>
   )
