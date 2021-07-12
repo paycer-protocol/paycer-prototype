@@ -2,7 +2,7 @@ import { FormattedNumber, FormatNumberOptions } from 'react-intl'
 
 
 export interface MoneyProps extends FormatNumberOptions {
-    value: number;
+    value: number | string;
     currency?: string;
     className?: string;
 }

@@ -4,6 +4,7 @@ import { Eth, Bnb } from '@styled-icons/crypto'
 import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
+import { Money } from '@components/atoms/number'
 import Modal from '@components/molecules/modal'
 import useWallet from './hooks/useWallet'
 import useCopyClipboard from '@hooks/useCopyClipboard'
@@ -59,16 +60,15 @@ const AccountAction = (props: ListGroupItemProps) => {
 const AccountBalance = () => {
     const wallet = useWallet()
     const iconComponent = IconMap[wallet.chainName] || IconMap.default
-    let etherBalance = Number(wallet.etherBalance || 0).toFixed(4)
-    etherBalance += ' '
-    etherBalance += wallet.etherSymbol
 
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
             <div className="text-start">
                 <strong>Balance</strong>
                 <p className="text-muted mb-0">
-                    <span className="h1">{etherBalance}</span>
+                    <span className="h1">
+                        <Money value={wallet.etherBalance} currency={wallet.etherSymbol} />
+                    </span>
                 </p>
             </div>
             <Icon component={iconComponent} size={35} />

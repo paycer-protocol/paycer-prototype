@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from '@components/molecules/modal'
-import Transaction from './transaction'
+import InvestCard  from '@components/organisms/invest/invest-card'
 
 export interface InvestModalProps {
     show?: boolean,
@@ -23,7 +23,7 @@ const InvestModal = (
                 {title}
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <Transaction deposited={deposited} />
+                <InvestCard deposited={deposited} />
             </Modal.Body>
         </Modal>
     )
