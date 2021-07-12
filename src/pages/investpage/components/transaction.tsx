@@ -193,22 +193,22 @@ const Transaction = (
                     </label>
                     <div className="row">
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(25)} className="text-balance" variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
                                 <Trans>25%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(50)} className="text-balance" variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
                                 <Trans>50%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(75)} className="text-balance" variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
                                 <Trans>75%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(100)} className="text-balance" variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
                                 <Trans>100%</Trans>
                             </Button>
                         </div>
