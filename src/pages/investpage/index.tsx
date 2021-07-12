@@ -24,7 +24,7 @@ const investCardFixtures = [
             }
         ],
         tvl: 28398090.938,
-        deposited: 1283.59,
+        deposited: 2000,
         earned: 50,
         currency: 'PCR'
     },

@@ -47,7 +47,7 @@ const InvestCard = (
         setShowInvestModal(false)
     }
     return (
-        <Card className="box-shadow" border={deposited > 0 ? 'success' : ''}>
+        <Card className="box-shadow" border={deposited > 0 ? 'invest' : ''}>
             <Card.Body>
                 <h6 className="text-uppercase text-center my-4 font-size-lg">
                     { title }
@@ -84,7 +84,7 @@ const InvestCard = (
                         <span className="">
                             <Trans>Deposited</Trans>
                         </span>
-                        <span className={deposited ? 'link-success' : ''}>
+                        <span className={deposited ? 'link-invest' : ''}>
                             <Money value={deposited}/>
                         </span>
                     </li>
@@ -98,13 +98,13 @@ const InvestCard = (
                     </li>
                 </ul>
 
-                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => {}} variant="outline-primary" className={!isConnected ? 'disabled w-100' : 'w-100'}>
+                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => {}} variant={deposited ? 'invest' : 'balance'} className={!isConnected ? 'disabled w-100' : 'w-100'}>
                     <Trans>
                         {deposited ? 'Edit invest' : 'Start invest'}
                     </Trans>
                 </Button>
             </Card.Body>
-            <InvestModal show={showInvestModal} title={title} onHide={onHide} />
+            <InvestModal show={showInvestModal} deposited={deposited} title={title} onHide={onHide} />
         </Card>
     )
 }

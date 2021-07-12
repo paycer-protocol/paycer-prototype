@@ -1,18 +1,20 @@
 import React from 'react'
-import Modal from '@components/molecules/modal';
-import InvestModalContent from './invest-modal-content';
+import Modal from '@components/molecules/modal'
+import Transaction from './transaction'
 
 export interface InvestModalProps {
     show?: boolean,
     title?: string,
-    onHide?: any
+    onHide?: any,
+    deposited?: number
 }
 
 const InvestModal = (
     {
         show,
         title,
-        onHide
+        onHide,
+        deposited
     }: InvestModalProps) => {
 
     return (
@@ -21,7 +23,7 @@ const InvestModal = (
                 {title}
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <InvestModalContent />
+                <Transaction deposited={deposited} />
             </Modal.Body>
         </Modal>
     )
