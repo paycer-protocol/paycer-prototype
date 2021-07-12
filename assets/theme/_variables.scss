@@ -553,6 +553,9 @@ $modal-header-padding: $modal-header-padding-y $modal-inner-padding !default;
 
 $modal-md: 600px !default;
 
+$modal-backdrop-bg: darken($black, 50%);
+$modal-backdrop-opacity: 0.75;
+
 
 // Alerts
 //
