@@ -126,7 +126,7 @@ const Transaction = (
                         <div className="col-6 pr-0 justify-content-end">
                             <div className="d-flex align-items-center">
                                 <strong><Trans>Available Balance</Trans></strong>:&nbsp;&nbsp;
-                                <span className="text-balance">{etherBalance}</span>
+                                <span className="text-secondary">{etherBalance}</span>
                                 <div className="m-lg-3">
                                     <Icon component={iconComponent} size={28} />
                                 </div>
@@ -139,11 +139,11 @@ const Transaction = (
                     <div className="mb-5">
                         <Slider
                             maximumTrackStyle={{
-                                backgroundColor: "#93efff",
+                                backgroundColor: "#FFFFFF",
                                 height: 7,
                             }}
                             trackStyle={{
-                                background: "#c1ff93",
+                                background: "#6ef2ff",
                                 height: 7,
                             }}
                             handleStyle={{
@@ -163,26 +163,32 @@ const Transaction = (
 
                     <div className="row">
                         <div className="col-6">
-                            <label className="form-label">
-                                <Trans>Invest</Trans>
-                            </label>
+                            <div className="d-flex align-items-center">
+                                <label className="form-label">
+                                    <Trans>Invest</Trans>&nbsp;&nbsp;
+                                </label>
+                                <Icon style={{position: 'relative', top: '-4px' }} component={iconComponent} size={16} />
+                            </div>
                             <input
                                 value={newDeposit ? newDeposit : deposit}
                                 onChange={handleDepositInput}
                                 type="number"
-                                className="form-control mb-5 border-primary text-invest bg-transparent"
+                                className="form-control mb-5 border-secondary text-invest bg-transparent"
                                 placeholder="Form control"
                             />
                         </div>
                         <div className="col-6">
-                            <label className="form-label">
-                                Balance
-                            </label>
+                            <div className="d-flex align-items-center">
+                                <label className="form-label">
+                                    <Trans>Balance</Trans>&nbsp;&nbsp;
+                                </label>
+                                <Icon style={{position: 'relative', top: '-4px' }} component={iconComponent} size={16} />
+                            </div>
                             <input
                                 value={balance}
                                 onChange={handleBalanceChange}
                                 type="number"
-                                className="form-control mb-5 border-primary text-balance bg-transparent"
+                                className="form-control mb-5 border-secondary text-secondary bg-transparent"
                                 placeholder="Form control"
                             />
                         </div>
@@ -193,22 +199,22 @@ const Transaction = (
                     </label>
                     <div className="row">
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
                                 <Trans>25%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
                                 <Trans>50%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
                                 <Trans>75%</Trans>
                             </Button>
                         </div>
                         <div className="col-3">
-                            <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-primary bg-transparent w-100'}>
+                            <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
                                 <Trans>100%</Trans>
                             </Button>
                         </div>
@@ -218,26 +224,26 @@ const Transaction = (
             <Card className="mt-4 shadow-none mb-0">
                 <Card.Body className="pb-0 pt-0">
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                        <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
                             <span>
                                 <Trans>Gains per week</Trans>
                             </span>
                             {gainsPerWeek}
                         </li>
-                        <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                        <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
                             <span>
                                 <Trans>Gains per year</Trans>
                             </span>
                             {gainsPerYear}
                         </li>
-                        <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                        <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
                             <span className=""><Trans>Fee</Trans></span>
                             {fee}
                         </li>
                     </ul>
                 </Card.Body>
             </Card>
-            <Button onClick={() => handleDepositSubmit()} variant="primary mt-4" className={!deposit ? 'disabled w-100' : 'w-100'}>
+            <Button onClick={() => handleDepositSubmit()} variant="invest mt-4" className={!deposit ? 'disabled w-100' : 'w-100'}>
                 <Trans>Invest</Trans>
             </Button>
         </>

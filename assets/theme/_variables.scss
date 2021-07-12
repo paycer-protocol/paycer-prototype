@@ -59,10 +59,10 @@ $green: #00D97E !default;
 $teal: #02a8b5 !default; // NOT USED
 $cyan: #20d2f4 !default;
 $lightgreen: #c1ff93;
-$lightblue: #93efff;
+$lightblue: #6ef2ff;
 
-$primary: $gray-400;
-$secondary: $gray-700 !default;
+$primary: $white;
+$secondary: $white;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
@@ -85,8 +85,7 @@ $theme-colors: map-merge(
     "light": $light,
     "dark": $dark,
     "white": $white,
-    "invest": $lightgreen,
-    "balance": $lightblue
+    "invest": $lightblue
   ),
 $theme-colors);
 /* beautify ignore:end */
