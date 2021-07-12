@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
-import Input from '@components/atoms/form/input'
+import Currency from '@components/atoms/form/currency'
 import { InvestFormFields } from './types'
 
 export default function WalletBalance() {
@@ -10,11 +10,11 @@ export default function WalletBalance() {
     } = useFormikContext<InvestFormFields>()
 
     return (
-        <Input
+        <Currency
             name="walletBalance"
-            type="number"
-            label="Balance"
+            label="Available Balance"
             required
+            currency="ETH"
             onChange={(e) => {
                 let newWalletBalance = e.target.value as number
                 let newInvestBalance = values.investBalance

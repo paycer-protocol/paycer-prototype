@@ -3,13 +3,13 @@ import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from './components/invest-card'
-import WalletProvider from '@components/organisms/web3/wallet-provider';
-import { connectors } from '@components/organisms/web3/providers';
+import WalletProvider from '@components/organisms/web3/wallet-provider'
+import { connectors } from '@components/organisms/web3/providers'
 
 const investCardFixtures = [
     {
         title: 'Basic Plan',
-        percentageRate: '12',
+        percentageRate: 12,
         hasInvested: true,
         assets : [
             {

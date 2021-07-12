@@ -4,26 +4,26 @@ import InvestCard  from '@components/organisms/invest/invest-card'
 
 export interface InvestModalProps {
     show?: boolean,
-    title?: string,
     onHide?: any,
-    deposited?: number
+    title?: string,
+    percentageRate?: number,
+    assets?: object[],
+    tvl?: number,
+    deposited?: number,
+    earned?: number,
+    currency?: string,
+    setShowWalletProviderModal?: any
 }
 
-const InvestModal = (
-    {
-        show,
-        title,
-        onHide,
-        deposited
-    }: InvestModalProps) => {
+const InvestModal = ({ show, onHide, ...props}: InvestModalProps) => {
 
     return (
         <Modal show={show} onHide={onHide}>
             <Modal.Header closeButton onHide={onHide} className="pb-0">
-                {title}
+                Invest
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <InvestCard deposited={deposited} />
+                <InvestCard {...props} />
             </Modal.Body>
         </Modal>
     )

@@ -29,8 +29,8 @@ export interface InvestCardProps {
   setShowWalletProviderModal?: any
 }
 
-const InvestCard = (
-    {
+const InvestCard = (props: InvestCardProps) => {
+    const {
         title,
         percentageRate,
         assets,
@@ -39,7 +39,7 @@ const InvestCard = (
         earned,
         currency,
         setShowWalletProviderModal
-    }: InvestCardProps) => {
+    } = props
 
     const wallet = useWallet()
     const { isConnected } = wallet
@@ -106,7 +106,11 @@ const InvestCard = (
                     </Trans>
                 </Button>
             </Card.Body>
-            <InvestModal show={showInvestModal} deposited={deposited} title={title} onHide={onHide} />
+            <InvestModal
+                {...props}
+                show={showInvestModal}
+                onHide={onHide}
+            />
         </Card>
     )
 }

@@ -1,9 +1,9 @@
-// 
+//
 // variables-dark.scss
 // Dashkit dark version
 //
 
-// 
+//
 // Bootstrap Overrides ===================================
 //
 
@@ -52,6 +52,10 @@ $border-color: $gray-600-dark;
 // Font, line-height, and color for body text, headings, and more.
 
 $text-muted: $gray-700 !default;
+$font-weight-light: 400 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 600 !default;
+
 
 
 // Tables
@@ -70,13 +74,19 @@ $table-bg-scale: 0 !default;
 
 // Forms
 
-$input-bg: $gray-400;
+$input-bg: $black;
+$input-disabled-bg: darken($black, 25%);
 
-$input-color: $gray-700-dark;
+$input-color: $white;
+$input-border-color: $gray-400 !default;
+$input-border-width: 2px;
+$input-font-weight: $font-weight-bold;
+
 $input-border-color: $gray-700-dark !default;
 
 $input-placeholder-color: $gray-600 !default;
 
+$form-label-color: $text-muted;
 $form-check-input-bg: $gray-600-dark !default;
 
 $form-switch-color: $gray-800-dark !default;
@@ -162,7 +172,7 @@ $list-group-hover-bg: $gray-900-dark !default;
 
 
 
-// 
+//
 // Theme =====================================
 //
 

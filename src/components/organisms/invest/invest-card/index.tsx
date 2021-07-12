@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
-import { depositFeeMP, withdrawFeeMP, gainsPerYearkMP } from '@config/transaction'
-import Form from '@components/atoms/form/form'
-import Card from '@components/molecules/card'
-import Button from '@components/atoms/button'
-import useWallet from '@components/organisms/web3/hooks/useWallet'
 import { ChainId } from '@usedapp/core'
 import { Bnb, Eth } from '@styled-icons/crypto'
+import { depositFeeMP, withdrawFeeMP, gainsPerYearkMP } from '@config/transaction'
+import Form from '@components/atoms/form/form'
+import Button from '@components/atoms/button'
+import Card from '@components/molecules/card'
+import useWallet from '@components/organisms/web3/hooks/useWallet'
 import InvestCardHeader from './invest-card-header'
 import InvestRange from './invest-range-slider'
 import InvestBalance from './invest-balance'
 import WalletBalance from './wallet-balance'
+import DailyInterest from './daily-interest'
+import DailyRewards from './daily-rewards'
+import InvestFee from './invest-fee'
 import { InvestFormFields } from './types'
 
 export interface DepositProps {
+    title?: string,
+    percentageRate?: number,
+    assets?: object[],
+    tvl?: number,
     deposited?: number,
+    earned?: number,
+    currency?: string,
 }
 
 const IconMap = {
@@ -22,7 +31,7 @@ const IconMap = {
     default: Eth
 }
 
-const Index = ({ deposited }: DepositProps) => {
+const Index = ({ title, deposited, percentageRate }: DepositProps) => {
     const wallet = useWallet()
     const etherBalance = Number(wallet.etherBalance || 0).toFixed(4) as any
     const [quickDepositPercentage, setQuickDepositPercentage] = useState(0)
@@ -44,7 +53,6 @@ const Index = ({ deposited }: DepositProps) => {
 
         setGainsPerYear(Number(value * gainsPerYearkMP).toFixed(8))
         setGainsPerWeek(Number((value * gainsPerYearkMP) / 365 * 7).toFixed(8))
-
     }
 
     const calculateFee = (value) => {
@@ -112,17 +120,21 @@ const Index = ({ deposited }: DepositProps) => {
         investBalance: 0,
         walletBalance: 100,
         investRange: 0,
+        dailyInterests: 0,
+        dailyRewards: 0,
         investFee: 0,
+        submitAction: 'invest'
     }
 
     return (
         <Form
             initialValues={initialValues}
             onSubmit={handleSubmit}
+            enableReinitialize
         >
             <>
                 <Card className="shadow-none mb-0">
-                    <InvestCardHeader />
+                    <InvestCardHeader title={title} percentageRate={percentageRate} />
                     <Card.Body>
                         <div className="mb-5">
                             <InvestRange />
@@ -135,62 +147,23 @@ const Index = ({ deposited }: DepositProps) => {
                                 <WalletBalance />
                             </div>
                         </div>
-                        <label className="form-label mb-3">
-                            <Trans>Invest percentage of balance: </Trans>
-                        </label>
-                        <div className="row">
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(25)} variant={quickDepositPercentage === 25 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
-                                    <Trans>25%</Trans>
-                                </Button>
+                        <div className="row mb-5">
+                            <div className="col-6">
+                                <DailyInterest />
                             </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(50)} variant={quickDepositPercentage === 50 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
-                                    <Trans>50%</Trans>
-                                </Button>
-                            </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(75)} variant={quickDepositPercentage === 75 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
-                                    <Trans>75%</Trans>
-                                </Button>
-                            </div>
-                            <div className="col-3">
-                                <Button onClick={() => handleQuickDeposit(100)} variant={quickDepositPercentage === 100 ? 'primary w-100' : 'outline-secondary bg-transparent w-100'}>
-                                    <Trans>100%</Trans>
-                                </Button>
+                            <div className="col-6">
+                                <DailyRewards />
                             </div>
                         </div>
+
+                        <Button variant="outline-success" className="w-100 mb-2" disabled={!initialValues.investBalance}>
+                            <Trans>
+                                {initialValues.submitAction}
+                            </Trans>
+                        </Button>
+                        <InvestFee />
                     </Card.Body>
                 </Card>
-                <Card className="mt-4 shadow-none mb-0">
-                    <Card.Body className="pb-0 pt-0">
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
-                            <span>
-                                <Trans>Gains per week</Trans>
-                            </span>
-                                {gainsPerWeek}
-                            </li>
-                            <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
-                            <span>
-                                <Trans>Gains per year</Trans>
-                            </span>
-                                {gainsPerYear}
-                            </li>
-                            <li className="list-group-item d-flex align-items-center text-secondary justify-content-between px-0">
-                                <span className=""><Trans>Fee</Trans></span>
-                                {fee}
-                            </li>
-                        </ul>
-                    </Card.Body>
-                </Card>
-                <Button
-                    variant="success"
-                    className="w-100 mt-4"
-                    disabled={!initialValues.investBalance}
-                >
-                    <Trans>Invest</Trans>
-                </Button>
             </>
         </Form>
     )

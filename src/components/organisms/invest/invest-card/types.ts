@@ -3,4 +3,7 @@ export interface InvestFormFields {
     walletBalance: number;
     investRange: number;
     investFee: number;
+    dailyInterests: number,
+    dailyRewards: number,
+    submitAction: 'invest' | 'withdraw'
 }
