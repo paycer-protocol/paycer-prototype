@@ -104,6 +104,7 @@ export default function Portfolio() {
     return (
       <tr
         onClick={toggleOnClick}
+        className="cursor-pointer"
       >
         <td>
           <Icon component={isCurrentEventKey ? ChevronUp : ChevronDown} size={15} />
