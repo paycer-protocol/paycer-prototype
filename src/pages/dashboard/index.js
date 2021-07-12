@@ -18,7 +18,10 @@ export default function Home() {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-md-12  col-xl">
+          <div className="col-12 col-md-6 col-xl">
+            <Rewards />
+          </div>
+          <div className="col-12 col-md-6 col-xl">
             <Rewards />
           </div>
         </div>
