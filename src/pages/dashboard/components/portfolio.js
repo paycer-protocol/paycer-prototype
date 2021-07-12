@@ -2,11 +2,11 @@ import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import { Trans } from '@lingui/macro'
-import InvestModal from '../../invest/components/invest-modal'
 import React, { useState } from 'react'
 import useWallet from '@components/organisms/web3/hooks/useWallet'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@components/organisms/web3/providers'
+import InvestModal from '@components/organisms/invest/invest-modal'
 
 const portfolioFixtures = [
   {

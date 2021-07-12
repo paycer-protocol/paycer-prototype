@@ -16,6 +16,18 @@ export default function WalletBalance() {
             required
             currency="ETH"
             onChange={(e) => {
+                // let value = Number(e.target.value).toFixed(4) as any
+                // let diff = 0 as any
+                // if (value > etherBalance) {
+                //     setBalance(etherBalance)
+                // } else {
+                //     diff = etherBalance - value
+                //     setBalance(Number(parseFloat(etherBalance) - parseFloat(diff)).toFixed(4))
+                //     const newDepositVal = Number(parseFloat(deposit) + parseFloat(diff)).toFixed(4)
+                //     setNewDeposit(newDepositVal)
+                //     calculateFee(newDepositVal)
+                // }
+
                 let newWalletBalance = e.target.value as number
                 let newInvestBalance = values.investBalance
                 let nextInvestFee = values.investFee

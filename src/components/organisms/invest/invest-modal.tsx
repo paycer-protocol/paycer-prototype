@@ -1,29 +1,21 @@
 import React from 'react'
 import Modal from '@components/molecules/modal'
-import InvestCard  from '@components/organisms/invest/invest-card'
+import InvestForm  from '@components/organisms/invest/invest-form'
+import { InvestProps } from './types'
 
-export interface InvestModalProps {
+interface InvestModalProps {
     show?: boolean,
     onHide?: any,
-    title?: string,
-    percentageRate?: number,
-    assets?: object[],
-    tvl?: number,
-    deposited?: number,
-    earned?: number,
-    currency?: string,
-    setShowWalletProviderModal?: any
 }
 
-const InvestModal = ({ show, onHide, ...props}: InvestModalProps) => {
-
+const InvestModal = ({ show, onHide, ...props}: InvestModalProps & InvestProps) => {
     return (
         <Modal show={show} onHide={onHide}>
             <Modal.Header closeButton onHide={onHide} className="pb-0">
                 Invest
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <InvestCard {...props} />
+                <InvestForm {...props} />
             </Modal.Body>
         </Modal>
     )

@@ -3,6 +3,7 @@ import Slider from 'rc-slider'
 import { BigNumber } from '@ethersproject/bignumber'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from './types'
+import {gainsPerYearkMP} from "@config/transaction";
 
 export default function InvestRangeSlider() {
     const {
@@ -48,6 +49,13 @@ export default function InvestRangeSlider() {
                     let nextInvestFee = values.investFee
 
                     // TODO: recalculate all values with BigNumbers
+
+                    // setNewDeposit(Number(value).toFixed(4))
+                    // setBalance(Number(etherBalance - (newDeposit - deposit)).toFixed(4))
+                    // calculateFee(value)
+                    //
+                    // setGainsPerYear(Number(value * gainsPerYearkMP).toFixed(8))
+                    // setGainsPerWeek(Number((value * gainsPerYearkMP) / 365 * 7).toFixed(8))
 
                     setFieldValue('investBalance', nextInvestBalance)
                     setFieldValue('walletBalance', nextWalletBalance)

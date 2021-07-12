@@ -22,7 +22,7 @@ const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
                 <Icon
                     onClick={onHide}
                     component={XLg}
-                    size={18}
+                    size={16}
                 />
             </a>
         )}

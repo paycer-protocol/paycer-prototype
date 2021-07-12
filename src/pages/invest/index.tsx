@@ -2,14 +2,16 @@ import React, {useState} from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
-import InvestCard from './components/invest-card'
+import InvestCard from '@components/organisms/invest/invest-card'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@components/organisms/web3/providers'
+import { InvestProps } from '@components/organisms/invest/types'
 
-const investCardFixtures = [
+const investCardFixtures: InvestProps[] = [
     {
         title: 'Basic Plan',
-        percentageRate: 12,
+        interestRate: 3,
+        rewardRate: 8,
         hasInvested: true,
         assets : [
             {
@@ -26,34 +28,25 @@ const investCardFixtures = [
             }
         ],
         tvl: 28398090.938,
-        deposited: 2000,
-        earned: 50,
-        currency: 'PCR'
+        invested: 2000,
+        earnedInterest: 50,
+        earnedReward: 50,
+        investSymbol: 'USDC',
+        rewardSymbol: 'PCR',
+        investFee: 0.01,
+        withdrawFee: 0.01,
+        feeSymbol: 'USDC',
     },
     {
         title: 'Advanced Plan',
-        percentageRate: '15',
-        hasInvested: false,
+        interestRate: 3,
+        rewardRate: 8,
+        hasInvested: true,
         assets : [
             {
                 name: 'usdt',
                 imgPath: 'assets/token/svg/color/usdt.svg'
             },
-            {
-                name: 'usdc',
-                imgPath: 'assets/token/svg/color/usdc.svg'
-            }
-        ],
-        tvl: 48398090.938,
-        deposited: 0,
-        earned: 100,
-        currency: 'PCR'
-    },
-    {
-        title: 'Expert Plan',
-        percentageRate: '19',
-        hasInvested: false,
-        assets : [
             {
                 name: 'usdc',
                 imgPath: 'assets/token/svg/color/usdc.svg'
@@ -63,10 +56,44 @@ const investCardFixtures = [
                 imgPath: 'assets/token/svg/color/bnb.svg'
             }
         ],
-        tvl: 78398090.938,
-        deposited: 0,
-        earned: 150,
-        currency: 'PCR'
+        tvl: 28398090.938,
+        invested: 2000,
+        earnedInterest: 50,
+        earnedReward: 50,
+        investSymbol: 'USDC',
+        rewardSymbol: 'PCR',
+        investFee: 0.01,
+        withdrawFee: 0.01,
+        feeSymbol: 'USDC',
+    },
+    {
+        title: 'Expert Plan',
+        interestRate: 3,
+        rewardRate: 8,
+        hasInvested: true,
+        assets : [
+            {
+                name: 'usdt',
+                imgPath: 'assets/token/svg/color/usdt.svg'
+            },
+            {
+                name: 'usdc',
+                imgPath: 'assets/token/svg/color/usdc.svg'
+            },
+            {
+                name: 'bnb',
+                imgPath: 'assets/token/svg/color/bnb.svg'
+            }
+        ],
+        tvl: 28398090.938,
+        invested: 2000,
+        earnedInterest: 50,
+        earnedReward: 50,
+        investSymbol: 'USDC',
+        rewardSymbol: 'PCR',
+        investFee: 0.01,
+        withdrawFee: 0.01,
+        feeSymbol: 'USDC',
     },
 ]
 
