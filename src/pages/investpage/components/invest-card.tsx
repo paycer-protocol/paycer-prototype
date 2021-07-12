@@ -25,7 +25,8 @@ export interface InvestCardProps {
   tvl?: number,
   deposited?: number,
   earned?: number,
-  currency?: string
+  currency?: string,
+  setShowWalletProviderModal?: any
 }
 
 const InvestCard = (
@@ -36,7 +37,8 @@ const InvestCard = (
         tvl,
         deposited,
         earned,
-        currency
+        currency,
+        setShowWalletProviderModal
     }: InvestCardProps) => {
 
     const wallet = useWallet()
@@ -98,7 +100,7 @@ const InvestCard = (
                     </li>
                 </ul>
 
-                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => {}} variant={deposited ? 'invest' : 'primary'} className={!isConnected ? 'disabled w-100' : 'w-100'}>
+                <Button onClick={isConnected ? () => setShowInvestModal(true) : () => setShowWalletProviderModal(true)} variant={deposited ? 'invest' : 'primary'} className='w-100'>
                     <Trans>
                         {deposited ? 'Edit invest' : 'Start invest'}
                     </Trans>

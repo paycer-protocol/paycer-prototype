@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from './components/invest-card'
+import WalletProvider from "@components/organisms/web3/wallet-provider";
+import {connectors} from "@components/organisms/web3/providers";
 
 const investCardFixtures = [
     {
@@ -69,6 +71,7 @@ const investCardFixtures = [
 ]
 
 export default () => {
+    const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     return (
         <div className="container">
             <PageHeader>
@@ -81,7 +84,6 @@ export default () => {
                         <Button variant="outline-primary">
                             <Trans>Create Plan</Trans>
                         </Button>
-
                     </div>
                 </div>
             </PageHeader>
@@ -90,10 +92,16 @@ export default () => {
                     <div key={key} className="col-12 col-md-6 col-lg-4">
                         <InvestCard
                             { ...data }
+                            setShowWalletProviderModal={setShowWalletProviderModal}
                         />
                     </div>
                 ))}
             </div>
+            <WalletProvider
+                providers={connectors}
+                onHide={() => setShowWalletProviderModal(false)}
+                show={showWalletProviderModal}
+            />
         </div>
     )
 }
