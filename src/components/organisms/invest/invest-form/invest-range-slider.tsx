@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Slider from 'rc-slider'
-import { BigNumber } from '@ethersproject/bignumber'
 import { useFormikContext } from 'formik'
-import { InvestFormFields } from './types'
-import {gainsPerYearkMP} from "@config/transaction";
+import { InvestFormFields } from '../types'
 
 export default function InvestRangeSlider() {
-    const {
-        values,
-        setFieldValue
-    } = useFormikContext<InvestFormFields>()
+    const { values, initialValues, setFieldValue } = useFormikContext<InvestFormFields>()
+    const [prevValue, setPrevValue] = useState<number>(0)
 
     return (
         <div style={{ width: '100%' }}>
@@ -39,27 +35,33 @@ export default function InvestRangeSlider() {
                 min={0}
                 max={100}
                 step={0.001}
-                // value={newDeposit ? newDeposit : deposit}
+                defaultValue={values.investBalance + 100 / values.walletBalance}
                 onChange={(value) => {
-                    // TODO: price here missing
-                    const tokenPrice = 1
+                    let walletBalance = 0 as number
+                    let investBalance = 0 as number
+                    let investFee = 0 as number
 
-                    let nextInvestBalance = values.investBalance
-                    let nextWalletBalance = values.walletBalance
-                    let nextInvestFee = values.investFee
+                    // todo: price feed missing
+                    const exchangePrice = 1
+                    const walletDiff = initialValues.walletBalance * value / 100
+                    const investDiff = walletDiff * exchangePrice
 
-                    // TODO: recalculate all values with BigNumbers
+                    // plus
+                    if (value > prevValue) {
+                        walletBalance = initialValues.walletBalance - walletDiff
+                        investBalance = initialValues.investBalance + investDiff
+                        investFee = investDiff * values.investFee
+                    // minus
+                    } else {
+                        walletBalance += initialValues.walletBalance - walletDiff
+                        investBalance -= initialValues.investBalance - investDiff
+                        investFee = investDiff * values.withdrawFee
+                    }
 
-                    // setNewDeposit(Number(value).toFixed(4))
-                    // setBalance(Number(etherBalance - (newDeposit - deposit)).toFixed(4))
-                    // calculateFee(value)
-                    //
-                    // setGainsPerYear(Number(value * gainsPerYearkMP).toFixed(8))
-                    // setGainsPerWeek(Number((value * gainsPerYearkMP) / 365 * 7).toFixed(8))
-
-                    setFieldValue('investBalance', nextInvestBalance)
-                    setFieldValue('walletBalance', nextWalletBalance)
-                    setFieldValue('investFee', nextInvestFee)
+                    setFieldValue('walletBalance', walletBalance)
+                    setFieldValue('investBalance', investBalance)
+                    setFieldValue('investFee', investFee)
+                    setPrevValue(value)
                 }}
             />
         </div>

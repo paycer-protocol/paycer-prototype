@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
-import { InvestFormFields } from './types'
+import { InvestFormFields } from '../types'
 
 export default function DailyRewards() {
   const { values } = useFormikContext<InvestFormFields>()

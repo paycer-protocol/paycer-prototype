@@ -1,7 +1,7 @@
 import React from 'react'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { InvestFormFields } from './types'
+import { InvestFormFields } from '../types'
 
 export default function InvestBalance() {
     const {
@@ -40,7 +40,7 @@ export default function InvestBalance() {
                 let nextWalletBalance = values.walletBalance
                 let nextInvestFee = values.investFee
 
-                setFieldValue('investBalance', Math.max(nextInvestBalance, values.walletBalance))
+                setFieldValue('investBalance', nextInvestBalance)
                 setFieldValue('walletBalance', nextWalletBalance)
                 setFieldValue('investFee', nextInvestFee)
             }}

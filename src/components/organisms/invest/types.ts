@@ -23,10 +23,25 @@ export interface RewardProps {
 export interface InvestProps extends FeesProps, InterestProps, RewardProps {
     title: string
     hasInvested: boolean
-    tvl: number
     invested: number
+    tvl: number
     assets: Asset[]
     investSymbol: string
     rewardSymbol: string
-    setShowWalletProviderModal?: any
+    setShowWalletProviderModal?: any // todo: remove ui indicator from data model
 }
+
+export interface InvestFormFields {
+    investBalance: number
+    walletBalance: number
+    dailyInterest: number
+    dailyRewards: number
+    withdrawFee: number
+    investFee: number
+    investRange: number
+    feeSymbol: string
+    investSymbol: string
+    rewardSymbol: string
+    submitAction: 'invest' | 'withdraw'
+}
+

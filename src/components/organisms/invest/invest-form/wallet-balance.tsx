@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
 import Currency from '@components/atoms/form/currency'
-import { InvestFormFields } from './types'
+import { InvestFormFields } from '../types'
 
 export default function WalletBalance() {
     const {

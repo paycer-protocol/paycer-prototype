@@ -1,11 +1,11 @@
 import React from 'react'
 import { InvestProps } from '../types'
-import { useFormikContext } from 'formik';
-import { InvestFormFields } from './types';
+import { useFormikContext } from 'formik'
+import { InvestFormFields } from '../types'
 
 export default function InvestFee({ feeSymbol }: InvestProps) {
   const { values } = useFormikContext<InvestFormFields>()
-  const feeRate = values.submitAction === 'invest' ? values.investFee : values.depositFee
+  const feeRate = values.submitAction === 'invest' ? values.investFee : values.withdrawFee
 
   return (
     <div className="text-center">
