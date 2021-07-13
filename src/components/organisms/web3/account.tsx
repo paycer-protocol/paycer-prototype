@@ -35,9 +35,9 @@ const Account = (props: AccountProps) => {
 
     const AccountBalance = () => {
         const iconComponent = IconMap[wallet.chainName] || IconMap.default
-        let etherBalance = Number(wallet.etherBalance || 0).toFixed(4)
+        let etherBalance = Number(wallet?.etherBalance || 0).toFixed(4)
         etherBalance += ' '
-        etherBalance += wallet.etherSymbol
+        etherBalance += wallet?.etherSymbol
 
         return (
             <div className="p-2">
