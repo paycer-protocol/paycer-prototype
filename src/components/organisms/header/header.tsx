@@ -34,21 +34,21 @@ const Header = (props: HeaderProps) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <ul className="navbar-nav me-lg-auto">
-                            <li className="nav-item me-3">
+                            <li className="nav-item me-3 d-flex align-items-center">
                                 <Link href="/">
                                     <a className="nav-link" title="Dashboard">
                                         Dashboard
                                     </a>
                                 </Link>
                             </li>
-                            <li className="nav-item me-3">
+                            <li className="nav-item me-3 d-flex align-items-center">
                                 <Link href="/invest">
                                     <a className="nav-link" title="Dashboard">
                                         Invest
                                     </a>
                                 </Link>
                             </li>
-                            <li className="nav-item me-4">
+                            <li className="nav-item me-4 d-flex align-items-center">
                                 <Link href="/docs">
                                     <a className="nav-link" title="Documentation">
                                         Docs
