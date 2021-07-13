@@ -14,7 +14,7 @@ export default function InvestBalance() {
             name="investBalance"
             label="Current Invest"
             required
-            currency="USDC"
+            currency={values.investSymbol}
             onChange={(e) => {
                 // let value = Number(e.target.value).toFixed(4) as any
                 //

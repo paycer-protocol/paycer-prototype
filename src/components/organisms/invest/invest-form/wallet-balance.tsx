@@ -14,7 +14,7 @@ export default function WalletBalance() {
             name="walletBalance"
             label="Available Balance"
             required
-            currency="ETH"
+            currency={values.walletSymbol}
             onChange={(e) => {
                 // let value = Number(e.target.value).toFixed(4) as any
                 // let diff = 0 as any

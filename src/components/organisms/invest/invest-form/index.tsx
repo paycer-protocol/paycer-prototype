@@ -13,7 +13,6 @@ import DailyInterest from './daily-interest'
 import DailyRewards from './daily-rewards'
 import InvestFee from './invest-fee'
 import { InvestProps, InvestFormFields } from '../types'
-import {BigNumber} from "@ethersproject/bignumber";
 
 const IconMap = {
     [ChainId.BSC]: Bnb,
@@ -21,19 +20,20 @@ const IconMap = {
 }
 
 const InvestForm = (props: InvestProps) => {
-    const { investSymbol, rewardSymbol, investFee, withdrawFee, feeSymbol } = props
+    const { investSymbol, rewardSymbol, walletSymbol, investFee, withdrawFee, feeSymbol } = props
     const handleSubmit = (values: InvestFormFields) => {
         alert(values.investBalance)
     }
 
     const initialValues: InvestFormFields = {
-        investBalance: 0,
+        investBalance: 45,
         walletBalance: 100,
         dailyInterest: 0,
         dailyRewards: 0,
         investRange: 0,
         investSymbol,
         rewardSymbol,
+        walletSymbol,
         investFee,
         withdrawFee,
         feeSymbol,

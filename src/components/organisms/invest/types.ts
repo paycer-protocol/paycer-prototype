@@ -28,6 +28,7 @@ export interface InvestProps extends FeesProps, InterestProps, RewardProps {
     assets: Asset[]
     investSymbol: string
     rewardSymbol: string
+    walletSymbol: string
     setShowWalletProviderModal?: any // todo: remove ui indicator from data model
 }
 
@@ -42,6 +43,7 @@ export interface InvestFormFields {
     feeSymbol: string
     investSymbol: string
     rewardSymbol: string
+    walletSymbol: string
     submitAction: 'invest' | 'withdraw'
 }
 
