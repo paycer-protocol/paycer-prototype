@@ -1,9 +1,9 @@
 import React from 'react'
+import { Trans, t } from '@lingui/macro'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
-import Nav from '@components/molecules/nav'
 import Account from '../web3/account'
 
 const StyledBrand = styled(Navbar.Brand)`
@@ -14,10 +14,7 @@ const StyledBrand = styled(Navbar.Brand)`
   }
 `
 
-
-export interface HeaderProps {
-}
-
+export interface HeaderProps {}
 
 const Header = (props: HeaderProps) => {
     const {} = props
@@ -39,22 +36,22 @@ const Header = (props: HeaderProps) => {
                         <ul className="navbar-nav me-lg-auto">
                             <li className="nav-item me-3">
                                 <Link href="/">
-                                    <a className="nav-link" title="Dashboard">
-                                        Dashboard
+                                    <a className="nav-link" title={t`Dashboard`}>
+                                        <Trans>Dashboard</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-3">
                                 <Link href="/invest">
-                                    <a className="nav-link" title="Dashboard">
-                                        Invest
+                                    <a className="nav-link" title={t`Invest`}>
+                                        <Trans>Invest</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-4">
                                 <Link href="/docs">
-                                    <a className="nav-link" title="Documentation">
-                                        Docs
+                                    <a className="nav-link" title={t`Documentation`}>
+                                        <Trans>Docs</Trans>
                                     </a>
                                 </Link>
                             </li>

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { InjectedConnector, UserRejectedRequestError } from '@web3-react/injected-connector'
 import { WalletConnectConnector, UserRejectedRequestError as  WalletConnectRejectedRequestError } from '@web3-react/walletconnect-connector'
 import { AbstractConnector } from '@web3-react/abstract-connector'
@@ -55,7 +56,7 @@ export const connectors: IConnectorProvider[] = [
         connector: injectedConnector,
         rejectedError: UserRejectedRequestError,
         name: 'MetaMask',
-        description: 'Easy-to-use browser extension.',
+        description: t`Easy-to-use browser extension.`,
         icon: 'assets/wallets/metamask.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
@@ -63,7 +64,7 @@ export const connectors: IConnectorProvider[] = [
         connector: walletConnectConnector,
         rejectedError: WalletConnectRejectedRequestError,
         name: 'WalletConnect',
-        description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
+        description: t`Connect to Trust Wallet, Rainbow Wallet and more...`,
         icon: 'assets/wallets/wallet-connect.svg',
         beforeConnect: (provider: IConnectorProvider) => {
             const { connector } = provider
@@ -78,7 +79,7 @@ export const connectors: IConnectorProvider[] = [
         connector: trezorConnector,
         rejectedError: UserRejectedRequestError,
         name: 'Trezor',
-        description: 'Safe hardware wallet for your coins.',
+        description: t`Safe hardware wallet for your coins.`,
         icon: 'assets/wallets/trezor.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
@@ -86,7 +87,7 @@ export const connectors: IConnectorProvider[] = [
         connector: ledgerConnector,
         rejectedError: UserRejectedRequestError,
         name: 'Ledger',
-        description: 'Enjoy security, ownership and ease of use for your crypto with Ledger.',
+        description: t`Enjoy security, ownership and ease of use for your crypto with Ledger.`,
         icon: 'assets/wallets/ledger.svg',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },

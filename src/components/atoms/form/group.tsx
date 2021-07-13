@@ -1,6 +1,6 @@
 import { useField } from 'formik'
-import React, { FC, createContext } from 'react'
 import { Form } from 'react-bootstrap'
+import React, { FC, createContext } from 'react'
 import { FormGroupFieldProps } from './types'
 
 type GroupContextType = {
