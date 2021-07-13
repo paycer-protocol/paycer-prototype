@@ -26,15 +26,16 @@ msgstr "APY"
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
-#: src/pages/dashboard/components/portfolio.tsx:89
-#~ msgid "Asset"
-#~ msgstr "Asset"
+#: src/pages/dashboard/components/portfolio.tsx:182
+msgid "Asset"
+msgstr "Asset"
 
 #: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
 msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/account-detail.tsx:68
+#: src/pages/dashboard/components/portfolio.tsx:187
 msgid "Balance"
 msgstr "Balance"
 
@@ -132,7 +133,7 @@ msgstr "Explorer"
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:29
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
 #: src/components/organisms/header/header.tsx:46
 #: src/components/organisms/header/header.tsx:47
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
@@ -140,13 +141,13 @@ msgstr "Fee"
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/dashboard/components/portfolio.tsx:99
-#~ msgid "Investment ratio"
-#~ msgstr "Investment ratio"
+#: src/pages/dashboard/components/portfolio.tsx:192
+msgid "Investment ratio"
+msgstr "Investment ratio"
 
-#: src/pages/dashboard/components/portfolio.tsx:104
-#~ msgid "Liquidity"
-#~ msgstr "Liquidity"
+#: src/pages/dashboard/components/portfolio.tsx:197
+msgid "Liquidity"
+msgstr "Liquidity"
 
 #: src/pages/dashboard/components/dash-cards.tsx:24
 msgid "Moderat"
@@ -164,9 +165,9 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/pages/dashboard/components/portfolio.tsx:78
-#~ msgid "Portfolio"
-#~ msgstr "Portfolio"
+#: src/pages/dashboard/components/portfolio.tsx:166
+msgid "Portfolio"
+msgstr "Portfolio"
 
 #: src/pages/dashboard/components/rewards.tsx:11
 msgid "Rewards"
@@ -220,7 +221,7 @@ msgstr "Unstaked"
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:54
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
 msgid "Withdraw"
 msgstr "Withdraw"

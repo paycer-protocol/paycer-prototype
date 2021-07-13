@@ -147,11 +147,8 @@ export default function Portfolio() {
   );
 
   function CustomToggle({eventKey, children}) {
-    const currentEventKey = useContext(AccordionContext)
-    const toggleOnClick = useAccordionToggle(eventKey)
-
     return (
-        <tr onClick={toggleOnClick} className="cursor-pointer">
+        <tr onClick={useAccordionToggle(eventKey)} className="cursor-pointer">
           {children}
         </tr>
     )
@@ -174,9 +171,6 @@ export default function Portfolio() {
             <table className="table table-sm table-nowrap card-table">
               <thead>
               <tr>
-                <th>
-                  &nbsp;
-                </th>
                 <th>
                   <a href="#" className="text-muted list-sort">
                     <Trans>Asset</Trans>
