@@ -1,4 +1,5 @@
 import React from 'react'
+import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
 import InvestCardHeader from './invest-card-header'
@@ -64,10 +65,16 @@ const InvestForm = (props: InvestProps) => {
         submitAction: 'invest'
     }
 
+    const validationSchema = Yup.object().shape({
+        baseBalance: Yup.number().moreThan(0).positive().required(),
+        investBalance: Yup.number().moreThan(0).positive().required(),
+    })
+
     return (
         <Form
             initialValues={initialValues}
             onSubmit={handleSubmit}
+            validationSchema={validationSchema}
             enableReinitialize
         >
             <Card className="shadow-none mb-0">

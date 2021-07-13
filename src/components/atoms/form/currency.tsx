@@ -30,7 +30,7 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
                 className="form-control"
                 onChange={handleChange}
                 onBlur={onBlur}
-                spellcheck="false"
+                spellCheck="false"
                 options={{
                     numeral: true,
                     numeralThousandsGroupStyle: 'thousand',
