@@ -77,7 +77,7 @@ const InvestCard = (props: InvestProps) => {
                             <Trans>Deposited</Trans>
                         </span>
                         <span className={invested ? 'link-invest' : ''}>
-                            <Money value={invested}/>
+                            <Money value={invested} />
                         </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -85,7 +85,7 @@ const InvestCard = (props: InvestProps) => {
                             <Trans>Earned</Trans>
                         </span>
                         <span className="">
-                            <Money value={earnedInterest} currency={investSymbol} />
+                            {earnedInterest}&nbsp;{investSymbol}
                         </span>
                     </li>
                 </ul>

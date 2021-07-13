@@ -9,7 +9,7 @@ export interface MoneyProps extends FormatNumberOptions {
 
 export const Money = ({ value = 0, currency = 'usd', ...restProps }: MoneyProps) => (
     <FormattedNumber
-        value={value || 0}
+        value={Number(value || 0)}
         style="currency"
         currency={currency}
         {...restProps}

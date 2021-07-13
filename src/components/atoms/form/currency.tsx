@@ -7,9 +7,10 @@ import { FormInputFieldProps } from './types'
 
 interface CurrencyFieldProps extends FormInputFieldProps {
     currency: string;
+    decimals: number;
 }
 
-const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, ...props }: CurrencyFieldProps) => {
+const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals = 2, ...props }: CurrencyFieldProps) => {
     const [{ name, value, onBlur }, { error, touched }] = useField(props)
     const handleChange = useChange(props)
 
@@ -34,6 +35,7 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, ...props 
                     numeral: true,
                     numeralThousandsGroupStyle: 'thousand',
                     prefix: currency + ' ',
+                    numeralDecimalScale: decimals
                 }}
             />
         </Group>

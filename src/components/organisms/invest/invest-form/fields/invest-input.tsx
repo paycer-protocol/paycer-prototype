@@ -8,7 +8,7 @@ export default function InvestInput() {
     const {
         values,
         initialValues,
-        setFieldValue
+        setFieldValue,
     } = useFormikContext<InvestFormFields>()
 
     return (
@@ -17,6 +17,7 @@ export default function InvestInput() {
             label={t`Current Invest`}
             required
             currency={values.investSymbol}
+            decimals={4}
             onChange={(e) => {
                 // todo: price feed missing
                 const exchangePrice = 1
@@ -39,6 +40,12 @@ export default function InvestInput() {
 
                 const totalBalance = initialValues.baseBalance + (initialValues.investBalance * exchangePrice)
                 const investRange = investBalance * 100 / totalBalance
+
+                baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
+                baseBalance = baseBalance < 0 ? 0 : baseBalance
+
+                investBalance = investBalance > totalBalance ? totalBalance : investBalance
+                investBalance = investBalance < 0 ? 0 : investBalance
 
                 setFieldValue('baseBalance', baseBalance)
                 setFieldValue('investBalance', investBalance)

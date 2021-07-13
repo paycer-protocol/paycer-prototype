@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
 
 export default function InvestRangeSlider() {
-    const { values, initialValues, setFieldValue } = useFormikContext<InvestFormFields>()
+    const { values, initialValues, setFieldValue, dirty } = useFormikContext<InvestFormFields>()
 
     // todo: price feed missing
     const exchangePrice = 1
@@ -23,7 +23,7 @@ export default function InvestRangeSlider() {
                 min={0}
                 max={100}
                 step={0.001}
-                value={values.investRange}
+                value={dirty ? values.investRange : undefined}
                 defaultValue={values.investBalance * 100 / totalBalance}
                 onChange={(value) => {
                     let baseBalance = 0 as number
@@ -42,6 +42,12 @@ export default function InvestRangeSlider() {
                         baseBalance = totalBalance - walletDiff
                         investFee = investBalance * values.withdrawFee
                     }
+
+                    baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
+                    baseBalance = baseBalance < 0 ? 0 : baseBalance
+
+                    investBalance = investBalance > totalBalance ? totalBalance : investBalance
+                    investBalance = investBalance < 0 ? 0 : investBalance
 
                     setFieldValue('baseBalance', baseBalance)
                     setFieldValue('investBalance', investBalance)
