@@ -44,9 +44,9 @@ export default function InvestRangeSlider() {
                         investFee = investBalance * values.withdrawFee
                     }
 
-                    setFieldValue('baseBalance', baseBalance)
-                    setFieldValue('investBalance', investBalance)
-                    setFieldValue('investFee', investFee)
+                    setFieldValue('baseBalance', Math.abs(baseBalance))
+                    setFieldValue('investBalance', Math.abs(investBalance))
+                    setFieldValue('investFee', Math.abs(investFee))
                     setPrevValue(value)
                 }}
             />

@@ -39,10 +39,10 @@ export default function InvestInput() {
                 const totalBalance = initialValues.baseBalance + (initialValues.investBalance * exchangePrice)
                 const investRange = investBalance * 100 / totalBalance
 
-                setFieldValue('baseBalance', baseBalance)
-                setFieldValue('investBalance', investBalance)
-                setFieldValue('investFee', investFee)
-                setFieldValue('investRange', investRange)
+                setFieldValue('baseBalance', Math.abs(baseBalance))
+                setFieldValue('investBalance', Math.abs(investBalance))
+                setFieldValue('investFee', Math.abs(investFee))
+                setFieldValue('investRange', Math.abs(investRange))
             }}
         />
     )
