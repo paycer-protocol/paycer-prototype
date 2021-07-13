@@ -23,19 +23,16 @@ export default function InvestInput() {
                 const exchangePrice = 1
                 let baseBalance = 0 as number
                 let investBalance = Number(e.target.value.split(' ')[1]) as number
-                let investFee = 0 as number
                 let investDiff = 0 as number
 
                 // plus
                 if (investBalance > initialValues.investBalance) {
                     investDiff = investBalance - initialValues.investBalance
                     baseBalance = initialValues.baseBalance - (investDiff * exchangePrice)
-                    investFee = investBalance * values.investFee
                 // minus
                 } else {
                     investDiff = initialValues.investBalance - investBalance
                     baseBalance = initialValues.baseBalance + (investDiff * exchangePrice)
-                    investFee = investBalance * values.withdrawFee
                 }
 
                 const totalBalance = initialValues.baseBalance + (initialValues.investBalance * exchangePrice)
@@ -49,8 +46,8 @@ export default function InvestInput() {
 
                 setFieldValue('baseBalance', baseBalance)
                 setFieldValue('investBalance', investBalance)
-                setFieldValue('investFee', investFee)
                 setFieldValue('investRange', investRange)
+                setFieldValue('submitAction', investBalance > initialValues.investBalance ? 'invest' : 'withdraw')
             }}
         />
     )

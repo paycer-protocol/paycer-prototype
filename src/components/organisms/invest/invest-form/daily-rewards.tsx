@@ -11,7 +11,7 @@ export default function DailyRewards() {
       <span className="text-muted">
           <Trans>Daily rewards</Trans>
       </span>
-      <span>+ {values.dailyRewards} {values.rewardSymbol}</span>
+      <span>+ {Number((values.investBalance * values.rewardRate / 100) / 365).toFixed(3)} {values.rewardSymbol}</span>
     </div>
   )
 }

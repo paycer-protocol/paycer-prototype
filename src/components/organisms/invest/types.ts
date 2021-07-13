@@ -12,7 +12,6 @@ export interface FeesProps {
 export interface InterestProps {
     interestRate: number
     earnedInterest: number
-    dailyInterest?: number
 }
 
 
@@ -20,7 +19,6 @@ export interface RewardProps {
     rewardRate: number
     earnedReward: number
     rewardSymbol: string
-    dailyRewards?: number
 }
 
 export interface InvestPairProps {

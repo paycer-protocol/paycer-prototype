@@ -47,18 +47,16 @@ const InvestForm = (props: InvestProps) => {
         // interest
         interestRate,
         earnedInterest,
-        dailyInterest: 0, // TODO:
 
         // rewards
         rewardSymbol,
         rewardRate,
         earnedReward,
-        dailyRewards: 0, // TODO:
 
         // fees
         feeSymbol,
-        withdrawFee: 0, // TODO:
-        investFee: 0, // TODO:
+        withdrawFee,
+        investFee,
 
         // form
         investRange: 0,

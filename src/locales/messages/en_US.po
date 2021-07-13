@@ -129,7 +129,7 @@ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgid "Explorer"
 msgstr "Explorer"
 
-#: src/components/organisms/invest/invest-form/invest-fee.tsx:13
+#: src/components/organisms/invest/invest-form/invest-fee.tsx:28
 msgid "Fee"
 msgstr "Fee"
 

@@ -11,7 +11,7 @@ export default function DailyInterest() {
       <span className="text-muted">
           <Trans>Daily interest</Trans>
       </span>
-      <span>+ {values.dailyInterest} {values.investSymbol}</span>
+      <span>+ {Number((values.investBalance * values.interestRate / 100) / 365).toFixed(3)} {values.investSymbol}</span>
     </div>
   )
 }

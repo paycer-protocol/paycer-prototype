@@ -28,7 +28,6 @@ export default function InvestRangeSlider() {
                 onChange={(value) => {
                     let baseBalance = 0 as number
                     let investBalance = 0 as number
-                    let investFee = 0 as number
 
                     const walletDiff = totalBalance * value / 100
                     investBalance = walletDiff * exchangePrice
@@ -36,11 +35,9 @@ export default function InvestRangeSlider() {
                     // plus
                     if (value >= values.investRange) {
                         baseBalance = totalBalance - walletDiff
-                        investFee = investBalance * values.investFee
                     // minus
                     } else {
                         baseBalance = totalBalance - walletDiff
-                        investFee = investBalance * values.withdrawFee
                     }
 
                     baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
@@ -51,8 +48,8 @@ export default function InvestRangeSlider() {
 
                     setFieldValue('baseBalance', baseBalance)
                     setFieldValue('investBalance', investBalance)
-                    setFieldValue('investFee', investFee)
                     setFieldValue('investRange', value)
+                    setFieldValue('submitAction', value >= values.investRange ? 'invest' : 'withdraw')
                 }}
             />
         </div>
