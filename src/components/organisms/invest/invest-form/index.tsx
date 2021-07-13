@@ -20,13 +20,16 @@ const InvestForm = (props: InvestProps) => {
         baseBalance,
         investSymbol,
         investBalance,
+
         // interest
         interestRate,
         earnedInterest,
+
         // rewards
         rewardSymbol,
         rewardRate,
         earnedReward,
+
         // fees
         feeSymbol,
         withdrawFee,
@@ -40,9 +43,9 @@ const InvestForm = (props: InvestProps) => {
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol,
-        baseBalance: 100,
+        baseBalance: 10000,
         investSymbol,
-        investBalance: 100,
+        investBalance: 1000,
 
         // interest
         interestRate,
