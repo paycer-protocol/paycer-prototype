@@ -15,10 +15,8 @@ const StyledBrand = styled(Navbar.Brand)`
   }
 `
 
-
 export interface HeaderProps {
 }
-
 
 const Header = (props: HeaderProps) => {
     const {} = props
@@ -48,14 +46,12 @@ const Header = (props: HeaderProps) => {
                         </a>
                     </Link>
                 </li>
-                {(!isTabletOrMobile &&
-                  <li className="nav-item">
+                <li className="nav-item mt-3 mt-md-0">
                     <Account
-                      buttonVariant="light"
-                      dropdownVariant="light"
+                        buttonVariant="light"
+                        dropdownVariant="light"
                     />
-                  </li>
-                )}
+                </li>
             </ul>
         )
     }
@@ -72,28 +68,22 @@ const Header = (props: HeaderProps) => {
                         </a>
                     </Link>
                     {(isTabletOrMobile
-                        ? (
-                            <>
-                                <div style={{ position: 'absolute', right: 90}}>
-                                    <Account
-                                        buttonVariant="light"
-                                        dropdownVariant="light"
-                                    />
-                                </div>
-                                <div>
-                                    <div style={{ right: 20, top: 20}} className="position-absolute">
-                                        <Menu right>
-                                            {renderMenu()}
-                                        </Menu>
+                            ? (
+                                <>
+                                    <div>
+                                        <div style={{ right: 20, top: 20}} className="position-absolute">
+                                            <Menu right>
+                                                {renderMenu()}
+                                            </Menu>
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        )
-                        : (
-                            <Navbar.Collapse id="basic-navbar-nav">
-                                {renderMenu()}
-                            </Navbar.Collapse>
-                        )
+                                </>
+                            )
+                            : (
+                                <Navbar.Collapse id="basic-navbar-nav">
+                                    {renderMenu()}
+                                </Navbar.Collapse>
+                            )
                     )}
 
                 </div>
