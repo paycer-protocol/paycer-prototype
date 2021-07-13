@@ -7,6 +7,7 @@ import InvestCardHeader from './invest-card-header'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
 import BaseInput from './fields/base-Input'
+import SubmitButton from './fields/submit-button'
 import DailyInterest from './daily-interest'
 import DailyRewards from './daily-rewards'
 import InvestFee from './invest-fee'
@@ -47,18 +48,18 @@ const InvestForm = (props: InvestProps) => {
         // interest
         interestRate,
         earnedInterest,
-        dailyInterest: 0,
+        dailyInterest: 0, // TODO:
 
         // rewards
         rewardSymbol,
         rewardRate,
         earnedReward,
-        dailyRewards: 0,
+        dailyRewards: 0, // TODO:
 
         // fees
         feeSymbol,
-        withdrawFee: 0,
-        investFee: 0,
+        withdrawFee: 0, // TODO:
+        investFee: 0, // TODO:
 
         // form
         investRange: 0,
@@ -71,43 +72,32 @@ const InvestForm = (props: InvestProps) => {
             onSubmit={handleSubmit}
             enableReinitialize
         >
-            <>
-                <Card className="shadow-none mb-0">
-                    <InvestCardHeader {...props} />
-                    <Card.Body>
-                        <div className="mb-5">
-                            <InvestRangeSlider />
+            <Card className="shadow-none mb-0">
+                <InvestCardHeader {...props} />
+                <Card.Body>
+                    <div className="mb-5">
+                        <InvestRangeSlider />
+                    </div>
+                    <div className="row">
+                        <div className="col-6">
+                            <InvestInput />
                         </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <InvestInput />
-                            </div>
-                            <div className="col-6">
-                                <BaseInput />
-                            </div>
+                        <div className="col-6">
+                            <BaseInput />
                         </div>
-                        <div className="row mb-5">
-                            <div className="col-6">
-                                <DailyInterest />
-                            </div>
-                            <div className="col-6">
-                                <DailyRewards />
-                            </div>
+                    </div>
+                    <div className="row mb-5">
+                        <div className="col-6">
+                            <DailyInterest />
                         </div>
-
-                        <Button
-                            variant="outline-success"
-                            className="w-100 mb-2"
-                            disabled={!initialValues.investBalance}
-                        >
-                            <Trans>
-                                {initialValues.submitAction === 'invest' ? 'Invest' : 'Withdraw'}
-                            </Trans>
-                        </Button>
-                        <InvestFee {...props} />
-                    </Card.Body>
-                </Card>
-            </>
+                        <div className="col-6">
+                            <DailyRewards />
+                        </div>
+                    </div>
+                    <SubmitButton />
+                    <InvestFee {...props} />
+                </Card.Body>
+            </Card>
         </Form>
     )
 }
