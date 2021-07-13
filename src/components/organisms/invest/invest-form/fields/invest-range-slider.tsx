@@ -5,7 +5,6 @@ import { InvestFormFields } from '../../types'
 
 export default function InvestRangeSlider() {
     const { values, initialValues, setFieldValue } = useFormikContext<InvestFormFields>()
-    const [prevValue, setPrevValue] = useState<number>(0)
 
     // todo: price feed missing
     const exchangePrice = 1
@@ -35,7 +34,7 @@ export default function InvestRangeSlider() {
                     investBalance = walletDiff * exchangePrice
 
                     // plus
-                    if (value >= prevValue) {
+                    if (value >= values.investRange) {
                         baseBalance = totalBalance - walletDiff
                         investFee = investBalance * values.investFee
                     // minus
@@ -44,10 +43,10 @@ export default function InvestRangeSlider() {
                         investFee = investBalance * values.withdrawFee
                     }
 
-                    setFieldValue('baseBalance', Math.abs(baseBalance))
-                    setFieldValue('investBalance', Math.abs(investBalance))
-                    setFieldValue('investFee', Math.abs(investFee))
-                    setPrevValue(value)
+                    setFieldValue('baseBalance', baseBalance)
+                    setFieldValue('investBalance', investBalance)
+                    setFieldValue('investFee', investFee)
+                    setFieldValue('investRange', value)
                 }}
             />
         </div>
