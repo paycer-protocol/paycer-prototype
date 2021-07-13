@@ -1,4 +1,5 @@
 import React from 'react'
+import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
@@ -13,7 +14,7 @@ export default function InvestInput() {
     return (
         <Currency
             name="investBalance"
-            label="Current Invest"
+            label={t`Current Invest`}
             required
             currency={values.investSymbol}
             onChange={(e) => {

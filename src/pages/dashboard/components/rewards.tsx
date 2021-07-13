@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
 
 export default function Rewards() {
@@ -7,7 +8,7 @@ export default function Rewards() {
         <div className="row align-items-center">
           <div className="col">
             <h4 className="card-header-title">
-              Rewards
+              <Trans>Rewards</Trans>
             </h4>
           </div>
         </div>
@@ -22,7 +23,7 @@ export default function Rewards() {
           <div className="col-4">
             <div className="text-center">
               <h6 className="header-pretitle text-secondary">
-                Staked
+                <Trans>Staked</Trans>
               </h6>
               <h3 className="mb-0">
                 0 PRC
@@ -32,7 +33,7 @@ export default function Rewards() {
           <div className="col-4">
             <div className="text-center">
               <h6 className="header-pretitle text-secondary">
-                Unstaked
+                <Trans>Unstaked</Trans>
               </h6>
               <h3 className="mb-0">
                 0 PRC
@@ -42,7 +43,7 @@ export default function Rewards() {
           <div className="col-4">
             <div className="text-center">
               <h6 className="header-pretitle text-secondary">
-                APY
+                <Trans>APY</Trans>
               </h6>
               <h3 className="mb-0">
                 15%
@@ -53,7 +54,7 @@ export default function Rewards() {
 
         <div className="d-flex align-items-center justify-content-center">
           <Button variant="light" className="w-100">
-            Claim Rewards
+            <Trans>Claim Rewards</Trans>
           </Button>
         </div>
       </div>

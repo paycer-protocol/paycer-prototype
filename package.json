@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "rvo",
   "scripts": {
-    "dev": "yarn lingui:extract && yarn lingui:compile && next dev",
+    "dev": "export NODE_ENV=development && yarn lingui:extract && yarn lingui:compile && next dev",
     "build": "yarn lingui:extract && yarn lingui:compile && next build",
     "start": "next start",
     "storybook": "start-storybook -s public -p 9001",
@@ -15,15 +15,13 @@
   },
   "dependencies": {
     "@usedapp/core": "^0.3.24",
-    "add": "^2.0.6",
     "bootstrap": "^5.0.0-beta2",
     "next": "^10.0.0",
     "rc-slider": "^9.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-toastify": "^7.0.4",
-    "styled-components": "^5.3.0",
-    "yarn": "^1.22.10"
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

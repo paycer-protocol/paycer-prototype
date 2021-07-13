@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../types'
 
@@ -8,7 +9,7 @@ export default function DailyInterest() {
   return (
     <div className="d-flex flex-column">
       <span className="text-muted">
-          Daily interest
+          <Trans>Daily interest</Trans>
       </span>
       <span>+ {values.dailyInterest} {values.investSymbol}</span>
     </div>

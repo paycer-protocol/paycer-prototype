@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Button from '@components/atoms/button'
 import { InvestFormFields } from '../../types'
@@ -13,9 +13,7 @@ export default function SubmitButton() {
             className="w-100 mb-2"
             disabled={isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0}
         >
-            <Trans>
-                {values.submitAction === 'invest' ? 'Invest' : 'Withdraw'}
-            </Trans>
+            {values.submitAction === 'invest' ? t`Invest` : t`Withdraw`}
         </Button>
     )
 }

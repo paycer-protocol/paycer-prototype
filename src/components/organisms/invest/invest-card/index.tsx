@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Trans } from '@lingui/macro'
+import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money } from '@components/atoms/number'
 import Button from '@components/atoms/button'
@@ -57,7 +57,7 @@ const InvestCard = (props: InvestProps) => {
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
-                        <span className=""><Trans>Assets</Trans></span>
+                        <span className="">Assets</span>
                         <StackedIcons>
                             {assets.map((asset, key) => (
                                 <img key={key} src={asset.imgPath} alt={asset.name} />
@@ -91,9 +91,7 @@ const InvestCard = (props: InvestProps) => {
                 </ul>
 
                 <Button onClick={() => setShowInvestModal(true)} variant={invested ? 'invest' : 'primary'} className='w-100'>
-                    <Trans>
-                        {invested ? 'Edit invest' : 'Start invest'}
-                    </Trans>
+                    {invested ? t`Edit invest` : t`Start invest`}
                 </Button>
             </Card.Body>
             <InvestModal

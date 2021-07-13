@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from '@components/organisms/invest/invest-card'
@@ -126,7 +125,7 @@ export default () => {
                     </div>
                     <div className="col-auto">
                         <Button variant="outline-primary">
-                            <Trans>Create Plan</Trans>
+                            Create Plan
                         </Button>
                     </div>
                 </div>

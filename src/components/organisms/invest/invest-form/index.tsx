@@ -1,7 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import Form from '@components/atoms/form/form'
-import Button from '@components/atoms/button'
 import Card from '@components/molecules/card'
 import InvestCardHeader from './invest-card-header'
 import InvestRangeSlider from './fields/invest-range-slider'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
