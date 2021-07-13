@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans } from '@lingui/macro'
 import useWallet from './hooks/useWallet'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
@@ -20,7 +21,7 @@ const WalletProvider = (props: WalletProviderProps) => {
     return (
         <Modal show={show} onHide={onHide}>
             <Modal.Header closeButton onHide={onHide}>
-                <Modal.Title>Connect to a wallet</Modal.Title>
+                <Modal.Title><Trans>Connect to a wallet</Trans></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Alert variant="danger" show={!!wallet.errorMessage}>

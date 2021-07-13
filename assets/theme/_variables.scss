@@ -57,10 +57,12 @@ $orange: #fd7e14 !default; // NOT USED
 $yellow: #F6C343 !default;
 $green: #00D97E !default;
 $teal: #02a8b5 !default; // NOT USED
-$cyan: #39afd1 !default;
+$cyan: #20d2f4 !default;
+$lightgreen: #c1ff93;
+$lightblue: #6ef2ff;
 
-$primary: $blue !default;
-$secondary: $gray-700 !default;
+$primary: $white;
+$secondary: $white;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
@@ -82,8 +84,9 @@ $theme-colors: map-merge(
     "danger": $danger,
     "light": $light,
     "dark": $dark,
+    "white": $white,
+    "invest": $lightblue,
     "secondary-dark": $gray-600-dark,
-    "white": $white
   ),
 $theme-colors);
 /* beautify ignore:end */
@@ -195,10 +198,10 @@ $container-padding-x: $grid-gutter-width / 2 !default;
 $border-width: 1px !default;
 $border-color: $gray-300 !default;
 
-$border-radius: 0.375rem !default;
+$border-radius: 0.35rem !default;
 $border-radius-xs: .1875rem !default;
 $border-radius-sm: 0.25rem !default;
-$border-radius-lg: 0.5rem !default;
+$border-radius-lg: 0.35rem;
 
 $component-active-color: $white !default;
 $component-active-bg: $primary !default;
@@ -542,12 +545,17 @@ $modal-inner-padding: 1.5rem !default;
 
 $modal-content-border-color: transparent !default;
 
+$modal-header-border-width: 0;
+
 $modal-header-border-color: transparent !default;
 $modal-footer-border-color: transparent !default;
 $modal-header-padding-y: 1rem !default;
 $modal-header-padding: $modal-header-padding-y $modal-inner-padding !default;
 
 $modal-md: 600px !default;
+
+$modal-backdrop-bg: darken($black, 50%);
+$modal-backdrop-opacity: 0.75;
 
 
 // Alerts
@@ -576,6 +584,7 @@ $list-group-border-color: $gray-200 !default;
 
 $list-group-item-padding-y: 1rem !default;
 $list-group-item-padding-x: 1.25rem !default;
+$list-group-item-color: $gray-500;
 
 $list-group-action-color: $body-color !default;
 

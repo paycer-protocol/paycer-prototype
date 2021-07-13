@@ -4,14 +4,13 @@ import { StyledIconProps } from '@styled-icons/styled-icon'
 import { ProgressBar , Step } from 'react-step-progress-bar'
 
 export interface StepLineProps extends StyledIconProps {
-    steps?: any,
-    progress?: number,
-    symbolName?: string,
-    symbolImageId?: string
+    steps: any,
+    progress: number,
+    symbolName: string,
+    symbolShort: string
 }
 
-const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName, symbolImageId }: StepLineProps) => {
-
+const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName, symbolShort }: StepLineProps) => {
     if (!steps) {
         return null
     }
@@ -22,9 +21,9 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                 <Step>
                     {({ accomplished}) => (
                         <div
-                            className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                            className={`indexedStep ${accomplished ? 'accomplished' : null}`}
                         >
-                            <img src={`assets/token/svg/color/${symbolImageId}.svg`} />
+                            <img src={`assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
                                 <Trans>Invest</Trans><br />
                                 {symbolName}
@@ -38,7 +37,7 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                             <div
                                 className={`indexedStep ${accomplished ? "accomplished" : null}`}
                             >
-                                <img src={data.imgPath} />
+                                <img src={data.imgPath} alt="step" />
                                 <span>{data.label}</span>
                             </div>
                         )}
@@ -49,7 +48,7 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         <div
                             className={`indexedStep ${accomplished ? "accomplished" : null}`}
                         >
-                            <img src={`assets/token/svg/color/${symbolImageId}.svg`} />
+                            <img src={`assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
                                 <Trans>Withdraw</Trans><br />
                                 {symbolName}

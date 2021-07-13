@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans } from '@lingui/macro'
 import useWallet from './hooks/useWallet'
 import useNetwork from './hooks/useNetwork'
 import Button from '@components/atoms/button'
@@ -21,7 +22,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
     return (
         <Modal.Dialog>
             <Modal.Header closeButton>
-                <Modal.Title>Select a Network</Modal.Title>
+                <Modal.Title><Trans>Select a Network</Trans></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Alert variant="danger" show={!!wallet.errorMessage}>

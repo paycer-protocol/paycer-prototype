@@ -18,11 +18,11 @@ const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
     <BaseModalHeader>
         {children}
         {closeButton && (
-            <a className="text-white" onClick={onHide}>
+            <a className="text-muted" onClick={onHide}>
                 <Icon
                     onClick={onHide}
                     component={XLg}
-                    size={18}
+                    size={16}
                 />
             </a>
         )}
