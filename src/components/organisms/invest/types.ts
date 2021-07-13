@@ -10,40 +10,41 @@ export interface FeesProps {
 }
 
 export interface InterestProps {
-    rewardRate: number
-    earnedReward: number
+    interestRate: number
+    earnedInterest: number
+    dailyInterest?: number
 }
 
 
 export interface RewardProps {
-    interestRate: number
-    earnedInterest: number
+    rewardRate: number
+    earnedReward: number
+    rewardSymbol: string
+    dailyRewards?: number
 }
 
-export interface InvestProps extends FeesProps, InterestProps, RewardProps {
+export interface InvestPairProps {
+    baseSymbol: string
+    basePriceUSD?: number
+    basePriceETH?: number
+    baseBalance?: number
+    investSymbol: string
+    investPriceUSD?: number
+    investPriceETH?: number
+    investBalance?: number
+}
+
+export interface InvestProps extends InvestPairProps, FeesProps, InterestProps, RewardProps {
     title: string
     hasInvested: boolean
     invested: number
     tvl: number
     assets: Asset[]
-    investSymbol: string
-    rewardSymbol: string
-    walletSymbol: string
     setShowWalletProviderModal?: any // todo: remove ui indicator from data model
 }
 
-export interface InvestFormFields {
-    investBalance: number
-    walletBalance: number
-    dailyInterest: number
-    dailyRewards: number
-    withdrawFee: number
-    investFee: number
+export interface InvestFormFields extends InvestPairProps, FeesProps, RewardProps, InterestProps {
     investRange: number
-    feeSymbol: string
-    investSymbol: string
-    rewardSymbol: string
-    walletSymbol: string
     submitAction: 'invest' | 'withdraw'
 }
 

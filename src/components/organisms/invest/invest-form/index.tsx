@@ -1,42 +1,67 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { ChainId } from '@usedapp/core'
-import { Bnb, Eth } from '@styled-icons/crypto'
 import Form from '@components/atoms/form/form'
 import Button from '@components/atoms/button'
 import Card from '@components/molecules/card'
 import InvestCardHeader from './invest-card-header'
-import InvestRange from './invest-range-slider'
-import InvestBalance from './invest-balance'
-import WalletBalance from './wallet-balance'
+import InvestRangeSlider from './fields/invest-range-slider'
+import InvestInput from './fields/invest-input'
+import BaseInput from './fields/base-Input'
 import DailyInterest from './daily-interest'
 import DailyRewards from './daily-rewards'
 import InvestFee from './invest-fee'
 import { InvestProps, InvestFormFields } from '../types'
 
-const IconMap = {
-    [ChainId.BSC]: Bnb,
-    default: Eth
-}
 
 const InvestForm = (props: InvestProps) => {
-    const { investSymbol, rewardSymbol, walletSymbol, investFee, withdrawFee, feeSymbol } = props
+    const {
+        // invest pairs
+        baseSymbol,
+        baseBalance,
+        investSymbol,
+        investBalance,
+        // interest
+        interestRate,
+        earnedInterest,
+        // rewards
+        rewardSymbol,
+        rewardRate,
+        earnedReward,
+        // fees
+        feeSymbol,
+        withdrawFee,
+        investFee,
+    } = props
+
     const handleSubmit = (values: InvestFormFields) => {
         alert(values.investBalance)
     }
 
     const initialValues: InvestFormFields = {
-        investBalance: 45,
-        walletBalance: 100,
-        dailyInterest: 0,
-        dailyRewards: 0,
-        investRange: 0,
+        // invest pairs
+        baseSymbol,
+        baseBalance: 100,
         investSymbol,
+        investBalance: 100,
+
+        // interest
+        interestRate,
+        earnedInterest,
+        dailyInterest: 0,
+
+        // rewards
         rewardSymbol,
-        walletSymbol,
-        investFee,
-        withdrawFee,
+        rewardRate,
+        earnedReward,
+        dailyRewards: 0,
+
+        // fees
         feeSymbol,
+        withdrawFee: 0,
+        investFee: 0,
+
+        // form
+        investRange: 0,
         submitAction: 'invest'
     }
 
@@ -51,14 +76,14 @@ const InvestForm = (props: InvestProps) => {
                     <InvestCardHeader {...props} />
                     <Card.Body>
                         <div className="mb-5">
-                            <InvestRange />
+                            <InvestRangeSlider />
                         </div>
                         <div className="row">
                             <div className="col-6">
-                                <InvestBalance />
+                                <InvestInput />
                             </div>
                             <div className="col-6">
-                                <WalletBalance />
+                                <BaseInput />
                             </div>
                         </div>
                         <div className="row mb-5">
@@ -76,7 +101,7 @@ const InvestForm = (props: InvestProps) => {
                             disabled={!initialValues.investBalance}
                         >
                             <Trans>
-                                {initialValues.submitAction}
+                                {initialValues.submitAction === 'invest' ? 'Invest' : 'Withdraw'}
                             </Trans>
                         </Button>
                         <InvestFee {...props} />

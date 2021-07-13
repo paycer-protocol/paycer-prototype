@@ -4,7 +4,6 @@ import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money } from '@components/atoms/number'
 import Button from '@components/atoms/button'
-import useWallet from '@components/organisms/web3/hooks/useWallet'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestProps } from '../types'
 
@@ -27,15 +26,10 @@ const InvestCard = (props: InvestProps) => {
         assets,
         tvl,
         invested,
-        earnedReward,
         earnedInterest,
         investSymbol,
-        rewardSymbol,
-        setShowWalletProviderModal
     } = props
 
-    const wallet = useWallet()
-    const { isConnected } = wallet
     const [showInvestModal, setShowInvestModal] = useState(false)
     const totalInterestRate = interestRate + rewardRate;
 
