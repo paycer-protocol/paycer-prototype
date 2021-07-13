@@ -11,7 +11,7 @@ export default function SubmitButton() {
         <Button
             variant={!dirty ? 'outline-success' : 'success'}
             className="w-100 mb-2"
-            disabled={isSubmitting || !dirty || !isValid || isValidating}
+            disabled={isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0}
         >
             <Trans>
                 {values.submitAction === 'invest' ? 'Invest' : 'Withdraw'}

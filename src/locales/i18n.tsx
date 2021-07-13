@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 export async function activate(locale: string) {
     const { messages } = await import(`@lingui/loader!./messages/${locale}.po`)
-    i18n.load(locale, messages)
+    // i18n.load(locale, messages)
     i18n.activate(locale)
 }
 

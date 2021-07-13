@@ -6,6 +6,7 @@ import { InvestFormFields } from '../../types'
 export default function InvestInput() {
     const {
         values,
+        initialValues,
         setFieldValue
     } = useFormikContext<InvestFormFields>()
 
@@ -16,33 +17,32 @@ export default function InvestInput() {
             required
             currency={values.investSymbol}
             onChange={(e) => {
-                // let value = Number(e.target.value).toFixed(4) as any
-                //
-                // let diff = 0 as any
-                //
-                // // if its a deposit
-                // if (value > deposit) {
-                //     diff = value - deposit
-                //     const newBalance = Number(parseFloat(etherBalance) - parseFloat(diff)).toFixed(4)
-                //     setBalance(newBalance)
-                //     // withdraw ...
-                // } else {
-                //     diff = Number(deposit - value)
-                //     const newBalance = Number(parseFloat(etherBalance) + parseFloat(diff)).toFixed(4)
-                //     setBalance(newBalance)
-                // }
-                //
-                // calculateFee(value)
-                // setNewDeposit(value)
+                // todo: price feed missing
+                const exchangePrice = 1
+                let baseBalance = 0 as number
+                let investBalance = Number(e.target.value.split(' ')[1]) as number
+                let investFee = 0 as number
+                let investDiff = 0 as number
 
+                // plus
+                if (investBalance > initialValues.investBalance) {
+                    investDiff = investBalance - initialValues.investBalance
+                    baseBalance = initialValues.baseBalance - (investDiff * exchangePrice)
+                    investFee = investBalance * values.investFee
+                // minus
+                } else {
+                    investDiff = initialValues.investBalance - investBalance
+                    baseBalance = initialValues.baseBalance + (investDiff * exchangePrice)
+                    investFee = investBalance * values.withdrawFee
+                }
 
-                let investBalance = e.target.value as number
-                let baseBalance = values.baseBalance
-                let investFee = values.investFee
+                const totalBalance = initialValues.baseBalance + (initialValues.investBalance * exchangePrice)
+                const investRange = investBalance * 100 / totalBalance
 
-                setFieldValue('investBalance', investBalance)
                 setFieldValue('baseBalance', baseBalance)
+                setFieldValue('investBalance', investBalance)
                 setFieldValue('investFee', investFee)
+                setFieldValue('investRange', investRange)
             }}
         />
     )

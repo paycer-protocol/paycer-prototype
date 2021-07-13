@@ -24,6 +24,7 @@ export default function InvestRangeSlider() {
                 min={0}
                 max={100}
                 step={0.001}
+                value={values.investRange}
                 defaultValue={values.investBalance * 100 / totalBalance}
                 onChange={(value) => {
                     let baseBalance = 0 as number
@@ -34,7 +35,7 @@ export default function InvestRangeSlider() {
                     investBalance = walletDiff * exchangePrice
 
                     // plus
-                    if (value > prevValue) {
+                    if (value >= prevValue) {
                         baseBalance = totalBalance - walletDiff
                         investFee = investBalance * values.investFee
                     // minus
