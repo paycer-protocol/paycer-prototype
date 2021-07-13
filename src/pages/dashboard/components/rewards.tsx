@@ -52,10 +52,12 @@ export default function Rewards() {
           </div>
         </div>
 
-        <div className="d-flex align-items-center justify-content-center">
-          <Button variant="light" className="w-100">
-            <Trans>Claim Rewards</Trans>
-          </Button>
+        <div className="row">
+          <div className="d-flex align-items-center justify-content-center">
+            <Button variant="light" className="w-100">
+              <Trans>Claim Rewards</Trans>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

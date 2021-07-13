@@ -27,19 +27,18 @@ msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
 #: src/pages/dashboard/components/portfolio.tsx:89
-msgid "Asset"
-msgstr "Asset"
+#~ msgid "Asset"
+#~ msgstr "Asset"
 
 #: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
 msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/account-detail.tsx:68
-#: src/pages/dashboard/components/portfolio.tsx:94
 msgid "Balance"
 msgstr "Balance"
 
-#: src/pages/dashboard/components/rewards.tsx:57
+#: src/pages/dashboard/components/rewards.tsx:58
 msgid "Claim Rewards"
 msgstr "Claim Rewards"
 
@@ -133,21 +132,21 @@ msgstr "Explorer"
 msgid "Fee"
 msgstr "Fee"
 
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:29
 #: src/components/organisms/header/header.tsx:46
 #: src/components/organisms/header/header.tsx:47
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
 #: src/components/organisms/invest/invest-modal.tsx:16
-#: src/pages/dashboard/components/portfolio.tsx:139
 msgid "Invest"
 msgstr "Invest"
 
 #: src/pages/dashboard/components/portfolio.tsx:99
-msgid "Investment ratio"
-msgstr "Investment ratio"
+#~ msgid "Investment ratio"
+#~ msgstr "Investment ratio"
 
 #: src/pages/dashboard/components/portfolio.tsx:104
-msgid "Liquidity"
-msgstr "Liquidity"
+#~ msgid "Liquidity"
+#~ msgstr "Liquidity"
 
 #: src/pages/dashboard/components/dash-cards.tsx:24
 msgid "Moderat"
@@ -166,8 +165,8 @@ msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
 #: src/pages/dashboard/components/portfolio.tsx:78
-msgid "Portfolio"
-msgstr "Portfolio"
+#~ msgid "Portfolio"
+#~ msgstr "Portfolio"
 
 #: src/pages/dashboard/components/rewards.tsx:11
 msgid "Rewards"
@@ -221,6 +220,7 @@ msgstr "Unstaked"
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:54
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
 msgid "Withdraw"
 msgstr "Withdraw"
