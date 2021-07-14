@@ -1,7 +1,6 @@
 import PageHeader from '@components/molecules/page-header'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
-import Rewards from './components/rewards'
 
 export default function Home() {
   return (
@@ -15,14 +14,6 @@ export default function Home() {
         <div className="row">
           <div className="col-12">
             <Portfolio />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12 col-md-6 col-xl">
-            <Rewards />
-          </div>
-          <div className="col-12 col-md-6 col-xl">
-            <Rewards />
           </div>
         </div>
       </div>

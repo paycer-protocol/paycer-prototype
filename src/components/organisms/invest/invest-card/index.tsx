@@ -37,7 +37,7 @@ const InvestCard = (props: InvestProps) => {
         setShowInvestModal(false)
     }
     return (
-        <Card className="box-shadow" border={invested > 0 ? 'invest' : ''}>
+        <Card className="box-shadow lift" border={invested > 0 ? 'invest' : ''}>
             <Card.Body>
                 <h6 className="text-uppercase text-center my-4 font-size-lg">
                     { title }

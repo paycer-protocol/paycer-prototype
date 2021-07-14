@@ -22,9 +22,9 @@ type FormComponent = FC<FormProps<FormikValues>> & {
 
 const Form: FormComponent = ({ className, children, ...restProps }: FormProps<FormikValues>) => (
     <Formik {...restProps}>
-        {({ handleSubmit }: DerivedFormikProps<FormikValues>) => (
-            <BootstrapForm className={className} onSubmit={handleSubmit}>
-                {children}
+        {(formik: DerivedFormikProps<FormikValues>) => (
+            <BootstrapForm className={className} onSubmit={formik.handleSubmit}>
+                {children(formik)}
             </BootstrapForm>
         )}
     </Formik>
