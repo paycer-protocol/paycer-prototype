@@ -9,12 +9,11 @@ import { INetworkProvider } from './providers'
 export interface NetworkProviderProps {
     providers: {
         [chainId: number]: INetworkProvider
-    },
-    onHide?: any
+    }
 }
 
 const NetworkProvider = (props: NetworkProviderProps) => {
-    const { providers = {}} = props
+    const { providers = {} } = props
     const network = useNetwork()
     const wallet = useWallet()
 
