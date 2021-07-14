@@ -6,7 +6,7 @@ export interface FormattedNumberProps extends FormatNumberOptions {
     className?: string;
 }
 
-export const FormattedNumber = ({ value = 0, ...restProps }: FormattedNumberProps) => (
+export const FormattedNumber = ({ value = 0, minimumFractionDigits = 2, maximumSignificantDigits = 4, ...restProps }: FormattedNumberProps) => (
     <BaseFormattedNumber
         value={Number(value || 0)}
         style="decimal"

@@ -49,7 +49,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                     const className = isActive ? 'bg-dark-soft border-dark mb-2 w-100 p-2 rounded-2 p-3' : 'bg-secondary-dark-soft mb-2 w-100 p-2 rounded-2 p-3'
 
                     return (
-                        <div className="col-3" style={{marginBottom: '18px'}}>
+                        <div key={chainId} className="col-3" style={{marginBottom: '18px'}}>
                             <div
                                 key={chainId}
                                 className={className}

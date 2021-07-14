@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import Account from '../web3/account'
+import Network from '../web3/network'
 
 const StyledBrand = styled(Navbar.Brand)`
   margin-top: -10px;
@@ -31,9 +32,9 @@ const Header = () => {
                         </a>
                     </Link>
 
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <ul className="navbar-nav me-lg-auto">
+                    <Navbar.Toggle aria-controls="header-navbar-nav" />
+                    <Navbar.Collapse id="header-navbar-nav" className="ms-2 me-auto">
+                        <ul className="navbar-nav">
                             <li className="nav-item me-3">
                                 <Link href="/">
                                     <a className={classnames({active: router.pathname == '/'}, 'nav-link')} title={t`Dashboard`}>
@@ -62,14 +63,19 @@ const Header = () => {
                                     </a>
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Account
-                                    buttonVariant="light"
-                                    dropdownVariant="light"
-                                />
-                            </li>
                         </ul>
                     </Navbar.Collapse>
+                    <ul className="navbar-nav">
+                        <li className="nav-item me-3">
+                            <Network />
+                        </li>
+                        <li className="nav-item">
+                            <Account
+                              buttonVariant="light"
+                              dropdownVariant="light"
+                            />
+                        </li>
+                    </ul>
                 </div>
             </Navbar>
         </header>

@@ -12,7 +12,9 @@ export default function useNetwork() {
     }
 
     const switchNetwork = async (provider: INetworkProvider) => {
+        console.log(provider);
         await library?.send('wallet_switchEthereumChain', [{
+            // @ts-ignore
             chainId: provider?.chainId
         }])
     }

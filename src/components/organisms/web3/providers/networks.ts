@@ -88,7 +88,7 @@ export const mainNetProviders: INetworkProvider = {
     },
     [ChainId.BSC]: {
         chainId: '0x38',
-        chainName: 'Binance Smart Chain',
+        chainName: 'BSC',
         nativeCurrency: {
             name: 'Binance Coin',
             symbol: 'BNB',

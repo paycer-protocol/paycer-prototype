@@ -907,7 +907,7 @@ $header-margin-bottom: 2rem !default;
 
 $header-spacing-y: 1.5rem !default;
 
-$header-body-border-width: 1px !default;
+$header-body-border-width: 0;
 $header-body-border-color: $border-color !default;
 
 $header-body-border-color-dark: fade-out($header-body-border-color, .9) !default;
