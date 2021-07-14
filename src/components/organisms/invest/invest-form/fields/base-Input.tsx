@@ -47,7 +47,7 @@ export default function BaseInput() {
                 setFieldValue('baseBalance', baseBalance)
                 setFieldValue('investBalance', investBalance)
                 setFieldValue('investRange', investRange)
-                setFieldValue('submitAction', baseBalance > initialValues.baseBalance ? 'invest' : 'withdraw')
+                setFieldValue('submitAction', investBalance < initialValues.investBalance ? 'withdraw' : 'invest')
             }}
         />
     )

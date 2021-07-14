@@ -64,7 +64,7 @@ msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
 #: src/components/organisms/web3/account-detail.tsx:138
-#: src/components/organisms/web3/account.tsx:29
+#: src/components/organisms/web3/account.tsx:59
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
@@ -195,7 +195,7 @@ msgstr "Monthly rewards"
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
-#: src/pages/stake/index.tsx:19
+#: src/pages/staking/index.tsx:19
 msgid "Overview"
 msgstr "Overview"
 
@@ -213,8 +213,8 @@ msgstr "Portfolio"
 
 #: src/pages/dashboard/components/staking-card.tsx:19
 #: src/pages/stake/index.tsx:29
-msgid "Rewards"
-msgstr "Rewards"
+#~ msgid "Rewards"
+#~ msgstr "Rewards"
 
 #: src/pages/dashboard/components/dash-cards.tsx:23
 msgid "Risk"
@@ -232,7 +232,6 @@ msgstr "Savings"
 msgid "Select a Network"
 msgstr "Select a Network"
 
-#: src/components/organisms/header/header.tsx:54
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr "Stake"
@@ -241,12 +240,13 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
+#: src/components/organisms/header/header.tsx:54
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
 msgstr "Staking"
 
-#: src/pages/stake/index.tsx:20
+#: src/pages/staking/index.tsx:20
 msgid "Staking Rewards"
 msgstr "Staking Rewards"
 
