@@ -31,14 +31,7 @@ export default function InvestRangeSlider() {
 
                     const walletDiff = totalBalance * value / 100
                     investBalance = walletDiff * exchangePrice
-
-                    // plus
-                    if (value >= values.investRange) {
-                        baseBalance = totalBalance - walletDiff
-                    // minus
-                    } else {
-                        baseBalance = totalBalance - walletDiff
-                    }
+                    baseBalance = totalBalance - walletDiff
 
                     baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
                     baseBalance = baseBalance < 0 ? 0 : baseBalance

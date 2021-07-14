@@ -1,11 +1,10 @@
-import React, { useContext }  from 'react'
-import { Trans, t } from '@lingui/macro'
+import React from 'react'
+import { Trans } from '@lingui/macro'
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
-import AccordionContext from 'react-bootstrap/AccordionContext';
 import StepProgressBar from '@components/molecules/step-progress-bar'
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
 
 const portfolioFixtures = [
   {

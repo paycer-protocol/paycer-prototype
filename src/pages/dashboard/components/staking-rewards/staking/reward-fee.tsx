@@ -2,24 +2,16 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
-import { InvestFormFields } from '../types'
+import { StakingProps } from '../types'
 
-export default function InvestFee() {
-  const { values, initialValues, dirty } = useFormikContext<InvestFormFields>()
+export default function RewardFee() {
+  const { values, initialValues, dirty } = useFormikContext<StakingProps>()
 
   if (!dirty) {
       return null
   }
 
   let fee = 0
-  if (values.submitAction === 'invest') {
-      const investAmount = values.investBalance - initialValues.investBalance
-      fee = investAmount * values.investFee / 100;
-  } else {
-      const withdrawAmount = initialValues.investBalance - values.investBalance
-      fee = withdrawAmount * values.withdrawFee / 100;
-  }
-
 
   return (
     <div className="text-center">
@@ -31,7 +23,7 @@ export default function InvestFee() {
               minimumFractionDigits={2}
               maximumFractionDigits={4}
           />
-          &nbsp;{values.feeSymbol}
+          &nbsp;{values.rewardSymbol}
       </small>
     </div>
   )

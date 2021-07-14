@@ -13,7 +13,7 @@ export default function SubmitButton() {
             className="w-100 mb-2"
             disabled={isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0}
         >
-            {values.submitAction === 'invest' ? t`Invest` : t`Withdraw`}
+            {t`Invest`}
         </Button>
     )
 }

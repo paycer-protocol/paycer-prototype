@@ -101,7 +101,7 @@ const InvestForm = (props: InvestProps) => {
                         </div>
                     </div>
                     <SubmitButton />
-                    <InvestFee {...props} />
+                    <InvestFee />
                 </Card.Body>
             </Card>
         </Form>
