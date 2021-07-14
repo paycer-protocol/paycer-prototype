@@ -20,7 +20,6 @@ const HorizontalLine = styled.div`
   margin: 1rem 2rem;
 `
 
-
 export default function ClaimSummary() {
   return (
     <div>
