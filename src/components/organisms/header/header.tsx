@@ -16,15 +16,8 @@ const StyledBrand = styled(Navbar.Brand)`
   }
 `
 
-<<<<<<< Updated upstream
-export interface HeaderProps {}
-
-const Header = (props: HeaderProps) => {
-    const {} = props
-=======
 const Header = () => {
     const router = useRouter()
->>>>>>> Stashed changes
 
     return (
         <header>

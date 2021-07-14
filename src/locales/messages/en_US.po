@@ -90,8 +90,8 @@ msgstr "Daily rewards"
 
 #: src/components/organisms/header/header.tsx:42
 #: src/components/organisms/header/header.tsx:43
-msgid "Dashboard"
-msgstr "Dashboard"
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
 
 #: src/components/organisms/invest/invest-card/index.tsx:77
 msgid "Deposited"
@@ -102,12 +102,12 @@ msgid "Disconnect"
 msgstr "Disconnect"
 
 #: src/components/organisms/header/header.tsx:57
-msgid "Docs"
-msgstr "Docs"
+#~ msgid "Docs"
+#~ msgstr "Docs"
 
 #: src/components/organisms/header/header.tsx:56
-msgid "Documentation"
-msgstr "Documentation"
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
 
 #: src/components/organisms/invest/invest-card/index.tsx:85
 msgid "Earned"
@@ -134,8 +134,6 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:49
-#: src/components/organisms/header/header.tsx:50
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
 #: src/components/organisms/invest/invest-modal.tsx:16
 msgid "Invest"
