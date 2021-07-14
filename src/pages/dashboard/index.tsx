@@ -13,10 +13,15 @@ export default function Home() {
       <div className="container">
         <DashCards />
         <div className="row">
-          <div className="col-12 col-md-8 col-xl">
+          <div className="col-12">
             <Portfolio />
           </div>
-          <div className="col-12 col-md-4  col-xl">
+        </div>
+        <div className="row">
+          <div className="col-12 col-md-6 col-xl">
+            <Rewards />
+          </div>
+          <div className="col-12 col-md-6 col-xl">
             <Rewards />
           </div>
         </div>

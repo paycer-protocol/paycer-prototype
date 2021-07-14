@@ -9,7 +9,6 @@ import Radio from './radio'
 import Range from './range'
 import Select from './select'
 import Textarea from './textarea'
-import './form.styles.scss'
 
 type FormComponent = FC<FormProps<FormikValues>> & {
     Group: typeof Group

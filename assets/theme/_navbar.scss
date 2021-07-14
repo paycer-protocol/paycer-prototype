@@ -180,6 +180,10 @@
 .navbar-light {
   background-color: $navbar-light-bg;
   border-color: $navbar-light-border-color;
+
+  .navbar-nav .nav-link {
+    color: $white;
+  }
 }
 
 .navbar-light .navbar-heading {

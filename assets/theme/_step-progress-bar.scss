@@ -1,0 +1,32 @@
+@import '~react-step-progress-bar/styles.css';
+
+.indexedStep {
+  color: white;
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  background-color: rgba(211, 211, 211, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    position: absolute;
+  }
+
+  span {
+    position: relative;
+    top: 40px;
+    text-align: center;
+    line-height: 16px;
+  }
+}
+
+.indexedStep.accomplished {
+  background-color: $black-dark;
+}
+
+.RSPBprogressBar {
+  height: 5px !important;
+}

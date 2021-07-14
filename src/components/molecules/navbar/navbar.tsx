@@ -10,7 +10,7 @@ export interface NavbarProps extends BaseNavbarProps {}
 
 const Navbar = ({className = '', ...props}: NavbarProps) => (
     <BaseNavbar
-        className={classnames('navbar navbar-expand-lg navbar-light', )}
+        className={classnames('navbar navbar-expand-lg navbar-white', )}
         {...props}
     />
 )

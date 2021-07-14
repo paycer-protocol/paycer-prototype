@@ -1,8 +1,8 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
 
-  width: 36px;
-  height: 30px;
+  width: 30px;
+  height: 24px;
   left: 36px;
   top: 36px;
 }
@@ -26,7 +26,9 @@
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: $white;
+  width: 2px!important;
+  height: 22px!important;
 }
 
 /*
@@ -42,7 +44,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu {
   background: $black-dark;
-  padding: 2.5em 1.5em 0;
+  padding: 10px 30px;
   font-size: 1.15em;
   border-left: 1px solid $gray-700-dark;
 }
@@ -66,4 +68,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.bm-burger-bars-wrapper {
+  position: absolute;
+  top: 22px;
+  right: 20px;
 }

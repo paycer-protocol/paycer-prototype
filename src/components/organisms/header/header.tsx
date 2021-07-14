@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans, t } from '@lingui/macro'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from '@components/atoms/image'
@@ -28,21 +29,21 @@ const Header = (props: HeaderProps) => {
                 <li className="nav-item me-3">
                     <Link href="/">
                         <a className="nav-link" title="Dashboard">
-                            Dashboard
+                            <Trans>Dashboard</Trans>
                         </a>
                     </Link>
                 </li>
                 <li className="nav-item me-3">
                     <Link href="/invest">
                         <a className="nav-link" title="Dashboard">
-                            Invest
+                            <Trans>Invest</Trans>
                         </a>
                     </Link>
                 </li>
                 <li className="nav-item me-4">
                     <Link href="/docs">
                         <a className="nav-link" title="Documentation">
-                            Docs
+                            <Trans>Invest</Trans>
                         </a>
                     </Link>
                 </li>
@@ -71,7 +72,7 @@ const Header = (props: HeaderProps) => {
                             ? (
                                 <>
                                     <div>
-                                        <div style={{ right: 20, top: 20}} className="position-absolute">
+                                        <div className="bm-burger-bars-wrapper">
                                             <Menu right>
                                                 {renderMenu()}
                                             </Menu>
