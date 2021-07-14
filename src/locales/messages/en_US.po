@@ -26,7 +26,7 @@ msgstr "APY"
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
-#: src/pages/dashboard/components/portfolio.tsx:182
+#: src/pages/dashboard/components/portfolio.tsx:176
 msgid "Asset"
 msgstr "Asset"
 
@@ -35,7 +35,7 @@ msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/account-detail.tsx:68
-#: src/pages/dashboard/components/portfolio.tsx:187
+#: src/pages/dashboard/components/portfolio.tsx:181
 msgid "Balance"
 msgstr "Balance"
 
@@ -48,7 +48,7 @@ msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
 #: src/components/organisms/web3/account-detail.tsx:138
-#: src/components/organisms/web3/account.tsx:29
+#: src/components/organisms/web3/account.tsx:59
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
@@ -88,8 +88,8 @@ msgstr "Daily interest"
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/header/header.tsx:39
-#: src/components/organisms/header/header.tsx:40
+#: src/components/organisms/header/header.tsx:42
+#: src/components/organisms/header/header.tsx:43
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -101,11 +101,11 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/header/header.tsx:54
+#: src/components/organisms/header/header.tsx:57
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:53
+#: src/components/organisms/header/header.tsx:56
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -134,18 +134,18 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:46
-#: src/components/organisms/header/header.tsx:47
+#: src/components/organisms/header/header.tsx:49
+#: src/components/organisms/header/header.tsx:50
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
 #: src/components/organisms/invest/invest-modal.tsx:16
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/dashboard/components/portfolio.tsx:192
+#: src/pages/dashboard/components/portfolio.tsx:186
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
-#: src/pages/dashboard/components/portfolio.tsx:197
+#: src/pages/dashboard/components/portfolio.tsx:191
 msgid "Liquidity"
 msgstr "Liquidity"
 
@@ -165,7 +165,7 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/pages/dashboard/components/portfolio.tsx:166
+#: src/pages/dashboard/components/portfolio.tsx:163
 msgid "Portfolio"
 msgstr "Portfolio"
 
