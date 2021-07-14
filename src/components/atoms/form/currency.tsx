@@ -35,7 +35,8 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
                     numeral: true,
                     numeralThousandsGroupStyle: 'thousand',
                     prefix: currency + ' ',
-                    numeralDecimalScale: decimals
+                    numeralDecimalScale: decimals,
+                    max: 10,
                 }}
             />
         </Group>

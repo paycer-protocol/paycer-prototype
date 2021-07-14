@@ -22,7 +22,7 @@ export default function InvestInput() {
                 // todo: price feed missing
                 const exchangePrice = 1
                 let baseBalance = 0 as number
-                let investBalance = Number(e.target.value.split(' ')[1]) as number
+                let investBalance = Number(e.target.rawValue.split(' ')[1]) as number
                 let investDiff = 0 as number
 
                 // plus
@@ -41,8 +41,8 @@ export default function InvestInput() {
                 baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
                 baseBalance = baseBalance < 0 ? 0 : baseBalance
 
-                investBalance = investBalance > totalBalance ? totalBalance : investBalance
                 investBalance = investBalance < 0 ? 0 : investBalance
+                investBalance = investBalance >= totalBalance ? totalBalance : investBalance
 
                 setFieldValue('baseBalance', baseBalance)
                 setFieldValue('investBalance', investBalance)

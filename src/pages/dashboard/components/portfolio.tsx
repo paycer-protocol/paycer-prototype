@@ -1,11 +1,10 @@
-import React, { useContext }  from 'react'
-import { Trans, t } from '@lingui/macro'
+import React from 'react'
+import { Trans } from '@lingui/macro'
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
-import AccordionContext from 'react-bootstrap/AccordionContext';
 import StepProgressBar from '@components/molecules/step-progress-bar'
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
 
 const portfolioFixtures = [
   {
@@ -204,16 +203,23 @@ export default function Portfolio() {
                         {data.balanceSymbol}&nbsp;{data.symbolShort}
                       </td>
                       <td className="text-end">
-                        <div className="text-start">
-                          <Percentage
-                              value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
-                              className="mb-2"
-                          />
-                          <ProgressBar
+                        <div className="row align-items-center g-0">
+                          <div className="col-auto">
+                            <small className="me-2">
+                              <Percentage
+                                value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
+                                className="mb-2"
+                              />
+                            </small>
+                          </div>
+                          <div className="col">
+                            <ProgressBar
+                              className="progress-sm"
                               now={data.balanceUSD * 100 / totalBalanceUSD}
                               min={0}
                               max={100}
-                          />
+                            />
+                          </div>
                         </div>
                       </td>
                       <td className="text-end">

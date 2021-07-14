@@ -21,7 +21,7 @@ export default function BaseInput() {
             onChange={(e) => {
                 // todo: price feed missing
                 const exchangePrice = 1
-                let baseBalance = Number(e.target.value.split(' ')[1]) as number
+                let baseBalance = Number(e.target.rawValue.split(' ')[1]) as number
                 let investBalance = 0 as number
                 let baseDiff = 0 as number
 
@@ -41,8 +41,8 @@ export default function BaseInput() {
                 baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
                 baseBalance = baseBalance < 0 ? 0 : baseBalance
 
-                investBalance = investBalance > totalBalance ? totalBalance : investBalance
                 investBalance = investBalance < 0 ? 0 : investBalance
+                investBalance = investBalance >= totalBalance ? totalBalance : investBalance
 
                 setFieldValue('baseBalance', baseBalance)
                 setFieldValue('investBalance', investBalance)
