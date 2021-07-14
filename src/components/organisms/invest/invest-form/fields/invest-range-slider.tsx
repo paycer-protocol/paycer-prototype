@@ -49,7 +49,7 @@ export default function InvestRangeSlider() {
                     setFieldValue('baseBalance', baseBalance)
                     setFieldValue('investBalance', investBalance)
                     setFieldValue('investRange', value)
-                    setFieldValue('submitAction', value >= values.investRange ? 'invest' : 'withdraw')
+                    setFieldValue('submitAction', investBalance < initialValues.investBalance ? 'withdraw' : 'invest')
                 }}
             />
         </div>
