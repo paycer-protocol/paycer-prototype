@@ -314,6 +314,8 @@ $input-btn-line-height-lg: $line-height-base !default;
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
 
+$btn-border-width: 2px;
+
 $btn-padding-y: $input-btn-padding-y !default;
 $btn-padding-x: $input-btn-padding-x !default;
 $btn-line-height: $input-btn-line-height !default;
