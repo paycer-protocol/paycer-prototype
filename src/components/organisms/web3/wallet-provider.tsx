@@ -45,7 +45,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                                     <div className="text-start">
                                         <strong>{item.name}</strong>
                                         <p className="mb-0">
-                                            <small>{item.description}</small>
+                                            <small className="text-muted">{item.description}</small>
                                         </p>
                                     </div>
                                     {

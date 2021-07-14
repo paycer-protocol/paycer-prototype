@@ -2,36 +2,6 @@ a {
   cursor: pointer;
 }
 
-.text-divider {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 0 10px 0 12px;
-  &:before {
-    content: "";
-    position: absolute;
-    height: 60%;
-    width: 1px;
-    background: $gray-700;
-  }
-}
-
-.ml-1 {
-  margin-left: ($spacer * .25) !important;
-}
-
-.mr-1 {
-  margin-right: ($spacer * .25) !important;
-}
-
-.ml-2 {
-  margin-left: ($spacer * .5) !important;
-}
-
-.mr-2 {
-  margin-right: ($spacer * .5) !important;
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
