@@ -7,7 +7,7 @@ import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
-    margin: 30px;
+    margin: 20px 30px 20px 50px;
 `
 
 export default () => {

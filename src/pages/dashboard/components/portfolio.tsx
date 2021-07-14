@@ -203,16 +203,23 @@ export default function Portfolio() {
                         {data.balanceSymbol}&nbsp;{data.symbolShort}
                       </td>
                       <td className="text-end">
-                        <div className="text-start">
-                          <Percentage
-                              value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
-                              className="mb-2"
-                          />
-                          <ProgressBar
+                        <div className="row align-items-center g-0">
+                          <div className="col-auto">
+                            <small className="me-2">
+                              <Percentage
+                                value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
+                                className="mb-2"
+                              />
+                            </small>
+                          </div>
+                          <div className="col">
+                            <ProgressBar
+                              className="progress-sm"
                               now={data.balanceUSD * 100 / totalBalanceUSD}
                               min={0}
                               max={100}
-                          />
+                            />
+                          </div>
                         </div>
                       </td>
                       <td className="text-end">
