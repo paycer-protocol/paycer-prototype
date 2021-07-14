@@ -15,8 +15,6 @@ export default function useNetwork() {
         await library?.send('wallet_switchEthereumChain', [{
             chainId: provider?.chainId
         }])
-
-
     }
 
     return {
