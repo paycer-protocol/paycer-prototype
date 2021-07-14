@@ -48,6 +48,13 @@ const Header = (props: HeaderProps) => {
                                     </a>
                                 </Link>
                             </li>
+                            <li className="nav-item me-3">
+                                <Link href="/staking">
+                                    <a className="nav-link" title={t`Staking rewards`}>
+                                        <Trans>Staking</Trans>
+                                    </a>
+                                </Link>
+                            </li>
                             <li className="nav-item me-4">
                                 <Link href="/docs">
                                     <a className="nav-link" title={t`Documentation`}>

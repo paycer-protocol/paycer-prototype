@@ -17,18 +17,17 @@ const DashNumber = (props: DashNumberProps) => {
 
     return (
       <div className="d-flex flex-column">
-              <span className="text-muted">
-                  {label}
-              </span>
+          <span className="text-muted">
+              {label}
+          </span>
           <span>
-              +&nbsp;
-              <FormattedNumber
-                value={value}
-                minimumFractionDigits={2}
-                maximumFractionDigits={4}
-              />
-              &nbsp;{symbol}
-            </span>
+            <FormattedNumber
+              value={value}
+              minimumFractionDigits={2}
+              maximumFractionDigits={4}
+            />
+            &nbsp;{symbol}
+          </span>
       </div>
     )
 }

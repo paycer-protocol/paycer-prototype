@@ -76,7 +76,7 @@ export default function StakingSummary() {
         <Button
           title={t`Apply`}
           variant={'outline-primary'}
-          className="w-25"
+          className="px-5"
           onClick={() => setFieldValue('disabled', false)}
         >
           {t`Stake`}

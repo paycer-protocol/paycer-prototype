@@ -13,12 +13,12 @@ export default function SubmitButton() {
           <Button
             onClick={() => setFieldValue('disabled', true)}
             title={t`Invest`}
-            className="w-25 me-3"
+            className="px-5 me-3"
             variant={'outline-secondary'}
           >
               {t`Cancel`}
           </Button>
-          <Button title={t`Apply`} className="w-25" variant={isDisabled ? 'outline-success' : 'success'} disabled={isDisabled}>
+          <Button title={t`Apply`} className="px-5" variant={isDisabled ? 'outline-success' : 'success'} disabled={isDisabled}>
               {t`Apply`}
           </Button>
       </div>

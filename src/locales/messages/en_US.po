@@ -27,6 +27,7 @@ msgstr "APY"
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:61
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -49,6 +50,10 @@ msgstr "Balance"
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr "Cancel"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:65
+msgid "Claim"
+msgstr "Claim"
 
 #: src/pages/dashboard/components/rewards/index.tsx:86
 #~ msgid "Claim Rewards"
@@ -96,11 +101,15 @@ msgstr "Current Invest"
 msgid "Current Staked"
 msgstr "Current Staked"
 
-#: src/components/organisms/invest/invest-form/daily-interest.tsx:13
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:30
+msgid "Current rewards"
+msgstr "Current rewards"
+
+#: src/components/organisms/invest/invest-form/index.tsx:99
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/daily-rewards.tsx:13
+#: src/components/organisms/invest/invest-form/index.tsx:106
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:66
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -119,11 +128,11 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/header/header.tsx:54
+#: src/components/organisms/header/header.tsx:61
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:53
+#: src/components/organisms/header/header.tsx:60
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -147,7 +156,7 @@ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgid "Explorer"
 msgstr "Explorer"
 
-#: src/components/organisms/invest/invest-form/invest-fee.tsx:26
+#: src/components/organisms/invest/invest-form/invest-fee.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:28
 msgid "Fee"
 msgstr "Fee"
@@ -164,6 +173,10 @@ msgstr "Invest"
 #: src/pages/dashboard/components/portfolio.tsx:185
 msgid "Investment ratio"
 msgstr "Investment ratio"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:47
+msgid "Last claimed"
+msgstr "Last claimed"
 
 #: src/pages/dashboard/components/portfolio.tsx:190
 msgid "Liquidity"
@@ -182,6 +195,10 @@ msgstr "Monthly rewards"
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
+#: src/pages/stake/index.tsx:19
+msgid "Overview"
+msgstr "Overview"
+
 #: src/components/organisms/web3/hooks/useWallet.ts:41
 msgid "Please authorize this website to access your Ethereum account."
 msgstr "Please authorize this website to access your Ethereum account."
@@ -194,7 +211,8 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/pages/dashboard/components/staking-card.tsx:12
+#: src/pages/dashboard/components/staking-card.tsx:19
+#: src/pages/stake/index.tsx:29
 msgid "Rewards"
 msgstr "Rewards"
 
@@ -214,6 +232,7 @@ msgstr "Savings"
 msgid "Select a Network"
 msgstr "Select a Network"
 
+#: src/components/organisms/header/header.tsx:54
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr "Stake"
@@ -226,6 +245,14 @@ msgstr "Stake"
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
 msgstr "Staking"
+
+#: src/pages/stake/index.tsx:20
+msgid "Staking Rewards"
+msgstr "Staking Rewards"
+
+#: src/components/organisms/header/header.tsx:53
+msgid "Staking rewards"
+msgstr "Staking rewards"
 
 #: src/components/organisms/invest/invest-card/index.tsx:94
 msgid "Start invest"
@@ -246,6 +273,10 @@ msgstr "Total Balance"
 #: src/components/organisms/invest/invest-card/index.tsx:69
 msgid "Total Volume"
 msgstr "Total Volume"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:52
+msgid "Total claimed"
+msgstr "Total claimed"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
