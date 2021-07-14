@@ -19,7 +19,7 @@ export interface INetworkProvider {
 export const testNetNetworks: INetworkProvider = {
     [ChainId.Ropsten]: {
         chainId: '0x3',
-        chainName: 'Ethereum',
+        chainName: 'Ropsten',
         nativeCurrency: {
             name: 'Ethereum',
             symbol: 'ETH',
@@ -30,7 +30,7 @@ export const testNetNetworks: INetworkProvider = {
     },
     [ChainId.Kovan]: {
         chainId: '0x2A',
-        chainName: 'Ethereum',
+        chainName: 'Kovan',
         nativeCurrency: {
             name: 'Ethereum',
             symbol: 'ETH',
@@ -41,7 +41,7 @@ export const testNetNetworks: INetworkProvider = {
     },
     [ChainId.Rinkeby]: {
         chainId: '0x4',
-        chainName: 'Ethereum',
+        chainName: 'Rinkeby',
         nativeCurrency: {
             name: 'Ethereum',
             symbol: 'ETH',
@@ -52,7 +52,7 @@ export const testNetNetworks: INetworkProvider = {
     },
     [ChainId.Goerli]: {
         chainId: '0x5',
-        chainName: 'Ethereum',
+        chainName: 'Goerli',
         nativeCurrency: {
             name: 'Ethereum',
             symbol: 'ETH',

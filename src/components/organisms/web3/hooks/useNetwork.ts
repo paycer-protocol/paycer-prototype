@@ -4,16 +4,24 @@ import { INetworkProvider } from '../providers'
 export default function useNetwork() {
     const { account, library, chainId } = useEthers()
 
-    // FIXME: rpc call throws an error in case of change to to eth network.
-    const changeNetwork = (provider: INetworkProvider) => {
-        library?.send('wallet_addEthereumChain', [
+    const addNetwork = async (provider: INetworkProvider) => {
+        await library?.send('wallet_addEthereumChain', [
             provider,
             account,
         ])
     }
 
+    const switchNetwork = async (provider: INetworkProvider) => {
+        await library?.send('wallet_switchEthereumChain', [{
+            chainId: provider?.chainId
+        }])
+
+
+    }
+
     return {
-        changeNetwork,
+        switchNetwork,
+        addNetwork,
         chainId
     }
 }

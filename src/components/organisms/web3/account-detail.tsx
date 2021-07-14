@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Trans, t } from '@lingui/macro'
 import { ChainId } from '@usedapp/core'
 import { Eth, Bnb } from '@styled-icons/crypto'
+import useToggle from '../../../hooks/useToggle'
 import { CheckCircle } from '@styled-icons/bootstrap'
+import NetworkProvider from '../web3/network-provider'
+import { testNetNetworks } from './providers/networks'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import { Money } from '@components/atoms/number'
@@ -82,6 +85,7 @@ const AccountDetail = (props: AccountDetailProps) => {
     const wallet = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
     const isMetaMask = window?.ethereum?.isMetaMask
+    const [showNetworkProviders, toggleShowNetworkProviders] = useToggle(false)
 
     const determineModalTitle = () => {
         if (!wallet.isConnected) {
@@ -123,12 +127,17 @@ const AccountDetail = (props: AccountDetailProps) => {
                             <AccountAction
                                 name={t`Switch network`}
                                 description={t`Switches to another wallet provider`}
-                                onClick={() => setCopied(wallet.address)}
+                                onClick={toggleShowNetworkProviders}
                             />
-                            <a onClick={wallet.disconnect}
-                               className='d-flex justify-content-center text-danger mt-3 text-center'>
+                            {(showNetworkProviders &&
+                              <NetworkProvider
+                                providers={testNetNetworks}
+                              />
+                            )}
+                            <Button variant="danger" onClick={wallet.disconnect}
+                               className='d-flex justify-content-center mt-3 text-center'>
                                 <small><Trans>Disconnect</Trans></small>
-                            </a>
+                            </Button>
                         </ListGroup>
                     </>
                 )}

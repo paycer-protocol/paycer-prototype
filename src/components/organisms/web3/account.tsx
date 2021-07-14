@@ -76,7 +76,8 @@ const Account = (props: AccountProps) => {
             >
                 <AccountBalance />
                 <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">
-                    {wallet.shortenAddress}
+                    {wallet.shortenAddress}&nbsp;
+                    ({wallet.chainName})
                 </div>
             </Button>
             <AccountDetail
