@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
-import { StakingProps } from '../types'
+import { StakingProps } from '../../types'
 
 export default function InvestRangeSlider() {
   const { values, initialValues, setFieldValue, dirty } = useFormikContext<StakingProps>()

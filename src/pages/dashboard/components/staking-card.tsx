@@ -1,8 +1,8 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import Staking from './staking'
+import StakingForm from '@components/organisms/staking-rewards/staking-form'
 
-export default function StakingRewards() {
+export default function StakingCard() {
   return (
     <div className="card">
       <div className="card-header">
@@ -17,10 +17,10 @@ export default function StakingRewards() {
       <div className="card-body">
         <div className="row">
           <div className="col-12 col-md-6 mb-5">
-            <Staking />
+            <StakingForm />
           </div>
           <div className="col-12 col-md-6">
-            <Staking />
+            <StakingForm />
           </div>
         </div>
       </div>

@@ -5,4 +5,7 @@ export interface StakingProps {
   claimBalance: number
   rewardRate: number
   stakeRange: number
+  depositFee: number
+  withdrawFee: number
+  disabled: boolean
 }

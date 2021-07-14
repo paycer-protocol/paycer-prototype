@@ -7,15 +7,26 @@ import { StakingProps } from '../types'
 export default function RewardFee() {
   const { values, initialValues, dirty } = useFormikContext<StakingProps>()
 
-  if (!dirty) {
-      return null
+  let fee = 0 as number
+  let diff = 0 as number
+
+  if (values.stakedBalance > initialValues.stakedBalance) {
+    diff = values.stakedBalance - initialValues.stakedBalance
+    fee = diff * values.depositFee / 100
+  } else {
+    diff = initialValues.stakedBalance - values.stakedBalance
+    fee = diff * values.withdrawFee / 100
   }
 
-  let fee = 0
+  if (fee === 0 || !dirty) {
+    return null
+  }
 
   return (
     <div className="text-center">
-      <small className="text-muted me-2"><Trans>Fee</Trans></small>
+      <small className="text-muted me-2">
+        <Trans>Fee</Trans>
+      </small>
       <small>
           +&nbsp;
           <FormattedNumber

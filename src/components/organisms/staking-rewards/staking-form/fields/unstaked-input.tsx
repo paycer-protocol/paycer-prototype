@@ -2,7 +2,7 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { StakingProps } from '../types'
+import { StakingProps } from '../../types'
 
 export default function UnstakedInput() {
     const {

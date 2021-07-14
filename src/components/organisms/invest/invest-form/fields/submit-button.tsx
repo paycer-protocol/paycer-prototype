@@ -6,12 +6,13 @@ import { InvestFormFields } from '../../types'
 
 export default function SubmitButton() {
     const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<InvestFormFields>()
+    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0
 
     return (
         <Button
-            variant={!dirty ? 'outline-success' : 'success'}
+            variant={isDisabled ? 'outline-success' : 'success'}
             className="w-100 mb-2"
-            disabled={isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0}
+            disabled={isDisabled}
         >
             {t`Invest`}
         </Button>
