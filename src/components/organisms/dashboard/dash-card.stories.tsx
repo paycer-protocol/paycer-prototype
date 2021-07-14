@@ -15,14 +15,14 @@ export default {
 
 type StoryOptions = Partial<DashCardProps>
 
-const Template: Story<StoryOptions> = ({ title = 'Dash KPI', value = 100, variant }: StoryOptions) => (
+const Template: Story<StoryOptions> = ({ title = 'Dash KPI', variant }: StoryOptions) => (
     <DashCardComponent
         title={title}
         variant={variant}
         iconComponent={CurrencyDollar}
         style={{ width: '300px' }}
     >
-        {value}
+        100
     </DashCardComponent>
 )
 

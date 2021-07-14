@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans, t } from '@lingui/macro'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from '@components/atoms/image'
@@ -15,6 +16,8 @@ const StyledBrand = styled(Navbar.Brand)`
 
 export interface HeaderProps {
 }
+
+export interface HeaderProps {}
 
 const Header = (props: HeaderProps) => {
     const {} = props
@@ -36,22 +39,22 @@ const Header = (props: HeaderProps) => {
                         <ul className="navbar-nav me-lg-auto">
                             <li className="nav-item me-3 d-flex align-items-center">
                                 <Link href="/">
-                                    <a className="nav-link" title="Dashboard">
-                                        Dashboard
+                                    <a className="nav-link" title={t`Dashboard`}>
+                                        <Trans>Dashboard</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-3 d-flex align-items-center">
                                 <Link href="/invest">
-                                    <a className="nav-link" title="Dashboard">
-                                        Invest
+                                    <a className="nav-link" title={t`Invest`}>
+                                        <Trans>Invest</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-4 d-flex align-items-center">
                                 <Link href="/docs">
-                                    <a className="nav-link" title="Documentation">
-                                        Docs
+                                    <a className="nav-link" title={t`Documentation`}>
+                                        <Trans>Docs</Trans>
                                     </a>
                                 </Link>
                             </li>

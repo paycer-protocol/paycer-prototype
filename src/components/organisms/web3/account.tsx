@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import './account.styles.scss'
+import { Trans } from '@lingui/macro'
 import { ButtonVariant } from 'react-bootstrap/types'
 import Button from '@components/atoms/button'
 import useWallet from './hooks/useWallet'
@@ -55,7 +56,7 @@ const Account = (props: AccountProps) => {
                     className="px-4 text-nowrap p-2 bg-dark pt-3 pb-3"
                     onClick={() => setShowWalletProviderModal(true)}
                 >
-                    Connect to a Wallet
+                    <Trans>Connect to a Wallet</Trans>
                 </Button>
                 <WalletProvider
                     providers={connectors}

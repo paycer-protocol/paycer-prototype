@@ -7,7 +7,13 @@ export default function useChange<Value>(
     const [{ onChange }] = useField(props)
 
     return useCallback(
-        (e) => (props.onChange!(e), onChange(e)),
+        (e) => {
+            if(props.onChange) {
+                props.onChange(e)
+            } else {
+                onChange(e)
+            }
+        },
         [onChange, props.onChange]
     )
 }

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-06-15 12:49+0200\n"
+"POT-Creation-Date: 2021-07-13 17:22+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,6 +13,235 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/index.tsx:22
-#~ msgid "Hello"
-#~ msgstr "Hello"
+#: src/components/organisms/invest/invest-card/index.tsx:56
+msgid "APR"
+msgstr "APR"
+
+#: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
+#: src/pages/dashboard/components/rewards.tsx:46
+msgid "APY"
+msgstr "APY"
+
+#: src/components/organisms/web3/hooks/useWallet.ts:45
+msgid "An unknown error occurred. Please try again."
+msgstr "An unknown error occurred. Please try again."
+
+#: src/pages/dashboard/components/portfolio.tsx:176
+msgid "Asset"
+msgstr "Asset"
+
+#: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
+msgid "Available Balance"
+msgstr "Available Balance"
+
+#: src/components/organisms/web3/account-detail.tsx:68
+#: src/pages/dashboard/components/portfolio.tsx:181
+msgid "Balance"
+msgstr "Balance"
+
+#: src/pages/dashboard/components/rewards.tsx:58
+msgid "Claim Rewards"
+msgstr "Claim Rewards"
+
+#: src/components/organisms/web3/providers/connectors.ts:67
+msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
+msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
+
+#: src/components/organisms/web3/account-detail.tsx:138
+#: src/components/organisms/web3/account.tsx:59
+msgid "Connect to a Wallet"
+msgstr "Connect to a Wallet"
+
+#: src/components/organisms/web3/wallet-provider.tsx:24
+msgid "Connect to a wallet"
+msgstr "Connect to a wallet"
+
+#: src/components/organisms/web3/account-detail.tsx:88
+msgid "Connect to wallet"
+msgstr "Connect to wallet"
+
+#: src/components/organisms/web3/account-detail.tsx:95
+msgid "Connected to wallet"
+msgstr "Connected to wallet"
+
+#: src/components/organisms/web3/account-detail.tsx:92
+msgid "Connected with MetaMask"
+msgstr "Connected with MetaMask"
+
+#: src/components/organisms/web3/account-detail.tsx:117
+msgid "Copy address"
+msgstr "Copy address"
+
+#: src/components/organisms/web3/account-detail.tsx:118
+msgid "Copy your wallet address to clipboard"
+msgstr "Copy your wallet address to clipboard"
+
+#: src/components/organisms/invest/invest-form/fields/invest-input.tsx:17
+msgid "Current Invest"
+msgstr "Current Invest"
+
+#: src/components/organisms/invest/invest-form/daily-interest.tsx:13
+msgid "Daily interest"
+msgstr "Daily interest"
+
+#: src/components/organisms/invest/invest-form/daily-rewards.tsx:13
+msgid "Daily rewards"
+msgstr "Daily rewards"
+
+#: src/components/organisms/header/header.tsx:42
+#: src/components/organisms/header/header.tsx:43
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/components/organisms/invest/invest-card/index.tsx:77
+msgid "Deposited"
+msgstr "Deposited"
+
+#: src/components/organisms/web3/account-detail.tsx:130
+msgid "Disconnect"
+msgstr "Disconnect"
+
+#: src/components/organisms/header/header.tsx:57
+msgid "Docs"
+msgstr "Docs"
+
+#: src/components/organisms/header/header.tsx:56
+msgid "Documentation"
+msgstr "Documentation"
+
+#: src/components/organisms/invest/invest-card/index.tsx:85
+msgid "Earned"
+msgstr "Earned"
+
+#: src/components/organisms/web3/providers/connectors.ts:59
+msgid "Easy-to-use browser extension."
+msgstr "Easy-to-use browser extension."
+
+#: src/components/organisms/invest/invest-card/index.tsx:94
+msgid "Edit invest"
+msgstr "Edit invest"
+
+#: src/components/organisms/web3/providers/connectors.ts:90
+msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
+msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
+
+#: src/components/organisms/web3/account-detail.tsx:111
+msgid "Explorer"
+msgstr "Explorer"
+
+#: src/components/organisms/invest/invest-form/invest-fee.tsx:27
+msgid "Fee"
+msgstr "Fee"
+
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/organisms/header/header.tsx:49
+#: src/components/organisms/header/header.tsx:50
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
+#: src/components/organisms/invest/invest-modal.tsx:16
+msgid "Invest"
+msgstr "Invest"
+
+#: src/pages/dashboard/components/portfolio.tsx:186
+msgid "Investment ratio"
+msgstr "Investment ratio"
+
+#: src/pages/dashboard/components/portfolio.tsx:191
+msgid "Liquidity"
+msgstr "Liquidity"
+
+#: src/pages/dashboard/components/dash-cards.tsx:24
+msgid "Moderat"
+msgstr "Moderat"
+
+#: src/components/organisms/web3/hooks/useWallet.ts:37
+msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
+msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
+
+#: src/components/organisms/web3/hooks/useWallet.ts:41
+msgid "Please authorize this website to access your Ethereum account."
+msgstr "Please authorize this website to access your Ethereum account."
+
+#: src/components/organisms/web3/hooks/useWallet.ts:43
+msgid "Please open your wallet and connect your account."
+msgstr "Please open your wallet and connect your account."
+
+#: src/pages/dashboard/components/portfolio.tsx:163
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: src/pages/dashboard/components/rewards.tsx:11
+msgid "Rewards"
+msgstr "Rewards"
+
+#: src/pages/dashboard/components/dash-cards.tsx:23
+msgid "Risk"
+msgstr "Risk"
+
+#: src/components/organisms/web3/providers/connectors.ts:82
+msgid "Safe hardware wallet for your coins."
+msgstr "Safe hardware wallet for your coins."
+
+#: src/pages/dashboard/components/dash-cards.tsx:18
+msgid "Savings"
+msgstr "Savings"
+
+#: src/components/organisms/web3/network-provider.tsx:25
+msgid "Select a Network"
+msgstr "Select a Network"
+
+#: src/pages/dashboard/components/rewards.tsx:26
+msgid "Staked"
+msgstr "Staked"
+
+#: src/components/organisms/invest/invest-card/index.tsx:94
+msgid "Start invest"
+msgstr "Start invest"
+
+#: src/components/organisms/web3/account-detail.tsx:124
+msgid "Switch network"
+msgstr "Switch network"
+
+#: src/components/organisms/web3/account-detail.tsx:125
+msgid "Switches to another wallet provider"
+msgstr "Switches to another wallet provider"
+
+#: src/pages/dashboard/components/dash-cards.tsx:13
+msgid "Total Balance"
+msgstr "Total Balance"
+
+#: src/components/organisms/invest/invest-card/index.tsx:69
+msgid "Total Volume"
+msgstr "Total Volume"
+
+#: src/pages/dashboard/components/rewards.tsx:36
+msgid "Unstaked"
+msgstr "Unstaked"
+
+#: src/components/organisms/web3/account-detail.tsx:112
+msgid "View your wallet in Blockchain Explorer"
+msgstr "View your wallet in Blockchain Explorer"
+
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:16
+msgid "Withdraw"
+msgstr "Withdraw"
+
+#: src/components/organisms/web3/hooks/useWallet.ts:39
+msgid "You're connected to an unsupported network."
+msgstr "You're connected to an unsupported network."
+
+#: src/components/organisms/web3/network-provider.tsx:29
+#: src/components/organisms/web3/network-provider.tsx:46
+#: src/components/organisms/web3/wallet-provider.tsx:28
+#: src/components/organisms/web3/wallet-provider.tsx:46
+#: src/components/organisms/web3/wallet-provider.tsx:48
+#~ msgid "{0}"
+#~ msgstr "{0}"
+
+#: src/components/organisms/web3/account-detail.tsx:52
+#~ msgid "{description}"
+#~ msgstr "{description}"
+
+#: src/components/organisms/web3/account-detail.tsx:50
+#~ msgid "{name}"
+#~ msgstr "{name}"
