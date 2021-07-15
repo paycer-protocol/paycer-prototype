@@ -8,6 +8,7 @@ import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import Account from '../web3/account'
 import Network from '../web3/network'
+import LanguageSwitch from '@components/molecules/language-switch'
 
 const StyledBrand = styled(Navbar.Brand)`
   margin-top: -10px;
@@ -75,6 +76,9 @@ const Header = () => {
                               buttonVariant="light"
                               dropdownVariant="light"
                             />
+                        </li>
+                        <li className="nav-item">
+                            <LanguageSwitch />
                         </li>
                     </ul>
                 </div>

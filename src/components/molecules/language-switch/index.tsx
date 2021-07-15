@@ -1,12 +1,9 @@
 import React from 'react'
-import { StyledIconProps } from '@styled-icons/styled-icon'
 import styled from 'styled-components'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-interface LanguageSwitchProps extends StyledIconProps {
-}
+import { locales } from '../../../../lingui.config'
 
 const StyledDropdownToggle = styled(Dropdown.Toggle)`
     &:after {
@@ -14,35 +11,26 @@ const StyledDropdownToggle = styled(Dropdown.Toggle)`
     }
 `
 
-const LanguageSwitch: React.FC<LanguageSwitchProps> = ({}: LanguageSwitchProps) => {
+const LanguageSwitch = () => {
     const { locale, asPath } = useRouter();
 
     return (
         <div className="container">
             <Dropdown>
-                <StyledDropdownToggle className="pt-3 pb-3" variant="light">
-                    {locale.split('_')[0].toUpperCase()}
+                <StyledDropdownToggle className="p-3" variant="light">
+                    <img src={`assets/flags/${locale}.svg`} alt={locale} width={22} height={22} />
                 </StyledDropdownToggle>
-
-                <Dropdown.Menu className="p-0">
-                    <ul className="navbar-nav m-0 m-3">
-                        <li className="nav-item me-3 mb-3">
-                            <Link
-                                href={asPath}
-                                locale="en_US"
-                            >
-                                <span className={locale === 'en_US' ? 'text-decoration-underline' : ''}>EN</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                href={asPath}
-                                locale="de_DE"
-                            >
-                                <span className={locale === 'de_DE' ? 'text-decoration-underline' : ''}>DE</span>
-                            </Link>
-                        </li>
-                    </ul>
+                <Dropdown.Menu>
+                    {locales.map((lang) => (
+                      <Dropdown.Item key={`lang${lang}`}>
+                          <Link href={asPath} locale={lang}>
+                              <div className="d-flex align-items-center">
+                                <img className="me-3" src={`assets/flags/${lang}.svg`} alt={locale} width={22} height={22} />
+                                <span>Englisch</span>
+                              </div>
+                          </Link>
+                      </Dropdown.Item>
+                    ))}
                 </Dropdown.Menu>
             </Dropdown>
         </div>

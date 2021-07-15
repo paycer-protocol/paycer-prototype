@@ -6,9 +6,9 @@ const { locales, sourceLocale } = langConfig
 
 
 const nextConfig = {
-  locale: 'en-US',
+  locale: 'en',
   i18n: {
-    locale: 'en-US',
+    locale: 'en',
     locales,
     defaultLocale: sourceLocale,
   },
