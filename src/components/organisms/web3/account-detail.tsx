@@ -1,27 +1,20 @@
 import React from 'react'
 import { Trans, t } from '@lingui/macro'
-import { ChainId } from '@usedapp/core'
-import { Eth, Bnb } from '@styled-icons/crypto'
 import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
-import { Money } from '@components/atoms/number'
+import { FormattedNumber } from '@components/atoms/number'
 import Modal from '@components/molecules/modal'
 import useWallet from './hooks/useWallet'
 import useCopyClipboard from '@hooks/useCopyClipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from './providers'
-import './account-detail.styles.scss'
+import NativeCurrencyIcon from './native-currency-icon'
 
 
 export interface AccountDetailProps {
     show: boolean
     onHide?: any
-}
-
-const IconMap = {
-    [ChainId.BSC]: Bnb,
-    default: Eth
 }
 
 declare global {
@@ -60,7 +53,6 @@ const AccountAction = (props: ListGroupItemProps) => {
 
 const AccountBalance = () => {
     const wallet = useWallet()
-    const iconComponent = IconMap[wallet.chainName] || IconMap.default
 
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
@@ -68,11 +60,12 @@ const AccountBalance = () => {
                 <strong><Trans>Balance</Trans></strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
-                        <Money value={wallet.etherBalance} currency={wallet.etherSymbol} />
+                        <FormattedNumber value={wallet.etherBalance} />
+                        &nbsp;{wallet.etherSymbol}
                     </span>
                 </p>
             </div>
-            <Icon component={iconComponent} size={35} />
+            <NativeCurrencyIcon size={35} />
         </div>
     )
 }
@@ -120,13 +113,7 @@ const AccountDetail = (props: AccountDetailProps) => {
                             >
                                 {isCopied && <Icon component={CheckCircle} size={35} />}
                             </AccountAction>
-                            <AccountAction
-                                name={t`Switch network`}
-                                description={t`Switches to another wallet provider`}
-                                onClick={() => setCopied(wallet.address)}
-                            />
-                            <a onClick={wallet.disconnect}
-                               className='d-flex justify-content-center text-danger mt-3 text-center'>
+                            <a onClick={wallet.disconnect} className='d-flex justify-content-center mt-3 text-center text-danger'>
                                 <small><Trans>Disconnect</Trans></small>
                             </a>
                         </ListGroup>
