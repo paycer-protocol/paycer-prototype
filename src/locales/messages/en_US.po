@@ -23,7 +23,7 @@ msgstr "APR"
 msgid "APY"
 msgstr "APY"
 
-#: src/components/organisms/web3/network-provider.tsx:28
+#: src/components/organisms/web3/network-provider.tsx:34
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -46,7 +46,7 @@ msgstr "Asset"
 msgid "Available Balance"
 msgstr "Available Balance"
 
-#: src/components/organisms/web3/account-detail.tsx:63
+#: src/components/organisms/web3/account-detail.tsx:60
 #: src/pages/dashboard/components/portfolio.tsx:180
 msgid "Balance"
 msgstr "Balance"
@@ -67,7 +67,7 @@ msgstr "Claim"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/account-detail.tsx:141
+#: src/components/organisms/web3/account-detail.tsx:127
 #: src/components/organisms/web3/account.tsx:30
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -76,23 +76,23 @@ msgstr "Connect to a Wallet"
 msgid "Connect to a wallet"
 msgstr "Connect to a wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:87
+#: src/components/organisms/web3/account-detail.tsx:83
 msgid "Connect to wallet"
 msgstr "Connect to wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:94
+#: src/components/organisms/web3/account-detail.tsx:90
 msgid "Connected to wallet"
 msgstr "Connected to wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:91
+#: src/components/organisms/web3/account-detail.tsx:87
 msgid "Connected with MetaMask"
 msgstr "Connected with MetaMask"
 
-#: src/components/organisms/web3/account-detail.tsx:116
+#: src/components/organisms/web3/account-detail.tsx:112
 msgid "Copy address"
 msgstr "Copy address"
 
-#: src/components/organisms/web3/account-detail.tsx:117
+#: src/components/organisms/web3/account-detail.tsx:113
 msgid "Copy your wallet address to clipboard"
 msgstr "Copy your wallet address to clipboard"
 
@@ -128,7 +128,7 @@ msgstr "Dashboard"
 msgid "Deposited"
 msgstr "Deposited"
 
-#: src/components/organisms/web3/account-detail.tsx:133
+#: src/components/organisms/web3/account-detail.tsx:119
 msgid "Disconnect"
 msgstr "Disconnect"
 
@@ -156,7 +156,7 @@ msgstr "Edit invest"
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
-#: src/components/organisms/web3/account-detail.tsx:110
+#: src/components/organisms/web3/account-detail.tsx:106
 msgid "Explorer"
 msgstr "Explorer"
 
@@ -195,7 +195,7 @@ msgstr "Moderat"
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
-#: src/components/organisms/web3/network-provider.tsx:25
+#: src/components/organisms/web3/network-provider.tsx:31
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -219,7 +219,7 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:33
+#: src/components/organisms/web3/network-provider.tsx:39
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -270,13 +270,13 @@ msgstr "Staking rewards"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/components/organisms/web3/account-detail.tsx:123
+#: src/components/organisms/web3/network-provider.tsx:49
 msgid "Switch network"
 msgstr "Switch network"
 
 #: src/components/organisms/web3/account-detail.tsx:124
-msgid "Switches to another wallet provider"
-msgstr "Switches to another wallet provider"
+#~ msgid "Switches to another wallet provider"
+#~ msgstr "Switches to another wallet provider"
 
 #: src/pages/dashboard/components/dash-cards.tsx:12
 msgid "Total Balance"
@@ -299,7 +299,7 @@ msgstr "Unsakted Tokens"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/web3/account-detail.tsx:111
+#: src/components/organisms/web3/account-detail.tsx:107
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 

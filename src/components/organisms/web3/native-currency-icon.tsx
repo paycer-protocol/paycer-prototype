@@ -10,17 +10,20 @@ export const NativeCurrencyMap = {
 }
 
 export interface NativeCurrencyIconProps {
-  size: number
+  size?: number
+  chainId?: number
+  className?: any
 }
 
-export default function NativeCurrencyIcon(props: NativeCurrencyIconProps) {
+export default function NativeCurrencyIcon({ size = 20, chainId, ...restProps }: NativeCurrencyIconProps) {
   const wallet = useWallet()
-  const iconComponent = NativeCurrencyMap[wallet.chainId] || NativeCurrencyMap.default
+  const iconComponent = NativeCurrencyMap[chainId || wallet.chainId] || NativeCurrencyMap.default
 
   return (
     <Icon
       component={iconComponent}
-      {...props}
+      size={size}
+      {...restProps}
     />
   )
 }

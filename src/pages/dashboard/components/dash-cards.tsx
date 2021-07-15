@@ -10,10 +10,8 @@ export default function DashCards () {
     <div className="row">
       <div className="col-12 col-md-4 col-xl">
         <DashCard title={t`Total Balance`}>
-          <FormattedNumber
-            value={wallet.etherBalance}
-            currency={wallet.etherSymbol}
-          />
+          <FormattedNumber value={wallet.etherBalance} />
+          &nbsp;{wallet.etherSymbol}
         </DashCard>
       </div>
       <div className="col-12 col-md-4 col-xl">

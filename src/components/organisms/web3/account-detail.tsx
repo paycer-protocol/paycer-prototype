@@ -1,9 +1,6 @@
 import React from 'react'
 import { Trans, t } from '@lingui/macro'
-import useToggle from '../../../hooks/useToggle'
 import { CheckCircle } from '@styled-icons/bootstrap'
-import NetworkProvider from '../web3/network-provider'
-import { mainNetProviders } from './providers/networks'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import { FormattedNumber } from '@components/atoms/number'
@@ -63,10 +60,8 @@ const AccountBalance = () => {
                 <strong><Trans>Balance</Trans></strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
-                        <FormattedNumber
-                          value={wallet.etherBalance}
-                          currency={wallet.etherSymbol}
-                        />
+                        <FormattedNumber value={wallet.etherBalance} />
+                        &nbsp;{wallet.etherSymbol}
                     </span>
                 </p>
             </div>
@@ -80,7 +75,6 @@ const AccountDetail = (props: AccountDetailProps) => {
     const wallet = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
     const isMetaMask = window?.ethereum?.isMetaMask
-    const [showNetworkProviders, toggleShowNetworkProviders] = useToggle(false)
 
     const determineModalTitle = () => {
         if (!wallet.isConnected) {
@@ -119,16 +113,6 @@ const AccountDetail = (props: AccountDetailProps) => {
                             >
                                 {isCopied && <Icon component={CheckCircle} size={35} />}
                             </AccountAction>
-                            <AccountAction
-                                name={t`Switch network`}
-                                description={t`Switches to another wallet provider`}
-                                onClick={toggleShowNetworkProviders}
-                            />
-                            {(showNetworkProviders &&
-                              <NetworkProvider
-                                providers={mainNetProviders}
-                              />
-                            )}
                             <a onClick={wallet.disconnect} className='d-flex justify-content-center mt-3 text-center text-danger'>
                                 <small><Trans>Disconnect</Trans></small>
                             </a>
