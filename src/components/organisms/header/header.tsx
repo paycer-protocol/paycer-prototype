@@ -1,8 +1,8 @@
 import React from 'react'
+import Link from 'next/link'
 import classnames from 'classnames'
 import { Trans, t } from '@lingui/macro'
 import styled from 'styled-components'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
@@ -18,7 +18,7 @@ const StyledBrand = styled(Navbar.Brand)`
 `
 
 const Header = () => {
-    const router = useRouter()
+    const { pathname } = useRouter();
 
     return (
         <header>
@@ -37,34 +37,35 @@ const Header = () => {
                         <ul className="navbar-nav">
                             <li className="nav-item me-3">
                                 <Link href="/">
-                                    <a className={classnames({active: router.pathname == '/'}, 'nav-link')} title={t`Portfolio`}>
+                                    <a className={classnames({active: pathname == '/'}, 'nav-link')} title={t`Portfolio`}>
                                         <Trans>Portfolio</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-3">
                                 <Link href="/invest">
-                                    <a className={classnames({active: router.pathname == '/invest'}, 'nav-link')} title={t`Invest`}>
+                                    <a className={classnames({active: pathname == '/invest'}, 'nav-link')} title={t`Invest`}>
                                         <Trans>Invest</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-3">
                                 <Link href="/staking">
-                                    <a className={classnames({active: router.pathname == '/staking'}, 'nav-link')} title={t`Staking rewards`}>
+                                    <a className={classnames({active: pathname == '/staking'}, 'nav-link')} title={t`Staking rewards`}>
                                         <Trans>Staking</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-4">
                                 <Link href="/docs">
-                                    <a className={classnames({active: router.pathname == '/docs'}, 'nav-link')} title={t`Documentation`}>
+                                    <a className={classnames({active: pathname == '/docs'}, 'nav-link')} title={t`Documentation`}>
                                         <Trans>Docs</Trans>
                                     </a>
                                 </Link>
                             </li>
                         </ul>
                     </Navbar.Collapse>
+
                     <ul className="navbar-nav">
                         <li className="nav-item me-3">
                             <Network />

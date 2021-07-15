@@ -12,7 +12,8 @@ module.exports = {
   format: 'po',
   sourceLocale: 'en_US',
   locales: [
-    'en_US'
+    'en_US',
+    'de_DE'
   ],
   orderBy: 'messageId',
   pseudoLocale: '',

@@ -1,0 +1,288 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2021-07-15 23:13+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: de_DE\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/organisms/invest/invest-card/index.tsx:56
+msgid "APR"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:50
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
+msgid "APY"
+msgstr ""
+
+#: src/components/organisms/web3/network-provider.tsx:34
+msgid "Adding Network to Wallet ..."
+msgstr ""
+
+#: src/components/organisms/web3/hooks/useWallet.ts:45
+msgid "An unknown error occurred. Please try again."
+msgstr ""
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:60
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
+msgid "Apply"
+msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:175
+msgid "Asset"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
+msgid "Available Balance"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:60
+#: src/pages/portfolio/components/portfolio.tsx:180
+msgid "Balance"
+msgstr "Kontostand"
+
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
+msgid "Cancel"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:64
+msgid "Claim"
+msgstr ""
+
+#: src/components/organisms/web3/providers/connectors.ts:67
+msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:125
+#: src/components/organisms/web3/account.tsx:30
+msgid "Connect to a Wallet"
+msgstr ""
+
+#: src/components/organisms/web3/wallet-provider.tsx:24
+msgid "Connect to a wallet"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:81
+msgid "Connect to wallet"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:88
+msgid "Connected to wallet"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:85
+msgid "Connected with MetaMask"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:110
+msgid "Copy address"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:111
+msgid "Copy your wallet address to clipboard"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/fields/invest-input.tsx:17
+msgid "Current Invest"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
+msgid "Current Staked"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
+msgid "Current rewards"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/index.tsx:99
+msgid "Daily interest"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/index.tsx:106
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:66
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
+msgid "Daily rewards"
+msgstr ""
+
+#: src/components/organisms/invest/invest-card/index.tsx:77
+msgid "Deposited"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:117
+msgid "Disconnect"
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:62
+msgid "Docs"
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:61
+msgid "Documentation"
+msgstr ""
+
+#: src/components/organisms/invest/invest-card/index.tsx:85
+msgid "Earned"
+msgstr ""
+
+#: src/components/organisms/web3/providers/connectors.ts:59
+msgid "Easy-to-use browser extension."
+msgstr ""
+
+#: src/components/organisms/invest/invest-card/index.tsx:94
+msgid "Edit invest"
+msgstr ""
+
+#: src/components/organisms/web3/providers/connectors.ts:90
+msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:104
+msgid "Explorer"
+msgstr ""
+
+#: src/components/organisms/invest/invest-form/invest-fee.tsx:28
+#: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:28
+msgid "Fee"
+msgstr ""
+
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/organisms/header/header.tsx:47
+#: src/components/organisms/header/header.tsx:48
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
+#: src/components/organisms/invest/invest-modal.tsx:16
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
+msgid "Invest"
+msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:185
+#~ msgid "Investitions ratio"
+#~ msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:185
+msgid "Investment ratio"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:46
+msgid "Last claimed"
+msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:190
+msgid "Liquidity"
+msgstr ""
+
+#: src/pages/portfolio/components/dash-cards.tsx:24
+msgid "Moderat"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:73
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
+msgid "Monthly rewards"
+msgstr ""
+
+#: src/components/organisms/web3/network-provider.tsx:31
+msgid "Network-Switch Pending, please open your Wallet"
+msgstr ""
+
+#: src/components/organisms/web3/hooks/useWallet.ts:37
+msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
+msgstr ""
+
+#: src/pages/staking/index.tsx:19
+msgid "Overview"
+msgstr ""
+
+#: src/components/organisms/web3/hooks/useWallet.ts:41
+msgid "Please authorize this website to access your Ethereum account."
+msgstr ""
+
+#: src/components/organisms/web3/hooks/useWallet.ts:43
+msgid "Please open your wallet and connect your account."
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:40
+#: src/components/organisms/header/header.tsx:41
+#: src/pages/portfolio/components/portfolio.tsx:162
+msgid "Portfolio"
+msgstr ""
+
+#: src/components/organisms/web3/network-provider.tsx:39
+msgid "Previously added network Pending, please open your Wallet"
+msgstr ""
+
+#: src/pages/portfolio/components/dash-cards.tsx:23
+msgid "Risk"
+msgstr ""
+
+#: src/components/organisms/web3/providers/connectors.ts:82
+msgid "Safe hardware wallet for your coins."
+msgstr ""
+
+#: src/pages/portfolio/components/dash-cards.tsx:18
+msgid "Savings"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
+msgid "Stake"
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:55
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:49
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
+msgid "Staking"
+msgstr ""
+
+#: src/pages/staking/index.tsx:20
+msgid "Staking Rewards"
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:54
+msgid "Staking rewards"
+msgstr ""
+
+#: src/components/organisms/invest/invest-card/index.tsx:94
+msgid "Start invest"
+msgstr ""
+
+#: src/components/organisms/web3/network-provider.tsx:49
+msgid "Switch network"
+msgstr ""
+
+#: src/pages/portfolio/components/dash-cards.tsx:12
+msgid "Total Balance"
+msgstr ""
+
+#: src/components/organisms/invest/invest-card/index.tsx:69
+msgid "Total Volume"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:51
+msgid "Total claimed"
+msgstr ""
+
+#: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
+msgid "Unsakted Tokens"
+msgstr ""
+
+#: src/components/organisms/web3/account-detail.tsx:105
+msgid "View your wallet in Blockchain Explorer"
+msgstr ""
+
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
+msgid "Withdraw"
+msgstr ""
+
+#: src/components/organisms/web3/hooks/useWallet.ts:39
+msgid "You're connected to an unsupported network."
+msgstr ""
