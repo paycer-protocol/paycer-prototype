@@ -4,6 +4,7 @@ import { WalletConnectConnector, UserRejectedRequestError as  WalletConnectRejec
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { LedgerConnector } from '@web3-react/ledger-connector'
 import { TrezorConnector } from '@web3-react/trezor-connector'
+import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { ChainId } from '@usedapp/core'
 import { rpcUrls } from './rpcs'
 
@@ -16,6 +17,12 @@ export const walletConnectConnector = new WalletConnectConnector({
     bridge: 'https://bridge.walletconnect.org',
     pollingInterval: POLLING_INTERVAL,
     qrcode: true,
+})
+
+export const walletlink = new WalletLinkConnector({
+    url: rpcUrls[ChainId.Mainnet],
+    appName: 'Paycer',
+    appLogoUrl: 'https://www.paycer.io/logo.svg',
 })
 
 export const injectedConnector = new InjectedConnector({
@@ -74,6 +81,14 @@ export const connectors: IConnectorProvider[] = [
 
             return connector
         }
+    },
+    {
+        connector: walletlink,
+        rejectedError: UserRejectedRequestError,
+        name: 'Coinbase Wallet',
+        description: t`The secure app to store crypto yourself`,
+        icon: 'assets/wallets/coinbase.svg',
+        beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
         connector: trezorConnector,

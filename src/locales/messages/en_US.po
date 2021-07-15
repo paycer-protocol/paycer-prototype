@@ -63,7 +63,7 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/web3/providers/connectors.ts:67
+#: src/components/organisms/web3/providers/connectors.ts:74
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
@@ -144,7 +144,7 @@ msgstr "Documentation"
 msgid "Earned"
 msgstr "Earned"
 
-#: src/components/organisms/web3/providers/connectors.ts:59
+#: src/components/organisms/web3/providers/connectors.ts:66
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -152,7 +152,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
-#: src/components/organisms/web3/providers/connectors.ts:90
+#: src/components/organisms/web3/providers/connectors.ts:105
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
@@ -234,7 +234,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/web3/providers/connectors.ts:82
+#: src/components/organisms/web3/providers/connectors.ts:97
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
@@ -279,6 +279,10 @@ msgstr "Switch network"
 #: src/components/organisms/web3/account-detail.tsx:124
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
+
+#: src/components/organisms/web3/providers/connectors.ts:89
+msgid "The secure app to store crypto yourself"
+msgstr "The secure app to store crypto yourself"
 
 #: src/pages/portfolio/components/dash-cards.tsx:12
 msgid "Total Balance"

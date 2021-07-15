@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Trans } from '@lingui/macro'
 import useWallet from './hooks/useWallet'
 import Button from '@components/atoms/button'
@@ -39,7 +39,10 @@ const WalletProvider = (props: WalletProviderProps) => {
                                 className="mb-2"
                                 active={isActivating}
                                 disabled={isDisabled}
-                                onClick={() => wallet.connect(item)}
+                                onClick={async () => {
+                                  await onHide()
+                                  await wallet.connect(item)
+                                }}
                             >
                                 <div className="d-flex align-items-center justify-content-between py-3 px-2">
                                     <div className="text-start">
