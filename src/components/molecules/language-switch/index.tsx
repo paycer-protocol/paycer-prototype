@@ -31,7 +31,7 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({}: LanguageSwitchProps) 
                                 href={asPath}
                                 locale="en_US"
                             >
-                                EN
+                                <span className={locale === 'en_US' ? 'text-decoration-underline' : ''}>EN</span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -39,7 +39,7 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({}: LanguageSwitchProps) 
                                 href={asPath}
                                 locale="de_DE"
                             >
-                                DE
+                                <span className={locale === 'de_DE' ? 'text-decoration-underline' : ''}>DE</span>
                             </Link>
                         </li>
                     </ul>
