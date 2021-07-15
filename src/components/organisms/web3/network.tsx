@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import { ButtonVariant } from 'react-bootstrap/types'
 import Button from '@components/atoms/button'
 import useWallet from './hooks/useWallet'
 import NativeCurrencyIcon  from './native-currency-icon'
 import NetworkProvider  from './network-provider'
 import { mainNetProviders } from './providers/networks'
 
-export interface NetworkProps {
-    buttonVariant?: ButtonVariant
-    dropdownVariant?: ButtonVariant
-}
-
-const Network = (props: NetworkProps) => {
+const Network = () => {
     const [showNetworkModal, setShowNetworkModal] = useState(false)
     const wallet = useWallet()
 

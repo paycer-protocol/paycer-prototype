@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { t } from '@lingui/macro'
 import { CHAIN_NAMES, ChainId, getExplorerAddressLink, shortenIfAddress, useEtherBalance, useEthers } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
-import { UnsupportedChainIdError } from '@web3-react/core'
 import { NoEthereumProviderError } from '@web3-react/injected-connector'
 import { Symbols, IConnectorProvider } from '../providers'
 
@@ -25,7 +24,6 @@ export default function useWallet() {
             setActivatingConnector(nextConnector)
             await activate(nextConnector, undefined, true)
         } catch (e) {
-            console.log(e)
             handleConnectError(provider, e)
         }
     }
@@ -35,7 +33,7 @@ export default function useWallet() {
 
         if (error instanceof NoEthereumProviderError) {
             message = t`No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.`
-        } else if (error instanceof UnsupportedChainIdError) {
+        } else if (error.message.includes('Unsupported chain')) {
             message = t`You're connected to an unsupported network.`
         } else if (provider.rejectedError && error instanceof provider.rejectedError) {
             message = t`Please authorize this website to access your Ethereum account.`

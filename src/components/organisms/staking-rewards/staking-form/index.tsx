@@ -5,7 +5,7 @@ import Form from '@components/atoms/form/form'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
-import UnstakedInput from './fields/unstaked-input'
+import TokenInput from './fields/token-input'
 import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import StakingSummary from './staking-summary'
@@ -16,7 +16,7 @@ export default function StakingForm() {
   const initialValues: StakingProps = {
     rewardSymbol: 'PCR',
     stakedBalance: 100,
-    unstakedBalance: 1000,
+    tokenBalance: 1000,
     claimBalance: 0,
     rewardRate: 15,
     stakeRange: 0,
@@ -27,7 +27,7 @@ export default function StakingForm() {
 
   const validationSchema = Yup.object().shape({
     stakedBalance: Yup.number().min(0).required(),
-    unstakedBalance: Yup.number().min(0).required(),
+    tokenBalance: Yup.number().min(0).required(),
   })
 
   const handleSubmit = () => {}
@@ -54,10 +54,10 @@ export default function StakingForm() {
             </div>
             <div className="row">
               <div className="col-6">
-                <StakedInput />
+                <TokenInput />
               </div>
               <div className="col-6">
-                <UnstakedInput />
+                <StakedInput />
               </div>
             </div>
             <div className="row mb-5">

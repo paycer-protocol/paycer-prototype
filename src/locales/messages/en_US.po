@@ -27,7 +27,7 @@ msgstr "APY"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:45
+#: src/components/organisms/web3/hooks/useWallet.ts:43
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
@@ -63,11 +63,11 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/web3/providers/connectors.ts:67
+#: src/components/organisms/web3/providers/connectors.ts:73
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/account-detail.tsx:125
+#: src/components/organisms/web3/account-detail.tsx:131
 #: src/components/organisms/web3/account.tsx:30
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -128,7 +128,7 @@ msgstr "Daily rewards"
 msgid "Deposited"
 msgstr "Deposited"
 
-#: src/components/organisms/web3/account-detail.tsx:117
+#: src/components/organisms/web3/account-detail.tsx:123
 msgid "Disconnect"
 msgstr "Disconnect"
 
@@ -144,7 +144,7 @@ msgstr "Documentation"
 msgid "Earned"
 msgstr "Earned"
 
-#: src/components/organisms/web3/providers/connectors.ts:59
+#: src/components/organisms/web3/providers/connectors.ts:65
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -152,7 +152,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
-#: src/components/organisms/web3/providers/connectors.ts:90
+#: src/components/organisms/web3/providers/connectors.ts:96
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
@@ -199,7 +199,7 @@ msgstr "Monthly rewards"
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:37
+#: src/components/organisms/web3/hooks/useWallet.ts:35
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
@@ -207,11 +207,11 @@ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or v
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:41
+#: src/components/organisms/web3/hooks/useWallet.ts:39
 msgid "Please authorize this website to access your Ethereum account."
 msgstr "Please authorize this website to access your Ethereum account."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:43
+#: src/components/organisms/web3/hooks/useWallet.ts:41
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
@@ -234,7 +234,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/web3/providers/connectors.ts:82
+#: src/components/organisms/web3/providers/connectors.ts:88
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
@@ -309,7 +309,7 @@ msgstr "View your wallet in Blockchain Explorer"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:39
+#: src/components/organisms/web3/hooks/useWallet.ts:37
 msgid "You're connected to an unsupported network."
 msgstr "You're connected to an unsupported network."
 

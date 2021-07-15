@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Trans } from '@lingui/macro'
 import useWallet from './hooks/useWallet'
 import Button from '@components/atoms/button'
