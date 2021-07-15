@@ -26,7 +26,7 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({}: LanguageSwitchProps) 
 
                 <Dropdown.Menu className="p-0">
                     <ul className="navbar-nav m-0 m-3">
-                        <li className="nav-item me-3">
+                        <li className="nav-item me-3 mb-3">
                             <Link
                                 href={asPath}
                                 locale="en_US"
