@@ -37,8 +37,8 @@ const Header = () => {
                         <ul className="navbar-nav">
                             <li className="nav-item me-3">
                                 <Link href="/">
-                                    <a className={classnames({active: router.pathname == '/'}, 'nav-link')} title={t`Dashboard`}>
-                                        <Trans>Dashboard</Trans>
+                                    <a className={classnames({active: router.pathname == '/'}, 'nav-link')} title={t`Portfolio`}>
+                                        <Trans>Portfolio</Trans>
                                     </a>
                                 </Link>
                             </li>

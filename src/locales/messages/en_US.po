@@ -38,7 +38,7 @@ msgstr "An unknown error occurred. Please try again."
 msgid "Apply"
 msgstr "Apply"
 
-#: src/pages/dashboard/components/portfolio.tsx:175
+#: src/pages/portfolio/components/portfolio.tsx:175
 msgid "Asset"
 msgstr "Asset"
 
@@ -47,7 +47,7 @@ msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/account-detail.tsx:60
-#: src/pages/dashboard/components/portfolio.tsx:180
+#: src/pages/portfolio/components/portfolio.tsx:180
 msgid "Balance"
 msgstr "Balance"
 
@@ -67,7 +67,7 @@ msgstr "Claim"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/account-detail.tsx:127
+#: src/components/organisms/web3/account-detail.tsx:125
 #: src/components/organisms/web3/account.tsx:30
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -76,23 +76,23 @@ msgstr "Connect to a Wallet"
 msgid "Connect to a wallet"
 msgstr "Connect to a wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:83
+#: src/components/organisms/web3/account-detail.tsx:81
 msgid "Connect to wallet"
 msgstr "Connect to wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:90
+#: src/components/organisms/web3/account-detail.tsx:88
 msgid "Connected to wallet"
 msgstr "Connected to wallet"
 
-#: src/components/organisms/web3/account-detail.tsx:87
+#: src/components/organisms/web3/account-detail.tsx:85
 msgid "Connected with MetaMask"
 msgstr "Connected with MetaMask"
 
-#: src/components/organisms/web3/account-detail.tsx:112
+#: src/components/organisms/web3/account-detail.tsx:110
 msgid "Copy address"
 msgstr "Copy address"
 
-#: src/components/organisms/web3/account-detail.tsx:113
+#: src/components/organisms/web3/account-detail.tsx:111
 msgid "Copy your wallet address to clipboard"
 msgstr "Copy your wallet address to clipboard"
 
@@ -121,14 +121,14 @@ msgstr "Daily rewards"
 
 #: src/components/organisms/header/header.tsx:40
 #: src/components/organisms/header/header.tsx:41
-msgid "Dashboard"
-msgstr "Dashboard"
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
 
 #: src/components/organisms/invest/invest-card/index.tsx:77
 msgid "Deposited"
 msgstr "Deposited"
 
-#: src/components/organisms/web3/account-detail.tsx:119
+#: src/components/organisms/web3/account-detail.tsx:117
 msgid "Disconnect"
 msgstr "Disconnect"
 
@@ -156,7 +156,7 @@ msgstr "Edit invest"
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
-#: src/components/organisms/web3/account-detail.tsx:106
+#: src/components/organisms/web3/account-detail.tsx:104
 msgid "Explorer"
 msgstr "Explorer"
 
@@ -174,7 +174,7 @@ msgstr "Fee"
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/dashboard/components/portfolio.tsx:185
+#: src/pages/portfolio/components/portfolio.tsx:185
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
@@ -182,11 +182,11 @@ msgstr "Investment ratio"
 msgid "Last claimed"
 msgstr "Last claimed"
 
-#: src/pages/dashboard/components/portfolio.tsx:190
+#: src/pages/portfolio/components/portfolio.tsx:190
 msgid "Liquidity"
 msgstr "Liquidity"
 
-#: src/pages/dashboard/components/dash-cards.tsx:26
+#: src/pages/portfolio/components/dash-cards.tsx:24
 msgid "Moderat"
 msgstr "Moderat"
 
@@ -215,7 +215,9 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/pages/dashboard/components/portfolio.tsx:162
+#: src/components/organisms/header/header.tsx:40
+#: src/components/organisms/header/header.tsx:41
+#: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -228,7 +230,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
-#: src/pages/dashboard/components/dash-cards.tsx:25
+#: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr "Risk"
 
@@ -236,7 +238,7 @@ msgstr "Risk"
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
-#: src/pages/dashboard/components/dash-cards.tsx:20
+#: src/pages/portfolio/components/dash-cards.tsx:18
 msgid "Savings"
 msgstr "Savings"
 
@@ -278,7 +280,7 @@ msgstr "Switch network"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/pages/dashboard/components/dash-cards.tsx:12
+#: src/pages/portfolio/components/dash-cards.tsx:12
 msgid "Total Balance"
 msgstr "Total Balance"
 
@@ -299,7 +301,7 @@ msgstr "Unsakted Tokens"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/web3/account-detail.tsx:107
+#: src/components/organisms/web3/account-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
