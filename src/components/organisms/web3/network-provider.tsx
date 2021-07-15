@@ -63,7 +63,10 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                 <div
                   key={chainId}
                   className={className}
-                  onClick={() => handleSwitchNetwork(provider)}
+                  onClick={async () => {
+                    await onHide()
+                    await handleSwitchNetwork(provider)
+                  }}
                 >
                   <div className="d-flex align-items-center justify-content-center cursor-pointer">
                     <NativeCurrencyIcon
