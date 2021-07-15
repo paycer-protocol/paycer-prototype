@@ -1,17 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-13 17:22+0200\n"
+"POT-Creation-Date: 2021-07-16 01:34+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: en_US\n"
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+"Language: en\n"
 
 #: src/components/organisms/invest/invest-card/index.tsx:56
 msgid "APR"
@@ -27,7 +21,7 @@ msgstr "APY"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:43
+#: src/components/organisms/web3/hooks/useWallet.ts:45
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
@@ -59,15 +53,11 @@ msgstr "Cancel"
 msgid "Claim"
 msgstr "Claim"
 
-#: src/pages/dashboard/components/rewards/index.tsx:86
-#~ msgid "Claim Rewards"
-#~ msgstr "Claim Rewards"
-
-#: src/components/organisms/web3/providers/connectors.ts:73
+#: src/components/organisms/web3/providers/connectors.ts:67
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/account-detail.tsx:131
+#: src/components/organisms/web3/account-detail.tsx:125
 #: src/components/organisms/web3/account.tsx:30
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -119,16 +109,11 @@ msgstr "Daily interest"
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/header/header.tsx:40
-#: src/components/organisms/header/header.tsx:41
-#~ msgid "Dashboard"
-#~ msgstr "Dashboard"
-
 #: src/components/organisms/invest/invest-card/index.tsx:77
 msgid "Deposited"
 msgstr "Deposited"
 
-#: src/components/organisms/web3/account-detail.tsx:123
+#: src/components/organisms/web3/account-detail.tsx:117
 msgid "Disconnect"
 msgstr "Disconnect"
 
@@ -144,7 +129,7 @@ msgstr "Documentation"
 msgid "Earned"
 msgstr "Earned"
 
-#: src/components/organisms/web3/providers/connectors.ts:65
+#: src/components/organisms/web3/providers/connectors.ts:59
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -152,7 +137,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
-#: src/components/organisms/web3/providers/connectors.ts:96
+#: src/components/organisms/web3/providers/connectors.ts:90
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
@@ -199,7 +184,7 @@ msgstr "Monthly rewards"
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:35
+#: src/components/organisms/web3/hooks/useWallet.ts:37
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
@@ -207,11 +192,11 @@ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or v
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:39
+#: src/components/organisms/web3/hooks/useWallet.ts:41
 msgid "Please authorize this website to access your Ethereum account."
 msgstr "Please authorize this website to access your Ethereum account."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:41
+#: src/components/organisms/web3/hooks/useWallet.ts:43
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
@@ -225,16 +210,11 @@ msgstr "Portfolio"
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/pages/dashboard/components/staking-card.tsx:19
-#: src/pages/stake/index.tsx:29
-#~ msgid "Rewards"
-#~ msgstr "Rewards"
-
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/web3/providers/connectors.ts:88
+#: src/components/organisms/web3/providers/connectors.ts:82
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
@@ -242,17 +222,9 @@ msgstr "Safe hardware wallet for your coins."
 msgid "Savings"
 msgstr "Savings"
 
-#: src/components/organisms/web3/network-provider.tsx:25
-#~ msgid "Select a Network"
-#~ msgstr "Select a Network"
-
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr "Stake"
-
-#: src/pages/dashboard/components/staking-rewards/index.tsx:33
-#~ msgid "Staked"
-#~ msgstr "Staked"
 
 #: src/components/organisms/header/header.tsx:55
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
@@ -276,10 +248,6 @@ msgstr "Start invest"
 msgid "Switch network"
 msgstr "Switch network"
 
-#: src/components/organisms/web3/account-detail.tsx:124
-#~ msgid "Switches to another wallet provider"
-#~ msgstr "Switches to another wallet provider"
-
 #: src/pages/portfolio/components/dash-cards.tsx:12
 msgid "Total Balance"
 msgstr "Total Balance"
@@ -297,10 +265,6 @@ msgstr "Total claimed"
 msgid "Unsakted Tokens"
 msgstr "Unsakted Tokens"
 
-#: src/pages/dashboard/components/staking-rewards/index.tsx:43
-#~ msgid "Unstaked"
-#~ msgstr "Unstaked"
-
 #: src/components/organisms/web3/account-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
@@ -309,22 +273,6 @@ msgstr "View your wallet in Blockchain Explorer"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:37
+#: src/components/organisms/web3/hooks/useWallet.ts:39
 msgid "You're connected to an unsupported network."
 msgstr "You're connected to an unsupported network."
-
-#: src/components/organisms/web3/network-provider.tsx:29
-#: src/components/organisms/web3/network-provider.tsx:46
-#: src/components/organisms/web3/wallet-provider.tsx:28
-#: src/components/organisms/web3/wallet-provider.tsx:46
-#: src/components/organisms/web3/wallet-provider.tsx:48
-#~ msgid "{0}"
-#~ msgstr "{0}"
-
-#: src/components/organisms/web3/account-detail.tsx:52
-#~ msgid "{description}"
-#~ msgstr "{description}"
-
-#: src/components/organisms/web3/account-detail.tsx:50
-#~ msgid "{name}"
-#~ msgstr "{name}"

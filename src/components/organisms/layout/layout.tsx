@@ -5,7 +5,6 @@ export interface LayoutProps {
     children: any
 }
 
-
 const Layout = (props: LayoutProps) => {
     const { children } = props
 
