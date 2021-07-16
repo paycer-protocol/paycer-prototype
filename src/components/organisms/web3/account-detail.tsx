@@ -113,7 +113,13 @@ const AccountDetail = (props: AccountDetailProps) => {
                             >
                                 {isCopied && <Icon component={CheckCircle} size={35} />}
                             </AccountAction>
-                            <a onClick={wallet.disconnect} className='d-flex justify-content-center mt-3 text-center text-danger'>
+                            <a
+                              className="d-flex justify-content-center mt-3 text-center text-danger"
+                              onClick={async () => {
+                                  await onHide()
+                                  await wallet.disconnect()
+                              }}
+                            >
                                 <small><Trans>Disconnect</Trans></small>
                             </a>
                         </ListGroup>

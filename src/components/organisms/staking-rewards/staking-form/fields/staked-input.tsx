@@ -21,30 +21,30 @@ export default function StakedInput() {
             decimals={4}
             onChange={(e) => {
                 let stakedBalance = Number(e.target.rawValue.split(' ')[1]) as number as number
-                let unstakedBalance = 0 as number
+                let tokenBalance = 0 as number
                 let stakedDiff = 0 as number
 
                 // plus
                 if (stakedBalance > initialValues.stakedBalance) {
                     stakedDiff = stakedBalance - initialValues.stakedBalance
-                    unstakedBalance = initialValues.unstakedBalance - stakedDiff
+                  tokenBalance = initialValues.tokenBalance - stakedDiff
                 // minus
                 } else {
                     stakedDiff = initialValues.stakedBalance - stakedBalance
-                    unstakedBalance = initialValues.unstakedBalance + stakedDiff
+                    tokenBalance = initialValues.tokenBalance + stakedDiff
                 }
 
-                const totalBalance = initialValues.stakedBalance + initialValues.unstakedBalance
+                const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
                 const stakeRange = stakedBalance * 100 / totalBalance
 
                 stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
                 stakedBalance = stakedBalance >= totalBalance ? totalBalance : stakedBalance
 
-                unstakedBalance = unstakedBalance < 0 ? 0 : unstakedBalance
-                unstakedBalance = unstakedBalance >= totalBalance ? totalBalance : unstakedBalance
+              tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+              tokenBalance = tokenBalance >= totalBalance ? totalBalance : tokenBalance
 
                 setFieldValue('stakedBalance', stakedBalance)
-                setFieldValue('unstakedBalance', unstakedBalance)
+                setFieldValue('tokenBalance', tokenBalance)
                 setFieldValue('stakeRange', stakeRange)
             }}
         />

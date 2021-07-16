@@ -32,6 +32,12 @@ export const injectedConnector = new InjectedConnector({
         ChainId.Rinkeby,
         ChainId.Goerli,
         ChainId.Kovan,
+        ChainId.BSC,
+        ChainId.xDai,
+        ChainId.Polygon,
+        ChainId.Mumbai,
+        ChainId.Hardhat,
+        ChainId.Localhost,
     ],
 })
 

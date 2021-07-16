@@ -4,7 +4,7 @@ import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { StakingProps } from '../../types'
 
-export default function UnstakedInput() {
+export default function TokenInput() {
     const {
         values,
         initialValues,
@@ -13,37 +13,37 @@ export default function UnstakedInput() {
 
     return (
         <Currency
-            name="unstakedBalance"
-            label={t`Unsakted Tokens`}
+            name="tokenBalance"
+            label={t`Token balance`}
             required
             currency={values.rewardSymbol}
             decimals={4}
             onChange={(e) => {
                 let stakedBalance = 0 as number as number
-                let unstakedBalance = Number(e.target.rawValue.split(' ')[1]) as number
-                let unstakedDiff = 0 as number
+                let tokenBalance = Number(e.target.rawValue.split(' ')[1]) as number
+                let tokenDiff = 0 as number
 
                 // plus
-                if (unstakedBalance > initialValues.unstakedBalance) {
-                    unstakedDiff = unstakedBalance - initialValues.unstakedBalance
-                    stakedBalance = initialValues.stakedBalance - unstakedDiff
+                if (tokenBalance > initialValues.tokenBalance) {
+                    tokenDiff = tokenBalance - initialValues.tokenBalance
+                    stakedBalance = initialValues.stakedBalance - tokenDiff
                 // minus
                 } else {
-                    unstakedDiff = initialValues.unstakedBalance - unstakedBalance
-                    stakedBalance = initialValues.stakedBalance + unstakedDiff
+                    tokenDiff = initialValues.tokenBalance - tokenBalance
+                    stakedBalance = initialValues.stakedBalance + tokenDiff
                 }
 
-                const totalBalance = initialValues.stakedBalance + initialValues.unstakedBalance
+                const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
                 const stakeRange = stakedBalance * 100 / totalBalance
 
                 stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
                 stakedBalance = stakedBalance >= totalBalance ? totalBalance : stakedBalance
 
-                unstakedBalance = unstakedBalance < 0 ? 0 : unstakedBalance
-                unstakedBalance = unstakedBalance >= totalBalance ? totalBalance : unstakedBalance
+                tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+                tokenBalance = tokenBalance >= totalBalance ? totalBalance : tokenBalance
 
                 setFieldValue('stakedBalance', stakedBalance)
-                setFieldValue('unstakedBalance', unstakedBalance)
+                setFieldValue('tokenBalance', tokenBalance)
                 setFieldValue('stakeRange', stakeRange)
             }}
         />

@@ -18,7 +18,7 @@ const StakeContainer = styled.div`
 
 export default function StakingSummary() {
   const { initialValues, setFieldValue } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.unstakedBalance
+  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
   const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance
 
   return (
@@ -39,8 +39,8 @@ export default function StakingSummary() {
         <div className="col-6">
           <StakeContainer className="mb-5">
             <DashNumber
-              label={t`Current Staked`}
-              value={initialValues.stakedBalance}
+              label={t`Token Balance`}
+              value={initialValues.tokenBalance}
               symbol={initialValues.rewardSymbol}
             />
           </StakeContainer>
@@ -48,8 +48,8 @@ export default function StakingSummary() {
         <div className="col-6">
           <StakeContainer className="mb-5">
             <DashNumber
-              label={t`Unsakted Tokens`}
-              value={initialValues.unstakedBalance}
+              label={t`Current Staked`}
+              value={initialValues.stakedBalance}
               symbol={initialValues.rewardSymbol}
             />
           </StakeContainer>
