@@ -109,11 +109,11 @@ msgstr ""
 msgid "Current rewards"
 msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:99
+#: src/components/organisms/invest/invest-form/index.tsx:100
 msgid "Daily interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:106
+#: src/components/organisms/invest/invest-form/index.tsx:107
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:66
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:90
+#: src/pages/invest/create/index.tsx:91
 msgid "Distribution"
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Easy-to-use browser extension."
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:94
+#: src/components/organisms/invest/invest-card/index.tsx:95
 msgid "Edit invest"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgstr ""
 #~ msgid "Height"
 #~ msgstr ""
 
-#: src/pages/invest/create/fields/risk-choice.tsx:11
+#: src/pages/invest/create/fields/risk-choice.tsx:12
 msgid "High"
 msgstr ""
 
@@ -188,14 +188,14 @@ msgstr ""
 #: src/components/organisms/header/header.tsx:48
 #: src/components/organisms/header/header.tsx:49
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
-#: src/components/organisms/invest/invest-modal.tsx:16
+#: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/pages/invest/create/fields/submit-button.tsx:13
 #: src/pages/invest/create/fields/submit-button.tsx:14
 msgid "Invest"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:80
+#: src/pages/invest/create/index.tsx:81
 msgid "Invest amount"
 msgstr ""
 
@@ -219,11 +219,11 @@ msgstr ""
 msgid "Liquidity"
 msgstr ""
 
-#: src/pages/invest/create/fields/risk-choice.tsx:9
+#: src/pages/invest/create/fields/risk-choice.tsx:10
 msgid "Low"
 msgstr ""
 
-#: src/pages/invest/create/fields/risk-choice.tsx:10
+#: src/pages/invest/create/fields/risk-choice.tsx:11
 msgid "Medium"
 msgstr ""
 
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
-#: src/pages/invest/create/fields/risk-choice.tsx:30
+#: src/pages/invest/create/fields/risk-choice.tsx:31
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr ""
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Staking rewards"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:94
+#: src/components/organisms/invest/invest-card/index.tsx:95
 msgid "Start invest"
 msgstr ""
 

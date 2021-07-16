@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import { Money } from '@components/atoms/number'
+import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '@types/investment'
@@ -37,7 +37,7 @@ const InvestCard = (props: InvestmentStrategy) => {
         setShowInvestModal(false)
     }
     return (
-        <Card className="box-shadow lift" border={invested > 0 ? 'invest' : ''}>
+        <Card className="box-shadow" border={invested > 0 ? 'invest' : ''}>
             <Card.Body>
                 <h6 className="text-uppercase text-center my-4 font-size-lg">
                     { strategyName }
@@ -85,12 +85,13 @@ const InvestCard = (props: InvestmentStrategy) => {
                             <Trans>Earned</Trans>
                         </span>
                         <span className="">
-                            {earnedInterest}&nbsp;{investSymbol}
+                            <FormattedNumber value={earnedInterest} />
+                            &nbsp;{investSymbol}
                         </span>
                     </li>
                 </ul>
 
-                <Button onClick={() => setShowInvestModal(true)} variant={invested ? 'invest' : 'primary'} className='w-100'>
+                <Button onClick={() => setShowInvestModal(true)} variant={'outline-primary'} className='w-100'>
                     {invested ? t`Edit invest` : t`Start invest`}
                 </Button>
             </Card.Body>
