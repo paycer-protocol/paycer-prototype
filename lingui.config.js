@@ -10,9 +10,10 @@ module.exports = {
   extractBabelOptions: {},
   fallbackLocales: {},
   format: 'po',
-  sourceLocale: 'en_US',
+  sourceLocale: 'en',
   locales: [
-    'en_US'
+    'en',
+    'de'
   ],
   orderBy: 'messageId',
   pseudoLocale: '',
