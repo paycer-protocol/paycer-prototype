@@ -200,11 +200,11 @@ msgstr "High"
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/invest/create/index.tsx:68
+#: src/pages/invest/create/index.tsx:80
 msgid "Investment amount"
 msgstr "Investment amount"
 
-#: src/pages/invest/create/index.tsx:79
+#: src/pages/invest/create/index.tsx:91
 msgid "Investment distribution"
 msgstr "Investment distribution"
 
