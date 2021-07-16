@@ -22,19 +22,19 @@ export default () => {
 
   const investmentDistribution: InvestmentDistributionProps[]  = [
     {
-      riskLevel: 0,
+      riskLevel: RiskLevel.Low,
       investName: 'Balancer',
       investSymbol: 'BAL',
       investRange: 30
     },
     {
-      riskLevel: 0,
+      riskLevel: RiskLevel.Medium,
       investName: 'Balancer',
       investSymbol: 'BAL',
       investRange: 20
     },
     {
-      riskLevel: 0,
+      riskLevel: RiskLevel.High,
       investName: 'Balancer',
       investSymbol: 'BAL',
       investRange: 10

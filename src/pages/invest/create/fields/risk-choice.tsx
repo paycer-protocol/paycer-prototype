@@ -12,7 +12,19 @@ const riskLabels = {
 }
 
 export default function RiskChoice() {
-    const { values, setFieldValue } = useFormikContext<CreateInvestProps>()
+    const { values, initialValues, setFieldValue } = useFormikContext<CreateInvestProps>()
+
+    const handleChange = (risk) => {
+      setFieldValue('riskLevel', risk)
+
+      initialValues.investmentDistribution.map((item, i) => {
+        // TODO
+        setFieldValue(
+          `investmentDistribution[${i}].investRange`,
+          Math.abs(item.investRange)
+        )
+      })
+    }
 
     return (
       <Form.Group name="riskLevel" label={t`Risk`} className="mb-5">
@@ -22,7 +34,7 @@ export default function RiskChoice() {
                   key={`risk${risk}`}
                   variant="outline-primary"
                   active={values.riskLevel === risk}
-                  onClick={() => setFieldValue('riskLevel', risk)}
+                  onClick={() => handleChange(risk)}
                   size="sm"
                   className="me-3"
                 >
