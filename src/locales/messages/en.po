@@ -27,7 +27,7 @@ msgstr "APY"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:43
+#: src/components/organisms/web3/wallet-provider.tsx:38
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
@@ -63,7 +63,7 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/web3/providers/connectors.ts:73
+#: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
@@ -72,7 +72,7 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
-#: src/components/organisms/web3/wallet-provider.tsx:24
+#: src/components/organisms/web3/wallet-provider.tsx:48
 msgid "Connect to a wallet"
 msgstr "Connect to a wallet"
 
@@ -132,11 +132,11 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/header/header.tsx:62
+#: src/components/organisms/header/header.tsx:63
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:61
+#: src/components/organisms/header/header.tsx:62
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -144,7 +144,7 @@ msgstr "Documentation"
 msgid "Earned"
 msgstr "Earned"
 
-#: src/components/organisms/web3/providers/connectors.ts:65
+#: src/components/organisms/web3/providers/connectors.ts:72
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -152,7 +152,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
-#: src/components/organisms/web3/providers/connectors.ts:96
+#: src/components/organisms/web3/providers/connectors.ts:111
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
@@ -166,8 +166,8 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:47
 #: src/components/organisms/header/header.tsx:48
+#: src/components/organisms/header/header.tsx:49
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:16
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -199,7 +199,7 @@ msgstr "Monthly rewards"
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:35
+#: src/components/organisms/web3/wallet-provider.tsx:30
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
@@ -207,16 +207,16 @@ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or v
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:39
+#: src/components/organisms/web3/wallet-provider.tsx:34
 msgid "Please authorize this website to access your Ethereum account."
 msgstr "Please authorize this website to access your Ethereum account."
 
-#: src/components/organisms/web3/hooks/useWallet.ts:41
+#: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/components/organisms/header/header.tsx:40
 #: src/components/organisms/header/header.tsx:41
+#: src/components/organisms/header/header.tsx:42
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -234,7 +234,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/web3/providers/connectors.ts:88
+#: src/components/organisms/web3/providers/connectors.ts:103
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
@@ -254,7 +254,7 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/header/header.tsx:55
+#: src/components/organisms/header/header.tsx:56
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
@@ -264,7 +264,7 @@ msgstr "Staking"
 msgid "Staking Rewards"
 msgstr "Staking Rewards"
 
-#: src/components/organisms/header/header.tsx:54
+#: src/components/organisms/header/header.tsx:55
 msgid "Staking rewards"
 msgstr "Staking rewards"
 
@@ -279,6 +279,10 @@ msgstr "Switch network"
 #: src/components/organisms/web3/account-detail.tsx:124
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
+
+#: src/components/organisms/web3/providers/connectors.ts:95
+msgid "The secure app to store crypto yourself"
+msgstr "The secure app to store crypto yourself"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Token Balance"
@@ -317,9 +321,13 @@ msgstr "View your wallet in Blockchain Explorer"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/components/organisms/web3/hooks/useWallet.ts:37
-msgid "You're connected to an unsupported network."
-msgstr "You're connected to an unsupported network."
+#: src/components/organisms/web3/wallet-provider.tsx:32
+#~ msgid "You're connected to an unsupported network."
+#~ msgstr "You're connected to an unsupported network."
+
+#: src/components/organisms/web3/wallet-provider.tsx:32
+msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
+msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
 #: src/components/organisms/web3/network-provider.tsx:29
 #: src/components/organisms/web3/network-provider.tsx:46

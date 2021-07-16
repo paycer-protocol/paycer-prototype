@@ -27,7 +27,7 @@ msgstr ""
 msgid "Adding Network to Wallet ..."
 msgstr ""
 
-#: src/components/organisms/web3/hooks/useWallet.ts:43
+#: src/components/organisms/web3/wallet-provider.tsx:38
 msgid "An unknown error occurred. Please try again."
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Connect to a Wallet"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:24
+#: src/components/organisms/web3/wallet-provider.tsx:48
 msgid "Connect to a wallet"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr ""
 
-#: src/components/organisms/web3/hooks/useWallet.ts:35
+#: src/components/organisms/web3/wallet-provider.tsx:30
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr ""
 
@@ -198,11 +198,11 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: src/components/organisms/web3/hooks/useWallet.ts:39
+#: src/components/organisms/web3/wallet-provider.tsx:34
 msgid "Please authorize this website to access your Ethereum account."
 msgstr ""
 
-#: src/components/organisms/web3/hooks/useWallet.ts:41
+#: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please open your wallet and connect your account."
 msgstr ""
 
@@ -291,6 +291,10 @@ msgstr ""
 msgid "Withdraw"
 msgstr ""
 
-#: src/components/organisms/web3/hooks/useWallet.ts:37
-msgid "You're connected to an unsupported network."
+#: src/components/organisms/web3/wallet-provider.tsx:32
+#~ msgid "You're connected to an unsupported network."
+#~ msgstr ""
+
+#: src/components/organisms/web3/wallet-provider.tsx:32
+msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 msgstr ""
