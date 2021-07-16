@@ -79,7 +79,6 @@ export default () => {
                 <h2 className="mb-5">
                   <Trans>Invest amount</Trans>
                 </h2>
-
                   <InvestInput />
                   <InvestRangeSlider />
                   <RiskChoice />

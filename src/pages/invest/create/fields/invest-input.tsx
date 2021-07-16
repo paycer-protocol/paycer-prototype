@@ -1,6 +1,5 @@
 import React from 'react'
 import { t } from '@lingui/macro'
-import Form from '@components/atoms/form'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { CreateInvestProps } from '../types'
@@ -9,7 +8,7 @@ export default function InvestInput() {
   const { values, initialValues, setFieldValue } = useFormikContext<CreateInvestProps>()
 
     return (
-      <Form.Group name="investAmount">
+      <div className="form-group">
           <Currency
             name="investAmount"
             label={t`Enter your invest amount`}
@@ -28,6 +27,6 @@ export default function InvestInput() {
               setFieldValue('investRange', investRange)
             }}
           />
-      </Form.Group>
+      </div>
     )
 }

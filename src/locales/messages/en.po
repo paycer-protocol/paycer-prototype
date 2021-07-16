@@ -136,6 +136,10 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
+#: src/pages/invest/create/index.tsx:91
+msgid "Distribution"
+msgstr "Distribution"
+
 #: src/components/organisms/header/header.tsx:63
 msgid "Docs"
 msgstr "Docs"
@@ -164,7 +168,7 @@ msgstr "English"
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
-#: src/pages/invest/create/fields/invest-input.tsx:15
+#: src/pages/invest/create/fields/invest-input.tsx:13
 msgid "Enter your invest amount"
 msgstr "Enter your invest amount"
 
@@ -201,12 +205,16 @@ msgid "Invest"
 msgstr "Invest"
 
 #: src/pages/invest/create/index.tsx:80
-msgid "Investment amount"
-msgstr "Investment amount"
+msgid "Invest amount"
+msgstr "Invest amount"
+
+#: src/pages/invest/create/index.tsx:80
+#~ msgid "Investment amount"
+#~ msgstr "Investment amount"
 
 #: src/pages/invest/create/index.tsx:91
-msgid "Investment distribution"
-msgstr "Investment distribution"
+#~ msgid "Investment distribution"
+#~ msgstr "Investment distribution"
 
 #: src/pages/portfolio/components/portfolio.tsx:185
 msgid "Investment ratio"

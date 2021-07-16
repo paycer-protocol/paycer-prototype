@@ -19,6 +19,7 @@ export default function RiskChoice() {
           <div className="d-flex align-items-center">
               {[RiskLevel.Low, RiskLevel.Medium, RiskLevel.High].map((risk) => (
                 <Button
+                  key={`risk${risk}`}
                   variant="outline-primary"
                   active={values.riskLevel === risk}
                   onClick={() => setFieldValue('riskLevel', risk)}

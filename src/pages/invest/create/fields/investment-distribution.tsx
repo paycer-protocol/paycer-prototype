@@ -4,7 +4,7 @@ import { FieldArray, useFormikContext } from 'formik'
 import { CreateInvestProps } from '../types'
 
 export default function InvestmentDistribution() {
-  const { values, initialValues, setFieldValue, dirty } = useFormikContext<CreateInvestProps>()
+  const { values, setFieldValue, dirty } = useFormikContext<CreateInvestProps>()
 
   return (
     <div className="d-flex flex-column">
@@ -26,15 +26,21 @@ export default function InvestmentDistribution() {
                   value={dirty ? item.investRange : undefined}
                   defaultValue={item.investRange}
                   onChange={(value) => {
+
+                    const calculateTotalSum = (prevVal, nextVal, i) => prevVal + (index === i ? value : nextVal.investRange)
+                    const totalSum = values.investmentDistribution.reduce(calculateTotalSum, 0)
+                    const overflow = Math.floor((100 - totalSum) / (values.investmentDistribution.length - 1))
+
                     setFieldValue(`investmentDistribution[${index}].investRange`, value)
 
-                    // todo
-
-                    console.log((100 - value) / (values.investmentDistribution.length - 1), value,)
-
-                    initialValues.investmentDistribution.map((item, i) => {
+                    values.investmentDistribution.map((item, i) => {
                       if (index !== i) {
-                        setFieldValue(`investmentDistribution[${i}].investRange`, item.investRange )
+                        if (totalSum > 100) {
+                          setFieldValue(
+                             `investmentDistribution[${i}].investRange`,
+                             Math.abs(item.investRange + overflow)
+                           )
+                        }
                       }
                     })
                   }}
