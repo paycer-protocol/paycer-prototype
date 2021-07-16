@@ -6,7 +6,7 @@ import Button from '@components/atoms/button'
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className="container mt-3">
       <PageHeader>
         <div className="row align-items-center">
           <div className="col">

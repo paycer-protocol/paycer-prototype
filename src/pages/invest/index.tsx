@@ -116,7 +116,7 @@ export default () => {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <PageHeader>
                 <div className="row align-items-center">
                     <div className="col">
