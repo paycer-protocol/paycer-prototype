@@ -1,47 +1,16 @@
-export interface Asset {
-    name: string
-    imgPath: string
-}
+import { InvestPairType, FeesType, RewardType, InterestType, AssetType } from '@types/investment'
 
-export interface FeesProps {
-    investFee: number
-    withdrawFee: number
-    feeSymbol: string
-}
-
-export interface InterestProps {
-    interestRate: number
-    earnedInterest: number
-}
-
-
-export interface RewardProps {
-    rewardRate: number
-    earnedReward: number
-    rewardSymbol: string
-}
-
-export interface InvestPairProps {
-    baseSymbol: string
-    basePriceUSD?: number
-    basePriceETH?: number
-    baseBalance?: number
-    investSymbol: string
-    investPriceUSD?: number
-    investPriceETH?: number
-    investBalance?: number
-}
-
-export interface InvestProps extends InvestPairProps, FeesProps, InterestProps, RewardProps {
+// TODO not in use. Type moveed to /types/investments.ts
+export interface InvestProps extends InvestPairType, FeesType, InterestType, RewardType {
     title: string
     hasInvested: boolean
     invested: number
     tvl: number
-    assets: Asset[]
+    assets: AssetType[]
     setShowWalletProviderModal?: any // todo: remove ui indicator from data model
 }
 
-export interface InvestFormFields extends InvestPairProps, FeesProps, RewardProps, InterestProps {
+export interface InvestFormFields extends InvestPairType, FeesType, RewardType, InterestType {
     investRange: number
     submitAction: 'invest' | 'withdraw'
 }

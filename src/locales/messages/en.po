@@ -136,7 +136,7 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/pages/invest/create/index.tsx:91
+#: src/pages/invest/create/index.tsx:90
 msgid "Distribution"
 msgstr "Distribution"
 
@@ -168,7 +168,7 @@ msgstr "English"
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
-#: src/pages/invest/create/fields/invest-input.tsx:13
+#: src/pages/invest/create/fields/invest-input.tsx:14
 msgid "Enter your invest amount"
 msgstr "Enter your invest amount"
 
@@ -280,7 +280,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
-#: src/pages/invest/create/fields/risk-choice.tsx:18
+#: src/pages/invest/create/fields/risk-choice.tsx:30
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr "Risk"

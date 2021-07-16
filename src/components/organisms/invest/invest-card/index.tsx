@@ -5,7 +5,7 @@ import Card from '@components/molecules/card'
 import { Money } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
-import { InvestProps } from '../types'
+import { InvestmentStrategy } from '@types/investment'
 
 const StackedIcons = styled.div`
   display: flex;
@@ -18,9 +18,9 @@ const StackedIcons = styled.div`
   }
 `
 
-const InvestCard = (props: InvestProps) => {
+const InvestCard = (props: InvestmentStrategy) => {
     const {
-        title,
+        strategyName,
         interestRate,
         rewardRate,
         assets,
@@ -40,7 +40,7 @@ const InvestCard = (props: InvestProps) => {
         <Card className="box-shadow lift" border={invested > 0 ? 'invest' : ''}>
             <Card.Body>
                 <h6 className="text-uppercase text-center my-4 font-size-lg">
-                    { title }
+                    { strategyName }
                 </h6>
                 <div className="row g-0 align-items-center justify-content-center">
                     <div className="col-auto">

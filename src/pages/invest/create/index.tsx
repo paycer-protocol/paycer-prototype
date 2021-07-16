@@ -9,7 +9,8 @@ import InvestInput from './fields/invest-input'
 import RiskChoice from './fields/risk-choice'
 import InvestmentDistribution from './fields/investment-distribution'
 import SubmitButton from './fields/submit-button'
-import { CreateInvestProps, RiskLevel, InvestmentDistributionProps } from './types'
+import { RiskLevel } from '@types/investment'
+import { CreateInvestProps, InvestmentDistributionProps } from './types'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;

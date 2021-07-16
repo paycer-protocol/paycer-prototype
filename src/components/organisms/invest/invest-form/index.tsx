@@ -9,11 +9,12 @@ import InvestInput from './fields/invest-input'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
-import { InvestProps, InvestFormFields } from '../types'
+import { InvestFormFields } from '../types'
+import { InvestmentStrategy } from '@types/investment'
 import {t} from "@lingui/macro";
 
 
-const InvestForm = (props: InvestProps) => {
+const InvestForm = (props: InvestmentStrategy) => {
     const {
         // invest pairs
         baseSymbol,

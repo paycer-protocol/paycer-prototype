@@ -3,7 +3,8 @@ import {defineMessage, t, Trans} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Form from '@components/atoms/form'
 import Button from '@components/atoms/button'
-import { CreateInvestProps, RiskLevel } from '../types'
+import { RiskLevel } from '@types/investment'
+import { CreateInvestProps } from '../types'
 
 const riskLabels = {
     [RiskLevel.Low]: defineMessage({ message: 'Low' }),
