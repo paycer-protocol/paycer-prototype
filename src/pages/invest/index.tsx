@@ -127,7 +127,7 @@ export default function Invest() {
                     <div className="col-auto">
                         <Link href="/invest/create">
                             <Button variant="outline-primary">
-                                Create Invest
+                                Create investment
                             </Button>
                         </Link>
                     </div>

@@ -63,7 +63,7 @@ export default () => {
         <div className="row align-items-center">
           <div className="col">
             <PageHeader.Subtitle>Earn interest</PageHeader.Subtitle>
-            <PageHeader.Title>Create Invest</PageHeader.Title>
+            <PageHeader.Title>Create investment</PageHeader.Title>
           </div>
         </div>
       </PageHeader>
@@ -77,7 +77,7 @@ export default () => {
             <div className="d-flex flex-column flex-md-row">
               <div className="w-100">
                 <h2 className="mb-5">
-                  <Trans>Investment amount</Trans>
+                  <Trans>Invest amount</Trans>
                 </h2>
 
                   <InvestInput />
@@ -88,7 +88,7 @@ export default () => {
               <VerticalLine />
               <div className="w-100">
                 <h2 className="mb-5">
-                  <Trans>Investment distribution</Trans>
+                  <Trans>Distribution</Trans>
                 </h2>
                 <InvestmentDistribution />
               </div>
