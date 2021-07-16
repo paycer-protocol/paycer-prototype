@@ -136,11 +136,11 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/header/header.tsx:86
+#: src/components/organisms/header/header.tsx:88
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:85
+#: src/components/organisms/header/header.tsx:87
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -170,8 +170,8 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:71
-#: src/components/organisms/header/header.tsx:72
+#: src/components/organisms/header/header.tsx:73
+#: src/components/organisms/header/header.tsx:74
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:16
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -219,8 +219,8 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/components/organisms/header/header.tsx:64
-#: src/components/organisms/header/header.tsx:65
+#: src/components/organisms/header/header.tsx:66
+#: src/components/organisms/header/header.tsx:67
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -258,7 +258,7 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/header/header.tsx:79
+#: src/components/organisms/header/header.tsx:81
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
@@ -268,7 +268,7 @@ msgstr "Staking"
 #~ msgid "Staking Rewards"
 #~ msgstr "Staking Rewards"
 
-#: src/components/organisms/header/header.tsx:78
+#: src/components/organisms/header/header.tsx:80
 msgid "Staking rewards"
 msgstr "Staking rewards"
 

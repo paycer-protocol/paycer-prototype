@@ -42,13 +42,13 @@ const Account = (props: AccountProps) => {
         <>
             <Button
                 variant={dropdownVariant}
-                className="d-flex align-items-center justify-content-center p-0 p-md-2 bg-dark "
+                className="d-flex align-items-center justify-content-center p-0 p-xl-2 bg-dark "
                 onClick={() => setShowAccountModal(true)}
             >
               <div className="p-2">
                 <FormattedNumber value={wallet?.etherBalance} />&nbsp;{wallet?.etherSymbol}
               </div>
-                <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2 d-none d-md-block">
+                <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2 d-none d-xl-block">
                     {wallet.shortenAddress}
                 </div>
             </Button>

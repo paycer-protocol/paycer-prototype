@@ -22,7 +22,16 @@ const StyledBrand = styled(Navbar.Brand)`
           max-height: 26px;
         }
     }
-  
+`
+
+const StyledLogo = styled.a`
+    order: 1;
+    @media screen and (max-width: 768px) {
+      position: absolute;
+      top: 17px;
+      left: 15px;
+    }
+ 
 `
 
 const Header = () => {
@@ -30,17 +39,16 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar expand="md">
-                <div className="container">
+            <Navbar expand="lg">
+                <div className="container flex-row-reverse">
+
                     <Link href="/">
-                        <a>
+                        <StyledLogo>
                             <StyledBrand className="px-md-3 py-0">
                                 <Image src="/assets/logo.svg" alt="Paycer" />
                             </StyledBrand>
-                        </a>
+                        </StyledLogo>
                     </Link>
-
-                    <Navbar.Toggle aria-controls="header-navbar-nav" />
 
                     <ul className="navbar-nav flex-row">
                         <li className="nav-item me-3">
@@ -52,12 +60,15 @@ const Header = () => {
                                 dropdownVariant="light"
                             />
                         </li>
-                        <li className="nav-item me-3 me-md-0">
+                        <li className="nav-item me-3 me-xl-0">
                             <LanguageSwitch />
+                        </li>
+                        <li className="me-3">
+                            <Navbar.Toggle aria-controls="header-navbar-nav" />
                         </li>
                     </ul>
 
-                    <Navbar.Collapse id="header-navbar-nav" className="ms-2 me-auto">
+                    <Navbar.Collapse id="header-navbar-nav" className="ms-2">
                         <ul className="navbar-nav">
                             <li className="nav-item me-3">
                                 <Link href="/">

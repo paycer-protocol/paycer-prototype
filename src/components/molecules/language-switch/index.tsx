@@ -15,7 +15,7 @@ const LanguageSwitch = () => {
         <>
             <Button
                 variant="light"
-                className="d-flex align-items-center justify-content-center p-0 p-md-2 bg-dark"
+                className="d-flex align-items-center justify-content-center p-2 p-xl-3 bg-dark"
                 onClick={() => setShow(true)}
             >
                 <img src={`assets/flags/${locale}.svg`} alt={locale} width={22} height={22} />

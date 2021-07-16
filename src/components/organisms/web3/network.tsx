@@ -17,11 +17,11 @@ const Network = () => {
         <>
             <Button
                 variant="light"
-                className="d-flex align-items-center justify-content-center p-0 p-md-2 bg-dark"
+                className="d-flex align-items-center justify-content-center p-0 p-xl-2 bg-dark"
                 onClick={() => setShowNetworkModal(true)}
             >
                 <span className="mx-2 me-3 d-none d-md-block">{wallet.chainName}</span>
-                <div className="bg-dark-soft rounded-2 p-2 p-md-3 pt-md-2 pb-md-2">
+                <div className="bg-dark-soft rounded-2 p-2 p-xl3 pt-xl-2 pb-xl-2">
                     <NativeCurrencyIcon size={20} />
                 </div>
 

@@ -127,11 +127,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:86
+#: src/components/organisms/header/header.tsx:88
 msgid "Docs"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:85
+#: src/components/organisms/header/header.tsx:87
 msgid "Documentation"
 msgstr ""
 
@@ -161,8 +161,8 @@ msgid "Fee"
 msgstr ""
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:71
-#: src/components/organisms/header/header.tsx:72
+#: src/components/organisms/header/header.tsx:73
+#: src/components/organisms/header/header.tsx:74
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:16
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -210,8 +210,8 @@ msgstr ""
 msgid "Please open your wallet and connect your account."
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:64
-#: src/components/organisms/header/header.tsx:65
+#: src/components/organisms/header/header.tsx:66
+#: src/components/organisms/header/header.tsx:67
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr ""
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:79
+#: src/components/organisms/header/header.tsx:81
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
@@ -246,7 +246,7 @@ msgstr ""
 #~ msgid "Staking Rewards"
 #~ msgstr ""
 
-#: src/components/organisms/header/header.tsx:78
+#: src/components/organisms/header/header.tsx:80
 msgid "Staking rewards"
 msgstr ""
 
