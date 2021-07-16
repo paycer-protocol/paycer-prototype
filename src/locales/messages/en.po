@@ -156,9 +156,17 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
+#: src/components/molecules/language-switch/index.tsx:16
+msgid "English"
+msgstr "English"
+
 #: src/components/organisms/web3/providers/connectors.ts:111
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
+
+#: src/pages/invest/create/fields/invest-input.tsx:15
+msgid "Enter your invest amount"
+msgstr "Enter your invest amount"
 
 #: src/components/organisms/web3/account-detail.tsx:104
 msgid "Explorer"
@@ -169,14 +177,36 @@ msgstr "Explorer"
 msgid "Fee"
 msgstr "Fee"
 
+#: src/components/molecules/language-switch/index.tsx:17
+msgid "German"
+msgstr "German"
+
+#: src/pages/invest/create/index.tsx:21
+#~ msgid "Height"
+#~ msgstr "Height"
+
+#: src/pages/invest/create/fields/risk-choice.tsx:11
+msgid "High"
+msgstr "High"
+
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
 #: src/components/organisms/header/header.tsx:48
 #: src/components/organisms/header/header.tsx:49
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:16
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
+#: src/pages/invest/create/fields/submit-button.tsx:13
+#: src/pages/invest/create/fields/submit-button.tsx:14
 msgid "Invest"
 msgstr "Invest"
+
+#: src/pages/invest/create/index.tsx:68
+msgid "Investment amount"
+msgstr "Investment amount"
+
+#: src/pages/invest/create/index.tsx:79
+msgid "Investment distribution"
+msgstr "Investment distribution"
 
 #: src/pages/portfolio/components/portfolio.tsx:185
 msgid "Investment ratio"
@@ -189,6 +219,14 @@ msgstr "Last claimed"
 #: src/pages/portfolio/components/portfolio.tsx:190
 msgid "Liquidity"
 msgstr "Liquidity"
+
+#: src/pages/invest/create/fields/risk-choice.tsx:9
+msgid "Low"
+msgstr "Low"
+
+#: src/pages/invest/create/fields/risk-choice.tsx:10
+msgid "Medium"
+msgstr "Medium"
 
 #: src/pages/portfolio/components/dash-cards.tsx:24
 msgid "Moderat"
@@ -234,6 +272,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
+#: src/pages/invest/create/fields/risk-choice.tsx:18
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr "Risk"
