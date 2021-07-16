@@ -1,39 +1,43 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {useState} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { locales } from '../../../../lingui.config'
-
-const StyledDropdownToggle = styled(Dropdown.Toggle)`
-    &:after {
-      display: none;
-    }
-`
+import Modal from "@components/molecules/modal";
+import {Trans} from "@lingui/macro";
+import Button from "@components/atoms/button";
 
 const LanguageSwitch = () => {
     const { locale, asPath } = useRouter();
+    const [show, setShow] = useState(false)
 
     return (
-        <div className="container">
-            <Dropdown>
-                <StyledDropdownToggle className="p-3" variant="light">
-                    <img src={`assets/flags/${locale}.svg`} alt={locale} width={22} height={22} />
-                </StyledDropdownToggle>
-                <Dropdown.Menu>
+        <>
+            <Button
+                variant="light"
+                className="d-flex align-items-center justify-content-center p-0 p-md-2 bg-dark"
+                onClick={() => setShow(true)}
+            >
+                <img src={`assets/flags/${locale}.svg`} alt={locale} width={22} height={22} />
+            </Button>
+            <Modal show={show} onHide={setShow}>
+                <Modal.Header closeButton onHide={() => setShow(false)}>
+                    <Modal.Title><Trans>Switch Language</Trans></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     {locales.map((lang) => (
-                      <Dropdown.Item key={`lang${lang}`}>
-                          <Link href={asPath} locale={lang}>
-                              <div className="d-flex align-items-center">
-                                <img className="me-3" src={`assets/flags/${lang}.svg`} alt={locale} width={22} height={22} />
-                                <span>Englisch</span>
-                              </div>
-                          </Link>
-                      </Dropdown.Item>
+                        <Dropdown.Item key={`lang${lang}`}>
+                            <Link href={asPath} locale={lang}>
+                                <div className="d-flex align-items-center">
+                                    <img className="me-3" src={`assets/flags/${lang}.svg`} alt={locale} width={22} height={22} />
+                                    <span>Englisch</span>
+                                </div>
+                            </Link>
+                        </Dropdown.Item>
                     ))}
-                </Dropdown.Menu>
-            </Dropdown>
-        </div>
+                </Modal.Body>
+            </Modal>
+        </>
     )
 }
 

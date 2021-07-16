@@ -11,11 +11,18 @@ import Network from '../web3/network'
 import LanguageSwitch from '@components/molecules/language-switch'
 
 const StyledBrand = styled(Navbar.Brand)`
-  margin-top: -10px;
+    margin-top: -10px;
   
-  img {
-    max-height: 40px;
-  }
+    img {
+      max-height: 40px;
+    }
+    
+    @media screen and (max-width: 768px) {
+        img {
+          max-height: 26px;
+        }
+    }
+  
 `
 
 const Header = () => {
@@ -23,17 +30,33 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar>
+            <Navbar expand="md">
                 <div className="container">
                     <Link href="/">
                         <a>
-                            <StyledBrand className="px-3 py-0">
+                            <StyledBrand className="px-md-3 py-0">
                                 <Image src="/assets/logo.svg" alt="Paycer" />
                             </StyledBrand>
                         </a>
                     </Link>
 
                     <Navbar.Toggle aria-controls="header-navbar-nav" />
+
+                    <ul className="navbar-nav flex-row">
+                        <li className="nav-item me-3">
+                            <Network />
+                        </li>
+                        <li className="nav-item me-3">
+                            <Account
+                                buttonVariant="light"
+                                dropdownVariant="light"
+                            />
+                        </li>
+                        <li className="nav-item me-3 me-md-0">
+                            <LanguageSwitch />
+                        </li>
+                    </ul>
+
                     <Navbar.Collapse id="header-navbar-nav" className="ms-2 me-auto">
                         <ul className="navbar-nav">
                             <li className="nav-item me-3">
@@ -66,21 +89,6 @@ const Header = () => {
                             </li>
                         </ul>
                     </Navbar.Collapse>
-
-                    <ul className="navbar-nav">
-                        <li className="nav-item me-3">
-                            <Network />
-                        </li>
-                        <li className="nav-item">
-                            <Account
-                              buttonVariant="light"
-                              dropdownVariant="light"
-                            />
-                        </li>
-                        <li className="nav-item">
-                            <LanguageSwitch />
-                        </li>
-                    </ul>
                 </div>
             </Navbar>
         </header>

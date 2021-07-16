@@ -51,6 +51,10 @@ msgstr ""
 msgid "Balance"
 msgstr ""
 
+#: src/pages/staking/index.tsx:25
+msgid "Buy PCR Token"
+msgstr ""
+
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr ""
@@ -123,11 +127,11 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:63
+#: src/components/organisms/header/header.tsx:86
 msgid "Docs"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:62
+#: src/components/organisms/header/header.tsx:85
 msgid "Documentation"
 msgstr ""
 
@@ -157,8 +161,8 @@ msgid "Fee"
 msgstr ""
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:48
-#: src/components/organisms/header/header.tsx:49
+#: src/components/organisms/header/header.tsx:71
+#: src/components/organisms/header/header.tsx:72
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:16
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -195,8 +199,8 @@ msgid "No Ethereum browser extension detected, install MetaMask on desktop or vi
 msgstr ""
 
 #: src/pages/staking/index.tsx:19
-msgid "Overview"
-msgstr ""
+#~ msgid "Overview"
+#~ msgstr ""
 
 #: src/components/organisms/web3/wallet-provider.tsx:34
 msgid "Please authorize this website to access your Ethereum account."
@@ -206,8 +210,8 @@ msgstr ""
 msgid "Please open your wallet and connect your account."
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:41
-#: src/components/organisms/header/header.tsx:42
+#: src/components/organisms/header/header.tsx:64
+#: src/components/organisms/header/header.tsx:65
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr ""
@@ -232,22 +236,26 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:56
+#: src/components/organisms/header/header.tsx:79
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
 msgstr ""
 
 #: src/pages/staking/index.tsx:20
-msgid "Staking Rewards"
-msgstr ""
+#~ msgid "Staking Rewards"
+#~ msgstr ""
 
-#: src/components/organisms/header/header.tsx:55
+#: src/components/organisms/header/header.tsx:78
 msgid "Staking rewards"
 msgstr ""
 
 #: src/components/organisms/invest/invest-card/index.tsx:94
 msgid "Start invest"
+msgstr ""
+
+#: src/components/molecules/language-switch/index.tsx:25
+msgid "Switch Language"
 msgstr ""
 
 #: src/components/organisms/web3/network-provider.tsx:49
