@@ -45,14 +45,14 @@ const Header = () => {
                             </li>
                             <li className="nav-item me-3">
                                 <Link href="/invest">
-                                    <a className={classnames({active: pathname == '/invest'}, 'nav-link')} title={t`Invest`}>
+                                    <a className={classnames({active: pathname.includes('/invest')}, 'nav-link')} title={t`Invest`}>
                                         <Trans>Invest</Trans>
                                     </a>
                                 </Link>
                             </li>
                             <li className="nav-item me-3">
                                 <Link href="/staking">
-                                    <a className={classnames({active: pathname == '/staking'}, 'nav-link')} title={t`Staking rewards`}>
+                                    <a className={classnames({active: pathname.includes('/staking')}, 'nav-link')} title={t`Staking rewards`}>
                                         <Trans>Staking</Trans>
                                     </a>
                                 </Link>

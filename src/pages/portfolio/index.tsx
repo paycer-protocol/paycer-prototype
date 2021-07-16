@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import PageHeader from '@components/molecules/page-header'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
@@ -14,9 +15,11 @@ export default function Home() {
             <PageHeader.Title>Portfolio</PageHeader.Title>
           </div>
           <div className="col-auto">
-            <Button variant="outline-primary">
-              Create Plan
-            </Button>
+            <Link href="/invest/create">
+              <Button variant="outline-primary">
+                Create Invest
+              </Button>
+            </Link>
           </div>
         </div>
       </PageHeader>

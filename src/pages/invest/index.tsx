@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from '@components/organisms/invest/invest-card'
@@ -112,7 +113,7 @@ const investCardFixtures: InvestProps[] = [
     },
 ]
 
-export default () => {
+export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
 
     return (
@@ -124,9 +125,11 @@ export default () => {
                         <PageHeader.Title>Invest</PageHeader.Title>
                     </div>
                     <div className="col-auto">
-                        <Button variant="outline-primary">
-                            Create Plan
-                        </Button>
+                        <Link href="/invest/create">
+                            <Button variant="outline-primary">
+                                Create Invest
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </PageHeader>

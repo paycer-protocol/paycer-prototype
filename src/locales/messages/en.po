@@ -51,6 +51,10 @@ msgstr "Available Balance"
 msgid "Balance"
 msgstr "Balance"
 
+#: src/pages/staking/index.tsx:25
+msgid "Buy PCR Token"
+msgstr "Buy PCR Token"
+
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr "Cancel"
@@ -204,8 +208,8 @@ msgid "No Ethereum browser extension detected, install MetaMask on desktop or vi
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
 #: src/pages/staking/index.tsx:19
-msgid "Overview"
-msgstr "Overview"
+#~ msgid "Overview"
+#~ msgstr "Overview"
 
 #: src/components/organisms/web3/wallet-provider.tsx:34
 msgid "Please authorize this website to access your Ethereum account."
@@ -261,8 +265,8 @@ msgid "Staking"
 msgstr "Staking"
 
 #: src/pages/staking/index.tsx:20
-msgid "Staking Rewards"
-msgstr "Staking Rewards"
+#~ msgid "Staking Rewards"
+#~ msgstr "Staking Rewards"
 
 #: src/components/organisms/header/header.tsx:55
 msgid "Staking rewards"
