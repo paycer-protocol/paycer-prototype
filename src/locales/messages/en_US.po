@@ -101,7 +101,7 @@ msgid "Current Invest"
 msgstr "Current Invest"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:17
-#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
 msgid "Current Staked"
 msgstr "Current Staked"
 
@@ -280,6 +280,14 @@ msgstr "Switch network"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
+msgid "Token Balance"
+msgstr "Token Balance"
+
+#: src/components/organisms/staking-rewards/staking-form/fields/token-input.tsx:17
+msgid "Token balance"
+msgstr "Token balance"
+
 #: src/pages/portfolio/components/dash-cards.tsx:12
 msgid "Total Balance"
 msgstr "Total Balance"
@@ -294,8 +302,8 @@ msgstr "Total claimed"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
-msgid "Unsakted Tokens"
-msgstr "Unsakted Tokens"
+#~ msgid "Unsakted Tokens"
+#~ msgstr "Unsakted Tokens"
 
 #: src/pages/dashboard/components/staking-rewards/index.tsx:43
 #~ msgid "Unstaked"

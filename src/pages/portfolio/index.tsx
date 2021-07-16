@@ -20,12 +20,10 @@ export default function Home() {
           </div>
         </div>
       </PageHeader>
-      <div className="container">
-        <DashCards />
-        <div className="row">
-          <div className="col-12">
-            <Portfolio />
-          </div>
+      <DashCards />
+      <div className="row">
+        <div className="col-12">
+          <Portfolio />
         </div>
       </div>
     </div>
