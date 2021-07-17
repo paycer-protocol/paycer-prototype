@@ -26,7 +26,7 @@ export default function ClaimSummary() {
       <RewardContainer>
         <div className="d-flex flex-column text-center">
           <span className="text-muted">
-              <Trans>Current rewards</Trans>
+              <Trans>Claimable rewards</Trans>
           </span>
           <span className="display-4">
               +&nbsp;

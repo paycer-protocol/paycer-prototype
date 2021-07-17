@@ -1,10 +1,10 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
-import { CreateInvestProps } from '../types'
+import { InvestmentStrategy } from '@types/investment'
 
 export default function InvestRangeSlider() {
-  const { values, initialValues, setFieldValue, dirty } = useFormikContext<CreateInvestProps>()
+  const { values, initialValues, setFieldValue, dirty } = useFormikContext<InvestmentStrategy>()
 
   return (
     <div className="mb-5 mx-2">
@@ -20,12 +20,12 @@ export default function InvestRangeSlider() {
         max={100}
         step={1}
         value={dirty ? values.investRange : undefined}
-        defaultValue={values.investRange * 100 / values.walletBalance}
+        defaultValue={values.investRange * 100 / values.baseBalance}
         onChange={(value) => {
           let investAmount = 0 as number
-          investAmount = values.walletBalance * value / 100
+          investAmount = values.baseBalance * value / 100
 
-          investAmount = investAmount > initialValues.walletBalance ? initialValues.walletBalance : investAmount
+          investAmount = investAmount > initialValues.baseBalance ? initialValues.baseBalance : investAmount
           investAmount = investAmount < 0 ? 0 : investAmount
 
           setFieldValue('investAmount', investAmount)

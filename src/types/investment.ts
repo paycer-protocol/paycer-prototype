@@ -7,6 +7,7 @@ export enum RiskLevel {
 export interface AssetType {
   name: string
   imgPath: string
+  investRange: number
 }
 
 export interface FeesType {
@@ -42,6 +43,7 @@ export interface InvestmentStrategy extends InvestPairType, FeesType, InterestTy
   riskLevel: RiskLevel
   strategyName: string
   investSymbol: string
+  investAmount: number
   investRange?: number
   tvl?: number
   invested?: number

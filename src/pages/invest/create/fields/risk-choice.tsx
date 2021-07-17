@@ -3,8 +3,8 @@ import {defineMessage, t, Trans} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Form from '@components/atoms/form'
 import Button from '@components/atoms/button'
-import { RiskLevel } from '@types/investment'
-import { CreateInvestProps } from '../types'
+import { RiskLevel, InvestmentStrategy } from '@types/investment'
+import { investmentStrategies } from '@config/investment/strategies'
 
 const riskLabels = {
     [RiskLevel.Low]: defineMessage({ message: 'Low' }),
@@ -13,18 +13,16 @@ const riskLabels = {
 }
 
 export default function RiskChoice() {
-    const { values, initialValues, setFieldValue } = useFormikContext<CreateInvestProps>()
+    const { values, setFieldValue } = useFormikContext<InvestmentStrategy>()
 
     const handleChange = (risk) => {
       setFieldValue('riskLevel', risk)
 
-      initialValues.investmentDistribution.map((item, i) => {
-        // TODO
-        setFieldValue(
-          `investmentDistribution[${i}].investRange`,
-          Math.abs(item.investRange)
-        )
-      })
+      const qualifiedStrategy = investmentStrategies.find((item) => Number(item.riskLevel) == Number(risk))
+      if (qualifiedStrategy) {
+        setFieldValue('assets', qualifiedStrategy.assets)
+      }
+
     }
 
     return (

@@ -67,6 +67,10 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
+msgid "Claimable rewards"
+msgstr "Claimable rewards"
+
 #: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
@@ -110,8 +114,8 @@ msgid "Current Staked"
 msgstr "Current Staked"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
-msgid "Current rewards"
-msgstr "Current rewards"
+#~ msgid "Current rewards"
+#~ msgstr "Current rewards"
 
 #: src/components/organisms/invest/invest-form/index.tsx:100
 msgid "Daily interest"
@@ -136,7 +140,7 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/pages/invest/create/index.tsx:91
+#: src/pages/invest/create/index.tsx:63
 msgid "Distribution"
 msgstr "Distribution"
 
@@ -204,7 +208,7 @@ msgstr "High"
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/invest/create/index.tsx:81
+#: src/pages/invest/create/index.tsx:53
 msgid "Invest amount"
 msgstr "Invest amount"
 
@@ -280,7 +284,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
-#: src/pages/invest/create/fields/risk-choice.tsx:31
+#: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr "Risk"

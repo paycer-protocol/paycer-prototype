@@ -7,10 +7,10 @@ import PageHeader from '@components/molecules/page-header'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
 import RiskChoice from './fields/risk-choice'
-import InvestmentDistribution from './fields/investment-distribution'
+import InvestmentAssets from './fields/investment-assets'
 import SubmitButton from './fields/submit-button'
-import { RiskLevel } from '@types/investment'
-import { CreateInvestProps, InvestmentDistributionProps } from './types'
+import { investmentStrategies } from '@config/investment/strategies'
+import { InvestmentStrategy } from '@types/investment'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -18,38 +18,15 @@ const VerticalLine = styled.div`
 `
 
 export default () => {
-  const handleSubmit = (values: CreateInvestProps) => {
+  const handleSubmit = (values: InvestmentStrategy) => {
   }
 
-  const investmentDistribution: InvestmentDistributionProps[]  = [
-    {
-      riskLevel: RiskLevel.Low,
-      investName: 'Balancer',
-      investSymbol: 'BAL',
-      investRange: 30
-    },
-    {
-      riskLevel: RiskLevel.Medium,
-      investName: 'Balancer',
-      investSymbol: 'BAL',
-      investRange: 20
-    },
-    {
-      riskLevel: RiskLevel.High,
-      investName: 'Balancer',
-      investSymbol: 'BAL',
-      investRange: 10
+  const initialValues: InvestmentStrategy = {
+    ...investmentStrategies[0],
+    ...{
+      investAmount: 0,
+      baseBalance: 1000,
     }
-  ]
-
-  const initialValues: CreateInvestProps = {
-    investAmount: 0,
-    investSymbol: 'ETH',
-    walletBalance: 1000,
-    walletSymbol: 'ETH',
-    riskLevel: RiskLevel.Low,
-    investRange: 0,
-    investmentDistribution: investmentDistribution
   }
 
   const validationSchema = Yup.object().shape({
@@ -72,6 +49,7 @@ export default () => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
+        enableReinitialize
       >
         <div className="card">
           <div className="card-body">
@@ -90,7 +68,7 @@ export default () => {
                 <h2 className="mb-5">
                   <Trans>Distribution</Trans>
                 </h2>
-                <InvestmentDistribution />
+                <InvestmentAssets />
               </div>
             </div>
           </div>

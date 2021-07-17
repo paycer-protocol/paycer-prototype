@@ -86,7 +86,7 @@ const InvestForm = (props: InvestmentStrategy) => {
                       <div className="mb-5">
                           <InvestRangeSlider />
                       </div>
-                      <div className="row">
+                      <div className="row mb-4">
                           <div className="col-6">
                               <InvestInput />
                           </div>
