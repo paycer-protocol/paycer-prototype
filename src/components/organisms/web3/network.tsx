@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import classnames from 'classnames'
 import Button from '@components/atoms/button'
 import useWallet from './hooks/useWallet'
 import NativeCurrencyIcon  from './native-currency-icon'
 import NetworkProvider  from './network-provider'
 import { mainNetProviders } from './providers/networks'
 
-const Network = () => {
+const Network = (props) => {
     const [showNetworkModal, setShowNetworkModal] = useState(false)
     const wallet = useWallet()
 
@@ -17,11 +18,11 @@ const Network = () => {
         <>
             <Button
                 variant="light"
-                className="d-flex align-items-center justify-content-center p-2 bg-dark"
+                className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
                 onClick={() => setShowNetworkModal(true)}
             >
                 <span className="mx-2 me-3">{wallet.chainName}</span>
-                <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">
+                <div className="bg-dark-soft rounded-2 p-2 p-3 pt-2 pb-2">
                     <NativeCurrencyIcon size={20} />
                 </div>
 
