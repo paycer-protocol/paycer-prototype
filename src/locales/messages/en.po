@@ -144,15 +144,13 @@ msgstr "Disconnect"
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/components/organisms/header/header.tsx:100
-#: src/components/organisms/header/header.tsx:168
-#: src/components/organisms/header/off-canvas.tsx:111
+#: src/components/organisms/header/header.tsx:99
+#: src/components/organisms/header/off-canvas.tsx:87
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:99
-#: src/components/organisms/header/header.tsx:167
-#: src/components/organisms/header/off-canvas.tsx:110
+#: src/components/organisms/header/header.tsx:98
+#: src/components/organisms/header/off-canvas.tsx:86
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -202,12 +200,10 @@ msgid "High"
 msgstr "High"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/organisms/header/header.tsx:84
 #: src/components/organisms/header/header.tsx:85
-#: src/components/organisms/header/header.tsx:86
-#: src/components/organisms/header/header.tsx:153
-#: src/components/organisms/header/header.tsx:154
-#: src/components/organisms/header/off-canvas.tsx:96
-#: src/components/organisms/header/off-canvas.tsx:97
+#: src/components/organisms/header/off-canvas.tsx:72
+#: src/components/organisms/header/off-canvas.tsx:73
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -277,12 +273,10 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
+#: src/components/organisms/header/header.tsx:77
 #: src/components/organisms/header/header.tsx:78
-#: src/components/organisms/header/header.tsx:79
-#: src/components/organisms/header/header.tsx:146
-#: src/components/organisms/header/header.tsx:147
-#: src/components/organisms/header/off-canvas.tsx:89
-#: src/components/organisms/header/off-canvas.tsx:90
+#: src/components/organisms/header/off-canvas.tsx:65
+#: src/components/organisms/header/off-canvas.tsx:66
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -321,9 +315,8 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/header/header.tsx:93
-#: src/components/organisms/header/header.tsx:161
-#: src/components/organisms/header/off-canvas.tsx:104
+#: src/components/organisms/header/header.tsx:92
+#: src/components/organisms/header/off-canvas.tsx:80
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
@@ -333,9 +326,8 @@ msgstr "Staking"
 #~ msgid "Staking Rewards"
 #~ msgstr "Staking Rewards"
 
-#: src/components/organisms/header/header.tsx:92
-#: src/components/organisms/header/header.tsx:160
-#: src/components/organisms/header/off-canvas.tsx:103
+#: src/components/organisms/header/header.tsx:91
+#: src/components/organisms/header/off-canvas.tsx:79
 msgid "Staking rewards"
 msgstr "Staking rewards"
 

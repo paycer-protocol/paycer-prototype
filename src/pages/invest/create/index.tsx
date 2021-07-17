@@ -31,8 +31,7 @@ export default () => {
 
   const validationSchema = Yup.object().shape({
     investAmount: Yup.number().min(0).required(),
-    walletBalance: Yup.number().min(0).required(),
-    riskLevel: Yup.number().min(0).required(),
+    baseBalance: Yup.number().min(0).required(),
   })
 
   return (
@@ -61,7 +60,7 @@ export default () => {
                   <InvestInput />
                   <InvestRangeSlider />
                   <RiskChoice />
-                  <SubmitButton />
+                  <SubmitButton className="d-none d-md-flex" />
               </div>
               <VerticalLine />
               <div className="w-100">
@@ -69,6 +68,7 @@ export default () => {
                   <Trans>Distribution</Trans>
                 </h2>
                 <InvestmentAssets />
+                <SubmitButton className="d-block d-md-none w-100 text-center" />
               </div>
             </div>
           </div>
