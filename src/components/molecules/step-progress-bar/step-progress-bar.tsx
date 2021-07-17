@@ -31,8 +31,8 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         </div>
                     )}
                 </Step>
-                {steps.map((data) => (
-                    <Step>
+                {steps.map((data, i) => (
+                    <Step key={`steps${i}`}>
                         {({accomplished}) => (
                             <div
                                 className={`indexedStep ${accomplished ? "accomplished" : null}`}

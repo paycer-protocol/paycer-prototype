@@ -63,12 +63,16 @@ msgstr ""
 msgid "Claim"
 msgstr ""
 
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
+msgid "Claimable rewards"
+msgstr ""
+
 #: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr ""
 
 #: src/components/organisms/web3/account-detail.tsx:131
-#: src/components/organisms/web3/account.tsx:30
+#: src/components/organisms/web3/account.tsx:38
 msgid "Connect to a Wallet"
 msgstr ""
 
@@ -106,14 +110,14 @@ msgid "Current Staked"
 msgstr ""
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
-msgid "Current rewards"
-msgstr ""
+#~ msgid "Current rewards"
+#~ msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:99
+#: src/components/organisms/invest/invest-form/index.tsx:100
 msgid "Daily interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:106
+#: src/components/organisms/invest/invest-form/index.tsx:107
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:66
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -127,11 +131,19 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:88
+#: src/pages/invest/create/index.tsx:69
+msgid "Distribution"
+msgstr ""
+
+#: src/components/organisms/header/header.tsx:100
+#: src/components/organisms/header/header.tsx:168
+#: src/components/organisms/header/off-canvas.tsx:111
 msgid "Docs"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:87
+#: src/components/organisms/header/header.tsx:99
+#: src/components/organisms/header/header.tsx:167
+#: src/components/organisms/header/off-canvas.tsx:110
 msgid "Documentation"
 msgstr ""
 
@@ -143,12 +155,20 @@ msgstr ""
 msgid "Easy-to-use browser extension."
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:94
+#: src/components/organisms/invest/invest-card/index.tsx:95
 msgid "Edit invest"
+msgstr ""
+
+#: src/components/molecules/language-switch/index.tsx:12
+msgid "English"
 msgstr ""
 
 #: src/components/organisms/web3/providers/connectors.ts:111
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
+msgstr ""
+
+#: src/pages/invest/create/fields/invest-input.tsx:14
+msgid "Enter your invest amount"
 msgstr ""
 
 #: src/components/organisms/web3/account-detail.tsx:104
@@ -160,14 +180,44 @@ msgstr ""
 msgid "Fee"
 msgstr ""
 
+#: src/components/molecules/language-switch/index.tsx:13
+msgid "German"
+msgstr ""
+
+#: src/pages/invest/create/index.tsx:21
+#~ msgid "Height"
+#~ msgstr ""
+
+#: src/pages/invest/create/fields/risk-choice.tsx:12
+msgid "High"
+msgstr ""
+
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:73
-#: src/components/organisms/header/header.tsx:74
+#: src/components/organisms/header/header.tsx:85
+#: src/components/organisms/header/header.tsx:86
+#: src/components/organisms/header/header.tsx:153
+#: src/components/organisms/header/header.tsx:154
+#: src/components/organisms/header/off-canvas.tsx:96
+#: src/components/organisms/header/off-canvas.tsx:97
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
-#: src/components/organisms/invest/invest-modal.tsx:16
+#: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
+#: src/pages/invest/create/fields/submit-button.tsx:13
+#: src/pages/invest/create/fields/submit-button.tsx:14
 msgid "Invest"
 msgstr ""
+
+#: src/pages/invest/create/index.tsx:59
+msgid "Invest amount"
+msgstr ""
+
+#: src/pages/invest/create/index.tsx:80
+#~ msgid "Investment amount"
+#~ msgstr ""
+
+#: src/pages/invest/create/index.tsx:91
+#~ msgid "Investment distribution"
+#~ msgstr ""
 
 #: src/pages/portfolio/components/portfolio.tsx:185
 msgid "Investment ratio"
@@ -179,6 +229,14 @@ msgstr ""
 
 #: src/pages/portfolio/components/portfolio.tsx:190
 msgid "Liquidity"
+msgstr ""
+
+#: src/pages/invest/create/fields/risk-choice.tsx:10
+msgid "Low"
+msgstr ""
+
+#: src/pages/invest/create/fields/risk-choice.tsx:11
+msgid "Medium"
 msgstr ""
 
 #: src/pages/portfolio/components/dash-cards.tsx:24
@@ -210,8 +268,12 @@ msgstr ""
 msgid "Please open your wallet and connect your account."
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:66
-#: src/components/organisms/header/header.tsx:67
+#: src/components/organisms/header/header.tsx:78
+#: src/components/organisms/header/header.tsx:79
+#: src/components/organisms/header/header.tsx:146
+#: src/components/organisms/header/header.tsx:147
+#: src/components/organisms/header/off-canvas.tsx:89
+#: src/components/organisms/header/off-canvas.tsx:90
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr ""
@@ -220,6 +282,7 @@ msgstr ""
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
+#: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:23
 msgid "Risk"
 msgstr ""
@@ -236,7 +299,9 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/header/header.tsx:81
+#: src/components/organisms/header/header.tsx:93
+#: src/components/organisms/header/header.tsx:161
+#: src/components/organisms/header/off-canvas.tsx:104
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:49
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 msgid "Staking"
@@ -246,15 +311,17 @@ msgstr ""
 #~ msgid "Staking Rewards"
 #~ msgstr ""
 
-#: src/components/organisms/header/header.tsx:80
+#: src/components/organisms/header/header.tsx:92
+#: src/components/organisms/header/header.tsx:160
+#: src/components/organisms/header/off-canvas.tsx:103
 msgid "Staking rewards"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:94
+#: src/components/organisms/invest/invest-card/index.tsx:95
 msgid "Start invest"
 msgstr ""
 
-#: src/components/molecules/language-switch/index.tsx:25
+#: src/components/molecules/language-switch/index.tsx:32
 msgid "Switch Language"
 msgstr ""
 

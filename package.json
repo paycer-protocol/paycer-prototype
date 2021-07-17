@@ -68,7 +68,7 @@
     "nextjs-fonts": "^0.22.0",
     "node-sass": "^6.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "react-bootstrap": "^1.6.1",
+    "react-bootstrap": "v2.0.0-beta.3",
     "react-intl": "^5.20.1",
     "recharts": "^2.0.9",
     "sass-loader": "10",
