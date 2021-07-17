@@ -60,7 +60,9 @@ export default () => {
                   <InvestInput />
                   <InvestRangeSlider />
                   <RiskChoice />
-                  <SubmitButton className="d-none d-md-flex" />
+                <div className="d-none d-md-flex align-items-center justify-content-center mb-3">
+                  <SubmitButton />
+                </div>
               </div>
               <VerticalLine />
               <div className="w-100">
@@ -68,7 +70,9 @@ export default () => {
                   <Trans>Distribution</Trans>
                 </h2>
                 <InvestmentAssets />
-                <SubmitButton className="d-block d-md-none w-100 text-center" />
+                <div className="d-flex d-md-none align-items-center justify-content-center mb-5">
+                  <SubmitButton className="w-100"/>
+                </div>
               </div>
             </div>
           </div>

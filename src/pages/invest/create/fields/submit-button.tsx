@@ -9,10 +9,8 @@ export default function SubmitButton(props) {
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investAmount <= 0
 
     return (
-      <div className="d-flex align-items-center justify-content-center mb-3" {...props}>
-          <Button title={t`Invest`} className="px-5" variant={isDisabled ? 'outline-success' : 'success'} disabled={isDisabled}>
-              {t`Invest`}
-          </Button>
-      </div>
+      <Button title={t`Invest`} className="px-5" variant={isDisabled ? 'outline-success' : 'success'} disabled={isDisabled} {...props}>
+        {t`Invest`}
+      </Button>
     )
 }
