@@ -22,6 +22,7 @@
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@config/*": ["config/*"],
+      "@types/*": ["types/*"],
     }
   },
   "include": [

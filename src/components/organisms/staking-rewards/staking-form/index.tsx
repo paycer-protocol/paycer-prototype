@@ -52,7 +52,7 @@ export default function StakingForm() {
             <div className="mb-5">
               <StakeRangeSlider />
             </div>
-            <div className="row">
+            <div className="row mb-4">
               <div className="col-6">
                 <TokenInput />
               </div>

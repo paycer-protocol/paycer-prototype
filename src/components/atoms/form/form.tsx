@@ -24,7 +24,7 @@ const Form: FormComponent = ({ className, children, ...restProps }: FormProps<Fo
     <Formik {...restProps}>
         {(formik: DerivedFormikProps<FormikValues>) => (
             <BootstrapForm className={className} onSubmit={formik.handleSubmit}>
-                {children(formik)}
+                {typeof children === 'function' ? children(formik): children}
             </BootstrapForm>
         )}
     </Formik>

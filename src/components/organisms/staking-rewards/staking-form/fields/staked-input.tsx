@@ -40,8 +40,8 @@ export default function StakedInput() {
                 stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
                 stakedBalance = stakedBalance >= totalBalance ? totalBalance : stakedBalance
 
-              tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
-              tokenBalance = tokenBalance >= totalBalance ? totalBalance : tokenBalance
+                tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+                tokenBalance = tokenBalance >= totalBalance ? totalBalance : tokenBalance
 
                 setFieldValue('stakedBalance', stakedBalance)
                 setFieldValue('tokenBalance', tokenBalance)

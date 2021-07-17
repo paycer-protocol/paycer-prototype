@@ -1,6 +1,6 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
+import { useAccordionButton } from 'react-bootstrap/AccordionButton'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
@@ -147,7 +147,7 @@ export default function Portfolio() {
 
   function CustomToggle({eventKey, children}) {
     return (
-        <tr onClick={useAccordionToggle(eventKey)} className="cursor-pointer">
+        <tr onClick={useAccordionButton(eventKey)} className="cursor-pointer">
           {children}
         </tr>
     )

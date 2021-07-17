@@ -1,14 +1,12 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
-import HeaderComponent, { HeaderProps } from './header'
+import HeaderComponent from './header'
 
 export default {
     title: 'Organism/Header',
     argTypes: {},
 } as Meta
-
-type StoryOptions = Partial<HeaderProps>
 
 const config: Config = {
     readOnlyChainId: ChainId.Mainnet,
@@ -17,7 +15,7 @@ const config: Config = {
     },
 }
 
-const Template: Story<StoryOptions> = (props: StoryOptions) => (
+const Template: Story = (props) => (
     <DAppProvider config={config}>
         <HeaderComponent {...props} />
     </DAppProvider>
