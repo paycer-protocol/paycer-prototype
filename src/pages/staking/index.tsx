@@ -11,6 +11,11 @@ const VerticalLine = styled.div`
     margin: 20px 30px 20px 50px;
 `
 
+const HorizontalLine = styled.div`
+    border-top: 1px solid #244166;
+    margin: 50px 30px 0;
+`
+
 export default () => {
   return (
     <div className="container mt-3">
@@ -34,6 +39,7 @@ export default () => {
               <StakingForm />
             </div>
             <VerticalLine className="d-none d-md-block" />
+            <HorizontalLine className="d-block d-md-none" />
             <div className="w-100">
               <ClaimForm />
             </div>
