@@ -23,6 +23,7 @@
       "@hooks/*": ["hooks/*"],
       "@config/*": ["config/*"],
       "@types/*": ["types/*"],
+      "@contracts/*": ["contracts/*"],
     }
   },
   "include": [

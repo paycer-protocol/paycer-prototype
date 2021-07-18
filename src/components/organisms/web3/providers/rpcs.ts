@@ -14,5 +14,6 @@ export const rpcUrls: IRpcUrl = {
     [ChainId.Polygon]: 'https://rpc-mainnet.maticvigil.com',
     [ChainId.Mumbai]: 'https://rpc-mumbai.maticvigil.com',
     [ChainId.xDai]: 'https://rpc.xdaichain.com',
+    [ChainId.Hardhat]: 'http://127.0.0.1:8545',
 
 }

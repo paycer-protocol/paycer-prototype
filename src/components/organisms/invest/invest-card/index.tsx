@@ -85,7 +85,11 @@ const InvestCard = (props: InvestmentStrategy) => {
                             <Trans>Earned</Trans>
                         </span>
                         <span className="">
-                            <FormattedNumber value={earnedInterest} />
+                            <FormattedNumber
+                              value={earnedInterest}
+                              minimumFractionDigits={2}
+                              maximumFractionDigits={4}
+                            />
                             &nbsp;{investSymbol}
                         </span>
                     </li>

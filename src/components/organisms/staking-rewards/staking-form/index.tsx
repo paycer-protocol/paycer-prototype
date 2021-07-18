@@ -1,5 +1,5 @@
 import React from 'react'
-import {t, Trans} from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import DashNumber from '@components/organisms/dashboard/dash-number'
@@ -10,14 +10,30 @@ import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import StakingSummary from './staking-summary'
 import { StakingProps } from '../types'
+import { useTokenBalance, useEthers, useContractCall } from '@usedapp/core'
+import { formatUnits } from '@ethersproject/units'
+import { Interface } from '@ethersproject/abi'
+import stakingAbi from '@contracts/abi/StakingRewards.json'
+import tokenAbi from '@contracts/abi/PaycerToken.json'
 
 export default function StakingForm() {
+  const { account } = useEthers()
+  const rawTokenBalance = useTokenBalance(tokenAbi.address, account)
+
+  const rawStakedBalance = useContractCall({
+    abi: new Interface(stakingAbi.abi),
+    address: stakingAbi.address,
+    method: 'stakedBalanceOf',
+    args: [account],
+  })
+
+  const tokenBalance = formatUnits(rawTokenBalance || 0, 18)
+  const stakedBalance = Number(rawStakedBalance || 0)
 
   const initialValues: StakingProps = {
     rewardSymbol: 'PCR',
-    stakedBalance: 100,
-    tokenBalance: 1000,
-    claimBalance: 0,
+    stakedBalance,
+    tokenBalance,
     rewardRate: 15,
     stakeRange: 0,
     depositFee: 0.01,
@@ -37,6 +53,7 @@ export default function StakingForm() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      enableReinitialize
     >
       {({ values }) => {
         if (values.disabled) {

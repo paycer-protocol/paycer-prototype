@@ -21,7 +21,7 @@ const Network = (props) => {
                 className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
                 onClick={() => setShowNetworkModal(true)}
             >
-                <span className="mx-2 me-3">{wallet.chainName}</span>
+                <span className="mx-2">{wallet.chainName}</span>
                 <div className="bg-dark-soft rounded-2 p-2 p-3 pt-2 pb-2">
                     <NativeCurrencyIcon size={20} />
                 </div>

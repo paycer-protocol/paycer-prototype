@@ -10,7 +10,11 @@ export default function DashCards () {
     <div className="row">
       <div className="col-12 col-md-4 col-xl">
         <DashCard title={t`Total Balance`}>
-          <FormattedNumber value={wallet.etherBalance} />
+          <FormattedNumber
+            value={wallet.etherBalance}
+            minimumFractionDigits={2}
+            maximumFractionDigits={4}
+          />
           &nbsp;{wallet.etherSymbol}
         </DashCard>
       </div>
@@ -21,7 +25,7 @@ export default function DashCards () {
       </div>
       <div className="col-12 col-md-4 col-xl">
         <DashCard title={t`Risk`}>
-          <Trans>Moderat</Trans>
+          <Trans>Low</Trans>
         </DashCard>
       </div>
     </div>

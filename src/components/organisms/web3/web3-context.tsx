@@ -11,9 +11,11 @@ export interface Web3ContextProps {
     children: any
 }
 
-export default ({ children }: Web3ContextProps) => (
-    <DAppProvider config={config}>
-        {children}
-    </DAppProvider>
-)
+export default function Web3Context ({ children }: Web3ContextProps) {
+    return (
+      <DAppProvider config={config}>
+          {children}
+      </DAppProvider>
+    )
+}
 

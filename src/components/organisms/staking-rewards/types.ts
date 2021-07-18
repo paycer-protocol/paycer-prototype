@@ -1,8 +1,7 @@
 export interface StakingProps {
   rewardSymbol: string
-  stakedBalance: number
-  tokenBalance: number
-  claimBalance: number
+  stakedBalance: number | string
+  tokenBalance: number | string
   rewardRate: number
   stakeRange: number
   depositFee: number

@@ -12,7 +12,7 @@ export default function useWallet() {
         if (activatingConnector && activatingConnector === connector) {
             setActivatingConnector(undefined)
         }
-    }, [activatingConnector, connector])
+    }, [activatingConnector, connector, etherBalance])
 
     const handleConnect = async (provider: IConnectorProvider) => {
         try {

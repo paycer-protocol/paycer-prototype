@@ -54,7 +54,11 @@ const Account = (props: AccountProps) => {
                 onClick={() => setShowAccountModal(true)}
             >
               <div className="p-2">
-                <FormattedNumber value={wallet?.etherBalance} />&nbsp;{wallet?.etherSymbol}
+                <FormattedNumber
+                  value={wallet.etherBalance}
+                  minimumFractionDigits={2}
+                  maximumFractionDigits={4}
+                />&nbsp;{wallet.etherSymbol}
               </div>
                 <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">
                     {wallet.shortenAddress}

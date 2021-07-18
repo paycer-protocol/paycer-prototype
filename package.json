@@ -14,7 +14,7 @@
     "lingui:compile": "lingui compile"
   },
   "dependencies": {
-    "@usedapp/core": "^0.3.24",
+    "@usedapp/core": "^0.4.1",
     "bootstrap": "^5.0.0-beta2",
     "cleave.js": "^1.6.0",
     "next": "^10.0.0",

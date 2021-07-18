@@ -2,8 +2,8 @@ import { FormattedNumber as BaseFormattedNumber, FormatNumberOptions } from 'rea
 
 
 export interface FormattedNumberProps extends FormatNumberOptions {
-    value: number | string;
-    className?: string;
+    value: number | string
+    className?: string
 }
 
 export const FormattedNumber = ({ value = 0, minimumFractionDigits = 2, maximumSignificantDigits = 4, ...restProps }: FormattedNumberProps) => (

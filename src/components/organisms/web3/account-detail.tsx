@@ -60,7 +60,11 @@ const AccountBalance = () => {
                 <strong><Trans>Balance</Trans></strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
-                        <FormattedNumber value={wallet.etherBalance} />
+                        <FormattedNumber
+                          value={wallet.etherBalance}
+                          minimumFractionDigits={2}
+                          maximumFractionDigits={4}
+                        />
                         &nbsp;{wallet.etherSymbol}
                     </span>
                 </p>
@@ -90,49 +94,51 @@ const AccountDetail = (props: AccountDetailProps) => {
 
     return (
         <Modal show={show} onHide={onHide}>
-            <Modal.Header closeButton onHide={onHide}>
-                <Modal.Title>
-                    {determineModalTitle()}
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {wallet.isConnected && (
-                    <>
-                        <AccountBalance />
-                        <ListGroup>
-                            <AccountAction
+            <>
+                <Modal.Header closeButton onHide={onHide}>
+                    <Modal.Title>
+                        {determineModalTitle()}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {wallet.isConnected && (
+                      <>
+                          <AccountBalance />
+                          <ListGroup>
+                              <AccountAction
                                 name={t`Explorer`}
                                 description={t`View your wallet in Blockchain Explorer`}
                                 href={wallet.explorerUrl}
                                 target="_blank"
-                            />
-                            <AccountAction
+                              />
+                              <AccountAction
                                 name={t`Copy address`}
                                 description={t`Copy your wallet address to clipboard`}
                                 onClick={() => setCopied(wallet.address)}
-                            >
-                                {isCopied && <Icon component={CheckCircle} size={35} />}
-                            </AccountAction>
-                            <a
-                              className="d-flex justify-content-center mt-3 text-center text-danger"
-                              onClick={async () => {
-                                  await onHide()
-                                  await wallet.disconnect()
-                              }}
-                            >
-                                <small><Trans>Disconnect</Trans></small>
-                            </a>
-                        </ListGroup>
-                    </>
-                )}
-                {!wallet.isConnected && (
-                    <div className="d-flex justify-content-center">
-                        <Button variant="outline-primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
-                            <Trans>Connect to a Wallet</Trans>
-                        </Button>
-                    </div>
-                )}
-            </Modal.Body>
+                              >
+                                  {isCopied && <Icon component={CheckCircle} size={35} />}
+                              </AccountAction>
+                              <a
+                                className="d-flex justify-content-center mt-3 text-center text-danger"
+                                onClick={async () => {
+                                    await onHide()
+                                    await wallet.disconnect()
+                                }}
+                              >
+                                  <small><Trans>Disconnect</Trans></small>
+                              </a>
+                          </ListGroup>
+                      </>
+                    )}
+                    {!wallet.isConnected && (
+                      <div className="d-flex justify-content-center">
+                          <Button variant="outline-primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
+                              <Trans>Connect to a Wallet</Trans>
+                          </Button>
+                      </div>
+                    )}
+                </Modal.Body>
+            </>
         </Modal>
     )
 }
