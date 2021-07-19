@@ -3,7 +3,7 @@ import {Trans, t} from '@lingui/macro'
 import {toast} from 'react-toastify';
 import useWallet from './hooks/useWallet'
 import useNetwork from './hooks/useNetwork'
-import Alert from '@components/atoms/alert'
+import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
 import { INetworkProvider } from './providers'
 import NativeCurrencyIcon from './native-currency-icon'
@@ -45,43 +45,39 @@ const NetworkProvider = (props: NetworkProviderProps) => {
 
   return (
     <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton onHide={onHide}>
-        <Modal.Title><Trans>Switch network</Trans></Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Alert variant="danger" show={!!wallet.errorMessage}>
-          {wallet.errorMessage}
-        </Alert>
-        <div className="row">
-          {Object.keys(providers).map((chainId) => {
-            const provider = providers[chainId]
-            const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
-            const className = isActive ? 'bg-dark-soft border-dark mb-2 w-100 p-2 rounded-2 p-3' : 'bg-secondary-dark-soft mb-2 w-100 p-2 rounded-2 p-3'
+      <>
+        <Modal.Header closeButton onHide={onHide}>
+          <Modal.Title><Trans>Switch network</Trans></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="d-flex align-items-center">
+            {Object.keys(providers).map((chainId) => {
+              const provider = providers[chainId]
+              const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
 
-            return (
-              <div key={chainId} className="col-4 col-md-3" style={{ marginBottom: '18px' }}>
-                <div
-                  key={chainId}
-                  className={className}
-                  onClick={async () => {
-                    await onHide()
-                    await handleSwitchNetwork(provider)
-                  }}
-                >
-                  <div className="d-flex align-items-center justify-content-center cursor-pointer">
+              return (
+                  <Button
+                    key={chainId}
+                    variant="light"
+                    className="d-flex align-items-center justify-content-center me-3 w-25"
+                    active={isActive}
+                    onClick={async () => {
+                      await onHide()
+                      await handleSwitchNetwork(provider)
+                    }}
+                  >
                     <NativeCurrencyIcon
                       chainId={Number(chainId)}
                       size={20}
                       className="me-2"
                     />
                     <strong>{provider.chainName}</strong>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </Modal.Body>
+                  </Button>
+              )
+            })}
+          </div>
+        </Modal.Body>
+      </>
     </Modal>
   )
 }

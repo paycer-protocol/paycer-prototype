@@ -78,26 +78,13 @@ const AccountDetail = (props: AccountDetailProps) => {
     const { show, onHide } = props
     const wallet = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
-    const isMetaMask = window?.ethereum?.isMetaMask
-
-    const determineModalTitle = () => {
-        if (!wallet.isConnected) {
-            return t`Connect to wallet`
-        }
-
-        if (wallet.isConnected && isMetaMask) {
-            return t`Connected with MetaMask`
-        }
-
-        return t`Connected to wallet`
-    }
 
     return (
         <Modal show={show} onHide={onHide}>
             <>
                 <Modal.Header closeButton onHide={onHide}>
                     <Modal.Title>
-                        {determineModalTitle()}
+                        <Trans>Account</Trans>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
