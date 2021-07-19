@@ -23,7 +23,11 @@ msgstr "APR"
 msgid "APY"
 msgstr "APY"
 
-#: src/components/organisms/web3/network-provider.tsx:35
+#: src/components/organisms/web3/account-detail.tsx:87
+msgid "Account"
+msgstr "Account"
+
+#: src/components/organisms/web3/network-provider.tsx:34
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -80,7 +84,7 @@ msgstr "Claimable rewards"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/account-detail.tsx:136
+#: src/components/organisms/web3/account-detail.tsx:123
 #: src/components/organisms/web3/account.tsx:38
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -90,22 +94,22 @@ msgid "Connect to a wallet"
 msgstr "Connect to a wallet"
 
 #: src/components/organisms/web3/account-detail.tsx:85
-msgid "Connect to wallet"
-msgstr "Connect to wallet"
+#~ msgid "Connect to wallet"
+#~ msgstr "Connect to wallet"
 
 #: src/components/organisms/web3/account-detail.tsx:92
-msgid "Connected to wallet"
-msgstr "Connected to wallet"
+#~ msgid "Connected to wallet"
+#~ msgstr "Connected to wallet"
 
 #: src/components/organisms/web3/account-detail.tsx:89
-msgid "Connected with MetaMask"
-msgstr "Connected with MetaMask"
+#~ msgid "Connected with MetaMask"
+#~ msgstr "Connected with MetaMask"
 
-#: src/components/organisms/web3/account-detail.tsx:115
+#: src/components/organisms/web3/account-detail.tsx:102
 msgid "Copy address"
 msgstr "Copy address"
 
-#: src/components/organisms/web3/account-detail.tsx:116
+#: src/components/organisms/web3/account-detail.tsx:103
 msgid "Copy your wallet address to clipboard"
 msgstr "Copy your wallet address to clipboard"
 
@@ -132,7 +136,7 @@ msgstr "Daily interest"
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/molecules/dark-mode-toggle.tsx:20
+#: src/components/molecules/dark-mode-toggle/index.tsx:20
 msgid "Dark Mode"
 msgstr "Dark Mode"
 
@@ -145,7 +149,7 @@ msgstr "Dark Mode"
 msgid "Deposited"
 msgstr "Deposited"
 
-#: src/components/organisms/web3/account-detail.tsx:128
+#: src/components/organisms/web3/account-detail.tsx:115
 msgid "Disconnect"
 msgstr "Disconnect"
 
@@ -185,7 +189,7 @@ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgid "Enter your invest amount"
 msgstr "Enter your invest amount"
 
-#: src/components/organisms/web3/account-detail.tsx:109
+#: src/components/organisms/web3/account-detail.tsx:96
 msgid "Explorer"
 msgstr "Explorer"
 
@@ -241,7 +245,7 @@ msgstr "Language"
 msgid "Last claimed"
 msgstr "Last claimed"
 
-#: src/components/molecules/dark-mode-toggle.tsx:15
+#: src/components/molecules/dark-mode-toggle/index.tsx:15
 msgid "Light Mode"
 msgstr "Light Mode"
 
@@ -271,7 +275,7 @@ msgstr "Menu"
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
-#: src/components/organisms/web3/network-provider.tsx:32
+#: src/components/organisms/web3/network-provider.tsx:31
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -296,7 +300,7 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:40
+#: src/components/organisms/web3/network-provider.tsx:39
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -356,7 +360,7 @@ msgstr "Start invest"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
-#: src/components/organisms/web3/network-provider.tsx:51
+#: src/components/organisms/web3/network-provider.tsx:50
 msgid "Switch network"
 msgstr "Switch network"
 
@@ -402,7 +406,7 @@ msgstr "Total claimed"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/web3/account-detail.tsx:110
+#: src/components/organisms/web3/account-detail.tsx:97
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
