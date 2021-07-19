@@ -10,7 +10,7 @@ import Navbar from '@components/molecules/navbar'
 import { LanguageChoice } from '@components/molecules/languages'
 import DarkModeToggle from '@components/molecules/dark-mode-toggle'
 import useWallet from '@components/organisms/web3/hooks/useWallet'
-import Account from '@components/organisms/web3/account'
+import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
 
 interface OffCanvasProps {
@@ -43,7 +43,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
             </h4>
             <div className="d-flex flex-column">
               <div className="mb-3">
-                <Account
+                <WalletConnect
                   buttonVariant="light"
                   dropdownVariant="light"
                   className="w-100"

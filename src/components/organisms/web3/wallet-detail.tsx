@@ -15,12 +15,7 @@ import NativeCurrencyIcon from './native-currency-icon'
 export interface AccountDetailProps {
     show: boolean
     onHide?: any
-}
-
-declare global {
-    interface Window {
-        ethereum: any
-    }
+    setShowWalletProviderModal?: (state: boolean) => void
 }
 
 type ListGroupItemProps = {
@@ -74,8 +69,8 @@ const AccountBalance = () => {
     )
 }
 
-const AccountDetail = (props: AccountDetailProps) => {
-    const { show, onHide } = props
+const WalletDetail = (props: AccountDetailProps) => {
+    const { show, onHide, setShowWalletProviderModal } = props
     const wallet = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
 
@@ -105,6 +100,14 @@ const AccountDetail = (props: AccountDetailProps) => {
                               >
                                   {isCopied && <Icon component={CheckCircle} size={35} />}
                               </AccountAction>
+                              <AccountAction
+                                name={t`Switch wallet`}
+                                description={t`Change your wallet provider`}
+                                onClick={() => {
+                                    onHide()
+                                    setShowWalletProviderModal(true)
+                                }}
+                              />
                               <a
                                 className="d-flex justify-content-center mt-3 text-center text-danger"
                                 onClick={async () => {
@@ -130,4 +133,4 @@ const AccountDetail = (props: AccountDetailProps) => {
     )
 }
 
-export default AccountDetail
+export default WalletDetail
