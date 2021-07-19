@@ -23,7 +23,7 @@ msgstr "APR"
 msgid "APY"
 msgstr "APY"
 
-#: src/components/organisms/web3/network-provider.tsx:34
+#: src/components/organisms/web3/network-provider.tsx:35
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -73,8 +73,8 @@ msgstr "Claimable rewards"
 
 #: src/components/organisms/header/settings-modal.tsx:32
 #: src/components/organisms/off-canvas/index.tsx:81
-msgid "Color Scheme"
-msgstr "Color Scheme"
+#~ msgid "Color Scheme"
+#~ msgstr "Color Scheme"
 
 #: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
@@ -271,7 +271,7 @@ msgstr "Menu"
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
-#: src/components/organisms/web3/network-provider.tsx:31
+#: src/components/organisms/web3/network-provider.tsx:32
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -296,7 +296,7 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:39
+#: src/components/organisms/web3/network-provider.tsx:40
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -321,6 +321,10 @@ msgstr "Savings"
 #: src/components/organisms/web3/network-provider.tsx:25
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
+
+#: src/components/organisms/header/settings-modal.tsx:27
+msgid "Settings"
+msgstr "Settings"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
@@ -349,10 +353,10 @@ msgid "Start invest"
 msgstr "Start invest"
 
 #: src/components/organisms/header/settings-modal.tsx:27
-msgid "Switch Language"
-msgstr "Switch Language"
+#~ msgid "Switch Language"
+#~ msgstr "Switch Language"
 
-#: src/components/organisms/web3/network-provider.tsx:49
+#: src/components/organisms/web3/network-provider.tsx:51
 msgid "Switch network"
 msgstr "Switch network"
 
@@ -363,6 +367,11 @@ msgstr "Switch network"
 #: src/components/organisms/web3/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
+
+#: src/components/organisms/header/settings-modal.tsx:32
+#: src/components/organisms/off-canvas/index.tsx:81
+msgid "Theme"
+msgstr "Theme"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Token Balance"

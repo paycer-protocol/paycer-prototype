@@ -19,7 +19,7 @@ export const SettingsModal = (props) => {
         style={{ padding: '15px'}}
         onClick={() => setShow(true)}
       >
-        <Icon component={Sliders} size={20} />
+        <Icon component={Sliders} size={18} />
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
         <>

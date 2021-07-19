@@ -23,7 +23,7 @@ msgstr ""
 msgid "APY"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:34
+#: src/components/organisms/web3/network-provider.tsx:35
 msgid "Adding Network to Wallet ..."
 msgstr ""
 
@@ -69,8 +69,8 @@ msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:32
 #: src/components/organisms/off-canvas/index.tsx:81
-msgid "Color Scheme"
-msgstr ""
+#~ msgid "Color Scheme"
+#~ msgstr ""
 
 #: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
@@ -262,7 +262,7 @@ msgstr ""
 msgid "Monthly rewards"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:31
+#: src/components/organisms/web3/network-provider.tsx:32
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:39
+#: src/components/organisms/web3/network-provider.tsx:40
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
@@ -302,6 +302,10 @@ msgstr ""
 
 #: src/pages/portfolio/components/dash-cards.tsx:22
 msgid "Savings"
+msgstr ""
+
+#: src/components/organisms/header/settings-modal.tsx:27
+msgid "Settings"
 msgstr ""
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
@@ -327,15 +331,20 @@ msgid "Start invest"
 msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:27
-msgid "Switch Language"
-msgstr ""
+#~ msgid "Switch Language"
+#~ msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:49
+#: src/components/organisms/web3/network-provider.tsx:51
 msgid "Switch network"
 msgstr ""
 
 #: src/components/organisms/web3/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
+msgstr ""
+
+#: src/components/organisms/header/settings-modal.tsx:32
+#: src/components/organisms/off-canvas/index.tsx:81
+msgid "Theme"
 msgstr ""
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
