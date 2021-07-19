@@ -6,8 +6,8 @@ import { Sun, Moon } from '@styled-icons/bootstrap'
 import useDarkMode from '@hooks/use-dark-mode'
 
 export default function DarkModeToggle() {
-  const darkMode = useDarkMode()
 
+  const darkMode = useDarkMode()
   return (
     <div className="btn-group-toggle d-flex align-items-center">
       <Button variant="light" className="w-50 me-2" active={!darkMode.enabled} onClick={() => darkMode.setEnabled(false)}>
