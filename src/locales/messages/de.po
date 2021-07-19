@@ -23,7 +23,7 @@ msgstr ""
 msgid "APY"
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:87
+#: src/components/organisms/web3/wallet-detail.tsx:82
 msgid "Account"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Available Balance"
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:60
+#: src/components/organisms/web3/wallet-detail.tsx:55
 #: src/pages/portfolio/components/portfolio.tsx:180
 msgid "Balance"
 msgstr ""
@@ -61,6 +61,10 @@ msgstr ""
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
+msgstr ""
+
+#: src/components/organisms/web3/wallet-detail.tsx:105
+msgid "Change your wallet provider"
 msgstr ""
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:76
@@ -80,8 +84,8 @@ msgstr ""
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:123
-#: src/components/organisms/web3/account.tsx:38
+#: src/components/organisms/web3/wallet-connect.tsx:38
+#: src/components/organisms/web3/wallet-detail.tsx:125
 msgid "Connect to a Wallet"
 msgstr ""
 
@@ -101,11 +105,11 @@ msgstr ""
 #~ msgid "Connected with MetaMask"
 #~ msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:102
+#: src/components/organisms/web3/wallet-detail.tsx:97
 msgid "Copy address"
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:103
+#: src/components/organisms/web3/wallet-detail.tsx:98
 msgid "Copy your wallet address to clipboard"
 msgstr ""
 
@@ -140,7 +144,7 @@ msgstr ""
 msgid "Deposited"
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:115
+#: src/components/organisms/web3/wallet-detail.tsx:117
 msgid "Disconnect"
 msgstr ""
 
@@ -180,7 +184,7 @@ msgstr ""
 msgid "Enter your invest amount"
 msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:96
+#: src/components/organisms/web3/wallet-detail.tsx:91
 msgid "Explorer"
 msgstr ""
 
@@ -342,6 +346,10 @@ msgstr ""
 msgid "Switch network"
 msgstr ""
 
+#: src/components/organisms/web3/wallet-detail.tsx:104
+msgid "Switch wallet"
+msgstr ""
+
 #: src/components/organisms/web3/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
 msgstr ""
@@ -376,7 +384,7 @@ msgstr ""
 #~ msgid "Unsakted Tokens"
 #~ msgstr ""
 
-#: src/components/organisms/web3/account-detail.tsx:97
+#: src/components/organisms/web3/wallet-detail.tsx:92
 msgid "View your wallet in Blockchain Explorer"
 msgstr ""
 

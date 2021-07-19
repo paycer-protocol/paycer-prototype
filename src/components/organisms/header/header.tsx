@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
-import Account from '../web3/account'
+import WalletConnect from '../web3/wallet-connect'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
 import SettingsModal from '@components/organisms/header/settings-modal'
@@ -55,7 +55,7 @@ const Header = () => {
                               <Network />
                           </li>
                           <li className="d-none d-md-block  nav-item me-3">
-                              <Account
+                              <WalletConnect
                                 buttonVariant="light"
                                 dropdownVariant="light"
                               />

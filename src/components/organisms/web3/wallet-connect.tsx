@@ -6,7 +6,7 @@ import Button from '@components/atoms/button'
 import { FormattedNumber } from '@components/atoms/number'
 import useWallet from './hooks/useWallet'
 import WalletProvider from '../web3/wallet-provider'
-import AccountDetail from './account-detail'
+import WalletDetail from './wallet-detail'
 import { connectors } from './providers'
 
 export interface AccountProps {
@@ -16,7 +16,7 @@ export interface AccountProps {
     onClick?: () => void
 }
 
-const Account = (props: AccountProps) => {
+const WalletConnect = (props: AccountProps) => {
     const {
       buttonVariant = 'outline-primary',
       dropdownVariant = 'outline-primary',
@@ -64,12 +64,18 @@ const Account = (props: AccountProps) => {
                     {wallet.shortenAddress}
                 </div>
             </Button>
-            <AccountDetail
+            <WalletDetail
                 onHide={() => setShowAccountModal(false)}
                 show={showAccountModal}
+                setShowWalletProviderModal={setShowWalletProviderModal}
+            />
+            <WalletProvider
+              providers={connectors}
+              onHide={() => setShowWalletProviderModal(false)}
+              show={showWalletProviderModal}
             />
         </>
     )
 }
 
-export default Account
+export default WalletConnect
