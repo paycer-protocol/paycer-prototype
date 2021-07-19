@@ -71,6 +71,11 @@ msgstr "Claim"
 msgid "Claimable rewards"
 msgstr "Claimable rewards"
 
+#: src/components/organisms/header/settings-modal.tsx:32
+#: src/components/organisms/off-canvas/index.tsx:81
+msgid "Color Scheme"
+msgstr "Color Scheme"
+
 #: src/components/organisms/web3/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
@@ -127,6 +132,10 @@ msgstr "Daily interest"
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
+#: src/components/molecules/dark-mode-toggle.tsx:20
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
 #: src/components/organisms/header/header.tsx:40
 #: src/components/organisms/header/header.tsx:41
 #~ msgid "Dashboard"
@@ -144,15 +153,13 @@ msgstr "Disconnect"
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/components/organisms/header/header.tsx:99
-#: src/components/organisms/header/off-canvas.tsx:87
+#: src/config/routes.ts:17
 msgid "Docs"
 msgstr "Docs"
 
-#: src/components/organisms/header/header.tsx:98
-#: src/components/organisms/header/off-canvas.tsx:86
-msgid "Documentation"
-msgstr "Documentation"
+#: src/components/organisms/header/header.tsx:102
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
 
 #: src/components/organisms/invest/invest-card/index.tsx:85
 msgid "Earned"
@@ -166,7 +173,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Edit invest"
 msgstr "Edit invest"
 
-#: src/components/molecules/language-switch/index.tsx:12
+#: src/components/molecules/languages/language-choice.tsx:9
 msgid "English"
 msgstr "English"
 
@@ -187,7 +194,7 @@ msgstr "Explorer"
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/molecules/language-switch/index.tsx:13
+#: src/components/molecules/languages/language-choice.tsx:10
 msgid "German"
 msgstr "German"
 
@@ -200,13 +207,10 @@ msgid "High"
 msgstr "High"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
-#: src/components/organisms/header/header.tsx:84
-#: src/components/organisms/header/header.tsx:85
-#: src/components/organisms/header/off-canvas.tsx:72
-#: src/components/organisms/header/off-canvas.tsx:73
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
+#: src/config/routes.ts:9
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
 msgid "Invest"
@@ -228,9 +232,18 @@ msgstr "Invest amount"
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
+#: src/components/organisms/header/settings-modal.tsx:38
+#: src/components/organisms/off-canvas/index.tsx:87
+msgid "Language"
+msgstr "Language"
+
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:58
 msgid "Last claimed"
 msgstr "Last claimed"
+
+#: src/components/molecules/dark-mode-toggle.tsx:15
+msgid "Light Mode"
+msgstr "Light Mode"
 
 #: src/pages/portfolio/components/portfolio.tsx:190
 msgid "Liquidity"
@@ -244,6 +257,10 @@ msgstr "Low"
 #: src/pages/invest/create/fields/risk-choice.tsx:11
 msgid "Medium"
 msgstr "Medium"
+
+#: src/components/organisms/off-canvas/index.tsx:61
+msgid "Menu"
+msgstr "Menu"
 
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
@@ -274,10 +291,7 @@ msgstr "Please authorize this website to access your Ethereum account."
 msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
-#: src/components/organisms/header/header.tsx:77
-#: src/components/organisms/header/header.tsx:78
-#: src/components/organisms/header/off-canvas.tsx:65
-#: src/components/organisms/header/off-canvas.tsx:66
+#: src/config/routes.ts:5
 #: src/pages/portfolio/components/portfolio.tsx:162
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -316,10 +330,9 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/header/header.tsx:92
-#: src/components/organisms/header/off-canvas.tsx:80
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:66
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
+#: src/config/routes.ts:13
 msgid "Staking"
 msgstr "Staking"
 
@@ -327,16 +340,15 @@ msgstr "Staking"
 #~ msgid "Staking Rewards"
 #~ msgstr "Staking Rewards"
 
-#: src/components/organisms/header/header.tsx:91
-#: src/components/organisms/header/off-canvas.tsx:79
-msgid "Staking rewards"
-msgstr "Staking rewards"
+#: src/components/organisms/header/header.tsx:95
+#~ msgid "Staking rewards"
+#~ msgstr "Staking rewards"
 
 #: src/components/organisms/invest/invest-card/index.tsx:99
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/components/molecules/language-switch/index.tsx:32
+#: src/components/organisms/header/settings-modal.tsx:27
 msgid "Switch Language"
 msgstr "Switch Language"
 
@@ -384,6 +396,10 @@ msgstr "Total claimed"
 #: src/components/organisms/web3/account-detail.tsx:110
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
+
+#: src/components/organisms/off-canvas/index.tsx:42
+msgid "Wallet"
+msgstr "Wallet"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
 msgid "Withdraw"

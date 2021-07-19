@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import classnames from 'classnames'
-import { Trans, t } from '@lingui/macro'
-import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import classnames from 'classnames'
+import styled from 'styled-components'
+import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import Account from '../web3/account'
 import Network from '../web3/network'
-import LanguageSwitch from '@components/molecules/language-switch'
-import OffCanvas from './off-canvas'
+import OffCanvas from '@components/organisms/off-canvas'
+import SettingsModal from '@components/organisms/header/settings-modal'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -51,17 +51,17 @@ const Header = () => {
                           </StyledLogo>
                       </Link>
                       <ul className="navbar-nav flex-row">
-                          <li className="d-none d-md-flex nav-item me-3">
+                          <li className="d-none d-md-block nav-item me-3">
                               <Network />
                           </li>
-                          <li className="d-none d-md-flex  nav-item me-3">
+                          <li className="d-none d-md-block  nav-item me-3">
                               <Account
                                 buttonVariant="light"
                                 dropdownVariant="light"
                               />
                           </li>
-                          <li className="d-none d-md-flex nav-item me-3 me-xl-0">
-                              <LanguageSwitch />
+                          <li className="d-none d-md-block nav-item me-3">
+                              <SettingsModal />
                           </li>
                           <li className="me-3">
                               <Navbar.Toggle
@@ -72,34 +72,15 @@ const Header = () => {
                       </ul>
 
                       <ul className="d-none d-md-flex navbar-nav">
-                          <li className="nav-item me-3">
-                              <Link href="/">
-                                  <a className={classnames({active: pathname == '/'}, 'nav-link')} title={t`Portfolio`}>
-                                      <Trans>Portfolio</Trans>
-                                  </a>
-                              </Link>
-                          </li>
-                          <li className="nav-item me-3">
-                              <Link href="/invest">
-                                  <a className={classnames({active: pathname.includes('/invest')}, 'nav-link')} title={t`Invest`}>
-                                      <Trans>Invest</Trans>
-                                  </a>
-                              </Link>
-                          </li>
-                          <li className="nav-item me-3">
-                              <Link href="/staking">
-                                  <a className={classnames({active: pathname.includes('/staking')}, 'nav-link')} title={t`Staking rewards`}>
-                                      <Trans>Staking</Trans>
-                                  </a>
-                              </Link>
-                          </li>
-                          <li className="nav-item me-4">
-                              <Link href="/docs">
-                                  <a className={classnames({active: pathname == '/docs'}, 'nav-link')} title={t`Documentation`}>
-                                      <Trans>Docs</Trans>
-                                  </a>
-                              </Link>
-                          </li>
+                          {routes.map((route, key) => (
+                            <li className="nav-item me-3" key={`nav${key}`}>
+                                <Link href={route.path}>
+                                    <a className={classnames({active: pathname == route.path}, 'nav-link')} title={route.label}>
+                                        {route.label}
+                                    </a>
+                                </Link>
+                            </li>
+                          ))}
                       </ul>
                   </div>
               </Navbar>

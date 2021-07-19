@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import BaseModal, { ModalProps as BaseModalProps } from 'react-bootstrap/Modal'
 import ModalBody from 'react-bootstrap/ModalBody'
 import ModalContext from 'react-bootstrap/ModalContext'
@@ -10,9 +11,20 @@ import { XLg } from '@styled-icons/bootstrap'
 import Icon from '@components/atoms/icon'
 
 
-export interface ModalProps extends BaseModalProps {}
+export interface ModalProps extends BaseModalProps {
+    vertical?: boolean
+}
 
-const Modal = (props: ModalProps) => <BaseModal {...props} />
+const Modal = (props: ModalProps) => {
+    const { vertical = false, ...restProps } = props
+
+    return (
+      <BaseModal
+        {...restProps}
+        dialogClassName={classnames({'modal-dialog-vertical': vertical})}
+      />
+    )
+}
 
 const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
     <BaseModalHeader>
