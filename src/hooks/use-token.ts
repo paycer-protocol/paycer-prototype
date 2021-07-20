@@ -1,6 +1,6 @@
 import { useTokenBalance, useEthers } from '@usedapp/core'
 import { formatUnits } from '@ethersproject/units'
-import { tokenProvider } from '../providers/tokens'
+import { tokenProvider } from '@providers/tokens'
 
 export default function useToken(symbol: string) {
   const { account, chainId } = useEthers()

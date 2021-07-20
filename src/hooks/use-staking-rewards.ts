@@ -1,7 +1,7 @@
 import { useEthers, useContractCall} from '@usedapp/core'
 import { Interface } from '@ethersproject/abi'
 import stakingAbi from '@contracts/abi/StakingRewards.json'
-import { contractProvider } from '../providers/contracts'
+import { contractProvider } from '@providers/contracts'
 
 
 export default function useStakingRewards() {

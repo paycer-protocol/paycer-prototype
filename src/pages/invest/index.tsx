@@ -4,7 +4,7 @@ import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from '@components/organisms/invest/invest-card'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import { connectors } from '@components/organisms/web3/providers'
+import { connectors } from '@providers/connectors'
 import { investmentStrategies }from '@config/investment/strategies'
 
 export default function Invest() {

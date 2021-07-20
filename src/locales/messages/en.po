@@ -18,7 +18,7 @@ msgid "APR"
 msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:60
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:63
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr "APY"
@@ -35,7 +35,7 @@ msgstr "Adding Network to Wallet ..."
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:65
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:67
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -67,7 +67,7 @@ msgstr "Cancel"
 msgid "Change your wallet provider"
 msgstr "Change your wallet provider"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:71
 msgid "Claim"
 msgstr "Claim"
 
@@ -75,7 +75,7 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:34
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:36
 msgid "Claimable rewards"
 msgstr "Claimable rewards"
 
@@ -84,7 +84,7 @@ msgstr "Claimable rewards"
 #~ msgid "Color Scheme"
 #~ msgstr "Color Scheme"
 
-#: src/components/organisms/web3/providers/connectors.ts:80
+#: src/providers/connectors.ts:80
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
@@ -135,7 +135,7 @@ msgid "Daily interest"
 msgstr "Daily interest"
 
 #: src/components/organisms/invest/invest-form/index.tsx:107
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:76
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:79
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr "Daily rewards"
@@ -173,7 +173,7 @@ msgstr "Docs"
 msgid "Earned"
 msgstr "Earned"
 
-#: src/components/organisms/web3/providers/connectors.ts:72
+#: src/providers/connectors.ts:72
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -185,7 +185,7 @@ msgstr "Edit invest"
 msgid "English"
 msgstr "English"
 
-#: src/components/organisms/web3/providers/connectors.ts:111
+#: src/providers/connectors.ts:111
 msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
@@ -245,7 +245,7 @@ msgstr "Investment ratio"
 msgid "Language"
 msgstr "Language"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:51
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:53
 msgid "Last claimed"
 msgstr "Last claimed"
 
@@ -274,7 +274,7 @@ msgstr "Menu"
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
@@ -318,7 +318,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/web3/providers/connectors.ts:103
+#: src/providers/connectors.ts:103
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
@@ -342,7 +342,7 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:59
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:13
 msgid "Staking"
@@ -376,7 +376,7 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/components/organisms/web3/providers/connectors.ts:95
+#: src/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
 
@@ -401,7 +401,7 @@ msgstr "Total Balance"
 msgid "Total Volume"
 msgstr "Total Volume"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:56
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:58
 msgid "Total claimed"
 msgstr "Total claimed"
 

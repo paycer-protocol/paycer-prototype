@@ -9,7 +9,7 @@ import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import { LanguageChoice } from '@components/molecules/languages'
 import DarkModeToggle from '@components/molecules/dark-mode-toggle'
-import useWallet from '@components/organisms/web3/hooks/useWallet'
+import useWallet from '@hooks/use-wallet'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
 
