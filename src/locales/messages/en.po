@@ -121,7 +121,7 @@ msgstr "Copy your wallet address to clipboard"
 msgid "Current Invest"
 msgstr "Current Invest"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
 msgid "Current Staked"
 msgstr "Current Staked"
@@ -198,7 +198,7 @@ msgid "Explorer"
 msgstr "Explorer"
 
 #: src/components/organisms/invest/invest-form/invest-fee.tsx:28
-#: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:28
+#: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:29
 msgid "Fee"
 msgstr "Fee"
 
@@ -389,7 +389,7 @@ msgstr "Theme"
 msgid "Token Balance"
 msgstr "Token Balance"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/token-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/fields/token-input.tsx:18
 msgid "Token balance"
 msgstr "Token balance"
 

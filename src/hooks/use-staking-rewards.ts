@@ -1,4 +1,5 @@
 import { useEthers, useContractCall} from '@usedapp/core'
+import { BigNumber } from '@ethersproject/bignumber'
 import { Interface } from '@ethersproject/abi'
 import stakingAbi from '@contracts/abi/StakingRewards.json'
 import { contractProvider } from '@providers/contracts'
@@ -9,85 +10,85 @@ export default function useStakingRewards() {
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId]
 
   return {
-    stakedBalance: () => {
-      const rawValue = useContractCall({
+    stakedBalance: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'stakedBalanceOf',
         args: [account],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    rewardRate: () => {
-      const rawValue = useContractCall({
+    rewardRate: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'rewardRateOf',
         args: [account],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    rewardBalance: () => {
-      const rawValue = useContractCall({
+    rewardBalance: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'rewardBalance',
         args: [account],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    lastClaimed: () => {
-      const rawValue = useContractCall({
+    lastClaimed: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'lastClaimedOf',
         args: [account],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    totalClaimed: () => {
-      const rawValue = useContractCall({
+    totalClaimed: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'totalClaimedOf',
         args: [account],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    stake: (amount: number, period: number) => {
-      const rawValue = useContractCall({
+    stake: (amount: number, period: number): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'stake',
         args: [amount, period],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    withdraw: (amount: number) => {
-      const rawValue = useContractCall({
+    withdraw: (amount: number): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'withdraw',
         args: [amount],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
-    claim: () => {
-      const rawValue = useContractCall({
+    claim: (): BigNumber => {
+      const [result] = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'claim',
         args: [],
-      })
+      }) ?? []
 
-      return Number(rawValue || 0)
+      return BigNumber.isBigNumber(result) ? result : BigNumber.from(0)
     },
 
 

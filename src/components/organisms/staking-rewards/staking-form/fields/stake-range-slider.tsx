@@ -1,11 +1,12 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
+import { BigNumber } from '@ethersproject/bignumber'
 import { StakingProps } from '../../types'
 
 export default function InvestRangeSlider() {
   const { values, initialValues, setFieldValue, dirty } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
+  const totalBalance = initialValues.stakedBalance.add(initialValues.tokenBalance)
 
   return (
     <div style={{ width: '100%' }}>
@@ -21,20 +22,20 @@ export default function InvestRangeSlider() {
         max={100}
         step={1}
         value={dirty ? values.stakeRange : undefined}
-        defaultValue={values.stakeRange * 100 / totalBalance}
+        defaultValue={values.stakeRange * 100 / totalBalance.toNumber()}
         onChange={(value) => {
-          let stakedBalance = 0 as number
-          let tokenBalance = 0 as number
+          let stakedBalance = BigNumber.from(0)
+          let tokenBalance = BigNumber.from(0)
 
-          const stakeDiff = totalBalance * value / 100
+          const stakeDiff = totalBalance.mul(value).div(100)
           stakedBalance = stakeDiff
-          tokenBalance = totalBalance - stakeDiff
+          tokenBalance = totalBalance.sub(stakeDiff)
 
-          stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
-          stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
+          stakedBalance = stakedBalance.gt(totalBalance) ? totalBalance : stakedBalance
+          stakedBalance = stakedBalance.lt(0)  ? BigNumber.from(0) : stakedBalance
 
-          tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
-          tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+          tokenBalance = tokenBalance.gt(totalBalance) ? totalBalance : tokenBalance
+          tokenBalance = tokenBalance.lt(0) ? BigNumber.from(0) : tokenBalance
 
           setFieldValue('stakedBalance', stakedBalance)
           setFieldValue('tokenBalance', tokenBalance)

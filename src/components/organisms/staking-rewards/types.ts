@@ -1,8 +1,10 @@
+import { BigNumber } from '@ethersproject/bignumber'
+
 export interface StakingProps {
   rewardSymbol: string
-  stakedBalance: number
-  tokenBalance: number
-  rewardRate: number
+  stakedBalance: BigNumber
+  tokenBalance: BigNumber
+  rewardRate: BigNumber
   stakeRange: number
   depositFee: number
   withdrawFee: number

@@ -18,14 +18,14 @@ const StakeContainer = styled.div`
 
 export default function StakingSummary() {
   const { initialValues, setFieldValue } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
-  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance
+  const totalBalance = initialValues.stakedBalance.add(initialValues.tokenBalance)
+  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance.toNumber()
 
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 className="m-0"><Trans>Staking</Trans></h2>
-        <span>{initialValues.rewardRate}% <Trans>APY</Trans></span>
+        <span>{initialValues.rewardRate.toNumber()}% <Trans>APY</Trans></span>
       </div>
       <div className="mb-5">
         <StyledProgressBar
@@ -40,7 +40,7 @@ export default function StakingSummary() {
           <StakeContainer className="mb-5">
             <DashNumber
               label={t`Token Balance`}
-              value={initialValues.tokenBalance}
+              value={initialValues.tokenBalance.toNumber()}
               symbol={initialValues.rewardSymbol}
             />
           </StakeContainer>
@@ -49,7 +49,7 @@ export default function StakingSummary() {
           <StakeContainer className="mb-5">
             <DashNumber
               label={t`Current Staked`}
-              value={initialValues.stakedBalance}
+              value={initialValues.stakedBalance.toNumber()}
               symbol={initialValues.rewardSymbol}
             />
           </StakeContainer>
@@ -59,14 +59,14 @@ export default function StakingSummary() {
         <div className="col-6">
           <DashNumber
             label={t`Daily rewards`}
-            value={initialValues.stakedBalance * initialValues.rewardRate / 100 / 365}
+            value={initialValues.stakedBalance.mul(initialValues.rewardRate).div(100).div(365).toNumber()}
             symbol={initialValues.rewardSymbol}
           />
         </div>
         <div className="col-6">
           <DashNumber
             label={t`Monthly rewards`}
-            value={initialValues.stakedBalance * initialValues.rewardRate / 100 / 30}
+            value={initialValues.stakedBalance.mul(initialValues.rewardRate).div(100).div(30).toNumber()}
             symbol={initialValues.rewardSymbol}
           />
         </div>

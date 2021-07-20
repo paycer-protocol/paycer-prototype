@@ -1,5 +1,5 @@
 import { useTokenBalance, useEthers } from '@usedapp/core'
-import { formatUnits } from '@ethersproject/units'
+import { BigNumber } from '@ethersproject/bignumber'
 import { tokenProvider } from '@providers/tokens'
 
 export default function useToken(symbol: string) {
@@ -7,13 +7,10 @@ export default function useToken(symbol: string) {
   const token = tokenProvider[symbol]
   const tokenAddress = token.chainAddresses[chainId]
 
-
-
   return {
-    tokenBalance: () => {
+    tokenBalance: (): BigNumber => {
       const rawTokenBalance = useTokenBalance(tokenAddress, account)
-
-      return Number(formatUnits(rawTokenBalance || 0, token.decimals))
+      return rawTokenBalance || BigNumber.from(0)
     }
   }
 }
