@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import InvestCard from '@components/organisms/invest/invest-card'
@@ -15,13 +16,17 @@ export default function Invest() {
             <PageHeader>
                 <div className="row align-items-center">
                     <div className="col">
-                        <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
-                        <PageHeader.Title>Invest</PageHeader.Title>
+                        <PageHeader.Subtitle>
+                            <Trans>Overview</Trans>
+                        </PageHeader.Subtitle>
+                        <PageHeader.Title>
+                            <Trans>Invest</Trans>
+                        </PageHeader.Title>
                     </div>
                     <div className="col-auto">
                         <Link href="/invest/create">
                             <Button variant="outline-primary">
-                                Create investment
+                                <Trans>Create investment</Trans>
                             </Button>
                         </Link>
                     </div>
