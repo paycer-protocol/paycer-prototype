@@ -194,7 +194,7 @@ export default function Portfolio() {
               </thead>
               <tbody className="list">
               {portfolioFixtures.map((data, key) => (
-                  <>
+                  <React.Fragment key={key}>
                     <CustomToggle eventKey={String(key+1)}>
                       <td className="goal-project">
                         {data.symbolName}
@@ -240,7 +240,7 @@ export default function Portfolio() {
                         </Accordion.Collapse>
                       </td>
                     </tr>
-                  </>
+                  </React.Fragment>
               ))}
               </tbody>
             </table>
