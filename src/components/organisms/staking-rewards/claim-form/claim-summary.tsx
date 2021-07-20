@@ -4,9 +4,8 @@ import { t, Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import {useContractCall, useEthers} from '@usedapp/core'
-import { Interface } from '@ethersproject/abi'
-import stakingAbi from '@contracts/abi/StakingRewards.json'
+import useStakingRewards from '@components/organisms/web3/hooks/useStakingRewards'
+import { rewardSymbol } from '@config/staking-rewards'
 
 const RewardContainer = styled.div`
   display: flex;
@@ -24,14 +23,10 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const { account } = useEthers()
-
-  const claimBalance = useContractCall({
-    abi: new Interface(stakingAbi.abi),
-    address: stakingAbi.address,
-    method: 'rewardBalanceOf',
-    args: [account],
-  })
+  const stakingRewards = useStakingRewards()
+  const rewardBalance = stakingRewards.rewardBalance()
+  const lastClaimed = stakingRewards.lastClaimed()
+  const totalClaimed = stakingRewards.totalClaimed()
 
   return (
     <div>
@@ -43,11 +38,11 @@ export default function ClaimSummary() {
           <span className="display-4">
               +&nbsp;
             <FormattedNumber
-              value={Number(claimBalance || 0)}
+              value={rewardBalance}
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
-            &nbsp;{'PCR'}
+            &nbsp;{rewardSymbol}
             </span>
         </div>
 
@@ -56,13 +51,13 @@ export default function ClaimSummary() {
         <div className="d-flex align-items-center justify-content-between w-75">
           <DashNumber
             label={t`Last claimed`}
-            value={365}
-            symbol={'PCR'}
+            value={lastClaimed}
+            symbol={rewardSymbol}
           />
           <DashNumber
             label={t`Total claimed`}
-            value={365}
-            symbol={'PCR'}
+            value={totalClaimed}
+            symbol={rewardSymbol}
           />
         </div>
       </RewardContainer>

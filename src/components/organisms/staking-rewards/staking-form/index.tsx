@@ -3,6 +3,8 @@ import { t, Trans } from '@lingui/macro'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import DashNumber from '@components/organisms/dashboard/dash-number'
+import useToken from '@components/organisms/web3/hooks/useToken'
+import useStakingRewards from '@components/organisms/web3/hooks/useStakingRewards'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
 import TokenInput from './fields/token-input'
@@ -10,34 +12,28 @@ import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import StakingSummary from './staking-summary'
 import { StakingProps } from '../types'
-import { useTokenBalance, useEthers, useContractCall } from '@usedapp/core'
-import { formatUnits } from '@ethersproject/units'
-import { Interface } from '@ethersproject/abi'
-import stakingAbi from '@contracts/abi/StakingRewards.json'
-import tokenAbi from '@contracts/abi/PaycerToken.json'
+import {
+  rewardSymbol,
+  rewardDepositFee as depositFee,
+  rewardWithdrawFee as withdrawFee
+} from '@config/staking-rewards'
 
 export default function StakingForm() {
-  const { account } = useEthers()
-  const rawTokenBalance = useTokenBalance(tokenAbi.address, account)
+  const stakingRewards = useStakingRewards()
+  const token = useToken(rewardSymbol)
 
-  const rawStakedBalance = useContractCall({
-    abi: new Interface(stakingAbi.abi),
-    address: stakingAbi.address,
-    method: 'stakedBalanceOf',
-    args: [account],
-  })
-
-  const tokenBalance = formatUnits(rawTokenBalance || 0, 18)
-  const stakedBalance = Number(rawStakedBalance || 0)
+  const tokenBalance = token.tokenBalance()
+  const stakedBalance = stakingRewards.stakedBalance()
+  const rewardRate = stakingRewards.rewardRate()
 
   const initialValues: StakingProps = {
-    rewardSymbol: 'PCR',
+    rewardSymbol,
     stakedBalance,
     tokenBalance,
-    rewardRate: 15,
+    rewardRate,
     stakeRange: 0,
-    depositFee: 0.01,
-    withdrawFee: 0.01,
+    depositFee,
+    withdrawFee,
     disabled: true,
   }
 

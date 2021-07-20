@@ -22,12 +22,6 @@ const WalletProvider = (props: WalletProviderProps) => {
   const [errorMessage, setErrorMessage] = useState(null)
   const wallet = useWallet()
 
-  useEffect(() => {
-    if (errorMessage) {
-      setErrorMessage(null)
-    }
-  }, [errorMessage])
-
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
       await wallet.connect(provider)
