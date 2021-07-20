@@ -10,54 +10,86 @@ export default function useStakingRewards() {
 
   return {
     stakedBalance: () => {
-      const rawStakedBalance = useContractCall({
+      const rawValue = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'stakedBalanceOf',
         args: [account],
       })
 
-      return Number(rawStakedBalance || 0)
+      return Number(rawValue || 0)
     },
     rewardRate: () => {
-      const rawRewardRate = useContractCall({
+      const rawValue = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'rewardRateOf',
         args: [account],
       })
 
-      return Number(rawRewardRate || 0)
+      return Number(rawValue || 0)
     },
     rewardBalance: () => {
-      const rawRewardBalance = useContractCall({
+      const rawValue = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'rewardBalance',
         args: [account],
       })
 
-      return Number(rawRewardBalance || 0)
+      return Number(rawValue || 0)
     },
     lastClaimed: () => {
-      const rawLastClaimed = useContractCall({
+      const rawValue = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'lastClaimedOf',
         args: [account],
       })
 
-      return Number(rawLastClaimed || 0)
+      return Number(rawValue || 0)
     },
     totalClaimed: () => {
-      const rawTotalClaimed = useContractCall({
+      const rawValue = useContractCall({
         abi: new Interface(stakingAbi.abi),
         address: contractAddress,
         method: 'totalClaimedOf',
         args: [account],
       })
 
-      return Number(rawTotalClaimed || 0)
-    }
+      return Number(rawValue || 0)
+    },
+    stake: (amount: number, period: number) => {
+      const rawValue = useContractCall({
+        abi: new Interface(stakingAbi.abi),
+        address: contractAddress,
+        method: 'stake',
+        args: [amount, period],
+      })
+
+      return Number(rawValue || 0)
+    },
+    withdraw: (amount: number) => {
+      const rawValue = useContractCall({
+        abi: new Interface(stakingAbi.abi),
+        address: contractAddress,
+        method: 'withdraw',
+        args: [amount],
+      })
+
+      return Number(rawValue || 0)
+    },
+    claim: () => {
+      const rawValue = useContractCall({
+        abi: new Interface(stakingAbi.abi),
+        address: contractAddress,
+        method: 'claim',
+        args: [],
+      })
+
+      return Number(rawValue || 0)
+    },
+
+
   }
 }
