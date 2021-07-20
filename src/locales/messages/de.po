@@ -18,7 +18,7 @@ msgid "APR"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:67
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:60
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr ""
@@ -31,11 +31,11 @@ msgstr ""
 msgid "Adding Network to Wallet ..."
 msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:38
+#: src/components/organisms/web3/wallet-provider.tsx:40
 msgid "An unknown error occurred. Please try again."
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:72
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:65
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -67,11 +67,11 @@ msgstr ""
 msgid "Change your wallet provider"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:76
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
 msgid "Claim"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:41
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:34
 msgid "Claimable rewards"
 msgstr ""
 
@@ -85,11 +85,11 @@ msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr ""
 
 #: src/components/organisms/web3/wallet-connect.tsx:38
-#: src/components/organisms/web3/wallet-detail.tsx:125
+#: src/components/organisms/web3/wallet-detail.tsx:126
 msgid "Connect to a Wallet"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:48
+#: src/components/organisms/web3/wallet-provider.tsx:51
 msgid "Connect to a wallet"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgid "Daily interest"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/index.tsx:107
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:76
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr ""
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Deposited"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:117
+#: src/components/organisms/web3/wallet-detail.tsx:118
 msgid "Disconnect"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:58
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:51
 msgid "Last claimed"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 #~ msgid "Moderat"
 #~ msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:90
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr ""
@@ -274,7 +274,7 @@ msgstr ""
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:30
+#: src/components/organisms/web3/wallet-provider.tsx:32
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr ""
 
@@ -282,11 +282,11 @@ msgstr ""
 #~ msgid "Overview"
 #~ msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:34
+#: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please authorize this website to access your Ethereum account."
 msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:36
+#: src/components/organisms/web3/wallet-provider.tsx:38
 msgid "Please open your wallet and connect your account."
 msgstr ""
 
@@ -320,7 +320,7 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:66
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:59
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:13
 msgid "Staking"
@@ -375,7 +375,7 @@ msgstr ""
 msgid "Total Volume"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:63
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:56
 msgid "Total claimed"
 msgstr ""
 
@@ -400,6 +400,6 @@ msgstr ""
 #~ msgid "You're connected to an unsupported network."
 #~ msgstr ""
 
-#: src/components/organisms/web3/wallet-provider.tsx:32
+#: src/components/organisms/web3/wallet-provider.tsx:34
 msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 msgstr ""
