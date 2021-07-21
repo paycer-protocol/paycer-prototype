@@ -8,6 +8,11 @@ export const routes = [
   {
     label: t`Invest`,
     path: '/invest',
+    subroutes: [
+      {
+        path: '/invest/create',
+      }
+    ]
   },
   {
     label: t`Staking`,

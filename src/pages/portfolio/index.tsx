@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
@@ -11,13 +12,17 @@ export default function Home() {
       <PageHeader>
         <div className="row align-items-center">
           <div className="col">
-            <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
-            <PageHeader.Title>Portfolio</PageHeader.Title>
+            <PageHeader.Subtitle>
+                <Trans>Overview</Trans>
+            </PageHeader.Subtitle>
+            <PageHeader.Title>
+                <Trans>Portfolio</Trans>
+            </PageHeader.Title>
           </div>
           <div className="col-auto">
             <Link href="/invest/create">
               <Button variant="outline-primary">
-                Create investment
+                  <Trans>Create investment</Trans>
               </Button>
             </Link>
           </div>

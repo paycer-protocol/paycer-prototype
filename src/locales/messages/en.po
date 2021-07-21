@@ -117,6 +117,12 @@ msgstr "Copy address"
 msgid "Copy your wallet address to clipboard"
 msgstr "Copy your wallet address to clipboard"
 
+#: src/pages/invest/create/index.tsx:46
+#: src/pages/invest/index.tsx:29
+#: src/pages/portfolio/index.tsx:25
+msgid "Create investment"
+msgstr "Create investment"
+
 #: src/components/organisms/invest/invest-form/fields/invest-input.tsx:17
 msgid "Current Invest"
 msgstr "Current Invest"
@@ -157,17 +163,21 @@ msgstr "Deposited"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/pages/invest/create/index.tsx:70
+#: src/pages/invest/create/index.tsx:74
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/config/routes.ts:17
+#: src/config/routes.ts:22
 msgid "Docs"
 msgstr "Docs"
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
 #~ msgstr "Documentation"
+
+#: src/pages/invest/create/index.tsx:43
+msgid "Earn interest"
+msgstr "Earn interest"
 
 #: src/components/organisms/invest/invest-card/index.tsx:85
 msgid "Earned"
@@ -214,17 +224,18 @@ msgstr "German"
 msgid "High"
 msgstr "High"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:9
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
+#: src/pages/invest/index.tsx:23
 msgid "Invest"
 msgstr "Invest"
 
-#: src/pages/invest/create/index.tsx:58
+#: src/pages/invest/create/index.tsx:62
 msgid "Invest amount"
 msgstr "Invest amount"
 
@@ -287,9 +298,10 @@ msgstr "Network-Switch Pending, please open your Wallet"
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
-#: src/pages/staking/index.tsx:19
-#~ msgid "Overview"
-#~ msgstr "Overview"
+#: src/pages/invest/index.tsx:20
+#: src/pages/portfolio/index.tsx:16
+msgid "Overview"
+msgstr "Overview"
 
 #: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please authorize this website to access your Ethereum account."
@@ -301,6 +313,7 @@ msgstr "Please open your wallet and connect your account."
 
 #: src/config/routes.ts:5
 #: src/pages/portfolio/components/portfolio.tsx:162
+#: src/pages/portfolio/index.tsx:19
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -344,7 +357,7 @@ msgstr "Stake"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:62
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
-#: src/config/routes.ts:13
+#: src/config/routes.ts:18
 msgid "Staking"
 msgstr "Staking"
 
@@ -422,7 +435,7 @@ msgstr "View your wallet in Blockchain Explorer"
 msgid "Wallet"
 msgstr "Wallet"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:52
 msgid "Withdraw"
 msgstr "Withdraw"
 

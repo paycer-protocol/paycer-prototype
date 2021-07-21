@@ -39,8 +39,12 @@ export default () => {
       <PageHeader>
         <div className="row align-items-center">
           <div className="col">
-            <PageHeader.Subtitle>Earn interest</PageHeader.Subtitle>
-            <PageHeader.Title>Create investment</PageHeader.Title>
+            <PageHeader.Subtitle>
+              <Trans>Earn interest</Trans>
+            </PageHeader.Subtitle>
+            <PageHeader.Title>
+              <Trans>Create investment</Trans>
+            </PageHeader.Title>
           </div>
         </div>
       </PageHeader>

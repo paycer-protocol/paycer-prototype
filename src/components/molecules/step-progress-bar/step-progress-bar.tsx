@@ -1,9 +1,8 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { StyledIconProps } from '@styled-icons/styled-icon'
 import { ProgressBar , Step } from 'react-step-progress-bar'
 
-export interface StepLineProps extends StyledIconProps {
+export interface StepLineProps {
     steps: any,
     progress: number,
     symbolName: string,
