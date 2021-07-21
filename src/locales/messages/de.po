@@ -18,7 +18,7 @@ msgid "APR"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:60
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:63
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr ""
@@ -35,7 +35,7 @@ msgstr ""
 msgid "An unknown error occurred. Please try again."
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:65
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:67
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -67,11 +67,11 @@ msgstr ""
 msgid "Change your wallet provider"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:71
 msgid "Claim"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:34
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:36
 msgid "Claimable rewards"
 msgstr ""
 
@@ -113,6 +113,12 @@ msgstr ""
 msgid "Copy your wallet address to clipboard"
 msgstr ""
 
+#: src/pages/invest/create/index.tsx:46
+#: src/pages/invest/index.tsx:29
+#: src/pages/portfolio/index.tsx:25
+msgid "Create investment"
+msgstr ""
+
 #: src/components/organisms/invest/invest-form/fields/invest-input.tsx:17
 msgid "Current Invest"
 msgstr ""
@@ -131,7 +137,7 @@ msgid "Daily interest"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/index.tsx:107
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:76
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:79
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr ""
@@ -148,17 +154,21 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:70
+#: src/pages/invest/create/index.tsx:74
 msgid "Distribution"
 msgstr ""
 
-#: src/config/routes.ts:17
+#: src/config/routes.ts:22
 msgid "Docs"
 msgstr ""
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
 #~ msgstr ""
+
+#: src/pages/invest/create/index.tsx:43
+msgid "Earn interest"
+msgstr ""
 
 #: src/components/organisms/invest/invest-card/index.tsx:85
 msgid "Earned"
@@ -205,17 +215,18 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:9
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
+#: src/pages/invest/index.tsx:23
 msgid "Invest"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:58
+#: src/pages/invest/create/index.tsx:62
 msgid "Invest amount"
 msgstr ""
 
@@ -236,7 +247,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:51
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:53
 msgid "Last claimed"
 msgstr ""
 
@@ -265,7 +276,7 @@ msgstr ""
 #~ msgid "Moderat"
 #~ msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr ""
@@ -278,9 +289,10 @@ msgstr ""
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr ""
 
-#: src/pages/staking/index.tsx:19
-#~ msgid "Overview"
-#~ msgstr ""
+#: src/pages/invest/index.tsx:20
+#: src/pages/portfolio/index.tsx:16
+msgid "Overview"
+msgstr ""
 
 #: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please authorize this website to access your Ethereum account."
@@ -292,6 +304,7 @@ msgstr ""
 
 #: src/config/routes.ts:5
 #: src/pages/portfolio/components/portfolio.tsx:162
+#: src/pages/portfolio/index.tsx:19
 msgid "Portfolio"
 msgstr ""
 
@@ -320,9 +333,9 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:59
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
-#: src/config/routes.ts:13
+#: src/config/routes.ts:18
 msgid "Staking"
 msgstr ""
 
@@ -375,7 +388,7 @@ msgstr ""
 msgid "Total Volume"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:56
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:58
 msgid "Total claimed"
 msgstr ""
 
@@ -392,7 +405,7 @@ msgstr ""
 msgid "Wallet"
 msgstr ""
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:52
 msgid "Withdraw"
 msgstr ""
 
