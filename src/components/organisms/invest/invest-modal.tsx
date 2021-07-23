@@ -2,7 +2,7 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import InvestForm  from '@components/organisms/invest/invest-form'
-import { InvestmentStrategy } from '@types/investment'
+import { InvestmentStrategy } from '../../../types/investment'
 
 interface InvestModalProps {
     show?: boolean,

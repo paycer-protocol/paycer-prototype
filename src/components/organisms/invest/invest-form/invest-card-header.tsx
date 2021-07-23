@@ -1,7 +1,7 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import { InvestmentStrategy } from '@types/investment'
+import { InvestmentStrategy } from '../../../../types/investment'
 
 export default function InvestCardHeader({ strategyName, interestRate, rewardRate }: InvestmentStrategy) {
     return (

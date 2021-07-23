@@ -5,8 +5,8 @@ import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
-import { InvestmentStrategy } from '@types/investment'
-import {normalizeFilename} from "../../../../helper/filename";
+import { InvestmentStrategy } from '../../../../types/investment'
+import { normalizeFilename } from "../../../../helper/filename";
 
 const StackedIcons = styled.div`
   display: flex;
