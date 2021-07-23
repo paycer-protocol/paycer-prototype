@@ -31,7 +31,7 @@ export default function InvestRangeSlider() {
           tokenBalance = totalBalance - stakeDiff
 
           stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
-          stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
+          stakedBalance = stakedBalance < 0  ? 0 : stakedBalance
 
           tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
           tokenBalance = tokenBalance < 0 ? 0 : tokenBalance

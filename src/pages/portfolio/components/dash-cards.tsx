@@ -1,6 +1,6 @@
 import { Trans, t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
-import useWallet from '@components/organisms/web3/hooks/useWallet'
+import useWallet from '@hooks/use-wallet'
 import { FormattedNumber, Money } from '@components/atoms/number'
 import {normalizeFilename} from "../../../helper/filename";
 import React from "react";

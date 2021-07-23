@@ -2,7 +2,7 @@ import React from 'react'
 import { Bnb, Eth } from '@styled-icons/crypto'
 import { ChainId } from '@usedapp/core'
 import Icon from '@components/atoms/icon'
-import useWallet from '@components/organisms/web3/hooks/useWallet'
+import useWallet from '@hooks/use-wallet'
 
 export const NativeCurrencyMap = {
   [ChainId.BSC]: Bnb,

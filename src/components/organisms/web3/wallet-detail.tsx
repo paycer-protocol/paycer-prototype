@@ -5,10 +5,10 @@ import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import { FormattedNumber } from '@components/atoms/number'
 import Modal from '@components/molecules/modal'
-import useWallet from './hooks/useWallet'
-import useCopyClipboard from '@hooks/useCopyClipboard'
+import useWallet from '@hooks/use-wallet'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
-import { connectors } from './providers'
+import { connectors } from '@providers/connectors'
 import NativeCurrencyIcon from './native-currency-icon'
 import {normalizeFilename} from "../../../helper/filename";
 

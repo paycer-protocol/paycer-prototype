@@ -1,12 +1,13 @@
 import React from 'react'
 import {Trans, t} from '@lingui/macro'
 import {toast} from 'react-toastify';
-import useWallet from './hooks/useWallet'
-import useNetwork from './hooks/useNetwork'
+import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
-import { INetworkProvider } from './providers'
-import {normalizeFilename} from "../../../helper/filename";
+import { INetworkProvider } from '@providers/networks'
+import NativeCurrencyIcon from './native-currency-icon'
+import { normalizeFilename } from '../../../helper/filename'
 
 export interface NetworkProviderProps {
   providers: {

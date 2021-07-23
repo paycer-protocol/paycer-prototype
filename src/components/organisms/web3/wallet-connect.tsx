@@ -4,11 +4,11 @@ import { Trans } from '@lingui/macro'
 import { ButtonVariant } from 'react-bootstrap/types'
 import Button from '@components/atoms/button'
 import { FormattedNumber } from '@components/atoms/number'
-import useWallet from './hooks/useWallet'
+import useWallet from '@hooks/use-wallet'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
-import { connectors } from './providers'
-import {normalizeFilename} from "../../../helper/filename";
+import { connectors } from '@providers/connectors'
+import { normalizeFilename } from '../../../helper/filename'
 
 export interface AccountProps {
     buttonVariant?: ButtonVariant

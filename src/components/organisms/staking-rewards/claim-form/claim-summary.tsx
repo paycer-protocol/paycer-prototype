@@ -4,7 +4,7 @@ import { t, Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import useStakingRewards from '@components/organisms/web3/hooks/useStakingRewards'
+import useStakingRewards from '@hooks/use-staking-rewards'
 import { rewardSymbol } from '@config/staking-rewards'
 import {normalizeFilename} from "../../../../helper/filename";
 
@@ -28,6 +28,10 @@ export default function ClaimSummary() {
   const rewardBalance = stakingRewards.rewardBalance()
   const lastClaimed = stakingRewards.lastClaimed()
   const totalClaimed = stakingRewards.totalClaimed()
+
+  const handleClaim = () => {
+    stakingRewards.claim()
+  }
 
   return (
     <div>
@@ -68,6 +72,7 @@ export default function ClaimSummary() {
           title={t`Apply`}
           variant={'outline-primary'}
           className="px-5"
+          onClick={handleClaim}
         >
           {t`Claim`}
         </Button>
