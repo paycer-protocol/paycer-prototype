@@ -26,7 +26,7 @@ export const tokenProvider: ITokenProvider = {
     chainAddresses: {
       [ChainId.Mainnet]: '',
       [ChainId.Ropsten]: '',
-      [ChainId.Kovan]: '0xa1890D349D63b69b4CF96F8e462284D4D9d64a0C',
+      [ChainId.Kovan]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c',
       [ChainId.Rinkeby]: '',
       [ChainId.Goerli]: '',
       [ChainId.BSC]: '',

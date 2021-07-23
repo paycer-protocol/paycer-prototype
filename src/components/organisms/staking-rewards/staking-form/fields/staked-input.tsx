@@ -2,7 +2,6 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { BigNumber } from '@ethersproject/bignumber'
 import { StakingProps } from '../../types'
 
 export default function StakedInput() {
@@ -21,28 +20,28 @@ export default function StakedInput() {
             currency={values.rewardSymbol}
             decimals={4}
             onChange={(e) => {
-                let stakedBalance = BigNumber.from(e.target.rawValue.split(' ')[1])
-                let tokenBalance = BigNumber.from(0)
-                let stakedDiff = BigNumber.from(0)
+                let stakedBalance = Number(e.target.rawValue.split(' ')[1])
+                let tokenBalance = 0 as number
+                let stakedDiff = 0 as number
 
                 // plus
-                if (stakedBalance.gt(initialValues.stakedBalance)) {
-                    stakedDiff = stakedBalance.sub(initialValues.stakedBalance)
-                  tokenBalance = initialValues.tokenBalance.sub(stakedDiff)
+                if (stakedBalance > initialValues.stakedBalance) {
+                    stakedDiff = stakedBalance - initialValues.stakedBalance
+                  tokenBalance = initialValues.tokenBalance - stakedDiff
                 // minus
                 } else {
-                    stakedDiff = initialValues.stakedBalance.sub(stakedBalance)
-                    tokenBalance = initialValues.tokenBalance.add(stakedDiff)
+                    stakedDiff = initialValues.stakedBalance - stakedBalance
+                    tokenBalance = initialValues.tokenBalance + stakedDiff
                 }
 
-                const totalBalance = initialValues.stakedBalance.add(initialValues.tokenBalance)
-                const stakeRange = stakedBalance.mul(100).div(totalBalance)
+                const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
+                const stakeRange = stakedBalance * 100 / totalBalance
 
-                stakedBalance = stakedBalance.lt(0) ? BigNumber.from(0) : stakedBalance
-                stakedBalance = stakedBalance.gt(totalBalance) ? totalBalance : stakedBalance
+                stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
+                stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
 
-                tokenBalance = tokenBalance.lt(0) ? BigNumber.from(0) : tokenBalance
-                tokenBalance = tokenBalance.gt(totalBalance) ? totalBalance : tokenBalance
+                tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+                tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
 
                 setFieldValue('stakedBalance', stakedBalance)
                 setFieldValue('tokenBalance', tokenBalance)

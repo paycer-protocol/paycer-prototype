@@ -8,15 +8,15 @@ import { StakingProps } from '../types'
 export default function RewardFee() {
   const { values, initialValues, dirty } = useFormikContext<StakingProps>()
 
-  let fee = 0
-  let diff = BigNumber.from(0)
+  let fee = 0 as number
+  let diff = 0 as number
 
-  if (values.stakedBalance.gt(initialValues.stakedBalance)) {
-    diff = values.stakedBalance.sub(initialValues.stakedBalance)
-    fee = diff.toNumber() * values.depositFee / 100
+  if (values.stakedBalance > initialValues.stakedBalance) {
+    diff = values.stakedBalance - initialValues.stakedBalance
+    fee = diff * values.depositFee / 100
   } else {
-    diff = initialValues.stakedBalance.sub(values.stakedBalance)
-    fee = diff.toNumber() * values.withdrawFee / 100
+    diff = initialValues.stakedBalance - values.stakedBalance
+    fee = diff * values.withdrawFee / 100
   }
 
   if (fee <= 0 || !dirty) {

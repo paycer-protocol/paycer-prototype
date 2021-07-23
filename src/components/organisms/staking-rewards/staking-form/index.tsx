@@ -26,8 +26,6 @@ export default function StakingForm() {
   const stakedBalance = stakingRewards.stakedBalance()
   const rewardRate = stakingRewards.rewardRate()
 
-  console.log(rewardRate.toNumber())
-
   const initialValues: StakingProps = {
     rewardSymbol,
     stakedBalance,
@@ -38,8 +36,6 @@ export default function StakingForm() {
     withdrawFee,
     disabled: true,
   }
-
-  console.log(initialValues)
 
   const validationSchema = Yup.object().shape({
     stakedBalance: Yup.number().min(0).required(),
@@ -64,7 +60,7 @@ export default function StakingForm() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <h2 className="m-0"><Trans>Staking</Trans></h2>
-              <span>{initialValues.rewardRate.toNumber()}% <Trans>APY</Trans></span>
+              <span>{initialValues.rewardRate}% <Trans>APY</Trans></span>
             </div>
             <div className="mb-5">
               <StakeRangeSlider />
@@ -81,14 +77,14 @@ export default function StakingForm() {
               <div className="col-6">
                 <DashNumber
                   label={t`Daily rewards`}
-                  value={values.stakedBalance.mul(values.rewardRate).div(100).div(365)}
+                  value={values.stakedBalance * values.rewardRate / 100 / 365}
                   symbol={values.rewardSymbol}
                 />
               </div>
               <div className="col-6">
                 <DashNumber
                   label={t`Monthly rewards`}
-                  value={values.stakedBalance.mul(values.rewardRate).div(100).div(30)}
+                  value={values.stakedBalance * values.rewardRate / 100 / 30}
                   symbol={values.rewardSymbol}
                 />
               </div>
