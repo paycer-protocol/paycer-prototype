@@ -28,6 +28,10 @@ export default function ClaimSummary() {
   const lastClaimed = stakingRewards.lastClaimed()
   const totalClaimed = stakingRewards.totalClaimed()
 
+  const handleClaim = () => {
+    stakingRewards.claim()
+  }
+
   return (
     <div>
       <RewardContainer>
@@ -67,6 +71,7 @@ export default function ClaimSummary() {
           title={t`Apply`}
           variant={'outline-primary'}
           className="px-5"
+          onClick={handleClaim}
         >
           {t`Claim`}
         </Button>

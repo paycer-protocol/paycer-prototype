@@ -18,7 +18,7 @@ msgid "APR"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:63
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr ""
@@ -36,8 +36,8 @@ msgid "An unknown error occurred. Please try again."
 msgstr ""
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:67
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
 msgid "Apply"
 msgstr ""
@@ -137,7 +137,7 @@ msgid "Daily interest"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/index.tsx:107
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:79
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:78
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr ""
@@ -276,7 +276,7 @@ msgstr ""
 #~ msgid "Moderat"
 #~ msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:85
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr ""
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:61
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:18
 msgid "Staking"

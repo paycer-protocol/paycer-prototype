@@ -18,7 +18,7 @@ msgid "APR"
 msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:63
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr "APY"
@@ -36,8 +36,8 @@ msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:67
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:21
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:22
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
 msgid "Apply"
 msgstr "Apply"
@@ -141,7 +141,7 @@ msgid "Daily interest"
 msgstr "Daily interest"
 
 #: src/components/organisms/invest/invest-form/index.tsx:107
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:79
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:78
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr "Daily rewards"
@@ -285,7 +285,7 @@ msgstr "Menu"
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:85
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
@@ -355,7 +355,7 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:62
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:61
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:18
 msgid "Staking"
