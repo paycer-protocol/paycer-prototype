@@ -30,17 +30,17 @@ export const investmentStrategies: InvestmentStrategy[] = [
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/token/svg/color/usdt.svg',
+        imgPath: 'assets/icons/usd.svg',
         investRange: 20,
       },
       {
         name: 'usdc',
-        imgPath: 'assets/token/svg/color/usdc.svg',
+        imgPath: 'assets/icons/usdc.svg',
         investRange: 30,
       },
       {
         name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
+        imgPath: 'assets/icons/busd.svg',
         investRange: 50,
       }
     ],
@@ -76,18 +76,18 @@ export const investmentStrategies: InvestmentStrategy[] = [
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/token/svg/color/usdt.svg',
-        investRange: 15,
+        imgPath: 'assets/icons/usd.svg',
+        investRange: 20,
       },
       {
         name: 'usdc',
-        imgPath: 'assets/token/svg/color/usdc.svg',
-        investRange: 55,
+        imgPath: 'assets/icons/usdc.svg',
+        investRange: 30,
       },
       {
         name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
-        investRange: 30,
+        imgPath: 'assets/icons/busd.svg',
+        investRange: 50,
       }
     ],
     tvl: 11298334,
@@ -122,18 +122,18 @@ export const investmentStrategies: InvestmentStrategy[] = [
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/token/svg/color/usdt.svg',
-        investRange: 40,
-      },
-      {
-        name: 'usdc',
-        imgPath: 'assets/token/svg/color/usdc.svg',
+        imgPath: 'assets/icons/usd.svg',
         investRange: 20,
       },
       {
+        name: 'usdc',
+        imgPath: 'assets/icons/usdc.svg',
+        investRange: 30,
+      },
+      {
         name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
-        investRange: 40,
+        imgPath: 'assets/icons/busd.svg',
+        investRange: 50,
       }
     ],
     tvl: 11298334,

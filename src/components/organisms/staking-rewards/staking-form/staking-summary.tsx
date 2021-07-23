@@ -42,6 +42,7 @@ export default function StakingSummary() {
               label={t`Token Balance`}
               value={initialValues.tokenBalance}
               symbol={initialValues.rewardSymbol}
+              withIcon
             />
           </StakeContainer>
         </div>
@@ -51,6 +52,7 @@ export default function StakingSummary() {
               label={t`Current Staked`}
               value={initialValues.stakedBalance}
               symbol={initialValues.rewardSymbol}
+              withIcon
             />
           </StakeContainer>
         </div>
@@ -61,6 +63,7 @@ export default function StakingSummary() {
             label={t`Daily rewards`}
             value={initialValues.stakedBalance * initialValues.rewardRate / 100 / 365}
             symbol={initialValues.rewardSymbol}
+            withIcon
           />
         </div>
         <div className="col-6">
@@ -68,6 +71,7 @@ export default function StakingSummary() {
             label={t`Monthly rewards`}
             value={initialValues.stakedBalance * initialValues.rewardRate / 100 / 30}
             symbol={initialValues.rewardSymbol}
+            withIcon
           />
         </div>
       </div>

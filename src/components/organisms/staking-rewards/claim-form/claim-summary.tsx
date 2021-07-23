@@ -53,11 +53,13 @@ export default function ClaimSummary() {
             label={t`Last claimed`}
             value={lastClaimed}
             symbol={rewardSymbol}
+            withIcon
           />
           <DashNumber
             label={t`Total claimed`}
             value={totalClaimed}
             symbol={rewardSymbol}
+            withIcon
           />
         </div>
       </RewardContainer>

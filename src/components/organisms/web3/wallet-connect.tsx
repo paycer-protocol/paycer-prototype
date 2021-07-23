@@ -8,6 +8,7 @@ import useWallet from './hooks/useWallet'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from './providers'
+import {normalizeFilename} from "../../../helper/filename";
 
 export interface AccountProps {
     buttonVariant?: ButtonVariant
@@ -53,13 +54,20 @@ const WalletConnect = (props: AccountProps) => {
                 className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark')}
                 onClick={() => setShowAccountModal(true)}
             >
-              <div className="p-2">
-                <FormattedNumber
-                  value={wallet.etherBalance}
-                  minimumFractionDigits={2}
-                  maximumFractionDigits={4}
-                />&nbsp;{wallet.etherSymbol}
-              </div>
+              <div className="me-3">
+                <div className="d-flex">
+                  <div className="pt-1">
+                      <FormattedNumber
+                          value={wallet.etherBalance}
+                          minimumFractionDigits={2}
+                          maximumFractionDigits={4}
+                      />
+                      &nbsp;
+                      {wallet.etherSymbol}
+                  </div>
+                    <img width="28" className="ms-2" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                  </div>
+                </div>
                 <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">
                     {wallet.shortenAddress}
                 </div>

@@ -6,6 +6,7 @@ import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '@types/investment'
+import {normalizeFilename} from "../../../../helper/filename";
 
 const StackedIcons = styled.div`
   display: flex;
@@ -69,7 +70,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                             <Trans>Total Volume</Trans>
                         </span>
                         <span className="">
-                            <Money value={tvl}/>
+                            <Money withIcon value={tvl}/>
                         </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -77,7 +78,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                             <Trans>Deposited</Trans>
                         </span>
                         <span className={invested ? 'link-invest' : ''}>
-                            <Money value={invested} />
+                            <Money withIcon value={invested} />
                         </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -90,7 +91,9 @@ const InvestCard = (props: InvestmentStrategy) => {
                               minimumFractionDigits={2}
                               maximumFractionDigits={4}
                             />
-                            &nbsp;{investSymbol}
+                            &nbsp;
+                            {investSymbol}
+                            <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(investSymbol)}.svg`} alt={investSymbol} />
                         </span>
                     </li>
                 </ul>

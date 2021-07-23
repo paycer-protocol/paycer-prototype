@@ -100,6 +100,7 @@ const InvestForm = (props: InvestmentStrategy) => {
                                 label={t`Daily interest`}
                                 value={values.investBalance * values.interestRate / 100 / 365}
                                 symbol={values.rewardSymbol}
+                                withIcon
                               />
                           </div>
                           <div className="col-6">
@@ -107,6 +108,7 @@ const InvestForm = (props: InvestmentStrategy) => {
                                 label={t`Daily rewards`}
                                 value={values.investBalance * values.rewardRate / 100 / 365}
                                 symbol={values.rewardSymbol}
+                                withIcon
                               />
                           </div>
                       </div>

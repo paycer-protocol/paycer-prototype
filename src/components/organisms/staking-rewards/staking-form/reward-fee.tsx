@@ -3,6 +3,7 @@ import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
 import { StakingProps } from '../types'
+import {normalizeFilename} from "../../../../helper/filename";
 
 export default function RewardFee() {
   const { values, initialValues, dirty } = useFormikContext<StakingProps>()
@@ -35,6 +36,7 @@ export default function RewardFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.rewardSymbol}
+          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(values.rewardSymbol)}.svg`} alt={values.rewardSymbol} />
       </small>
     </div>
   )
