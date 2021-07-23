@@ -10,7 +10,7 @@ import RiskChoice from './fields/risk-choice'
 import InvestmentAssets from './fields/investment-assets'
 import SubmitButton from './fields/submit-button'
 import { investmentStrategies } from '@config/investment/strategies'
-import { InvestmentStrategy } from '@types/investment'
+import { InvestmentStrategy } from '../../../types/investment'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;

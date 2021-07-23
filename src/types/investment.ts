@@ -1,3 +1,6 @@
+import {boolean} from "yup";
+
+
 export enum RiskLevel {
   Low = 0,
   Medium = 1,
@@ -43,10 +46,13 @@ export interface InvestmentStrategy extends InvestPairType, FeesType, InterestTy
   riskLevel: RiskLevel
   strategyName: string
   investSymbol: string
-  investAmount: number
+  investAmount?: number
   investRange?: number
   tvl?: number
   invested?: number
   assets: AssetType[]
+  setShowWalletProviderModal?: (state: boolean) => void
 }
+
+export default {}
 

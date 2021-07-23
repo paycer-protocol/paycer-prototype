@@ -1,12 +1,12 @@
 import React from 'react'
-import BaseNav, { NavProps as BaseNavProps } from 'react-bootstrap/Nav'
-import BaseNavItem, { NavItemProps as BaseNavItemProps } from 'react-bootstrap/NavItem'
-import BaseNavLink, { NavLinkProps as BaseNavLinkProps } from 'react-bootstrap/NavLink'
+import BaseNav from 'react-bootstrap/Nav'
+import BaseNavItem from 'react-bootstrap/NavItem'
+import BaseNavLink from 'react-bootstrap/NavLink'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-export interface NavProps extends BaseNavProps {}
-export interface NavItemProps extends BaseNavItemProps {}
-export interface NavLinkProps extends BaseNavLinkProps {}
+export interface NavProps {}
+export interface NavItemProps {}
+export interface NavLinkProps {}
 
 const Nav = (props: NavProps) => <BaseNav {...props} />
 export const NavItem = (props: NavItemProps) => <BaseNavItem {...props} />
