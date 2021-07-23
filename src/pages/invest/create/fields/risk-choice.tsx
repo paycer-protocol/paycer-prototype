@@ -3,7 +3,7 @@ import {defineMessage, t, Trans} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Form from '@components/atoms/form'
 import Button from '@components/atoms/button'
-import { RiskLevel, InvestmentStrategy } from '@types/investment'
+import { RiskLevel, InvestmentStrategy } from '../../../../types/investment'
 import { investmentStrategies } from '@config/investment/strategies'
 
 const riskLabels = {

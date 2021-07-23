@@ -1,4 +1,4 @@
-import { InvestPairType, FeesType, RewardType, InterestType, AssetType } from '@types/investment'
+import { InvestPairType, FeesType, RewardType, InterestType, AssetType } from '../../../types/investment'
 
 // TODO not in use. Type moveed to /types/investments.ts
 export interface InvestProps extends InvestPairType, FeesType, InterestType, RewardType {

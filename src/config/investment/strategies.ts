@@ -1,4 +1,4 @@
-import { InvestmentStrategy, RiskLevel } from '@types/investment'
+import { InvestmentStrategy, RiskLevel } from '../../types/investment'
 
 export const investmentStrategies: InvestmentStrategy[] = [
   {

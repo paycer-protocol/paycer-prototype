@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { FieldArray, useFormikContext } from 'formik'
-import { InvestmentStrategy } from '@types/investment'
+import { InvestmentStrategy } from '../../../../types/investment'
 
 export default function InvestmentAssets() {
   const { values, setFieldValue, dirty } = useFormikContext<InvestmentStrategy>()
