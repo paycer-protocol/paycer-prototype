@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { GroupContext } from './group'
 import { FormCheckboxFieldProps } from './types'
 
-export const Radio: FC<FormCheckboxFieldProps> = ({ custom, ...props}: FormCheckboxFieldProps) => {
+export const Radio: FC<FormCheckboxFieldProps> = ({ ...props}: FormCheckboxFieldProps) => {
     const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>()
     const { name: groupName = '' } = useContext(GroupContext)
     const [{ name, onBlur }] = useField(props)
@@ -24,7 +24,7 @@ export const Radio: FC<FormCheckboxFieldProps> = ({ custom, ...props}: FormCheck
             name={groupName}
             type='radio'
             className={classnames({ 'is-invalid': isInvalid })}
-            custom={custom}
+            custom
         >
             <Form.Check.Input
                 {...props}
