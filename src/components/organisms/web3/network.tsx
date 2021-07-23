@@ -19,14 +19,11 @@ const Network = (props) => {
         <>
             <Button
                 variant="light"
-                className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
+                className={classnames('d-flex align-items-center justify-content-center bg-dark pt-3 pb-3', props.className)}
                 onClick={() => setShowNetworkModal(true)}
             >
                 <span className="mx-2">{wallet.chainName}</span>
-                <div className="bg-dark-soft rounded-2 p-2 p-3 pt-2 pb-2">
-                    <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(wallet.chainName)}.svg`} alt={wallet.chainName} />
-                </div>
-
+                <img width="26" className="me-2" src={`assets/icons/${normalizeFilename(wallet.chainName)}.svg`} alt={wallet.chainName} />
             </Button>
             <NetworkProvider
               providers={mainNetProviders}
