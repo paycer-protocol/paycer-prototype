@@ -79,7 +79,6 @@ export default function StakingForm() {
                   label={t`Daily rewards`}
                   value={values.stakedBalance * values.rewardRate / 100 / 365}
                   symbol={values.rewardSymbol}
-                  withIcon
                 />
               </div>
               <div className="col-6">
@@ -87,7 +86,6 @@ export default function StakingForm() {
                   label={t`Monthly rewards`}
                   value={values.stakedBalance * values.rewardRate / 100 / 30}
                   symbol={values.rewardSymbol}
-                  withIcon
                 />
               </div>
             </div>

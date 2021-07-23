@@ -22,7 +22,7 @@ export default function DashCards () {
                     &nbsp;
                     {wallet.etherSymbol}
                 </div>
-                <img width="40" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
             </div>
             </DashCard>
       </div>
@@ -30,7 +30,7 @@ export default function DashCards () {
         <DashCard title={t`Savings`}>
             <div className="mt-3 d-flex justify-content-between">
               <Money value={0} currency="USD" />
-              <img width="40" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(`usd`)}.svg`} alt="usd" />
+              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(`usd`)}.svg`} alt="usd" />
             </div>
         </DashCard>
       </div>
@@ -38,7 +38,7 @@ export default function DashCards () {
         <DashCard title={t`Risk`}>
             <div className="mt-3 d-flex justify-content-between">
               <Trans>Low</Trans>
-              <img width="40" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(`low`)}.svg`} alt="usd" />
+              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(`low`)}.svg`} alt="usd" />
             </div>
         </DashCard>
       </div>

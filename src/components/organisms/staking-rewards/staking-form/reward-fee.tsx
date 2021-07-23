@@ -36,7 +36,6 @@ export default function RewardFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.rewardSymbol}
-          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(values.rewardSymbol)}.svg`} alt={values.rewardSymbol} />
       </small>
     </div>
   )

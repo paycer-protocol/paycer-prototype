@@ -8,17 +8,6 @@ import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '../../../../types/investment'
 import { normalizeFilename } from "../../../../helper/filename";
 
-const StackedIcons = styled.div`
-  display: flex;
-  align-items: center;
-  
-  img {
-      width: 32px;
-      height: 32px;
-      margin-right: -12px;
-  }
-`
-
 const InvestCard = (props: InvestmentStrategy) => {
     const {
         strategyName,
@@ -59,18 +48,18 @@ const InvestCard = (props: InvestmentStrategy) => {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">Assets</span>
-                        <StackedIcons>
+                        <div className="d-flex justify-content-center">
                             {assets.map((asset, key) => (
-                                <img key={key} src={asset.imgPath} alt={asset.name} />
+                                <img width="32" key={key} src={asset.imgPath} alt={asset.name} />
                             ))}
-                        </StackedIcons>
+                        </div>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
                             <Trans>Total Volume</Trans>
                         </span>
                         <span className="">
-                            <Money withIcon value={tvl}/>
+                            <Money value={tvl}/>
                         </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -78,7 +67,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                             <Trans>Deposited</Trans>
                         </span>
                         <span className={invested ? 'link-invest' : ''}>
-                            <Money withIcon value={invested} />
+                            <Money value={invested} />
                         </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -93,7 +82,6 @@ const InvestCard = (props: InvestmentStrategy) => {
                             />
                             &nbsp;
                             {investSymbol}
-                            <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(investSymbol)}.svg`} alt={investSymbol} />
                         </span>
                     </li>
                 </ul>
