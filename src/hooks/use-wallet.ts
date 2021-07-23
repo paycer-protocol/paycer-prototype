@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { CHAIN_NAMES, ChainId, getExplorerAddressLink, shortenIfAddress, useEtherBalance, useEthers } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
-import { Symbols, IConnectorProvider } from '../providers'
+import { IConnectorProvider } from '@providers/connectors'
+import { Symbols } from '@providers/symbols'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()

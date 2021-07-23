@@ -19,8 +19,8 @@ export default function TokenInput() {
             currency={values.rewardSymbol}
             decimals={4}
             onChange={(e) => {
-                let stakedBalance = 0 as number as number
-                let tokenBalance = Number(e.target.rawValue.split(' ')[1]) as number
+                let stakedBalance = 0 as number
+                let tokenBalance = Number(e.target.rawValue.split(' ')[1])
                 let tokenDiff = 0 as number
 
                 // plus
@@ -36,11 +36,11 @@ export default function TokenInput() {
                 const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
                 const stakeRange = stakedBalance * 100 / totalBalance
 
-                stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
-                stakedBalance = stakedBalance >= totalBalance ? totalBalance : stakedBalance
+                stakedBalance = stakedBalance < 0  ? 0 : stakedBalance
+                stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
 
-                tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
-                tokenBalance = tokenBalance >= totalBalance ? totalBalance : tokenBalance
+                tokenBalance = tokenBalance < 0  ? 0 : tokenBalance
+                tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
 
                 setFieldValue('stakedBalance', stakedBalance)
                 setFieldValue('tokenBalance', tokenBalance)

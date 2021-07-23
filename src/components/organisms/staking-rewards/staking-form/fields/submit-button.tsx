@@ -18,7 +18,13 @@ export default function SubmitButton() {
           >
               {t`Cancel`}
           </Button>
-          <Button title={t`Apply`} className="px-5" variant={isDisabled ? 'outline-success' : 'success'} disabled={isDisabled}>
+          <Button
+            type="submit"
+            title={t`Apply`}
+            className="px-5"
+            variant={isDisabled ? 'outline-success' : 'success'}
+            disabled={isDisabled}
+          >
               {t`Apply`}
           </Button>
       </div>

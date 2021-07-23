@@ -3,8 +3,8 @@ import { t, Trans } from '@lingui/macro'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import useToken from '@components/organisms/web3/hooks/useToken'
-import useStakingRewards from '@components/organisms/web3/hooks/useStakingRewards'
+import useToken from '@hooks/use-token'
+import useStakingRewards from '@hooks/use-staking-rewards'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
 import TokenInput from './fields/token-input'
@@ -12,11 +12,7 @@ import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import StakingSummary from './staking-summary'
 import { StakingProps } from '../types'
-import {
-  rewardSymbol,
-  rewardDepositFee as depositFee,
-  rewardWithdrawFee as withdrawFee
-} from '@config/staking-rewards'
+import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
 
 export default function StakingForm() {
   const stakingRewards = useStakingRewards()
@@ -42,7 +38,15 @@ export default function StakingForm() {
     tokenBalance: Yup.number().min(0).required(),
   })
 
-  const handleSubmit = () => {}
+  const handleSubmit = (values: StakingProps) => {
+    if (values.stakedBalance > initialValues.stakedBalance) {
+      const stakeAmount = values.stakedBalance - initialValues.stakedBalance
+      stakingRewards.stake(stakeAmount, 2)
+    } else {
+      const withdrawAmount = initialValues.stakedBalance - values.stakedBalance
+      stakingRewards.withdraw(withdrawAmount)
+    }
+  }
 
   return (
     <Form
