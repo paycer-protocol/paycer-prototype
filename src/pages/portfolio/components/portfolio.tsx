@@ -1,6 +1,7 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useAccordionButton } from 'react-bootstrap/AccordionButton'
+import { normalizeFilename } from '../../../helper/filename'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
@@ -86,7 +87,7 @@ const portfolioFixtures = [
     }
   },
   {
-    symbolName: 'USD Coin',
+    symbolName: 'USDC',
     symbolShort: 'USDC',
     balanceSymbol: 16.5,
     balanceUSD: 234323,
@@ -147,9 +148,14 @@ export default function Portfolio() {
 
   function CustomToggle({eventKey, children}) {
     return (
+        <tr onClick={() => {}}>
+          {children}
+        </tr>
+        /*
         <tr onClick={useAccordionButton(eventKey)} className="cursor-pointer">
           {children}
         </tr>
+         */
     )
   }
 
@@ -197,7 +203,8 @@ export default function Portfolio() {
                   <React.Fragment key={key}>
                     <CustomToggle eventKey={String(key+1)}>
                       <td className="goal-project">
-                        {data.symbolName}
+                        <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(data.symbolName)}.svg`} alt={data.symbolName} />
+                        <span style={{position: 'relative', top: '2px'}}>{data.symbolName}</span>
                       </td>
                       <td>
                         {data.balanceSymbol}&nbsp;{data.symbolShort}

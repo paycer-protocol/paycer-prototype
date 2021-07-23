@@ -10,6 +10,7 @@ import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
 import NativeCurrencyIcon from './native-currency-icon'
+import {normalizeFilename} from "../../../helper/filename";
 
 
 export interface AccountDetailProps {
@@ -60,11 +61,15 @@ const AccountBalance = () => {
                           minimumFractionDigits={2}
                           maximumFractionDigits={4}
                         />
-                        &nbsp;{wallet.etherSymbol}
+                        &nbsp;
+                        {wallet.etherSymbol}
                     </span>
                 </p>
             </div>
-            <NativeCurrencyIcon size={35} />
+            {
+                //<NativeCurrencyIcon size={35} />}
+            }
+            <img width="40" className="ms-2 mt-3" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
         </div>
     )
 }

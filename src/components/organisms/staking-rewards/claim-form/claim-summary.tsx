@@ -6,6 +6,7 @@ import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import useStakingRewards from '@hooks/use-staking-rewards'
 import { rewardSymbol } from '@config/staking-rewards'
+import {normalizeFilename} from "../../../../helper/filename";
 
 const RewardContainer = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ export default function ClaimSummary() {
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
-            &nbsp;{rewardSymbol}
+            <img width="28" style={{marginTop: '-4px'}} className="ms-2" src={`assets/icons/${normalizeFilename(rewardSymbol)}.svg`} alt={rewardSymbol} />
             </span>
         </div>
 

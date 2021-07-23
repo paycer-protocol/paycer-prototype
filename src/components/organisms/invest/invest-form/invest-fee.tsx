@@ -3,6 +3,7 @@ import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
 import { InvestFormFields } from '../types'
+import {normalizeFilename} from "../../../../helper/filename";
 
 export default function InvestFee() {
   const { values, initialValues, dirty } = useFormikContext<InvestFormFields>()
@@ -34,6 +35,7 @@ export default function InvestFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.feeSymbol}
+          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(values.feeSymbol)}.svg`} alt={values.feeSymbol} />
       </small>
     </div>
   )
