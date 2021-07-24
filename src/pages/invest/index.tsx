@@ -7,6 +7,7 @@ import InvestCard from '@components/organisms/invest/invest-card'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@components/organisms/web3/providers'
 import { investmentStrategies }from '@config/investment/strategies'
+import SearchList from "@components/organisms/search-list";
 
 export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -41,6 +42,11 @@ export default function Invest() {
                         />
                     </div>
                 ))}
+            </div>
+            <div className="row">
+                <div className="col">
+                    <SearchList items={investmentStrategies} />
+                </div>
             </div>
             <WalletProvider
                 providers={connectors}
