@@ -81,7 +81,9 @@ const InvestForm = (props: InvestmentStrategy) => {
         >
             {({ values }) => (
               <Card className="shadow-none mb-0">
-                  <InvestCardHeader {...props} />
+                  {
+                    //<InvestCardHeader {...props} />
+                  }
                   <Card.Body>
                       <div className="mb-5">
                           <InvestRangeSlider />

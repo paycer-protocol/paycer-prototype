@@ -4,7 +4,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.Low,
-    strategyName: 'BASIC',
+    strategyName: 'Basic',
     strategyType: 'paycer',
     // InvestPairType
     baseSymbol: 'ETH',
@@ -50,7 +50,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.Medium,
-    strategyName: 'ADVANCED',
+    strategyName: 'Advanced',
     strategyType: 'paycer',
     // InvestPairType
     baseSymbol: 'ETH',
@@ -96,7 +96,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.High,
-    strategyName: 'EXPERT',
+    strategyName: 'Expert',
     strategyType: 'paycer',
 
     // InvestPairType

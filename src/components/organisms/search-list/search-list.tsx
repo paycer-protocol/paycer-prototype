@@ -36,25 +36,25 @@ const SearchList = (props) => {
         <Card className="box-shadow bg-transparent border-0 pb-0 pt-0 mb-3">
             <Card.Body className="pt-0 pb-0 overflow-hidden position-relative">
                 <div className="row w-100">
-                    <div className="col-md-2 d-flex justify-content-center flex-column">
-                        &nbsp;
+                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
+                        <Trans>Strategy</Trans>
                     </div>
-                    <div className="col-md-2 d-flex justify-content-center flex-column">
+                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                        <span className="d-block mb-1">
                             <Trans>Assets</Trans>
                         </span>
                     </div>
-                    <div className="col-md-2 d-flex justify-content-center flex-column">
+                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                         <span className="d-block mb-1">
                             <Trans>Total Volume</Trans>
                         </span>
                     </div>
-                    <div className="col-md-2 d-flex justify-content-center flex-column">
+                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                         <span className="d-block mb-1">
                             <Trans>Deposited</Trans>
                         </span>
                     </div>
-                    <div className="col-md-2 d-flex justify-content-center flex-column">
+                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                         <span className="d-block mb-1">
                             <Trans>Earned</Trans>
                         </span>

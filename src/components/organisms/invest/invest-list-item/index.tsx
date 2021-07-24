@@ -8,7 +8,7 @@ import Button from '@components/atoms/button'
 import { InvestmentStrategy } from '../../../../types/investment'
 import InvestForm  from '@components/organisms/invest/invest-form'
 
-const PaycerStrategyBadge = styled.a`
+const PaycerStrategyBadge = styled.div`
     position: absolute;
     background: linear-gradient(to left, #2c9ace,#8efaff);
     -ms-transform: rotate(314deg);
@@ -21,7 +21,7 @@ const PaycerStrategyBadge = styled.a`
     font-weight: 900;
     color: white;
     text-shadow: rgb(19 31 29 / 100%) 2px 2px 10px;
-    height: 17px;
+    height: 18px;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -46,44 +46,30 @@ const InvestCard = (props: InvestmentStrategy) => {
 
     return (
         <>
-            <Card className="box-shadow">
-                <Card.Body className="pt-3 pb-3 overflow-hidden position-relative">
-                    <div className="d-flex justify-content-between align-items-center ">
-
-                        {strategyType === 'paycer' && (
-                            <PaycerStrategyBadge>
-                                { strategyName}
-                            </PaycerStrategyBadge>
-                        )}
-
+            <Card className={showInvestForm ? 'mb-3' : 'mb-4'}>
+                <Card.Body className="pt-4 pb-4">
+                    <div className="d-flex justify-content-between">
                         <div className="row w-100">
-
-                            <div className="col-md-2 d-flex ps-4 flex-column">
-                                <strong className="d-block">% <span className="display-2">{totalInterestRate}</span> /</strong>
-                                <Trans>APR</Trans>
+                            <div className="col-md-2 d-flex align-items-center">
+                                {strategyName}&nbsp;<span className="fw-bold">{totalInterestRate}%</span>&nbsp;/ <Trans>APR</Trans>
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
                                 <div className="d-flex">
                                     {assets.map((asset, key) => (
-                                        <img className="me-2" width="32" key={key} src={asset.imgPath} alt={asset.name} />
+                                        <img className="me-2" width="30" key={key} src={asset.imgPath} alt={asset.name} />
                                     ))}
                                 </div>
                             </div>
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <strong>
-                                    <Money value={tvl}/>
-                                </strong>
+                                <Money value={tvl}/>
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <strong className={invested ? 'link-invest' : ''}>
-                                    <Money value={invested} />
-                                </strong>
+                                <Money value={invested} />
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <strong>
                                 <FormattedNumber
                                     value={earnedInterest}
                                     minimumFractionDigits={2}
@@ -91,9 +77,8 @@ const InvestCard = (props: InvestmentStrategy) => {
                                 />
                                 &nbsp;
                                 {investSymbol}
-                                </strong>
                             </div>
-                            <div className="col-md-2 d-flex justify-content-center flex-column">
+                            <div className="col-md-2 d-flex justify-content-center flex-column pe-0">
                                 <Button onClick={setShowInvestForm} variant={showInvestForm ? 'primary' : 'outline-primary'}>
                                     {invested ? t`Edit invest` : t`Start invest`}
                                 </Button>
