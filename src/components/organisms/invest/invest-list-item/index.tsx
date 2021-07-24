@@ -10,11 +10,11 @@ import InvestForm  from '@components/organisms/invest/invest-form'
 
 const PaycerStrategyBadge = styled.div`
     position: absolute;
-    background: linear-gradient(to left, #2c9ace,#8efaff);
+    background: linear-gradient(to left, #c13f39,#ff9999);
     -ms-transform: rotate(314deg);
     transform: rotate(314deg);
-    left: -32px;
-    top: 18px;
+    left: -37px;
+    top: 11px;
     font-size: 10px;
     width: 110px;
     text-align: center;
@@ -46,9 +46,16 @@ const InvestCard = (props: InvestmentStrategy) => {
 
     return (
         <>
-            <Card className={showInvestForm ? 'mb-3' : 'mb-4'}>
+            <Card className={showInvestForm ? 'mb-3 overflow-hidden' : 'mb-4 overflow-hidden'}>
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
+
+                        {strategyType === 'paycer' && (
+                            <PaycerStrategyBadge>
+                                <Trans>Paycer</Trans>
+                            </PaycerStrategyBadge>
+                        )}
+
                         <div className="row w-100">
                             <div className="col-md-2 d-flex align-items-center">
                                 {strategyName}&nbsp;<span className="fw-bold">{totalInterestRate}%</span>&nbsp;/ <Trans>APR</Trans>
