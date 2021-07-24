@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {t, Trans} from "@lingui/macro";
 import InvestListItem from "@components/organisms/invest/invest-list-item";
 import Card from "@components/molecules/card";
@@ -7,6 +7,8 @@ const SearchList = (props) => {
     const {
         items
     } = props
+
+    const [filteredItems, setFilteredItem] = useState(items)
 
     interface SearchListFormFields {
         items: object
@@ -21,6 +23,13 @@ const SearchList = (props) => {
         items
     }
 
+    const filterItems = (value) => {
+        const keywords = value.split(' ');
+        const autoSuggestResult = items.filter(h => keywords.some(k => h.strategyName.toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => h.strategyType.toLowerCase().includes(k.toLowerCase())))
+        setFilteredItem(autoSuggestResult)
+    }
+
     return (
         <>
         <input
@@ -29,7 +38,7 @@ const SearchList = (props) => {
             className="form-control mb-4"
             placeholder={t`Search ...`}
             onChange={(e) => {
-                console.log(items)
+                filterItems(e.currentTarget.value)
             }}
         />
 
@@ -63,7 +72,7 @@ const SearchList = (props) => {
             </Card.Body>
         </Card>
 
-        {items.map((data, key) => (
+        {filteredItems.map((data, key) => (
             <div key={key} className="">
                 <InvestListItem
                     { ...data }

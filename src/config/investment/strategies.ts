@@ -83,11 +83,6 @@ export const investmentStrategies: InvestmentStrategy[] = [
         name: 'usdc',
         imgPath: 'assets/token/svg/color/usdc.svg',
         investRange: 55,
-      },
-      {
-        name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
-        investRange: 30,
       }
     ],
     tvl: 11298334,
@@ -172,11 +167,6 @@ export const investmentStrategies: InvestmentStrategy[] = [
         name: 'usdt',
         imgPath: 'assets/token/svg/color/usdt.svg',
         investRange: 40,
-      },
-      {
-        name: 'usdc',
-        imgPath: 'assets/token/svg/color/usdc.svg',
-        investRange: 20,
       },
       {
         name: 'bnb',
