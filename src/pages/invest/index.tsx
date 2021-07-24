@@ -34,16 +34,6 @@ export default function Invest() {
                 </div>
             </PageHeader>
             <div className="row">
-                {investmentStrategies.map((data, key) => (
-                    <div key={key} className="col-12 col-md-6 col-lg-4">
-                        <InvestCard
-                            { ...data }
-                            setShowWalletProviderModal={setShowWalletProviderModal}
-                        />
-                    </div>
-                ))}
-            </div>
-            <div className="row">
                 <div className="col">
                     <SearchList items={investmentStrategies} />
                 </div>
