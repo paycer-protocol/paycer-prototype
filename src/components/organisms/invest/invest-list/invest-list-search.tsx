@@ -20,7 +20,7 @@ const InvestList = () => {
                 type="text"
                 value={keyword}
                 className="form-control mb-4"
-                placeholder={t`Search by Strategy, Investrate, Asset...`}
+                placeholder={t`Search by: Strategy, APR, Asset, Risk Level, Address...`}
                 onChange={(e) => {
                     handleAutoSuggest(e.currentTarget.value)
                 }}

@@ -43,6 +43,7 @@ export interface InvestPairType {
 
 export interface InvestmentStrategy extends InvestPairType, FeesType, InterestType, RewardType {
   riskLevel: RiskLevel
+  contractWalletAddress: string,
   strategyName: string
   strategyType?: string
   investSymbol: string

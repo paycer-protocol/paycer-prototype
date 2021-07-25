@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { Trans, t } from '@lingui/macro'
+import mapRiskLevel from '../../../../helper/map-risk-level'
+import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
@@ -40,7 +41,8 @@ const InvestCard = (props: InvestmentStrategy) => {
         tvl,
         invested,
         earnedInterest,
-        investSymbol
+        investSymbol,
+        riskLevel
     } = props
 
     const [showInvestForm, setShowInvestForm] = useState(false)
@@ -68,15 +70,19 @@ const InvestCard = (props: InvestmentStrategy) => {
                                 {strategyName}
                             </div>
 
+                            <div className="col-md-1 d-flex align-items-center justify-content-center">
+                                <span className="fw-bold">{totalInterestRate}%</span>
+                            </div>
+
                             <div className="col-md-2 d-flex align-items-center justify-content-center">
-                                <span className="fw-bold">{totalInterestRate}%</span>&nbsp;/ <Trans>APR</Trans>
+                                {mapRiskLevel(riskLevel)}
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
                                 <span className="link-invest"><Money value={invested} /></span>
                             </div>
 
-                            <div className="col-md-2 d-flex justify-content-center flex-column">
+                            <div className="col-md-1 d-flex justify-content-center flex-column">
                                 <FormattedNumber
                                     value={earnedInterest}
                                     minimumFractionDigits={2}

@@ -1,6 +1,7 @@
 import React, {createContext, useState } from "react";
 import { InvestListContextTypes } from "./types";
 import { investmentStrategies } from '@config/investment/strategies'
+import mapRiskLevel from '../../helper/map-risk-level'
 
 const contextDefaultValues: InvestListContextTypes = {
     items: [],
@@ -26,7 +27,7 @@ const InvestListContextProvider = ({ children }) => {
         setKeyword(keyword)
 
         if (keyword === '') {
-            setActiveFilter('all')
+            resetFilters()
             return false
         }
 
@@ -41,6 +42,8 @@ const InvestListContextProvider = ({ children }) => {
             || keywords.some(k => f.strategyType.toLowerCase().includes(k.toLowerCase()))
             || keywords.some(k => f.interestRate + f.rewardRate >= parseInt(k.toLowerCase()))
             || keywords.some(k => f.assets.some(a => a.name.toLowerCase().includes(k.toLowerCase())))
+            || keywords.some(k => mapRiskLevel(f.riskLevel).toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => f.contractWalletAddress.toLowerCase() === k.toLowerCase())
         )
 
         setFilteredItems(filterResult)
@@ -61,7 +64,7 @@ const InvestListContextProvider = ({ children }) => {
     const resetFilters = () => {
         setKeyword('')
         setActiveFilter('all')
-        setFilteredItems([])
+        setFilteredItems(investmentStrategies)
     }
 
     const items = activeFilter ? (filteredItems.length ? filteredItems : investmentStrategies) : keyword !== '' ? filteredItems : investmentStrategies

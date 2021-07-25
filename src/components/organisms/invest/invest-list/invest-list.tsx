@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {t, Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import InvestListItem from '@components/organisms/invest/invest-list-item'
 import InvestListSearch from './invest-list-search'
 import Card from '@components/molecules/card'
@@ -18,22 +18,25 @@ const InvestList = () => {
             <Card.Body className="pt-0 pb-0 overflow-hidden position-relative">
                 <div className="row w-100">
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Assets</Trans>
+                        {t`Assets`}
                     </div>
                     <div className="col-md-1 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Strategy</Trans>
+                        {t`Name`}
+                    </div>
+                    <div className="col-md-1 d-flex justify-content-center flex-column fw-bold align-items-center">
+                        {t`APR`}
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold align-items-center">
-                        <Trans>Investrate</Trans>
+                        {t`Risk`}
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Deposited</Trans>
+                        {t`Deposited`}
+                    </div>
+                    <div className="col-md-1 d-flex justify-content-center flex-column fw-bold">
+                        {t`Earned`}
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Earned</Trans>
-                    </div>
-                    <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Total Volume</Trans>
+                        {t`Total Volume`}
                     </div>
                 </div>
             </Card.Body>

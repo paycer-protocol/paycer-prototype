@@ -4,6 +4,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.Low,
+    contractWalletAddress: '0x32332c5D36560C7f9d966D63f5F85705f36f4aAC',
     strategyName: 'Basic',
     strategyType: 'paycer',
     // InvestPairType
@@ -13,7 +14,6 @@ export const investmentStrategies: InvestmentStrategy[] = [
     investSymbol: 'USDC',
     investPriceUSD: 1,
     investPriceETH: 1,
-
     // FeesType
     investFee: 0.01,
     withdrawFee: 0.01,
@@ -50,6 +50,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.Medium,
+    contractWalletAddress: '0xace34D4743C0c990eb053483E230853347EAc6ad',
     strategyName: 'Advanced',
     strategyType: 'paycer',
     // InvestPairType
@@ -96,6 +97,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.High,
+    contractWalletAddress: '0xbabec4562e3F02bD5E37aDA1B726ff80fF2E6884',
     strategyName: 'Expert',
     strategyType: 'paycer',
 
@@ -143,6 +145,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
   {
     // InvestmentStrategy
     riskLevel: RiskLevel.High,
+    contractWalletAddress: '0x1987a4EdE4f8ECD03Db32714D48843e5da255959',
     strategyName: 'Lorem',
     strategyType: 'custom',
 
