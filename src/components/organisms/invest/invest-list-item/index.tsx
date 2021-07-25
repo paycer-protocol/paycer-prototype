@@ -24,12 +24,11 @@ const PaycerStrategyBadge = styled.div`
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    
     background: linear-gradient(to left,#5b862b,#3f827b);
+    
     ${props => props.strategyType === 'paycer' && css`
       background: linear-gradient(to left, #b73d70,#f9a7dc);
     `}
-    
 `
 
 const InvestCard = (props: InvestmentStrategy) => {
@@ -42,7 +41,7 @@ const InvestCard = (props: InvestmentStrategy) => {
         tvl,
         invested,
         earnedInterest,
-        investSymbol,
+        investSymbol
     } = props
 
     const [showInvestForm, setShowInvestForm] = useToggle();
@@ -59,23 +58,23 @@ const InvestCard = (props: InvestmentStrategy) => {
                         </PaycerStrategyBadge>
 
                         <div className="row w-100">
-                            <div className="col-md-2 d-flex align-items-center">
-                                {strategyName}&nbsp;<span className="fw-bold">{totalInterestRate}%</span>&nbsp;/ <Trans>APR</Trans>
-                            </div>
-
                             <div className="col-md-2 d-flex justify-content-center flex-column">
                                 <div className="d-flex">
                                     {assets.map((asset, key) => (
-                                        <img className="me-2" width="30" key={key} src={asset.imgPath} alt={asset.name} />
+                                        <img className="me-2" width="32" key={key} src={asset.imgPath} alt={asset.name} />
                                     ))}
                                 </div>
                             </div>
-                            <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <Money value={tvl}/>
+                            <div className="col-md-1 d-flex align-items-center">
+                                {strategyName}
+                            </div>
+
+                            <div className="col-md-2 d-flex align-items-center justify-content-center">
+                                <span className="fw-bold">{totalInterestRate}%</span>&nbsp;/ <Trans>APR</Trans>
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <Money value={invested} />
+                                <span className="link-invest"><Money value={invested} /></span>
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
@@ -87,9 +86,12 @@ const InvestCard = (props: InvestmentStrategy) => {
                                 &nbsp;
                                 {investSymbol}
                             </div>
-                            <div className="col-md-2 d-flex justify-content-center flex-column pe-0">
+                            <div className="col-md-2 d-flex justify-content-center flex-column">
+                                <Money value={tvl}/>
+                            </div>
+                            <div className="col-md-1 d-flex justify-content-center flex-column pe-0">
                                 <Button onClick={setShowInvestForm} variant={showInvestForm ? 'primary' : 'outline-primary'}>
-                                    {invested ? t`Edit invest` : t`Start invest`}
+                                    {invested ? t`Edit` : t`Start`}
                                 </Button>
                             </div>
                         </div>
@@ -98,7 +100,7 @@ const InvestCard = (props: InvestmentStrategy) => {
             </Card>
             {showInvestForm && (
                 <div className="mb-4">
-                    <InvestForm {...props} />
+                    <InvestForm {...props} setShowInvestForm={setShowInvestForm} />
                 </div>
             )}
         </>

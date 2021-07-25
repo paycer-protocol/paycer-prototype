@@ -5,8 +5,8 @@ import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@components/organisms/web3/providers'
-import { investmentStrategies }from '@config/investment/strategies'
-import SearchList from "@components/organisms/search-list";
+import InvestList from '@components/organisms/invest/invest-list/invest-list'
+import InvestListProvider from '../../context/invest-list-context'
 
 export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -34,7 +34,12 @@ export default function Invest() {
             </PageHeader>
             <div className="row">
                 <div className="col">
-                    <SearchList items={investmentStrategies} />
+
+                    <InvestListProvider>
+
+                        <InvestList />
+
+                    </InvestListProvider>
                 </div>
             </div>
             <WalletProvider

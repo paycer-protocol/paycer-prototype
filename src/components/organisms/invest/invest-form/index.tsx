@@ -3,16 +3,15 @@ import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import InvestCardHeader from './invest-card-header'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
+import Button from '@components/atoms/button'
 import { InvestFormFields } from '../types'
 import { InvestmentStrategy } from '../../../../types/investment'
-import {t} from "@lingui/macro";
-
+import { t } from "@lingui/macro";
 
 const InvestForm = (props: InvestmentStrategy) => {
     const {
@@ -35,6 +34,7 @@ const InvestForm = (props: InvestmentStrategy) => {
         feeSymbol,
         withdrawFee,
         investFee,
+        setShowInvestForm
     } = props
 
     const handleSubmit = (values: InvestFormFields) => {
@@ -90,13 +90,20 @@ const InvestForm = (props: InvestmentStrategy) => {
                       </div>
                       <div className="row mb-4">
                           <div className="col-6">
-                              <InvestInput />
+                              <BaseInput />
                           </div>
                           <div className="col-6">
-                              <BaseInput />
+                              <InvestInput />
                           </div>
                       </div>
                       <div className="row mb-5">
+                          <div className="col-6">
+                              <DashNumber
+                                  label={t`Daily rewards`}
+                                  value={values.investBalance * values.rewardRate / 100 / 365}
+                                  symbol={values.rewardSymbol}
+                              />
+                          </div>
                           <div className="col-6">
                               <DashNumber
                                 label={t`Daily interest`}
@@ -104,16 +111,18 @@ const InvestForm = (props: InvestmentStrategy) => {
                                 symbol={values.rewardSymbol}
                               />
                           </div>
-                          <div className="col-6">
-                              <DashNumber
-                                label={t`Daily rewards`}
-                                value={values.investBalance * values.rewardRate / 100 / 365}
-                                symbol={values.rewardSymbol}
-                              />
+                      </div>
+
+                      <div className="row justify-content-end">
+                          <div className="col-md-6">
+                              <Button variant="outline-primary" className="w-100" onClick={setShowInvestForm}>{t`Cancel`}</Button>
+                          </div>
+                          <div className="col-md-6">
+                              <SubmitButton />
+                              <InvestFee />
                           </div>
                       </div>
-                      <SubmitButton />
-                      <InvestFee />
+
                   </Card.Body>
               </Card>
             )}
