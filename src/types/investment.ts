@@ -52,7 +52,7 @@ export interface InvestmentStrategy extends InvestPairType, FeesType, InterestTy
   invested?: number
   assets: AssetType[]
   setShowWalletProviderModal?: (state: boolean) => void
-  setShowInvestForm: () => void
+  setShowInvestForm?: (state: boolean) => void
 }
 
 export default {}

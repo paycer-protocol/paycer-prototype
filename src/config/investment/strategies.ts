@@ -169,14 +169,9 @@ export const investmentStrategies: InvestmentStrategy[] = [
     // AssetsType
     assets: [
       {
-        name: 'usdt',
-        imgPath: 'assets/token/svg/color/usdt.svg',
-        investRange: 40,
-      },
-      {
         name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
-        investRange: 40,
+        imgPath: 'assets/icons/busd.svg',
+        investRange: 50
       }
     ],
     tvl: 11298334,

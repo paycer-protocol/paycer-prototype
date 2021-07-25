@@ -5,6 +5,7 @@ import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
+import InvestCardHeader from './invest-card-header'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
@@ -81,9 +82,7 @@ const InvestForm = (props: InvestmentStrategy) => {
         >
             {({ values }) => (
               <Card className="shadow-none mb-0">
-                  {
-                    //<InvestCardHeader {...props} />
-                  }
+                  <InvestCardHeader {...props} />
                   <Card.Body>
                       <div className="mb-5">
                           <InvestRangeSlider />
@@ -115,7 +114,7 @@ const InvestForm = (props: InvestmentStrategy) => {
 
                       <div className="row justify-content-end">
                           <div className="col-md-6">
-                              <Button variant="outline-primary" className="w-100" onClick={setShowInvestForm}>{t`Cancel`}</Button>
+                              <Button variant="outline-primary" className="w-100" onClick={() => setShowInvestForm(false)}>{t`Cancel`}</Button>
                           </div>
                           <div className="col-md-6">
                               <SubmitButton />

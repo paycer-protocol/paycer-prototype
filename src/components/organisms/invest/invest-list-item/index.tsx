@@ -1,5 +1,4 @@
-import React from 'react'
-import useToggle from '../../../../hooks/use-toggle'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
@@ -44,8 +43,8 @@ const InvestCard = (props: InvestmentStrategy) => {
         investSymbol
     } = props
 
-    const [showInvestForm, setShowInvestForm] = useToggle();
-    const totalInterestRate = interestRate + rewardRate;
+    const [showInvestForm, setShowInvestForm] = useState(false)
+    const totalInterestRate = interestRate + rewardRate
 
     return (
         <>
@@ -90,7 +89,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                                 <Money value={tvl}/>
                             </div>
                             <div className="col-md-1 d-flex justify-content-center flex-column pe-0">
-                                <Button onClick={setShowInvestForm} variant={showInvestForm ? 'primary' : 'outline-primary'}>
+                                <Button onClick={() => setShowInvestForm(!showInvestForm)} variant={showInvestForm ? 'primary' : 'outline-primary'}>
                                     {invested ? t`Edit` : t`Start`}
                                 </Button>
                             </div>
@@ -100,7 +99,10 @@ const InvestCard = (props: InvestmentStrategy) => {
             </Card>
             {showInvestForm && (
                 <div className="mb-4">
-                    <InvestForm {...props} setShowInvestForm={setShowInvestForm} />
+                    <InvestForm
+                        {...props}
+                        setShowInvestForm={setShowInvestForm}
+                    />
                 </div>
             )}
         </>
