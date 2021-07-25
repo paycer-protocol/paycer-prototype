@@ -5,15 +5,17 @@ import Icon from '@components/atoms/icon'
 import Card from '@components/molecules/card'
 import {Trans} from "@lingui/macro";
 import {FormattedNumber} from "../../atoms/number/formatted-number";
+import {normalizeFilename} from "../../../helper/filename";
 
 export interface DashNumberProps {
     label: string
     value: number
-    symbol: string
+    symbol: string,
+    withIcon?: boolean
 }
 
 const DashNumber = (props: DashNumberProps) => {
-    const { label, value, symbol } = props
+    const { withIcon = false, label, value, symbol } = props
 
     return (
       <div className="d-flex flex-column">
@@ -27,6 +29,9 @@ const DashNumber = (props: DashNumberProps) => {
               maximumFractionDigits={4}
             />
             &nbsp;{symbol}
+              {(withIcon &&
+                <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(symbol)}.svg`} alt={symbol} />
+              )}
           </span>
       </div>
     )

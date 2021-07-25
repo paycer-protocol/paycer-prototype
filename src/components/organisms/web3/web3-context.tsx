@@ -1,6 +1,6 @@
 import React from 'react'
 import { DAppProvider, Config, ChainId } from '@usedapp/core'
-import { rpcUrls } from './providers'
+import { rpcUrls } from '@providers/rpcs'
 
 const config: Config = {
     readOnlyChainId: ChainId.Mainnet,

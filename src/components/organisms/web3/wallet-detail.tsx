@@ -5,11 +5,12 @@ import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import { FormattedNumber } from '@components/atoms/number'
 import Modal from '@components/molecules/modal'
-import useWallet from './hooks/useWallet'
-import useCopyClipboard from '@hooks/useCopyClipboard'
+import useWallet from '@hooks/use-wallet'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
-import { connectors } from './providers'
+import { connectors } from '@providers/connectors'
 import NativeCurrencyIcon from './native-currency-icon'
+import {normalizeFilename} from "../../../helper/filename";
 
 
 export interface AccountDetailProps {
@@ -60,11 +61,15 @@ const AccountBalance = () => {
                           minimumFractionDigits={2}
                           maximumFractionDigits={4}
                         />
-                        &nbsp;{wallet.etherSymbol}
+                        &nbsp;
+                        {wallet.etherSymbol}
                     </span>
                 </p>
             </div>
-            <NativeCurrencyIcon size={35} />
+            {
+                //<NativeCurrencyIcon size={35} />}
+            }
+            <img width="40" className="ms-2 mt-3" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
         </div>
     )
 }

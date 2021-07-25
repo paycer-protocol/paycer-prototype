@@ -6,17 +6,7 @@ import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '../../../../types/investment'
-
-const StackedIcons = styled.div`
-  display: flex;
-  align-items: center;
-  
-  img {
-      width: 32px;
-      height: 32px;
-      margin-right: -12px;
-  }
-`
+import { normalizeFilename } from "../../../../helper/filename";
 
 const InvestCard = (props: InvestmentStrategy) => {
     const {
@@ -58,11 +48,11 @@ const InvestCard = (props: InvestmentStrategy) => {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">Assets</span>
-                        <StackedIcons>
+                        <div className="d-flex justify-content-center">
                             {assets.map((asset, key) => (
-                                <img key={key} src={asset.imgPath} alt={asset.name} />
+                                <img width="32" key={key} src={asset.imgPath} alt={asset.name} />
                             ))}
-                        </StackedIcons>
+                        </div>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
@@ -90,7 +80,8 @@ const InvestCard = (props: InvestmentStrategy) => {
                               minimumFractionDigits={2}
                               maximumFractionDigits={4}
                             />
-                            &nbsp;{investSymbol}
+                            &nbsp;
+                            {investSymbol}
                         </span>
                     </li>
                 </ul>

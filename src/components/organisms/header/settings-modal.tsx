@@ -16,7 +16,7 @@ export const SettingsModal = (props) => {
       <Button
         variant="light"
         className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
-        style={{ padding: '15px'}}
+        style={{ padding: '16px'}}
         onClick={() => setShow(true)}
       >
         <Icon component={Sliders} size={18} />

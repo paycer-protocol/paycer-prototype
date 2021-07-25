@@ -2,7 +2,9 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
+import { BigNumber } from '@ethersproject/bignumber'
 import { StakingProps } from '../types'
+import {normalizeFilename} from "../../../../helper/filename";
 
 export default function RewardFee() {
   const { values, initialValues, dirty } = useFormikContext<StakingProps>()
@@ -18,7 +20,7 @@ export default function RewardFee() {
     fee = diff * values.withdrawFee / 100
   }
 
-  if (fee === 0 || !dirty) {
+  if (fee <= 0 || !dirty) {
     return null
   }
 

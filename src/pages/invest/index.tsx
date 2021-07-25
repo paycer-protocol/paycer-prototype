@@ -4,9 +4,9 @@ import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import { connectors } from '@components/organisms/web3/providers'
 import InvestList from '@components/organisms/invest/invest-list/invest-list'
 import InvestListProvider from '../../context/invest-list-context'
+import { connectors } from '@providers/connectors'
 
 export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)

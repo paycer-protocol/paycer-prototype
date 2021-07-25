@@ -1,5 +1,5 @@
 import React from 'react'
-import useToggle from '../../../../hooks/useToggle'
+import useToggle from '../../../../hooks/use-toggle'
 import styled, { css } from 'styled-components'
 import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
