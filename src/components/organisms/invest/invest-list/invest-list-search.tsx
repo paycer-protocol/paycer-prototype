@@ -19,7 +19,7 @@ const InvestList = () => {
                 name="invest-autosuggest"
                 type="text"
                 value={keyword}
-                className="form-control mb-4"
+                className="form-control mb-4 fw-normal"
                 placeholder={t`Search by: Strategy, APR, Asset, Risk Level, Address...`}
                 onChange={(e) => {
                     handleAutoSuggest(e.currentTarget.value)
