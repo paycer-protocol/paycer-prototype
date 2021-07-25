@@ -8,65 +8,113 @@ const SearchList = (props) => {
         items
     } = props
 
-    const [filteredItems, setFilteredItem] = useState(items)
+    const [filteredItems, setFilteredItems] = useState<any>(items)
+    const [keyword, setKeyword] = useState<string>('')
 
-    interface SearchListFormFields {
-        items: object
+    const handleAutoSuggest = (keyword) => {
+        setKeyword(keyword)
+        let keywords = keyword.toLowerCase().split(' ')
+
+        if (keyword !== '') {
+            keywords = keywords.filter(f => f !== '')
+        }
+
+        const filterResult = items.filter(f => keywords.some(k => f.strategyName.toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => f.strategyType.toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => (f.interestRate + f.rewardRate).toString() === k.toLowerCase())
+            || keywords.some(k => f.assets.some(a => a.name.toLowerCase().includes(k.toLowerCase())))
+        )
+        setFilteredItems(filterResult)
     }
 
-    const handleSubmit = (values: SearchListFormFields) => {
-
+    const filterStrategy = (checked) => {
+        setKeyword('')
+        if (checked) {
+            setFilteredItems(items.filter(f => f.strategyType !== 'paycer'))
+            return
+        }
+        setFilteredItems(items)
     }
 
-    const initialValues: SearchListFormFields = {
-        // invest pairs
-        items
-    }
-
-    const filterItems = (value) => {
-        const keywords = value.split(' ');
-        const autoSuggestResult = items.filter(h => keywords.some(k => h.strategyName.toLowerCase().includes(k.toLowerCase()))
-            || keywords.some(k => h.strategyType.toLowerCase().includes(k.toLowerCase())))
-        setFilteredItem(autoSuggestResult)
+    const filterInvested = (checked) => {
+        setKeyword('')
+        if (checked) {
+            setFilteredItems(items.filter(f => f.invested > 0))
+            return
+        }
+        setFilteredItems(items)
     }
 
     return (
         <>
         <input
-            name="search-form"
+            name="invest-autosuggest"
             type="text"
-            className="form-control mb-4"
-            placeholder={t`Search ...`}
+            value={keyword}
+            className="form-control mb-3"
+            placeholder={t`Search by Strategy, Investrate, Asset...`}
             onChange={(e) => {
-                filterItems(e.currentTarget.value)
+                handleAutoSuggest(e.currentTarget.value)
             }}
         />
+
+        <div className="mb-5 d-flex">
+            <div className="me-4">
+                <Trans>All</Trans>
+                <input
+                    name="invest-radio"
+                    className="ms-3 form-check-input"
+                    checked={keyword === '' && items.length === filteredItems.length}
+                    type="radio"
+                    onChange={() => {
+                        setKeyword('')
+                        setFilteredItems(items)
+                    }}
+                />
+            </div>
+
+            <div className="me-4">
+                <Trans>With investment</Trans>
+                <input
+                    name="invest-radio"
+                    className="ms-3 form-check-input"
+                    type="radio"
+                    onChange={(e) => {
+                        filterInvested(e.target.checked)
+                    }}
+                />
+            </div>
+
+            <div>
+                <Trans>Created by me</Trans>
+                <input
+                    name="invest-radio"
+                    className="ms-3 form-check-input"
+                    type="radio"
+                    onChange={(e) => {
+                        filterStrategy(e.target.checked)
+                    }}
+                />
+            </div>
+        </div>
 
         <Card className="box-shadow bg-transparent border-0 pb-0 pt-0 mb-3">
             <Card.Body className="pt-0 pb-0 overflow-hidden position-relative">
                 <div className="row w-100">
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <Trans>Strategy</Trans>
+                        <Trans>Strategy / Investrate</Trans>
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                       <span className="d-block mb-1">
-                            <Trans>Assets</Trans>
-                        </span>
+                        <Trans>Assets</Trans>
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <span className="d-block mb-1">
-                            <Trans>Total Volume</Trans>
-                        </span>
+                        <Trans>Total Volume</Trans>
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <span className="d-block mb-1">
-                            <Trans>Deposited</Trans>
-                        </span>
+                        <Trans>Deposited</Trans>
                     </div>
                     <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                        <span className="d-block mb-1">
-                            <Trans>Earned</Trans>
-                        </span>
+                        <Trans>Earned</Trans>
                     </div>
                 </div>
             </Card.Body>

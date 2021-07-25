@@ -20,7 +20,7 @@ export const investmentStrategies: InvestmentStrategy[] = [
     feeSymbol: 'USDC',
 
     // InterestType
-    interestRate: 10,
+    interestRate: 20,
 
     // RewardType
     rewardRate: 10,
@@ -37,11 +37,6 @@ export const investmentStrategies: InvestmentStrategy[] = [
         name: 'usdc',
         imgPath: 'assets/token/svg/color/usdc.svg',
         investRange: 30,
-      },
-      {
-        name: 'bnb',
-        imgPath: 'assets/token/svg/color/bnb.svg',
-        investRange: 50,
       }
     ],
     tvl: 11298334,

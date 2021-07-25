@@ -1,6 +1,6 @@
 import React from 'react'
 import useToggle from '../../../../hooks/useToggle'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
@@ -10,22 +10,26 @@ import InvestForm  from '@components/organisms/invest/invest-form'
 
 const PaycerStrategyBadge = styled.div`
     position: absolute;
-    background: linear-gradient(to left, #c13f39,#ff9999);
-    -ms-transform: rotate(314deg);
-    transform: rotate(314deg);
-    left: -37px;
+    transform: rotate(45deg);
+    right: -36px;
     top: 11px;
-    font-size: 10px;
+    font-size: 9px;
     width: 110px;
     text-align: center;
     font-weight: 900;
     color: white;
     text-shadow: rgb(19 31 29 / 100%) 2px 2px 10px;
-    height: 18px;
+    height: 16px;
     justify-content: center;
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    
+    background: linear-gradient(to left,#5b862b,#3f827b);
+    ${props => props.strategyType === 'paycer' && css`
+      background: linear-gradient(to left, #b73d70,#f9a7dc);
+    `}
+    
 `
 
 const InvestCard = (props: InvestmentStrategy) => {
@@ -50,11 +54,9 @@ const InvestCard = (props: InvestmentStrategy) => {
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
 
-                        {strategyType === 'paycer' && (
-                            <PaycerStrategyBadge>
-                                <Trans>Paycer</Trans>
-                            </PaycerStrategyBadge>
-                        )}
+                        <PaycerStrategyBadge strategyType={strategyType}>
+                            {strategyType}
+                        </PaycerStrategyBadge>
 
                         <div className="row w-100">
                             <div className="col-md-2 d-flex align-items-center">
