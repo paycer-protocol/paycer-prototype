@@ -37,7 +37,7 @@ const BlurBackground = styled.div`
     -webkit-filter: blur(8px);
     filter: blur(8px);
     -webkit-filter: blur(80px);
-    opacity: 0.8;
+    opacity: 0.78;
 `
 
 const InvestList = () => {
