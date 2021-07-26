@@ -1,11 +1,30 @@
 import React, {useContext, useState} from 'react'
-import {t} from '@lingui/macro'
+import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import InvestListItem from '@components/organisms/invest/invest-list-item'
 import InvestListItemHeader from '@components/organisms/invest/invest-list-item-header'
 import InvestCard from '@components/organisms/invest/invest-card'
 import InvestListSearch from './invest-list-search'
 import { InvestListContext } from '../../../../context/invest-list-context'
+import Button from '@components/atoms/button'
+import { List, CardText } from '@styled-icons/bootstrap'
+import Icon from "@components/atoms/icon";
+
+const StyledButton = styled(Button)`
+    &:focus {
+        background-color: transparent;
+        outline: 0!important;
+    }
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+`
 
 const InvestList = () => {
 
@@ -19,29 +38,34 @@ const InvestList = () => {
 
     return (
         <>
-            <div className="mb-5">
-                <InvestListSearch />
+            <div className="row mb-6">
+                <div className="col">
+                    <InvestListSearch />
+                </div>
+                {((!isTabletOrMobile) &&
+                    <div className="col-auto">
+                        <div className="nav btn-group">
+                            <StyledButton
+                                variant="light"
+                                className={listView ? 'btn-lg' : 'bg-dark btn-lg'}
+                                onClick={() => setListView(false)}
+                            >
+                                <Icon component={CardText} size={22} />
+                            </StyledButton>
+                            <StyledButton
+                                variant="light"
+                                className={!listView ? 'btn-lg' : 'bg-dark btn-lg'}
+                                onClick={() => setListView(true)}
+                            >
+                                <Icon component={List} size={22} />
+                            </StyledButton>
+                        </div>
+                    </div>
+                )}
             </div>
 
-            {(!isTabletOrMobile &&
-              <div className="d-flex mb-4 justify-content-end">
-                <div className="form-check form-switch">
-                  <input className="form-check-input me-3"
-                         type="checkbox"
-                         name="with-invest-card"
-                         checked={listView}
-                         onChange={(e) => {
-                             setListView(e.currentTarget.checked)
-                         }}
-                  />
-                  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                      {t`Toggle Layout`}
-                  </label>
-                </div>
-              </div>
-            )}
 
-            {(!isTabletOrMobile &&
+            {((!isTabletOrMobile && listView) &&
                 <InvestListItemHeader />
             )}
 

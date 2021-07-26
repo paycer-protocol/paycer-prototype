@@ -7,10 +7,8 @@ const InvestList = () => {
     const {
         resetFilters,
         handleAutoSuggest,
-        filterInvested,
         filterStrategy,
         keyword,
-        activeFilter
     } = useContext(InvestListContext);
 
     return (
@@ -28,45 +26,24 @@ const InvestList = () => {
 
             <div className="d-flex">
                 <div className="me-4">
-                    <Trans>All</Trans>
-                    <input
-                        name="invest-radio"
-                        checked={activeFilter === 'all'}
-                        className="ms-3 form-check-input"
-                        type="radio"
-                        onChange={() => {
-                            resetFilters()
-                        }}
-                    />
-                </div>
-
-                <div className="me-4">
-                    <Trans>Investment</Trans>
-                    <input
-                        name="invest-radio"
-                        checked={activeFilter === 'invested'}
-                        className="ms-3 form-check-input"
-                        type="radio"
-                        onChange={(e) => {
-                            filterInvested()
-                        }}
-                    />
-                </div>
-
-                <div>
-                    <Trans>Custom</Trans>
-                    <input
-                        name="invest-radio"
-                        checked={activeFilter === 'strategy'}
-                        className="ms-3 form-check-input"
-                        type="radio"
-                        onChange={(e) => {
-                            filterStrategy()
-                        }}
-                    />
+                    <div className="form-check form-switch">
+                        <input className="form-check-input me-3"
+                               type="checkbox"
+                               name="with-invest-card"
+                               onChange={(e) => {
+                                   if (e.currentTarget.checked) {
+                                       filterStrategy()
+                                   } else {
+                                       resetFilters()
+                                   }
+                               }}
+                        />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                            {t`All / Custom`}
+                        </label>
+                    </div>
                 </div>
             </div>
-
         </>
     )
 }
