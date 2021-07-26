@@ -28,16 +28,16 @@ const StyledButton = styled(Button)`
 
 const BlurBackground = styled.div`
     position: absolute;
-    width: 70%;
-    height: 70%;
-    background: linear-gradient(to bottom,#86325591,#229c7a4d);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(122deg,#86325591,#229c7a4d);
     -webkit-backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     -webkit-filter: blur(8px);
     filter: blur(8px);
     -webkit-filter: blur(80px);
-    opacity: 0.7;
+    opacity: 0.8;
 `
 
 const InvestList = () => {
@@ -83,7 +83,7 @@ const InvestList = () => {
                 <InvestListItemHeader />
             )}
 
-            <div className="row">
+            <div className="row position-relative">
                 <BlurBackground />
                 {items.map((data, key) => (
                     <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
