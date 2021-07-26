@@ -26,7 +26,7 @@ const InvestList = () => {
                 }}
             />
 
-            <div className="mb-6 d-flex">
+            <div className="d-flex">
                 <div className="me-4">
                     <Trans>All</Trans>
                     <input
@@ -41,7 +41,7 @@ const InvestList = () => {
                 </div>
 
                 <div className="me-4">
-                    <Trans>With investment</Trans>
+                    <Trans>Investment</Trans>
                     <input
                         name="invest-radio"
                         checked={activeFilter === 'invested'}
@@ -54,7 +54,7 @@ const InvestList = () => {
                 </div>
 
                 <div>
-                    <Trans>Custom strategies</Trans>
+                    <Trans>Custom</Trans>
                     <input
                         name="invest-radio"
                         checked={activeFilter === 'strategy'}

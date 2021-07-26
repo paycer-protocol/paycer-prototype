@@ -29,21 +29,23 @@ const InvestCard = (props: InvestmentStrategy) => {
     return (
         <Card className="box-shadow" border={invested > 0 ? 'invest' : ''}>
             <Card.Body>
-                <h6 className="text-uppercase text-center my-4 font-size-lg">
-                    { strategyName }
-                </h6>
-                <div className="row g-0 align-items-center justify-content-center">
-                    <div className="col-auto">
-                        <div className="h2 mb-0">%</div>
-                    </div>
-                    <div className="col-auto">
-                        <div className="display-2 mb-0">
-                            {totalInterestRate}
+                <div className="mb-3">
+                    <h6 className="text-uppercase text-center my-4 font-size-lg">
+                        { strategyName }
+                    </h6>
+                    <div className="row g-0 align-items-center justify-content-center">
+                        <div className="col-auto">
+                            <div className="h2 mb-0">%</div>
+                        </div>
+                        <div className="col-auto">
+                            <div className="display-2 mb-0">
+                                {totalInterestRate}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="h6 text-uppercase text-center  mb-5">
-                    / {t`APR`}
+                    <div className="h6 text-uppercase text-center">
+                        / {t`APR`}
+                    </div>
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">

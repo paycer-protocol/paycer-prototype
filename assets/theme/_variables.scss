@@ -389,7 +389,7 @@ $form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/200
 $form-switch-focus-color: $form-switch-color !default;
 $form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
 
-$form-switch-checked-color: $form-switch-color !default;
+$form-switch-checked-color: $gray-700;
 $form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 
 $input-group-addon-color: $text-muted !default;
