@@ -36,7 +36,8 @@ const AddPaycerToken = () => {
               })
               .then((success) => {
                   if (success) {
-                      toast(t`Successfully added PAYCER TOKEN to MetaMask`)
+                      // TODO check of token really was added
+                      //toast(t`Successfully added PAYCER TOKEN to MetaMask`)
                   } else {
                       toast(t`Something went wrong`)
                   }
