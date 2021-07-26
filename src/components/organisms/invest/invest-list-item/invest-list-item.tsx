@@ -66,7 +66,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
 
     return (
         <>
-            <Card className={showInvestForm ? 'mb-3 overflow-hidden' : 'mb-4 overflow-hidden'}>
+            <Card className={showInvestForm ? 'mb-3 overflow-hidden bg-dark' : 'mb-4 overflow-hidden'}>
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
 
@@ -121,7 +121,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
                                 <Money value={tvl}/>
                             </div>
                             <div className="col-md-1 d-flex justify-content-center flex-column pe-0">
-                                <Button onClick={() => setShowInvestForm(!showInvestForm)} variant={showInvestForm ? 'primary' : 'outline-primary'}>
+                                <Button style={{position: 'relative', left: '-20px'}} onClick={() => setShowInvestForm(!showInvestForm)} variant={showInvestForm ? 'primary' : 'outline-primary'}>
                                     {invested ? t`Edit` : t`Start`}
                                 </Button>
                             </div>

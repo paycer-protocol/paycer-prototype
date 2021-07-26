@@ -7,7 +7,7 @@ import InvestCard from '@components/organisms/invest/invest-card'
 import InvestListSearch from './invest-list-search'
 import { InvestListContext } from '../../../../context/invest-list-context'
 import Button from '@components/atoms/button'
-import { List, CardText } from '@styled-icons/bootstrap'
+import { List,  GridFill } from '@styled-icons/bootstrap'
 import Icon from "@components/atoms/icon";
 
 const StyledButton = styled(Button)`
@@ -24,6 +24,21 @@ const StyledButton = styled(Button)`
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
+`
+
+const BlurBackground = styled.div`
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: linear-gradient(to bottom,#86325591,#229c7a4d);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+    -webkit-filter: blur(100px);
+    opacity: 0.7;
+    top: 47%;
 `
 
 const InvestList = () => {
@@ -50,14 +65,14 @@ const InvestList = () => {
                                 className={listView ? 'btn-lg' : 'bg-dark btn-lg'}
                                 onClick={() => setListView(false)}
                             >
-                                <Icon component={CardText} size={22} />
+                                <Icon component={GridFill} size={20} />
                             </StyledButton>
                             <StyledButton
                                 variant="light"
                                 className={!listView ? 'btn-lg' : 'bg-dark btn-lg'}
                                 onClick={() => setListView(true)}
                             >
-                                <Icon component={List} size={22} />
+                                <Icon component={List} size={20} />
                             </StyledButton>
                         </div>
                     </div>
@@ -70,8 +85,9 @@ const InvestList = () => {
             )}
 
             <div className="row">
+                <BlurBackground />
                 {items.map((data, key) => (
-                    <div key={key} className={listView ? 'col-12' : 'col-md-4'}>
+                    <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
                         <InvestItemComponent
                             { ...data }
                         />
