@@ -52,7 +52,7 @@ const InvestList = () => {
 
     return (
         <>
-            <div className="row mb-6">
+            <div className="row mb-5">
                 <div className="col">
                     <InvestListSearch />
                 </div>
