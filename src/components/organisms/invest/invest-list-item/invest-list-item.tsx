@@ -26,7 +26,7 @@ const PaycerStrategyBadge = styled.div`
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    background: linear-gradient(to left,#5b862b,#3f827b);
+    background: linear-gradient(324deg ,#3c039a,#b289f5);
     letter-spacing: 0.1px;
     
     &:before {
@@ -40,7 +40,7 @@ const PaycerStrategyBadge = styled.div`
     }
     
     ${props => props.strategyType === 'paycer' && css`
-      background: linear-gradient(to left,#ea1d1d,#ffbdbd);
+      background: linear-gradient(324deg, #e224a2,#ffbdbd);
       &:before {
         border-color: #244166;
       }
