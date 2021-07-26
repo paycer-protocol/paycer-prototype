@@ -1,11 +1,51 @@
 import React, { useState } from 'react'
-import { Trans, t } from '@lingui/macro'
+import styled, { css } from 'styled-components'
+import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '../../../../types/investment'
 import mapRiskLevel from "../../../../helper/map-risk-level";
+
+const PaycerStrategyBadge = styled.div`
+    position: absolute;
+    transform: rotate(45deg);
+    right: -32px;
+    top: 14px;
+    line-height: 25px;
+    font-size: 7.5px;
+    width: 115px;
+    padding-left: 3px;
+    text-align: center;
+    font-weight: 900;
+    color: white;
+    text-shadow: rgb(0 0 0) -1px 1px 7px;
+    height: 18px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    background: linear-gradient(to left,#5b862b,#3f827b);
+    letter-spacing: 0.1px;
+    
+    &:before {
+        content: "";
+        height: 16px;
+        border-top: 0.5px dashed #0e400e;
+        border-bottom: 0.5px dashed #0e400e;
+        width: 100%;
+        position: absolute;
+     
+    }
+    
+    ${props => props.strategyType === 'paycer' && css`
+      background: linear-gradient(to left,#ea1d1d,#ffbdbd);
+      &:before {
+        border-color: #244166;
+      }
+    `}
+`
 
 const InvestCard = (props: InvestmentStrategy) => {
     const {
@@ -17,7 +57,8 @@ const InvestCard = (props: InvestmentStrategy) => {
         invested,
         earnedInterest,
         investSymbol,
-        riskLevel
+        riskLevel,
+        strategyType
     } = props
 
     const [showInvestModal, setShowInvestModal] = useState(false)
@@ -27,8 +68,15 @@ const InvestCard = (props: InvestmentStrategy) => {
         setShowInvestModal(false)
     }
     return (
-        <Card className="box-shadow" border={invested > 0 ? 'invest' : ''}>
+        <Card className="box-shadow overflow-hidden">
             <Card.Body>
+                <PaycerStrategyBadge strategyType={strategyType}>
+                    {(strategyType === 'paycer' &&
+                      <>{t`by`}&nbsp;</>
+                    )}
+                    {strategyType}
+                </PaycerStrategyBadge>
+
                 <div className="mb-3">
                     <h6 className="text-uppercase text-center my-4 font-size-lg">
                         { strategyName }
