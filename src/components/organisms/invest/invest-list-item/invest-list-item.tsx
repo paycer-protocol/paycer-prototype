@@ -47,6 +47,15 @@ const PaycerStrategyBadge = styled.div`
     `}
 `
 
+const StyledCard = styled(Card)`
+   ${props => props.showInvestForm && css`
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 0;
+   `}  
+`
+
+
 const InvestListItem = (props: InvestmentStrategy) => {
     const {
         strategyName,
@@ -66,7 +75,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
 
     return (
         <>
-            <Card className={showInvestForm ? 'mb-3 overflow-hidden bg-dark' : 'mb-4 overflow-hidden'}>
+            <StyledCard showInvestForm={showInvestForm} className={showInvestForm ? 'mb-0 overflow-hidden bg-dark' : 'mb-4 overflow-hidden'}>
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
 
@@ -105,7 +114,6 @@ const InvestListItem = (props: InvestmentStrategy) => {
                                     ) :
                                     <>-</>
                                 }
-
                             </div>
 
                             <div className="col-md-1 d-flex justify-content-center flex-column">
@@ -128,12 +136,13 @@ const InvestListItem = (props: InvestmentStrategy) => {
                         </div>
                     </div>
                 </Card.Body>
-            </Card>
+            </StyledCard>
             {showInvestForm && (
                 <div className="mb-4">
                     <InvestForm
                         {...props}
                         setShowInvestForm={setShowInvestForm}
+                        isModal={false}
                     />
                 </div>
             )}
