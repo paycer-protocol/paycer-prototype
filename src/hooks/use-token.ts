@@ -12,11 +12,12 @@ export default function useToken(symbol: string) {
 
   return {
     tokenAddress,
+    decimals: token.decimals,
+    symbol,
     tokenBalance: (): number => {
       const result = useTokenBalance(tokenAddress, account)
       return BigNumber.isBigNumber(result) ? Number(formatUnits(result, token.decimals)) : 0
     },
-
     allowance: (): number => {
       const [result] = useContractCall({
         abi: new Interface(tokenAbi.abi),

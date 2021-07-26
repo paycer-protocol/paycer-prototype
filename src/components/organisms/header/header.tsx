@@ -7,6 +7,7 @@ import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
 import WalletConnect from '../web3/wallet-connect'
+import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
 import SettingsModal from '@components/organisms/header/settings-modal'
@@ -51,6 +52,9 @@ const Header = () => {
                           </StyledLogo>
                       </Link>
                       <ul className="navbar-nav flex-row">
+                          <li className="d-none d-md-block nav-item me-3">
+                              <AddPaycerToken />
+                          </li>
                           <li className="d-none d-md-block nav-item me-3">
                               <Network />
                           </li>
