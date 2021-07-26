@@ -34,11 +34,8 @@ export default function Invest() {
             </PageHeader>
             <div className="row">
                 <div className="col">
-
                     <InvestListProvider>
-
                         <InvestList />
-
                     </InvestListProvider>
                 </div>
             </div>

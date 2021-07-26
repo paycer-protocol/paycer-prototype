@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { Trans, t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
 import { InvestmentStrategy } from '../../../../types/investment'
-import { normalizeFilename } from "../../../../helper/filename";
+import mapRiskLevel from "../../../../helper/map-risk-level";
 
 const InvestCard = (props: InvestmentStrategy) => {
     const {
@@ -18,6 +17,7 @@ const InvestCard = (props: InvestmentStrategy) => {
         invested,
         earnedInterest,
         investSymbol,
+        riskLevel
     } = props
 
     const [showInvestModal, setShowInvestModal] = useState(false)
@@ -43,7 +43,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                     </div>
                 </div>
                 <div className="h6 text-uppercase text-center  mb-5">
-                    / <Trans>APR</Trans>
+                    / {t`APR`}
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
@@ -56,7 +56,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
-                            <Trans>Total Volume</Trans>
+                            {t`Total Volume`}
                         </span>
                         <span className="">
                             <Money value={tvl}/>
@@ -64,15 +64,19 @@ const InvestCard = (props: InvestmentStrategy) => {
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
-                            <Trans>Deposited</Trans>
+                             {t`Deposited`}
                         </span>
-                        <span className={invested ? 'link-invest' : ''}>
-                            <Money value={invested} />
-                        </span>
+                        {invested ? (
+                            <span className="link-invest">
+                                <Money value={invested} />
+                            </span>
+                        ) :
+                        <>-</>
+                        }
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
-                            <Trans>Earned</Trans>
+                            {t`Earned`}
                         </span>
                         <span className="">
                             <FormattedNumber
@@ -83,6 +87,13 @@ const InvestCard = (props: InvestmentStrategy) => {
                             &nbsp;
                             {investSymbol}
                         </span>
+                    </li>
+
+                    <li className="list-group-item d-flex align-items-center justify-content-between px-0">
+                        <span className="">
+                            {t`Risk`}
+                        </span>
+                        {mapRiskLevel(riskLevel)}
                     </li>
                 </ul>
 
