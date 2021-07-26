@@ -40,7 +40,7 @@ const PaycerStrategyBadge = styled.div`
     }
     
     ${props => props.strategyType === 'paycer' && css`
-      background: linear-gradient(to left, #b73d70,#f9a7dc);
+      background: linear-gradient(to left,#ea1d1d,#ffbdbd);
       &:before {
         border-color: #244166;
       }
