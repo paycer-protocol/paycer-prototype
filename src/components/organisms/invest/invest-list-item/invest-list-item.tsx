@@ -90,7 +90,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
                             </div>
 
                             <div className="col-md-1 d-flex align-items-center justify-content-center">
-                                <span className="fw-bold">{totalInterestRate}%</span>
+                                {totalInterestRate}%
                             </div>
 
                             <div className="col-md-2 d-flex align-items-center justify-content-center">
