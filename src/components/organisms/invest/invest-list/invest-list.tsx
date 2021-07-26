@@ -36,7 +36,7 @@ const BlurBackground = styled.div`
     backdrop-filter: blur(5px);
     -webkit-filter: blur(8px);
     filter: blur(8px);
-    -webkit-filter: blur(100px);
+    -webkit-filter: blur(80px);
     opacity: 0.7;
 `
 
