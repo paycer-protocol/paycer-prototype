@@ -11,23 +11,39 @@ import InvestForm  from '@components/organisms/invest/invest-form'
 const PaycerStrategyBadge = styled.div`
     position: absolute;
     transform: rotate(45deg);
-    right: -36px;
-    top: 11px;
-    font-size: 9px;
-    width: 110px;
+    right: -38px;
+    top: 9px;
+    line-height: 25px;
+    font-size: 7.5px;
+    width: 115px;
+    padding-left: 3px;
     text-align: center;
     font-weight: 900;
     color: white;
-    text-shadow: rgb(19 31 29 / 100%) 2px 2px 10px;
-    height: 16px;
+    text-shadow: rgb(0 0 0) -1px 1px 7px;
+    height: 18px;
     justify-content: center;
     display: flex;
     align-items: center;
     text-transform: uppercase;
     background: linear-gradient(to left,#5b862b,#3f827b);
+    letter-spacing: 0.1px;
+    
+    &:before {
+        content: "";
+        height: 16px;
+        border-top: 0.5px dashed #0e400e;
+        border-bottom: 0.5px dashed #0e400e;
+        width: 100%;
+        position: absolute;
+     
+    }
     
     ${props => props.strategyType === 'paycer' && css`
       background: linear-gradient(to left, #b73d70,#f9a7dc);
+      &:before {
+        border-color: #244166;
+      }
     `}
 `
 
@@ -55,6 +71,9 @@ const InvestListItem = (props: InvestmentStrategy) => {
                     <div className="d-flex justify-content-between">
 
                         <PaycerStrategyBadge strategyType={strategyType}>
+                            {(strategyType === 'paycer' &&
+                                <>{t`by`}&nbsp;</>
+                            )}
                             {strategyType}
                         </PaycerStrategyBadge>
 
