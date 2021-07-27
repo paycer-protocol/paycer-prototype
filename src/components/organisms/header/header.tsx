@@ -51,31 +51,24 @@ const Header = () => {
                               </StyledBrand>
                           </StyledLogo>
                       </Link>
-                      <ul className="navbar-nav flex-row">
-                          <li className="d-none d-md-block nav-item me-3">
+                      <ul className="navbar-nav flex-row d-none d-lg-flex">
+                          <li className="nav-item me-3">
                               <AddPaycerToken />
                           </li>
-                          <li className="d-none d-md-block nav-item me-3">
+                          <li className="nav-item me-3">
                               <Network />
                           </li>
-                          <li className="d-none d-md-block  nav-item me-3">
+                          <li className="nav-item me-3">
                               <WalletConnect
                                 buttonVariant="light"
                                 dropdownVariant="light"
                               />
                           </li>
-                          <li className="d-none d-md-block nav-item me-3">
+                          <li className="nav-item me-3">
                               <SettingsModal />
                           </li>
-                          <li className="me-3">
-                              <Navbar.Toggle
-                                aria-controls="header-navbar-nav"
-                                onClick={() => setShowModalNav(true)}
-                              />
-                          </li>
                       </ul>
-
-                      <ul className="d-none d-md-flex navbar-nav">
+                      <ul className="d-none d-lg-flex navbar-nav">
                           {routes.map((route, key) => (
                             <li className="nav-item me-3" key={`nav${key}`}>
                                 <Link href={route.path}>
@@ -85,6 +78,14 @@ const Header = () => {
                                 </Link>
                             </li>
                           ))}
+                      </ul>
+                      <ul className="navbar-nav flex-row d-flex d-lg-none">
+                          <li className="me-3">
+                              <Navbar.Toggle
+                                aria-controls="header-navbar-nav"
+                                onClick={() => setShowModalNav(true)}
+                              />
+                          </li>
                       </ul>
                   </div>
               </Navbar>

@@ -22,7 +22,7 @@ export interface IContractProvider {
 export const contractProvider: IContractProvider = {
   StakingRewards: {
     chainAddresses: {
-      [ChainId.Mainnet]: '',
+      [ChainId.Mainnet]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
       [ChainId.Ropsten]: '',
       [ChainId.Kovan]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
       [ChainId.Rinkeby]: '',
