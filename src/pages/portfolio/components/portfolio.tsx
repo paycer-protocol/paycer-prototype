@@ -1,6 +1,5 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { useAccordionButton } from 'react-bootstrap/AccordionButton'
 import { normalizeFilename } from '../../../helper/filename'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'

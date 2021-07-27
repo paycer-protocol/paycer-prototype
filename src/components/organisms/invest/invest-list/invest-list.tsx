@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react'
 import styled from 'styled-components'
+import BlurBackground from '@components/atoms/blur-background'
 import { useMediaQuery } from 'react-responsive'
 import InvestListItem from '@components/organisms/invest/invest-list-item'
 import InvestListItemHeader from '@components/organisms/invest/invest-list-item-header'
@@ -24,20 +25,6 @@ const StyledButton = styled(Button)`
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-`
-
-const BlurBackground = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(122deg,#86325591,#229c7a4d);
-    -webkit-backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    -webkit-filter: blur(8px);
-    filter: blur(8px);
-    -webkit-filter: blur(80px);
-    opacity: 0.78;
 `
 
 const InvestList = () => {
