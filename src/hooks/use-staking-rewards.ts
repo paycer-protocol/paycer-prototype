@@ -1,4 +1,4 @@
-import {useEthers, useContractCall, useContractFunction } from '@usedapp/core'
+import {useEthers, useContractCall, useContractFunction} from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Interface } from '@ethersproject/abi'
 import { Contract } from '@ethersproject/contracts'
@@ -6,9 +6,10 @@ import stakingAbi from '@contracts/abi/StakingRewards.json'
 import { contractProvider } from '@providers/contracts'
 
 export default function useStakingRewards() {
-  const { account, chainId, library } = useEthers()
+  const { account, chainId } = useEthers()
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId]
-  const contract = new Contract(contractAddress, stakingAbi.abi, library.getSigner())
+
+  const contract = new Contract(contractAddress, stakingAbi.abi)
   const stakeFn = useContractFunction(contract, 'stake', { transactionName: 'stake' })
   const claimFn = useContractFunction(contract, 'claim', { transactionName: 'claim' })
   const withdrawFn = useContractFunction(contract, 'withdraw', { transactionName: 'withdraw' })
