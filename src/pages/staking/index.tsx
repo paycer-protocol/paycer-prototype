@@ -33,16 +33,19 @@ export default () => {
           </div>
         </div>
       </PageHeader>
-      <div className="card">
-        <div className="card-body">
-          <div className="d-flex flex-column flex-md-row">
-            <div className="w-100">
-              <StakingForm />
-            </div>
-            <VerticalLine className="d-none d-md-block" />
-            <HorizontalLine className="d-block d-md-none" />
-            <div className="w-100">
-              <ClaimForm />
+      <div className="position-relative">
+        <BlurBackground />
+        <div className="card">
+          <div className="card-body">
+            <div className="d-flex flex-column flex-md-row">
+              <div className="w-100">
+                <StakingForm />
+              </div>
+              <VerticalLine className="d-none d-md-block" />
+              <HorizontalLine className="d-block d-md-none" />
+              <div className="w-100">
+                <ClaimForm />
+              </div>
             </div>
           </div>
         </div>
