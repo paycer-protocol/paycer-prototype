@@ -5,7 +5,6 @@ import PageHeader from '@components/molecules/page-header'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import Button from '@components/atoms/button'
-import BlurBackground from "@components/atoms/blur-background";
 
 export default function Home() {
   return (
@@ -29,8 +28,7 @@ export default function Home() {
           </div>
         </div>
       </PageHeader>
-      <div className="position-relative">
-          <BlurBackground />
+      <div className="blur-background">
           <DashCards />
           <div className="row position-relatives">
             <div className="col-12">

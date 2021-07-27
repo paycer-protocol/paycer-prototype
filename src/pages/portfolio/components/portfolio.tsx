@@ -198,56 +198,56 @@ export default function Portfolio() {
               </tr>
               </thead>
               <tbody className="list">
-              {portfolioFixtures.map((data, key) => (
-                  <React.Fragment key={key}>
-                    <CustomToggle eventKey={String(key+1)}>
-                      <td className="goal-project">
-                        <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(data.symbolName)}.svg`} alt={data.symbolName} />
-                        <span style={{position: 'relative', top: '2px'}}>{data.symbolName}</span>
-                      </td>
-                      <td>
-                        {data.balanceSymbol}&nbsp;{data.symbolShort}
-                      </td>
-                      <td className="text-end">
-                        <div className="row align-items-center g-0">
-                          <div className="col-auto">
-                            <small className="me-2">
-                              <Percentage
-                                value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
-                                className="mb-2"
+                {portfolioFixtures.map((data, key) => (
+                    <React.Fragment key={key}>
+                      <CustomToggle eventKey={String(key+1)}>
+                        <td className="goal-project">
+                          <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(data.symbolName)}.svg`} alt={data.symbolName} />
+                          <span style={{position: 'relative', top: '2px'}}>{data.symbolName}</span>
+                        </td>
+                        <td>
+                          {data.balanceSymbol}&nbsp;{data.symbolShort}
+                        </td>
+                        <td className="text-end">
+                          <div className="row align-items-center g-0">
+                            <div className="col-auto">
+                              <small className="me-2">
+                                <Percentage
+                                  value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
+                                  className="mb-2"
+                                />
+                              </small>
+                            </div>
+                            <div className="col">
+                              <ProgressBar
+                                className="progress-sm"
+                                now={data.balanceUSD * 100 / totalBalanceUSD}
+                                min={0}
+                                max={100}
                               />
-                            </small>
+                            </div>
                           </div>
-                          <div className="col">
-                            <ProgressBar
-                              className="progress-sm"
-                              now={data.balanceUSD * 100 / totalBalanceUSD}
-                              min={0}
-                              max={100}
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-end">
-                        <Money value={data.totalVolume} />
-                      </td>
-                    </CustomToggle>
-                    <tr>
-                      <td colSpan={5} className="pt-0 pb-0 bg-secondary-dark">
-                        <Accordion.Collapse eventKey={String(key+1)}>
-                          <div className="mt-5 mb-6">
-                            <StepProgressBar
-                                steps={data?.stepsProgressBar?.steps}
-                                progress={data?.stepsProgressBar?.progress}
-                                symbolName={data.symbolName}
-                                symbolShort={data.symbolShort}
-                            />
-                          </div>
-                        </Accordion.Collapse>
-                      </td>
-                    </tr>
-                  </React.Fragment>
-              ))}
+                        </td>
+                        <td className="text-end">
+                          <Money value={data.totalVolume} />
+                        </td>
+                      </CustomToggle>
+                      <tr>
+                        <td colSpan={5} className="pt-0 pb-0 bg-secondary-dark">
+                          <Accordion.Collapse eventKey={String(key+1)}>
+                            <div className="mt-5 mb-6">
+                              <StepProgressBar
+                                  steps={data?.stepsProgressBar?.steps}
+                                  progress={data?.stepsProgressBar?.progress}
+                                  symbolName={data.symbolName}
+                                  symbolShort={data.symbolShort}
+                              />
+                            </div>
+                          </Accordion.Collapse>
+                        </td>
+                      </tr>
+                    </React.Fragment>
+                ))}
               </tbody>
             </table>
           </Accordion>

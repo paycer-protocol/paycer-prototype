@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react'
 import styled from 'styled-components'
-import BlurBackground from '@components/atoms/blur-background'
 import { useMediaQuery } from 'react-responsive'
 import InvestListItem from '@components/organisms/invest/invest-list-item'
 import InvestListItemHeader from '@components/organisms/invest/invest-list-item-header'
@@ -70,8 +69,7 @@ const InvestList = () => {
                 <InvestListItemHeader />
             )}
 
-            <div className="row position-relative">
-                <BlurBackground />
+            <div className="row blur-background">
                 {items.map((data, key) => (
                     <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
                         <InvestItemComponent
