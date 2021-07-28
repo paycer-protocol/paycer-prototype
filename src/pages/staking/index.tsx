@@ -4,6 +4,7 @@ import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
+import LoyaltyTiers from '@components/organisms/loyalty-tiers'
 import Button from '@components/atoms/button'
 
 const VerticalLine = styled.div`
@@ -46,6 +47,9 @@ export default function Staking () {
           </div>
         </div>
       </div>
+
+      <LoyaltyTiers />
+
     </div>
   )
 }
