@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
-import InvestCard from '@components/organisms/invest/invest-card'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
+import InvestList from '@components/organisms/invest/invest-list/invest-list'
+import InvestListProvider from '../../context/invest-list-context'
 import { connectors } from '@providers/connectors'
-import { investmentStrategies }from '@config/investment/strategies'
 
 export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -33,14 +33,11 @@ export default function Invest() {
                 </div>
             </PageHeader>
             <div className="row">
-                {investmentStrategies.map((data, key) => (
-                    <div key={key} className="col-12 col-md-6 col-lg-4">
-                        <InvestCard
-                            { ...data }
-                            setShowWalletProviderModal={setShowWalletProviderModal}
-                        />
-                    </div>
-                ))}
+                <div className="col">
+                    <InvestListProvider>
+                        <InvestList />
+                    </InvestListProvider>
+                </div>
             </div>
             <WalletProvider
                 providers={connectors}

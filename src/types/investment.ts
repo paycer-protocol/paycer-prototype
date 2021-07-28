@@ -1,6 +1,5 @@
 import {boolean} from "yup";
 
-
 export enum RiskLevel {
   Low = 0,
   Medium = 1,
@@ -44,7 +43,9 @@ export interface InvestPairType {
 
 export interface InvestmentStrategy extends InvestPairType, FeesType, InterestType, RewardType {
   riskLevel: RiskLevel
+  contractWalletAddress: string,
   strategyName: string
+  strategyType?: string
   investSymbol: string
   investAmount?: number
   investRange?: number
@@ -52,6 +53,8 @@ export interface InvestmentStrategy extends InvestPairType, FeesType, InterestTy
   invested?: number
   assets: AssetType[]
   setShowWalletProviderModal?: (state: boolean) => void
+  setShowInvestForm?: (state: boolean) => void,
+  isModal?: boolean
 }
 
 export default {}

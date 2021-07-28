@@ -38,7 +38,6 @@ export default function DashCards () {
         <DashCard title={t`Risk`}>
             <div className="mt-3 d-flex justify-content-between">
               <Trans>Low</Trans>
-              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(`low`)}.svg`} alt="usd" />
             </div>
         </DashCard>
       </div>

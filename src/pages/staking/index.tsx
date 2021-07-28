@@ -4,8 +4,9 @@ import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
-import LoyaltyTiers from '@components/organisms/loyalty-tiers'
+import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Button from '@components/atoms/button'
+import useWallet from '@hooks/use-wallet'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -18,6 +19,8 @@ const HorizontalLine = styled.div`
 `
 
 export default function Staking () {
+  const { isConnected } = useWallet()
+
   return (
     <div className="container mt-3">
       <PageHeader>
@@ -33,23 +36,29 @@ export default function Staking () {
           </div>
         </div>
       </PageHeader>
-      <div className="card">
-        <div className="card-body">
-          <div className="d-flex flex-column flex-md-row">
-            <div className="w-100">
-              <StakingForm />
-            </div>
-            <VerticalLine className="d-none d-md-block" />
-            <HorizontalLine className="d-block d-md-none" />
-            <div className="w-100">
-              <ClaimForm />
+      {isConnected && (
+        <div className="blur-background-dist">
+          <div className="card">
+            <div className="card-body">
+              <div className="d-flex flex-column flex-md-row">
+                <div className="w-100">
+                  <StakingForm />
+                </div>
+                <VerticalLine className="d-none d-md-block" />
+                <HorizontalLine className="d-block d-md-none" />
+                <div className="w-100">
+                  <ClaimForm />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <LoyaltyTiers />
-
+      )}
+      {!isConnected && (
+        <div className="d-flex justify-content-center">
+          <WalletConnect />
+        </div>
+      )}
     </div>
   )
 }
