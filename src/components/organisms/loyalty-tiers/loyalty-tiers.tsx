@@ -1,14 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
-import Button from '@components/atoms/button'
-import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import DashNumber from '@components/organisms/dashboard/dash-number'
-import useStakingRewards from '@hooks/use-staking-rewards'
-import { rewardSymbol } from '@config/staking-rewards'
-import classnames from "classnames";
+import useLoyaltyTiers from '@hooks/use-loyalty-tiers'
 import LoyaltyTierLevel from './loyalty-tier-level.tsx'
-import useWallet from "@hooks/use-wallet";
 
 const RewardContainer = styled.div`
   display: flex;
@@ -21,9 +15,10 @@ const RewardContainer = styled.div`
 
 const LoyaltyTiers = () => {
 
-    const wallet = useWallet()
 
-    console.log(wallet)
+    const tiers = useLoyaltyTiers()
+
+    const tierLevel = tiers.loyaltyTierOf()
 
 
     return (

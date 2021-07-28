@@ -7,6 +7,7 @@ import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Button from '@components/atoms/button'
 import useWallet from '@hooks/use-wallet'
+import LoyaltyTiers from '@components/organisms/loyalty-tiers'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -54,6 +55,9 @@ export default function Staking () {
           </div>
         </div>
       )}
+
+      <LoyaltyTiers />
+
       {!isConnected && (
         <div className="d-flex justify-content-center">
           <WalletConnect />

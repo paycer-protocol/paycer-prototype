@@ -34,4 +34,18 @@ export const contractProvider: IContractProvider = {
       [ChainId.Hardhat]: '0x9d4454B023096f34B160D6B654540c56A1F81688',
     }
   },
+  LoyaltyTiers: {
+    chainAddresses: {
+      [ChainId.Mainnet]: '0x412468Ea1C027fb42166273a72f329616421e9eA',
+      [ChainId.Ropsten]: '',
+      [ChainId.Kovan]: '0x412468Ea1C027fb42166273a72f329616421e9eA',
+      [ChainId.Rinkeby]: '',
+      [ChainId.Goerli]: '',
+      [ChainId.BSC]: '',
+      [ChainId.xDai]: '',
+      [ChainId.Polygon]: '',
+      [ChainId.Mumbai]: '',
+      [ChainId.Hardhat]: '0x9d4454B023096f34B160D6B654540c56A1F81688',
+    }
+  },
 }
