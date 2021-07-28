@@ -1,21 +1,18 @@
 import React from 'react'
-import useWallet from '@hooks/use-wallet'
 import Button from '@components/atoms/button'
-import { ChainId } from '@usedapp/core'
 import { useEthers } from '@usedapp/core'
 import useToken from '../../../hooks/use-token'
 import {toast} from "react-toastify";
 import {t} from "@lingui/macro";
 
 const AddPaycerToken = () => {
-    const { library, chainId } = useEthers()
-    const wallet = useWallet()
+    const { library } = useEthers()
     const token = useToken('PCR')
     const { tokenAddress, symbol, decimals } = token
 
     const addToken = async () => {
 
-      if (!library && !library.provider.isMetaMask && !library.provider.request) {
+      if (!library && !library.provider.isMetaMask && !library.provider.request && !tokenAddress) {
           return false
       }
 
@@ -46,10 +43,6 @@ const AddPaycerToken = () => {
       } catch {
           toast(t`Something went wrong`)
       }
-    }
-
-    if (!wallet.isConnected || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
-      return null
     }
 
     return (
