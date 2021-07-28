@@ -7,7 +7,7 @@ import InvestCard from '@components/organisms/invest/invest-card'
 import InvestListSearch from './invest-list-search'
 import { InvestListContext } from '../../../../context/invest-list-context'
 import Button from '@components/atoms/button'
-import { List,  GridFill } from '@styled-icons/bootstrap'
+import { List,  Grid } from '@styled-icons/bootstrap'
 import Icon from "@components/atoms/icon";
 
 const StyledButton = styled(Button)`
@@ -27,12 +27,8 @@ const StyledButton = styled(Button)`
 `
 
 const InvestList = () => {
-
-    const {
-        items
-    } = useContext(InvestListContext)
+    const { items } = useContext(InvestListContext)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-
     const [listView, setListView] = useState<boolean>(true)
     const InvestItemComponent = (listView && !isTabletOrMobile) ? InvestListItem : InvestCard
 
@@ -50,7 +46,7 @@ const InvestList = () => {
                                 className={listView ? 'btn-lg' : 'bg-dark btn-lg'}
                                 onClick={() => setListView(false)}
                             >
-                                <Icon component={GridFill} size={20} />
+                                <Icon component={Grid} size={20} />
                             </StyledButton>
                             <StyledButton
                                 variant="light"
@@ -69,7 +65,7 @@ const InvestList = () => {
                 <InvestListItemHeader />
             )}
 
-            <div className="row blur-background">
+            <div className="row blur-background-dist">
                 {items.map((data, key) => (
                     <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
                         <InvestItemComponent

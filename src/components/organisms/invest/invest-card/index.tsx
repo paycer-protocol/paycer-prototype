@@ -70,12 +70,12 @@ const InvestCard = (props: InvestmentStrategy) => {
     return (
         <Card className="box-shadow overflow-hidden">
             <Card.Body>
-                <PaycerStrategyBadge strategyType={strategyType}>
-                    {(strategyType === 'paycer' &&
-                      <>{t`by`}&nbsp;</>
-                    )}
-                    {strategyType}
-                </PaycerStrategyBadge>
+                {/*<PaycerStrategyBadge strategyType={strategyType}>*/}
+                {/*    {(strategyType === 'paycer' &&*/}
+                {/*      <>{t`by`}&nbsp;</>*/}
+                {/*    )}*/}
+                {/*    {strategyType}*/}
+                {/*</PaycerStrategyBadge>*/}
 
                 <div className="mb-3">
                     <h6 className="text-uppercase text-center my-4 font-size-lg">

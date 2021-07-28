@@ -79,12 +79,12 @@ const InvestListItem = (props: InvestmentStrategy) => {
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
 
-                        <PaycerStrategyBadge strategyType={strategyType}>
-                            {(strategyType === 'paycer' &&
-                                <>{t`by`}&nbsp;</>
-                            )}
-                            {strategyType}
-                        </PaycerStrategyBadge>
+                        {/*<PaycerStrategyBadge strategyType={strategyType}>*/}
+                        {/*    {(strategyType === 'paycer' &&*/}
+                        {/*        <>{t`by`}&nbsp;</>*/}
+                        {/*    )}*/}
+                        {/*    {strategyType}*/}
+                        {/*</PaycerStrategyBadge>*/}
 
                         <div className="row w-100">
                             <div className="col-md-2 d-flex justify-content-center flex-column">

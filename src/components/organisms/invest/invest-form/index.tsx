@@ -120,17 +120,10 @@ const InvestForm = (props: InvestmentStrategy) => {
                               />
                           </div>
                       </div>
-
-                      <div className="row justify-content-end">
-                          <div className="col-md-6">
-                              <Button variant="outline-primary" className="w-100" onClick={() => setShowInvestForm(false)}>{t`Cancel`}</Button>
-                          </div>
-                          <div className="col-md-6">
-                              <SubmitButton />
-                              <InvestFee />
-                          </div>
+                      <div className="text-center">
+                          <SubmitButton />
+                          <InvestFee />
                       </div>
-
                   </Card.Body>
               </StyledCard>
             )}

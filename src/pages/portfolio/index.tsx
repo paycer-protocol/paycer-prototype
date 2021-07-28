@@ -28,7 +28,7 @@ export default function Home() {
           </div>
         </div>
       </PageHeader>
-      <div className="blur-background">
+      <div className="blur-background-dist">
           <DashCards />
           <div className="row position-relatives">
             <div className="col-12">

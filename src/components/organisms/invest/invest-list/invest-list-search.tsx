@@ -23,27 +23,26 @@ const InvestList = () => {
                     handleAutoSuggest(e.currentTarget.value)
                 }}
             />
-
-            <div className="d-flex">
-                <div className="me-4">
-                    <div className="form-check form-switch">
-                        <input className="form-check-input me-3"
-                               type="checkbox"
-                               name="with-invest-card"
-                               onChange={(e) => {
-                                   if (e.currentTarget.checked) {
-                                       filterStrategy()
-                                   } else {
-                                       resetFilters()
-                                   }
-                               }}
-                        />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                            {t`All / Custom`}
-                        </label>
-                    </div>
-                </div>
-            </div>
+            {/*<div className="d-flex">*/}
+            {/*    <div className="me-4">*/}
+            {/*        <div className="form-check form-switch">*/}
+            {/*            <input className="form-check-input me-3"*/}
+            {/*                   type="checkbox"*/}
+            {/*                   name="with-invest-card"*/}
+            {/*                   onChange={(e) => {*/}
+            {/*                       if (e.currentTarget.checked) {*/}
+            {/*                           filterStrategy()*/}
+            {/*                       } else {*/}
+            {/*                           resetFilters()*/}
+            {/*                       }*/}
+            {/*                   }}*/}
+            {/*            />*/}
+            {/*            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">*/}
+            {/*                {t`All / Custom`}*/}
+            {/*            </label>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     )
 }
