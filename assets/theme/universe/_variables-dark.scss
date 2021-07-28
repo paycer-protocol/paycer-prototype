@@ -22,11 +22,11 @@ $gray-800: darken($white, 50%);
 $gray-900: darken($white, 60%);
 $black: #0B1120;
 
-
-$gray-600-dark: lighten($black, 10%);
-$gray-700-dark: darken($black, 15%);
-$gray-800-dark: darken($black, 10%);
-$gray-900-dark: darken($black, 5%);
+// #1B2E44
+$gray-600-dark: #213752;
+$gray-700-dark: #264160;
+$gray-800-dark: #1B2236;
+$gray-900-dark: #16212E;
 $black-dark: $black;
 
 $primary: #e224a2;
@@ -55,7 +55,7 @@ $body-color: $white !default;
 
 // Cards
 
-$card-border-width: 0 !default;
+$card-border-width: 1px !default;
 $card-border-color: transparent !default;
 $card-bg: #171B26 !default;
 
