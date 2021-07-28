@@ -28,7 +28,7 @@ msgstr "APY"
 msgid "Account"
 msgstr "Account"
 
-#: src/components/organisms/web3/network-provider.tsx:34
+#: src/components/organisms/web3/network-provider.tsx:44
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -141,11 +141,11 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:108
+#: src/components/organisms/invest/invest-form/index.tsx:116
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:101
+#: src/components/organisms/invest/invest-form/index.tsx:109
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -308,7 +308,7 @@ msgstr "Monthly rewards"
 msgid "Name"
 msgstr "Name"
 
-#: src/components/organisms/web3/network-provider.tsx:31
+#: src/components/organisms/web3/network-provider.tsx:41
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -335,7 +335,7 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:39
+#: src/components/organisms/web3/network-provider.tsx:49
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -410,7 +410,7 @@ msgstr "Start invest"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
-#: src/components/organisms/web3/network-provider.tsx:50
+#: src/components/organisms/web3/network-provider.tsx:60
 msgid "Switch network"
 msgstr "Switch network"
 
