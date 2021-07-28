@@ -20,7 +20,7 @@ const Group: FC<FormGroupFieldProps> = ({
 
     return (
         <GroupContext.Provider value={{ name: props.name }}>
-            <Form.Group {...props}>
+            <Form.Group>
                 {label && <Form.Label>{label}</Form.Label>}
                 {children}
                 <Form.Control.Feedback type='invalid'>
