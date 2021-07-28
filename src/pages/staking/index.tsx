@@ -19,7 +19,6 @@ const HorizontalLine = styled.div`
 `
 
 export default function Staking () {
-export default () => {
   const { isConnected } = useWallet()
 
   return (
