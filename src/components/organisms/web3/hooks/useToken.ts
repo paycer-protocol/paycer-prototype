@@ -7,8 +7,6 @@ export default function useToken(symbol: string) {
   const token = tokenProvider[symbol]
   const tokenAddress = token.chainAddresses[chainId]
 
-
-
   return {
     tokenBalance: () => {
       const rawTokenBalance = useTokenBalance(tokenAddress, account)
