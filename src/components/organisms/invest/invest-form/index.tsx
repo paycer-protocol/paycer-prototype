@@ -1,6 +1,8 @@
 import React from 'react'
 import * as Yup from 'yup'
+import styled, { css } from 'styled-components'
 import Form from '@components/atoms/form/form'
+import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
@@ -10,7 +12,14 @@ import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
 import { InvestFormFields } from '../types'
 import { InvestmentStrategy } from '../../../../types/investment'
-import { t } from '@lingui/macro'
+import { t } from "@lingui/macro";
+
+const StyledCard = styled(Card)`
+   ${props => !props.isModal && css`
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+   `}  
+`
 
 const InvestForm = (props: InvestmentStrategy) => {
     const {
@@ -80,9 +89,9 @@ const InvestForm = (props: InvestmentStrategy) => {
             enableReinitialize
         >
             {({ values }) => (
-              <div className="mb-0">
+              <StyledCard className="shadow-none mb-0">
                   <InvestCardHeader {...props} />
-                  <div>
+                  <Card.Body>
                       <div className="mb-5">
                           <InvestRangeSlider />
                       </div>
@@ -114,8 +123,8 @@ const InvestForm = (props: InvestmentStrategy) => {
                           <SubmitButton />
                           <InvestFee />
                       </div>
-                  </div>
-              </div>
+                  </Card.Body>
+              </StyledCard>
             )}
         </Form>
     )
