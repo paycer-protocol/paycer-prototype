@@ -107,13 +107,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                {invested ? (
-                                        <span className="link-invest">
-                                    <Money value={invested} />
-                                </span>
-                                    ) :
-                                    <>-</>
-                                }
+                                {invested ? (<Money value={invested} />) : <>-</>}
                             </div>
 
                             <div className="col-md-1 d-flex justify-content-center flex-column">

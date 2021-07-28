@@ -176,7 +176,7 @@ msgstr ""
 msgid "Earn interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:129
+#: src/components/organisms/invest/invest-card/index.tsx:123
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Earned"
 msgstr ""
@@ -185,11 +185,11 @@ msgstr ""
 msgid "Easy-to-use browser extension."
 msgstr ""
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:133
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:127
 msgid "Edit"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:151
+#: src/components/organisms/invest/invest-card/index.tsx:145
 msgid "Edit invest"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:144
+#: src/components/organisms/invest/invest-card/index.tsx:138
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:38
@@ -371,11 +371,11 @@ msgstr ""
 #~ msgid "Staking rewards"
 #~ msgstr ""
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:133
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:127
 msgid "Start"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:151
+#: src/components/organisms/invest/invest-card/index.tsx:145
 msgid "Start invest"
 msgstr ""
 

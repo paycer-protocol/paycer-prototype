@@ -1,4 +1,4 @@
-// 
+//
 // form-control.scss
 // Extended from Bootstrap
 //
@@ -46,10 +46,6 @@
 // Font size
 
 .form-control {
-
-  min-height: 48px;
-  border-width: 1px;
-
   &.h1, &.h2, &.h3, &.h4, &.h5 {
     margin-bottom: 0;
     font-weight: $headings-font-weight;

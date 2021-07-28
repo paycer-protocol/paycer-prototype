@@ -116,13 +116,7 @@ const InvestCard = (props: InvestmentStrategy) => {
                         <span className="">
                              {t`Deposited`}
                         </span>
-                        {invested ? (
-                            <span className="link-invest">
-                                <Money value={invested} />
-                            </span>
-                        ) :
-                        <>-</>
-                        }
+                        {invested ? <Money value={invested} /> : <>-</>}
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">
