@@ -1,18 +1,26 @@
 import React from 'react'
 import * as Yup from 'yup'
+import styled, { css } from 'styled-components'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import InvestCardHeader from './invest-card-header'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
+import InvestCardHeader from './invest-card-header'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
+import Button from '@components/atoms/button'
 import { InvestFormFields } from '../types'
 import { InvestmentStrategy } from '../../../../types/investment'
-import {t} from "@lingui/macro";
+import { t } from "@lingui/macro";
 
+const StyledCard = styled(Card)`
+   ${props => !props.isModal && css`
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+   `}  
+`
 
 const InvestForm = (props: InvestmentStrategy) => {
     const {
@@ -35,6 +43,8 @@ const InvestForm = (props: InvestmentStrategy) => {
         feeSymbol,
         withdrawFee,
         investFee,
+        setShowInvestForm,
+        isModal
     } = props
 
     const handleSubmit = (values: InvestFormFields) => {
@@ -80,7 +90,7 @@ const InvestForm = (props: InvestmentStrategy) => {
             enableReinitialize
         >
             {({ values }) => (
-              <Card className="shadow-none mb-0">
+              <StyledCard className="shadow-none mb-0">
                   <InvestCardHeader {...props} />
                   <Card.Body>
                       <div className="mb-5">
@@ -88,13 +98,20 @@ const InvestForm = (props: InvestmentStrategy) => {
                       </div>
                       <div className="row mb-4">
                           <div className="col-6">
-                              <InvestInput />
+                              <BaseInput />
                           </div>
                           <div className="col-6">
-                              <BaseInput />
+                              <InvestInput />
                           </div>
                       </div>
                       <div className="row mb-5">
+                          <div className="col-6">
+                              <DashNumber
+                                  label={t`Daily rewards`}
+                                  value={values.investBalance * values.rewardRate / 100 / 365}
+                                  symbol={values.rewardSymbol}
+                              />
+                          </div>
                           <div className="col-6">
                               <DashNumber
                                 label={t`Daily interest`}
@@ -102,18 +119,13 @@ const InvestForm = (props: InvestmentStrategy) => {
                                 symbol={values.rewardSymbol}
                               />
                           </div>
-                          <div className="col-6">
-                              <DashNumber
-                                label={t`Daily rewards`}
-                                value={values.investBalance * values.rewardRate / 100 / 365}
-                                symbol={values.rewardSymbol}
-                              />
-                          </div>
                       </div>
-                      <SubmitButton />
-                      <InvestFee />
+                      <div className="text-center">
+                          <SubmitButton />
+                          <InvestFee />
+                      </div>
                   </Card.Body>
-              </Card>
+              </StyledCard>
             )}
         </Form>
     )
