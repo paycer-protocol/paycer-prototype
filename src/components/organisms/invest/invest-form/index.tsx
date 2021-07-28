@@ -1,8 +1,6 @@
 import React from 'react'
 import * as Yup from 'yup'
-import styled, { css } from 'styled-components'
 import Form from '@components/atoms/form/form'
-import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
@@ -10,17 +8,9 @@ import InvestCardHeader from './invest-card-header'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
-import Button from '@components/atoms/button'
 import { InvestFormFields } from '../types'
 import { InvestmentStrategy } from '../../../../types/investment'
-import { t } from "@lingui/macro";
-
-const StyledCard = styled(Card)`
-   ${props => !props.isModal && css`
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-   `}  
-`
+import { t } from '@lingui/macro'
 
 const InvestForm = (props: InvestmentStrategy) => {
     const {
@@ -90,9 +80,9 @@ const InvestForm = (props: InvestmentStrategy) => {
             enableReinitialize
         >
             {({ values }) => (
-              <StyledCard className="shadow-none mb-0">
+              <div className="mb-0">
                   <InvestCardHeader {...props} />
-                  <Card.Body>
+                  <div>
                       <div className="mb-5">
                           <InvestRangeSlider />
                       </div>
@@ -124,8 +114,8 @@ const InvestForm = (props: InvestmentStrategy) => {
                           <SubmitButton />
                           <InvestFee />
                       </div>
-                  </Card.Body>
-              </StyledCard>
+                  </div>
+              </div>
             )}
         </Form>
     )

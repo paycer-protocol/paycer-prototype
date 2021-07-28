@@ -19,7 +19,7 @@ msgid "APR"
 msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:67
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr "APY"
@@ -141,12 +141,12 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:117
+#: src/components/organisms/invest/invest-form/index.tsx:108
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:110
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
+#: src/components/organisms/invest/invest-form/index.tsx:101
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr "Daily rewards"
@@ -299,7 +299,7 @@ msgstr "Menu"
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:90
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:91
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
@@ -371,6 +371,11 @@ msgstr "Search by: Strategy, APR, Asset, Risk Level, Address..."
 msgid "Settings"
 msgstr "Settings"
 
+#: src/components/organisms/web3/add-paycer-token.tsx:42
+#: src/components/organisms/web3/add-paycer-token.tsx:47
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr "Stake"
@@ -379,7 +384,7 @@ msgstr "Stake"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:66
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:67
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:18
 msgid "Staking"

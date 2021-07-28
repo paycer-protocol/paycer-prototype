@@ -65,7 +65,7 @@ const InvestList = () => {
                 <InvestListItemHeader />
             )}
 
-            <div className="row blur-background-dist">
+            <div className="row blur-background">
                 {items.map((data, key) => (
                     <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
                         <InvestItemComponent
