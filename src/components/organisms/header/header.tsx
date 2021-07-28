@@ -3,8 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import styled from 'styled-components'
+import { TextLeft } from '@styled-icons/bootstrap'
 import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
+import Icon from '@components/atoms/icon'
 import Navbar from '@components/molecules/navbar'
 import WalletConnect from '../web3/wallet-connect'
 import AddPaycerToken from '../web3/add-paycer-token'
@@ -42,7 +44,7 @@ const Header = () => {
     return (
       <>
           <header>
-              <Navbar expand="lg">
+              <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
@@ -81,14 +83,17 @@ const Header = () => {
                       </ul>
                       <ul className="navbar-nav flex-row d-flex d-lg-none">
                           <li className="me-3">
-                              <Navbar.Toggle
-                                aria-controls="header-navbar-nav"
+                              <Icon
                                 onClick={() => setShowModalNav(true)}
+                                component={TextLeft}
+                                size={30}
+                                color="white"
+                                className="cursor-pointer"
                               />
                           </li>
                       </ul>
                   </div>
-              </Navbar>
+              </div>
           </header>
           <OffCanvas
             show={showModalNav}

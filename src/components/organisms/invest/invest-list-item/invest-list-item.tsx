@@ -75,7 +75,7 @@ const InvestListItem = (props: InvestmentStrategy) => {
 
     return (
         <>
-            <StyledCard showInvestForm={showInvestForm} className={showInvestForm ? 'mb-0 overflow-hidden bg-dark' : 'mb-4 overflow-hidden'}>
+            <StyledCard showInvestForm={showInvestForm} className={showInvestForm ? 'mb-0 overflow-hidden bg-dark' : 'mb-3 overflow-hidden'}>
                 <Card.Body className="pt-4 pb-4">
                     <div className="d-flex justify-content-between">
 

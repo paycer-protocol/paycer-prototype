@@ -10,7 +10,6 @@ import InvestCardHeader from './invest-card-header'
 import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
-import Button from '@components/atoms/button'
 import { InvestFormFields } from '../types'
 import { InvestmentStrategy } from '../../../../types/investment'
 import { t } from "@lingui/macro";

@@ -37,7 +37,7 @@ export default function Staking () {
         </div>
       </PageHeader>
       {isConnected && (
-        <div className="blur-background-dist">
+        <div className="blur-background">
           <div className="card">
             <div className="card-body">
               <div className="d-flex flex-column flex-md-row">
