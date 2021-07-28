@@ -1,13 +1,15 @@
-import {useEthers, useContractCall, useContractFunction} from '@usedapp/core'
+import {useEthers, useContractCall, useContractFunction, ChainId} from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Interface } from '@ethersproject/abi'
 import { Contract } from '@ethersproject/contracts'
 import stakingAbi from '@contracts/abi/StakingRewards.json'
 import { contractProvider } from '@providers/contracts'
+import { utils } from 'ethers'
+
 
 export default function useStakingRewards() {
   const { account, chainId } = useEthers()
-  const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId]
+  const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId || ChainId.Mainnet]
 
   const contract = new Contract(contractAddress, stakingAbi.abi)
   const stakeFn = useContractFunction(contract, 'stake', { transactionName: 'stake' })
@@ -15,12 +17,14 @@ export default function useStakingRewards() {
   const withdrawFn = useContractFunction(contract, 'withdraw', { transactionName: 'withdraw' })
 
   const handleContractCall = (method: string, params = []): number => {
-    const [result] = useContractCall({
-      abi: new Interface(stakingAbi.abi),
-      address: contractAddress,
-      method: method,
-      args: params,
-    }) ?? []
+    const [result] = useContractCall(
+      account && {
+        abi: new Interface(stakingAbi.abi),
+        address: contractAddress,
+        method: method,
+        args: params,
+      }
+    ) ?? []
 
     return BigNumber.isBigNumber(result) ? result.toNumber() : 0
   }
@@ -33,7 +37,8 @@ export default function useStakingRewards() {
     totalClaimed: (): number => handleContractCall('totalClaimedOf', [account]),
     stake: (amount: number, lockPeriod: number) => {
       const { send, state } = stakeFn
-      send(amount, lockPeriod)
+      console.log('stake', utils.parseEther(amount.toString()), utils.parseEther(lockPeriod.toString()));
+      send(utils.parseEther(amount.toString()), utils.parseEther(lockPeriod.toString()))
       console.log(state)
     },
     withdraw: (amount: number) => {

@@ -18,6 +18,7 @@ const HorizontalLine = styled.div`
     margin: 50px 30px 0;
 `
 
+export default function Staking () {
 export default () => {
   const { isConnected } = useWallet()
 

@@ -41,6 +41,7 @@ export default function StakingForm() {
   const handleSubmit = (values: StakingProps) => {
     if (values.stakedBalance > initialValues.stakedBalance) {
       const stakeAmount = values.stakedBalance - initialValues.stakedBalance
+      console.log('stakeAmount', values.stakedBalance, initialValues.stakedBalance, stakeAmount)
       stakingRewards.stake(stakeAmount, 2)
     } else {
       const withdrawAmount = initialValues.stakedBalance - values.stakedBalance
