@@ -9,10 +9,7 @@ import BaseNavbarToggle from 'react-bootstrap/NavbarToggle'
 export interface NavbarProps extends BaseNavbarProps {}
 
 const Navbar = ({className = '', ...props}: NavbarProps) => (
-    <BaseNavbar
-        className={classnames('navbar navbar-expand-lg navbar-light', )}
-        {...props}
-    />
+    <BaseNavbar variant={"dark"} {...props} />
 )
 
 Navbar.Brand = BaseNavbarBrand

@@ -41,7 +41,7 @@ const Header = () => {
     return (
       <>
           <header>
-              <Navbar expand="lg">
+              <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
@@ -84,7 +84,7 @@ const Header = () => {
                           </li>
                       </ul>
                   </div>
-              </Navbar>
+              </div>
           </header>
           <OffCanvas
             show={showModalNav}
