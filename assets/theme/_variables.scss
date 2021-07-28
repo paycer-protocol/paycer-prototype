@@ -291,7 +291,7 @@ $table-group-seperator-color: $table-border-color !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y: .75rem !default;
+$input-btn-padding-y: .5rem !default;
 $input-btn-padding-x: .75rem !default;
 $input-btn-line-height: $line-height-base !default;
 
@@ -337,7 +337,7 @@ $btn-link-disabled-color: $gray-500 !default;
 
 $form-text-margin-top: 0 !default;
 
-$input-padding-y: $input-btn-padding-y !default;
+$input-padding-y: $input-btn-padding-x !default;
 $input-padding-x: $input-btn-padding-x !default;
 $input-line-height: $input-btn-line-height !default;
 
