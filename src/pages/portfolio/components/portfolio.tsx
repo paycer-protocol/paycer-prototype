@@ -210,8 +210,8 @@ export default function Portfolio() {
                         </td>
                         <td className="text-end">
                           <div className="row align-items-center g-0">
-                            <div className="col-auto">
-                              <small className="me-2">
+                            <div className="col-auto me-3">
+                              <small className="">
                                 <Percentage
                                   value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
                                   className="mb-2"

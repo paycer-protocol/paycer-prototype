@@ -83,7 +83,7 @@ $font-weight-bold: 600 !default;
 // Customizes the `.table` component with basic values, each used across all table variations.
 
 $table-border-factor: 0 !default;
-$table-border-color: $border-color !default;
+$table-border-color: none !default;
 
 $table-striped-bg: $gray-900-dark !default;
 $table-active-bg: $gray-900-dark !default;
