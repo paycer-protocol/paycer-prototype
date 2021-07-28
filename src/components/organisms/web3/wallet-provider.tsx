@@ -9,7 +9,6 @@ import ListGroup from '@components/molecules/list-group'
 import Modal from '@components/molecules/modal'
 import { IConnectorProvider } from '@providers/connectors'
 
-
 export interface WalletProviderProps {
   providers: IConnectorProvider[]
   show: boolean

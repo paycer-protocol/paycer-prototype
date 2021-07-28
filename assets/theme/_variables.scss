@@ -368,13 +368,13 @@ $form-check-input-active-filter: none !default;
 $form-check-padding-start: 1.5rem !default;
 $form-check-label-cursor: pointer !default;
 
-$form-check-input-bg: $gray-300 !default;
+$form-check-input-bg: $gray-300;
 $form-check-input-border: transparent !default;
 $form-check-input-border-radius: $border-radius !default;
 $form-check-input-focus-border: $form-check-input-border !default;
 $form-check-input-focus-box-shadow: none !default;
 
-$form-check-input-checked-color: $component-active-color !default;
+$form-check-input-checked-color: $gray-900 !default;
 $form-check-input-checked-bg-color: $component-active-bg !default;
 $form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
 $form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
@@ -389,7 +389,7 @@ $form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/200
 $form-switch-focus-color: $form-switch-color !default;
 $form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
 
-$form-switch-checked-color: $form-switch-color !default;
+$form-switch-checked-color: $gray-700;
 $form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 
 $input-group-addon-color: $text-muted !default;
