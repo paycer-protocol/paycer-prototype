@@ -80,21 +80,17 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
             </h4>
             <ul className="navbar-nav">
               {routes.map((route, key) => (
-                  (route.label === t`Staking` && !wallet.isConnected) ? (
-                      ''
-                  ) : (
-                      <li className="nav-item" key={`nav${key}`}>
-                        <Link href={route.path}>
-                          <a
-                              className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')}
-                              title={route.label}
-                              onClick={onHide}
-                          >
-                            {route.label}
-                          </a>
-                        </Link>
-                      </li>
-                      )
+                  <li className="nav-item" key={`nav${key}`}>
+                    <Link href={route.path}>
+                      <a
+                          className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')}
+                          title={route.label}
+                          onClick={onHide}
+                      >
+                        {route.label}
+                      </a>
+                    </Link>
+                  </li>
               ))}
             </ul>
           </div>
