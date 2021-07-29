@@ -28,7 +28,7 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:44
+#: src/components/organisms/web3/network-provider.tsx:45
 msgid "Adding Network to Wallet ..."
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:41
+#: src/components/organisms/web3/network-provider.tsx:42
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr ""
 
@@ -326,7 +326,7 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:49
+#: src/components/organisms/web3/network-provider.tsx:50
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 #~ msgid "Switch Language"
 #~ msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:60
+#: src/components/organisms/web3/network-provider.tsx:61
 msgid "Switch network"
 msgstr ""
 

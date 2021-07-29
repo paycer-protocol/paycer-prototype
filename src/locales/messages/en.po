@@ -28,7 +28,7 @@ msgstr "APY"
 msgid "Account"
 msgstr "Account"
 
-#: src/components/organisms/web3/network-provider.tsx:44
+#: src/components/organisms/web3/network-provider.tsx:45
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -308,7 +308,7 @@ msgstr "Monthly rewards"
 msgid "Name"
 msgstr "Name"
 
-#: src/components/organisms/web3/network-provider.tsx:41
+#: src/components/organisms/web3/network-provider.tsx:42
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -335,7 +335,7 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:49
+#: src/components/organisms/web3/network-provider.tsx:50
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -410,7 +410,7 @@ msgstr "Start invest"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
-#: src/components/organisms/web3/network-provider.tsx:60
+#: src/components/organisms/web3/network-provider.tsx:61
 msgid "Switch network"
 msgstr "Switch network"
 
