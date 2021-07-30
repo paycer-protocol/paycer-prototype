@@ -21,9 +21,6 @@ export default function useLoyaltyTiers() {
           args: params,
         }
     ) ?? []
-
-        console.log(tokenBalance())
-
       return BigNumber.isBigNumber(result) ? result.toNumber() : 0
   }
 

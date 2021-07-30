@@ -7,8 +7,6 @@ import { Symbols } from '@providers/symbols'
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
 
-    console.log(useEthers())
-
     const etherBalance = useEtherBalance(account)
     const [activatingConnector, setActivatingConnector] = useState(undefined)
 
