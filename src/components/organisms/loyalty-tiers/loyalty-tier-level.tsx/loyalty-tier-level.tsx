@@ -13,24 +13,43 @@ const RewardContainer = styled.div`
 `
 
 export interface LoyaltyTierLevel {
-    level: string
-    isActive?: boolean
+    level: string,
+    isActive?: boolean,
+    rewardRate?: number,
+    loanFeeDiscount?: number,
+    additionalFiatInterest?: number,
+    votingWeight: number
 }
 
 const LoyaltyTierLevel = (props: LoyaltyTierLevel) => {
 
     const {
         level,
-        isActive
+        isActive,
+        rewardRate,
+        loanFeeDiscount,
+        additionalFiatInterest,
+        votingWeight
     } = props
 
     return (
-        <Card>
+        <Card className={isActive ? 'border-invest' : ''}>
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>{level}</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    <div>
+                        Rewardrate: {rewardRate}%
+                    </div>
+                    <div>
+                        Load Fee Discount: {loanFeeDiscount}%
+                    </div>
+                    <div>
+                        Additional Fiat Interest: {additionalFiatInterest}%
+                    </div>
+                    <div>
+                        Your Voting Weight: {votingWeight}
+                    </div>
+
                 </Card.Text>
             </Card.Body>
         </Card>

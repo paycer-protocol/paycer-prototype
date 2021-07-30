@@ -18,11 +18,10 @@ export interface IContractProvider {
   }
 }
 
-
 export const contractProvider: IContractProvider = {
   StakingRewards: {
     chainAddresses: {
-      [ChainId.Mainnet]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
+      [ChainId.Mainnet]: '',
       [ChainId.Ropsten]: '',
       [ChainId.Kovan]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
       [ChainId.Rinkeby]: '',
@@ -36,7 +35,7 @@ export const contractProvider: IContractProvider = {
   },
   LoyaltyTiers: {
     chainAddresses: {
-      [ChainId.Mainnet]: '0x412468Ea1C027fb42166273a72f329616421e9eA',
+      [ChainId.Mainnet]: '',
       [ChainId.Ropsten]: '',
       [ChainId.Kovan]: '0x412468Ea1C027fb42166273a72f329616421e9eA',
       [ChainId.Rinkeby]: '',

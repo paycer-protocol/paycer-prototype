@@ -1,0 +1,1 @@
+export const totalSupply = 750000000

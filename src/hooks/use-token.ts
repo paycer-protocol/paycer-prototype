@@ -25,9 +25,6 @@ export default function useToken(symbol: string) {
         method: 'allowance',
         args: [tokenAddress, account],
       }) ?? []
-
-      console.log('allowance', result)
-
       return BigNumber.isBigNumber(result) ? result.toNumber() : 0
     },
   }
