@@ -40,6 +40,7 @@ const LoyaltyTiers = () => {
             <div className="col-md-3">
                 <LoyaltyTierLevel
                     level={t`Accociate`}
+                    isActive={tierLevel === 1}
                     rewardRate={baseRewardRateOf * LoyaltyTiersConfig.rewardRateMp_accociate}
                     loanFeeDiscount={LoyaltyTiersConfig.loanFeeDiscount_accociate}
                     additionalFiatInterest={LoyaltyTiersConfig.additionalFiatInterest_accociate}
@@ -48,6 +49,7 @@ const LoyaltyTiers = () => {
             </div>
             <div className="col-md-3">
                 <LoyaltyTierLevel
+                    isActive={tierLevel === 2}
                     level={t`Senior`}
                     rewardRate={baseRewardRateOf * LoyaltyTiersConfig.rewardRateMp_senior}
                     loanFeeDiscount={LoyaltyTiersConfig.loanFeeDiscount_senior}
@@ -57,6 +59,7 @@ const LoyaltyTiers = () => {
             </div>
             <div className="col-md-3">
                 <LoyaltyTierLevel
+                    isActive={tierLevel === 3}
                     level={t`Manager`}
                     rewardRate={baseRewardRateOf * LoyaltyTiersConfig.rewardRateMp_manager}
                     loanFeeDiscount={LoyaltyTiersConfig.loanFeeDiscount_manager}
