@@ -6,7 +6,7 @@ import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import DarkModeToggle from '@components/molecules/dark-mode-toggle'
 import { LanguageChoice } from '@components/molecules/languages/language-choice'
-import { Sliders } from '@styled-icons/bootstrap'
+import { ThreeDotsVertical } from '@styled-icons/bootstrap'
 
 export const SettingsModal = (props) => {
   const [show, setShow] = useState(false)
@@ -19,7 +19,7 @@ export const SettingsModal = (props) => {
         style={{ padding: '16px'}}
         onClick={() => setShow(true)}
       >
-        <Icon component={Sliders} size={18} />
+        <Icon component={ThreeDotsVertical} size={18} />
       </Button>
       <Modal show={show} onHide={() => setShow(false)}>
         <>

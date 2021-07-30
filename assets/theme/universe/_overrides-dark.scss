@@ -1,0 +1,52 @@
+//
+// overrides.scss
+// Dark mode overrides
+//
+
+//
+// Table of contents
+//
+// 1. Buttons
+// 2. Dropzone
+// 3. Quill
+//
+
+
+// Buttons
+
+.btn-white, .btn-light {
+  @include button-variant($gray-800-dark, $gray-600-dark);
+
+  &:not(:disabled):not(.disabled):hover,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):active:focus,
+  &:not(:disabled):not(.disabled).active:focus,
+  .show > &.dropdown-toggle {
+    background-color: $black-dark;
+    border-color: $gray-700-dark;
+    color: $white;
+  }
+}
+
+
+.card {
+  .list-group-item {
+    color: $gray-400;
+  }
+}
+
+.blur-background {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(122deg,#86325591,#229c7a4d);
+    filter: blur(80px);
+    -webkit-filter: blur(80px);
+    opacity: 0.85;
+  }
+}

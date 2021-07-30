@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import I18nProvider from '../locales/i18n'
 import Web3Context from '@components/organisms/web3/web3-context'
 import Layout from '@components/organisms/layout'
-import '../../assets/theme-dark.scss'
+import '../../assets/theme-universe.scss'
 
 Router.events.on('routeChangeStart', NProgress.start)
 Router.events.on('routeChangeComplete', NProgress.done)

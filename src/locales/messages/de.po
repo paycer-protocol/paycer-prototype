@@ -19,7 +19,7 @@ msgid "APR"
 msgstr ""
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:67
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APY"
 msgstr ""
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:34
+#: src/components/organisms/web3/network-provider.tsx:44
 msgid "Adding Network to Wallet ..."
 msgstr ""
 
@@ -137,12 +137,12 @@ msgstr ""
 #~ msgid "Current rewards"
 #~ msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:117
+#: src/components/organisms/invest/invest-form/index.tsx:116
 msgid "Daily interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:110
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
+#: src/components/organisms/invest/invest-form/index.tsx:109
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
 msgstr ""
@@ -290,7 +290,7 @@ msgstr ""
 #~ msgid "Moderat"
 #~ msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:90
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:91
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr ""
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:31
+#: src/components/organisms/web3/network-provider.tsx:41
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr ""
 
@@ -326,7 +326,7 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:39
+#: src/components/organisms/web3/network-provider.tsx:49
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
@@ -353,11 +353,16 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: src/components/organisms/web3/add-paycer-token.tsx:42
+#: src/components/organisms/web3/add-paycer-token.tsx:47
+msgid "Something went wrong"
+msgstr ""
+
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr ""
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:66
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:67
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:18
 msgid "Staking"
@@ -383,7 +388,7 @@ msgstr ""
 #~ msgid "Switch Language"
 #~ msgstr ""
 
-#: src/components/organisms/web3/network-provider.tsx:50
+#: src/components/organisms/web3/network-provider.tsx:60
 msgid "Switch network"
 msgstr ""
 
