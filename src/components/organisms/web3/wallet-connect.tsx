@@ -32,8 +32,7 @@ const WalletConnect = (props: AccountProps) => {
         return (
             <>
                 <Button
-                    variant={buttonVariant}
-                    className={classnames(className, 'px-4 text-nowrap p-2 bg-dark pt-3 pb-3 border-0')}
+                    className={classnames(className, 'px-4 text-nowrap p-2 bg-dark pt-3 pb-3 border-0 text-light')}
                     onClick={() => setShowWalletProviderModal(true)}
                 >
                     <Trans>Connect to a Wallet</Trans>
@@ -50,8 +49,7 @@ const WalletConnect = (props: AccountProps) => {
     return (
         <>
             <Button
-                variant={dropdownVariant}
-                className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark border-0')}
+                className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark border-0 text-light')}
                 onClick={() => setShowAccountModal(true)}
             >
               <div className="me-3">

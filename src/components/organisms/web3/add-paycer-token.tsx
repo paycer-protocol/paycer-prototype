@@ -55,7 +55,7 @@ const AddPaycerToken = () => {
     return (
       <Button
           variant="light"
-          className="d-flex align-items-center justify-content-center pe-3 bg-dark border-0"
+          className="d-flex align-items-center justify-content-center bg-dark border-0 btn-rounded-circle"
           onClick={async () => {
             await addToken()
           }}

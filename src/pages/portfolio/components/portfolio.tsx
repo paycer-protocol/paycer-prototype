@@ -162,34 +162,32 @@ export default function Portfolio() {
   return (
       <div className="table-responsive mb-0">
         <Accordion defaultActiveKey="0">
-          <table className="table table-sm table-nowrap card-table">
-            <thead>
-            <tr>
-              <th>
-                <a href="#" className="text-muted list-sort">
-                  <Trans>Asset</Trans>
-                </a>
-              </th>
-              <th>
-                <a href="#" className="text-muted">
-                  <Trans>Balance</Trans>
-                </a>
-              </th>
-              <th>
-                <a href="#" className="text-muted">
-                  <Trans>Investment ratio </Trans>
-                </a>
-              </th>
-              <th className="text-end">
-                <a href="#" className="text-muted">
-                  <Trans>Liquidity</Trans>
-                </a>
-              </th>
-            </tr>
-            </thead>
-          </table>
           <Card>
             <table className="table table-sm table-nowrap card-table">
+              <thead>
+              <tr>
+                <th>
+                  <a href="#" className="text-muted list-sort">
+                    <Trans>Asset</Trans>
+                  </a>
+                </th>
+                <th>
+                  <a href="#" className="text-muted">
+                    <Trans>Balance</Trans>
+                  </a>
+                </th>
+                <th>
+                  <a href="#" className="text-muted">
+                    <Trans>Investment ratio </Trans>
+                  </a>
+                </th>
+                <th className="text-end">
+                  <a href="#" className="text-muted">
+                    <Trans>Liquidity</Trans>
+                  </a>
+                </th>
+              </tr>
+              </thead>
               <tbody className="list">
                 {portfolioFixtures.map((data, key) => (
                     <React.Fragment key={key}>

@@ -60,7 +60,7 @@ const Header = () => {
                           <li className="nav-item me-3 d-flex align-items-center">
                               <Network />
                           </li>
-                          <li className="nav-item me-3 d-flex align-items-center">
+                          <li className="nav-item d-flex align-items-center">
                               <WalletConnect
                                 buttonVariant="light"
                                 dropdownVariant="light"

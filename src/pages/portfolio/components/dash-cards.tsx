@@ -9,11 +9,11 @@ import styled from 'styled-components'
 
 const Circle = styled.div`
   position: absolute;
-  width: 100%;
-  padding-top: 100%;
+  width: 90%;
+  padding-top: 90%;
   border-radius: 50%;
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px),#fff 0);
-  top: -75%;
+  top: -65%;
   
   &:before {
     position: absolute;
@@ -63,18 +63,14 @@ export default function DashCards () {
             </DashCard>
       </div>
       <div className="col-12 col-md-3 col-xl justify-content-center d-flex position-relative">
-
-
         <Circle />
-
-
         <DashCard title={t`Savings`}>
             <div className="d-flex justify-content-between fw-normal">
                 <Money value={0} currency="USD" />
             </div>
         </DashCard>
       </div>
-      <div className="col-12 col-md-3 col-xl justify-content-center d-flex me-auto">
+      <div className="col-12 col-md-2 col-xl justify-content-center d-flex me-auto">
         <DashCard title={t`Risk`}>
             <div className="d-flex justify-content-between fw-normal">
               <Trans>Low</Trans>

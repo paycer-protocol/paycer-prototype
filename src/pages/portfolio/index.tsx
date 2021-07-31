@@ -21,7 +21,7 @@ export default function Home() {
           </div>
           <div className="col-auto">
             <Link href="/invest/create">
-              <Button variant="outline-primary">
+              <Button variant="light" className="fw-light pe-4 ps-4 btn-light">
                   <Trans>Create investment</Trans>
               </Button>
             </Link>
