@@ -19,7 +19,7 @@ export const Money = ({ withIcon = false, value = 0, currency = 'usd', ...restPr
             {...restProps}
         />
         {(withIcon &&
-          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(currency)}.svg`} alt={currency} />
+          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`/assets/icons/${normalizeFilename(currency)}.svg`} alt={currency} />
         )}
     </>
 )

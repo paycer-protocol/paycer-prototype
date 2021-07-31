@@ -7,7 +7,6 @@ const contextDefaultValues: InvestListContextTypes = {
     items: [],
     handleAutoSuggest: () => {},
     filterStrategy: () => {},
-    filterInvested: () => {},
     resetFilters: () => {},
     keyword: '',
     activeFilter: ''
@@ -38,12 +37,11 @@ const InvestListContextProvider = ({ children }) => {
             keywords = keywords.filter(f => f !== '')
         }
 
-        const filterResult = investmentStrategies.filter(f => keywords.some(k => f.strategyName.toLowerCase().includes(k.toLowerCase()))
-            || keywords.some(k => f.strategyType.toLowerCase().includes(k.toLowerCase()))
-            || keywords.some(k => f.interestRate + f.rewardRate >= parseInt(k.toLowerCase()))
+        const filterResult = investmentStrategies.filter(f => keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => f.type.toLowerCase().includes(k.toLowerCase()))
+            || keywords.some(k => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase()))
             || keywords.some(k => f.assets.some(a => a.name.toLowerCase().includes(k.toLowerCase())))
             || keywords.some(k => mapRiskLevel(f.riskLevel).toLowerCase().includes(k.toLowerCase()))
-            || keywords.some(k => f.contractWalletAddress.toLowerCase() === k.toLowerCase())
         )
 
         setFilteredItems(filterResult)
@@ -52,13 +50,7 @@ const InvestListContextProvider = ({ children }) => {
     const filterStrategy = () => {
         setKeyword('')
         setActiveFilter('strategy')
-        setFilteredItems(investmentStrategies.filter(f => f.strategyType !== 'paycer'))
-    }
-
-    const filterInvested = () => {
-        setKeyword('')
-        setActiveFilter('invested')
-        setFilteredItems(investmentStrategies.filter(f => f.invested > 0))
+        setFilteredItems(investmentStrategies.filter(f => f.type !== 'paycer'))
     }
 
     const resetFilters = () => {
@@ -74,7 +66,6 @@ const InvestListContextProvider = ({ children }) => {
             value={{
                 handleAutoSuggest,
                 filterStrategy,
-                filterInvested,
                 resetFilters,
                 keyword,
                 items,

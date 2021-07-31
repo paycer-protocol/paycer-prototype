@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import { Money, FormattedNumber } from '@components/atoms/number'
+import { FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import InvestModal from '@components/organisms/invest/invest-modal'
-import { InvestmentStrategy } from '../../../../types/investment'
+import useToken from '@hooks/use-token'
+import { StrategyType } from '../../../../types/investment'
 import mapRiskLevel from "../../../../helper/map-risk-level";
 
-const PaycerStrategyBadge = styled.div`
+const StrategyBadge = styled.div`
     position: absolute;
     transform: rotate(45deg);
     right: -32px;
@@ -47,22 +48,11 @@ const PaycerStrategyBadge = styled.div`
     `}
 `
 
-const InvestCard = (props: InvestmentStrategy) => {
-    const {
-        strategyName,
-        interestRate,
-        rewardRate,
-        assets,
-        tvl,
-        invested,
-        earnedInterest,
-        investSymbol,
-        riskLevel,
-        strategyType
-    } = props
-
+const InvestCard = (props: StrategyType) => {
     const [showInvestModal, setShowInvestModal] = useState(false)
-    const totalInterestRate = interestRate + rewardRate;
+    const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
+    const investedToken = useToken(props.output.symbol)
+    const investedBalance = investedToken.tokenBalance()
 
     const onHide = () => {
         setShowInvestModal(false)
@@ -70,16 +60,16 @@ const InvestCard = (props: InvestmentStrategy) => {
     return (
         <Card className="box-shadow overflow-hidden">
             <Card.Body>
-                {/*<PaycerStrategyBadge strategyType={strategyType}>*/}
+                {/*<StrategyBadge strategyType={strategyType}>*/}
                 {/*    {(strategyType === 'paycer' &&*/}
                 {/*      <>{t`by`}&nbsp;</>*/}
                 {/*    )}*/}
                 {/*    {strategyType}*/}
-                {/*</PaycerStrategyBadge>*/}
+                {/*</StrategyBadge>*/}
 
                 <div className="mb-3">
                     <h6 className="text-uppercase text-center my-4 font-size-lg">
-                        { strategyName }
+                        { props.name }
                     </h6>
                     <div className="row g-0 align-items-center justify-content-center">
                         <div className="col-auto">
@@ -99,50 +89,42 @@ const InvestCard = (props: InvestmentStrategy) => {
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">Assets</span>
                         <div className="d-flex justify-content-center">
-                            {assets.map((asset, key) => (
+                            {props.assets.map((asset, key) => (
                                 <img width="32" key={key} src={asset.imgPath} alt={asset.name} />
                             ))}
                         </div>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
-                        <span className="">
-                            {t`Total Volume`}
-                        </span>
-                        <span className="">
-                            <Money value={tvl}/>
-                        </span>
+                        <span>{t`Total Volume`}</span>
+                        <span>-</span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
-                        <span className="">
-                             {t`Deposited`}
-                        </span>
-                        {invested ? <Money value={invested} /> : <>-</>}
+                        <span>{t`Holdings`}</span>
+                        {
+                            investedBalance > 0
+                              ? (
+                                <>
+                                    <FormattedNumber
+                                      value={investedBalance}
+                                      minimumFractionDigits={2}
+                                      maximumFractionDigits={4}
+                                    />
+                                    &nbsp;{investedToken.symbol}
+                                </>
+                              )
+                              : (
+                                <span>-</span>
+                              )
+                        }
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
-                        <span className="">
-                            {t`Earned`}
-                        </span>
-                        <span className="">
-                            <FormattedNumber
-                              value={earnedInterest}
-                              minimumFractionDigits={2}
-                              maximumFractionDigits={4}
-                            />
-                            &nbsp;
-                            {investSymbol}
-                        </span>
-                    </li>
-
-                    <li className="list-group-item d-flex align-items-center justify-content-between px-0">
-                        <span className="">
-                            {t`Risk`}
-                        </span>
-                        {mapRiskLevel(riskLevel)}
+                        <span>{t`Risk`}</span>
+                        {mapRiskLevel(props.riskLevel)}
                     </li>
                 </ul>
 
                 <Button onClick={() => setShowInvestModal(true)} variant={'outline-primary'} className='w-100'>
-                    {invested ? t`Edit invest` : t`Start invest`}
+                    {investedBalance ? t`Edit invest` : t`Start invest`}
                 </Button>
             </Card.Body>
             <InvestModal

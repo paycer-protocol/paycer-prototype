@@ -11,7 +11,7 @@ export default function DashCards () {
   return (
     <div className="row">
       <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Total Balance`}>
+        <DashCard title={t`Total Balance`} style={{ zIndex: 1000 }}>
             <div className="mt-3 d-flex justify-content-between">
                 <div>
                     <FormattedNumber
@@ -22,20 +22,20 @@ export default function DashCards () {
                     &nbsp;
                     {wallet.etherSymbol}
                 </div>
-                <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
             </div>
             </DashCard>
       </div>
       <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Savings`}>
+        <DashCard title={t`Savings`} style={{ zIndex: 1000 }}>
             <div className="mt-3 d-flex justify-content-between">
               <Money value={0} currency="USD" />
-              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`assets/icons/${normalizeFilename(`usd`)}.svg`} alt="usd" />
+              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`/assets/icons/${normalizeFilename(`usd`)}.svg`} alt="usd" />
             </div>
         </DashCard>
       </div>
       <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Risk`}>
+        <DashCard title={t`Risk`} style={{ zIndex: 1000 }}>
             <div className="mt-3 d-flex justify-content-between">
               <Trans>Low</Trans>
             </div>

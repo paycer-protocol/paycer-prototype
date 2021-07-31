@@ -69,7 +69,7 @@ const AccountBalance = () => {
             {
                 //<NativeCurrencyIcon size={35} />}
             }
-            <img width="40" className="ms-2 mt-3" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+            <img width="40" className="ms-2 mt-3" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
         </div>
     )
 }

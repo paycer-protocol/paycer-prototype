@@ -1,10 +1,10 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
-import { InvestmentStrategy } from '../../../../types/investment'
+import { InvestFormFields } from '@components/organisms/invest/types'
 
 export default function InvestRangeSlider() {
-  const { values, initialValues, setFieldValue, dirty } = useFormikContext<InvestmentStrategy>()
+  const { values, initialValues, setFieldValue, dirty } = useFormikContext<InvestFormFields>()
 
   return (
     <div className="mb-5 mx-2">
