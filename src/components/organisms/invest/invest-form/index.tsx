@@ -11,8 +11,9 @@ import BaseInput from './fields/base-Input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
 import { InvestFormFields } from '../types'
-import { InvestmentStrategy } from '../../../../types/investment'
-import { t } from "@lingui/macro";
+import useToken from '@hooks/use-token'
+import { StrategyType } from '../../../../types/investment'
+import { t } from '@lingui/macro'
 
 const StyledCard = styled(Card)`
    ${props => !props.isModal && css`
@@ -21,30 +22,14 @@ const StyledCard = styled(Card)`
    `}  
 `
 
-const InvestForm = (props: InvestmentStrategy) => {
-    const {
-        // invest pairs
-        baseSymbol,
-        baseBalance,
-        investSymbol,
-        investBalance,
+interface InvestFormProps extends StrategyType {
+    setShowInvestForm: any
+    isModal: boolean
+}
 
-        // interest
-        interestRate,
-        earnedInterest,
-
-        // rewards
-        rewardSymbol,
-        rewardRate,
-        earnedReward,
-
-        // fees
-        feeSymbol,
-        withdrawFee,
-        investFee,
-        setShowInvestForm,
-        isModal
-    } = props
+const InvestForm = (props: InvestFormProps) => {
+    const baseToken = useToken(props.input.symbol)
+    const investToken = useToken(props.output.symbol)
 
     const handleSubmit = (values: InvestFormFields) => {
         alert(values.investBalance)
@@ -52,24 +37,23 @@ const InvestForm = (props: InvestmentStrategy) => {
 
     const initialValues: InvestFormFields = {
         // invest pairs
-        baseSymbol,
-        baseBalance: 10000,
-        investSymbol,
-        investBalance: 1000,
+        baseSymbol: props.input.symbol,
+        baseBalance: baseToken.tokenBalance(),
+        investSymbol: props.output.symbol,
+        investBalance: investToken.tokenBalance(),
 
         // interest
-        interestRate,
-        earnedInterest,
+        interestRate: props.interest.interestRate,
+        interestSymbol: props.interest.interestSymbol,
 
         // rewards
-        rewardSymbol,
-        rewardRate,
-        earnedReward,
+        rewardSymbol: props.rewards.rewardSymbol,
+        rewardRate: props.rewards.rewardRate,
 
         // fees
-        feeSymbol,
-        withdrawFee,
-        investFee,
+        feeSymbol: props.fees.feeSymbol,
+        withdrawFee: props.fees.withdrawFee,
+        investFee: props.fees.investFee,
 
         // form
         investRange: 0,
@@ -115,7 +99,7 @@ const InvestForm = (props: InvestmentStrategy) => {
                               <DashNumber
                                 label={t`Daily interest`}
                                 value={values.investBalance * values.interestRate / 100 / 365}
-                                symbol={values.rewardSymbol}
+                                symbol={values.interestSymbol}
                               />
                           </div>
                       </div>

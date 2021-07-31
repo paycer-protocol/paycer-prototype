@@ -23,13 +23,6 @@ export default function Invest() {
                             <Trans>Invest</Trans>
                         </PageHeader.Title>
                     </div>
-                    <div className="col-auto">
-                        <Link href="/invest/create">
-                            <Button variant="outline-primary">
-                                <Trans>Create investment</Trans>
-                            </Button>
-                        </Link>
-                    </div>
                 </div>
             </PageHeader>
             <div className="row">
