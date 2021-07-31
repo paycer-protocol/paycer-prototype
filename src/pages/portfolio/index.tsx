@@ -28,13 +28,13 @@ export default function Home() {
           </div>
         </div>
       </PageHeader>
-      <div className="blur-background">
-          <DashCards />
-          <div className="row position-relatives">
-            <div className="col-12">
-              <Portfolio />
-            </div>
+      <DashCards />
+      <div className="row position-relatives">
+        <div className="col-12">
+          <div className="blur-background">
+          <Portfolio />
           </div>
+        </div>
       </div>
     </div>
   )
