@@ -70,7 +70,7 @@ export default function DashCards () {
                     </div>
                 </DashCard>
             </div>
-            <div className="col-12 col-md-2 col-xl justify-content-center d-flex me-auto">
+            <div className="col-12 col-md-3 col-xl justify-content-center d-flex me-auto">
                 <DashCard title={t`Risk`}>
                     <div className="d-flex justify-content-between fw-normal">
                         <Trans>Low</Trans>

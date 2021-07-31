@@ -4,8 +4,8 @@ import { normalizeFilename } from '../../../helper/filename'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
-import StepProgressBar from '@components/molecules/step-progress-bar'
-import usePortfolio from '@hooks/use-portfolio'
+import { strategyProvider }from '@providers/strategies'
+import useToken from '@hooks/use-token'
 import Card from '@components/molecules/card'
 
 const portfolioFixtures = [
@@ -142,6 +142,8 @@ const portfolioFixtures = [
   },
 ]
 
+
+
 export default function Portfolio() {
   const totalBalanceUSD = portfolioFixtures.reduce(
       (value, { balanceUSD }) => balanceUSD + value,
@@ -160,6 +162,16 @@ export default function Portfolio() {
          */
     )
   }
+
+  let totalBalance = 0
+
+  Object.keys(strategyProvider).map((key) => {
+    const strategy = strategyProvider[key]
+    const investedToken = useToken(strategy.output.symbol)
+    const balance = investedToken.tokenBalance()
+    totalBalance += balance
+    console.log(totalBalance)
+  })
 
   return (
       <div className="table-responsive mb-0">
