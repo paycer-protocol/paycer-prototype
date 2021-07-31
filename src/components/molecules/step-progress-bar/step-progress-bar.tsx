@@ -22,7 +22,7 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         <div
                             className={`indexedStep ${accomplished ? 'accomplished' : null}`}
                         >
-                            <img src={`assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
+                            <img src={`/assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
                                 <Trans>Invest</Trans><br />
                                 {symbolName}
@@ -47,7 +47,7 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         <div
                             className={`indexedStep ${accomplished ? "accomplished" : null}`}
                         >
-                            <img src={`assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
+                            <img src={`/assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
                                 <Trans>Withdraw</Trans><br />
                                 {symbolName}

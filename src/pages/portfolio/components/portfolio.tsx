@@ -193,7 +193,7 @@ export default function Portfolio() {
                     <React.Fragment key={key}>
                       <CustomToggle eventKey={String(key+1)}>
                         <td className="goal-project">
-                          <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(data.symbolName)}.svg`} alt={data.symbolName} />
+                          <img width="28" className="me-2" src={`/assets/icons/${normalizeFilename(data.symbolName)}.svg`} alt={data.symbolName} />
                           <span style={{position: 'relative', top: '2px'}}>{data.symbolName}</span>
                         </td>
                         <td>

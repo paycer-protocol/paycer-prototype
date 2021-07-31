@@ -30,7 +30,7 @@ const DashNumber = (props: DashNumberProps) => {
             />
             &nbsp;{symbol}
               {(withIcon &&
-                <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(symbol)}.svg`} alt={symbol} />
+                <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`/assets/icons/${normalizeFilename(symbol)}.svg`} alt={symbol} />
               )}
           </span>
       </div>
