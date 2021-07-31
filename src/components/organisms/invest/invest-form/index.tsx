@@ -23,8 +23,8 @@ const StyledCard = styled(Card)`
 `
 
 interface InvestFormProps extends StrategyType {
-    setShowInvestForm: any
-    isModal: boolean
+    setShowInvestForm?: any
+    isModal?: boolean
 }
 
 const InvestForm = (props: InvestFormProps) => {
