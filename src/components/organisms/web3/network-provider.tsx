@@ -7,8 +7,6 @@ import useNetwork from '@hooks/use-network'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
 import { INetworkProvider } from '@providers/networks'
-import NativeCurrencyIcon from './native-currency-icon'
-import { normalizeFilename } from '../../../helper/filename'
 
 export interface NetworkProviderProps {
   providers: {
@@ -69,7 +67,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
               return (
                   <Button
                     key={chainId}
-                    variant="light"
+                    variant="primary"
                     className="d-flex align-items-center justify-content-center mb-3 w-100"
                     active={isActive}
                     onClick={async () => {
@@ -77,7 +75,6 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                       await handleSwitchNetwork(provider)
                     }}
                   >
-                    <img width="28" className="me-2" src={`/assets/icons/${normalizeFilename(provider.chainName)}.svg`} alt={provider.chainName} />
                     <strong>{provider.chainName}</strong>
                   </Button>
               )

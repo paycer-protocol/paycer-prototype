@@ -255,6 +255,7 @@
 .navbar-nav .nav-link {
   padding-left: $navbar-padding-x;
   padding-right: $navbar-padding-x;
+  font-weight: $font-weight-light;
 
   &.active {
     position: relative;
@@ -348,17 +349,22 @@
           // Increase $nav-link-padding-y value to align the underline
           // with the bottom of the navbar
           padding: .625rem $navbar-nav-link-padding-x;
+          color: $gray-400;
 
           &.active {
             position: relative;
+            color: $white;
 
             &:before {
               top: auto;
-              bottom: calc(-#{$navbar-padding-y} - #{$border-width});
+              bottom: -17px;
               right: $navbar-nav-link-padding-x;
               left: $navbar-nav-link-padding-x;
-              border-left: 0;
-              border-bottom: 1px solid $primary;
+              height: 2px;
+              width: 100%;
+              background: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
+              border: 0;
+              left: 0;
             }
           }
         }

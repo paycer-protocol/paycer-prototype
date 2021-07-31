@@ -23,26 +23,37 @@ $gray-900: darken($white, 60%);
 $black: #0B1120;
 
 // #1B2E44
+$gray-500-dark: #192434;
 $gray-600-dark: #213752;
 $gray-700-dark: #264160;
 $gray-800-dark: #1B2236;
 $gray-900-dark: #16212E;
 $black-dark: $black;
 
-$primary: #A067AB;
-$secondary: #5073B8;
-$success: #6EBB82;
-$info: #F79532;
-$warning: #F79532;
-$danger: #EF4E7C;
+$blue: #2C7BE5 !default;
+$indigo: #727cf5 !default;
+$purple: #6b5eae !default;
+$pink: #ff679b !default;
+$red: #E63757 !default;
+$orange: #fd7e14 !default;
+$yellow: #F6C343 !default;
+$green: #00D97E !default;
+$teal: #02a8b5 !default;
+$cyan: #20d2f4 !default;
+$lightgreen: #c1ff93;
+$lightblue: #6ef2ff;
 
-$light: #e224a2 !default;
-$lighter: #e224a2 !default;
-$dark: $black;
+$primary: $gray-600-dark;
+$secondary: $white;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-200;
+$lighter: $gray-100;
+$dark: $black !default;
 
-$light: $gray-800-dark !default;
-$lighter: $gray-900-dark !default;
-
+$pacer-gradient: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
 // Body
 //
 // Settings for the `<body>` element.
@@ -55,7 +66,7 @@ $body-color: $white !default;
 
 $card-border-width: 1px !default;
 $card-border-color: transparent !default;
-$card-bg: #171B26 !default;
+$card-bg: $gray-500-dark!default;
 
 
 // Components
@@ -64,12 +75,11 @@ $card-bg: #171B26 !default;
 $border-width: 2px;
 $border-color: #1B2236;
 
-
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$text-muted: $gray-700 !default;
+$text-muted: $gray-400 !default;
 $font-weight-light: 400 !default;
 $font-weight-normal: 400 !default;
 $font-weight-bold: 600 !default;

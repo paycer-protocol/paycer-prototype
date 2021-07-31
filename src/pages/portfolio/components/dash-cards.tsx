@@ -4,43 +4,93 @@ import useWallet from '@hooks/use-wallet'
 import { FormattedNumber, Money } from '@components/atoms/number'
 import {normalizeFilename} from "../../../helper/filename";
 import React from "react";
+import styled from 'styled-components'
+
+
+const Circle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px),#fff 0);
+  width: 260px;
+  padding-top: 260px;
+  top: -75%;
+  
+  
+  @media (max-width: 767.98px) {
+      width: 350px;
+      padding-top: 350px;
+      top: -140%;
+  }
+
+  
+  &:before {
+    position: absolute;
+    content: "";
+    width: 104%;
+    height: 104%;
+    top: -2%;
+    left: -2%;
+    background-color: transparent;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  &:after {
+    position: absolute;
+    content: "";
+    width: 106%;
+    height: 106%;
+    top: -3%;
+    left: -3%;
+    background-color: transparent;
+    // TODO loop dynamically
+    background: radial-gradient(white 40%, transparent 41%), conic-gradient(#3C01E3 0% 35%, #6808C0 35% 60%, #8D0EA2 60% 100%);
+    border-radius: 50%;
+    z-index: -2;
+  }
+`
 
 export default function DashCards () {
-  const wallet = useWallet()
+    const wallet = useWallet()
 
-  return (
-    <div className="row">
-      <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Total Balance`} style={{ zIndex: 1000 }}>
-            <div className="mt-3 d-flex justify-content-between">
-                <div>
-                    <FormattedNumber
-                        value={wallet.etherBalance}
-                        minimumFractionDigits={2}
-                        maximumFractionDigits={4}
-                    />
-                    &nbsp;
-                    {wallet.etherSymbol}
-                </div>
-                <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+    return (
+        <div className="row justify-content-between">
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
+                <DashCard title={t`Portfolio Balance`} className="mb-0">
+                    <div className="d-flex justify-content-between">
+                        <img
+                          width="30"
+                          className="me-3"
+                          src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`}
+                          alt={wallet.etherSymbol}
+                        />
+                        <div className="fw-normal">
+                            <FormattedNumber
+                                value={wallet.etherBalance}
+                                minimumFractionDigits={2}
+                                maximumFractionDigits={4}
+                            />
+                            &nbsp;
+                            {wallet.etherSymbol}
+                        </div>
+                    </div>
+                </DashCard>
             </div>
-            </DashCard>
-      </div>
-      <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Savings`} style={{ zIndex: 1000 }}>
-            <div className="mt-3 d-flex justify-content-between">
-              <Money value={0} currency="USD" />
-              <img width="40" className="ms-2" style={{marginTop: '-12px'}} src={`/assets/icons/${normalizeFilename(`usd`)}.svg`} alt="usd" />
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex position-relative">
+                <Circle />
+                <DashCard title={t`Savings`} className="mb-0">
+                    <div className="d-flex justify-content-between fw-normal">
+                        <Money value={0} currency="USD" />
+                    </div>
+                </DashCard>
             </div>
-        </DashCard>
-      </div>
-      <div className="col-12 col-md-4 col-xl">
-        <DashCard title={t`Risk`} style={{ zIndex: 1000 }}>
-            <div className="mt-3 d-flex justify-content-between">
-              <Trans>Low</Trans>
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex me-auto">
+                <DashCard title={t`Risk`} className="mb-0">
+                    <div className="d-flex justify-content-between fw-normal">
+                        <Trans>Low</Trans>
+                    </div>
+                </DashCard>
             </div>
-        </DashCard>
-      </div>
-    </div>
-  )
+        </div>
+    )
 }

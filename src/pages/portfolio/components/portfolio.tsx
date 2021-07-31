@@ -4,11 +4,14 @@ import { normalizeFilename } from '../../../helper/filename'
 import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
-import StepProgressBar from '@components/molecules/step-progress-bar'
+import { strategyProvider }from '@providers/strategies'
+import useToken from '@hooks/use-token'
+import Card from '@components/molecules/card'
 
 const portfolioFixtures = [
   {
     symbolName: 'ChainLink',
+    hex: '#2f3486',
     symbolShort: 'LINK',
     balanceSymbol: 16.5,
     balanceUSD: 1200,
@@ -19,15 +22,15 @@ const portfolioFixtures = [
       progress: 80,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -45,15 +48,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -71,15 +74,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -97,15 +100,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -123,21 +126,23 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
     }
   },
 ]
+
+
 
 export default function Portfolio() {
   const totalBalanceUSD = portfolioFixtures.reduce(
@@ -158,20 +163,20 @@ export default function Portfolio() {
     )
   }
 
-  return (
-      <div className="card">
-        <div className="card-header">
-          <div className="row align-items-center">
-            <div className="col">
-              <h4 className="card-header-title">
-                <Trans>Portfolio</Trans>
-              </h4>
-            </div>
-          </div>
-        </div>
+  let totalBalance = 0
 
-        <div className="table-responsive mb-0">
-          <Accordion defaultActiveKey="0">
+  Object.keys(strategyProvider).map((key) => {
+    const strategy = strategyProvider[key]
+    const investedToken = useToken(strategy.output.symbol)
+    const balance = investedToken.tokenBalance()
+    totalBalance += balance
+    console.log(totalBalance)
+  })
+
+  return (
+      <div className="table-responsive mb-0">
+        <Accordion defaultActiveKey="0">
+          <Card>
             <table className="table table-sm table-nowrap card-table">
               <thead>
               <tr>
@@ -211,12 +216,10 @@ export default function Portfolio() {
                         <td className="text-end">
                           <div className="row align-items-center g-0">
                             <div className="col-auto me-3">
-                              <small className="">
-                                <Percentage
+                              <Percentage
                                   value={(data.balanceUSD * 100 / totalBalanceUSD) / 100}
                                   className="mb-2"
-                                />
-                              </small>
+                              />
                             </div>
                             <div className="col">
                               <ProgressBar
@@ -232,6 +235,7 @@ export default function Portfolio() {
                           <Money value={data.totalVolume} />
                         </td>
                       </CustomToggle>
+                      {/*
                       <tr>
                         <td colSpan={5} className="pt-0 pb-0 bg-secondary-dark">
                           <Accordion.Collapse eventKey={String(key+1)}>
@@ -246,12 +250,13 @@ export default function Portfolio() {
                           </Accordion.Collapse>
                         </td>
                       </tr>
+                      */}
                     </React.Fragment>
                 ))}
               </tbody>
             </table>
-          </Accordion>
-        </div>
+          </Card>
+        </Accordion>
       </div>
   )
 }

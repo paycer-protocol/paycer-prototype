@@ -17,15 +17,10 @@ const Network = (props) => {
   return (
     <>
       <Button
-        variant="light"
-        className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
+        className={classnames('d-flex align-items-center justify-content-center bg-dark text-light', props.className)}
         onClick={() => setShowNetworkModal(true)}
       >
-        <span className="mx-2">{wallet.chainName}</span>
-        <div className="bg-dark-soft rounded-2 p-2 p-3 pt-2 pb-2">
-          <NativeCurrencyIcon size={20} />
-        </div>
-
+        <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>
       </Button>
       <NetworkProvider
         providers={mainNetProviders}

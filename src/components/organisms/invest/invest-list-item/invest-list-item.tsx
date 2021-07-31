@@ -120,7 +120,7 @@ const InvestListItem = (props: StrategyType) => {
                                 -
                             </div>
                             <div className="col-md-1 d-flex justify-content-center flex-column pe-0">
-                                <Button style={{position: 'relative', left: '-20px'}} onClick={() => setShowInvestForm(!showInvestForm)} variant={showInvestForm ? 'primary' : 'outline-primary'}>
+                                <Button style={{position: 'relative', left: '-20px'}} onClick={() => setShowInvestForm(!showInvestForm)} active={showInvestForm} variant="primary">
                                     {investedBalance ? t`Edit` : t`Start`}
                                 </Button>
                             </div>

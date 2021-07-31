@@ -1,9 +1,9 @@
-// 
+//
 // buttons.scss
 // Extended from Bootstrap
 //
 
-// 
+//
 // Bootstrap Overrides =====================================
 //
 
@@ -47,7 +47,6 @@
   box-shadow: none;
 }
 
-
 // Button white 20
 
 .btn-white-20 {
@@ -77,9 +76,7 @@
 // Creates circle button variations
 
 .btn-rounded-circle {
-  width: calc(1em * #{$btn-line-height} + #{$input-btn-padding-y * 2 } + #{$btn-border-width} * 2);
-  padding-left: 0;
-  padding-right: 0;
+  padding: 9px;
   border-radius: 50%;
 }
 

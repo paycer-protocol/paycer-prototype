@@ -8,7 +8,6 @@
 //
 
 .table thead th {
-  background-color: $table-head-bg;
   text-transform: uppercase;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
@@ -16,24 +15,42 @@
   color: $table-head-color;
 }
 
+.table thead {
+  background-color: $black-dark;
+  border-bottom: 1px solid $card-outline-color;
+}
+
 .table thead th, tbody th, tbody td {
   vertical-align: middle;
+  background-color: transparent;
 }
 
 .table td, .table th {
-  border-top: $table-border-width solid $table-border-color;
   border-bottom: 0;
 }
 
+.table td {
+  background: $gray-500-dark;
+  color: $gray-200;
+}
+
+.table tr {
+  border-bottom: 1px solid $card-outline-color;
+  &:last-child {
+    border: 0 none;
+  }
+}
 
 // Sizing
 
-.table-sm {
-  font-size: $font-size-sm;
+.table-sm td {
+  font-size: $font-size-base;
+  font-weight: $font-weight-light;
 }
 
 .table-sm thead th {
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
 }
 
 
