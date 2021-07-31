@@ -100,3 +100,8 @@
 .btn-group .btn + .btn {
   margin-left: 0;
 }
+
+
+.btn-primary {
+  border-color: $card-outline-color;
+}

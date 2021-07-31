@@ -19,13 +19,6 @@ export default function Home() {
                 <Trans>Portfolio</Trans>
             </PageHeader.Title>
           </div>
-          <div className="col-auto">
-            <Link href="/invest/create">
-              <Button variant="light" className="fw-light pe-4 ps-4 btn-light">
-                  <Trans>Create investment</Trans>
-              </Button>
-            </Link>
-          </div>
         </div>
       </PageHeader>
       <div className="blur-background">

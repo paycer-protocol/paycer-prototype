@@ -8,12 +8,16 @@
 //
 
 .table thead th {
-  background-color: transparent;
   text-transform: uppercase;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
   letter-spacing: .08em;
   color: $table-head-color;
+}
+
+.table thead {
+  background-color: $black-dark;
+  border-bottom: 1px solid $card-outline-color;
 }
 
 .table thead th, tbody th, tbody td {
@@ -31,7 +35,7 @@
 }
 
 .table tr {
-  border-bottom: 0.5px solid $card-outline-color;
+  border-bottom: 1px solid $card-outline-color;
   &:last-child {
     border: 0 none;
   }

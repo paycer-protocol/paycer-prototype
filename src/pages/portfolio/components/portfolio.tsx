@@ -5,11 +5,13 @@ import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
 import StepProgressBar from '@components/molecules/step-progress-bar'
+import usePortfolio from '@hooks/use-portfolio'
 import Card from '@components/molecules/card'
 
 const portfolioFixtures = [
   {
     symbolName: 'ChainLink',
+    hex: '#2f3486',
     symbolShort: 'LINK',
     balanceSymbol: 16.5,
     balanceUSD: 1200,

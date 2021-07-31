@@ -37,7 +37,7 @@ export default function Staking () {
         </div>
       </PageHeader>
       {isConnected && (
-        <div className="card" style={{ boxShadow: '0 0 45px 0 rgba(134,50,85,.568627)' }}>
+        <div className="card blur-background">
           <div className="card-body">
             <div className="d-flex flex-column flex-md-row">
               <div className="w-100">

@@ -41,10 +41,6 @@ $light: $gray-300 !default;
 $lighter: #e224a2 !default;
 $dark: $black;
 
-$light: $gray-800-dark !default;
-$lighter: $gray-900-dark !default;
-
-
 $pacer-gradient: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
 // Body
 //
@@ -58,7 +54,7 @@ $body-color: $white !default;
 
 $card-border-width: 1px !default;
 $card-border-color: transparent !default;
-$card-bg: #171B26 !default;
+$card-bg: $gray-500-dark!default;
 
 
 // Components
