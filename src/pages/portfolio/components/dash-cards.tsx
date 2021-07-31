@@ -9,11 +9,19 @@ import styled from 'styled-components'
 
 const Circle = styled.div`
   position: absolute;
-  width: 90%;
-  padding-top: 90%;
   border-radius: 50%;
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px),#fff 0);
-  top: -65%;
+  width: 260px;
+  padding-top: 260px;
+  top: -75%;
+  
+  
+  @media (max-width: 767.98px) {
+      width: 350px;
+      padding-top: 350px;
+      top: -140%;
+  }
+
   
   &:before {
     position: absolute;
@@ -47,10 +55,15 @@ export default function DashCards () {
 
     return (
         <div className="row justify-content-between">
-            <div className="col-12 col-md-3 col-xl justify-content-center d-flex ms-auto">
-                <DashCard title={t`Total Balance`}>
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
+                <DashCard title={t`Portfolio Balance`} className="mb-0">
                     <div className="d-flex justify-content-between">
-                        <img width="30" className="me-3" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                        <img
+                          width="30"
+                          className="me-3"
+                          src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`}
+                          alt={wallet.etherSymbol}
+                        />
                         <div className="fw-normal">
                             <FormattedNumber
                                 value={wallet.etherBalance}
@@ -63,16 +76,16 @@ export default function DashCards () {
                     </div>
                 </DashCard>
             </div>
-            <div className="col-12 col-md-3 col-xl justify-content-center d-flex position-relative">
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex position-relative">
                 <Circle />
-                <DashCard title={t`Savings`}>
+                <DashCard title={t`Savings`} className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
                         <Money value={0} currency="USD" />
                     </div>
                 </DashCard>
             </div>
-            <div className="col-12 col-md-3 col-xl justify-content-center d-flex me-auto">
-                <DashCard title={t`Risk`}>
+            <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex me-auto">
+                <DashCard title={t`Risk`} className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
                         <Trans>Low</Trans>
                     </div>

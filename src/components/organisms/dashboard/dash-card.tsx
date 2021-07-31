@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import { StyledIcon } from '@styled-icons/styled-icon'
 import { Variant } from 'react-bootstrap/types'
 import Card from '@components/molecules/card'
@@ -11,6 +12,7 @@ export interface DashCardProps {
     iconColor?: string
     style?: object
     children?: any
+    className?: string
 }
 
 const DashCard = (props: DashCardProps) => {
@@ -18,6 +20,7 @@ const DashCard = (props: DashCardProps) => {
         title,
         variant,
         children,
+        className,
         ...restProps
     } = props
 
@@ -27,7 +30,7 @@ const DashCard = (props: DashCardProps) => {
         <Card
             bg={variant}
             text={textColor}
-            className="border-0 bg-transparent shadow-none"
+            className={classnames('border-0 bg-transparent shadow-none', className)}
             {...restProps}
         >
             <Card.Body>
