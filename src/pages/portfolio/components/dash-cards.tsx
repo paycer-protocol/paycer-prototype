@@ -35,6 +35,7 @@ const Circle = styled.div`
     top: -3%;
     left: -3%;
     background-color: transparent;
+    // TODO loop dynamically
     background: radial-gradient(white 40%, transparent 41%), conic-gradient(#3C01E3 0% 35%, #6808C0 35% 60%, #8D0EA2 60% 100%);
     border-radius: 50%;
     z-index: -2;
