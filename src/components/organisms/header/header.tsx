@@ -54,13 +54,13 @@ const Header = () => {
                           </StyledLogo>
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex">
-                          <li className="nav-item me-3">
+                          <li className="nav-item me-3 d-flex align-items-center">
                               <AddPaycerToken />
                           </li>
-                          <li className="nav-item me-3">
+                          <li className="nav-item me-3 d-flex align-items-center">
                               <Network />
                           </li>
-                          <li className="nav-item me-3">
+                          <li className="nav-item me-3 d-flex align-items-center">
                               <WalletConnect
                                 buttonVariant="light"
                                 dropdownVariant="light"

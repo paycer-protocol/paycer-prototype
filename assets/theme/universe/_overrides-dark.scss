@@ -14,6 +14,10 @@
 
 // Buttons
 
+header {
+  background: $gray-500-dark;
+}
+
 .btn-white, .btn-light {
   @include button-variant($gray-800-dark, $gray-600-dark);
 
@@ -44,9 +48,9 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(122deg,#86325591,#229c7a4d);
-    filter: blur(80px);
-    -webkit-filter: blur(80px);
-    opacity: 0.85;
+    background: $pacer-gradient;
+    filter: blur(90px);
+    opacity: 0.15;
+    z-index: -1;
   }
 }

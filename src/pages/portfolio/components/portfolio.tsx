@@ -5,6 +5,7 @@ import ProgressBar from '@components/atoms/progress-bars'
 import { Money, Percentage } from '@components/atoms/number'
 import Accordion from 'react-bootstrap/Accordion'
 import StepProgressBar from '@components/molecules/step-progress-bar'
+import Card from '@components/molecules/card'
 
 const portfolioFixtures = [
   {
@@ -159,44 +160,36 @@ export default function Portfolio() {
   }
 
   return (
-      <div className="card">
-        <div className="card-header">
-          <div className="row align-items-center">
-            <div className="col">
-              <h4 className="card-header-title">
-                <Trans>Portfolio</Trans>
-              </h4>
-            </div>
-          </div>
-        </div>
-
-        <div className="table-responsive mb-0">
-          <Accordion defaultActiveKey="0">
+      <div className="table-responsive mb-0">
+        <Accordion defaultActiveKey="0">
+          <table className="table table-sm table-nowrap card-table">
+            <thead>
+            <tr>
+              <th>
+                <a href="#" className="text-muted list-sort">
+                  <Trans>Asset</Trans>
+                </a>
+              </th>
+              <th>
+                <a href="#" className="text-muted">
+                  <Trans>Balance</Trans>
+                </a>
+              </th>
+              <th>
+                <a href="#" className="text-muted">
+                  <Trans>Investment ratio </Trans>
+                </a>
+              </th>
+              <th className="text-end">
+                <a href="#" className="text-muted">
+                  <Trans>Liquidity</Trans>
+                </a>
+              </th>
+            </tr>
+            </thead>
+          </table>
+          <Card>
             <table className="table table-sm table-nowrap card-table">
-              <thead>
-              <tr>
-                <th>
-                  <a href="#" className="text-muted list-sort">
-                    <Trans>Asset</Trans>
-                  </a>
-                </th>
-                <th>
-                  <a href="#" className="text-muted">
-                    <Trans>Balance</Trans>
-                  </a>
-                </th>
-                <th>
-                  <a href="#" className="text-muted">
-                    <Trans>Investment ratio </Trans>
-                  </a>
-                </th>
-                <th className="text-end">
-                  <a href="#" className="text-muted">
-                    <Trans>Liquidity</Trans>
-                  </a>
-                </th>
-              </tr>
-              </thead>
               <tbody className="list">
                 {portfolioFixtures.map((data, key) => (
                     <React.Fragment key={key}>
@@ -232,6 +225,7 @@ export default function Portfolio() {
                           <Money value={data.totalVolume} />
                         </td>
                       </CustomToggle>
+                      {/*
                       <tr>
                         <td colSpan={5} className="pt-0 pb-0 bg-secondary-dark">
                           <Accordion.Collapse eventKey={String(key+1)}>
@@ -246,12 +240,13 @@ export default function Portfolio() {
                           </Accordion.Collapse>
                         </td>
                       </tr>
+                      */}
                     </React.Fragment>
                 ))}
               </tbody>
             </table>
-          </Accordion>
-        </div>
+          </Card>
+        </Accordion>
       </div>
   )
 }

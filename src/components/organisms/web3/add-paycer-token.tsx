@@ -55,12 +55,14 @@ const AddPaycerToken = () => {
     return (
       <Button
           variant="light"
-          className="d-flex align-items-center justify-content-center pe-3 bg-dark"
+          className="d-flex align-items-center justify-content-center pe-3 bg-dark border-0"
           onClick={async () => {
             await addToken()
           }}
       >
-          <img width="34" src={`assets/icons/pcr.svg`} alt="Add PCR token" />
+          <span>
+            <img width="28" src={`assets/icons/pcr.svg`} alt="Add PCR token" />
+          </span>
       </Button>
     )
 }

@@ -23,6 +23,7 @@ $gray-900: darken($white, 60%);
 $black: #0B1120;
 
 // #1B2E44
+$gray-500-dark: #192434;
 $gray-600-dark: #213752;
 $gray-700-dark: #264160;
 $gray-800-dark: #1B2236;
@@ -43,6 +44,8 @@ $dark: $black;
 $light: $gray-800-dark !default;
 $lighter: $gray-900-dark !default;
 
+
+$pacer-gradient: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
 // Body
 //
 // Settings for the `<body>` element.
@@ -69,7 +72,7 @@ $border-color: #1B2236;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$text-muted: $gray-700 !default;
+$text-muted: $gray-400 !default;
 $font-weight-light: 400 !default;
 $font-weight-normal: 400 !default;
 $font-weight-bold: 600 !default;

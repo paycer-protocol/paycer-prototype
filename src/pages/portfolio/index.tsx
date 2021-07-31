@@ -29,7 +29,9 @@ export default function Home() {
         </div>
       </PageHeader>
       <div className="blur-background">
-          <DashCards />
+          <div className="mb-7">
+            <DashCards />
+          </div>
           <div className="row position-relatives">
             <div className="col-12">
               <Portfolio />
