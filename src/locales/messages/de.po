@@ -44,8 +44,8 @@ msgid "Apply"
 msgstr ""
 
 #: src/pages/portfolio/components/portfolio.tsx:185
-msgid "Asset"
-msgstr ""
+#~ msgid "Asset"
+#~ msgstr ""
 
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
 msgid "Assets"
@@ -56,7 +56,8 @@ msgid "Available Balance"
 msgstr ""
 
 #: src/components/organisms/web3/wallet-detail.tsx:56
-#: src/pages/portfolio/components/portfolio.tsx:190
+#: src/pages/portfolio/components/dash-cards.tsx:55
+#: src/pages/portfolio/components/portfolio.tsx:52
 msgid "Balance"
 msgstr ""
 
@@ -251,7 +252,7 @@ msgstr ""
 #~ msgid "Investment distribution"
 #~ msgstr ""
 
-#: src/pages/portfolio/components/portfolio.tsx:195
+#: src/pages/portfolio/components/portfolio.tsx:57
 msgid "Investment ratio"
 msgstr ""
 
@@ -268,13 +269,13 @@ msgstr ""
 msgid "Light Mode"
 msgstr ""
 
-#: src/pages/portfolio/components/portfolio.tsx:200
+#: src/pages/portfolio/components/portfolio.tsx:62
 msgid "Liquidity"
 msgstr ""
 
 #: src/helper/map-risk-level.tsx:6
 #: src/pages/invest/create/fields/risk-choice.tsx:10
-#: src/pages/portfolio/components/dash-cards.tsx:90
+#: src/pages/portfolio/components/dash-cards.tsx:80
 msgid "Low"
 msgstr ""
 
@@ -309,7 +310,7 @@ msgid "No Ethereum browser extension detected, install MetaMask on desktop or vi
 msgstr ""
 
 #: src/pages/invest/index.tsx:18
-#: src/pages/portfolio/index.tsx:16
+#: src/pages/portfolio/index.tsx:14
 msgid "Overview"
 msgstr ""
 
@@ -322,13 +323,13 @@ msgid "Please open your wallet and connect your account."
 msgstr ""
 
 #: src/config/routes.ts:5
-#: src/pages/portfolio/index.tsx:19
+#: src/pages/portfolio/index.tsx:17
 msgid "Portfolio"
 msgstr ""
 
 #: src/pages/portfolio/components/dash-cards.tsx:59
-msgid "Portfolio Balance"
-msgstr ""
+#~ msgid "Portfolio Balance"
+#~ msgstr ""
 
 #: src/components/organisms/web3/network-provider.tsx:48
 msgid "Previously added network Pending, please open your Wallet"
@@ -337,7 +338,7 @@ msgstr ""
 #: src/components/organisms/invest/invest-card/index.tsx:121
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:88
+#: src/pages/portfolio/components/dash-cards.tsx:78
 msgid "Risk"
 msgstr ""
 
@@ -345,7 +346,7 @@ msgstr ""
 msgid "Safe hardware wallet for your coins."
 msgstr ""
 
-#: src/pages/portfolio/components/dash-cards.tsx:81
+#: src/pages/portfolio/components/dash-cards.tsx:71
 msgid "Savings"
 msgstr ""
 
@@ -386,6 +387,10 @@ msgstr ""
 
 #: src/components/organisms/invest/invest-card/index.tsx:127
 msgid "Start invest"
+msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:47
+msgid "Strategy"
 msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:27
