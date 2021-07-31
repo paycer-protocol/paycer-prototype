@@ -5,8 +5,9 @@ import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { Money, FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
-import { InvestmentStrategy } from '../../../../types/investment'
+import { StrategyType } from '../../../../types/investment'
 import InvestForm  from '@components/organisms/invest/invest-form'
+import useToken from '@hooks/use-token'
 
 const PaycerStrategyBadge = styled.div`
     position: absolute;
@@ -56,22 +57,11 @@ const StyledCard = styled(Card)`
 `
 
 
-const InvestListItem = (props: InvestmentStrategy) => {
-    const {
-        strategyName,
-        strategyType,
-        interestRate,
-        rewardRate,
-        assets,
-        tvl,
-        invested,
-        earnedInterest,
-        investSymbol,
-        riskLevel
-    } = props
-
+const InvestListItem = (props: StrategyType) => {
     const [showInvestForm, setShowInvestForm] = useState(false)
-    const totalInterestRate = interestRate + rewardRate
+    const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
+    const investedToken = useToken(props.output.symbol)
+    const investedBalance = investedToken.tokenBalance()
 
     return (
         <>
@@ -87,15 +77,16 @@ const InvestListItem = (props: InvestmentStrategy) => {
                         {/*</PaycerStrategyBadge>*/}
 
                         <div className="row w-100">
+                            <div className="col-md-2 d-flex align-items-center">
+                                {props.name}
+                            </div>
+
                             <div className="col-md-2 d-flex justify-content-center flex-column">
                                 <div className="d-flex">
-                                    {assets.map((asset, key) => (
-                                        <img className="me-2" width="32" key={key} src={asset.imgPath} alt={asset.name} />
+                                    {props.assets.map((asset, key) => (
+                                      <img className="me-2" width="32" key={key} src={asset.imgPath} alt={asset.name} />
                                     ))}
                                 </div>
-                            </div>
-                            <div className="col-md-1 d-flex align-items-center">
-                                {strategyName}
                             </div>
 
                             <div className="col-md-1 d-flex align-items-center justify-content-center">
@@ -103,28 +94,34 @@ const InvestListItem = (props: InvestmentStrategy) => {
                             </div>
 
                             <div className="col-md-2 d-flex align-items-center justify-content-center">
-                                {mapRiskLevel(riskLevel)}
+                                {mapRiskLevel(props.riskLevel)}
                             </div>
 
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                {invested ? (<Money value={invested} />) : <>-</>}
+                                {
+                                    investedBalance > 0
+                                      ? (
+                                        <>
+                                            <FormattedNumber
+                                              value={investedBalance}
+                                              minimumFractionDigits={2}
+                                              maximumFractionDigits={4}
+                                            />
+                                            &nbsp;{investedToken.symbol}
+                                        </>
+                                      )
+                                      : (
+                                        <span>-</span>
+                                      )
+                                }
                             </div>
 
-                            <div className="col-md-1 d-flex justify-content-center flex-column">
-                                <FormattedNumber
-                                    value={earnedInterest}
-                                    minimumFractionDigits={2}
-                                    maximumFractionDigits={4}
-                                />
-                                &nbsp;
-                                {investSymbol}
-                            </div>
                             <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <Money value={tvl}/>
+                                -
                             </div>
                             <div className="col-md-1 d-flex justify-content-center flex-column pe-0">
                                 <Button style={{position: 'relative', left: '-20px'}} onClick={() => setShowInvestForm(!showInvestForm)} variant={showInvestForm ? 'primary' : 'outline-primary'}>
-                                    {invested ? t`Edit` : t`Start`}
+                                    {investedBalance ? t`Edit` : t`Start`}
                                 </Button>
                             </div>
                         </div>

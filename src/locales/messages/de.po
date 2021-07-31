@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/invest/invest-card/index.tsx:95
+#: src/components/organisms/invest/invest-card/index.tsx:85
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
 msgid "APR"
 msgstr ""
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Asset"
 msgstr ""
 
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
 msgid "Assets"
 msgstr ""
 
@@ -118,9 +118,7 @@ msgstr ""
 msgid "Copy your wallet address to clipboard"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:46
-#: src/pages/invest/index.tsx:29
-#: src/pages/portfolio/index.tsx:25
+#: src/pages/invest/create/index.tsx:70
 msgid "Create investment"
 msgstr ""
 
@@ -137,11 +135,11 @@ msgstr ""
 #~ msgid "Current rewards"
 #~ msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:116
+#: src/components/organisms/invest/invest-form/index.tsx:100
 msgid "Daily interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-form/index.tsx:109
+#: src/components/organisms/invest/invest-form/index.tsx:93
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -151,16 +149,15 @@ msgstr ""
 msgid "Dark Mode"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:117
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
-msgid "Deposited"
-msgstr ""
+#: src/components/organisms/invest/invest-card/index.tsx:110
+#~ msgid "Deposited"
+#~ msgstr ""
 
 #: src/components/organisms/web3/wallet-detail.tsx:123
 msgid "Disconnect"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:74
+#: src/pages/invest/create/index.tsx:98
 msgid "Distribution"
 msgstr ""
 
@@ -172,24 +169,23 @@ msgstr ""
 #~ msgid "Documentation"
 #~ msgstr ""
 
-#: src/pages/invest/create/index.tsx:43
+#: src/pages/invest/create/index.tsx:67
 msgid "Earn interest"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:123
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
-msgid "Earned"
-msgstr ""
+#: src/components/organisms/invest/invest-card/index.tsx:114
+#~ msgid "Earned"
+#~ msgstr ""
 
 #: src/providers/connectors.ts:72
 msgid "Easy-to-use browser extension."
 msgstr ""
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:127
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:124
 msgid "Edit"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:145
+#: src/components/organisms/invest/invest-card/index.tsx:127
 msgid "Edit invest"
 msgstr ""
 
@@ -227,6 +223,11 @@ msgstr ""
 msgid "High"
 msgstr ""
 
+#: src/components/organisms/invest/invest-card/index.tsx:102
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
+msgid "Holdings"
+msgstr ""
+
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
@@ -238,7 +239,7 @@ msgstr ""
 msgid "Invest"
 msgstr ""
 
-#: src/pages/invest/create/index.tsx:62
+#: src/pages/invest/create/index.tsx:86
 msgid "Invest amount"
 msgstr ""
 
@@ -295,7 +296,7 @@ msgstr ""
 msgid "Monthly rewards"
 msgstr ""
 
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
 msgid "Name"
 msgstr ""
 
@@ -330,7 +331,7 @@ msgstr ""
 msgid "Previously added network Pending, please open your Wallet"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:138
+#: src/components/organisms/invest/invest-card/index.tsx:121
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:38
@@ -376,11 +377,11 @@ msgstr ""
 #~ msgid "Staking rewards"
 #~ msgstr ""
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:127
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:124
 msgid "Start"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:145
+#: src/components/organisms/invest/invest-card/index.tsx:127
 msgid "Start invest"
 msgstr ""
 
@@ -417,8 +418,8 @@ msgstr ""
 msgid "Total Balance"
 msgstr ""
 
-#: src/components/organisms/invest/invest-card/index.tsx:109
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:31
+#: src/components/organisms/invest/invest-card/index.tsx:98
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Total Volume"
 msgstr ""
 

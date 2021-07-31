@@ -1,4 +1,4 @@
-import {boolean} from "yup";
+import { ChainId } from '@usedapp/core'
 
 export enum RiskLevel {
   Low = 0,
@@ -20,14 +20,13 @@ export interface FeesType {
 
 export interface InterestType {
   interestRate: number
-  earnedInterest?: number
+  interestSymbol: string
 }
 
 
 export interface RewardType {
   rewardRate: number
   rewardSymbol: string
-  earnedReward?: number
 }
 
 export interface InvestPairType {
@@ -41,20 +40,43 @@ export interface InvestPairType {
   investBalance?: number
 }
 
-export interface InvestmentStrategy extends InvestPairType, FeesType, InterestType, RewardType {
+export interface TokenType {
+  symbol: string
+  name: string
+  decimals: number
+  chainAddresses: {
+    [ChainId.Mainnet]: string
+    [ChainId.Kovan]: string
+    [ChainId.Ropsten]?: string
+    [ChainId.Rinkeby]?: string
+    [ChainId.Goerli]?: string
+    [ChainId.BSC]?: string
+    [ChainId.xDai]?: string
+    [ChainId.Polygon]?: string
+    [ChainId.Mumbai]?: string
+    [ChainId.Hardhat]?: string
+  }
+}
+
+export interface StrategyType {
+  name: string
+  type?: string
   riskLevel: RiskLevel
-  contractWalletAddress: string,
-  strategyName: string
-  strategyType?: string
-  investSymbol: string
-  investAmount?: number
-  investRange?: number
-  tvl?: number
-  invested?: number
+  input: TokenType
+  output: TokenType
+  pool: TokenType
+  rewards: RewardType
+  interest: InterestType
+  fees: FeesType
   assets: AssetType[]
-  setShowWalletProviderModal?: (state: boolean) => void
-  setShowInvestForm?: (state: boolean) => void,
-  isModal?: boolean
+}
+
+export interface ITokenProvider {
+  [symbol: string]: TokenType
+}
+
+export interface IStrategyProvider {
+  [symbol: string]: StrategyType
 }
 
 export default {}

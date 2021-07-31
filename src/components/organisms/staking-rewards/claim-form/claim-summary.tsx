@@ -47,7 +47,7 @@ export default function ClaimSummary() {
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
-            <img width="28" style={{marginTop: '-4px'}} className="ms-2" src={`assets/icons/${normalizeFilename(rewardSymbol)}.svg`} alt={rewardSymbol} />
+            <img width="28" style={{marginTop: '-4px'}} className="ms-2" src={`/assets/icons/${normalizeFilename(rewardSymbol)}.svg`} alt={rewardSymbol} />
             </span>
         </div>
 
