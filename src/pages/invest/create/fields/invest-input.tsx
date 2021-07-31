@@ -2,10 +2,10 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { InvestmentStrategy } from '../../../../types/investment'
+import { StrategyType } from '../../../../types/investment'
 
 export default function InvestInput() {
-  const { values, initialValues, setFieldValue } = useFormikContext<InvestmentStrategy>()
+  const { values, initialValues, setFieldValue } = useFormikContext<StrategyType>()
 
     return (
       <div className="form-group">

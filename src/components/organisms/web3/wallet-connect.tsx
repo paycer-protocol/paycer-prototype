@@ -63,7 +63,7 @@ const WalletConnect = (props: AccountProps) => {
                           maximumFractionDigits={4}
                       />
                   </div>
-                    <img width="26" className="ms-2" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                    <img width="26" className="ms-2" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
                   </div>
                 </div>
                 <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">

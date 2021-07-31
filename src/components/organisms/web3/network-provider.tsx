@@ -77,7 +77,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                       await handleSwitchNetwork(provider)
                     }}
                   >
-                    <img width="28" className="me-2" src={`assets/icons/${normalizeFilename(provider.chainName)}.svg`} alt={provider.chainName} />
+                    <img width="28" className="me-2" src={`/assets/icons/${normalizeFilename(provider.chainName)}.svg`} alt={provider.chainName} />
                     <strong>{provider.chainName}</strong>
                   </Button>
               )

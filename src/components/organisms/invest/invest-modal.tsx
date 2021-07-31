@@ -2,14 +2,14 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import InvestForm  from '@components/organisms/invest/invest-form'
-import { InvestmentStrategy } from '../../../types/investment'
+import { StrategyType } from '../../../types/investment'
 
 interface InvestModalProps {
     show?: boolean,
     onHide?: any,
 }
 
-const InvestModal = ({ show, onHide, ...props}: InvestModalProps & InvestmentStrategy) => {
+const InvestModal = ({ show, onHide, ...props}: InvestModalProps & StrategyType) => {
     return (
         <Modal show={show} onHide={onHide}>
           <>

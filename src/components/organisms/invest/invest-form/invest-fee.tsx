@@ -35,7 +35,7 @@ export default function InvestFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.feeSymbol}
-          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`assets/icons/${normalizeFilename(values.feeSymbol)}.svg`} alt={values.feeSymbol} />
+          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`/assets/icons/${normalizeFilename(values.feeSymbol)}.svg`} alt={values.feeSymbol} />
       </small>
     </div>
   )

@@ -3,7 +3,7 @@ import {defineMessage, t, Trans} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Form from '@components/atoms/form'
 import Button from '@components/atoms/button'
-import { RiskLevel, InvestmentStrategy } from '../../../../types/investment'
+import { RiskLevel, StrategyType } from '../../../../types/investment'
 import { investmentStrategies } from '@config/investment/strategies'
 
 const riskLabels = {
@@ -13,7 +13,7 @@ const riskLabels = {
 }
 
 export default function RiskChoice() {
-    const { values, setFieldValue } = useFormikContext<InvestmentStrategy>()
+    const { values, setFieldValue } = useFormikContext<StrategyType>()
 
     const handleChange = (risk) => {
       setFieldValue('riskLevel', risk)

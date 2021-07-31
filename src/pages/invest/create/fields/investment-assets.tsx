@@ -1,10 +1,10 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { FieldArray, useFormikContext } from 'formik'
-import { InvestmentStrategy } from '../../../../types/investment'
+import { InvestFormFields } from '@components/organisms/invest/types'
 
 export default function InvestmentAssets() {
-  const { values, setFieldValue, dirty } = useFormikContext<InvestmentStrategy>()
+  const { values, setFieldValue, dirty } = useFormikContext<InvestFormFields>()
 
   return (
     <div className="d-flex flex-column">

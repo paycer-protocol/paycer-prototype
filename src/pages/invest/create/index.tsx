@@ -10,7 +10,8 @@ import RiskChoice from './fields/risk-choice'
 import InvestmentAssets from './fields/investment-assets'
 import SubmitButton from './fields/submit-button'
 import { investmentStrategies } from '@config/investment/strategies'
-import { InvestmentStrategy } from '../../../types/investment'
+import { InvestFormFields } from '@components/organisms/invest/types'
+import useToken from "@hooks/use-token";
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -18,15 +19,38 @@ const VerticalLine = styled.div`
 `
 
 export default () => {
-  const handleSubmit = (values: InvestmentStrategy) => {
+  const initialStrategy = investmentStrategies[0]
+  const baseToken = useToken(initialStrategy.input.symbol)
+  const investToken = useToken(initialStrategy.output.symbol)
+
+  const handleSubmit = (values: InvestFormFields) => {
   }
 
-  const initialValues: InvestmentStrategy = {
-    ...investmentStrategies[0],
-    ...{
-      investAmount: 0,
-      baseBalance: 1000,
-    }
+  const initialValues: InvestFormFields = {
+    // invest pairs
+    baseSymbol: baseToken.symbol,
+    baseBalance: baseToken.tokenBalance(),
+    investSymbol: investToken.symbol,
+    investBalance: investToken.tokenBalance(),
+
+    // interest
+    interestRate: initialStrategy.interest.interestRate,
+    interestSymbol: initialStrategy.interest.interestSymbol,
+
+    // rewards
+    rewardSymbol: initialStrategy.rewards.rewardSymbol,
+    rewardRate: initialStrategy.rewards.rewardRate,
+
+    // fees
+    feeSymbol: initialStrategy.fees.feeSymbol,
+    withdrawFee: initialStrategy.fees.withdrawFee,
+    investFee: initialStrategy.fees.investFee,
+
+    assets: initialStrategy.assets,
+
+    // form
+    investRange: 0,
+    submitAction: 'invest'
   }
 
   const validationSchema = Yup.object().shape({

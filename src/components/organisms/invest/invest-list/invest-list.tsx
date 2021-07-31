@@ -8,7 +8,7 @@ import InvestListSearch from './invest-list-search'
 import { InvestListContext } from '../../../../context/invest-list-context'
 import Button from '@components/atoms/button'
 import { List,  Grid } from '@styled-icons/bootstrap'
-import Icon from "@components/atoms/icon";
+import Icon from '@components/atoms/icon'
 
 const StyledButton = styled(Button)`
     &:focus {

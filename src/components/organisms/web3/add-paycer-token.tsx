@@ -60,7 +60,7 @@ const AddPaycerToken = () => {
             await addToken()
           }}
       >
-          <img width="34" src={`assets/icons/pcr.svg`} alt="Add PCR token" />
+          <img width="34" src={`/assets/icons/pcr.svg`} alt="Add PCR token" />
       </Button>
     )
 }
