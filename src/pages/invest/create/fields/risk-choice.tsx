@@ -31,7 +31,7 @@ export default function RiskChoice() {
               {[RiskLevel.Low, RiskLevel.Medium, RiskLevel.High].map((risk) => (
                 <Button
                   key={`risk${risk}`}
-                  variant="outline-primary"
+                  variant="primary"
                   active={values.riskLevel === risk}
                   onClick={() => handleChange(risk)}
                   size="sm"

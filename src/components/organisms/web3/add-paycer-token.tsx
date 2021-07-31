@@ -60,7 +60,7 @@ const AddPaycerToken = () => {
           }}
       >
           <span>
-            <img width="28" src={`assets/icons/pcr.svg`} alt="Add PCR token" />
+            <img width="28" src={`/assets/icons/pcr.svg`} alt="Add PCR token" />
           </span>
       </Button>
     )

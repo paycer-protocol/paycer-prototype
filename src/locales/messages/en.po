@@ -28,7 +28,7 @@ msgstr "APY"
 msgid "Account"
 msgstr "Account"
 
-#: src/components/organisms/web3/network-provider.tsx:45
+#: src/components/organisms/web3/network-provider.tsx:43
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
@@ -61,8 +61,8 @@ msgid "Balance"
 msgstr "Balance"
 
 #: src/pages/staking/index.tsx:34
-msgid "Buy PCR Token"
-msgstr "Buy PCR Token"
+#~ msgid "Buy PCR Token"
+#~ msgstr "Buy PCR Token"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
@@ -283,7 +283,7 @@ msgstr "Liquidity"
 
 #: src/helper/map-risk-level.tsx:6
 #: src/pages/invest/create/fields/risk-choice.tsx:10
-#: src/pages/portfolio/components/dash-cards.tsx:85
+#: src/pages/portfolio/components/dash-cards.tsx:90
 msgid "Low"
 msgstr "Low"
 
@@ -309,7 +309,7 @@ msgstr "Monthly rewards"
 msgid "Name"
 msgstr "Name"
 
-#: src/components/organisms/web3/network-provider.tsx:42
+#: src/components/organisms/web3/network-provider.tsx:40
 msgid "Network-Switch Pending, please open your Wallet"
 msgstr "Network-Switch Pending, please open your Wallet"
 
@@ -335,7 +335,11 @@ msgstr "Please open your wallet and connect your account."
 msgid "Portfolio"
 msgstr "Portfolio"
 
-#: src/components/organisms/web3/network-provider.tsx:50
+#: src/pages/portfolio/components/dash-cards.tsx:59
+msgid "Portfolio Balance"
+msgstr "Portfolio Balance"
+
+#: src/components/organisms/web3/network-provider.tsx:48
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
@@ -347,7 +351,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #: src/components/organisms/invest/invest-card/index.tsx:121
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:83
+#: src/pages/portfolio/components/dash-cards.tsx:88
 msgid "Risk"
 msgstr "Risk"
 
@@ -355,7 +359,7 @@ msgstr "Risk"
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
-#: src/pages/portfolio/components/dash-cards.tsx:76
+#: src/pages/portfolio/components/dash-cards.tsx:81
 msgid "Savings"
 msgstr "Savings"
 
@@ -410,7 +414,7 @@ msgstr "Start invest"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
-#: src/components/organisms/web3/network-provider.tsx:61
+#: src/components/organisms/web3/network-provider.tsx:59
 msgid "Switch network"
 msgstr "Switch network"
 
@@ -440,8 +444,8 @@ msgid "Token balance"
 msgstr "Token balance"
 
 #: src/pages/portfolio/components/dash-cards.tsx:59
-msgid "Total Balance"
-msgstr "Total Balance"
+#~ msgid "Total Balance"
+#~ msgstr "Total Balance"
 
 #: src/components/organisms/invest/invest-card/index.tsx:98
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28

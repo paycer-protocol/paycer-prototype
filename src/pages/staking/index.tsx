@@ -29,11 +29,6 @@ export default function Staking () {
             <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
             <PageHeader.Title>Staking Rewards</PageHeader.Title>
           </div>
-          <div className="col-auto">
-            <Button variant="outline-primary">
-              <Trans>Buy PCR Token</Trans>
-            </Button>
-          </div>
         </div>
       </PageHeader>
       {isConnected && (

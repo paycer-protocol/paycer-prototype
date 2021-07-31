@@ -22,15 +22,15 @@ const portfolioFixtures = [
       progress: 80,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -48,15 +48,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -74,15 +74,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -100,15 +100,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]
@@ -126,15 +126,15 @@ const portfolioFixtures = [
       progress: 50,
       steps: [
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         },
         {
-          imgPath: 'assets/token/svg/color/usdt.svg',
+          imgPath: '/assets/token/svg/color/usdt.svg',
           label: 'Lorem Yspsum',
         }
       ]

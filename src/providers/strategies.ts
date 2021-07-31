@@ -26,17 +26,17 @@ export const strategyProvider: IStrategyProvider = {
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/icons/usd.svg',
+        imgPath: '/assets/icons/usd.svg',
         investRange: 20,
       },
       {
         name: 'usdc',
-        imgPath: 'assets/icons/usdc.svg',
+        imgPath: '/assets/icons/usdc.svg',
         investRange: 30,
       },
       {
         name: 'bnb',
-        imgPath: 'assets/icons/busd.svg',
+        imgPath: '/assets/icons/busd.svg',
         investRange: 50,
       }
     ],
@@ -64,17 +64,17 @@ export const strategyProvider: IStrategyProvider = {
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/icons/usd.svg',
+        imgPath: '/assets/icons/usd.svg',
         investRange: 20,
       },
       {
         name: 'usdc',
-        imgPath: 'assets/icons/usdc.svg',
+        imgPath: '/assets/icons/usdc.svg',
         investRange: 30,
       },
       {
         name: 'bnb',
-        imgPath: 'assets/icons/busd.svg',
+        imgPath: '/assets/icons/busd.svg',
         investRange: 50,
       }
     ],
@@ -102,17 +102,17 @@ export const strategyProvider: IStrategyProvider = {
     assets: [
       {
         name: 'usdt',
-        imgPath: 'assets/icons/usd.svg',
+        imgPath: '/assets/icons/usd.svg',
         investRange: 20,
       },
       {
         name: 'usdc',
-        imgPath: 'assets/icons/usdc.svg',
+        imgPath: '/assets/icons/usdc.svg',
         investRange: 30,
       },
       {
         name: 'bnb',
-        imgPath: 'assets/icons/busd.svg',
+        imgPath: '/assets/icons/busd.svg',
         investRange: 50,
       }
     ],

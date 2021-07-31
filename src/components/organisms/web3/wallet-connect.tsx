@@ -54,7 +54,7 @@ const WalletConnect = (props: AccountProps) => {
             >
                 <div className="me-3">
                     <div className="d-flex">
-                        <img width="20" className="ms-1" src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                        <img width="20" className="ms-1" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
                         <div className="pt-1 pb-1 mx-2">
                             <FormattedNumber
                                 value={wallet.etherBalance}

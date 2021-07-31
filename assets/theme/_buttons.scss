@@ -1,17 +1,13 @@
-// 
+//
 // buttons.scss
 // Extended from Bootstrap
 //
 
-// 
+//
 // Bootstrap Overrides =====================================
 //
 
 // Sizing
-
-.btn {
-  border-radius: $border-radius-roundet;
-}
 
 .btn-lg {
   line-height: $btn-line-height-lg;
@@ -99,9 +95,4 @@
 
 .btn-group .btn + .btn {
   margin-left: 0;
-}
-
-
-.btn-primary {
-  border-color: $card-outline-color;
 }

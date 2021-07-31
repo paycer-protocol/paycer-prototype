@@ -33,7 +33,7 @@ export const WidthButton =  (args: PageHeaderProps) => (
                 </PageHeader.Subtitle>
             </div>
             <div className="col-auto">
-                <Button variant="outline-primary">
+                <Button variant="primary">
                     Subscribe
                 </Button>
             </div>

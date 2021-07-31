@@ -70,7 +70,7 @@ export const connectors: IConnectorProvider[] = [
         rejectedError: UserRejectedRequestError,
         name: 'MetaMask',
         description: t`Easy-to-use browser extension.`,
-        icon: 'assets/wallets/metamask.png',
+        icon: '/assets/wallets/metamask.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
@@ -78,7 +78,7 @@ export const connectors: IConnectorProvider[] = [
         rejectedError: WalletConnectRejectedRequestError,
         name: 'WalletConnect',
         description: t`Connect to Trust Wallet, Rainbow Wallet and more...`,
-        icon: 'assets/wallets/wallet-connect.svg',
+        icon: '/assets/wallets/wallet-connect.svg',
         beforeConnect: (provider: IConnectorProvider) => {
             const { connector } = provider
             if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
@@ -93,7 +93,7 @@ export const connectors: IConnectorProvider[] = [
         rejectedError: UserRejectedRequestError,
         name: 'Coinbase Wallet',
         description: t`The secure app to store crypto yourself`,
-        icon: 'assets/wallets/coinbase.svg',
+        icon: '/assets/wallets/coinbase.svg',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
@@ -101,7 +101,7 @@ export const connectors: IConnectorProvider[] = [
         rejectedError: UserRejectedRequestError,
         name: 'Trezor',
         description: t`Safe hardware wallet for your coins.`,
-        icon: 'assets/wallets/trezor.png',
+        icon: '/assets/wallets/trezor.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
@@ -109,7 +109,7 @@ export const connectors: IConnectorProvider[] = [
         rejectedError: UserRejectedRequestError,
         name: 'Ledger',
         description: t`Enjoy security, ownership and ease of use for your crypto with Ledger.`,
-        icon: 'assets/wallets/ledger.svg',
+        icon: '/assets/wallets/ledger.svg',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
 ]
