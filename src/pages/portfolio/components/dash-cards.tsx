@@ -1,8 +1,6 @@
 import { Trans, t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
-import useWallet from '@hooks/use-wallet'
-import { FormattedNumber, Money } from '@components/atoms/number'
-import {normalizeFilename} from "../../../helper/filename";
+import { Money } from '@components/atoms/number'
 import React from "react";
 import styled from 'styled-components'
 
@@ -50,28 +48,24 @@ const Circle = styled.div`
   }
 `
 
-export default function DashCards () {
-    const wallet = useWallet()
+interface DashCardsProps {
+  totalBalance: number
+}
 
+export default function DashCards ({ totalBalance }: DashCardsProps) {
     return (
         <div className="row justify-content-between">
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
-                <DashCard title={t`Portfolio Balance`} className="mb-0">
+                <DashCard title={t`Balance`} className="mb-0">
                     <div className="d-flex justify-content-between">
                         <img
                           width="30"
                           className="me-3"
-                          src={`assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`}
-                          alt={wallet.etherSymbol}
+                          src={`assets/icons/usd.svg`}
+                          alt={'USD'}
                         />
                         <div className="fw-normal">
-                            <FormattedNumber
-                                value={wallet.etherBalance}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
-                            &nbsp;
-                            {wallet.etherSymbol}
+                            <Money value={totalBalance} />
                         </div>
                     </div>
                 </DashCard>
@@ -80,7 +74,7 @@ export default function DashCards () {
                 <Circle />
                 <DashCard title={t`Savings`} className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
-                        <Money value={0} currency="USD" />
+                        <Money value={totalBalance * 13.3 / 100} currency="USD" />
                     </div>
                 </DashCard>
             </div>
