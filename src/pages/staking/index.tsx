@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Trans } from '@lingui/macro'
+import router from 'next/router'
 import PageHeader from '@components/molecules/page-header'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
-import Button from '@components/atoms/button'
 import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -20,6 +20,13 @@ const HorizontalLine = styled.div`
 
 export default function Staking () {
   const { isConnected } = useWallet()
+  const { supportedStakingChain } = useNetwork()
+
+  if (!supportedStakingChain) {
+    location.href = '/'
+
+    return
+  }
 
   return (
     <div className="container mt-3">

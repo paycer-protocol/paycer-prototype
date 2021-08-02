@@ -11,6 +11,7 @@ import AddPaycerToken from '../web3/add-paycer-token'
 import useWallet from '@hooks/use-wallet'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
+import { supportedChains } from "@config/network";
 
 interface OffCanvasProps {
   show: boolean
