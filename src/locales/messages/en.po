@@ -29,8 +29,8 @@ msgid "Account"
 msgstr "Account"
 
 #: src/components/organisms/off-canvas/index.tsx:80
-msgid "Add Token"
-msgstr "Add Token"
+#~ msgid "Add Token"
+#~ msgstr "Add Token"
 
 #: src/components/organisms/web3/network-provider.tsx:43
 msgid "Adding Network to Wallet ..."
@@ -329,6 +329,10 @@ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or v
 #: src/pages/portfolio/index.tsx:43
 msgid "Overview"
 msgstr "Overview"
+
+#: src/components/organisms/off-canvas/index.tsx:80
+msgid "Paycer Token"
+msgstr "Paycer Token"
 
 #: src/components/organisms/web3/wallet-provider.tsx:35
 msgid "Please authorize this website to access your Ethereum account."

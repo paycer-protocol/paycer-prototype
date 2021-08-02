@@ -21,7 +21,7 @@ export const testNetNetworks: INetworkProvider = {
         chainId: '0x3',
         chainName: 'Ropsten',
         nativeCurrency: {
-            name: 'Ethereum',
+            name: 'Ethereum - Ropsten',
             symbol: 'ETH',
             decimals: 18,
         },
@@ -32,7 +32,7 @@ export const testNetNetworks: INetworkProvider = {
         chainId: '0x2A',
         chainName: 'Kovan',
         nativeCurrency: {
-            name: 'Ethereum',
+            name: 'Ethereum - Kovan',
             symbol: 'ETH',
             decimals: 18,
         },
@@ -43,7 +43,7 @@ export const testNetNetworks: INetworkProvider = {
         chainId: '0x4',
         chainName: 'Rinkeby',
         nativeCurrency: {
-            name: 'Ethereum',
+            name: 'Ethereum - Rinkeby',
             symbol: 'ETH',
             decimals: 18,
         },
@@ -54,7 +54,7 @@ export const testNetNetworks: INetworkProvider = {
         chainId: '0x5',
         chainName: 'Goerli',
         nativeCurrency: {
-            name: 'Ethereum',
+            name: 'Ethereum - Goerli',
             symbol: 'ETH',
             decimals: 18,
         },
@@ -65,7 +65,7 @@ export const testNetNetworks: INetworkProvider = {
         chainId: '0x13881',
         chainName: 'Matic',
         nativeCurrency: {
-            name: 'Matic',
+            name: 'Polygon (MATIC Mumbai)',
             symbol: 'MATIC',
             decimals: 18,
         },
