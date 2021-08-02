@@ -67,7 +67,7 @@ const InvestList = () => {
 
             <div className="row">
                 {items.map((data, key) => (
-                    <div key={key} style={{zIndex: 1}} className={listView ? 'col-12' : 'col-md-4'}>
+                    <div key={key} style={{zIndex: 1}} className={listView && !isTabletOrMobile ? 'col-12' : 'col-lg-4 col-md-6'}>
                         <InvestItemComponent
                             { ...data }
                         />

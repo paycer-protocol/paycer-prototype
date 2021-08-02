@@ -41,6 +41,16 @@
   }
 }
 
+.table-responsive {
+  border: 1px solid $gray-600-dark;
+  padding: 0;
+  margin: 0;
+  border-radius: $border-radius-lg;
+  .card {
+    margin-bottom: 0;
+  }
+}
+
 // Sizing
 
 .table-sm td {

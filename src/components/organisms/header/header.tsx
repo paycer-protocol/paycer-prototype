@@ -43,12 +43,12 @@ const Header = () => {
 
     return (
       <>
-          <header>
+          <header className="mx-md-4 mx-lg-5">
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
-                              <StyledBrand className="px-md-3 py-0 ms-3">
+                              <StyledBrand className="me-4 py-0">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
                               </StyledBrand>
                           </StyledLogo>
@@ -66,7 +66,7 @@ const Header = () => {
                                 dropdownVariant="light"
                               />
                           </li>
-                          <li className="nav-item me-3">
+                          <li className="nav-item" style={{marginRight: "-8px"}}>
                               <SettingsModal />
                           </li>
                       </ul>
