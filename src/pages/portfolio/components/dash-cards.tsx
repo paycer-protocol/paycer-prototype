@@ -14,7 +14,7 @@ const ChartWrapper = styled.div`
   position: absolute;
   border-radius: 50%;
   width: 300px;
-  top: -35%;
+  top: -38%;
 
   @media (max-width: 767.98px) {
       width: 350px;
