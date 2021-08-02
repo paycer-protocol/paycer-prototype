@@ -12,7 +12,6 @@ import WalletConnect from '../web3/wallet-connect'
 import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
-import SettingsModal from '@components/organisms/header/settings-modal'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -66,9 +65,6 @@ const Header = () => {
                                 dropdownVariant="light"
                               />
                           </li>
-                          {/*<li className="nav-item" style={{marginRight: "-8px"}}>*/}
-                          {/*    <SettingsModal />*/}
-                          {/*</li>*/}
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {routes.map((route, key) => (

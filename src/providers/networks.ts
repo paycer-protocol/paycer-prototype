@@ -99,7 +99,7 @@ export const mainNetProviders: INetworkProvider = {
     },
     [ChainId.Polygon]: {
         chainId: '0x89',
-        chainName: 'Matic',
+        chainName: 'Polygon (Matic)',
         nativeCurrency: {
             name: 'Matic',
             symbol: 'MATIC',
@@ -107,16 +107,5 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
-    },
-    [ChainId.xDai]: {
-        chainId: '0x64',
-        chainName: 'xDai',
-        nativeCurrency: {
-            name: 'xDai Token',
-            symbol: 'xDai',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.xDai]],
-        blockExplorerUrls: [explorers[ChainId.xDai]],
     },
 }

@@ -3,6 +3,7 @@ import { CHAIN_NAMES, ChainId, getExplorerAddressLink, shortenIfAddress, useEthe
 import { formatEther } from '@ethersproject/units'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
+import { mainNetProviders } from '@providers/networks'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
@@ -26,6 +27,8 @@ export default function useWallet() {
         }
     }
 
+    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Mainnet]
+
     return {
         connector,
         address: account,
@@ -36,7 +39,7 @@ export default function useWallet() {
         disconnect: () => deactivate(),
         etherBalance: formatEther(etherBalance || 0),
         etherSymbol: Symbols[chainId] || Symbols[ChainId.Mainnet],
-        chainName: CHAIN_NAMES[chainId] || CHAIN_NAMES[ChainId.Mainnet],
+        chainName: chainProvider.chainName,
         explorerUrl: getExplorerAddressLink(account, chainId),
         activatingConnector,
         chainId
