@@ -1,30 +1,16 @@
 import { t } from '@lingui/macro'
-import { ChainId } from '@usedapp/core'
+import { supportedChains, supportedStakingChains } from './network'
 
 export const routes = [
   {
     label: t`Portfolio`,
     path: '/',
-    supportedChains: [
-      ChainId.Mainnet,
-      ChainId.Kovan,
-      ChainId.Polygon,
-      ChainId.BSC,
-      ChainId.Mumbai,
-      ChainId.Hardhat,
-    ]
+    supportedChains
   },
   {
     label: t`Invest`,
     path: '/invest',
-    supportedChains: [
-      ChainId.Mainnet,
-      ChainId.Kovan,
-      ChainId.Polygon,
-      ChainId.BSC,
-      ChainId.Mumbai,
-      ChainId.Hardhat,
-    ],
+    supportedChains,
     subroutes: [
       {
         path: '/invest/create',
@@ -34,9 +20,6 @@ export const routes = [
   {
     label: t`Staking`,
     path: '/staking',
-    supportedChains: [
-      ChainId.Mainnet,
-      ChainId.Kovan,
-    ],
+    supportedChains: supportedStakingChains
   }
 ]
