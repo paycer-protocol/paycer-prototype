@@ -6,10 +6,17 @@ import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
 import {investmentStrategies} from '@config/investment/strategies'
 import useToken from '@hooks/use-token'
+import {strategyProvider} from "@providers/strategies";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
   tvl?: number
+}
+
+const colorMap = {
+    "basic" : '#6808C0',
+    "advanced" : '#8D0EA2',
+    "expert" : '#3C01E3',
 }
 
 export default function Home() {
@@ -28,7 +35,9 @@ export default function Home() {
         ...strategy,
         ...{
           balance: tokenBalance,
-          tvl: 12712983
+          tvl: 12712983,
+            color: colorMap[strategy.name.toLowerCase()]
+
         }
       } as PortfolioStrategy)
     }
@@ -50,7 +59,10 @@ export default function Home() {
       </PageHeader>
       <div className="blur-background">
           <div className="mb-7 mb-md-3">
-            <DashCards totalBalance={totalBalance} />
+            <DashCards
+                totalBalance={totalBalance}
+                strategies={qualifiedStrategies}
+            />
           </div>
           <div className="row position-relatives">
             <div className="col-12">
