@@ -19,7 +19,7 @@ const Network = (props) => {
         className={classnames('d-flex align-items-center justify-content-center bg-dark text-light', props.className)}
         onClick={() => setShowNetworkModal(true)}
       >
-        <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>
+        {props.children ? props.children : <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>}
       </Button>
       <NetworkProvider
         providers={mainNetProviders}

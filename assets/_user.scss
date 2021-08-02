@@ -17,3 +17,8 @@ input[type=number] {
 .cursor-pointer {
   cursor: pointer;
 }
+
+main {
+  position: relative;
+  z-index: 2;
+}
