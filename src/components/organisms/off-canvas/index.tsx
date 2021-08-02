@@ -78,12 +78,6 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
           </div>
           <div className="mb-5">
             <h4 className="mb-3 text-muted">
-              <Trans>Theme</Trans>
-            </h4>
-            <DarkModeToggle />
-          </div>
-          <div className="mb-5">
-            <h4 className="mb-3 text-muted">
               <Trans>Language</Trans>
             </h4>
             <LanguageChoice />

@@ -70,7 +70,7 @@ export default function ClaimSummary() {
       <div className="d-flex align-items-center justify-content-center mb-3">
         <Button
           title={t`Apply`}
-          variant={'outline-primary'}
+          variant={'primary'}
           className="px-5"
           onClick={handleClaim}
         >

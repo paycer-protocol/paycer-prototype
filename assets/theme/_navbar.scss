@@ -255,6 +255,7 @@
 .navbar-nav .nav-link {
   padding-left: $navbar-padding-x;
   padding-right: $navbar-padding-x;
+  font-weight: $font-weight-light;
 
   &.active {
     position: relative;
@@ -310,7 +311,7 @@
 
 
 // Expanded
-// 
+//
 // Expanded navbar specific styles
 
 .navbar-expand {
@@ -348,24 +349,29 @@
           // Increase $nav-link-padding-y value to align the underline
           // with the bottom of the navbar
           padding: .625rem $navbar-nav-link-padding-x;
+          color: $gray-400;
 
           &.active {
             position: relative;
+            color: $white;
 
             &:before {
               top: auto;
-              bottom: calc(-#{$navbar-padding-y} - #{$border-width});
+              bottom: -0.25rem;
               right: $navbar-nav-link-padding-x;
               left: $navbar-nav-link-padding-x;
-              border-left: 0;
-              border-bottom: 1px solid $primary;
+              height: 1px;
+              width: 100%;
+              background: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
+              border: 0;
+              left: 0;
             }
           }
         }
 
         // Toggle dropdown on hover
         @if ($navbar-dropdown-toggle-on-hover) {
-          
+
           .dropup, .dropend, .dropdown, .dropleft {
 
             &:hover > .dropdown-menu {
@@ -377,27 +383,27 @@
             left: 0;
             margin-top: 0;
           }
-          
+
           .dropdown > .dropdown-menu-start:not([data-bs-popper]) {
             right: auto /* rtl:ignore */;
             left: 0 /* rtl:ignore */;
           }
-          
+
           .dropdown > .dropdown-menu-end:not([data-bs-popper]) {
             right: 0 /* rtl:ignore */;
             left: auto /* rtl:ignore */;
           }
-        
+
           .dropup > .dropdown-menu:not([data-bs-popper]) {
             margin-top: 0;
             margin-bottom: 0;
           }
-          
+
           .dropend > .dropdown-menu:not([data-bs-popper]) {
             margin-top: 0;
             margin-left: 0;
           }
-          
+
           .dropstart > .dropdown-menu:not([data-bs-popper]) {
             margin-top: 0;
             margin-right: 0;
@@ -556,7 +562,7 @@
 
 
   // Expanded
-  // 
+  //
   // Expanded navbar specific styles
 
   &.navbar-expand {
@@ -691,7 +697,7 @@
 .navbar-vertical-sm {
 
   // Expanded
-  // 
+  //
   // Expanded navbar specific styles
 
   &.navbar-expand {

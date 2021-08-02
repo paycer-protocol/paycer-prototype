@@ -60,16 +60,16 @@ $teal: #02a8b5 !default; // NOT USED
 $cyan: #20d2f4 !default;
 $lightgreen: #c1ff93;
 $lightblue: #6ef2ff;
-
-$primary: $white;
-$secondary: $white;
-$success: $green !default;
-$info: $cyan !default;
-$warning: $yellow !default;
-$danger: $red !default;
-$light: $gray-200 !default;
-$lighter: $gray-100 !default;
-$dark: $black !default;
+//
+//$primary: $white;
+//$secondary: $white;
+//$success: $green;
+//$info: $cyan;
+//$warning: $yellow;
+//$danger: $red;
+//$light: $gray-200;
+//$lighter: $gray-100;
+//$dark: $black !default;
 
 /* beautify ignore:start */
 $theme-colors: () !default;
@@ -220,7 +220,7 @@ $font-size-sm: 0.8125rem !default; // 13px
 $font-size-lg: 1.0625rem !default; // 17px
 
 $font-weight-light: 400 !default;
-$font-weight-normal: 400 !default;
+$font-weight-normal: 500 !default;
 $font-weight-bold: 600 !default;
 
 $line-height-base: 1.5 !default;
@@ -243,7 +243,7 @@ $display-font-sizes: (
   1: 4rem,
   2: 3.25rem,
   3: 2.625rem,
-  4: 2rem,
+  4: 1.6rem,
 ) !default;
 /* beautify ignore:end */
 
@@ -269,10 +269,10 @@ $list-inline-padding: 6px !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding-y: 1rem !default;
-$table-cell-padding-x: 1rem !default;
-$table-cell-padding-y-sm: 1rem !default;
-$table-cell-padding-x-sm: 1rem !default;
+$table-cell-padding-y: 1.5rem !default;
+$table-cell-padding-x: 1.5rem !default;
+$table-cell-padding-y-sm: 1.5rem !default;
+$table-cell-padding-x-sm: 1.5rem !default;
 
 $table-striped-bg: $gray-100 !default;
 
@@ -314,9 +314,10 @@ $input-btn-line-height-lg: $line-height-base !default;
 // For each of Bootstrap's buttons, define text, background, and border color.
 
 $btn-border-width: 1px;
+$btn-border-radius: 25px;
 
-$btn-padding-y: $input-btn-padding-y !default;
-$btn-padding-x: $input-btn-padding-x !default;
+$btn-padding-y: 0.6rem;
+$btn-padding-x: 1rem;
 $btn-line-height: $input-btn-line-height !default;
 
 $btn-padding-y-sm: $input-btn-padding-y-sm !default;

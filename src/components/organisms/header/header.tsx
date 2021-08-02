@@ -45,7 +45,7 @@ const Header = () => {
       <>
           <header>
               <div className="navbar navbar-expand-lg border-bottom-0">
-                  <div className="container flex-row-reverse">
+                  <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
                               <StyledBrand className="px-md-3 py-0">
@@ -53,14 +53,14 @@ const Header = () => {
                               </StyledBrand>
                           </StyledLogo>
                       </Link>
-                      <ul className="navbar-nav flex-row d-none d-lg-flex">
-                          <li className="nav-item me-3">
+                      <ul className="navbar-nav flex-row d-none d-lg-flex mt-3">
+                          <li className="nav-item me-3 d-flex align-items-center">
                               <AddPaycerToken />
                           </li>
-                          <li className="nav-item me-3">
+                          <li className="nav-item me-3 d-flex align-items-center">
                               <Network />
                           </li>
-                          <li className="nav-item me-3">
+                          <li className="nav-item d-flex align-items-center">
                               <WalletConnect
                                 buttonVariant="light"
                                 dropdownVariant="light"
@@ -70,7 +70,7 @@ const Header = () => {
                               <SettingsModal />
                           </li>
                       </ul>
-                      <ul className="d-none d-lg-flex navbar-nav">
+                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {routes.map((route, key) => (
                             <li className="nav-item me-3" key={`nav${key}`}>
                                 <Link href={route.path}>

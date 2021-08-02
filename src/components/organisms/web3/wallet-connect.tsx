@@ -19,9 +19,9 @@ export interface AccountProps {
 
 const WalletConnect = (props: AccountProps) => {
     const {
-      buttonVariant = 'outline-primary',
-      dropdownVariant = 'outline-primary',
-      className,
+        buttonVariant = 'outline-primary',
+        dropdownVariant = 'outline-primary',
+        className,
     } = props
 
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -32,8 +32,7 @@ const WalletConnect = (props: AccountProps) => {
         return (
             <>
                 <Button
-                    variant={buttonVariant}
-                    className={classnames(className, 'px-4 text-nowrap p-2 bg-dark pt-3 pb-3')}
+                    className={classnames(className, 'px-4 text-nowrap p-2 bg-dark pt-3 pb-3 text-light')}
                     onClick={() => setShowWalletProviderModal(true)}
                 >
                     <Trans>Connect to a Wallet</Trans>
@@ -50,23 +49,22 @@ const WalletConnect = (props: AccountProps) => {
     return (
         <>
             <Button
-                variant={dropdownVariant}
-                className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark')}
+                className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark text-light')}
                 onClick={() => setShowAccountModal(true)}
             >
-              <div className="me-3">
-                <div className="d-flex">
-                  <div className="pt-1">
-                      <FormattedNumber
-                          value={wallet.etherBalance}
-                          minimumFractionDigits={2}
-                          maximumFractionDigits={4}
-                      />
-                  </div>
-                    <img width="26" className="ms-2" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
-                  </div>
+                <div className="me-3">
+                    <div className="d-flex">
+                        <img width="20" className="ms-1" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                        <div className="pt-1 pb-1 mx-2">
+                            <FormattedNumber
+                                value={wallet.etherBalance}
+                                minimumFractionDigits={2}
+                                maximumFractionDigits={4}
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className="bg-dark-soft rounded-2 p-3 pt-2 pb-2">
+                <div className="me-2 ms-2">
                     {wallet.shortenAddress}
                 </div>
             </Button>
@@ -76,9 +74,9 @@ const WalletConnect = (props: AccountProps) => {
                 setShowWalletProviderModal={setShowWalletProviderModal}
             />
             <WalletProvider
-              providers={connectors}
-              onHide={() => setShowWalletProviderModal(false)}
-              show={showWalletProviderModal}
+                providers={connectors}
+                onHide={() => setShowWalletProviderModal(false)}
+                show={showWalletProviderModal}
             />
         </>
     )

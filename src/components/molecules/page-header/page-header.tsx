@@ -6,9 +6,9 @@ export interface PageHeaderProps {
 }
 
 const Subtitle = ({ children }) => (
-    <h6 className="header-pretitle">
+    <h5 className="header-pretitle">
         {children}
-    </h6>
+    </h5>
 )
 
 const Title = ({ children }) => (

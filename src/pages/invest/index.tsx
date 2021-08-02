@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import Button from '@components/atoms/button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import InvestList from '@components/organisms/invest/invest-list/invest-list'
 import InvestListProvider from '../../context/invest-list-context'
@@ -25,7 +23,7 @@ export default function Invest() {
                     </div>
                 </div>
             </PageHeader>
-            <div className="row">
+            <div className="row blur-background">
                 <div className="col">
                     <InvestListProvider>
                         <InvestList />

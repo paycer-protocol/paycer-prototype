@@ -1,38 +1,34 @@
 import React, {useState} from 'react'
-import classnames from 'classnames'
 import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
-import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import DarkModeToggle from '@components/molecules/dark-mode-toggle'
 import { LanguageChoice } from '@components/molecules/languages/language-choice'
 import { ThreeDotsVertical } from '@styled-icons/bootstrap'
+import styled from 'styled-components'
+
+const ÌconWrapper = styled.div`
+  padding: 16px;
+`
 
 export const SettingsModal = (props) => {
   const [show, setShow] = useState(false)
 
   return (
     <>
-      <Button
-        variant="light"
-        className={classnames('d-flex align-items-center justify-content-center bg-dark', props.className)}
+      <ÌconWrapper
         style={{ padding: '16px'}}
         onClick={() => setShow(true)}
+        className="cursor-pointer"
       >
-        <Icon component={ThreeDotsVertical} size={18} />
-      </Button>
+        <Icon component={ThreeDotsVertical} size={22} />
+      </ÌconWrapper>
       <Modal show={show} onHide={() => setShow(false)}>
         <>
           <Modal.Header closeButton onHide={() => setShow(false)}>
             <Modal.Title><Trans>Settings</Trans></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="mb-5">
-              <h4 className="mb-3 text-muted">
-                <Trans>Theme</Trans>
-              </h4>
-              <DarkModeToggle />
-            </div>
             <div className="mb-5">
               <h4 className="mb-3 text-muted">
                 <Trans>Language</Trans>

@@ -23,8 +23,8 @@ const StyledCard = styled(Card)`
 `
 
 interface InvestFormProps extends StrategyType {
-    setShowInvestForm: any
-    isModal: boolean
+    setShowInvestForm?: any
+    isModal?: boolean
 }
 
 const InvestForm = (props: InvestFormProps) => {
@@ -80,10 +80,10 @@ const InvestForm = (props: InvestFormProps) => {
                           <InvestRangeSlider />
                       </div>
                       <div className="row mb-4">
-                          <div className="col-6">
+                          <div className="col-12 col-md-6 mb-4 mb-md-0">
                               <BaseInput />
                           </div>
-                          <div className="col-6">
+                          <div className="col-12 col-md-6 mb-4 mb-md-0">
                               <InvestInput />
                           </div>
                       </div>
