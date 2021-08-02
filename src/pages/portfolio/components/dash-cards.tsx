@@ -2,9 +2,9 @@ import { Trans, t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
 import React from "react";
-import styled, { css } from 'styled-components'
-import {StrategyType} from "@types/investment";
-import { PieChart } from 'react-minimal-pie-chart';
+import styled from 'styled-components'
+import { StrategyType } from '../../../types/investment'
+import { PieChart } from 'react-minimal-pie-chart'
 
 const DashContainer = styled.div`
   height: 260px;
