@@ -19,7 +19,7 @@ const DemoBadge = styled.div`
     font-weight: 500;
     color: white;
     text-shadow: rgb(0 0 0) -1px 1px 7px;
-    height: 17px;
+    height: 19px;
     justify-content: center;
     display: flex;
     align-items: center;
