@@ -48,7 +48,7 @@ const Header = () => {
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
-                              <StyledBrand className="px-md-3 py-0">
+                              <StyledBrand className="px-md-3 py-0 ms-3">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
                               </StyledBrand>
                           </StyledLogo>

@@ -172,8 +172,8 @@ msgid "Distribution"
 msgstr "Distribution"
 
 #: src/config/routes.ts:22
-msgid "Docs"
-msgstr "Docs"
+#~ msgid "Docs"
+#~ msgstr "Docs"
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
@@ -269,8 +269,8 @@ msgstr "Invest now"
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
-#: src/components/organisms/header/settings-modal.tsx:45
-#: src/components/organisms/off-canvas/index.tsx:87
+#: src/components/organisms/header/settings-modal.tsx:34
+#: src/components/organisms/off-canvas/index.tsx:81
 msgid "Language"
 msgstr "Language"
 
@@ -376,7 +376,7 @@ msgstr "Search by: Strategy, APR, Asset, Risk Level, Address..."
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
 
-#: src/components/organisms/header/settings-modal.tsx:34
+#: src/components/organisms/header/settings-modal.tsx:29
 msgid "Settings"
 msgstr "Settings"
 
@@ -441,8 +441,8 @@ msgstr "The secure app to store crypto yourself"
 
 #: src/components/organisms/header/settings-modal.tsx:39
 #: src/components/organisms/off-canvas/index.tsx:81
-msgid "Theme"
-msgstr "Theme"
+#~ msgid "Theme"
+#~ msgstr "Theme"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Token Balance"

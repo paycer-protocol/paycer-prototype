@@ -61,7 +61,7 @@ const WalletProvider = (props: WalletProviderProps) => {
               return (
                 <Button
                   key={item.name}
-                  variant="light"
+                  variant="outline-primary"
                   className="mb-2"
                   active={isActivating}
                   disabled={isDisabled}
@@ -69,7 +69,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                 >
                   <div className="d-flex align-items-center justify-content-between py-3 px-2">
                     <div className="text-start">
-                      <strong>{item.name}</strong>
+                      <strong className="text-white">{item.name}</strong>
                       <p className="mb-0">
                         <small className="text-muted">{item.description}</small>
                       </p>

@@ -163,8 +163,8 @@ msgid "Distribution"
 msgstr ""
 
 #: src/config/routes.ts:22
-msgid "Docs"
-msgstr ""
+#~ msgid "Docs"
+#~ msgstr ""
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
@@ -260,8 +260,8 @@ msgstr ""
 msgid "Investment ratio"
 msgstr ""
 
-#: src/components/organisms/header/settings-modal.tsx:45
-#: src/components/organisms/off-canvas/index.tsx:87
+#: src/components/organisms/header/settings-modal.tsx:34
+#: src/components/organisms/off-canvas/index.tsx:81
 msgid "Language"
 msgstr ""
 
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Search by: Strategy, APR, Asset, Risk Level, Address..."
 msgstr ""
 
-#: src/components/organisms/header/settings-modal.tsx:34
+#: src/components/organisms/header/settings-modal.tsx:29
 msgid "Settings"
 msgstr ""
 
@@ -415,8 +415,8 @@ msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:39
 #: src/components/organisms/off-canvas/index.tsx:81
-msgid "Theme"
-msgstr ""
+#~ msgid "Theme"
+#~ msgstr ""
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Token Balance"
