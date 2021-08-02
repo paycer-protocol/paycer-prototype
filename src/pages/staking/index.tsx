@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import router from 'next/router'
 import PageHeader from '@components/molecules/page-header'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
