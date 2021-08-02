@@ -11,7 +11,7 @@ export default function SubmitButton() {
     return (
         <Button
             variant={isDisabled ? 'outline-success' : 'success'}
-            className="px-8 mb-2"
+            className="px-6 px-md-8 mb-2"
             disabled={isDisabled}
         >
             {t`Invest`}

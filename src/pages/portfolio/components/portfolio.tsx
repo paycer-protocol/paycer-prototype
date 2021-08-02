@@ -42,9 +42,9 @@ export default function Portfolio(props: PortfolioProps) {
                   </span>
               </th>
               <th className="text-end">
-                <a href="#" className="text-muted">
+                <span className="text-muted">
                   <Trans>Liquidity</Trans>
-                </a>
+                </span>
               </th>
             </tr>
             </thead>

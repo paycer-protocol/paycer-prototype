@@ -9,11 +9,6 @@ import styled from 'styled-components'
 
 const ÌconWrapper = styled.div`
   padding: 16px;
-  &:hover {
-    svg {
-      color: #8D0DA2;
-    }
-  }
 `
 
 export const SettingsModal = (props) => {
@@ -34,12 +29,6 @@ export const SettingsModal = (props) => {
             <Modal.Title><Trans>Settings</Trans></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="mb-5">
-              <h4 className="mb-3 text-muted">
-                <Trans>Theme</Trans>
-              </h4>
-              <DarkModeToggle />
-            </div>
             <div className="mb-5">
               <h4 className="mb-3 text-muted">
                 <Trans>Language</Trans>

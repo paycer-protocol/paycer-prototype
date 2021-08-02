@@ -9,8 +9,7 @@ import useWallet from '@hooks/use-wallet'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
-import NativeCurrencyIcon from './native-currency-icon'
-import {normalizeFilename} from "../../../helper/filename";
+import { normalizeFilename } from '../../../helper/filename'
 
 
 export interface AccountDetailProps {
@@ -30,13 +29,20 @@ type ListGroupItemProps = {
 }
 
 const AccountAction = (props: ListGroupItemProps) => {
-    const { name, description, onClick, href, target, variant = 'light', children } = props
+    const { name, description, onClick, href, target, variant = 'outline-primary', children } = props
 
     return (
-        <Button variant={variant} className="mb-2" href={href} target={target} onClick={onClick}>
+        <Button
+          style={{ borderRadius: '10px' }}
+          variant={variant}
+          className="mb-2"
+          href={href}
+          target={target}
+          onClick={onClick}
+        >
             <div className="d-flex align-items-center justify-content-between py-3 px-2">
                 <div className="text-start">
-                    <strong>{name}</strong>
+                    <strong className="text-white">{name}</strong>
                     <p className="text-muted mb-0">
                         <small>{description}</small>
                     </p>
@@ -66,10 +72,12 @@ const AccountBalance = () => {
                     </span>
                 </p>
             </div>
-            {
-                //<NativeCurrencyIcon size={35} />}
-            }
-            <img width="40" className="ms-2 mt-3" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+            <img
+              width="40"
+              className="ms-2 mt-3"
+              src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`}
+              alt={wallet.etherSymbol}
+            />
         </div>
     )
 }

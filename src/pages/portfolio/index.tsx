@@ -49,7 +49,7 @@ export default function Home() {
         </div>
       </PageHeader>
       <div className="blur-background">
-          <div className="mb-6 mb-md-8">
+          <div className="mb-7 mb-md-3">
             <DashCards totalBalance={totalBalance} />
           </div>
           <div className="row position-relatives">

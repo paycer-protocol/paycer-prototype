@@ -4,6 +4,9 @@ import { Money } from '@components/atoms/number'
 import React from "react";
 import styled from 'styled-components'
 
+const DashContainer = styled.div`
+  height: 260px;
+`
 
 const Circle = styled.div`
   position: absolute;
@@ -11,16 +14,15 @@ const Circle = styled.div`
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px),#fff 0);
   width: 260px;
   padding-top: 260px;
-  top: -75%;
-  
-  
+  top: -28%;
+
   @media (max-width: 767.98px) {
       width: 350px;
       padding-top: 350px;
       top: -140%;
   }
 
-  
+
   &:before {
     position: absolute;
     content: "";
@@ -32,7 +34,7 @@ const Circle = styled.div`
     border-radius: 50%;
     z-index: -1;
   }
-  
+
   &:after {
     position: absolute;
     content: "";
@@ -53,8 +55,8 @@ interface DashCardsProps {
 }
 
 export default function DashCards ({ totalBalance }: DashCardsProps) {
-    return (
-        <div className="row justify-content-between">
+     return (
+        <DashContainer className="row justify-content-between">
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
                 <DashCard title={t`Balance`} className="mb-0">
                     <div className="d-flex justify-content-between">
@@ -85,6 +87,6 @@ export default function DashCards ({ totalBalance }: DashCardsProps) {
                     </div>
                 </DashCard>
             </div>
-        </div>
+        </DashContainer>
     )
 }

@@ -53,7 +53,7 @@ const Header = () => {
                               </StyledBrand>
                           </StyledLogo>
                       </Link>
-                      <ul className="navbar-nav flex-row d-none d-lg-flex">
+                      <ul className="navbar-nav flex-row d-none d-lg-flex mt-3">
                           <li className="nav-item me-3 d-flex align-items-center">
                               <AddPaycerToken />
                           </li>
@@ -70,7 +70,7 @@ const Header = () => {
                               <SettingsModal />
                           </li>
                       </ul>
-                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto">
+                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {routes.map((route, key) => (
                             <li className="nav-item me-3" key={`nav${key}`}>
                                 <Link href={route.path}>

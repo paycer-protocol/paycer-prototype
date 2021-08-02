@@ -17,9 +17,5 @@ export const routes = [
   {
     label: t`Staking`,
     path: '/staking',
-  },
-  {
-    label: t`Docs`,
-    path: '/docs',
-  },
+  }
 ]

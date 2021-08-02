@@ -13,11 +13,6 @@
 
 
 // Buttons
-
-header {
-  background: $gray-500-dark;
-}
-
 .btn-white, .btn-light {
   @include button-variant($gray-800-dark, $gray-600-dark);
 

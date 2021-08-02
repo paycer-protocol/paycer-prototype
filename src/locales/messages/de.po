@@ -24,7 +24,7 @@ msgstr ""
 msgid "APY"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:87
+#: src/components/organisms/web3/wallet-detail.tsx:95
 msgid "Account"
 msgstr ""
 
@@ -55,9 +55,9 @@ msgstr ""
 msgid "Available Balance"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:56
-#: src/pages/portfolio/components/dash-cards.tsx:55
-#: src/pages/portfolio/components/portfolio.tsx:52
+#: src/components/organisms/web3/wallet-detail.tsx:62
+#: src/pages/portfolio/components/dash-cards.tsx:61
+#: src/pages/portfolio/components/portfolio.tsx:36
 msgid "Balance"
 msgstr ""
 
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:110
+#: src/components/organisms/web3/wallet-detail.tsx:118
 msgid "Change your wallet provider"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr ""
 
 #: src/components/organisms/web3/wallet-connect.tsx:38
-#: src/components/organisms/web3/wallet-detail.tsx:131
+#: src/components/organisms/web3/wallet-detail.tsx:139
 msgid "Connect to a Wallet"
 msgstr ""
 
@@ -111,11 +111,11 @@ msgstr ""
 #~ msgid "Connected with MetaMask"
 #~ msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:102
+#: src/components/organisms/web3/wallet-detail.tsx:110
 msgid "Copy address"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:103
+#: src/components/organisms/web3/wallet-detail.tsx:111
 msgid "Copy your wallet address to clipboard"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 #~ msgid "Deposited"
 #~ msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:123
+#: src/components/organisms/web3/wallet-detail.tsx:131
 msgid "Disconnect"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Enter your invest amount"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:96
+#: src/components/organisms/web3/wallet-detail.tsx:104
 msgid "Explorer"
 msgstr ""
 
@@ -244,6 +244,10 @@ msgstr ""
 msgid "Invest amount"
 msgstr ""
 
+#: src/pages/portfolio/components/portfolio.tsx:101
+msgid "Invest now"
+msgstr ""
+
 #: src/pages/invest/create/index.tsx:80
 #~ msgid "Investment amount"
 #~ msgstr ""
@@ -252,7 +256,7 @@ msgstr ""
 #~ msgid "Investment distribution"
 #~ msgstr ""
 
-#: src/pages/portfolio/components/portfolio.tsx:57
+#: src/pages/portfolio/components/portfolio.tsx:41
 msgid "Investment ratio"
 msgstr ""
 
@@ -269,13 +273,13 @@ msgstr ""
 msgid "Light Mode"
 msgstr ""
 
-#: src/pages/portfolio/components/portfolio.tsx:62
+#: src/pages/portfolio/components/portfolio.tsx:46
 msgid "Liquidity"
 msgstr ""
 
 #: src/helper/map-risk-level.tsx:6
 #: src/pages/invest/create/fields/risk-choice.tsx:10
-#: src/pages/portfolio/components/dash-cards.tsx:80
+#: src/pages/portfolio/components/dash-cards.tsx:86
 msgid "Low"
 msgstr ""
 
@@ -310,7 +314,7 @@ msgid "No Ethereum browser extension detected, install MetaMask on desktop or vi
 msgstr ""
 
 #: src/pages/invest/index.tsx:18
-#: src/pages/portfolio/index.tsx:14
+#: src/pages/portfolio/index.tsx:43
 msgid "Overview"
 msgstr ""
 
@@ -323,7 +327,7 @@ msgid "Please open your wallet and connect your account."
 msgstr ""
 
 #: src/config/routes.ts:5
-#: src/pages/portfolio/index.tsx:17
+#: src/pages/portfolio/index.tsx:46
 msgid "Portfolio"
 msgstr ""
 
@@ -338,7 +342,7 @@ msgstr ""
 #: src/components/organisms/invest/invest-card/index.tsx:121
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:78
+#: src/pages/portfolio/components/dash-cards.tsx:84
 msgid "Risk"
 msgstr ""
 
@@ -346,7 +350,7 @@ msgstr ""
 msgid "Safe hardware wallet for your coins."
 msgstr ""
 
-#: src/pages/portfolio/components/dash-cards.tsx:71
+#: src/pages/portfolio/components/dash-cards.tsx:77
 msgid "Savings"
 msgstr ""
 
@@ -389,7 +393,7 @@ msgstr ""
 msgid "Start invest"
 msgstr ""
 
-#: src/pages/portfolio/components/portfolio.tsx:47
+#: src/pages/portfolio/components/portfolio.tsx:31
 msgid "Strategy"
 msgstr ""
 
@@ -401,7 +405,7 @@ msgstr ""
 msgid "Switch network"
 msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:109
+#: src/components/organisms/web3/wallet-detail.tsx:117
 msgid "Switch wallet"
 msgstr ""
 
@@ -440,7 +444,7 @@ msgstr ""
 #~ msgid "Unsakted Tokens"
 #~ msgstr ""
 
-#: src/components/organisms/web3/wallet-detail.tsx:97
+#: src/components/organisms/web3/wallet-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"
 msgstr ""
 
@@ -450,6 +454,10 @@ msgstr ""
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:52
 msgid "Withdraw"
+msgstr ""
+
+#: src/pages/portfolio/components/portfolio.tsx:97
+msgid "You have no investments in your portfolio"
 msgstr ""
 
 #: src/components/organisms/web3/wallet-provider.tsx:32
