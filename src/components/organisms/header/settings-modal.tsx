@@ -17,7 +17,7 @@ export const SettingsModal = (props) => {
   return (
     <>
       <ÌconWrapper
-        style={{ padding: '16px'}}
+        style={{ padding: '16px 0 16px 16px'}}
         onClick={() => setShow(true)}
         className="cursor-pointer"
       >

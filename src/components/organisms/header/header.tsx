@@ -12,7 +12,7 @@ import WalletConnect from '../web3/wallet-connect'
 import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
-import SettingsModal from '@components/organisms/header/settings-modal'
+import useWallet from '@hooks/use-wallet'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -40,15 +40,18 @@ const StyledLogo = styled.a`
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
+    const wallet = useWallet()
+
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
 
     return (
       <>
-          <header>
+          <header className="mx-md-4 mx-lg-5">
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
-                              <StyledBrand className="px-md-3 py-0">
+                              <StyledBrand className="me-4 py-0">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
                               </StyledBrand>
                           </StyledLogo>
@@ -66,12 +69,9 @@ const Header = () => {
                                 dropdownVariant="light"
                               />
                           </li>
-                          <li className="nav-item me-3">
-                              <SettingsModal />
-                          </li>
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
-                          {routes.map((route, key) => (
+                          {qualifiedRoutes.map((route, key) => (
                             <li className="nav-item me-3" key={`nav${key}`}>
                                 <Link href={route.path}>
                                     <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')} title={route.label}>

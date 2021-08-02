@@ -22,7 +22,7 @@ export default function Portfolio(props: PortfolioProps) {
 
   return (
       <div className="table-responsive mb-0">
-        <Card>
+        <Card className="border-0">
           <table className="table table-sm table-nowrap card-table">
             <thead>
             <tr>

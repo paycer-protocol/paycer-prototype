@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import Button from '@components/atoms/button'
 import useWallet from '@hooks/use-wallet'
-import NativeCurrencyIcon  from './native-currency-icon'
 import NetworkProvider  from './network-provider'
 import { mainNetProviders } from '@providers/networks'
 

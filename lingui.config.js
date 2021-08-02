@@ -13,7 +13,7 @@ module.exports = {
   sourceLocale: 'en',
   locales: [
     'en',
-    'de'
+    // 'de'
   ],
   orderBy: 'messageId',
   pseudoLocale: '',
