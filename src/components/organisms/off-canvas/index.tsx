@@ -7,8 +7,7 @@ import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
-import { LanguageChoice } from '@components/molecules/languages'
-import DarkModeToggle from '@components/molecules/dark-mode-toggle'
+import AddPaycerToken from '../web3/add-paycer-token'
 import useWallet from '@hooks/use-wallet'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
@@ -78,9 +77,9 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
           </div>
           <div className="mb-5">
             <h4 className="mb-3 text-muted">
-              <Trans>Language</Trans>
+              <Trans>Paycer Token</Trans>
             </h4>
-            <LanguageChoice />
+            <AddPaycerToken />
           </div>
         </Modal.Body>
       </>

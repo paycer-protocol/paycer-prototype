@@ -28,6 +28,10 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
+#: src/components/organisms/off-canvas/index.tsx:80
+msgid "Add Token"
+msgstr ""
+
 #: src/components/organisms/web3/network-provider.tsx:43
 msgid "Adding Network to Wallet ..."
 msgstr ""
@@ -261,7 +265,6 @@ msgid "Investment ratio"
 msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:34
-#: src/components/organisms/off-canvas/index.tsx:81
 msgid "Language"
 msgstr ""
 
@@ -288,7 +291,7 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: src/components/organisms/off-canvas/index.tsx:61
+#: src/components/organisms/off-canvas/index.tsx:60
 msgid "Menu"
 msgstr ""
 
@@ -448,7 +451,7 @@ msgstr ""
 msgid "View your wallet in Blockchain Explorer"
 msgstr ""
 
-#: src/components/organisms/off-canvas/index.tsx:42
+#: src/components/organisms/off-canvas/index.tsx:41
 msgid "Wallet"
 msgstr ""
 

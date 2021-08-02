@@ -28,6 +28,10 @@ msgstr "APY"
 msgid "Account"
 msgstr "Account"
 
+#: src/components/organisms/off-canvas/index.tsx:80
+msgid "Add Token"
+msgstr "Add Token"
+
 #: src/components/organisms/web3/network-provider.tsx:43
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
@@ -270,7 +274,6 @@ msgid "Investment ratio"
 msgstr "Investment ratio"
 
 #: src/components/organisms/header/settings-modal.tsx:34
-#: src/components/organisms/off-canvas/index.tsx:81
 msgid "Language"
 msgstr "Language"
 
@@ -297,7 +300,7 @@ msgstr "Low"
 msgid "Medium"
 msgstr "Medium"
 
-#: src/components/organisms/off-canvas/index.tsx:61
+#: src/components/organisms/off-canvas/index.tsx:60
 msgid "Menu"
 msgstr "Menu"
 
@@ -478,7 +481,7 @@ msgstr "Total claimed"
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
-#: src/components/organisms/off-canvas/index.tsx:42
+#: src/components/organisms/off-canvas/index.tsx:41
 msgid "Wallet"
 msgstr "Wallet"
 

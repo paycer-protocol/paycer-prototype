@@ -66,9 +66,9 @@ const Header = () => {
                                 dropdownVariant="light"
                               />
                           </li>
-                          <li className="nav-item" style={{marginRight: "-8px"}}>
-                              <SettingsModal />
-                          </li>
+                          {/*<li className="nav-item" style={{marginRight: "-8px"}}>*/}
+                          {/*    <SettingsModal />*/}
+                          {/*</li>*/}
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {routes.map((route, key) => (
