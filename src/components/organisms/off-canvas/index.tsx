@@ -20,6 +20,7 @@ interface OffCanvasProps {
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
   const wallet = useWallet()
+  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
 
   return (
     <Modal show={show} onHide={onHide} vertical>
@@ -60,7 +61,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
               <Trans>Menu</Trans>
             </h4>
             <ul className="navbar-nav">
-              {routes.map((route, key) => (
+              {qualifiedRoutes.map((route, key) => (
                 <li className="nav-item" key={`nav${key}`}>
                   <Link href={route.path}>
                     <a
