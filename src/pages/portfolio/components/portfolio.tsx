@@ -1,4 +1,5 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
@@ -10,12 +11,22 @@ import { StrategyType } from '../../../types/investment'
 interface PortfolioStrategy extends StrategyType {
   balance?: number
   tvl?: number
+  color?: string
 }
 
 interface PortfolioProps {
   strategies: PortfolioStrategy[]
   totalBalance: number
 }
+
+const ProgressbarColorWrapper = styled.div`
+    ${props => props.color && css`
+      .progress-bar {
+        background: ${props.color};
+      }
+    `}
+`
+
 
 export default function Portfolio(props: PortfolioProps) {
   const { strategies, totalBalance } = props
@@ -84,12 +95,14 @@ export default function Portfolio(props: PortfolioProps) {
                         />
                       </div>
                       <div className="col">
-                        <ProgressBar
-                          className="progress-sm"
-                          now={tokenBalance * 100 / totalBalance}
-                          min={0}
-                          max={100}
-                        />
+                        <ProgressbarColorWrapper color={strategy.color}>
+                            <ProgressBar
+                              className="progress-sm"
+                              now={tokenBalance * 100 / totalBalance}
+                              min={0}
+                              max={100}
+                            />
+                        </ProgressbarColorWrapper>
                       </div>
                     </div>
                   </td>
