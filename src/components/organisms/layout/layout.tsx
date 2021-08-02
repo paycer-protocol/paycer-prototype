@@ -24,7 +24,7 @@ const DemoBadge = styled.div`
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    background: linear-gradient(101deg,#733dca,#c3cef7);
+    background: linear-gradient(101deg,#ca3dbf,#c3cef7);
     letter-spacing: 0.1px;
     z-index: 1;
 `
