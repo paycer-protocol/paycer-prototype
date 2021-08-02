@@ -26,6 +26,7 @@ const DemoBadge = styled.div`
     text-transform: uppercase;
     background: linear-gradient(101deg,#733dca,#c3cef7);
     letter-spacing: 0.1px;
+    z-index: 1;
 `
 
 const Layout = (props: LayoutProps) => {
@@ -36,10 +37,10 @@ const Layout = (props: LayoutProps) => {
             <Header />
             <main role="main">
                 {children}
-                <DemoBadge>
-                    Demo
-                </DemoBadge>
             </main>
+            <DemoBadge>
+                Demo
+            </DemoBadge>
         </>
     )
 }
