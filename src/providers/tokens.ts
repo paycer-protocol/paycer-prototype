@@ -13,6 +13,9 @@ export const tokenProvider: ITokenProvider = {
       chainAddresses: {
         [ChainId.Mainnet]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
         [ChainId.Kovan]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c',
+        [ChainId.Polygon]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
+        [ChainId.Mumbai]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
+        [ChainId.BSC]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
       }
     },
     USDC: {
