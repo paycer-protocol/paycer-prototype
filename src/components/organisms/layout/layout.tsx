@@ -8,18 +8,18 @@ export interface LayoutProps {
 
 const DemoBadge = styled.div`
     position: fixed;
-    transform: rotate(312deg);
-    right: -64px;
-    bottom: 34px;
+    transform: rotate(48deg);
+    right: -89px;
+    top: 19px;
     line-height: 25px;
-    font-size: 12px;
-    width: 218px;
+    font-size: 11px;
+    width: 222px;
     padding-left: 3px;
     text-align: center;
     font-weight: 500;
     color: white;
     text-shadow: rgb(0 0 0) -1px 1px 7px;
-    height: 28px;
+    height: 17px;
     justify-content: center;
     display: flex;
     align-items: center;
