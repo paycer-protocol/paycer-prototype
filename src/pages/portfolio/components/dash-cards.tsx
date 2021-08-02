@@ -62,7 +62,7 @@ export default function DashCards ({ totalBalance }: DashCardsProps) {
                     <div className="d-flex justify-content-between">
                         <img
                           width="30"
-                          className="me-3"
+                          className="d-none d-md-block me-3"
                           src={`assets/icons/usd.svg`}
                           alt={'USD'}
                         />

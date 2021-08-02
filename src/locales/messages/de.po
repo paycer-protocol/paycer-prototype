@@ -28,6 +28,10 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
+#: src/components/organisms/off-canvas/index.tsx:80
+msgid "Add Token"
+msgstr ""
+
 #: src/components/organisms/web3/network-provider.tsx:43
 msgid "Adding Network to Wallet ..."
 msgstr ""
@@ -163,8 +167,8 @@ msgid "Distribution"
 msgstr ""
 
 #: src/config/routes.ts:22
-msgid "Docs"
-msgstr ""
+#~ msgid "Docs"
+#~ msgstr ""
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
@@ -260,8 +264,7 @@ msgstr ""
 msgid "Investment ratio"
 msgstr ""
 
-#: src/components/organisms/header/settings-modal.tsx:45
-#: src/components/organisms/off-canvas/index.tsx:87
+#: src/components/organisms/header/settings-modal.tsx:34
 msgid "Language"
 msgstr ""
 
@@ -288,7 +291,7 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: src/components/organisms/off-canvas/index.tsx:61
+#: src/components/organisms/off-canvas/index.tsx:60
 msgid "Menu"
 msgstr ""
 
@@ -358,7 +361,7 @@ msgstr ""
 msgid "Search by: Strategy, APR, Asset, Risk Level, Address..."
 msgstr ""
 
-#: src/components/organisms/header/settings-modal.tsx:34
+#: src/components/organisms/header/settings-modal.tsx:29
 msgid "Settings"
 msgstr ""
 
@@ -415,8 +418,8 @@ msgstr ""
 
 #: src/components/organisms/header/settings-modal.tsx:39
 #: src/components/organisms/off-canvas/index.tsx:81
-msgid "Theme"
-msgstr ""
+#~ msgid "Theme"
+#~ msgstr ""
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Token Balance"
@@ -448,7 +451,7 @@ msgstr ""
 msgid "View your wallet in Blockchain Explorer"
 msgstr ""
 
-#: src/components/organisms/off-canvas/index.tsx:42
+#: src/components/organisms/off-canvas/index.tsx:41
 msgid "Wallet"
 msgstr ""
 

@@ -8,7 +8,7 @@ export const yVaultProvider: ITokenProvider = {
     decimals: 6,
     chainAddresses: {
       [ChainId.Mainnet]: '0x5f18c75abdae578b483e5f43f12a39cf75b973a9',
-      [ChainId.Kovan]: '',
+      [ChainId.Kovan]: '0x5f18c75abdae578b483e5f43f12a39cf75b973a9', // TODO
     }
   },
   yvDAI: {
@@ -17,7 +17,7 @@ export const yVaultProvider: ITokenProvider = {
     decimals: 18,
     chainAddresses: {
       [ChainId.Mainnet]: '0x19d3364a399d251e894ac732651be8b0e4e85001',
-      [ChainId.Kovan]: '',
+      [ChainId.Kovan]: '0x19d3364a399d251e894ac732651be8b0e4e85001', // TODO
     }
   },
   yvUSDT: {
@@ -26,7 +26,7 @@ export const yVaultProvider: ITokenProvider = {
     decimals: 6,
     chainAddresses: {
       [ChainId.Mainnet]: '0x7Da96a3891Add058AdA2E826306D812C638D87a7',
-      [ChainId.Kovan]: '',
+      [ChainId.Kovan]: '0x7Da96a3891Add058AdA2E826306D812C638D87a7', // TODO
     }
   },
 }

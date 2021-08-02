@@ -7,8 +7,7 @@ import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
 import Image from '@components/atoms/image'
 import Navbar from '@components/molecules/navbar'
-import { LanguageChoice } from '@components/molecules/languages'
-import DarkModeToggle from '@components/molecules/dark-mode-toggle'
+import AddPaycerToken from '../web3/add-paycer-token'
 import useWallet from '@hooks/use-wallet'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
@@ -21,6 +20,7 @@ interface OffCanvasProps {
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
   const wallet = useWallet()
+  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
 
   return (
     <Modal show={show} onHide={onHide} vertical>
@@ -61,7 +61,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
               <Trans>Menu</Trans>
             </h4>
             <ul className="navbar-nav">
-              {routes.map((route, key) => (
+              {qualifiedRoutes.map((route, key) => (
                 <li className="nav-item" key={`nav${key}`}>
                   <Link href={route.path}>
                     <a
@@ -78,9 +78,9 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
           </div>
           <div className="mb-5">
             <h4 className="mb-3 text-muted">
-              <Trans>Language</Trans>
+              <Trans>Paycer Token</Trans>
             </h4>
-            <LanguageChoice />
+            <AddPaycerToken />
           </div>
         </Modal.Body>
       </>

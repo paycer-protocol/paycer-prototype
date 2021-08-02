@@ -5,15 +5,15 @@ export interface IContractProvider {
   [name: string]: {
     chainAddresses: {
       [ChainId.Mainnet]: string
-      [ChainId.Ropsten]: string
       [ChainId.Kovan]: string
-      [ChainId.Rinkeby]: string
-      [ChainId.Goerli]: string
       [ChainId.BSC]: string
-      [ChainId.xDai]: string
       [ChainId.Polygon]: string
       [ChainId.Mumbai]: string
-      [ChainId.Hardhat]: string
+      [ChainId.Ropsten]?: string
+      [ChainId.Rinkeby]?: string
+      [ChainId.Goerli]?: string
+      [ChainId.xDai]?: string
+      [ChainId.Hardhat]?: string
     }
   }
 }
