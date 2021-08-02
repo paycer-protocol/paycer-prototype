@@ -60,6 +60,7 @@ const WalletProvider = (props: WalletProviderProps) => {
 
               return (
                 <Button
+                  style={{ borderRadius: '10px' }}
                   key={item.name}
                   variant="outline-primary"
                   className="mb-2"
