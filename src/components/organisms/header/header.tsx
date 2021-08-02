@@ -81,7 +81,7 @@ const Header = () => {
                             </li>
                           ))}
                       </ul>
-                      <ul className="navbar-nav flex-row d-flex d-lg-none">
+                      <ul className="navbar-nav flex-row d-flex d-lg-none me-4">
                           <li className="me-3">
                               <Icon
                                 onClick={() => setShowModalNav(true)}

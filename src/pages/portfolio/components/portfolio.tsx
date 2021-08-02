@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
-import {FormattedNumber, Money, Percentage} from '@components/atoms/number'
+import { FormattedNumber, Money, Percentage } from '@components/atoms/number'
 import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 
@@ -38,6 +38,11 @@ export default function Portfolio(props: PortfolioProps) {
               </th>
               <th>
                   <span className="text-muted">
+                    <Trans>APY</Trans>
+                  </span>
+              </th>
+              <th>
+                  <span className="text-muted">
                     <Trans>Investment ratio </Trans>
                   </span>
               </th>
@@ -52,6 +57,7 @@ export default function Portfolio(props: PortfolioProps) {
             {strategies.length ? strategies.map((strategy, key) => {
               const token = strategy.output
               const tokenBalance = strategy.balance
+              const interest = strategy.interest.interestRate + strategy.rewards.rewardRate
 
               return (
                 <tr key={key}>
@@ -65,6 +71,9 @@ export default function Portfolio(props: PortfolioProps) {
                       maximumFractionDigits={4}
                     />
                     &nbsp;{token.symbol}
+                  </td>
+                  <td>
+                    <Percentage value={interest / 100} />
                   </td>
                   <td className="text-end">
                     <div className="row align-items-center g-0">
