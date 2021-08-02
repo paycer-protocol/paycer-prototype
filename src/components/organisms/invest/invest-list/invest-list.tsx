@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import InvestListItem from '@components/organisms/invest/invest-list-item'
@@ -32,6 +32,16 @@ const InvestList = () => {
     const [listView, setListView] = useState<boolean>(true)
     const InvestItemComponent = (listView && !isTabletOrMobile) ? InvestListItem : InvestCard
 
+    useEffect(() => {
+        if (!isTabletOrMobile) {
+            const listViewStorage = sessionStorage.getItem('investListView')
+
+            if (listViewStorage === 'false') {
+                setListView(false)
+            }
+        }
+    }, [])
+
     return (
         <>
             <div className="row mb-5">
@@ -44,14 +54,20 @@ const InvestList = () => {
                             <StyledButton
                                 variant="light"
                                 className={listView ? 'btn-lg' : 'bg-dark btn-lg'}
-                                onClick={() => setListView(false)}
+                                onClick={() => {
+                                    setListView(false)
+                                    sessionStorage.setItem('investListView', 'false');
+                                }}
                             >
                                 <Icon component={Grid} size={20} />
                             </StyledButton>
                             <StyledButton
                                 variant="light"
                                 className={!listView ? 'btn-lg' : 'bg-dark btn-lg'}
-                                onClick={() => setListView(true)}
+                                onClick={() =>  {
+                                    setListView(true)
+                                    sessionStorage.setItem('investListView', 'true');
+                                }}
                             >
                                 <Icon component={List} size={20} />
                             </StyledButton>
