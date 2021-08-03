@@ -1,7 +1,7 @@
 import { Trans, t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
-import React from "react";
+import React from "react"
 import styled from 'styled-components'
 import { StrategyType } from '../../../types/investment'
 import { PieChart } from 'react-minimal-pie-chart'
@@ -14,7 +14,7 @@ const ChartWrapper = styled.div`
   position: absolute;
   border-radius: 50%;
   width: 300px;
-  top: -35%;
+  top: -38%;
 
   @media (max-width: 767.98px) {
       width: 350px;
