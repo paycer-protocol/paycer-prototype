@@ -14,7 +14,7 @@ Router.events.on('routeChangeComplete', NProgress.done)
 Router.events.on('routeChangeError', NProgress.done)
 
 const tagManagerArgs = {
-  id: 'G-H24T1CYZ06',
+  gtmId: 'G-H24T1CYZ06',
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
