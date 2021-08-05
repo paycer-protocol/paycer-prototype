@@ -9,28 +9,6 @@ export interface LayoutProps {
   children: any
 }
 
-const DemoBadge = styled.div`
-    position: fixed;
-    transform: rotate(48deg);
-    right: -89px;
-    top: 19px;
-    line-height: 25px;
-    font-size: 11px;
-    width: 222px;
-    padding-left: 3px;
-    text-align: center;
-    font-weight: 500;
-    color: white;
-    text-shadow: rgb(0 0 0) -1px 1px 7px;
-    height: 19px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    background: linear-gradient(101deg,#ca3dbf,#c3cef7);
-    letter-spacing: 0.1px;
-`
-
 const Layout = (props: LayoutProps) => {
   const { children } = props
   const network = useNetwork()
@@ -41,9 +19,6 @@ const Layout = (props: LayoutProps) => {
         <Header />
         <main role="main">
           {children}
-          <DemoBadge>
-            Demo
-          </DemoBadge>
         </main>
       </>
     )
@@ -59,9 +34,6 @@ const Layout = (props: LayoutProps) => {
             <Trans>Change network</Trans>
           </Network>
         </div>
-        <DemoBadge>
-          Demo
-        </DemoBadge>
       </main>
     </>
   )

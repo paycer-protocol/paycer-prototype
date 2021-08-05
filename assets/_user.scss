@@ -22,3 +22,9 @@ main {
   position: relative;
   z-index: 2;
 }
+
+#__next {
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+}
