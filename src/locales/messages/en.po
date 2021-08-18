@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/invest/invest-card/index.tsx:85
+#: src/components/organisms/invest/invest-card/index.tsx:38
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
 msgid "APR"
 msgstr "APR"
@@ -21,7 +21,7 @@ msgstr "APR"
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
-#: src/pages/portfolio/components/portfolio.tsx:52
+#: src/pages/portfolio/components/portfolio.tsx:57
 msgid "APY"
 msgstr "APY"
 
@@ -41,7 +41,7 @@ msgstr "Adding Network to Wallet ..."
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:72
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:78
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -61,8 +61,8 @@ msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/wallet-detail.tsx:62
-#: src/pages/portfolio/components/dash-cards.tsx:67
-#: src/pages/portfolio/components/portfolio.tsx:47
+#: src/pages/portfolio/components/dash-cards.tsx:59
+#: src/pages/portfolio/components/portfolio.tsx:62
 msgid "Balance"
 msgstr "Balance"
 
@@ -82,7 +82,7 @@ msgstr "Change network"
 msgid "Change your wallet provider"
 msgstr "Change your wallet provider"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:77
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:83
 msgid "Claim"
 msgstr "Claim"
 
@@ -103,7 +103,7 @@ msgstr "Claimable rewards"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/wallet-connect.tsx:38
+#: src/components/organisms/web3/wallet-connect.tsx:30
 #: src/components/organisms/web3/wallet-detail.tsx:139
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -204,7 +204,7 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Edit"
 #~ msgstr "Edit"
 
-#: src/components/organisms/invest/invest-card/index.tsx:127
+#: src/components/organisms/invest/invest-card/index.tsx:80
 msgid "Edit invest"
 msgstr "Edit invest"
 
@@ -225,7 +225,7 @@ msgid "Explorer"
 msgstr "Explorer"
 
 #: src/components/organisms/invest/invest-form/invest-fee.tsx:29
-#: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:30
+#: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:28
 msgid "Fee"
 msgstr "Fee"
 
@@ -241,12 +241,12 @@ msgstr "German"
 msgid "Hide"
 msgstr "Hide"
 
-#: src/helper/map-risk-level.tsx:10
+#: src/locales/index.ts:7
 #: src/pages/invest/create/fields/risk-choice.tsx:12
 msgid "High"
 msgstr "High"
 
-#: src/components/organisms/invest/invest-card/index.tsx:102
+#: src/components/organisms/invest/invest-card/index.tsx:55
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
 msgid "Holdings"
 msgstr "Holdings"
@@ -266,7 +266,7 @@ msgstr "Invest"
 msgid "Invest amount"
 msgstr "Invest amount"
 
-#: src/pages/portfolio/components/portfolio.tsx:123
+#: src/pages/portfolio/components/portfolio.tsx:117
 msgid "Invest now"
 msgstr "Invest now"
 
@@ -278,7 +278,7 @@ msgstr "Invest now"
 #~ msgid "Investment distribution"
 #~ msgstr "Investment distribution"
 
-#: src/pages/portfolio/components/portfolio.tsx:57
+#: src/pages/portfolio/components/portfolio.tsx:52
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
@@ -286,7 +286,7 @@ msgstr "Investment ratio"
 msgid "Language"
 msgstr "Language"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:58
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:64
 msgid "Last claimed"
 msgstr "Last claimed"
 
@@ -295,16 +295,16 @@ msgid "Light Mode"
 msgstr "Light Mode"
 
 #: src/pages/portfolio/components/portfolio.tsx:62
-msgid "Liquidity"
-msgstr "Liquidity"
+#~ msgid "Liquidity"
+#~ msgstr "Liquidity"
 
-#: src/helper/map-risk-level.tsx:6
+#: src/locales/index.ts:5
 #: src/pages/invest/create/fields/risk-choice.tsx:10
-#: src/pages/portfolio/components/dash-cards.tsx:92
+#: src/pages/portfolio/components/dash-cards.tsx:84
 msgid "Low"
 msgstr "Low"
 
-#: src/helper/map-risk-level.tsx:8
+#: src/locales/index.ts:6
 #: src/pages/invest/create/fields/risk-choice.tsx:11
 msgid "Medium"
 msgstr "Medium"
@@ -339,7 +339,7 @@ msgid "No Ethereum browser extension detected, install MetaMask on desktop or vi
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
 #: src/pages/invest/index.tsx:18
-#: src/pages/portfolio/index.tsx:52
+#: src/pages/portfolio/index.tsx:41
 msgid "Overview"
 msgstr "Overview"
 
@@ -356,7 +356,7 @@ msgid "Please open your wallet and connect your account."
 msgstr "Please open your wallet and connect your account."
 
 #: src/config/routes.ts:6
-#: src/pages/portfolio/index.tsx:55
+#: src/pages/portfolio/index.tsx:44
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -373,18 +373,22 @@ msgstr "Previously added network Pending, please open your Wallet"
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
-#: src/components/organisms/invest/invest-card/index.tsx:121
+#: src/components/organisms/invest/invest-card/index.tsx:74
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:90
+#: src/pages/portfolio/components/dash-cards.tsx:82
 msgid "Risk"
 msgstr "Risk"
+
+#: src/pages/portfolio/components/portfolio.tsx:47
+msgid "Risk Level"
+msgstr "Risk Level"
 
 #: src/providers/connectors.ts:103
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
-#: src/pages/portfolio/components/dash-cards.tsx:83
+#: src/pages/portfolio/components/dash-cards.tsx:75
 msgid "Savings"
 msgstr "Savings"
 
@@ -439,7 +443,7 @@ msgstr "Staking"
 #~ msgid "Start"
 #~ msgstr "Start"
 
-#: src/components/organisms/invest/invest-card/index.tsx:127
+#: src/components/organisms/invest/invest-card/index.tsx:80
 msgid "Start invest"
 msgstr "Start invest"
 
@@ -484,12 +488,12 @@ msgstr "Token balance"
 #~ msgid "Total Balance"
 #~ msgstr "Total Balance"
 
-#: src/components/organisms/invest/invest-card/index.tsx:98
+#: src/components/organisms/invest/invest-card/index.tsx:51
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Total Volume"
 msgstr "Total Volume"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:63
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
 msgid "Total claimed"
 msgstr "Total claimed"
 
@@ -514,7 +518,7 @@ msgstr "Wallet"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/pages/portfolio/components/portfolio.tsx:119
+#: src/pages/portfolio/components/portfolio.tsx:113
 msgid "You have no investments in your portfolio"
 msgstr "You have no investments in your portfolio"
 

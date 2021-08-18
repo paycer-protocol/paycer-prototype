@@ -1,11 +1,6 @@
 import React from 'react'
-import { StyledIcon } from '@styled-icons/styled-icon'
-import { Variant } from 'react-bootstrap/types'
-import Icon from '@components/atoms/icon'
-import Card from '@components/molecules/card'
-import {Trans} from "@lingui/macro";
-import {FormattedNumber} from "../../atoms/number/formatted-number";
-import {normalizeFilename} from "../../../helper/filename";
+import { FormattedNumber } from '../../atoms/number/formatted-number'
+import CurrencyIcon from '@components/atoms/currency-icon'
 
 export interface DashNumberProps {
     label: string
@@ -30,7 +25,13 @@ const DashNumber = (props: DashNumberProps) => {
             />
             &nbsp;{symbol}
               {(withIcon &&
-                <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`/assets/icons/${normalizeFilename(symbol)}.svg`} alt={symbol} />
+                <CurrencyIcon
+                  symbol={symbol}
+                  className="ms-2"
+                  width={28}
+                  height={28}
+                  style={{marginTop: '-4px'}}
+                />
               )}
           </span>
       </div>

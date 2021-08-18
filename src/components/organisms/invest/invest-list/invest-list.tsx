@@ -53,7 +53,7 @@ const InvestList = () => {
                         <div className="nav btn-group">
                             <StyledButton
                                 variant="light"
-                                className={listView ? 'btn-lg' : 'bg-dark btn-lg'}
+                                className={listView ? 'text-primary btn-lg' : 'bg-dark btn-lg'}
                                 onClick={() => {
                                     setListView(false)
                                     sessionStorage.setItem('investListView', 'false');
@@ -63,7 +63,7 @@ const InvestList = () => {
                             </StyledButton>
                             <StyledButton
                                 variant="light"
-                                className={!listView ? 'btn-lg' : 'bg-dark btn-lg'}
+                                className={!listView ? 'text-primary btn-lg' : 'bg-dark btn-lg'}
                                 onClick={() =>  {
                                     setListView(true)
                                     sessionStorage.setItem('investListView', 'true');

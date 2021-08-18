@@ -5,18 +5,10 @@ import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
 import {investmentStrategies} from '@config/investment/strategies'
-import useToken from '@hooks/use-token'
-import {strategyProvider} from "@providers/strategies";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
   tvl?: number
-}
-
-const colorMap = {
-    "basic" : '#6808C0',
-    "advanced" : '#8D0EA2',
-    "expert" : '#3C01E3',
 }
 
 export default function Home() {
@@ -24,9 +16,7 @@ export default function Home() {
   let totalBalance = 0
 
   investmentStrategies.map((strategy) => {
-    const token = strategy.output
-    const outputToken = useToken(token.symbol)
-    const tokenBalance = Math.random() * 10000 // outputToken.tokenBalance()
+    const tokenBalance = Math.random() * 10000
 
     totalBalance += tokenBalance
 
@@ -35,8 +25,7 @@ export default function Home() {
         ...strategy,
         ...{
           balance: tokenBalance,
-          tvl: 12712983,
-            color: colorMap[strategy.name.toLowerCase()]
+          color: strategy.color
 
         }
       } as PortfolioStrategy)
@@ -44,7 +33,7 @@ export default function Home() {
   })
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3 mb-8">
       <PageHeader>
         <div className="row align-items-center">
           <div className="col">

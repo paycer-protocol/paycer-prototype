@@ -1,7 +1,6 @@
+import React from 'react'
 import { FormattedNumber, FormatNumberOptions } from 'react-intl'
-import {normalizeFilename} from "../../../helper/filename";
-import React from "react";
-
+import CurrencyIcon from '@components/atoms/currency-icon'
 
 export interface MoneyProps extends FormatNumberOptions {
     value: number | string;
@@ -19,7 +18,13 @@ export const Money = ({ withIcon = false, value = 0, currency = 'usd', ...restPr
             {...restProps}
         />
         {(withIcon &&
-          <img width="28" className="ms-2" style={{marginTop: '-4px'}} src={`/assets/icons/${normalizeFilename(currency)}.svg`} alt={currency} />
+            <CurrencyIcon
+              symbol={currency}
+              width={28}
+              height={28}
+              className="ms-2"
+              style={{marginTop: '-4px'}}
+            />
         )}
     </>
 )
