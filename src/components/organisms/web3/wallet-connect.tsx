@@ -9,12 +9,11 @@ import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from '@providers/connectors'
 
-export interface AccountProps {
+export interface WalletConnectProps {
     className?: string
-    onClick?: () => void
 }
 
-const WalletConnect = (props: AccountProps) => {
+const WalletConnect = (props: WalletConnectProps) => {
     const { className } = props
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const [showAccountModal, setShowAccountModal] = useState(false)
