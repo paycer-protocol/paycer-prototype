@@ -9,7 +9,7 @@ import useWallet from '@hooks/use-wallet'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
-import { normalizeFilename } from '../../../helper/filename'
+import CurrencyIcon from '@components/atoms/currency-icon'
 
 
 export interface AccountDetailProps {
@@ -72,11 +72,11 @@ const AccountBalance = () => {
                     </span>
                 </p>
             </div>
-            <img
-              width="40"
+            <CurrencyIcon
+              symbol="eth"
               className="ms-2 mt-3"
-              src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`}
-              alt={wallet.etherSymbol}
+              width={40}
+              height={40}
             />
         </div>
     )

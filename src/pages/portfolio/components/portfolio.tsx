@@ -4,14 +4,14 @@ import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
-import { FormattedNumber, Money, Percentage } from '@components/atoms/number'
+import { Money, Percentage } from '@components/atoms/number'
 import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
+import { riskLabels } from '../../../locales'
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
-  tvl?: number
-  color?: string
+  color: string
 }
 
 interface PortfolioProps {
@@ -20,11 +20,11 @@ interface PortfolioProps {
 }
 
 const ProgressbarColorWrapper = styled.div`
-    ${props => props.color && css`
-      .progress-bar {
-        background: ${props.color};
-      }
-    `}
+  ${props => props.color && css`
+    .progress-bar {
+      background: ${props.color};
+    }
+  `}
 `
 
 
@@ -43,8 +43,13 @@ export default function Portfolio(props: PortfolioProps) {
                   </span>
               </th>
               <th>
+                <span className="text-muted">
+                  <Trans>Risk Level</Trans>
+                </span>
+              </th>
+              <th>
                   <span className="text-muted">
-                    <Trans>Balance</Trans>
+                    <Trans>Investment ratio </Trans>
                   </span>
               </th>
               <th>
@@ -54,19 +59,13 @@ export default function Portfolio(props: PortfolioProps) {
               </th>
               <th>
                   <span className="text-muted">
-                    <Trans>Investment ratio </Trans>
+                    <Trans>Balance</Trans>
                   </span>
-              </th>
-              <th className="text-end">
-                <span className="text-muted">
-                  <Trans>Liquidity</Trans>
-                </span>
               </th>
             </tr>
             </thead>
             <tbody className="list">
             {strategies.length ? strategies.map((strategy, key) => {
-              const token = strategy.output
               const tokenBalance = strategy.balance
               const interest = strategy.interest.interestRate + strategy.rewards.rewardRate
 
@@ -76,17 +75,9 @@ export default function Portfolio(props: PortfolioProps) {
                     <span>{strategy.name}</span>
                   </td>
                   <td>
-                    <FormattedNumber
-                      value={tokenBalance}
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={4}
-                    />
-                    &nbsp;{token.symbol}
+                    <Trans id={riskLabels[strategy.riskLevel].id}/>
                   </td>
                   <td>
-                    <Percentage value={interest / 100} />
-                  </td>
-                  <td className="text-end">
                     <div className="row align-items-center g-0">
                       <div className="col-auto me-3">
                         <Percentage
@@ -106,8 +97,11 @@ export default function Portfolio(props: PortfolioProps) {
                       </div>
                     </div>
                   </td>
-                  <td className="text-end">
-                    <Money value={strategy.tvl} />
+                  <td>
+                    <Percentage value={interest / 100} />
+                  </td>
+                  <td>
+                    <Money value={tokenBalance} />
                   </td>
                 </tr>
               )

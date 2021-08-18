@@ -64,11 +64,11 @@ export interface StrategyType {
   riskLevel: RiskLevel
   input: TokenType
   output: TokenType
-  pool: TokenType
   rewards: RewardType
   interest: InterestType
   fees: FeesType
   assets: AssetType[]
+  color: string
 }
 
 export interface ITokenProvider {
