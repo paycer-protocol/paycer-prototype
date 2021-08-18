@@ -61,7 +61,7 @@ msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/wallet-detail.tsx:62
-#: src/pages/portfolio/components/dash-cards.tsx:59
+#: src/pages/portfolio/components/dash-cards.tsx:67
 #: src/pages/portfolio/components/portfolio.tsx:62
 msgid "Balance"
 msgstr "Balance"
@@ -103,7 +103,7 @@ msgstr "Claimable rewards"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/web3/wallet-connect.tsx:30
+#: src/components/organisms/web3/wallet-connect.tsx:29
 #: src/components/organisms/web3/wallet-detail.tsx:139
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
@@ -300,7 +300,6 @@ msgstr "Light Mode"
 
 #: src/locales/index.ts:5
 #: src/pages/invest/create/fields/risk-choice.tsx:10
-#: src/pages/portfolio/components/dash-cards.tsx:84
 msgid "Low"
 msgstr "Low"
 
@@ -376,7 +375,7 @@ msgstr "Previously added network Pending, please open your Wallet"
 #: src/components/organisms/invest/invest-card/index.tsx:74
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:82
+#: src/pages/portfolio/components/dash-cards.tsx:90
 msgid "Risk"
 msgstr "Risk"
 
@@ -388,7 +387,7 @@ msgstr "Risk Level"
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
-#: src/pages/portfolio/components/dash-cards.tsx:75
+#: src/pages/portfolio/components/dash-cards.tsx:83
 msgid "Savings"
 msgstr "Savings"
 
