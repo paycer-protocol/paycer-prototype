@@ -11,7 +11,7 @@ export interface CurrencyIconProps {
 const CurrencyIcon: React.FC<CurrencyIconProps> = ({ symbol, width = 20, height = 20, className, style}) => {
   return (
     <img
-      src={`/assets/icons/${symbol}.svg`}
+      src={`/assets/icons/${symbol.toLocaleLowerCase()}.svg`}
       alt={symbol}
       width={width}
       height={height}
