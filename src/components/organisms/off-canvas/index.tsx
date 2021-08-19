@@ -44,11 +44,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
             </h4>
             <div className="d-flex flex-column">
               <div className="mb-3">
-                <WalletConnect
-                  buttonVariant="light"
-                  dropdownVariant="light"
-                  className="w-100"
-                />
+                <WalletConnect className="w-100" />
               </div>
               {wallet.isConnected && (
                 <div className="me-3 w-100">
