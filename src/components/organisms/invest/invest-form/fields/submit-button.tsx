@@ -5,8 +5,8 @@ import Button from '@components/atoms/button'
 import { InvestFormFields } from '../../types'
 
 export default function SubmitButton() {
-    const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<InvestFormFields>()
-    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investBalance <= 0
+    const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<InvestFormFields>()
+    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investBalance === initialValues.investBalance
 
     return (
         <Button

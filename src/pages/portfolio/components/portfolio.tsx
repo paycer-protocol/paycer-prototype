@@ -4,6 +4,7 @@ import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
+import CurrencyIcon from '@components/atoms/currency-icon'
 import { Money, Percentage } from '@components/atoms/number'
 import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
@@ -72,7 +73,16 @@ export default function Portfolio(props: PortfolioProps) {
               return (
                 <tr key={key}>
                   <td>
-                    <span>{strategy.name}</span>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src={strategy.assets[0].imgPath}
+                        alt={strategy.assets[0].name}
+                        width={30}
+                        height={30}
+                        className="me-2"
+                      />
+                      <span>{strategy.name}</span>
+                    </div>
                   </td>
                   <td>
                     <Trans id={riskLabels[strategy.riskLevel].id}/>

@@ -5,7 +5,7 @@ import { IStrategyProvider, RiskLevel } from '../types/investment'
 export const strategyProvider: IStrategyProvider = {
   USDCStable: {
     riskLevel: RiskLevel.Low,
-    name: 'USDC Stable',
+    name: 'USDC',
     type: 'paycer',
     input: tokenProvider.USDC,
     output: paycerProvider.pUSDC,
@@ -33,7 +33,7 @@ export const strategyProvider: IStrategyProvider = {
   },
   DAIStable: {
     riskLevel: RiskLevel.Medium,
-    name: 'DAI Stable',
+    name: 'DAI',
     type: 'paycer',
     input: tokenProvider.DAI,
     output: paycerProvider.pDAI,
@@ -61,7 +61,7 @@ export const strategyProvider: IStrategyProvider = {
   },
   USDTStable: {
     riskLevel: RiskLevel.High,
-    name: 'USDT Stable',
+    name: 'USDT',
     type: 'paycer',
     input: tokenProvider.USDT,
     output: paycerProvider.pUSDT,
