@@ -1,29 +1,20 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Trans } from '@lingui/macro'
-import { ButtonVariant } from 'react-bootstrap/types'
 import Button from '@components/atoms/button'
+import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number'
 import useWallet from '@hooks/use-wallet'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from '@providers/connectors'
-import { normalizeFilename } from '../../../helper/filename'
 
-export interface AccountProps {
-    buttonVariant?: ButtonVariant
-    dropdownVariant?: ButtonVariant
+export interface WalletConnectProps {
     className?: string
-    onClick?: () => void
 }
 
-const WalletConnect = (props: AccountProps) => {
-    const {
-        buttonVariant = 'outline-primary',
-        dropdownVariant = 'outline-primary',
-        className,
-    } = props
-
+const WalletConnect = (props: WalletConnectProps) => {
+    const { className } = props
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const [showAccountModal, setShowAccountModal] = useState(false)
     const wallet = useWallet()
@@ -54,7 +45,11 @@ const WalletConnect = (props: AccountProps) => {
             >
                 <div className="me-3">
                     <div className="d-flex">
-                        <img width="20" className="ms-1" src={`/assets/icons/${normalizeFilename(wallet.etherSymbol)}.svg`} alt={wallet.etherSymbol} />
+                        <CurrencyIcon
+                          style={{ marginTop: '4px' }}
+                          className="ms-1"
+                          symbol="eth"
+                        />
                         <div className="pt-1 pb-1 mx-2">
                             <FormattedNumber
                                 value={wallet.etherBalance}

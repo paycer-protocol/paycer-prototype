@@ -1,102 +1,81 @@
 import { tokenProvider } from '@providers/tokens'
-import { yVaultProvider, paycerProvider } from '@providers/protocols'
+import { paycerProvider } from '@providers/protocols'
 import { IStrategyProvider, RiskLevel } from '../types/investment'
 
 export const strategyProvider: IStrategyProvider = {
-  basic: {
+  USDCStable: {
     riskLevel: RiskLevel.Low,
-    name: 'Basic',
+    name: 'USDC',
     type: 'paycer',
     input: tokenProvider.USDC,
-    output: yVaultProvider.yvUSDC,
-    pool: paycerProvider.USDC,
+    output: paycerProvider.pUSDC,
     rewards: {
-      rewardRate: 10,
+      rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 20,
+      interestRate: 8,
       interestSymbol: tokenProvider.USDC.symbol,
     },
     fees: {
-      investFee: 0.01,
-      withdrawFee: 0.01,
+      investFee: 0.1,
+      withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDC.symbol,
     },
     assets: [
-      {
-        name: 'usdt',
-        imgPath: '/assets/icons/usd.svg',
-        investRange: 20,
-      },
       {
         name: 'usdc',
         imgPath: '/assets/icons/usdc.svg',
         investRange: 30,
       },
-      {
-        name: 'bnb',
-        imgPath: '/assets/icons/busd.svg',
-        investRange: 50,
-      }
     ],
+    color: '#6808C0',
   },
-  advanced: {
+  DAIStable: {
     riskLevel: RiskLevel.Medium,
-    name: 'Advanced',
+    name: 'DAI',
     type: 'paycer',
     input: tokenProvider.DAI,
-    output: yVaultProvider.yvDAI,
-    pool: paycerProvider.DAI,
+    output: paycerProvider.pDAI,
     rewards: {
-      rewardRate: 10,
+      rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 20,
+      interestRate: 12.5,
       interestSymbol: tokenProvider.DAI.symbol,
     },
     fees: {
-      investFee: 0.01,
-      withdrawFee: 0.01,
+      investFee: 0.1,
+      withdrawFee: 0.1,
       feeSymbol: tokenProvider.DAI.symbol,
     },
     assets: [
       {
         name: 'usdt',
-        imgPath: '/assets/icons/usd.svg',
+        imgPath: '/assets/token/svg/color/dai.svg',
         investRange: 20,
       },
-      {
-        name: 'usdc',
-        imgPath: '/assets/icons/usdc.svg',
-        investRange: 30,
-      },
-      {
-        name: 'bnb',
-        imgPath: '/assets/icons/busd.svg',
-        investRange: 50,
-      }
     ],
+    color: '#8D0EA2',
   },
-  expert: {
+  USDTStable: {
     riskLevel: RiskLevel.High,
-    name: 'Expert',
+    name: 'USDT',
     type: 'paycer',
     input: tokenProvider.USDT,
-    output: yVaultProvider.yvUSDT,
-    pool: paycerProvider.USDT,
+    output: paycerProvider.pUSDT,
     rewards: {
-      rewardRate: 10,
+      rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 20,
+      interestRate: 15.5,
       interestSymbol: tokenProvider.USDT.symbol,
     },
     fees: {
-      investFee: 0.01,
-      withdrawFee: 0.01,
+      investFee: 0.1,
+      withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDT.symbol,
     },
     assets: [
@@ -104,17 +83,8 @@ export const strategyProvider: IStrategyProvider = {
         name: 'usdt',
         imgPath: '/assets/icons/usd.svg',
         investRange: 20,
-      },
-      {
-        name: 'usdc',
-        imgPath: '/assets/icons/usdc.svg',
-        investRange: 30,
-      },
-      {
-        name: 'bnb',
-        imgPath: '/assets/icons/busd.svg',
-        investRange: 50,
       }
     ],
+    color: '#3C01E3',
   },
 }

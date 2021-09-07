@@ -38,9 +38,9 @@ const InvestForm = (props: InvestFormProps) => {
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: props.input.symbol,
-        baseBalance: baseToken.tokenBalance(),
+        baseBalance: baseToken.tokenBalance() || 1000,
         investSymbol: props.output.symbol,
-        investBalance: investToken.tokenBalance(),
+        investBalance: investToken.tokenBalance() || 1000,
 
         // interest
         interestRate: props.interest.interestRate,

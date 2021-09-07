@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
+import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import useStakingRewards from '@hooks/use-staking-rewards'
 import { rewardSymbol } from '@config/staking-rewards'
-import {normalizeFilename} from "../../../../helper/filename";
 
 const RewardContainer = styled.div`
   display: flex;
@@ -47,8 +47,14 @@ export default function ClaimSummary() {
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
-            <img width="28" style={{marginTop: '-4px'}} className="ms-2" src={`/assets/icons/${normalizeFilename(rewardSymbol)}.svg`} alt={rewardSymbol} />
-            </span>
+            <CurrencyIcon
+              symbol={rewardSymbol}
+              className="ms-2"
+              width={28}
+              height={28}
+              style={{marginTop: '-4px'}}
+            />
+          </span>
         </div>
 
         <HorizontalLine className="d-none d-md-block"/>

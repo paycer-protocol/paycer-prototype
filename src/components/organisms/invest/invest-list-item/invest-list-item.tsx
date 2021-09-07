@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import mapRiskLevel from '../../../../helper/map-risk-level'
-import { t } from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { FormattedNumber } from '@components/atoms/number'
 import Button from '@components/atoms/button'
 import { StrategyType } from '../../../../types/investment'
 import InvestForm  from '@components/organisms/invest/invest-form'
+import { riskLabels } from '../../../../locales'
 import useToken from '@hooks/use-token'
 
 const StyledCard = styled(Card)`
@@ -43,7 +43,7 @@ const InvestListItem = (props: StrategyType) => {
                                 {totalInterestRate}%
                             </div>
                             <div className="col-md-2 d-flex align-items-center justify-content-center">
-                                {mapRiskLevel(props.riskLevel)}
+                                <Trans id={riskLabels[props.riskLevel].id} />
                             </div>
                             <div className="col-md-2 d-flex justify-content-center flex-column">
                                 {

@@ -1,10 +1,11 @@
+import React from 'react'
+import styled from 'styled-components'
+import { PieChart } from 'react-minimal-pie-chart'
 import { Trans, t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
-import React from "react"
-import styled from 'styled-components'
 import { StrategyType } from '../../../types/investment'
-import { PieChart } from 'react-minimal-pie-chart'
+import { riskLabels } from '../../../locales'
 
 const DashContainer = styled.div`
   height: 260px;
@@ -23,9 +24,8 @@ const ChartWrapper = styled.div`
 `
 
 interface PortfolioStrategy extends StrategyType {
-    balance?: number
-    tvl?: number
-    color?: string
+  balance?: number
+  color: string
 }
 
 interface DashCardsProps {
@@ -34,32 +34,32 @@ interface DashCardsProps {
 }
 
 export default function DashCards ({ totalBalance, strategies }: DashCardsProps) {
-
     const renderPieChart = () => {
         if (!strategies.length) {
             return ''
         }
 
         const pieChartData = []
-
         strategies.map((strategy, key) => {
-            pieChartData.push(
-                {
-                    value: Number(new Intl.NumberFormat('en-US', { maximumSignificantDigits: 2, style: 'percent'}).format((strategy.balance * 100 / totalBalance) / 100).replace('%', "").replace(/\s/g, "")),
-                    color: strategy.color
-                },
-            )
+            pieChartData.push({
+              value: (strategy.balance * 100 / totalBalance) / 100,
+              color: strategy.color
+            })
         })
 
         return (
             <ChartWrapper>
-                <PieChart
-                    data={pieChartData}
-                    lineWidth={4}
-                />
+                <PieChart data={pieChartData} lineWidth={2} />
             </ChartWrapper>
         )
     }
+
+    let portfolioRiskLevel = 0
+    strategies.map((strategy, key) => {
+      portfolioRiskLevel += strategy.riskLevel
+    })
+
+    portfolioRiskLevel = portfolioRiskLevel / 3
 
      return (
         <DashContainer className="row justify-content-between">
@@ -89,7 +89,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex me-auto">
                 <DashCard title={t`Risk`} className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
-                        <Trans>Low</Trans>
+                        <Trans id={riskLabels[portfolioRiskLevel].id} />
                     </div>
                 </DashCard>
             </div>

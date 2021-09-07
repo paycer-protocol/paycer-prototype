@@ -2,8 +2,8 @@ import { ChainId } from '@usedapp/core'
 import { ITokenProvider } from '../../types/investment'
 
 export const paycerProvider: ITokenProvider = {
-  USDC: {
-    symbol: 'paycerUSDCPool',
+  pUSDC: {
+    symbol: 'pUSDC',
     name: 'Paycer USDC Pool',
     decimals: 18,
     chainAddresses: {
@@ -11,8 +11,8 @@ export const paycerProvider: ITokenProvider = {
       [ChainId.Kovan]: '',
     }
   },
-  DAI: {
-    symbol: 'paycerDAIPool',
+  pDAI: {
+    symbol: 'pDAI',
     name: 'Paycer DAI Pool',
     decimals: 18,
     chainAddresses: {
@@ -20,8 +20,8 @@ export const paycerProvider: ITokenProvider = {
       [ChainId.Kovan]: '',
     }
   },
-  USDT: {
-    symbol: 'paycerUSDTPool',
+  pUSDT: {
+    symbol: 'pUSDT',
     name: 'Paycer USDT Pool',
     decimals: 18,
     chainAddresses: {

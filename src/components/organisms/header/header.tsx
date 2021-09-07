@@ -86,10 +86,7 @@ const Header = () => {
                               <Network />
                           </li>
                           <li className="nav-item d-flex align-items-center">
-                              <WalletConnect
-                                buttonVariant="light"
-                                dropdownVariant="light"
-                              />
+                              <WalletConnect />
                           </li>
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">

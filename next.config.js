@@ -6,6 +6,7 @@ const { locales, sourceLocale } = langConfig
 
 
 const nextConfig = {
+  poweredByHeader: false,
   locale: 'en',
   i18n: {
     locale: 'en',

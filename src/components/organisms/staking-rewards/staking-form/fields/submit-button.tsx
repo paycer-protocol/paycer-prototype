@@ -5,8 +5,8 @@ import Button from '@components/atoms/button'
 import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
-    const { values, dirty, isValid, isValidating, setFieldValue } = useFormikContext<StakingProps>()
-    const isDisabled = !dirty || !isValid || isValidating || values.stakedBalance <= 0
+    const { values, initialValues, dirty, isValid, isValidating, setFieldValue } = useFormikContext<StakingProps>()
+    const isDisabled = !dirty || !isValid || isValidating || values.stakedBalance !== initialValues.stakedBalance
 
     return (
       <div className="d-flex align-items-center justify-content-center mb-3">

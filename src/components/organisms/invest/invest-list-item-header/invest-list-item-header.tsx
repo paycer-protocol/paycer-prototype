@@ -10,7 +10,7 @@ const InvestListItemHeader = () => {
                 <Card.Body className="pt-0 pb-0 overflow-hidden position-relative">
                     <div className="row w-100">
                         <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                            {t`Name`}
+                            {t`Strategy`}
                         </div>
                         <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                             {t`Assets`}
