@@ -25,6 +25,7 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
             <Cleave
                 {...props}
                 name={name}
+                key={currency}
                 value={value?.toString()}
                 isInvalid={Boolean(error) && touched}
                 className="form-control"
