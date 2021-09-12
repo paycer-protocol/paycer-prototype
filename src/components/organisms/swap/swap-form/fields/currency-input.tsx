@@ -1,7 +1,7 @@
 import React from 'react'
 import { t } from '@lingui/macro'
 import * as Styles from '../Styles'
-import Input from '../../../../atoms/form/input'
+import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../../types'
 import { tokenProvider }  from '../../../../../providers/tokens'
@@ -10,12 +10,24 @@ import SubmitButton from "@components/organisms/swap/swap-form/fields/submit-but
 export default function CurrencyInput(props) {
     const {
         values,
-        initialValues,
         setFieldValue,
-        handleChange
     } = useFormikContext<SwapProps>()
 
     const { selectName, inputName, label } = props
+
+
+    const calculate = (value) =>  {
+        if (inputName === 'fromValue') {
+            setFieldValue('fromValue', value)
+            //TODO CALCULATE toValue
+            setFieldValue('toValue', value + 22)
+        }
+        if (inputName === 'toValue') {
+            setFieldValue('toValue', value)
+            //TODO CALCULATE fromValue
+            setFieldValue('fromValue', value + 10)
+        }
+    }
 
     return (
         <div>
@@ -27,7 +39,7 @@ export default function CurrencyInput(props) {
                     <Styles.SelectWrapper>
                         <img width="30" height="30"  src={`/assets/icons/${values[selectName].toLowerCase()}.svg`} alt={values.fromCurrency} />
                         <Styles.StyledSelect name={selectName}
-                            onChange={handleChange}
+                            onChange={calculate}
                         >
                             {Object.keys(tokenProvider).map((key) => (
                                 <option value={tokenProvider[key].symbol}>{tokenProvider[key].symbol}</option>
@@ -36,7 +48,14 @@ export default function CurrencyInput(props) {
                     </Styles.SelectWrapper>
                 </div>
                 <div className="w-100">
-                    <Input name={inputName} />
+                    <Currency
+                        name={inputName}
+                        required
+                        max={10}
+                        currency={values[selectName]}
+                        decimals={4}
+                        onChange={(e) => calculate(e.target.value)}
+                    />
                 </div>
             </div>
         </div>
