@@ -11,6 +11,7 @@ export default function CurrencyInput(props) {
     const {
         values,
         setFieldValue,
+        handleChange
     } = useFormikContext<SwapProps>()
 
     const { selectName, inputName, label } = props
@@ -37,9 +38,9 @@ export default function CurrencyInput(props) {
             <div className="d-flex flex-column flex-md-row">
                 <div className="w-100">
                     <Styles.SelectWrapper>
-                        <img width="30" height="30"  src={`/assets/icons/${values[selectName].toLowerCase()}.svg`} alt={values.fromCurrency} />
+                        <img width="30" height="30"  src={`/assets/icons/${values[selectName].toLowerCase()}.svg`} alt={values[selectName]} />
                         <Styles.StyledSelect name={selectName}
-                            onChange={calculate}
+                            onChange={handleChange}
                         >
                             {Object.keys(tokenProvider).map((key) => (
                                 <option value={tokenProvider[key].symbol}>{tokenProvider[key].symbol}</option>
