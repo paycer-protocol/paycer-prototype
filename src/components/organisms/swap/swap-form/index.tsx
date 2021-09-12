@@ -1,14 +1,15 @@
-import React from 'react'
-import { t, Trans } from '@lingui/macro'
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
 import { tokenProvider }  from '../../../../providers/tokens'
 import * as Styles from './Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import SubmitButton from './fields/submit-button'
 import { SwapProps } from '../types'
-import CurrencyInput from "./fields/currency-input";
-
-
+import FromSelect from "./fields/from-select";
+import FromInput from "./fields/from-input";
+import ToSelect from "./fields/to-select";
+import ToInput from "./fields/to-input";
 
 export default function SwapForm() {
 
@@ -35,7 +36,7 @@ export default function SwapForm() {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ values }) => {
+      {({ }) => {
         return (
           <div className="w-50">
             <Styles.CurrencyInputLabel>
@@ -46,17 +47,27 @@ export default function SwapForm() {
 
             <div className="d-flex flex-column flex-md-row">
               <div className="w-100">
-                <CurrencyInput
-                  selectName="fromCurrency"
-                  inputName="fromValue"
-                  label={t`Swap from`}
-                />
+                <Styles.CurrencyInputLabel>
+                  {t`Swap from`}
+                </Styles.CurrencyInputLabel>
+                <div className="d-flex flex-column flex-md-row">
+                  <div className="w-100">
+                    <FromSelect />
+                  </div>
+                  <div className="w-100">
+                    <FromInput />
+                  </div>
+                </div>
+
                 <Styles.HorizontalLine className="d-block" />
-                <CurrencyInput
-                    selectName="toCurrency"
-                    inputName="toValue"
-                    label={t`Swap to`}
-                />
+                <div className="d-flex flex-column flex-md-row">
+                  <div className="w-100">
+                    <ToSelect />
+                  </div>
+                  <div className="w-100">
+                    <ToInput />
+                  </div>
+                </div>
                 <Styles.HorizontalLine className="d-block" />
                 <SubmitButton />
 
