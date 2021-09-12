@@ -16,7 +16,7 @@ export default function SwapForm() {
   const initialValues: SwapProps = {
     fromCurrency: tokenProvider['DAI'].symbol,
     fromValue: 0,
-    toCurrency: tokenProvider['USDT'].symbol,
+    toCurrency: '',
     toValue: 0,
   }
 
@@ -60,6 +60,9 @@ export default function SwapForm() {
                 </div>
 
                 <Styles.HorizontalLine className="d-block" />
+                <Styles.CurrencyInputLabel>
+                  {t`Swap to`}
+                </Styles.CurrencyInputLabel>
                 <div className="d-flex flex-column flex-md-row">
                   <div className="w-100">
                     <ToSelect />

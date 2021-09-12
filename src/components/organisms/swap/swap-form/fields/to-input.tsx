@@ -1,11 +1,7 @@
 import React from 'react'
-import { t } from '@lingui/macro'
-import * as Styles from '../Styles'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../../types'
-import { tokenProvider }  from '../../../../../providers/tokens'
-import SubmitButton from "@components/organisms/swap/swap-form/fields/submit-button";
 
 export default function FromSelect() {
     const {
@@ -24,6 +20,7 @@ export default function FromSelect() {
                 onChange={(e) => {
                     const toValue = Number(e.target.rawValue.split(' ')[1])
                     setFieldValue('toValue', toValue)
+                    //TODO CALL CHAINLINKK API
                     setFieldValue('fromValue', toValue + 22)
                 }}
             />

@@ -20,6 +20,7 @@ export default function FromSelect() {
                 onChange={(e) => {
                     const fromValue = Number(e.target.rawValue.split(' ')[1])
                     setFieldValue('fromValue', fromValue)
+                    //TODO CALL CHAINLINKK API
                     setFieldValue('toValue', fromValue + 22)
                 }}
             />
