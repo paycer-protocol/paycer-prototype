@@ -5,4 +5,6 @@ export const investmentStrategies: StrategyType[] = [
   strategyProvider.USDCStable,
   strategyProvider.DAIStable,
   strategyProvider.USDTStable,
+  strategyProvider.WBTCPool,
+  strategyProvider.WETHPool,
 ]

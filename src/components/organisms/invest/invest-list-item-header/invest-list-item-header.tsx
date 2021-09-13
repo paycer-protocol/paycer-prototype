@@ -13,12 +13,12 @@ const InvestListItemHeader = () => {
                             {t`Strategy`}
                         </div>
                         <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
-                            {t`Assets`}
+                            {t`Rewards`}
                         </div>
-                        <div className="col-md-1 d-flex justify-content-center flex-column fw-bold align-items-center">
+                        <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">
                             {t`APR`}
                         </div>
-                        <div className="col-md-2 d-flex justify-content-center flex-column fw-bold align-items-center">
+                        <div className="col-md-1 d-flex justify-content-center flex-column fw-bold align-items-center">
                             {t`Risk`}
                         </div>
                         <div className="col-md-2 d-flex justify-content-center flex-column fw-bold">

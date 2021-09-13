@@ -29,4 +29,22 @@ export const paycerProvider: ITokenProvider = {
       [ChainId.Kovan]: '',
     }
   },
+  pwBTC: {
+    symbol: 'pwBTC',
+    name: 'Paycer WBTC Pool',
+    decimals: 18,
+    chainAddresses: {
+      [ChainId.Mainnet]: '',
+      [ChainId.Kovan]: '',
+    }
+  },
+  pwETH: {
+    symbol: 'pwETH',
+    name: 'Paycer wETH Pool',
+    decimals: 18,
+    chainAddresses: {
+      [ChainId.Mainnet]: '',
+      [ChainId.Kovan]: '',
+    }
+  },
 }

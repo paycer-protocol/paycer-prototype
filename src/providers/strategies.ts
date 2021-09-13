@@ -87,4 +87,60 @@ export const strategyProvider: IStrategyProvider = {
     ],
     color: '#3C01E3',
   },
+  WBTCPool: {
+    riskLevel: RiskLevel.High,
+    name: 'wBTC',
+    type: 'paycer',
+    input: tokenProvider.wBTC,
+    output: paycerProvider.pwBTC,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.wBTC.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.wBTC.symbol,
+    },
+    assets: [
+      {
+        name: 'wbtc',
+        imgPath: '/assets/icons/wbtc.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#3C01E3',
+  },
+  WETHPool: {
+    riskLevel: RiskLevel.High,
+    name: 'wETH',
+    type: 'paycer',
+    input: tokenProvider.wETH,
+    output: paycerProvider.pwETH,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.wETH.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.wETH.symbol,
+    },
+    assets: [
+      {
+        name: 'weth',
+        imgPath: '/assets/icons/eth.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#3C01E3',
+  },
 }
