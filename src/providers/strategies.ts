@@ -143,4 +143,32 @@ export const strategyProvider: IStrategyProvider = {
     ],
     color: '#3C01E3',
   },
+  BUSDstable: {
+    riskLevel: RiskLevel.Low,
+    name: 'BUSD',
+    type: 'paycer',
+    input: tokenProvider.BUSD,
+    output: paycerProvider.pBUSD,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.BUSD.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.BUSD.symbol,
+    },
+    assets: [
+      {
+        name: 'busd',
+        imgPath: '/assets/icons/busd.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#3C01E3',
+  },
 }

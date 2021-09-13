@@ -47,4 +47,13 @@ export const paycerProvider: ITokenProvider = {
       [ChainId.Kovan]: '',
     }
   },
+  pBUSD: {
+    symbol: 'pBUSD',
+    name: 'Paycer pBUSD Pool',
+    decimals: 18,
+    chainAddresses: {
+      [ChainId.Mainnet]: '',
+      [ChainId.Kovan]: '',
+    }
+  },
 }

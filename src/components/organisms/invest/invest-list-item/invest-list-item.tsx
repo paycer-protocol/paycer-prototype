@@ -38,7 +38,7 @@ const InvestListItem = (props: StrategyType) => {
                                     alt={asset.name}
                                   />
                                 ))}
-                                <strong>{props.name}</strong>
+                                <strong className="font-size-lg">{props.name}</strong>
                             </div>
                             <div className="col-md-2 d-flex align-items-center">
                                 {props.rewards.rewardRate}%
