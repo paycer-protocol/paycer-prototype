@@ -59,7 +59,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
       portfolioRiskLevel += strategy.riskLevel
     })
 
-    portfolioRiskLevel = portfolioRiskLevel / 3
+    portfolioRiskLevel = Math.round(portfolioRiskLevel / strategies.length)
 
      return (
         <DashContainer className="row justify-content-between">
