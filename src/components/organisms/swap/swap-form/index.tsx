@@ -6,10 +6,11 @@ import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import SubmitButton from './fields/submit-button'
 import { SwapProps } from '../types'
-import FromSelect from "./fields/from-select";
-import FromInput from "./fields/from-input";
-import ToSelect from "./fields/to-select";
-import ToInput from "./fields/to-input";
+import FromSelect from './fields/from-select';
+import FromInput from './fields/from-input';
+import ToSelect from './fields/to-select';
+import ToInput from './fields/to-input';
+import PriceImpact from './price-impact';
 
 export default function SwapForm() {
 
@@ -71,14 +72,11 @@ export default function SwapForm() {
                     <ToInput />
                   </div>
                 </div>
-                <Styles.HorizontalLine className="d-block" />
                 <SubmitButton />
-
               </div>
             </div>
 
-            <Styles.VerticalLine className="d-none d-md-block" />
-            <Styles.HorizontalLine className="d-block d-md-none" />
+            <PriceImpact />
 
           </div>
         )

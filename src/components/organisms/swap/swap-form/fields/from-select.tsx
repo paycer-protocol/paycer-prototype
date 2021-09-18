@@ -1,9 +1,8 @@
 import React from 'react'
 import * as Styles from '../Styles'
 import { useFormikContext } from 'formik'
-import {AllowedCurrencys, SwapProps} from '../../types'
+import { SwapProps } from '../../types'
 import { tokenProvider }  from '../../../../../providers/tokens'
-import Currency from "@components/atoms/form/currency";
 
 export default function FromSelect() {
     const {

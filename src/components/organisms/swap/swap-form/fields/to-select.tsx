@@ -2,9 +2,8 @@ import React from 'react'
 import * as Styles from '../Styles'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../../types'
-import { tokenProvider }  from '../../../../../providers/tokens'
-import { AllowedCurrencys } from '../../types'
 import {t} from "@lingui/macro";
+import useSwapAllowedCurrency from "@hooks/swap-allowed-currency";
 
 export default function FromSelect() {
     const {
@@ -12,12 +11,7 @@ export default function FromSelect() {
         handleChange
     } = useFormikContext<SwapProps>()
 
-     const allowedTokens = Object.keys(tokenProvider)
-        .filter(key => AllowedCurrencys[key].includes(values.fromCurrency))
-        .reduce((obj, key) => {
-            obj[key] = tokenProvider[key];
-            return obj;
-        }, {});
+    const allowedCurrencys = useSwapAllowedCurrency(values.fromCurrency)
 
     return (
         <div>
@@ -28,8 +22,8 @@ export default function FromSelect() {
 
                 <Styles.StyledSelect name="toCurrency" onChange={handleChange}>
                     <option value="" disabled>{t`Select a token`}</option>
-                    {Object.keys(allowedTokens).map((key) => (
-                        <option value={tokenProvider[key].symbol}>{tokenProvider[key].symbol}</option>
+                    {Object.keys(allowedCurrencys).map((key) => (
+                        <option value={allowedCurrencys[key].symbol}>{allowedCurrencys[key].symbol}</option>
                     ))}
                 </Styles.StyledSelect>
             </Styles.SelectWrapper>
