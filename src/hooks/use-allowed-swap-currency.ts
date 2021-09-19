@@ -1,4 +1,4 @@
-import MarketPairs from '@config/market-pairs'
+import MarketPairs from '@config/swap-market-pairs'
 
 const useAllowedSwapCurrency = <T>(currency: string)  => {
 

@@ -57,13 +57,9 @@ export default function SupplyForm() {
                     <Styles.CurrencyInputLabel>
                       {t`Swap to`}
                     </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100">
-                        <CurrencyInput name="firstCurrency" />
-                      </div>
-                      <div className="w-100">
-                        <CurrencyInput name="secondCurrency" />
-                      </div>
+                    <div className="">
+                      <CurrencyInput name="firstCurrency" />
+                      <CurrencyInput name="secondCurrency" />
                     </div>
                   </div>
                 </div>
