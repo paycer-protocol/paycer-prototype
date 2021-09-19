@@ -1,8 +1,9 @@
 import React from 'react'
 import * as Styles from '../Styles'
-import { useFormikContext } from 'formik'
+import { useFormikContext, Field } from 'formik'
 import { SwapProps } from '../../types'
 import { tokenProvider }  from '../../../../../providers/tokens'
+import SearchableSelect from '@components/atoms/form/searchable-select'
 
 export default function FromSelect() {
     const {
@@ -20,21 +21,16 @@ export default function FromSelect() {
 
      */
 
+    const options = []
+
+    {Object.keys(tokenProvider).map((key) => (
+        options.push({value: tokenProvider[key].symbol, label: tokenProvider[key].symbol})
+    ))}
+
     return (
-        <div>
-            <Styles.SelectWrapper>
-                <img width="30" height="30"  src={`/assets/icons/${values.fromCurrency.toLowerCase()}.svg`} alt={values.fromCurrency} />
-                <Styles.StyledSelect name="fromCurrency"
-                                     onChange={(e) => {
-                                         setFieldValue('toCurrency','')
-                                         setFieldValue('fromCurrency', e.target.value)
-                                     }}
-                >
-                    {Object.keys(tokenProvider).map((key) => (
-                        <option value={tokenProvider[key].symbol}>{tokenProvider[key].symbol}</option>
-                    ))}
-                </Styles.StyledSelect>
-            </Styles.SelectWrapper>
-        </div>
+        <Styles.SelectWrapper>
+            <img width="30" height="30"  src={`/assets/icons/${values.fromCurrency.toLowerCase()}.svg`} alt={values.fromCurrency} />
+            <Field name="fromCurrency" component={SearchableSelect} options={options} />
+        </Styles.SelectWrapper>
     )
 }

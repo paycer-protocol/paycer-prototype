@@ -3,7 +3,7 @@ import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../../types'
 
-export default function FromSelect() {
+export default function FromInput() {
     const {
         values,
         setFieldValue

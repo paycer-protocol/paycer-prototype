@@ -1,37 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { t } from '@lingui/macro'
-import { tokenProvider }  from '../../../../providers/tokens'
 import * as Styles from './Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import SubmitButton from './fields/submit-button'
-import { SwapProps } from '../types'
-import FromSelect from './fields/from-select';
-import FromInput from './fields/from-input';
-import ToSelect from './fields/to-select';
-import ToInput from './fields/to-input';
-import PriceImpact from './price-impact';
-import SwapChart from './swap-chart';
-import SlippageTolerance from './fields/slippage-tolerance';
+import { SupplyProps } from './types'
+import CurrencyInput from './fields/currency-input';
+import CurrencyPairSelect from './fields/currency-pair-select';
 
 export default function SupplyForm() {
 
-  const initialValues: SwapProps = {
-    fromCurrency: tokenProvider['DAI'].symbol,
-    fromValue: 0,
-    toCurrency: '',
-    toValue: 0,
-    slippageTolerance: 0,
-    slippageToleranceResult: 0
+  const initialValues: SupplyProps = {
+    firstCurrency: 0,
+    secondCurrency: 0,
+    currencyPair: {},
   }
 
   const validationSchema = Yup.object().shape({
-    toValue: Yup.number().min(0).required(),
-    fromValue: Yup.number().min(0).required(),
-    slippageTolerance: Yup.number().min(0).max(100),
+    firstCurrency: Yup.number().min(0).required(),
+    secondCurrency: Yup.number().min(0).required(),
   })
 
-  const handleSubmit = (values: SwapProps) => {
+  const handleSubmit = (values: SupplyProps) => {
     console.log(values)
   }
 
@@ -59,10 +49,7 @@ export default function SupplyForm() {
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
                       <div className="w-100">
-                        <FromSelect />
-                      </div>
-                      <div className="w-100">
-                        <FromInput />
+                        <CurrencyPairSelect />
                       </div>
                     </div>
 
@@ -72,29 +59,21 @@ export default function SupplyForm() {
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
                       <div className="w-100">
-                        <ToSelect />
+                        <CurrencyInput name="firstCurrency" />
                       </div>
                       <div className="w-100">
-                        <ToInput />
+                        <CurrencyInput name="secondCurrency" />
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-5 mb-5">
-                  <div className="mb-5">
-                    <PriceImpact />
-                  </div>
-                  <SlippageTolerance />
-                </div>
-
                 <SubmitButton />
               </div>
 
               <Styles.VerticalLine />
 
               <div className="w-50">
-                <SwapChart />
+                TBD
               </div>
           </div>
         )

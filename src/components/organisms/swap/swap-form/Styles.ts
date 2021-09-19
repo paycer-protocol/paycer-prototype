@@ -34,25 +34,13 @@ export const SelectWrapper = styled.div`
     position: relative;
     display: flex;
     cursor: pointer;
+    height: 100%;
     img {
         margin-right: 6px;
         margin-top: 10px;
     }
     
-    div {
+    > div {
       width: 100%;
-    }
-    &:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border: 3px solid transparent;
-        border-top: 3px solid;
-        border-right: 3px solid;
-        margin: 15px;
-        transform: rotate(135deg);
-        position: absolute;
-        top: 6px;
-        right: 35px;
     }
 `

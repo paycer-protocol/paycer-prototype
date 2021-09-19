@@ -1,18 +1,31 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import PageHeader from '@components/molecules/page-header'
 import SwapForm from '@components/organisms/swap/swap-form'
 import SupplyForm from '@components/organisms/swap/supply-form'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
-
+import {t} from "@lingui/macro";
 
 const Tab = styled.div`
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  background: white;
   height: 40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  bacground: #0B1120;
+  border: 1px solid #213752;
+  border-bottom: none;
+  margin-right: 1px;
+  position: relative;
+  z-index: 2;
+  top: 3px;
+  
+  ${props => props.isActive && css`
+    background: #192434;
+  `} 
+  
 `
 
 export default function Swap () {
@@ -38,12 +51,10 @@ export default function Swap () {
       {isConnected && (
 
         <div>
-
           <div className="d-flex">
-            <Tab onClick={() => setSupplyTabActive(false)}>Bla</Tab>
-            <Tab onClick={() => setSupplyTabActive(true)}>Bla</Tab>
+            <Tab isActive={!supplyTabActive} onClick={() => setSupplyTabActive(false)}>{t`Swap`}</Tab>
+            <Tab isActive={supplyTabActive} onClick={() => setSupplyTabActive(true)}>{t`Supply Liquidity`}</Tab>
           </div>
-
 
           <div className="card blur-background">
             <div className="card-body">
