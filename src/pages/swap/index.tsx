@@ -1,28 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PageHeader from '@components/molecules/page-header'
 import SwapForm from '@components/organisms/swap/swap-form'
+import SupplyForm from '@components/organisms/swap/supply-form'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
 
-const VerticalLine = styled.div`
-    border-right: 1px solid #244166;
-    margin: 20px 30px 20px 50px;
-`
 
-const HorizontalLine = styled.div`
-    border-top: 1px solid #244166;
-    margin: 50px 30px 0;
+const Tab = styled.div`
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: white;
+  height: 40px;
 `
 
 export default function Swap () {
   const { isConnected } = useWallet()
   const { supportedStakingChain } = useNetwork()
+  const [supplyTabActive, setSupplyTabActive] = useState(false)
 
   if (!supportedStakingChain) {
     location.href = '/'
-
     return
   }
 
@@ -37,11 +36,29 @@ export default function Swap () {
         </div>
       </PageHeader>
       {isConnected && (
-        <div className="card blur-background">
-          <div className="card-body">
-            <div className="d-flex flex-column flex-md-row">
-              <div className="w-100">
-                <SwapForm />
+
+        <div>
+
+          <div className="d-flex">
+            <Tab onClick={() => setSupplyTabActive(false)}>Bla</Tab>
+            <Tab onClick={() => setSupplyTabActive(true)}>Bla</Tab>
+          </div>
+
+
+          <div className="card blur-background">
+            <div className="card-body">
+              <div className="d-flex flex-column flex-md-row">
+                <div className="w-100">
+                  {
+                    !supplyTabActive
+                        ? (
+                            <SwapForm />
+                        )
+                        : (
+                            <SupplyForm />
+                        )
+                  }
+                </div>
               </div>
             </div>
           </div>

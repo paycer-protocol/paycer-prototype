@@ -3,6 +3,8 @@ export interface SwapProps {
   toCurrency: string
   fromValue: number
   toValue: number
+  slippageTolerance: number,
+  slippageToleranceResult: number
 }
 
 

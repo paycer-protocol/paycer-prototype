@@ -14,7 +14,7 @@ import PriceImpact from './price-impact';
 import SwapChart from './swap-chart';
 import SlippageTolerance from './fields/slippage-tolerance';
 
-export default function SwapForm() {
+export default function SupplyForm() {
 
   const initialValues: SwapProps = {
     fromCurrency: tokenProvider['DAI'].symbol,
@@ -47,7 +47,7 @@ export default function SwapForm() {
             <div className="d-flex">
               <div className="w-50">
                 <Styles.CurrencyInputLabel>
-                  {t`Swap`}
+                  {t`Supply Liquidity`}
                 </Styles.CurrencyInputLabel>
 
                 <Styles.HorizontalLine className="d-block" />
