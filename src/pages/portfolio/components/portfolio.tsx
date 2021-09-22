@@ -59,7 +59,7 @@ export default function Portfolio(props: PortfolioProps) {
               </th>
               <th>
                   <span className="text-muted">
-                    <Trans>Balance</Trans>
+                    <Trans>Investment</Trans>
                   </span>
               </th>
             </tr>
