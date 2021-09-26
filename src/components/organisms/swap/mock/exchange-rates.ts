@@ -54,6 +54,17 @@ export default {
         yvUSDC: 1.9,
         yvUSDT: 2
     },
+    pUSDT: {
+        DAI: 1.2,
+        PCR: 1.3,
+        LUSD: 1.4,
+        USDC: 1.5,
+        pDAI: 1.6,
+        pUSDC: 1.7,
+        yvDAI: 1.8,
+        yvUSDC: 1.9,
+        yvUSDT: 2
+    },
     pDAI: {
         DAI: 1.2,
         PCR: 1.3,
