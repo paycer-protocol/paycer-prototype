@@ -8,22 +8,46 @@ import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
 import {t} from "@lingui/macro";
 
+
 const Tab = styled.div`
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  height: 40px;
-  padding: 8px 20px;
+  height: 46px;
+  padding: 0 32px 3px 32px;
   cursor: pointer;
-  bacground: #0B1120;
+  background: #111723;
   border: 1px solid #213752;
   border-bottom: none;
   margin-right: 1px;
+  top: 4px;
   position: relative;
-  z-index: 2;
-  top: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  color: #4a658c;  
+  &:hover {
+    color: #FFF;
+  }
   
   ${props => props.isActive && css`
+    z-index: 2;
+    color: #FFF;
     background: #192434;
+    &:before {
+      content: "";
+      background: #192434;
+      height: 4px;
+      position: absolute;
+      z-index: 3;
+      bottom: -1px;
+      left: -1px;
+      width: 103%;
+    }
+    &:first-child:before {
+      left: 0;
+    }  
   `} 
   
 `
@@ -57,7 +81,7 @@ export default function Swap () {
           </div>
 
           <div className="card blur-background">
-            <div className="card-body">
+            <div className="card-body p-0">
               <div className="d-flex flex-column flex-md-row">
                 <div className="w-100">
                   {

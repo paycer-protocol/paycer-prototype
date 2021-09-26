@@ -1,34 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { t } from '@lingui/macro'
 import { tokenProvider }  from '../../../../providers/tokens'
-import * as Styles from './Styles'
+import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
-import SubmitButton from './fields/submit-button'
 import { SwapProps } from '../types'
-import FromSelect from './fields/from-select';
-import FromInput from './fields/from-input';
-import ToSelect from './fields/to-select';
-import ToInput from './fields/to-input';
+import Token0Select from './fields/token0-select';
+import Token0Input from './fields/token0-input';
+import Token1Select from './fields/token1-select';
+import Token1Input from './fields/token1-input';
 import PriceImpact from './price-impact';
 import SwapChart from './swap-chart';
-import SlippageTolerance from './fields/slippage-tolerance';
+import MinimumToReceiveDropdown from './minimum-to-receive-dropdown';
+import exchangeRatesMock from '../mock/exchange-rates'
 
 export default function SwapForm() {
 
   const initialValues: SwapProps = {
-    fromCurrency: tokenProvider['DAI'].symbol,
-    fromValue: 0,
-    toCurrency: '',
-    toValue: 0,
+    token0: tokenProvider['DAI'].symbol,
+    token0Value: 0,
+    token1: tokenProvider['pDAI'].symbol,
+    token1Value: 0,
+    exchangeRate: exchangeRatesMock['DAI']['pDAI'],
+    minimumToReceive: 0,
     slippageTolerance: 0,
-    slippageToleranceResult: 0
+    priceImpact: 0.01,
+    feeFactor: 0.01,
+    fee: 0
   }
 
   const validationSchema = Yup.object().shape({
-    toValue: Yup.number().min(0).required(),
-    fromValue: Yup.number().min(0).required(),
-    slippageTolerance: Yup.number().min(0).max(100),
+    token0Value: Yup.number().min(0).required(),
+    token1Value: Yup.number().min(0).required(),
   })
 
   const handleSubmit = (values: SwapProps) => {
@@ -45,57 +48,59 @@ export default function SwapForm() {
       {({ }) => {
         return (
             <div className="d-flex">
-              <div className="w-50">
-                <Styles.CurrencyInputLabel>
-                  {t`Swap`}
-                </Styles.CurrencyInputLabel>
-
-                <Styles.HorizontalLine className="d-block" />
-
+              <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row">
                   <div className="w-100">
                     <Styles.CurrencyInputLabel>
                       {t`Swap from`}
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100">
-                        <FromSelect />
+                      <div className="w-100 me-4">
+                        <Token0Select />
                       </div>
                       <div className="w-100">
-                        <FromInput />
+                        <Token0Input />
                       </div>
                     </div>
 
-                    <Styles.HorizontalLine className="d-block" />
+                    <Styles.HorizontalLine className="d-block">
+                      <div>
+                        <span />
+                        <span />
+                      </div>
+                    </Styles.HorizontalLine>
                     <Styles.CurrencyInputLabel>
                       {t`Swap to`}
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100">
-                        <ToSelect />
+                      <div className="w-100 me-4">
+                        <Token1Select />
                       </div>
                       <div className="w-100">
-                        <ToInput />
+                        <Token1Input />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-5 mb-5">
-                  <div className="mb-5">
+                <div className="mt-4 mb-5">
+                  <div className="mb-2">
                     <PriceImpact />
                   </div>
-                  <SlippageTolerance />
+                  <MinimumToReceiveDropdown />
                 </div>
-
-                <SubmitButton />
-              </div>
+                <div className="d-flex align-items-center justify-content-center">
+                  <Styles.StyledButton className="btn">
+                    {t`Swap`}
+                  </Styles.StyledButton>
+                </div>
+              </Styles.LeftCol>
 
               <Styles.VerticalLine />
 
-              <div className="w-50">
+              <Styles.RightCol>
                 <SwapChart />
-              </div>
+              </Styles.RightCol>
           </div>
         )
       }}

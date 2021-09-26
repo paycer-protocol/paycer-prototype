@@ -40,7 +40,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
         }
 
         const pieChartData = []
-        strategies.map((strategy, key) => {
+        strategies.map((strategy) => {
             pieChartData.push({
               value: (strategy.balance * 100 / totalBalance) / 100,
               color: strategy.color
@@ -49,7 +49,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
 
         return (
             <ChartWrapper>
-                <PieChart data={pieChartData} lineWidth={2} />
+                <PieChart data={pieChartData} lineWidth={3} paddingAngle={2} />
             </ChartWrapper>
         )
     }

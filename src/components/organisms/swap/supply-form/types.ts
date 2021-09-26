@@ -1,6 +1,6 @@
 export interface SupplyProps {
-  firstCurrency: number
-  secondCurrency: number
+  fromValue: number
+  toValue: number
   currencyPair: object
 }
 

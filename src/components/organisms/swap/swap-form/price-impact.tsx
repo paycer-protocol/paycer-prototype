@@ -9,19 +9,11 @@ export default function PriceImpact() {
     } = useFormikContext<SwapProps>()
 
     const calculatePriceImpact = () => {
-        /*TODO CALCULATE PRICE IMPACT */
-
-        const fromCurrency = values.fromCurrency
-        const fromValue = values.fromValue
-        const toCurrency = values.toCurrency
-        const toValue = values.toValue
-
-        return 100 / 2
-
+        return values.priceImpact
     }
 
     return (
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between font-size-lg fw-lighter">
             <div>{t`Price impact`}</div>
             <div>{calculatePriceImpact()}%</div>
         </div>

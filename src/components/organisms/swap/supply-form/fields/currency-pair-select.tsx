@@ -1,10 +1,9 @@
 import React from 'react'
-import * as Styles from '../Styles'
+import * as Styles from '../../Styles'
 import {Field, useFormikContext} from 'formik'
 import { SwapProps } from '../../types'
-import SwapMarketPairs from '@config/supply-market-pairs'
+import SupplyMarketPairs from '@config/supply-market-pairs'
 import SearchableSelect from "@components/atoms/form/searchable-select";
-import {tokenProvider} from "@providers/tokens";
 
 export default function CurrencyPairSelect() {
     const {
@@ -22,11 +21,15 @@ export default function CurrencyPairSelect() {
 
      */
 
+    const options = []
+
+    {Object.keys(SupplyMarketPairs).map((key) => (
+        options.push({value: SupplyMarketPairs[key].value, label: SupplyMarketPairs[key].label})
+    ))}
+
     return (
-        <div>
-            <Styles.SelectWrapper>
-                <Field name="currencyPair" component={SearchableSelect} options={SwapMarketPairs} />
-            </Styles.SelectWrapper>
-        </div>
+        <Styles.SelectWrapper>
+            <Field name="currencyPair" component={SearchableSelect} options={options} />
+        </Styles.SelectWrapper>
     )
 }

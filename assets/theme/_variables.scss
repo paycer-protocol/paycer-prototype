@@ -60,6 +60,7 @@ $teal: #02a8b5 !default; // NOT USED
 $cyan: #20d2f4 !default;
 $lightgreen: #c1ff93;
 $lightblue: #6ef2ff;
+
 //
 //$primary: $white;
 //$secondary: $white;
@@ -85,7 +86,7 @@ $theme-colors: map-merge(
     "light": $light,
     "dark": $dark,
     "white": $white,
-    "secondary-dark": $gray-600-dark,
+    "secondary-dark": $gray-600-dark
   ),
 $theme-colors);
 /* beautify ignore:end */

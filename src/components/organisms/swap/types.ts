@@ -1,10 +1,14 @@
 export interface SwapProps {
-  fromCurrency: string
-  toCurrency: string
-  fromValue: number
-  toValue: number
+  token0: string
+  token0Value: number
+  token1: string
+  token1Value: number
+  minimumToReceive: number,
   slippageTolerance: number,
-  slippageToleranceResult: number
+  priceImpact: number,
+  exchangeRate: number,
+  feeFactor: number,
+  fee: number
 }
 
 

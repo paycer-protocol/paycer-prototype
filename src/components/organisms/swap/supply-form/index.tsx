@@ -1,18 +1,15 @@
 import React from 'react'
 import { t } from '@lingui/macro'
-import * as Styles from './Styles'
+import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
-import SubmitButton from './fields/submit-button'
 import { SupplyProps } from './types'
-import CurrencyInput from './fields/currency-input';
-import CurrencyPairSelect from './fields/currency-pair-select';
 
 export default function SupplyForm() {
 
   const initialValues: SupplyProps = {
-    firstCurrency: 0,
-    secondCurrency: 0,
+    fromValue: 0,
+    toValue: 0,
     currencyPair: {},
   }
 
@@ -26,54 +23,48 @@ export default function SupplyForm() {
   }
 
   return (
-    <Form
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-      enableReinitialize
-    >
-      {({ }) => {
-        return (
-            <div className="d-flex">
-              <div className="w-50">
-                <Styles.CurrencyInputLabel>
-                  {t`Supply Liquidity`}
-                </Styles.CurrencyInputLabel>
+      <Form
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          enableReinitialize
+      >
+        {({ }) => {
+          return (
+              <div className="d-flex">
+                <Styles.LeftCol>
+                  <div className="d-flex flex-column flex-md-row">
+                    <div className="w-100">
+                      <Styles.CurrencyInputLabel>
+                        {t`Supply`}
+                      </Styles.CurrencyInputLabel>
 
-                <Styles.HorizontalLine className="d-block" />
+                      <div className="d-flex flex-column flex-md-row">
+                        <div className="w-100 me-4">
 
-                <div className="d-flex flex-column flex-md-row">
-                  <div className="w-100">
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap from`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100">
-                        <CurrencyPairSelect />
+                        </div>
+                        <div className="w-100">
+
+                        </div>
                       </div>
                     </div>
-
-                    <Styles.HorizontalLine className="d-block" />
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap to`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="">
-                      <CurrencyInput name="firstCurrency" />
-                      <CurrencyInput name="secondCurrency" />
-                    </div>
                   </div>
-                </div>
-                <SubmitButton />
-              </div>
 
-              <Styles.VerticalLine />
+                  <div className="d-flex align-items-center justify-content-center">
+                    <Styles.StyledButton className="btn">
+                      {t`Supply`}
+                    </Styles.StyledButton>
+                  </div>
+                </Styles.LeftCol>
 
-              <div className="w-50">
-                TBD
+                <Styles.VerticalLine />
+
+                <Styles.RightCol>
+
+                </Styles.RightCol>
               </div>
-          </div>
-        )
-      }}
-    </Form>
+          )
+        }}
+      </Form>
   )
 }
