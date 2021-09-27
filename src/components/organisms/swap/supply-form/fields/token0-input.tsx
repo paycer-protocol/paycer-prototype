@@ -4,13 +4,7 @@ import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 
 export default function Token1Input() {
-
-    const {
-        values,
-        setFieldValue
-    } = useFormikContext<SupplyProps>()
-
-
+    const { values, setFieldValue } = useFormikContext<SupplyProps>()
     const currency = values.marketPair.pairs[0]?.symbol
 
     if (!currency) {
