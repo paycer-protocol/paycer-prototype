@@ -1,14 +1,11 @@
 import React from 'react'
-import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
+import Currency from '@components/atoms/form/currency'
 import { SwapProps } from '../../types'
-import calculateMinimumToReceive from "@components/organisms/swap/helper/minimum-to-receive";
+import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 
 export default function Token1Input() {
-    const {
-        values,
-        setFieldValue
-    } = useFormikContext<SwapProps>()
+    const { values, setFieldValue } = useFormikContext<SwapProps>()
 
     return (
         <div>
@@ -23,7 +20,13 @@ export default function Token1Input() {
                     const token0Value = token1Value / values.exchangeRate
                     setFieldValue('token1Value', token1Value)
                     setFieldValue('token0Value', token0Value)
-                    calculateMinimumToReceive(token0Value, values.exchangeRate, values.slippageTolerance, values.feeFactor, setFieldValue)
+                    calculateMinimumToReceive(
+                      token0Value,
+                      values.exchangeRate,
+                      values.slippageTolerance,
+                      values.feeFactor,
+                      setFieldValue
+                    )
                 }}
             />
         </div>

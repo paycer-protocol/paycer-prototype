@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Select from "@components/atoms/form/select";
+import Select from '@components/atoms/form/select'
 
 export const VerticalLine = styled.div`
     border-right: 1px solid #244166;

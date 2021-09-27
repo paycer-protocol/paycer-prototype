@@ -1,13 +1,14 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
+import { t } from '@lingui/macro'
 import { SwapProps } from '../../types'
-import Input from "@components/atoms/form/input";
-import {t} from "@lingui/macro";
-import DropdownComponent from "@components/atoms/dropdown/dropdown";
+import Input from '@components/atoms/form/input'
+import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 import * as Styles from './Styles'
+
 const MinimumToReceiveDropdown = () => {
-    const { values, initialValues, setFieldValue, dirty, handleChange } = useFormikContext<SwapProps>()
+    const { values, setFieldValue } = useFormikContext<SwapProps>()
 
     return (
         <div className="d-flex justify-content-between align-items-center font-size-lg fw-lighter">

@@ -1,27 +1,27 @@
 import React from 'react'
 import { t } from '@lingui/macro'
-import { tokenProvider }  from '../../../../providers/tokens'
+import { tokenProvider }  from '@providers/tokens'
 import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from '../types'
-import Token0Select from './fields/token0-select';
-import Token0Input from './fields/token0-input';
-import Token1Select from './fields/token1-select';
-import Token1Input from './fields/token1-input';
-import PriceImpact from './price-impact';
-import SwapChart from './swap-chart';
-import MinimumToReceiveDropdown from './minimum-to-receive-dropdown';
+import Token0Select from './fields/token0-select'
+import Token0Input from './fields/token0-input'
+import Token1Select from './fields/token1-select'
+import Token1Input from './fields/token1-input'
+import PriceImpact from './price-impact'
+import SwapChart from './swap-chart'
+import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
 import exchangeRatesMock from '../mock/exchange-rates'
 
 export default function SwapForm() {
 
   const initialValues: SwapProps = {
-    token0: tokenProvider['DAI'].symbol,
+    token0: tokenProvider.PCR.symbol,
     token0Value: 0,
-    token1: tokenProvider['pDAI'].symbol,
+    token1: tokenProvider.USDC.symbol,
     token1Value: 0,
-    exchangeRate: exchangeRatesMock['DAI']['pDAI'],
+    exchangeRate: 1, // TODO
     minimumToReceive: 0,
     slippageTolerance: 0,
     priceImpact: 0.01,

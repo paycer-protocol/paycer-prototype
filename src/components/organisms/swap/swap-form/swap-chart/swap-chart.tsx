@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
-import { useMediaQuery } from 'react-responsive'
-import { SwapProps } from "@components/organisms/swap/types";
 import dynamic from 'next/dynamic'
+import { useMediaQuery } from 'react-responsive'
+import { SwapProps } from '@components/organisms/swap/types'
 import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 
 const SwapChart = () => {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
-    const {
-        values
-    } = useFormikContext<SwapProps>()
+    const { values } = useFormikContext<SwapProps>()
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     const [ data, setData ] = useState(
         {
@@ -310,6 +308,7 @@ const SwapChart = () => {
         }
     }
 
+    // @ts-ignore
     return (
         <div>
             <div className="d-md-flex justify-content-between">
