@@ -40,7 +40,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
         }
 
         const pieChartData = []
-        strategies.map((strategy, key) => {
+        strategies.map((strategy) => {
             pieChartData.push({
               value: (strategy.balance * 100 / totalBalance) / 100,
               color: strategy.color
@@ -74,7 +74,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
                 {renderPieChart()}
                 <DashCard title={t`Total Investment`} className="mb-0">
                     <div className="d-flex justify-content-between">
-                       
+
                         <div className="fw-normal">
                             <Money value={totalBalance} />
                         </div>
