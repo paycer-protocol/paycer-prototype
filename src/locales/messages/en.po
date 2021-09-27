@@ -293,10 +293,6 @@ msgstr "Invest"
 #~ msgid "Liquidity"
 #~ msgstr "Liquidity"
 
-#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:14
-msgid "Liquidity Pool"
-msgstr "Liquidity Pool"
-
 #: src/locales/index.ts:5
 msgid "Low"
 msgstr "Low"
@@ -452,8 +448,8 @@ msgstr "Staking"
 msgid "Strategy"
 msgstr "Strategy"
 
-#: src/components/organisms/swap/supply-form/index.tsx:44
-#: src/components/organisms/swap/supply-form/index.tsx:71
+#: src/components/organisms/swap/supply-form/index.tsx:39
+#: src/components/organisms/swap/supply-form/index.tsx:55
 msgid "Supply"
 msgstr "Supply"
 
@@ -560,10 +556,6 @@ msgstr "Trade"
 #: src/components/organisms/web3/wallet-provider.tsx:33
 #~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 #~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
-
-#: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:18
-msgid "apy"
-msgstr "apy"
 
 #: src/components/organisms/invest/invest-card/index.tsx:75
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
