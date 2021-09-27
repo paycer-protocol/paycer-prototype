@@ -4,10 +4,10 @@ import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import supplyMarketPairs from '@config/supply-market-pairs'
-import Token0Input from './fields/token0-input';
-import Token1Input from './fields/token1-input';
-import MarketPairSelect from './fields/market-pair-select';
-import SupplyInfo from './supply-info';
+import Token0Input from './fields/token0-input'
+import Token1Input from './fields/token1-input'
+import MarketPairSelect from './fields/market-pair-select'
+import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 
 export default function SupplyForm() {
