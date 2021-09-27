@@ -101,18 +101,29 @@ export const SelectWrapper = styled.div`
 `
 
 export const LeftCol = styled.div`
-  width: 40%;
-  padding: 25px 0 25px 30px;
+    width: 40%;
+    padding: 25px 0 25px 30px;
+  
+    @media only screen and (max-width : 768px) {
+      width: 100%;
+      padding: 25px;
+    }
+  
 `
 
 export const RightCol = styled.div`
-  width: 60%;
-  padding: 25px 30px 25px 0;
+    width: 60%;
+    padding: 25px 30px 25px 0;
+      
+    @media only screen and (max-width : 768px) {
+        width: 100%;
+        padding: 25px;
+    }
 `
 
 export const StyledButton = styled.button`
-  background: linear-gradient(86deg, rgba(133,12,167,1) 0%, rgba(66,1,220,1) 100%);
-  color: #FFF;
-  font-weight: 300;
-  padding: 8px 80px;
+    background: linear-gradient(86deg, rgba(133,12,167,1) 0%, rgba(66,1,220,1) 100%);
+    color: #FFF;
+    font-weight: 300;
+    padding: 8px 80px;
 `

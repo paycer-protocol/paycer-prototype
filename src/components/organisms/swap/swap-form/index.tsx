@@ -47,7 +47,7 @@ export default function SwapForm() {
     >
       {({ }) => {
         return (
-            <div className="d-flex">
+            <div className="d-md-flex">
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row">
                   <div className="w-100">
@@ -97,6 +97,7 @@ export default function SwapForm() {
               </Styles.LeftCol>
 
               <Styles.VerticalLine />
+              <Styles.HorizontalLine className="d-md-none" />
 
               <Styles.RightCol>
                 <SwapChart />

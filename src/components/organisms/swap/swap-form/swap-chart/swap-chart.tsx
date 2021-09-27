@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
+import { useMediaQuery } from 'react-responsive'
 import { SwapProps } from "@components/organisms/swap/types";
 import dynamic from 'next/dynamic'
 import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 
 const SwapChart = () => {
-
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
     const {
         values
     } = useFormikContext<SwapProps>()
@@ -311,12 +312,12 @@ const SwapChart = () => {
 
     return (
         <div>
-            <div className="d-flex justify-content-between">
+            <div className="d-md-flex justify-content-between">
                 <div>
                     <MainStyles.CurrencyInputLabel>
                         {values.token0} / {values.token1}
                     </MainStyles.CurrencyInputLabel>
-                    <div className="d-flex justify-content-between align-items-baseline">
+                    <div className="d-flex justify-content-md-between align-items-baseline">
                         <MainStyles.Headline>
                             {values.exchangeRate} {values.token1}
                         </MainStyles.Headline>
@@ -362,7 +363,7 @@ const SwapChart = () => {
                 options={data.options}
                 series={data.series}
                 type="area"
-                width="585"
+                width={isTabletOrMobile ? '330px' : '585px'}
                 height="300"
             />
         </div>

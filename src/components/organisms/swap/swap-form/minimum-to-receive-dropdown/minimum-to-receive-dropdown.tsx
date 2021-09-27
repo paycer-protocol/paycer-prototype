@@ -40,6 +40,7 @@ const MinimumToReceiveDropdown = () => {
 
                                         let slippageTolerance = e.target.value
 
+                                        // limit to 100 force 100
                                         if (slippageTolerance > 100) {
                                             slippageTolerance = 100
                                         }
