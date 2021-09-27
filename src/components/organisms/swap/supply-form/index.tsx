@@ -3,19 +3,24 @@ import { t } from '@lingui/macro'
 import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
+import supplyMarketPairs from '@config/supply-market-pairs'
+import Token0Input from './fields/token0-input';
+import Token1Input from './fields/token1-input';
+import MarketPairSelect from './fields/market-pair-select';
+import SupplyInfo from './supply-info';
 import { SupplyProps } from './types'
 
 export default function SupplyForm() {
 
   const initialValues: SupplyProps = {
-    fromValue: 0,
-    toValue: 0,
-    currencyPair: {},
+    token0Value: 0,
+    token1Value: 0,
+    marketPair: supplyMarketPairs.pDAI_yvDAI,
   }
 
   const validationSchema = Yup.object().shape({
-    firstCurrency: Yup.number().min(0).required(),
-    secondCurrency: Yup.number().min(0).required(),
+    token0Value: Yup.number().min(0).required(),
+    token1Value: Yup.number().min(0).required(),
   })
 
   const handleSubmit = (values: SupplyProps) => {
@@ -33,7 +38,7 @@ export default function SupplyForm() {
           return (
               <div className="d-flex">
                 <Styles.LeftCol>
-                  <div className="d-flex flex-column flex-md-row">
+                  <div className="d-flex flex-column flex-md-row mb-5">
                     <div className="w-100">
                       <Styles.CurrencyInputLabel>
                         {t`Supply`}
@@ -41,10 +46,21 @@ export default function SupplyForm() {
 
                       <div className="d-flex flex-column flex-md-row">
                         <div className="w-100 me-4">
-
+                          <MarketPairSelect />
                         </div>
-                        <div className="w-100">
+                      </div>
 
+                      <Styles.HorizontalLine />
+
+                      <div className="d-flex flex-column flex-md-row mb-4">
+                        <div className="w-75 me-4">
+                          <Token0Input />
+                        </div>
+                      </div>
+
+                      <div className="d-flex flex-column flex-md-row">
+                        <div className="w-75 me-4">
+                          <Token1Input />
                         </div>
                       </div>
                     </div>
@@ -60,7 +76,7 @@ export default function SupplyForm() {
                 <Styles.VerticalLine />
 
                 <Styles.RightCol>
-
+                  <SupplyInfo />
                 </Styles.RightCol>
               </div>
           )
