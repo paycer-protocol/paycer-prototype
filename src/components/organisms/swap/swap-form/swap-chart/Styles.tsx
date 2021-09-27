@@ -13,8 +13,10 @@ export const Toolbar = styled.div`
       color: #FFFFFF;
       font-size: 14px;
       margin-left: 6px;
-      &.active {
+      &.active,
+      &:hover {
         background: linear-gradient(86deg,rgba(133,12,167,1) 0%,rgba(66,1,220,1) 100%);
+        padding: 1px 21px;
         border: 0 none;
       }
     }
