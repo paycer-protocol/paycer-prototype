@@ -19,30 +19,34 @@ const StyledCard = styled(Card)`
 
 const InvestListItem = (props: StrategyType) => {
     const [showInvestForm, setShowInvestForm] = useState(false)
-    const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
     const investedToken = useToken(props.output.symbol)
     const investedBalance = investedToken.tokenBalance()
 
     return (
         <>
             <StyledCard showInvestForm={showInvestForm} className={showInvestForm ? 'mb-0 overflow-hidden bg-dark' : 'mb-3 overflow-hidden'}>
-                <Card.Body className="pt-4 pb-4">
+                <Card.Body className="py-3">
                     <div className="d-flex justify-content-between">
                         <div className="row w-100">
                             <div className="col-md-2 d-flex align-items-center">
-                                {props.name}
+                                {props.assets.map((asset, key) => (
+                                  <img
+                                    className="me-3"
+                                    width="35"
+                                    key={key}
+                                    src={asset.imgPath}
+                                    alt={asset.name}
+                                  />
+                                ))}
+                                <strong className="font-size-lg">{props.name}</strong>
                             </div>
-                            <div className="col-md-2 d-flex justify-content-center flex-column">
-                                <div className="d-flex">
-                                    {props.assets.map((asset, key) => (
-                                      <img className="me-2" width="32" key={key} src={asset.imgPath} alt={asset.name} />
-                                    ))}
-                                </div>
+                            <div className="col-md-2 d-flex align-items-center">
+                                {props.rewards.rewardRate}%
+                            </div>
+                            <div className="col-md-2 d-flex align-items-center">
+                                {props.interest.interestRate}%
                             </div>
                             <div className="col-md-1 d-flex align-items-center justify-content-center">
-                                {totalInterestRate}%
-                            </div>
-                            <div className="col-md-2 d-flex align-items-center justify-content-center">
                                 <Trans id={riskLabels[props.riskLevel].id} />
                             </div>
                             <div className="col-md-2 d-flex justify-content-center flex-column">

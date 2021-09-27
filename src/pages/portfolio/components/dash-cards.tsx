@@ -49,7 +49,7 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
 
         return (
             <ChartWrapper>
-                <PieChart data={pieChartData} lineWidth={3} paddingAngle={2} />
+                <PieChart data={pieChartData} lineWidth={2} paddingAngle={2} />
             </ChartWrapper>
         )
     }
@@ -59,30 +59,25 @@ export default function DashCards ({ totalBalance, strategies }: DashCardsProps)
       portfolioRiskLevel += strategy.riskLevel
     })
 
-    portfolioRiskLevel = portfolioRiskLevel / 3
+    portfolioRiskLevel = Math.round(portfolioRiskLevel / strategies.length)
 
      return (
         <DashContainer className="row justify-content-between">
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
-                <DashCard title={t`Balance`} className="mb-0">
-                    <div className="d-flex justify-content-between">
-                        <img
-                          width="30"
-                          className="d-none d-md-block me-3"
-                          src={`assets/icons/usd.svg`}
-                          alt={'USD'}
-                        />
-                        <div className="fw-normal">
-                            <Money value={totalBalance} />
-                        </div>
+                <DashCard title={t`Available Balance`} className="mb-0">
+                    <div className="d-flex justify-content-between fw-normal">
+                        <Money value={totalBalance * 13.3 / 100} currency="USD" />
                     </div>
                 </DashCard>
             </div>
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex position-relative">
                 {renderPieChart()}
-                <DashCard title={t`Savings`} className="mb-0">
-                    <div className="d-flex justify-content-between fw-normal">
-                        <Money value={totalBalance * 13.3 / 100} currency="USD" />
+                <DashCard title={t`Total Investment`} className="mb-0">
+                    <div className="d-flex justify-content-between">
+
+                        <div className="fw-normal">
+                            <Money value={totalBalance} />
+                        </div>
                     </div>
                 </DashCard>
             </div>

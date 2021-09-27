@@ -23,7 +23,7 @@ export default function Invest() {
                     </div>
                 </div>
             </PageHeader>
-            <div className="row blur-background">
+            <div className="row">
                 <div className="col">
                     <InvestListProvider>
                         <InvestList />

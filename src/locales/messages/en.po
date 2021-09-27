@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/organisms/invest/invest-card/index.tsx:38
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
 msgid "APR"
 msgstr "APR"
 
@@ -237,7 +237,7 @@ msgstr "German"
 #~ msgid "Height"
 #~ msgstr "Height"
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:74
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
 msgid "Hide"
 msgstr "Hide"
 
@@ -247,7 +247,7 @@ msgid "High"
 msgstr "High"
 
 #: src/components/organisms/invest/invest-card/index.tsx:55
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
 msgid "Holdings"
 msgstr "Holdings"
 
@@ -322,8 +322,8 @@ msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
-msgid "Name"
-msgstr "Name"
+#~ msgid "Name"
+#~ msgstr "Name"
 
 #: src/components/organisms/layout/layout.tsx:32
 msgid "Network not supported"
@@ -367,13 +367,12 @@ msgstr "Portfolio"
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/pages/dashboard/components/staking-card.tsx:19
-#: src/pages/stake/index.tsx:29
-#~ msgid "Rewards"
-#~ msgstr "Rewards"
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+msgid "Rewards"
+msgstr "Rewards"
 
 #: src/components/organisms/invest/invest-card/index.tsx:74
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:90
 msgid "Risk"
@@ -407,7 +406,7 @@ msgstr "Search by: Strategy, APR, Asset, Risk Level..."
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:74
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
 msgid "Show"
 msgstr "Show"
 
@@ -446,6 +445,7 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
 #: src/pages/portfolio/components/portfolio.tsx:43
 msgid "Strategy"
 msgstr "Strategy"
@@ -488,7 +488,7 @@ msgstr "Token balance"
 #~ msgstr "Total Balance"
 
 #: src/components/organisms/invest/invest-card/index.tsx:51
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Total Volume"
 msgstr "Total Volume"
 
