@@ -1,7 +1,7 @@
 export interface SupplyProps {
-  fromValue: number
-  toValue: number
-  currencyPair: object
+  token0Value: number
+  token1Value: number
+  marketPair: object
 }
 
 
