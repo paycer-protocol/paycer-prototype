@@ -96,7 +96,7 @@ export const SelectWrapper = styled.div`
     }
     
     > div {
-      width: 75%;
+      width: 100%;
     }
 `
 

@@ -55,7 +55,7 @@ export default function SwapForm() {
                       {t`Swap from`}
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4">
+                      <div className="w-100 me-4 mb-3">
                         <Token0Select />
                       </div>
                       <div className="w-100">
@@ -73,7 +73,7 @@ export default function SwapForm() {
                       {t`Swap to`}
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4">
+                      <div className="w-100 me-4 mb-3">
                         <Token1Select />
                       </div>
                       <div className="w-100">
