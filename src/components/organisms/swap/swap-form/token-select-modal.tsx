@@ -23,26 +23,27 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {tokens.map((token) => (
-            <div
-              key={token.symbol}
-              className="d-flex align-items-center mb-4"
-              onClick={() => {
-                onClick(token)
-              }}
-            >
-              <CurrencyIcon
-                symbol={token.symbol}
-                className="me-3"
-                width={30}
-                height={30}
-              />
-              <div className="d-flex flex-column">
-                <h3 className="mb-0">{token.symbol}</h3>
-                <small className="text-muted">{token.name}</small>
-              </div>
-            </div>
-          ))}
+          <ul className="list-group list-group-flush">
+            {tokens.map((token) => (
+              <li className="list-group-item list-group-item-action">
+                <a
+                  className="d-flex align-items-center"
+                  onClick={() => onClick(token)}
+                >
+                  <CurrencyIcon
+                    symbol={token.symbol}
+                    className="me-3"
+                    width={30}
+                    height={30}
+                  />
+                  <div className="d-flex flex-column">
+                    <h3 className="mb-0 text-white">{token.symbol}</h3>
+                    <small className="text-muted">{token.name}</small>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
         </Modal.Body>
       </>
     </Modal>

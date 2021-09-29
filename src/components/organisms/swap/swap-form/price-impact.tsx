@@ -7,9 +7,9 @@ export default function PriceImpact() {
     const { values } = useFormikContext<SwapProps>()
 
     return (
-        <div className="d-flex justify-content-between font-size-lg fw-lighter">
-            <div>{t`Price impact`}</div>
-            <div>{values.priceImpact}%</div>
+        <div className="d-flex justify-content-between  font-size-smfw-lighter">
+            <span>{t`Price impact`}</span>
+            <span>{values.priceImpact}%</span>
         </div>
     )
 }

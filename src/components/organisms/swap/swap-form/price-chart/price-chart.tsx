@@ -6,7 +6,7 @@ import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 import { ApexOptions } from 'apexcharts'
 
-const SwapChart = () => {
+const PriceChart = () => {
     const { values } = useFormikContext<SwapProps>()
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     const [ data, setData ] = useState({
@@ -362,4 +362,4 @@ const SwapChart = () => {
     )
 }
 
-export default SwapChart
+export default PriceChart

@@ -123,9 +123,6 @@ export const StyledButton = styled.button`
     color: #FFF;
     font-weight: 300;
     padding: 8px 80px;
-    &:hover {
-      text-decoration: underline;
-    }
 `
 
 export const TokenToggle = styled.div`

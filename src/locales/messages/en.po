@@ -493,15 +493,15 @@ msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:20
-#: src/components/organisms/swap/swap-form/index.tsx:93
+#: src/components/organisms/swap/swap-form/index.tsx:91
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/index.tsx:55
+#: src/components/organisms/swap/swap-form/index.tsx:54
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/index.tsx:73
+#: src/components/organisms/swap/swap-form/index.tsx:71
 msgid "Swap to"
 msgstr "Swap to"
 

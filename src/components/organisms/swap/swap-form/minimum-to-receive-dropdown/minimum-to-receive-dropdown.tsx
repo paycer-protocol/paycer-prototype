@@ -11,10 +11,10 @@ const MinimumToReceiveDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
 
     return (
-        <div className="d-flex justify-content-between align-items-center font-size-lg fw-lighter">
+        <div className="d-flex justify-content-between align-items-center font-size-sm fw-lighter">
             <div>{t`Minimum to receive`}</div>
             <DropdownComponent className="d-inline-block mr-2 mb-2">
-                <Styles.StyledDropdownToggle>
+                <Styles.StyledDropdownToggle className="font-size-sm">
                     {values.minimumToReceive} {values.token1.symbol}
                 </Styles.StyledDropdownToggle>
                 <Styles.StyledDropdownMenu>

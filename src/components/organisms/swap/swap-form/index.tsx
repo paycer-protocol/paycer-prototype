@@ -10,7 +10,7 @@ import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
 import Token1Input from './fields/token1-input'
 import PriceImpact from './price-impact'
-import SwapChart from './swap-chart'
+import PriceChart from './price-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
 
 export default function SwapForm() {
@@ -61,7 +61,6 @@ export default function SwapForm() {
                         <Token0Input />
                       </div>
                     </div>
-
                     <Styles.HorizontalLine className="d-block">
                       <div>
                         <span />
@@ -96,7 +95,7 @@ export default function SwapForm() {
               <Styles.VerticalLine />
               <Styles.HorizontalLine className="d-md-none" />
               <Styles.RightCol>
-                <SwapChart />
+                <PriceChart />
               </Styles.RightCol>
           </div>
         )
