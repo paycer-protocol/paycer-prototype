@@ -303,46 +303,51 @@ const SwapChart = () => {
             <div className="d-md-flex justify-content-between">
                 <div>
                     <MainStyles.CurrencyInputLabel>
-                        {values.token0} / {values.token1}
+                        {values.token0.symbol} / {values.token1.symbol}
                     </MainStyles.CurrencyInputLabel>
                     <div className="d-flex justify-content-md-between align-items-baseline">
                         <MainStyles.Headline>
-                            {values.exchangeRate} {values.token1}
+                            {values.exchangeRate} {values.token1.symbol}
                         </MainStyles.Headline>
                             &nbsp;
                         <MainStyles.CurrencyInputLabel>
-                            <span style={{textTransform: 'none'}}>per</span> {values.token0}
+                            <span style={{textTransform: 'none'}}>per</span> {values.token0.symbol}
                         </MainStyles.CurrencyInputLabel>
                     </div>
                 </div>
                 <Styles.Toolbar>
                     <button
-                            onClick={() => updateData('one_month')}
-                            className={(data.selection === 'one_month' ? 'active' : '')}>
+                        onClick={() => updateData('one_month')}
+                        className={(data.selection === 'one_month' ? 'active' : '')}
+                    >
                         1M
                     </button>
                     &nbsp;
                     <button
-                            onClick={() => updateData('six_months')}
-                            className={(data.selection === 'six_months' ? 'active' : '')}>
+                        onClick={() => updateData('six_months')}
+                        className={(data.selection === 'six_months' ? 'active' : '')}
+                    >
                         6M
                     </button>
                     &nbsp;
                     <button
-                            onClick={() => updateData('one_year')}
-                            className={(data.selection === 'one_year' ? 'active' : '')}>
+                        onClick={() => updateData('one_year')}
+                        className={(data.selection === 'one_year' ? 'active' : '')}
+                    >
                         1Y
                     </button>
                     &nbsp;
                     <button
-                            onClick={() => updateData('ytd')}
-                            className={(data.selection === 'ytd' ? 'active' : '')}>
+                        onClick={() => updateData('ytd')}
+                        className={(data.selection === 'ytd' ? 'active' : '')}
+                    >
                         YTD
                     </button>
                     &nbsp;
                     <button
-                            onClick={() => updateData('all')}
-                            className={(data.selection === 'all' ? 'active' : '')}>
+                        onClick={() => updateData('all')}
+                        className={(data.selection === 'all' ? 'active' : '')}
+                    >
                         ALL
                     </button>
                 </Styles.Toolbar>

@@ -56,25 +56,23 @@ const customStyles = {
 }
 
 const SelectField: React.SFC<ReactSelectProps & FieldProps> = ({
-                                                                   options,
-                                                                   field,
-                                                                   form,
-                                                                   onChange = () => {}
-                                                               }) => (
-    <>
-    <Select
-        options={options}
-        name={field.name}
-        value={(options && field.value) ? options.find(option => option.value === field.value) : ''}
-        onChange={(option: Option) => {
-            form.setFieldValue(field.name, option.value)
-            onChange(option.value)
-        }}
-        escapeClearsValue
-        onBlur={field.onBlur}
-        styles={customStyles}
-    />
-    </>
+   options,
+   field,
+   form,
+   onChange = () => {}
+}) => (
+  <Select
+    options={options}
+    name={field.name}
+    value={(options && field.value) ? options.find(option => option.value === field.value) : ''}
+    onChange={(option: Option) => {
+        form.setFieldValue(field.name, option.value)
+        onChange(option.value)
+    }}
+    escapeClearsValue
+    onBlur={field.onBlur}
+    styles={customStyles}
+  />
 )
 
 export default SelectField

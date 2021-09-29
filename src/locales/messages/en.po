@@ -423,6 +423,14 @@ msgstr "Search by: Strategy, APR, Asset, Risk Level..."
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
 
+#: src/components/organisms/swap/swap-form/token-select-modal.tsx:22
+msgid "Select a token"
+msgstr "Select a token"
+
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:37
+#~ msgid "Select token"
+#~ msgstr "Select token"
+
 #: src/components/organisms/header/settings-modal.tsx:28
 msgid "Settings"
 msgstr "Settings"
@@ -485,8 +493,7 @@ msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:20
-#: src/components/organisms/swap/swap-form/index.tsx:94
-#: src/pages/trade/index.tsx:67
+#: src/components/organisms/swap/swap-form/index.tsx:93
 msgid "Swap"
 msgstr "Swap"
 
@@ -549,6 +556,7 @@ msgid "Total claimed"
 msgstr "Total claimed"
 
 #: src/config/routes.ts:26
+#: src/pages/trade/index.tsx:67
 msgid "Trade"
 msgstr "Trade"
 
@@ -585,7 +593,7 @@ msgstr "You have no investments in your portfolio"
 msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
-#: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:18
+#: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:14
 msgid "apy"
 msgstr "apy"
 

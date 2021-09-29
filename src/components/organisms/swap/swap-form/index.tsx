@@ -12,14 +12,13 @@ import Token1Input from './fields/token1-input'
 import PriceImpact from './price-impact'
 import SwapChart from './swap-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
-import exchangeRatesMock from '../mock/exchange-rates'
 
 export default function SwapForm() {
 
   const initialValues: SwapProps = {
-    token0: tokenProvider.PCR.symbol,
+    token0: tokenProvider.PCR,
     token0Value: 0,
-    token1: tokenProvider.USDC.symbol,
+    token1: tokenProvider.USDC,
     token1Value: 0,
     exchangeRate: 1, // TODO
     minimumToReceive: 0,
@@ -45,7 +44,7 @@ export default function SwapForm() {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ }) => {
+      {() => {
         return (
             <div className="d-md-flex">
               <Styles.LeftCol>
@@ -82,7 +81,6 @@ export default function SwapForm() {
                     </div>
                   </div>
                 </div>
-
                 <div className="mt-4 mb-5">
                   <div className="mb-2">
                     <PriceImpact />
@@ -95,10 +93,8 @@ export default function SwapForm() {
                   </Styles.StyledButton>
                 </div>
               </Styles.LeftCol>
-
               <Styles.VerticalLine />
               <Styles.HorizontalLine className="d-md-none" />
-
               <Styles.RightCol>
                 <SwapChart />
               </Styles.RightCol>

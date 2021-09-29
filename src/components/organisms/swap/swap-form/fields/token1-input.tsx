@@ -13,7 +13,7 @@ export default function Token1Input() {
                 name="token1Value"
                 required
                 max={10}
-                currency={values.token1}
+                currency={values.token1.symbol}
                 decimals={4}
                 onChange={(e) => {
                     const token1Value = Number(e.target.rawValue.split(' ')[1])

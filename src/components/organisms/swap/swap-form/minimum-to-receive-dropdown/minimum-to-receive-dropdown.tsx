@@ -15,17 +15,17 @@ const MinimumToReceiveDropdown = () => {
             <div>{t`Minimum to receive`}</div>
             <DropdownComponent className="d-inline-block mr-2 mb-2">
                 <Styles.StyledDropdownToggle>
-                    {values.minimumToReceive} {values.token1}
+                    {values.minimumToReceive} {values.token1.symbol}
                 </Styles.StyledDropdownToggle>
                 <Styles.StyledDropdownMenu>
                     <div className="d-flex justify-content-between mb-3">
                         <span>{t`Exchangerate`}</span>
-                        <span>1 {values.token0} = {values.exchangeRate} {values.token1}</span>
+                        <span>1 {values.token0.symbol} = {values.exchangeRate} {values.token1.symbol}</span>
                     </div>
 
                     <div className="d-flex justify-content-between mb-3">
                         <span>{t`Fee`}</span>
-                        <span>{values.token0Value * values.feeFactor} {values.token0}</span>
+                        <span>{values.token0Value * values.feeFactor} {values.token0.symbol}</span>
                     </div>
 
                     <div className="d-flex justify-content-between mb-3">

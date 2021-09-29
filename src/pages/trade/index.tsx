@@ -64,7 +64,7 @@ export default function Trade () {
       </PageHeader>
       <div>
         <div className="d-flex">
-          <Tab isActive={!supplyTabActive} onClick={() => setSupplyTabActive(false)}>{t`Swap`}</Tab>
+          <Tab isActive={!supplyTabActive} onClick={() => setSupplyTabActive(false)}>{t`Trade`}</Tab>
           <Tab isActive={supplyTabActive} onClick={() => setSupplyTabActive(true)}>{t`Supply Liquidity`}</Tab>
         </div>
         <div className="card blur-background">

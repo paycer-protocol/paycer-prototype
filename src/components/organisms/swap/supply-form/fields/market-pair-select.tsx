@@ -7,11 +7,7 @@ import SearchableSelect from '@components/atoms/form/searchable-select'
 import {t} from "@lingui/macro";
 
 export default function MarketPairSelect() {
-    const {
-        values,
-        setFieldValue
-    } = useFormikContext<SupplyProps>()
-
+    const { values, setFieldValue } = useFormikContext<SupplyProps>()
     const options = []
 
     {Object.keys(supplyMarketPairs).map((key) => (

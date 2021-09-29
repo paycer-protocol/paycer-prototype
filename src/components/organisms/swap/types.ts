@@ -1,7 +1,9 @@
+import { TokenType } from '../../../types/investment'
+
 export interface SwapProps {
-  token0: string
+  token0: TokenType
   token0Value: number
-  token1: string
+  token1: TokenType
   token1Value: number
   minimumToReceive: number,
   slippageTolerance: number,

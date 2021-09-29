@@ -1,30 +1,46 @@
-import React from 'react'
-import { useFormikContext, Field } from 'formik'
-import { tokenProvider }  from '@providers/tokens'
-import MarketPairs from '@config/swap-market-pairs'
-import SearchableSelect from '@components/atoms/form/searchable-select'
+import React, { useState } from 'react'
+import { useFormikContext } from 'formik'
+import { marketPairs } from '@config/swap-market-pairs'
 import { SwapProps } from '../../types'
-import * as Styles from '../../Styles'
+import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
+import TokenToggle from './token-toggle'
 
 export default function Token0Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const options = []
+    const [showModal, setShopModal] = useState(false)
 
-    {Object.keys(MarketPairs).map((key) => (
-        options.push({value: tokenProvider[key].symbol, label: tokenProvider[key].symbol})
-    ))}
-
-    const handleChange = () => {
+    const handleChange = (token) => {
+        setFieldValue('token0', token)
         setFieldValue('token1Value', 0)
         setFieldValue('minimumToReceive', 0)
-        setFieldValue('token1', '')
         setFieldValue('exchangeRate', 0)
+
+
+        const markets =  marketPairs
+          .find((market) => market.base.symbol === token.symbol)
+          .markets
+
+        const allowPair = markets.find(({ symbol }) => symbol === values.token1.symbol)
+
+        if (!allowPair) {
+            setFieldValue('token1', markets[0])
+        }
+
+        setShopModal(false)
     }
 
     return (
-        <Styles.SelectWrapper>
-            <img width="30" height="30" src={`/assets/icons/${values.token0.toLowerCase()}.svg`} alt={values.token0} />
-            <Field name="token0" component={SearchableSelect} options={options} onChange={handleChange} />
-        </Styles.SelectWrapper>
+      <>
+        <TokenToggle
+          token={values.token0}
+          onClick={() => setShopModal(true)}
+        />
+        <TokenSelectModal
+          show={showModal}
+          tokens={marketPairs.map((market) => market.base).filter(({ symbol }) => symbol !== values.token0.symbol) || []}
+          onHide={() => setShopModal(false)}
+          onClick={handleChange}
+        />
+      </>
     )
 }

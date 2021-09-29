@@ -88,12 +88,9 @@ export const Headline = styled.h2`
 export const SelectWrapper = styled.div`
     position: relative;
     display: flex;
+    align-items: center;
     cursor: pointer;
     height: 100%;
-    img {
-        margin-right: 6px;
-        margin-top: 4px;
-    }
     
     > div {
       width: 100%;
@@ -129,4 +126,11 @@ export const StyledButton = styled.button`
     &:hover {
       text-decoration: underline;
     }
+`
+
+export const TokenToggle = styled.div`
+    color: #FFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 22px;
 `
