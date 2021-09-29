@@ -4,7 +4,6 @@ import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
-import CurrencyIcon from '@components/atoms/currency-icon'
 import { Money, Percentage } from '@components/atoms/number'
 import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
@@ -60,7 +59,7 @@ export default function Portfolio(props: PortfolioProps) {
               </th>
               <th>
                   <span className="text-muted">
-                    <Trans>Balance</Trans>
+                    <Trans>Investment</Trans>
                   </span>
               </th>
             </tr>

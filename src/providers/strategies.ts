@@ -29,7 +29,7 @@ export const strategyProvider: IStrategyProvider = {
         investRange: 30,
       },
     ],
-    color: '#6808C0',
+    color: '#2775CA',
   },
   DAIStable: {
     riskLevel: RiskLevel.Medium,
@@ -52,12 +52,12 @@ export const strategyProvider: IStrategyProvider = {
     },
     assets: [
       {
-        name: 'usdt',
-        imgPath: '/assets/token/svg/color/dai.svg',
+        name: 'dai',
+        imgPath: '/assets/icons/dai.svg',
         investRange: 20,
       },
     ],
-    color: '#8D0EA2',
+    color: '#B47208',
   },
   USDTStable: {
     riskLevel: RiskLevel.High,
@@ -81,10 +81,94 @@ export const strategyProvider: IStrategyProvider = {
     assets: [
       {
         name: 'usdt',
-        imgPath: '/assets/icons/usd.svg',
+        imgPath: '/assets/icons/usdt.svg',
         investRange: 20,
       }
     ],
-    color: '#3C01E3',
+    color: '#0ecc8d',
+  },
+  WBTCPool: {
+    riskLevel: RiskLevel.High,
+    name: 'wBTC',
+    type: 'paycer',
+    input: tokenProvider.wBTC,
+    output: paycerProvider.pwBTC,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.wBTC.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.wBTC.symbol,
+    },
+    assets: [
+      {
+        name: 'wbtc',
+        imgPath: '/assets/icons/wbtc.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#f2a900',
+  },
+  WETHPool: {
+    riskLevel: RiskLevel.High,
+    name: 'wETH',
+    type: 'paycer',
+    input: tokenProvider.wETH,
+    output: paycerProvider.pwETH,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.wETH.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.wETH.symbol,
+    },
+    assets: [
+      {
+        name: 'weth',
+        imgPath: '/assets/icons/eth.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#ecf0f1',
+  },
+  BUSDstable: {
+    riskLevel: RiskLevel.Low,
+    name: 'BUSD',
+    type: 'paycer',
+    input: tokenProvider.BUSD,
+    output: paycerProvider.pBUSD,
+    rewards: {
+      rewardRate: 25,
+      rewardSymbol: tokenProvider.PCR.symbol,
+    },
+    interest: {
+      interestRate: 15.5,
+      interestSymbol: tokenProvider.BUSD.symbol,
+    },
+    fees: {
+      investFee: 0.1,
+      withdrawFee: 0.1,
+      feeSymbol: tokenProvider.BUSD.symbol,
+    },
+    assets: [
+      {
+        name: 'busd',
+        imgPath: '/assets/icons/busd.svg',
+        investRange: 20,
+      }
+    ],
+    color: '#F5D178',
   },
 }

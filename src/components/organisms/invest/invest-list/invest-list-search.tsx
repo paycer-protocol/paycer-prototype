@@ -1,15 +1,9 @@
 import React, { useContext } from 'react'
-import {t, Trans} from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { InvestListContext } from '../../../../context/invest-list-context'
 
 const InvestList = () => {
-
-    const {
-        resetFilters,
-        handleAutoSuggest,
-        filterStrategy,
-        keyword,
-    } = useContext(InvestListContext);
+    const { handleAutoSuggest, keyword, } = useContext(InvestListContext);
 
     return (
         <>
@@ -20,7 +14,7 @@ const InvestList = () => {
                 className="form-control mb-4 fw-normal"
                 placeholder={t`Search by: Strategy, APR, Asset, Risk Level...`}
                 onChange={(e) => {
-                    handleAutoSuggest(e.currentTarget.value)
+                  handleAutoSuggest(e.currentTarget.value)
                 }}
             />
             {/*<div className="d-flex">*/}

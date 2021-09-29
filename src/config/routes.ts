@@ -21,5 +21,10 @@ export const routes = [
     label: t`Staking`,
     path: '/staking',
     supportedChains: supportedStakingChains
+  },
+  {
+    label: t`Trade`,
+    path: '/trade',
+    supportedChains
   }
 ]

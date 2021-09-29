@@ -14,14 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/organisms/invest/invest-card/index.tsx:38
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
 msgid "APR"
 msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
-#: src/pages/portfolio/components/portfolio.tsx:58
+#: src/pages/portfolio/components/portfolio.tsx:57
 msgid "APY"
 msgstr "APY"
 
@@ -45,6 +45,7 @@ msgstr "An unknown error occurred. Please try again."
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
+#: src/components/organisms/swap/supply-form/fields/submit-button.tsx:15
 msgid "Apply"
 msgstr "Apply"
 
@@ -57,12 +58,11 @@ msgstr "Apply"
 #~ msgstr "Assets"
 
 #: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
+#: src/pages/portfolio/components/dash-cards.tsx:67
 msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/web3/wallet-detail.tsx:62
-#: src/pages/portfolio/components/dash-cards.tsx:67
-#: src/pages/portfolio/components/portfolio.tsx:63
 msgid "Balance"
 msgstr "Balance"
 
@@ -220,12 +220,17 @@ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 msgid "Enter your invest amount"
 msgstr "Enter your invest amount"
 
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:22
+msgid "Exchangerate"
+msgstr "Exchangerate"
+
 #: src/components/organisms/web3/wallet-detail.tsx:104
 msgid "Explorer"
 msgstr "Explorer"
 
 #: src/components/organisms/invest/invest-form/invest-fee.tsx:29
 #: src/components/organisms/staking-rewards/staking-form/reward-fee.tsx:28
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:27
 msgid "Fee"
 msgstr "Fee"
 
@@ -237,7 +242,7 @@ msgstr "German"
 #~ msgid "Height"
 #~ msgstr "Height"
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:74
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
 msgid "Hide"
 msgstr "Hide"
 
@@ -247,7 +252,7 @@ msgid "High"
 msgstr "High"
 
 #: src/components/organisms/invest/invest-card/index.tsx:55
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
 msgid "Holdings"
 msgstr "Holdings"
 
@@ -266,9 +271,13 @@ msgstr "Invest"
 msgid "Invest amount"
 msgstr "Invest amount"
 
-#: src/pages/portfolio/components/portfolio.tsx:127
+#: src/pages/portfolio/components/portfolio.tsx:126
 msgid "Invest now"
 msgstr "Invest now"
+
+#: src/pages/portfolio/components/portfolio.tsx:62
+msgid "Investment"
+msgstr "Investment"
 
 #: src/pages/invest/create/index.tsx:80
 #~ msgid "Investment amount"
@@ -278,7 +287,7 @@ msgstr "Invest now"
 #~ msgid "Investment distribution"
 #~ msgstr "Investment distribution"
 
-#: src/pages/portfolio/components/portfolio.tsx:53
+#: src/pages/portfolio/components/portfolio.tsx:52
 msgid "Investment ratio"
 msgstr "Investment ratio"
 
@@ -298,6 +307,10 @@ msgstr "Light Mode"
 #~ msgid "Liquidity"
 #~ msgstr "Liquidity"
 
+#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:14
+msgid "Liquidity Pool"
+msgstr "Liquidity Pool"
+
 #: src/locales/index.ts:5
 #: src/pages/invest/create/fields/risk-choice.tsx:10
 msgid "Low"
@@ -312,6 +325,10 @@ msgstr "Medium"
 msgid "Menu"
 msgstr "Menu"
 
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:15
+msgid "Minimum to receive"
+msgstr "Minimum to receive"
+
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
@@ -322,8 +339,8 @@ msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
-msgid "Name"
-msgstr "Name"
+#~ msgid "Name"
+#~ msgstr "Name"
 
 #: src/components/organisms/layout/layout.tsx:32
 msgid "Network not supported"
@@ -367,19 +384,22 @@ msgstr "Portfolio"
 msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/pages/dashboard/components/staking-card.tsx:19
-#: src/pages/stake/index.tsx:29
-#~ msgid "Rewards"
-#~ msgstr "Rewards"
+#: src/components/organisms/swap/swap-form/price-impact.tsx:11
+msgid "Price impact"
+msgstr "Price impact"
+
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+msgid "Rewards"
+msgstr "Rewards"
 
 #: src/components/organisms/invest/invest-card/index.tsx:74
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
-#: src/pages/portfolio/components/dash-cards.tsx:90
+#: src/pages/portfolio/components/dash-cards.tsx:85
 msgid "Risk"
 msgstr "Risk"
 
-#: src/pages/portfolio/components/portfolio.tsx:48
+#: src/pages/portfolio/components/portfolio.tsx:47
 msgid "Risk Level"
 msgstr "Risk Level"
 
@@ -388,14 +408,14 @@ msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
 #: src/pages/portfolio/components/dash-cards.tsx:83
-msgid "Savings"
-msgstr "Savings"
+#~ msgid "Savings"
+#~ msgstr "Savings"
 
 #: src/components/organisms/invest/invest-list/invest-list-search.tsx:21
 #~ msgid "Search by: Strategy, APR, Asset, Risk Level, Address..."
 #~ msgstr "Search by: Strategy, APR, Asset, Risk Level, Address..."
 
-#: src/components/organisms/invest/invest-list/invest-list-search.tsx:21
+#: src/components/organisms/invest/invest-list/invest-list-search.tsx:15
 msgid "Search by: Strategy, APR, Asset, Risk Level..."
 msgstr "Search by: Strategy, APR, Asset, Risk Level..."
 
@@ -403,13 +423,25 @@ msgstr "Search by: Strategy, APR, Asset, Risk Level..."
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
 
+#: src/components/organisms/swap/swap-form/token-select-modal.tsx:22
+msgid "Select a token"
+msgstr "Select a token"
+
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:37
+#~ msgid "Select token"
+#~ msgstr "Select token"
+
 #: src/components/organisms/header/settings-modal.tsx:28
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:74
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
 msgid "Show"
 msgstr "Show"
+
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:32
+msgid "Slippage tolerance"
+msgstr "Slippage tolerance"
 
 #: src/components/organisms/web3/add-paycer-token.tsx:42
 #: src/components/organisms/web3/add-paycer-token.tsx:47
@@ -446,9 +478,32 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/pages/portfolio/components/portfolio.tsx:43
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
+#: src/pages/portfolio/components/portfolio.tsx:42
 msgid "Strategy"
 msgstr "Strategy"
+
+#: src/components/organisms/swap/supply-form/index.tsx:44
+#: src/components/organisms/swap/supply-form/index.tsx:71
+msgid "Supply"
+msgstr "Supply"
+
+#: src/pages/trade/index.tsx:68
+msgid "Supply Liquidity"
+msgstr "Supply Liquidity"
+
+#: src/components/organisms/swap/supply-form/fields/submit-button.tsx:20
+#: src/components/organisms/swap/swap-form/index.tsx:91
+msgid "Swap"
+msgstr "Swap"
+
+#: src/components/organisms/swap/swap-form/index.tsx:54
+msgid "Swap from"
+msgstr "Swap from"
+
+#: src/components/organisms/swap/swap-form/index.tsx:71
+msgid "Swap to"
+msgstr "Swap to"
 
 #: src/components/organisms/header/settings-modal.tsx:27
 #~ msgid "Switch Language"
@@ -487,14 +542,23 @@ msgstr "Token balance"
 #~ msgid "Total Balance"
 #~ msgstr "Total Balance"
 
+#: src/pages/portfolio/components/dash-cards.tsx:75
+msgid "Total Investment"
+msgstr "Total Investment"
+
 #: src/components/organisms/invest/invest-card/index.tsx:51
-#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Total Volume"
 msgstr "Total Volume"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
 msgid "Total claimed"
 msgstr "Total claimed"
+
+#: src/config/routes.ts:26
+#: src/pages/trade/index.tsx:67
+msgid "Trade"
+msgstr "Trade"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
@@ -517,7 +581,7 @@ msgstr "Wallet"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/pages/portfolio/components/portfolio.tsx:123
+#: src/pages/portfolio/components/portfolio.tsx:122
 msgid "You have no investments in your portfolio"
 msgstr "You have no investments in your portfolio"
 
@@ -528,6 +592,10 @@ msgstr "You have no investments in your portfolio"
 #: src/components/organisms/web3/wallet-provider.tsx:33
 msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
+
+#: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:14
+msgid "apy"
+msgstr "apy"
 
 #: src/components/organisms/invest/invest-card/index.tsx:75
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
