@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import InvestList from '@components/organisms/invest/invest-list/invest-list'
-import InvestListProvider from '../../context/invest-list-context'
 import { connectors } from '@providers/connectors'
+import InvestList from '@components/organisms/invest/invest-list'
+import { investmentStrategies } from '@config/investment/strategies'
 
 export default function Invest() {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -23,18 +23,12 @@ export default function Invest() {
                     </div>
                 </div>
             </PageHeader>
-            <div className="row">
-                <div className="col">
-                    <InvestListProvider>
-                        <InvestList />
-                    </InvestListProvider>
-                </div>
-            </div>
-            <WalletProvider
-                providers={connectors}
-                onHide={() => setShowWalletProviderModal(false)}
-                show={showWalletProviderModal}
-            />
+          <InvestList strategies={investmentStrategies} />
+          <WalletProvider
+              providers={connectors}
+              onHide={() => setShowWalletProviderModal(false)}
+              show={showWalletProviderModal}
+          />
         </div>
     )
 }
