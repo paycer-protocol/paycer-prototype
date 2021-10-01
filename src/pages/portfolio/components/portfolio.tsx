@@ -76,11 +76,11 @@ export default function Portfolio(props: PortfolioProps) {
                       <img
                         src={strategy.assets[0].imgPath}
                         alt={strategy.assets[0].name}
-                        width={30}
-                        height={30}
-                        className="me-2"
+                        width={35}
+                        height={35}
+                        className="me-3"
                       />
-                      <span>{strategy.name}</span>
+                      <strong className="font-size-lg">{strategy.name}</strong>
                     </div>
                   </td>
                   <td>
