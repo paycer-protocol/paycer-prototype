@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "rvo",
   "scripts": {
-    "dev": "export NODE_ENV=development && yarn lingui:extract && yarn lingui:compile && next dev",
+    "dev": "export NODE_ENV=development && export NODE_OPTIONS=--max_old_space_size=8096 && yarn lingui:extract && yarn lingui:compile && next dev",
     "build": "yarn lingui:extract && yarn lingui:compile && next build",
     "start": "next start",
     "storybook": "start-storybook -s public -p 9001",
