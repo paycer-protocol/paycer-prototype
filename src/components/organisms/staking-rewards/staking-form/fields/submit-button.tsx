@@ -2,6 +2,7 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import Button from '@components/atoms/button'
+import GradientButton from '@components/atoms/button/gradient-button'
 import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
@@ -18,15 +19,14 @@ export default function SubmitButton() {
           >
               {t`Cancel`}
           </Button>
-          <Button
+          <GradientButton
             type="submit"
             title={t`Apply`}
             className="px-5"
-            variant={isDisabled ? 'outline-success' : 'success'}
             disabled={isDisabled}
           >
               {t`Apply`}
-          </Button>
+          </GradientButton>
       </div>
     )
 }

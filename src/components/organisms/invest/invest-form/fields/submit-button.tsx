@@ -1,7 +1,7 @@
 import React from 'react'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
-import Button from '@components/atoms/button'
+import GradientButton from '@components/atoms/button/gradient-button'
 import { InvestFormFields } from '../../types'
 
 export default function SubmitButton() {
@@ -9,12 +9,8 @@ export default function SubmitButton() {
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investBalance === initialValues.investBalance
 
     return (
-        <Button
-            variant={isDisabled ? 'outline-success' : 'success'}
-            className="px-6 px-md-8 mb-2"
-            disabled={isDisabled}
-        >
+        <GradientButton className="px-6 px-md-8 mb-2" disabled={isDisabled}>
             {t`Invest`}
-        </Button>
+        </GradientButton>
     )
 }
