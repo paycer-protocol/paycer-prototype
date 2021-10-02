@@ -424,7 +424,7 @@ msgstr "Safe hardware wallet for your coins."
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
 
-#: src/components/organisms/swap/swap-form/token-select-modal.tsx:22
+#: src/components/organisms/swap/swap-form/token-select-modal.tsx:35
 msgid "Select a token"
 msgstr "Select a token"
 
@@ -489,12 +489,14 @@ msgstr "Strategy"
 msgid "Supply"
 msgstr "Supply"
 
-#: src/pages/trade/index.tsx:68
+#: src/pages/swap/index.tsx:68
 msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:20
 #: src/components/organisms/swap/swap-form/index.tsx:91
+#: src/config/routes.ts:26
+#: src/pages/swap/index.tsx:67
 msgid "Swap"
 msgstr "Swap"
 
@@ -557,8 +559,8 @@ msgstr "Total claimed"
 
 #: src/config/routes.ts:26
 #: src/pages/trade/index.tsx:67
-msgid "Trade"
-msgstr "Trade"
+#~ msgid "Trade"
+#~ msgstr "Trade"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
