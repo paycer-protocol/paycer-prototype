@@ -1,8 +1,10 @@
 import React from 'react'
-import {t, Trans} from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../../types/investment'
+import { useFormikContext } from "formik";
+import { SwapProps } from "@components/organisms/swap/types";
 
 interface TokenSelectModalProps {
   show: boolean
@@ -13,7 +15,7 @@ interface TokenSelectModalProps {
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
   const { show, onHide, onClick, tokens } = props
-
+  const { values } = useFormikContext<SwapProps>()
   return (
     <Modal size="sm" centered show={show} onHide={onHide} className="mb-5">
       <>

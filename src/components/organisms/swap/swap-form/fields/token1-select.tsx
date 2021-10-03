@@ -3,7 +3,7 @@ import { useFormikContext} from 'formik'
 import { SwapProps } from '../../types'
 import calculateMinimumToReceive from '@components/organisms/swap/helper/minimum-to-receive'
 import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
-import { marketPairs } from '@config/swap-market-pairs'
+import { marketPairs } from '@config/market-pairs'
 import TokenToggle from './token-toggle'
 
 export default function Token1Select() {
