@@ -10,6 +10,7 @@ import MarketPairSelect from './fields/market-pair-select'
 import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -18,6 +19,7 @@ export default function SupplyForm() {
   const initialValues: SupplyProps = {
     token0Value: 0,
     token1Value: 0,
+    exchangeRate: 1, // TODO
     marketPair: {
       token0: initialMarketPair.base,
       token1: initialMarketPair.markets[0]
@@ -40,7 +42,7 @@ export default function SupplyForm() {
           onSubmit={handleSubmit}
           enableReinitialize
       >
-        {({ }) => {
+        {({ values }) => {
           return (
               <div className="d-flex">
                 <Styles.LeftCol>
@@ -59,14 +61,30 @@ export default function SupplyForm() {
                       <Styles.HorizontalLine />
 
                       <div className="d-flex flex-column flex-md-row mb-4">
-                        <div className="w-75 me-4">
-
+                        <div className="w-100 me-4 d-flex align-items-center">
+                          <CurrencyIcon
+                              symbol={values.marketPair.token0.symbol}
+                              className="me-3"
+                              width={30}
+                              height={30}
+                          />
+                          <div className="w-75">
+                            <Token0Input />
+                          </div>
                         </div>
                       </div>
 
-                      <div className="d-flex flex-column flex-md-row">
-                        <div className="w-75 me-4">
-
+                      <div className="d-flex flex-column flex-md-row mb-4">
+                        <div className="w-100 me-4 d-flex align-items-center">
+                          <CurrencyIcon
+                              symbol={values.marketPair.token1.symbol}
+                              className="me-3"
+                              width={30}
+                              height={30}
+                          />
+                          <div className="w-75">
+                            <Token1Input />
+                          </div>
                         </div>
                       </div>
                     </div>

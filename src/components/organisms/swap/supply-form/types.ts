@@ -8,7 +8,8 @@ export interface MarketPair {
 export interface SupplyProps {
   token0Value: number
   token1Value: number
-  marketPair: MarketPair
+  marketPair: MarketPair,
+  exchangeRate: number
 }
 
 
