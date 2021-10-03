@@ -4,7 +4,7 @@ import PageHeader from '@components/molecules/page-header'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
-import {investmentStrategies} from '@config/investment/strategies'
+import { investmentStrategies } from '@config/investment/strategies'
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number

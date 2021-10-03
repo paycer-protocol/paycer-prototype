@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Yup from 'yup'
+import classnames from 'classnames'
 import styled, { css } from 'styled-components'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
@@ -25,6 +26,7 @@ const StyledCard = styled(Card)`
 interface InvestFormProps extends StrategyType {
     setShowInvestForm?: any
     isModal?: boolean
+    className?: string
 }
 
 const InvestForm = (props: InvestFormProps) => {
@@ -73,7 +75,7 @@ const InvestForm = (props: InvestFormProps) => {
             enableReinitialize
         >
             {({ values }) => (
-              <StyledCard className="shadow-none mb-0">
+              <StyledCard className={classnames(props.className, 'shadow-none mb-0')}>
                   <InvestCardHeader {...props} />
                   <Card.Body>
                       <div className="mb-5">

@@ -21,6 +21,7 @@ msgstr "APR"
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
+#: src/pages/invest/components/invest-table.tsx:31
 #: src/pages/portfolio/components/portfolio.tsx:57
 msgid "APY"
 msgstr "APY"
@@ -149,11 +150,11 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:100
+#: src/components/organisms/invest/invest-form/index.tsx:102
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:93
+#: src/components/organisms/invest/invest-form/index.tsx:95
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -243,6 +244,7 @@ msgstr "German"
 #~ msgstr "Height"
 
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
+#: src/pages/invest/components/invest-item.tsx:56
 msgid "Hide"
 msgstr "Hide"
 
@@ -275,6 +277,7 @@ msgstr "Invest amount"
 msgid "Invest now"
 msgstr "Invest now"
 
+#: src/pages/invest/components/invest-table.tsx:36
 #: src/pages/portfolio/components/portfolio.tsx:62
 msgid "Investment"
 msgstr "Investment"
@@ -287,6 +290,7 @@ msgstr "Investment"
 #~ msgid "Investment distribution"
 #~ msgstr "Investment distribution"
 
+#: src/pages/invest/components/invest-table.tsx:26
 #: src/pages/portfolio/components/portfolio.tsx:52
 msgid "Investment ratio"
 msgstr "Investment ratio"
@@ -399,6 +403,7 @@ msgstr "Rewards"
 msgid "Risk"
 msgstr "Risk"
 
+#: src/pages/invest/components/invest-table.tsx:21
 #: src/pages/portfolio/components/portfolio.tsx:47
 msgid "Risk Level"
 msgstr "Risk Level"
@@ -436,6 +441,7 @@ msgid "Settings"
 msgstr "Settings"
 
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
+#: src/pages/invest/components/invest-item.tsx:56
 msgid "Show"
 msgstr "Show"
 
@@ -479,6 +485,7 @@ msgid "Start invest"
 msgstr "Start invest"
 
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
+#: src/pages/invest/components/invest-table.tsx:16
 #: src/pages/portfolio/components/portfolio.tsx:42
 msgid "Strategy"
 msgstr "Strategy"
