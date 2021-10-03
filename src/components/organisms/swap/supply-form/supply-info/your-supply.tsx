@@ -13,8 +13,8 @@ const YourSupply = () => {
             <Styles.CurrencyInputLabel>
                 {t`Your supply`}
             </Styles.CurrencyInputLabel>
-            <div className="d-flex align-items-center">
-                <div className="d-flex align-items-center">
+            <div className="">
+                <div className="d-flex align-items-center mb-2">
                     <CurrencyIcon
                         symbol={values.marketPair.token0.symbol}
                         className="me-2"
@@ -25,7 +25,6 @@ const YourSupply = () => {
                     &nbsp;
                     {values.marketPair.token0.symbol}
                 </div>
-                <div className="me-3 ms-3">/</div>
                 <div className="d-flex align-items-center">
                     <CurrencyIcon
                         symbol={values.marketPair.token1.symbol}
