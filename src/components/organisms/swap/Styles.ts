@@ -79,6 +79,13 @@ export const CurrencyInputLabel = styled.h5`
     margin-bottom: 10px;
 `
 
+export const InfoHeadline = styled.h5`
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #a6a6a6;
+    margin-bottom: 15px;
+`
+
 export const Headline = styled.h2`
     text-transform: uppercase;
     font-size: 22px;
@@ -101,7 +108,7 @@ export const LeftCol = styled.div`
     width: 40%;
     padding: 25px 0 25px 30px;
   
-    @media only screen and (max-width : 768px) {
+    @media only screen and (max-width : 978px) {
       width: 100%;
       padding: 25px;
     }
@@ -112,7 +119,7 @@ export const RightCol = styled.div`
     width: 60%;
     padding: 25px 30px 25px 0;
       
-    @media only screen and (max-width : 768px) {
+    @media only screen and (max-width : 978px) {
         width: 100%;
         padding: 25px;
     }

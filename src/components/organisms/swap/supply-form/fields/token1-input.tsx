@@ -18,6 +18,8 @@ export default function Token1Input() {
                 const token0Value = token1Value * values.exchangeRate
                 setFieldValue('token0Value', token0Value)
                 setFieldValue('token1Value', token1Value)
+                /* TODO CALCULATE DAILY REWARDS */
+                setFieldValue('dailyRewards', (token1Value / 100000000) * 75000)
             }}
         />
     )

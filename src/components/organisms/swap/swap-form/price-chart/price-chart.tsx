@@ -302,9 +302,9 @@ const PriceChart = () => {
         <div>
             <div className="d-md-flex justify-content-between">
                 <div>
-                    <MainStyles.CurrencyInputLabel>
+                    <MainStyles.InfoHeadline>
                         {values.token0.symbol} / {values.token1.symbol}
-                    </MainStyles.CurrencyInputLabel>
+                    </MainStyles.InfoHeadline>
                     <div className="d-flex justify-content-md-between align-items-baseline">
                         <MainStyles.Headline>
                             {values.exchangeRate} {values.token1.symbol}
