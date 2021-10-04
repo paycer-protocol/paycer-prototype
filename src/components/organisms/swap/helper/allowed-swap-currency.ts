@@ -1,4 +1,4 @@
-import { marketPairs } from '@config/swap-market-pairs'
+import { marketPairs } from '@config/market-pairs'
 import { TokenType } from '../../../../types/investment'
 
 const useAllowedSwapCurrency = <T>(token: TokenType)  => {
