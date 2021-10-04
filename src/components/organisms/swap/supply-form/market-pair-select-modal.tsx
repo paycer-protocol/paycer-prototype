@@ -2,7 +2,7 @@ import React from 'react'
 import {Trans} from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import {MarketPair, SupplyProps} from './types'
-import { TokenType } from "@types/investment";
+import { TokenType } from "../../../../types/investment";
 import { MarketPairType } from '../../../../types/market'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import styled from 'styled-components'
