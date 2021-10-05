@@ -5,6 +5,8 @@ import { SwapProps } from '@components/organisms/swap/types'
 import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 import { ApexOptions } from 'apexcharts'
+import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
+import { ChainId } from '@usedapp/core'
 
 const PriceChart = () => {
     const { values } = useFormikContext<SwapProps>()
@@ -245,10 +247,7 @@ const PriceChart = () => {
         selection: 'one_month',
     })
 
-
-
     const updateData = (timeline) => {
-
         const newData = data
         newData.selection = timeline
         setData(newData)
@@ -298,6 +297,8 @@ const PriceChart = () => {
         }
     }
 
+    const exchangeRate = useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Mainnet], 'usd')
+
     return (
         <div>
             <div className="d-md-flex justify-content-between">
@@ -307,7 +308,7 @@ const PriceChart = () => {
                     </MainStyles.CurrencyInputLabel>
                     <div className="d-flex justify-content-md-between align-items-baseline">
                         <MainStyles.Headline>
-                            {values.exchangeRate} {values.token1.symbol}
+                            {exchangeRate || 1} {values.token1.symbol}
                         </MainStyles.Headline>
                             &nbsp;
                         <MainStyles.CurrencyInputLabel>

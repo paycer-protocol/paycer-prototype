@@ -8,7 +8,6 @@ export interface SwapProps {
   minimumToReceive: number,
   slippageTolerance: number,
   priceImpact: number,
-  exchangeRate: number,
   feeFactor: number,
   fee: number
 }
