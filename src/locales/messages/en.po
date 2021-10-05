@@ -14,13 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/organisms/invest/invest-card/index.tsx:38
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:19
 msgid "APR"
 msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
-#: src/components/organisms/invest/invest-table.tsx:32
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:68
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
+#: src/pages/invest/components/invest-table.tsx:31
 #: src/pages/portfolio/components/portfolio.tsx:57
 msgid "APY"
 msgstr "APY"
@@ -42,7 +43,7 @@ msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:78
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:24
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:15
@@ -70,7 +71,7 @@ msgstr "Balance"
 #~ msgid "Buy PCR Token"
 #~ msgstr "Buy PCR Token"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:20
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -149,11 +150,11 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:93
+#: src/components/organisms/invest/invest-form/index.tsx:102
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:86
+#: src/components/organisms/invest/invest-form/index.tsx:95
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 msgid "Daily rewards"
@@ -242,7 +243,8 @@ msgstr "German"
 #~ msgid "Height"
 #~ msgstr "Height"
 
-#: src/components/organisms/invest/invest-item.tsx:48
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
+#: src/pages/invest/components/invest-item.tsx:56
 msgid "Hide"
 msgstr "Hide"
 
@@ -252,13 +254,14 @@ msgid "High"
 msgstr "High"
 
 #: src/components/organisms/invest/invest-card/index.tsx:55
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:25
 msgid "Holdings"
 msgstr "Holdings"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
-#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:13
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:17
 #: src/components/organisms/invest/invest-modal.tsx:17
-#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:16
+#: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:11
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
@@ -274,6 +277,7 @@ msgstr "Invest amount"
 msgid "Invest now"
 msgstr "Invest now"
 
+#: src/pages/invest/components/invest-table.tsx:36
 #: src/pages/portfolio/components/portfolio.tsx:62
 msgid "Investment"
 msgstr "Investment"
@@ -286,6 +290,7 @@ msgstr "Investment"
 #~ msgid "Investment distribution"
 #~ msgstr "Investment distribution"
 
+#: src/pages/invest/components/invest-table.tsx:26
 #: src/pages/portfolio/components/portfolio.tsx:52
 msgid "Investment ratio"
 msgstr "Investment ratio"
@@ -387,17 +392,18 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Price impact"
 msgstr "Price impact"
 
-#: src/components/organisms/invest/invest-table.tsx:27
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
 msgid "Rewards"
 msgstr "Rewards"
 
 #: src/components/organisms/invest/invest-card/index.tsx:74
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:22
 #: src/pages/invest/create/fields/risk-choice.tsx:29
 #: src/pages/portfolio/components/dash-cards.tsx:85
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/invest/invest-table.tsx:22
+#: src/pages/invest/components/invest-table.tsx:21
 #: src/pages/portfolio/components/portfolio.tsx:47
 msgid "Risk Level"
 msgstr "Risk Level"
@@ -415,14 +421,14 @@ msgstr "Safe hardware wallet for your coins."
 #~ msgstr "Search by: Strategy, APR, Asset, Risk Level, Address..."
 
 #: src/components/organisms/invest/invest-list/invest-list-search.tsx:15
-#~ msgid "Search by: Strategy, APR, Asset, Risk Level..."
-#~ msgstr "Search by: Strategy, APR, Asset, Risk Level..."
+msgid "Search by: Strategy, APR, Asset, Risk Level..."
+msgstr "Search by: Strategy, APR, Asset, Risk Level..."
 
 #: src/components/organisms/web3/network-provider.tsx:25
 #~ msgid "Select a Network"
 #~ msgstr "Select a Network"
 
-#: src/components/organisms/swap/swap-form/token-select-modal.tsx:35
+#: src/components/organisms/swap/swap-form/token-select-modal.tsx:22
 msgid "Select a token"
 msgstr "Select a token"
 
@@ -434,7 +440,8 @@ msgstr "Select a token"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/organisms/invest/invest-item.tsx:48
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:75
+#: src/pages/invest/components/invest-item.tsx:56
 msgid "Show"
 msgstr "Show"
 
@@ -477,7 +484,8 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/components/organisms/invest/invest-table.tsx:17
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
+#: src/pages/invest/components/invest-table.tsx:16
 #: src/pages/portfolio/components/portfolio.tsx:42
 msgid "Strategy"
 msgstr "Strategy"
@@ -487,22 +495,20 @@ msgstr "Strategy"
 msgid "Supply"
 msgstr "Supply"
 
-#: src/pages/swap/index.tsx:68
+#: src/pages/trade/index.tsx:68
 msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:20
-#: src/components/organisms/swap/swap-form/index.tsx:89
-#: src/config/routes.ts:26
-#: src/pages/swap/index.tsx:67
+#: src/components/organisms/swap/swap-form/index.tsx:91
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/index.tsx:52
+#: src/components/organisms/swap/swap-form/index.tsx:54
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/index.tsx:69
+#: src/components/organisms/swap/swap-form/index.tsx:71
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -548,7 +554,7 @@ msgid "Total Investment"
 msgstr "Total Investment"
 
 #: src/components/organisms/invest/invest-card/index.tsx:51
-#: src/components/organisms/invest/invest-table.tsx:37
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:28
 msgid "Total Volume"
 msgstr "Total Volume"
 
@@ -558,8 +564,8 @@ msgstr "Total claimed"
 
 #: src/config/routes.ts:26
 #: src/pages/trade/index.tsx:67
-#~ msgid "Trade"
-#~ msgstr "Trade"
+msgid "Trade"
+msgstr "Trade"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
