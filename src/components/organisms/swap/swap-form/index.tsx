@@ -21,6 +21,7 @@ export default function SwapForm() {
     token1Value: 0,
     minimumToReceive: 0,
     slippageTolerance: 0,
+    exchangeRate: 1,
     priceImpact: 0.01,
     feeFactor: 0.01,
     fee: 0
