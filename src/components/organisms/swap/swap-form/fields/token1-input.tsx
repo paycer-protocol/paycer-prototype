@@ -21,7 +21,7 @@ export default function Token1Input() {
                 decimals={4}
                 onChange={(e) => {
                     const token1Value = Number(e.target.rawValue.split(' ')[1])
-                    const token0Value = token1Value / token0Price
+                    const token0Value = Number(token1Value) / Number(token0Price)
                     setFieldValue('token1Value', token1Value)
                     setFieldValue('token0Value', token0Value)
                     calculateMinimumToReceive(
