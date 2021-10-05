@@ -1,26 +1,33 @@
-import React from 'react'
-import * as Styles from '../../Styles'
-import { useFormikContext, Field } from 'formik'
+import React, {useState} from 'react'
+import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
-import supplyMarketPairs from '@config/supply-market-pairs'
-import SearchableSelect from '@components/atoms/form/searchable-select'
-import {t} from "@lingui/macro";
+import { marketPairs } from '@config/market-pairs'
+import MarketPairSelectModal from "@components/organisms/swap/supply-form/market-pair-select-modal";
+import MarketPairSelectToggle from "@components/organisms/swap/supply-form/fields/market-pair-select-toggle";
 
 export default function MarketPairSelect() {
     const { values, setFieldValue } = useFormikContext<SupplyProps>()
-    const options = []
+    const [showModal, setShowModal] = useState(false)
 
-    {Object.keys(supplyMarketPairs).map((key) => (
-        options.push({value: supplyMarketPairs[key], label: `${supplyMarketPairs[key].pairs[0].symbol} / ${supplyMarketPairs[key].pairs[1].symbol} - ${supplyMarketPairs[key].apy} ${t`apy`}`})
-    ))}
 
-    const handleChange = () => {
-
+    const handleChange = (marketPair, apy) => {
+        setFieldValue('marketPair', marketPair)
+        setFieldValue('apy', apy)
+        setShowModal(false)
     }
 
     return (
-        <Styles.SelectWrapper>
-            <Field name="marketPair" component={SearchableSelect} options={options} onChange={handleChange} />
-        </Styles.SelectWrapper>
+        <>
+            <MarketPairSelectToggle
+                marketPair={values.marketPair}
+                onClick={() => setShowModal(true)}
+            />
+            <MarketPairSelectModal
+                show={showModal}
+                marketPairs={marketPairs}
+                onHide={() => setShowModal(false)}
+                onClick={handleChange}
+            />
+        </>
     )
 }

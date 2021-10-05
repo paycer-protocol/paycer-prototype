@@ -21,7 +21,7 @@ export const Toolbar = styled.div`
       }
     }
     
-    @media only screen and (max-width : 768px) {
+    @media only screen and (max-width : 978px) {
       display: block;
       
       button {

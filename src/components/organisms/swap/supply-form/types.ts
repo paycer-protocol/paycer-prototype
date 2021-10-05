@@ -1,13 +1,17 @@
 import { TokenType } from '../../../../types/investment'
 
 export interface MarketPair {
-  pairs: TokenType[]
+  token0: TokenType,
+  token1: TokenType
 }
 
 export interface SupplyProps {
   token0Value: number
   token1Value: number
-  marketPair: MarketPair
+  marketPair: MarketPair,
+  exchangeRate: number,
+  dailyRewards: number,
+  apy: number
 }
 
 
