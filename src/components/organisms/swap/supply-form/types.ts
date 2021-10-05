@@ -10,7 +10,8 @@ export interface SupplyProps {
   token1Value: number
   marketPair: MarketPair,
   exchangeRate: number,
-  dailyRewards: number
+  dailyRewards: number,
+  apy: number
 }
 
 

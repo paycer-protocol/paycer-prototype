@@ -34,11 +34,11 @@ const SupplyInfo = () => {
                         {t`Liquidity Pool`}
                     </Styles.InfoHeadline>
                     <Styles.Headline>
-                        {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol}
+                        {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol} - {t`Apy`} {values.apy}%
                     </Styles.Headline>
 
                     <p className="mb-0">
-                        Supply an equal amount of {values.marketPair.token0.symbol} and {values.marketPair.token1.symbol} to earn PCR Tokens. Your assets will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards. All {values.marketPair.token0.symbol} in the pool accrues network fees.
+                        Supply an equal amount of {values.marketPair.token0.symbol} and {values.marketPair.token1.symbol} to earn Interest. Your assets will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards.
                     </p>
                 </div>
             </div>

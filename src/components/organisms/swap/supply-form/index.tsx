@@ -10,7 +10,6 @@ import MarketPairSelect from './fields/market-pair-select'
 import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
-import CurrencyIcon from "@components/atoms/currency-icon";
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -25,6 +24,7 @@ export default function SupplyForm() {
       token0: initialMarketPair.base,
       token1: initialMarketPair.markets[0]
     },
+    apy: 0,
   }
 
   const validationSchema = Yup.object().shape({
@@ -61,31 +61,13 @@ export default function SupplyForm() {
 
                       <Styles.HorizontalLine />
 
-                      <div className="d-flex flex-column flex-md-row mb-4">
-                        <div className="w-100 me-4 d-flex align-items-center">
-                          <CurrencyIcon
-                              symbol={values.marketPair.token0.symbol}
-                              className="me-3"
-                              width={30}
-                              height={30}
-                          />
-                          <div className="w-75">
-                            <Token0Input />
-                          </div>
-                        </div>
-                      </div>
 
                       <div className="d-flex flex-column flex-md-row mb-4">
-                        <div className="w-100 me-4 d-flex align-items-center">
-                          <CurrencyIcon
-                              symbol={values.marketPair.token1.symbol}
-                              className="me-3"
-                              width={30}
-                              height={30}
-                          />
-                          <div className="w-75">
-                            <Token1Input />
-                          </div>
+                        <div className="w-50 me-2 d-flex align-items-center">
+                          <Token1Input />
+                        </div>
+                        <div className="w-50 ms-2 d-flex align-items-center">
+                          <Token0Input />
                         </div>
                       </div>
                     </div>

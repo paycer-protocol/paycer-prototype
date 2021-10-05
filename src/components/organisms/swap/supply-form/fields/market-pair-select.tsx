@@ -10,8 +10,9 @@ export default function MarketPairSelect() {
     const [showModal, setShowModal] = useState(false)
 
 
-    const handleChange = (marketPair) => {
+    const handleChange = (marketPair, apy) => {
         setFieldValue('marketPair', marketPair)
+        setFieldValue('apy', apy)
         setShowModal(false)
     }
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
-import {t} from "@lingui/macro";
+import {t} from '@lingui/macro'
 import * as Styles from '../../Styles'
-import CurrencyIcon from "@components/atoms/currency-icon";
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { tokenProvider }  from '@providers/tokens'
 
 const TotalDailyRewards = () => {
     const { values } = useFormikContext<SupplyProps>()
@@ -19,7 +20,7 @@ const TotalDailyRewards = () => {
             </Styles.CurrencyInputLabel>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
-                    symbol={values.marketPair.token0.symbol}
+                    symbol={tokenProvider.PCR.symbol}
                     className="me-2"
                     width={30}
                     height={30}
@@ -27,7 +28,7 @@ const TotalDailyRewards = () => {
                 <div className="d-flex align-items-center">
                     {totalDailyRewards}
                     &nbsp;
-                    {values.marketPair.token0.symbol}
+                    {tokenProvider.PCR.symbol}
                 </div>
             </div>
         </>
