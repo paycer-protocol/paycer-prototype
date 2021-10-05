@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Card from '@components/molecules/card'
+import { useMediaQuery } from 'react-responsive'
 import { StrategyType } from '../../../types/investment'
 import Form from '@components/atoms/form/form'
 import SearchForm from './search-form'
@@ -14,12 +15,17 @@ export interface InvestListProps {
 }
 
 export default function InvestList(props: InvestListProps) {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
   const { strategies } = props
-  const [listView, setListView] = useState<boolean>(true)
+  const [listView, setListView] = useState<boolean>(false)
 
   useEffect(() => {
     const listViewStorage = sessionStorage.getItem('investListView')
-    setListView(listViewStorage !== 'false')
+    if (listViewStorage) {
+      setListView(listViewStorage !== 'false')
+    } else {
+      setListView(!isTabletOrMobile)
+    }
   }, [])
 
   const initialValues: InvestListProps = {
@@ -38,36 +44,34 @@ export default function InvestList(props: InvestListProps) {
     >
       {({ values }) => (
         <>
-          <div className="table-responsive mb-0">
-            <Card className="border-0">
-              <div className="card-header">
-                <SearchForm />
-                <div className="col-auto">
-                  <div className="nav btn-group">
-                    <a
-                      className={listView ? 'text-primary me-3' : 'text-light me-3'}
-                      onClick={() => {
-                        setListView(false)
-                        sessionStorage.setItem('investListView', 'false');
-                      }}
-                    >
-                      <Icon component={Grid} size={20} />
-                    </a>
-                    <a
-                      className={!listView ? 'text-primary' : 'text-light'}
-                      onClick={() =>  {
-                        setListView(true)
-                        sessionStorage.setItem('investListView', 'true');
-                      }}
-                    >
-                      <Icon component={List} size={22} />
-                    </a>
-                  </div>
+          <Card className="border-0">
+            <div className="card-header">
+              <SearchForm />
+              <div className="col-auto">
+                <div className="nav btn-group">
+                  <a
+                    className={listView ? 'text-primary me-3' : 'text-light me-3'}
+                    onClick={() => {
+                      setListView(false)
+                      sessionStorage.setItem('investListView', 'false');
+                    }}
+                  >
+                    <Icon component={Grid} size={20} />
+                  </a>
+                  <a
+                    className={!listView ? 'text-primary' : 'text-light'}
+                    onClick={() =>  {
+                      setListView(true)
+                      sessionStorage.setItem('investListView', 'true');
+                    }}
+                  >
+                    <Icon component={List} size={22} />
+                  </a>
                 </div>
               </div>
-              {listView ? <ListTable /> : null}
-            </Card>
-          </div>
+            </div>
+            {listView ? <ListTable /> : null}
+          </Card>
           {!listView ? <InvestCards /> : null}
         </>
       )}

@@ -14,13 +14,11 @@ import PriceChart from './price-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
 
 export default function SwapForm() {
-
   const initialValues: SwapProps = {
     token0: tokenProvider.PCR,
     token0Value: 0,
     token1: tokenProvider.USDC,
     token1Value: 0,
-    exchangeRate: 1, // TODO
     minimumToReceive: 0,
     slippageTolerance: 0,
     priceImpact: 0.01,
