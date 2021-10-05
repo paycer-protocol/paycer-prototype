@@ -6,10 +6,12 @@ import Form from '@components/atoms/form/form'
 import { marketPairs } from '@config/market-pairs'
 import Token0Input from './fields/token0-input'
 import Token1Input from './fields/token1-input'
+import TokenRangeSlider from './fields/token-range-slider'
 import MarketPairSelect from './fields/market-pair-select'
 import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
+import fetchTokenBalance from "@components/organisms/swap/helper/fetch-token-balance";
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -20,6 +22,8 @@ export default function SupplyForm() {
     token1Value: 0,
     exchangeRate: 1, // TODO
     dailyRewards: 0,
+    token0Balance: fetchTokenBalance(initialMarketPair.base),
+    token1Balance: fetchTokenBalance(initialMarketPair.markets[0]),
     marketPair: {
       token0: initialMarketPair.base,
       token1: initialMarketPair.markets[0]
@@ -64,13 +68,17 @@ export default function SupplyForm() {
 
                       <div className="d-flex flex-column flex-md-row mb-4">
                         <div className="w-50 me-2 d-flex align-items-center">
-                          <Token1Input />
+                          <Token0Input />
                         </div>
                         <div className="w-50 ms-2 d-flex align-items-center">
-                          <Token0Input />
+                          <Token1Input />
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="d-flex flex-column flex-md-row mb-5">
+                    <TokenRangeSlider />
                   </div>
 
                   <div className="d-flex align-items-center justify-content-center">

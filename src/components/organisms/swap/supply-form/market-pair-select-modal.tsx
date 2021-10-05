@@ -1,12 +1,12 @@
 import React from 'react'
-import {Trans} from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
-import {MarketPair, SupplyProps} from './types'
+import { MarketPair, SupplyProps } from './types'
 import { TokenType } from "../../../../types/investment";
 import { MarketPairType } from '../../../../types/market'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import styled from 'styled-components'
-import {useFormikContext} from "formik";
+import { useFormikContext } from "formik";
 import * as Styles from "@components/organisms/swap/Styles";
 
 export const StyledMarketPairSelectModal = styled(Modal)`
@@ -56,7 +56,7 @@ export default function MarketPairSelectModal(props: MarketPairSelectModalProps)
     }
 
     return (
-        <li className="list-group-item list-group-item-action">
+        <li className="list-group-item list-group-item-action px-3">
           <a
               onClick={() => onClick(marketPair, apy)}
               className="d-flex align-items-center justify-content-between"
@@ -67,22 +67,21 @@ export default function MarketPairSelectModal(props: MarketPairSelectModalProps)
                 <CurrencyIcon
                     symbol={token0.symbol}
                     className="me-2"
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                 />
                 <div className="d-flex flex-column">
                   <h3 className="mb-0 text-white">{token0.symbol}</h3>
-
                 </div>
               </div>
 
-              <div className="me-4 ms-4 font-size-lg">/</div>
+              <div className="mx-3 font-size-lg text-muted">/</div>
               <div className="d-flex align-items-center w-50">
                 <CurrencyIcon
                     symbol={token1.symbol}
                     className="me-2"
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                 />
                 <div className="d-flex flex-column">
                   <h3 className="mb-0 text-white">{token1.symbol}</h3>
@@ -115,7 +114,6 @@ export default function MarketPairSelectModal(props: MarketPairSelectModalProps)
             <div className="fw-bold">
               <Trans>APY</Trans>
             </div>
-
           </div>
 
           <Styles.HorizontalLine className="mb-2 mt-1" />

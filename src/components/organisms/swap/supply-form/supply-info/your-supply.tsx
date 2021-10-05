@@ -18,8 +18,8 @@ const YourSupply = () => {
                     <CurrencyIcon
                         symbol={values.marketPair.token0.symbol}
                         className="me-2"
-                        width={30}
-                        height={30}
+                        width={20}
+                        height={20}
                     />
                     {values.token0Value}
                     &nbsp;
@@ -29,8 +29,8 @@ const YourSupply = () => {
                     <CurrencyIcon
                         symbol={values.marketPair.token1.symbol}
                         className="me-2"
-                        width={30}
-                        height={30}
+                        width={20}
+                        height={20}
                     />
                     {values.token0Value}
                     &nbsp;

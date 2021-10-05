@@ -10,11 +10,18 @@ export default function Token0Input() {
       <Currency
         name="token0Value"
         required
-        max={10}
+        max={values.token0Balance}
         currency={values.marketPair.token0.symbol}
+        value={values.token0Value}
         decimals={4}
         onChange={(e) => {
-          const token0Value = Number(e.target.rawValue.split(' ')[1])
+          let token0Value = Number(e.target.rawValue.split(' ')[1])
+
+          if (token0Value > values.token0Balance) {
+            token0Value = values.token0Balance
+          }
+
+            // TODO: how to calculate token1value if token1balance is lower than the value calculated from token0
           const token1Value = token0Value * values.exchangeRate
           setFieldValue('token0Value', token0Value)
           setFieldValue('token1Value', token1Value)

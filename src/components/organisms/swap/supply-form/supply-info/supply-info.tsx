@@ -42,6 +42,7 @@ const SupplyInfo = () => {
                     </p>
                 </div>
             </div>
+
             <div className="d-flex">
                 <div className="row w-100">
                     <div className="col-md-6">

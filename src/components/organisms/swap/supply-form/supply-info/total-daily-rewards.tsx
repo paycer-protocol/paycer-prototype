@@ -22,8 +22,8 @@ const TotalDailyRewards = () => {
                 <CurrencyIcon
                     symbol={tokenProvider.PCR.symbol}
                     className="me-2"
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                 />
                 <div className="d-flex align-items-center">
                     {totalDailyRewards}
