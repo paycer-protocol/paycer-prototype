@@ -1,5 +1,6 @@
 import React from 'react'
-import {t, Trans} from '@lingui/macro'
+import { Trans } from '@lingui/macro'
+import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../../types/investment'
@@ -11,11 +12,23 @@ interface TokenSelectModalProps {
   tokens: TokenType[]
 }
 
+const StyledModal = styled(Modal)`
+  .modal-dialog {
+    max-width: 460px;
+  }
+`
+
 export default function TokenSelectModal(props: TokenSelectModalProps) {
   const { show, onHide, onClick, tokens } = props
 
   return (
-    <Modal size="sm" centered show={show} onHide={onHide} className="mb-5">
+    <StyledModal
+      size="sm"
+      centered
+      show={show}
+      onHide={onHide}
+      className="mb-5"
+    >
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title>
@@ -25,9 +38,9 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
         <Modal.Body>
           <ul className="list-group list-group-flush">
             {tokens.map((token) => (
-              <li className="list-group-item list-group-item-action">
+              <li key={token.symbol} className="list-group-item list-group-item-action">
                 <a
-                  className="d-flex align-items-center"
+                  className="d-flex align-items-center px-3"
                   onClick={() => onClick(token)}
                 >
                   <CurrencyIcon
@@ -46,6 +59,6 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
           </ul>
         </Modal.Body>
       </>
-    </Modal>
+    </StyledModal>
   )
 }

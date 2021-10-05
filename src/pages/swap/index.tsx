@@ -58,13 +58,13 @@ export default function Trade () {
         <div className="row align-items-center">
           <div className="col">
             <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
-            <PageHeader.Title>Trade</PageHeader.Title>
+            <PageHeader.Title>Swap</PageHeader.Title>
           </div>
         </div>
       </PageHeader>
       <div>
         <div className="d-flex">
-          <Tab isActive={!supplyTabActive} onClick={() => setSupplyTabActive(false)}>{t`Trade`}</Tab>
+          <Tab isActive={!supplyTabActive} onClick={() => setSupplyTabActive(false)}>{t`Swap`}</Tab>
           <Tab isActive={supplyTabActive} onClick={() => setSupplyTabActive(true)}>{t`Supply Liquidity`}</Tab>
         </div>
         <div className="card blur-background">

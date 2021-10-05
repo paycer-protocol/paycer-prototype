@@ -1,7 +1,6 @@
 import React from 'react'
 import * as Yup from 'yup'
 import classnames from 'classnames'
-import styled, { css } from 'styled-components'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
@@ -16,16 +15,8 @@ import useToken from '@hooks/use-token'
 import { StrategyType } from '../../../../types/investment'
 import { t } from '@lingui/macro'
 
-const StyledCard = styled(Card)`
-   ${props => !props.isModal && css`
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-   `}  
-`
-
 interface InvestFormProps extends StrategyType {
     setShowInvestForm?: any
-    isModal?: boolean
     className?: string
 }
 
@@ -75,7 +66,7 @@ const InvestForm = (props: InvestFormProps) => {
             enableReinitialize
         >
             {({ values }) => (
-              <StyledCard className={classnames(props.className, 'shadow-none mb-0')}>
+              <Card className={classnames(props.className, 'shadow-none mb-0')}>
                   <InvestCardHeader {...props} />
                   <Card.Body>
                       <div className="mb-5">
@@ -110,7 +101,7 @@ const InvestForm = (props: InvestFormProps) => {
                           <InvestFee />
                       </div>
                   </Card.Body>
-              </StyledCard>
+              </Card>
             )}
         </Form>
     )

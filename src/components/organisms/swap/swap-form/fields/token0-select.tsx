@@ -13,8 +13,6 @@ export default function Token0Select() {
         setFieldValue('token0', token)
         setFieldValue('token1Value', 0)
         setFieldValue('minimumToReceive', 0)
-        setFieldValue('exchangeRate', 0)
-
 
         const markets =  marketPairs
           .find((market) => market.base.symbol === token.symbol)

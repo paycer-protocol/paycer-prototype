@@ -14,6 +14,7 @@
     "lingui:compile": "lingui compile"
   },
   "dependencies": {
+    "@usedapp/coingecko": "^0.3.24",
     "@usedapp/core": "^0.4.1",
     "apexcharts": "^3.28.3",
     "bootstrap": "^5.0.0-beta2",

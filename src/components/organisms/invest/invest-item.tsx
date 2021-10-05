@@ -7,14 +7,13 @@ import { riskLabels } from '../../../locales'
 import InvestForm  from '@components/organisms/invest/invest-form'
 
 interface InvestItemProps {
-  strategy: StrategyType
+  strategy: StrategyType,
 }
 
 
 export default function InvestItem(props: InvestItemProps) {
   const [showForm, setShowForm] = useState(false)
   const { strategy } = props
-  const interest = strategy.interest.interestRate + strategy.rewards.rewardRate
   const tdClass = showForm ? 'bg-dark' : ''
 
   return (
@@ -36,17 +35,10 @@ export default function InvestItem(props: InvestItemProps) {
           <Trans id={riskLabels[strategy.riskLevel].id}/>
         </td>
         <td className={tdClass}>
-          <div className="row align-items-center g-0">
-            <div className="col-auto me-3">
-              <Percentage
-                value={0}
-                className="mb-2"
-              />
-            </div>
-          </div>
+          <Percentage value={strategy.rewards.rewardRate / 100} />
         </td>
         <td className={tdClass}>
-          <Percentage value={interest / 100} />
+          <Percentage value={strategy.interest.interestRate / 100} />
         </td>
         <td className={tdClass}>
           <Money value={0} />
@@ -64,7 +56,6 @@ export default function InvestItem(props: InvestItemProps) {
               {...strategy}
               className="border-0"
               setShowInvestForm={setShowForm}
-              isModal={false}
             />
           </td>
         </tr>
