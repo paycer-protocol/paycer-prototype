@@ -34,7 +34,7 @@ const SupplyInfo = () => {
                         {t`Liquidity Pool`}
                     </Styles.InfoHeadline>
                     <Styles.Headline>
-                        {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol} - {t`Apy`} {values.apy}%
+                        {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol} - <span className="text-lowercase">{t`Apy`} {values.apy}%</span>
                     </Styles.Headline>
 
                     <p className="mb-0">

@@ -24,7 +24,7 @@ export default function SupplyForm() {
       token0: initialMarketPair.base,
       token1: initialMarketPair.markets[0]
     },
-    apy: 0,
+    apy: 6,
   }
 
   const validationSchema = Yup.object().shape({

@@ -40,7 +40,7 @@ interface MarketPairSelectModalProps {
 export default function MarketPairSelectModal(props: MarketPairSelectModalProps) {
   const { show, onHide, onClick, marketPairs } = props
   const { values } = useFormikContext<SupplyProps>()
-  const APY_MOCK = 0
+  const APY_MOCK = 6
 
   const renderOption = (token0: TokenType, token1: TokenType, apy: number) => {
 
