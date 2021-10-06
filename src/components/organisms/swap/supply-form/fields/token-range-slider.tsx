@@ -20,8 +20,7 @@ export default function InvestRangeSlider() {
                 min={0}
                 max={100}
                 step={0.001}
-                defaultValue={0}
-
+                value={values.token0Value * 100 / tokenBalance}
                 onChange={(value) => {
                     const amount = tokenBalance * value / 100
                     const token1Value = amount * values.exchangeRate

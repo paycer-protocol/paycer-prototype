@@ -12,21 +12,20 @@ export default function Token0Input() {
         required
         max={values.token0Balance}
         currency={values.marketPair.token0.symbol}
-        value={values.token0Value}
         decimals={4}
         onChange={(e) => {
-          let token0Value = Number(e.target.rawValue.split(' ')[1])
+            const value  = Number(e.target.rawValue.split(' ')[1])
+            // force max balance if input too high TODO: Doesnt update the input display value correctly after it was forced to the users total balance for some reason...
+            const token0Value = value > values.token0Balance ? values.token0Balance : value
 
-          if (token0Value > values.token0Balance) {
-            token0Value = values.token0Balance
-          }
+            setFieldValue('token0Value', token0Value)
 
-            // TODO: how to calculate token1value if token1balance is lower than the value calculated from token0
-          const token1Value = token0Value * values.exchangeRate
-          setFieldValue('token0Value', token0Value)
-          setFieldValue('token1Value', token1Value)
-          /* TODO CALCULATE DAILY REWARDS */
-          setFieldValue('dailyRewards', (token0Value / 100000000) * 75000)
+            // TODO: how to calculate token1value if token1balance not enough to fit the exchange value from token0
+            const token1Value = token0Value * values.exchangeRate
+
+            setFieldValue('token1Value', token1Value)
+            /* TODO CALCULATE DAILY REWARDS */
+            setFieldValue('dailyRewards', (token0Value / 100000000) * 75000)
         }}
       />
     )
