@@ -11,7 +11,7 @@ export default function MarketPairSelect() {
     const [showModal, setShowModal] = useState(false)
 
     const token0Balance = useToken(values.marketPair.token0.symbol).tokenBalance()
-    const token1Balance = useToken(values.marketPair.token1.symbol).tokenBalance()
+    const token1Balance = values.marketPair.token1.symbol ? 500000 : useToken(values.marketPair.token1.symbol).tokenBalance()
 
     useEffect(() => {
         setFieldValue('token0Balance', token0Balance)

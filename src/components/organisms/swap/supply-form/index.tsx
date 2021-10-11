@@ -13,7 +13,6 @@ import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
 import useToken from "@hooks/use-token";
-import GradientButton from "@components/atoms/button/gradient-button";
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -67,6 +66,11 @@ export default function SupplyForm() {
 
                       <Styles.HorizontalLine />
 
+                      <div className="d-flex flex-column flex-md-row mb-5 mt-5">
+                        <TokenRangeSlider />
+                      </div>
+
+
                       <div className="d-flex flex-column flex-md-row mb-4">
                         <div className="w-50 me-2 d-flex align-items-center">
                           <Token0Input />
@@ -82,9 +86,6 @@ export default function SupplyForm() {
                       <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Balance}</div>
                   ) : null}
 
-                  <div className="d-flex flex-column flex-md-row mb-5 mt-5">
-                    <TokenRangeSlider />
-                  </div>
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
                   <SubmitButton />
                   </div>

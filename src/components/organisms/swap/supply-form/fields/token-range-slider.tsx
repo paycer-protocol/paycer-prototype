@@ -3,9 +3,10 @@ import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
 import { SupplyProps} from "@components/organisms/swap/supply-form/types";
 import useToken from "@hooks/use-token";
+import {t} from "@lingui/macro";
 
 export default function InvestRangeSlider() {
-    const { values, setFieldValue } = useFormikContext<SupplyProps>()
+    const { values, setFieldValue, setFieldError } = useFormikContext<SupplyProps>()
 
     const token0Balance = useToken(values.marketPair.token0.symbol).tokenBalance()
 
@@ -23,6 +24,12 @@ export default function InvestRangeSlider() {
                 onChange={(value) => {
                     const amount = token0Balance * value / 100
                     const token1Value = amount * values.exchangeRate
+
+
+                    if (token1Value > values.token1Balance) {
+                        return false
+                    }
+
                     setFieldValue('token0Value', amount)
                     setFieldValue('token1Value', token1Value)
                     /* TODO CALCULATE DAILY REWARDS */

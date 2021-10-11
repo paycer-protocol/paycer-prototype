@@ -6,7 +6,7 @@ import { SupplyProps } from '../types'
 
 export default function SubmitButton() {
     const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SupplyProps>()
-    const isDisabled = isSubmitting || !dirty || !isValid || isValidating
+    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value || !values.token1Value
 
     return (
         <GradientButton disabled={isDisabled}>

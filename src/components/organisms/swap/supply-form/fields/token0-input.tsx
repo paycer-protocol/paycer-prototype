@@ -11,6 +11,7 @@ export default function Token0Input() {
       <Currency
         name="token0Value"
         required
+        disabled={!values.token1Balance || !values.token0Balance}
         max={values.token0Balance}
         currency={values.marketPair.token0.symbol}
         decimals={4}
@@ -19,7 +20,6 @@ export default function Token0Input() {
             // force max balance if input too high TODO: Doesnt update the input display value correctly after it was forced to the users total balance for some reason...
             const token0Value = value > values.token0Balance ? values.token0Balance : value
             const token1Value = token0Value * values.exchangeRate
-
 
             if (token1Value > values.token1Balance) {
                 setFieldError('token1Balance', `${t` Not enough`} ${values.marketPair.token1.symbol} ${t`Balance`}`)

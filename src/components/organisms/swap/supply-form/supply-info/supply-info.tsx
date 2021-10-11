@@ -41,7 +41,7 @@ const SupplyInfo = () => {
                     <h5 className="Styles__CurrencyInputLabel-sc-1x0zzvy-3 gChYjo"><span
                         style={{textTransform: 'none', paddingLeft: '4px'}}></span> {t`Apy`} {values.apy}%</h5>
                     </div>
-                    <p className="mb-0">
+                    <p className="mb-0 text-muted">
                         Supply an equal amount of {values.marketPair.token0.symbol} and {values.marketPair.token1.symbol} to earn Interest. Your assets will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards.
                     </p>
                 </div>
