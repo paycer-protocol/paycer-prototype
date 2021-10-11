@@ -8,10 +8,12 @@ import Token0Input from './fields/token0-input'
 import Token1Input from './fields/token1-input'
 import TokenRangeSlider from './fields/token-range-slider'
 import MarketPairSelect from './fields/market-pair-select'
+import SubmitButton from './fields/submit-button'
 import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
-import fetchTokenBalance from "@components/organisms/swap/helper/fetch-token-balance";
+import useToken from "@hooks/use-token";
+import GradientButton from "@components/atoms/button/gradient-button";
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -22,8 +24,8 @@ export default function SupplyForm() {
     token1Value: 0,
     exchangeRate: 1, // TODO
     dailyRewards: 0,
-    token0Balance: fetchTokenBalance(initialMarketPair.base),
-    token1Balance: fetchTokenBalance(initialMarketPair.markets[0]),
+    token0Balance: useToken(initialMarketPair.base.symbol).tokenBalance(),
+    token1Balance: useToken(initialMarketPair.markets[0].symbol).tokenBalance(),
     marketPair: {
       token0: initialMarketPair.base,
       token1: initialMarketPair.markets[0]
@@ -47,11 +49,11 @@ export default function SupplyForm() {
           onSubmit={handleSubmit}
           enableReinitialize
       >
-        {({ values }) => {
+        {({ errors }) => {
           return (
               <div className="d-lg-flex">
                 <Styles.LeftCol>
-                  <div className="d-flex flex-column flex-md-row mb-5">
+                  <div className="d-flex flex-column flex-md-row">
                     <div className="w-100">
                       <Styles.CurrencyInputLabel>
                         {t`Supply`}
@@ -65,7 +67,6 @@ export default function SupplyForm() {
 
                       <Styles.HorizontalLine />
 
-
                       <div className="d-flex flex-column flex-md-row mb-4">
                         <div className="w-50 me-2 d-flex align-items-center">
                           <Token0Input />
@@ -77,14 +78,15 @@ export default function SupplyForm() {
                     </div>
                   </div>
 
-                  <div className="d-flex flex-column flex-md-row mb-5">
+                  {errors.token1Balance ? (
+                      <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Balance}</div>
+                  ) : null}
+
+                  <div className="d-flex flex-column flex-md-row mb-5 mt-5">
                     <TokenRangeSlider />
                   </div>
-
-                  <div className="d-flex align-items-center justify-content-center">
-                    <Styles.StyledButton className="btn">
-                      {t`Supply`}
-                    </Styles.StyledButton>
+                  <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
+                  <SubmitButton />
                   </div>
                 </Styles.LeftCol>
 

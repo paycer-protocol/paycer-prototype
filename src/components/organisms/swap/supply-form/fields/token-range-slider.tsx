@@ -1,14 +1,13 @@
 import React from 'react'
 import Slider from 'rc-slider'
 import { useFormikContext } from 'formik'
-import fetchTokenBalance from '../../helper/fetch-token-balance'
 import { SupplyProps} from "@components/organisms/swap/supply-form/types";
+import useToken from "@hooks/use-token";
 
 export default function InvestRangeSlider() {
     const { values, setFieldValue } = useFormikContext<SupplyProps>()
 
-    /* TODO GET token0 BALANCE FROM WALLET */
-    const tokenBalance = fetchTokenBalance(values.marketPair.token0)
+    const token0Balance = useToken(values.marketPair.token0.symbol).tokenBalance()
 
     return (
         <div style={{ width: '100%' }}>
@@ -20,9 +19,9 @@ export default function InvestRangeSlider() {
                 min={0}
                 max={100}
                 step={0.001}
-                value={values.token0Value * 100 / tokenBalance}
+                value={values.token0Value * 100 / token0Balance}
                 onChange={(value) => {
-                    const amount = tokenBalance * value / 100
+                    const amount = token0Balance * value / 100
                     const token1Value = amount * values.exchangeRate
                     setFieldValue('token0Value', amount)
                     setFieldValue('token1Value', token1Value)

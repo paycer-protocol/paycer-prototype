@@ -6,7 +6,7 @@ import * as Styles from '../../Styles'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { tokenProvider }  from '@providers/tokens'
 
-const TotalDailyRewards = () => {
+const TokenBalance = () => {
     const { values } = useFormikContext<SupplyProps>()
 
     /* TODO GET TOTAL DAILY REWARDS */
@@ -16,23 +16,36 @@ const TotalDailyRewards = () => {
     return (
         <>
             <Styles.CurrencyInputLabel>
-                {t`Total Daily rewards`}
+                {t`Token Balance`}
             </Styles.CurrencyInputLabel>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center mb-2">
                 <CurrencyIcon
-                    symbol={tokenProvider.PCR.symbol}
+                    symbol={values.marketPair.token0.symbol}
                     className="me-2"
                     width={20}
                     height={20}
                 />
                 <div className="d-flex align-items-center">
-                    {totalDailyRewards}
+                    {values.token0Balance}
                     &nbsp;
-                    {tokenProvider.PCR.symbol}
+                    {values.marketPair.token0.symbol}
+                </div>
+            </div>
+            <div className="d-flex align-items-center">
+                <CurrencyIcon
+                    symbol={values.marketPair.token1.symbol}
+                    className="me-2"
+                    width={20}
+                    height={20}
+                />
+                <div className="d-flex align-items-center">
+                    {values.token1Balance}
+                    &nbsp;
+                    {values.marketPair.token1.symbol}
                 </div>
             </div>
         </>
     )
 }
 
-export default TotalDailyRewards
+export default TokenBalance
