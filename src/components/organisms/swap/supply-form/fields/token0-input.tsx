@@ -22,12 +22,14 @@ export default function Token0Input() {
             const token1Value = token0Value * values.exchangeRate
 
             if (token1Value > values.token1Balance) {
-                setFieldError('token1Balance', `${t` Not enough`} ${values.marketPair.token1.symbol} ${t`Balance`}`)
+                setFieldError('token1Value', `${t` Not enough`} ${values.marketPair.token1.symbol} ${t`Balance`}`)
                 return false
             }
 
             setFieldValue('token0Value', token0Value)
             setFieldValue('token1Value', token1Value)
+
+
             /* TODO CALCULATE DAILY REWARDS */
             setFieldValue('dailyRewards', (token0Value / 100000000) * 75000)
         }}

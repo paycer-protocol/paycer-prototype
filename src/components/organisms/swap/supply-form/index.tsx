@@ -82,8 +82,8 @@ export default function SupplyForm() {
                     </div>
                   </div>
 
-                  {errors.token1Balance ? (
-                      <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Balance}</div>
+                  {errors.token1Value ? (
+                      <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Value}</div>
                   ) : null}
 
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">

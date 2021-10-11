@@ -18,13 +18,12 @@ export default function MarketPairSelect() {
 
         // TODO REMOVE MOCK
         if (values.marketPair.token1.symbol === 'DAI') {
-            setFieldValue('token1Balance', 2000000)
+            setFieldValue('token1Balance', 500000)
         } else {
             setFieldValue('token1Balance', token1Balance)
         }
 
     }, [values.marketPair]);
-
 
     const handleChange = (marketPair, apy) => {
         setFieldValue('marketPair', marketPair)
