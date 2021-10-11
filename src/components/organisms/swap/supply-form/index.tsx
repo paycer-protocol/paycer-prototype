@@ -66,7 +66,7 @@ export default function SupplyForm() {
 
                       <Styles.HorizontalLine />
 
-                      <div className="d-flex flex-column flex-md-row mb-5 mt-5">
+                      <div className="d-flex flex-column flex-md-row mb-5 mt-5 pt-3 pb-3">
                         <TokenRangeSlider />
                       </div>
 
