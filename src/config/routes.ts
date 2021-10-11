@@ -5,7 +5,8 @@ export const routes = [
   {
     label: t`Portfolio`,
     path: '/',
-    supportedChains
+    supportedChains,
+    auth: false
   },
   {
     label: t`Invest`,
@@ -15,16 +16,25 @@ export const routes = [
       {
         path: '/invest/create',
       }
-    ]
+    ],
+    auth: false
   },
   {
     label: t`Staking`,
     path: '/staking',
-    supportedChains: supportedStakingChains
+    supportedChains: supportedStakingChains,
+    auth: false
   },
   {
     label: t`Swap`,
     path: '/swap',
-    supportedChains
+    supportedChains,
+    auth: false
+  },
+  {
+    label: t`Token Sale`,
+    path: '/token-sale',
+    supportedChains,
+    auth: true
   }
 ]

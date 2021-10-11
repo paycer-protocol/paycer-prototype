@@ -16,11 +16,11 @@ import useWallet from '@hooks/use-wallet'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
-  
+
     img {
       max-height: 40px;
     }
-    
+
     @media screen and (max-width: 768px) {
         img {
           max-height: 26px;
@@ -64,7 +64,10 @@ const Header = () => {
     const [ showModalNav, setShowModalNav ] = useState(false)
     const wallet = useWallet()
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
+    const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
+
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId)
+        && isAuthenticatedRoute(route, wallet))
 
     return (
       <>
