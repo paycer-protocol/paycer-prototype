@@ -10,7 +10,6 @@ import BaseModalHeader, { ModalHeaderProps } from 'react-bootstrap/ModalHeader'
 import { XLg } from '@styled-icons/bootstrap'
 import Icon from '@components/atoms/icon'
 
-
 export interface ModalProps extends BaseModalProps {
     vertical?: boolean
 }
