@@ -4,7 +4,6 @@ import { SupplyProps } from '../types'
 import {t} from '@lingui/macro'
 import * as Styles from '../../Styles'
 import CurrencyIcon from '@components/atoms/currency-icon'
-import { tokenProvider }  from '@providers/tokens'
 
 const TokenBalance = () => {
     const { values } = useFormikContext<SupplyProps>()

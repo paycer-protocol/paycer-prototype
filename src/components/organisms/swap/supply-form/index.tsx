@@ -72,10 +72,10 @@ export default function SupplyForm() {
 
 
                       <div className="d-flex flex-column flex-md-row mb-4">
-                        <div className="w-50 me-2 d-flex align-items-center">
+                        <div className="me-2 d-md-flex align-items-center col-md-6 mb-3 mb-md-0">
                           <Token0Input />
                         </div>
-                        <div className="w-50 ms-2 d-flex align-items-center">
+                        <div className="me-2 d-md-flex align-items-center col-md-6">
                           <Token1Input />
                         </div>
                       </div>

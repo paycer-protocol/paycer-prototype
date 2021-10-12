@@ -10,6 +10,7 @@ export default function Token0Input() {
     return (
       <Currency
         name="token0Value"
+        className="w-100"
         required
         disabled={!values.token1Balance || !values.token0Balance}
         max={values.token0Balance}

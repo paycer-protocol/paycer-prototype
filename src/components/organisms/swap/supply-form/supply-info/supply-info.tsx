@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 import {t} from "@lingui/macro";
@@ -7,7 +8,6 @@ import YourSupply from './your-supply'
 import TotalSupply from './total-supply'
 import DailyRewards from './daily-rewards'
 import TokenBalance from './token-balance'
-import styled from 'styled-components'
 
 export const StylesSupplyInfoColWithBorder = styled.div`
   @media only screen and (min-width : 978px) {
