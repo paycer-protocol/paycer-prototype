@@ -23,8 +23,8 @@ export const routes = [
     supportedChains: supportedStakingChains
   },
   {
-    label: t`Trade`,
-    path: '/trade',
+    label: t`Swap`,
+    path: '/swap',
     supportedChains
   }
 ]

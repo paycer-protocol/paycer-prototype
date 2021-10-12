@@ -37,27 +37,20 @@ export default function Staking () {
           </div>
         </div>
       </PageHeader>
-      {isConnected && (
-        <div className="card">
-          <div className="card-body">
-            <div className="d-flex flex-column flex-md-row">
-              <div className="w-100">
-                <StakingForm />
-              </div>
-              <VerticalLine className="d-none d-md-block" />
-              <HorizontalLine className="d-block d-md-none" />
-              <div className="w-100">
-                <ClaimForm />
-              </div>
+      <div className="card">
+        <div className="card-body">
+          <div className="d-flex flex-column flex-md-row">
+            <div className="w-100">
+              <StakingForm />
+            </div>
+            <VerticalLine className="d-none d-md-block" />
+            <HorizontalLine className="d-block d-md-none" />
+            <div className="w-100">
+              <ClaimForm />
             </div>
           </div>
         </div>
-      )}
-      {!isConnected && (
-        <div className="d-flex justify-content-center">
-          <WalletConnect />
-        </div>
-      )}
+      </div>
     </div>
   )
 }
