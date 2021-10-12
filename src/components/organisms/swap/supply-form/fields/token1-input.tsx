@@ -11,6 +11,7 @@ export default function Token1Input() {
             name="token1Value"
             required
             max={10}
+            disabled={!values.token1Balance || !values.token0Balance}
             currency={values.marketPair.token1.symbol}
             decimals={4}
             onChange={(e) => {
