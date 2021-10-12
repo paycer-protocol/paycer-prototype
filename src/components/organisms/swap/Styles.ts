@@ -8,7 +8,7 @@ export const VerticalLine = styled.div`
 
 export const HorizontalLine = styled.div`
     border-top: 1px solid #244166;
-    margin: 30px 0 35px;
+    margin: 30px 0 40px;
     position: relative;
     div {
         background: #192434;
@@ -76,7 +76,7 @@ export const CurrencyInputLabel = styled.h5`
     text-transform: uppercase;
     letter-spacing: .08em;
     color: #a6a6a6;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 `
 
 export const InfoHeadline = styled.h5`
@@ -106,7 +106,7 @@ export const SelectWrapper = styled.div`
 
 export const LeftCol = styled.div`
     width: 40%;
-    padding: 25px 0 25px 30px;
+    padding: 30px 0 30px 30px;
   
     @media only screen and (max-width : 978px) {
       width: 100%;
@@ -117,7 +117,7 @@ export const LeftCol = styled.div`
 
 export const RightCol = styled.div`
     width: 60%;
-    padding: 25px 30px 25px 0;
+    padding: 30px 30px 30px 0;
       
     @media only screen and (max-width : 978px) {
         width: 100%;

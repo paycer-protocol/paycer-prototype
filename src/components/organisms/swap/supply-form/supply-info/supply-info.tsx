@@ -30,16 +30,17 @@ const SupplyInfo = () => {
         <div>
             <div className="d-flex flex-column flex-md-row mb-5">
                 <div>
-                    <Styles.InfoHeadline>
+                    <Styles.CurrencyInputLabel>
                         {t`Liquidity Pool`}
-                    </Styles.InfoHeadline>
-                    <div className="d-flex align-items-baseline">
-                    <Styles.Headline>
-                        {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol}
-                    </Styles.Headline>
+                    </Styles.CurrencyInputLabel>
+                    <div className="d-flex align-items-baseline mb-4">
+                        <Styles.Headline className="mb-0">
+                            {values.marketPair.token0.symbol} / {values.marketPair.token1.symbol}
+                        </Styles.Headline>
 
-                    <h5 className="Styles__CurrencyInputLabel-sc-1x0zzvy-3 gChYjo"><span
-                        style={{textTransform: 'none', paddingLeft: '4px'}}></span> {t`Apy`} {values.apy}%</h5>
+                        <Styles.CurrencyInputLabel className="mb-0">
+                            <span style={{textTransform: 'none', paddingLeft: '4px'}}></span> {t`Apy`} {values.apy}%
+                        </Styles.CurrencyInputLabel>
                     </div>
                     <p className="mb-0 text-muted">
                         Supply an equal amount of {values.marketPair.token0.symbol} and {values.marketPair.token1.symbol} to earn Interest. Your assets will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards.
