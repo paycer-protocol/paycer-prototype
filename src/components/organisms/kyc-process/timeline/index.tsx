@@ -1,7 +1,8 @@
 import React from 'react'
 import { Person } from '@styled-icons/bootstrap'
-import Card from '@components/molecules/card'
 import Icon from '@components/atoms/icon'
+import Card from '@components/molecules/card'
+import TimelineActivity from '@components/molecules/timeline-activity'
 
 const KycProcessTimeline = () => {
     return (
@@ -9,6 +10,13 @@ const KycProcessTimeline = () => {
         <Card className="rounded-0 border-0">
           <Card.Body>
             <div className="list-group list-group-flush list-group-activity">
+              <TimelineActivity iconComponent={Person}>
+                <TimelineActivity.Content>
+                  Text, Icon
+                </TimelineActivity.Content>
+              </TimelineActivity>
+
+
               <div className="list-group-item">
                 <div className="row align-items-center">
                   <div className="col-auto">
