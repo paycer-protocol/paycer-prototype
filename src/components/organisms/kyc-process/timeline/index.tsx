@@ -1,5 +1,7 @@
 import React from 'react'
+import { Person } from '@styled-icons/bootstrap'
 import Card from '@components/molecules/card'
+import Icon from '@components/atoms/icon'
 
 const KycProcessTimeline = () => {
     return (
@@ -37,6 +39,7 @@ const KycProcessTimeline = () => {
                     <div className="avatar avatar-sm">
                       <div className="avatar-title fs-lg bg-primary-soft rounded-circle text-primary">
                         <i className="fe fe-mail"></i>
+                        <Icon component={Person} size={18} />
                       </div>
                     </div>
                   </div>
