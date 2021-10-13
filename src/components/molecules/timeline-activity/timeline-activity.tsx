@@ -6,10 +6,21 @@ export interface TimelineActivityProps {
   iconComponent?: any
 }
 
-const TimelineActivityContent = ({ children, ...props }:any) => {
+// Todo: Simplify child components?
+// - Would make more sense for complex markup handling
+
+const TimelineActivityContent = ({ children, ...props }: any) => {
   return (
     <>
-      { children }
+      {children}
+    </>
+  )
+}
+
+const TimelineActivityTitle = ({ children, ...props }: any) => {
+  return (
+    <>
+      {children}
     </>
   )
 }
@@ -28,21 +39,12 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
           </div>
         </div>
         {children}
-        <div className="col ms-n2">
-          <div className="d-flex justify-content-between">
-            <h3 className="m-0 w-50">
-            </h3>
-            <div className="card-text small">
-              <span className="text-success">●</span>
-              <span className="">Online</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )
 }
 
 TimelineActivity.Content = TimelineActivityContent
+TimelineActivity.Title = TimelineActivityTitle
 
 export default TimelineActivity

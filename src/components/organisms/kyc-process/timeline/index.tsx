@@ -11,8 +11,22 @@ const KycProcessTimeline = () => {
           <Card.Body>
             <div className="list-group list-group-flush list-group-activity">
               <TimelineActivity iconComponent={Person}>
+                <TimelineActivity.Title>
+                  <h3 className="m-0 w-50">
+                    Title
+                  </h3>
+                </TimelineActivity.Title>
                 <TimelineActivity.Content>
-                  Text, Icon
+                  <div className="col ms-n2">
+                    <div className="d-flex justify-content-between">
+                      <h3 className="m-0 w-50">
+                      </h3>
+                      <div className="card-text small">
+                        <span className="text-success">●</span>
+                        <span className="">Online</span>
+                      </div>
+                    </div>
+                  </div>
                 </TimelineActivity.Content>
               </TimelineActivity>
 
