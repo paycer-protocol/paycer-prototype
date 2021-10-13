@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { Trans } from '@lingui/macro'
-import Button from '@components/atoms/button'
-import Card from '@components/molecules/card'
 import PageHeader from '@components/molecules/page-header'
+import KycProcessInfo from '@components/organisms/kyc-process/info/index'
+import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
 
 export default function TokenSale() {
   const [apiData, setApiData] = useState({})
 
   useEffect(() => {
-    // Todo: Replace
+    // Todo: Replace demo data
     fetch('https://jsonplaceholder.typicode.com/todos/1')
       .then(response => response.json())
-      .then(jsonData => setApiData(jsonData))
+      // .then(jsonData => setApiData(jsonData))
+      .then(jsonData => setApiData({
+        status_kyc : {
+          state: 1, // Confirmed
+        },
+        'status_saft' : {
+          state: 0, // Sent and in progress
+        },
+        'investment_received': {
+          state: 1, // Confirmed
+        },
+        'pcr_token_amount': {
+          state: 1,
+          value: 450000, // 450k PCR
+        },
+        'vesting_phase': {
+          state: 1,
+          value: '12 months after TGE'
+        },
+      }))
       .catch(error => {
         // Todo: Show toast?
         console.log(error);
@@ -34,28 +53,10 @@ export default function TokenSale() {
       </PageHeader>
       <div className="row g-0">
         <div className="col-lg-5">
-          <Card className="rounded-0">
-            <Card.Body>
-              <Card.Title>Headline</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat,
-                soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis.
-              </Card.Text>
-              <footer className="d-flex align-items-center justify-content-center">
-                <Button variant="primary">
-                  <Trans>Action</Trans>
-                </Button>
-              </footer>
-            </Card.Body>
-          </Card>
+          <KycProcessInfo />
         </div>
         <div className="col-lg-7">
-          <Card className="rounded-0">
-            <Card.Body>
-              ...
-            </Card.Body>
-          </Card>
+          <KycProcessTimeline />
         </div>
       </div>
     </div>
