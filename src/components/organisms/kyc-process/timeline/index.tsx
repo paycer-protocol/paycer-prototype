@@ -4,80 +4,38 @@ import Icon from '@components/atoms/icon'
 import Card from '@components/molecules/card'
 import TimelineActivity from '@components/molecules/timeline-activity'
 
-const KycProcessTimeline = () => {
+// Todo - Replace mockup data
+const KycProcessTimeline = (props: any) => {
+    // const { data } = props;
+
+    const kycSteps = [
+      {
+        title: 'Title 1',
+        state: 'success', // CSS class
+        text: 'Status 1',
+        symbol: Person,
+      },
+      {
+        title: 'Title 2',
+        state: 'error', // CSS class
+        text: 'Status 2',
+        symbol: Person,
+      },
+    ]
+
     return (
       <>
         <Card className="rounded-0 border-0">
           <Card.Body>
             <div className="list-group list-group-flush list-group-activity">
-              <TimelineActivity iconComponent={Person}>
-                <TimelineActivity.Title>
-                  <h3 className="m-0 w-50">
-                    Title
-                  </h3>
-                </TimelineActivity.Title>
-                <TimelineActivity.Content>
-                  <div className="col ms-n2">
-                    <div className="d-flex justify-content-between">
-                      <h3 className="m-0 w-50">
-                      </h3>
-                      <div className="card-text small">
-                        <span className="text-success">●</span>
-                        <span className="">Online</span>
-                      </div>
-                    </div>
-                  </div>
-                </TimelineActivity.Content>
-              </TimelineActivity>
-
-
-              <div className="list-group-item">
-                <div className="row align-items-center">
-                  <div className="col-auto">
-                    <div className="avatar avatar-sm">
-                      <div className="avatar-title fs-lg bg-primary-soft rounded-circle text-primary">
-                        <i className="fe fe-mail"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col ms-n2">
-                    <div className="d-flex justify-content-between">
-                      <h3 className="m-0 w-50">
-                        Title
-                      </h3>
-                      <div className="card-text small">
-                        <span className="text-success">●</span>
-                        <span className="">Online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="list-group-item">
-                <div className="row align-items-center">
-                  <div className="col-auto">
-                    <div className="avatar avatar-sm">
-                      <div className="avatar-title fs-lg bg-primary-soft rounded-circle text-primary">
-                        <i className="fe fe-mail"></i>
-                        <Icon component={Person} size={18} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col ms-n2">
-                    <div className="d-flex justify-content-between">
-                      <h3 className="m-0 w-50">
-                        Title
-                      </h3>
-                      <div className="card-text small">
-                        <span className="text-success">●</span>
-                        <span className="">Online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {kycSteps.map((step, key) => (
+                <TimelineActivity key={`timeline-activity-${key}`} iconComponent={step.symbol} title={step.title}>
+                  <TimelineActivity.Content>
+                    <span className={`text-${step.state} me-3`}>●</span>
+                    <span className="">{step.text}</span>
+                  </TimelineActivity.Content>
+                </TimelineActivity>
+              ))}
             </div>
           </Card.Body>
         </Card>

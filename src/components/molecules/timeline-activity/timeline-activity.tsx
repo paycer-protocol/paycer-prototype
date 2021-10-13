@@ -4,29 +4,17 @@ import Icon from '@components/atoms/icon'
 export interface TimelineActivityProps {
   children?: any
   iconComponent?: any
+  title?: string
 }
 
-// Todo: Simplify child components?
-// - Would make more sense for complex markup handling
-
-const TimelineActivityContent = ({ children, ...props }: any) => {
-  return (
-    <>
+const Content = ({ children }) => (
+    <div className="card-text small">
       {children}
-    </>
-  )
-}
-
-const TimelineActivityTitle = ({ children, ...props }: any) => {
-  return (
-    <>
-      {children}
-    </>
-  )
-}
+    </div>
+)
 
 const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
-  const { iconComponent } = props
+  const { iconComponent, title } = props
 
   return (
     <div className="list-group-item">
@@ -38,13 +26,19 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
             </div>
           </div>
         </div>
-        {children}
+        <div className="col ms-n2">
+          <div className="d-flex justify-content-left">
+            <h3 className="m-0 w-50">
+              {title}
+            </h3>
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-TimelineActivity.Content = TimelineActivityContent
-TimelineActivity.Title = TimelineActivityTitle
+TimelineActivity.Content = Content
 
 export default TimelineActivity
