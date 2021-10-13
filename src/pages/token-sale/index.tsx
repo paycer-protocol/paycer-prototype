@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Trans } from '@lingui/macro'
+import Card from '@components/molecules/card'
 import PageHeader from '@components/molecules/page-header'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
+
+// Todo: Add custom class to card, e.g. flex: 1 1 30%
 
 export default function TokenSale() {
   const [apiData, setApiData] = useState({})
@@ -53,13 +56,19 @@ export default function TokenSale() {
           </div>
         </div>
       </PageHeader>
-      <div className="row g-0">
-        <div className="col-lg-5">
-          <KycProcessInfo />
-        </div>
-        <div className="col-lg-7">
-          <KycProcessTimeline />
-        </div>
+      <div className="card-group row g-0">
+        <Card className="col-lg-5 rounded-0 border-0">
+          <Card.Body>
+            <KycProcessInfo />
+          </Card.Body>
+          <Card.Footer />
+        </Card>
+        <Card className="col-lg-7 rounded-0 border-0">
+          <Card.Body>
+            <KycProcessTimeline />
+          </Card.Body>
+          <Card.Footer />
+        </Card>
       </div>
     </div>
   )
