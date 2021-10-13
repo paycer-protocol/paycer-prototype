@@ -1,9 +1,9 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import Button from '@components/atoms/button'
 import Card from '@components/molecules/card'
 import * as Styles from '../Styles'
 
+// Todo: Replace demo content (stateful, translatable?)
 const KycProcessInfo = () => {
     return (
       <>

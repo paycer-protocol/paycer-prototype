@@ -33,9 +33,11 @@ export default function TokenSale() {
       }))
       .catch(error => {
         // Todo: Show toast?
-        console.log(error);
+        console.log(error)
       })
   }, [])
+
+  console.log(apiData)
 
   return (
     <div className="container mt-3 mb-8">
