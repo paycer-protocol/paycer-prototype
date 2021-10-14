@@ -1,11 +1,17 @@
 import { t } from '@lingui/macro'
 import { supportedChains, supportedStakingChains } from './network'
 
+// P368 | Todo: Outsource domain in global config?
+export const apiEndpoints = {
+  fetchPrivateSaleKycStatus: 'https://api.paycer.io/private_sales/:walletAddress',
+}
+
 export const routes = [
   {
     label: t`Portfolio`,
     path: '/',
-    supportedChains
+    supportedChains,
+    auth: false
   },
   {
     label: t`Invest`,
@@ -15,16 +21,25 @@ export const routes = [
       {
         path: '/invest/create',
       }
-    ]
+    ],
+    auth: false
   },
   {
     label: t`Staking`,
     path: '/staking',
-    supportedChains: supportedStakingChains
+    supportedChains: supportedStakingChains,
+    auth: false
   },
   {
     label: t`Swap`,
     path: '/swap',
-    supportedChains
+    supportedChains,
+    auth: false
+  },
+  {
+    label: t`Token Sale`,
+    path: '/token-sale',
+    supportedChains,
+    auth: true
   }
 ]
