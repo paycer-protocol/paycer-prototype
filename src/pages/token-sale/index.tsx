@@ -43,8 +43,6 @@ export default function TokenSale() {
     }
   }, [wallet.address])
 
-  console.log(apiData)
-
   return (
     <div className="container mt-3 mb-8">
       <PageHeader>
@@ -62,7 +60,7 @@ export default function TokenSale() {
 
       {isAccessible && (
         <div className="card">
-          <div className="card-body p-0">
+          <div className="card-body">
             <div className="d-lg-flex">
               <Styles.LeftCol>
                 <KycProcessInfo />

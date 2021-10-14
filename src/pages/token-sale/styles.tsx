@@ -9,7 +9,6 @@ export const VerticalLine = styled.div`
 
 export const LeftCol = styled.div`
     width: 40%;
-    padding: 30px 0 30px 30px;
 
     @media only screen and (max-width : 978px) {
       width: 100%;
@@ -19,7 +18,6 @@ export const LeftCol = styled.div`
 
 export const RightCol = styled.div`
     width: 60%;
-    padding: 30px 30px 30px 0;
 
     @media only screen and (max-width : 978px) {
         width: 100%;

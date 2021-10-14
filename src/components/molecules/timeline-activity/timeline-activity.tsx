@@ -28,7 +28,7 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
           </div>
         </div>
         <div className="col ms-n2">
-          <div className="d-flex justify-content-left">
+          <div className="d-flex flex-column flex-md-row justify-content-left">
             <h3 className="text-light m-0 w-50">
               {title}
             </h3>
