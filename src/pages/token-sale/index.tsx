@@ -7,6 +7,7 @@ import WalletConnect from '@components/organisms/web3/wallet-connect'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
 import useWallet from '@hooks/use-wallet'
+import { Message } from './components/message'
 import api from '../../api/index'
 
 const GradientCard = styled.div`
@@ -38,10 +39,10 @@ const RightCol = styled.div`
     }
 `
 
+// P368 | Todo: Improve error messaging (toast, text)
 export default function TokenSale() {
-  const [apiData, setApiData] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  const [isAccessible, setIsAccessible] = useState(false)
+  const [apiData, setApiData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const wallet = useWallet()
 
   useEffect(() => {
@@ -58,13 +59,15 @@ export default function TokenSale() {
       if (payload) {
         setApiData(payload)
       }
+      else {
+        toast(t`Something went wrong`)
+      }
 
       setIsLoading(false)
     }
 
     try {
       fetchFromApi()
-        .finally(() => setIsAccessible(!isLoading && wallet.isConnected))
     } catch (_error) {
       toast(t`Something went wrong`)
     }
@@ -85,17 +88,20 @@ export default function TokenSale() {
         </div>
       </PageHeader>
 
-      {isAccessible && (
+      {(!isLoading &&  wallet.isConnected) && (
         <GradientCard className="card">
           <div className="card-body">
             <div className="d-lg-flex">
-
               <LeftCol>
                 <KycProcessInfo />
               </LeftCol>
               <VerticalLine />
               <RightCol>
-                <KycProcessTimeline items={apiData} />
+                {(!!apiData) ? (
+                  <KycProcessTimeline items={apiData} />
+                ) : (
+                    <Message title="Error" text="Could not load data from API." />
+                )}
               </RightCol>
             </div>
           </div>
@@ -107,7 +113,7 @@ export default function TokenSale() {
       )}
 
       {isLoading && (
-        <Trans>Loading ...</Trans>
+        <Message title="Loading" text="Please wait, retrieving data from API ..." />
       )}
     </div>
   )

@@ -1,8 +1,17 @@
+import * as Yup from 'yup'
 import { t } from '@lingui/macro'
 import { FormattedNumber } from 'react-intl'
-import { TokenSaleKycSchema, TokenSaleKycType } from '../../../../types/token-sale-kyc'
+import { TokenSaleKycType } from '../../../../types/token-sale-kyc'
 import { tokenProvider } from '@providers/tokens'
 import { CalendarCheck, CashCoin, FileText, GraphUp, Person } from '@styled-icons/bootstrap'
+
+const TokenSaleKycSchema = Yup.object().shape({
+  kycApproved: Yup.boolean().required(),
+  saftApproved: Yup.boolean().required(),
+  investmentReceived: Yup.number().optional(), // Todo: Needed?
+  tokenAmount: Yup.number().required(),
+  investSymbol: Yup.string().required(),
+})
 
 // P368 | Todo: Implement real text + states
 const mapData = (data: TokenSaleKycType): object => {
