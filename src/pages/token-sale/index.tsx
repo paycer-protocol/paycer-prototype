@@ -9,12 +9,16 @@ import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index
 import useWallet from '@hooks/use-wallet'
 import api from '../../api/index'
 
-export const VerticalLine = styled.div`
+const GradientCard = styled.div`
+  background: rgb(25,36,52);
+  background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 10%, rgba(25,36,52,1) 35%);
+`
+const VerticalLine = styled.div`
     border-right: 1px solid #244166;
     margin: 0 30px;
 `
 
-export const LeftCol = styled.div`
+const LeftCol = styled.div`
     width: 40%;
 
     @media only screen and (max-width : 978px) {
@@ -23,7 +27,7 @@ export const LeftCol = styled.div`
     }
 `
 
-export const RightCol = styled.div`
+const RightCol = styled.div`
     width: 60%;
 
     @media only screen and (max-width : 978px) {
@@ -80,9 +84,10 @@ export default function TokenSale() {
       </PageHeader>
 
       {isAccessible && (
-        <div className="card">
+        <GradientCard className="card">
           <div className="card-body">
             <div className="d-lg-flex">
+
               <LeftCol>
                 <KycProcessInfo />
               </LeftCol>
@@ -92,7 +97,7 @@ export default function TokenSale() {
               </RightCol>
             </div>
           </div>
-        </div>
+        </GradientCard>
       )}
 
       {!wallet.isConnected && (
