@@ -7,7 +7,7 @@ import WalletConnect from '@components/organisms/web3/wallet-connect'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
 import useWallet from '@hooks/use-wallet'
-import { Message } from './components/message'
+import LoadingStatus from './components/loading-status'
 import api from '../../api/index'
 
 const GradientCard = styled.div`
@@ -16,6 +16,7 @@ const GradientCard = styled.div`
         background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 15%, rgba(25,36,52,1) 40%);
     }
 `
+
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
     margin: 0 30px;
@@ -39,10 +40,10 @@ const RightCol = styled.div`
     }
 `
 
-// P368 | Todo: Improve error messaging (toast, text)
+// P368 | Todo: Decide if to show error messages visually, besides toast
 export default function TokenSale() {
-  const [apiData, setApiData] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  let [apiData, setApiData] = useState(null)
+  let [isLoading, setIsLoading] = useState(true)
   const wallet = useWallet()
 
   useEffect(() => {
@@ -56,18 +57,20 @@ export default function TokenSale() {
       const response = await api.fetchTokenSaleKycStatus(wallet.address)
       const payload = response?.data || null
 
+      setIsLoading(false)
+
       if (payload) {
         setApiData(payload)
-        setIsLoading(false)
       }
       else {
-        throw 'No API response'
+        setApiData(null)
       }
     }
 
     try {
       fetchFromApi()
     } catch (_error) {
+      // P368 | Todo - This never triggers (async issue)?
       setApiData(null)
       setIsLoading(false)
       toast(t`Something went wrong`)
@@ -89,7 +92,7 @@ export default function TokenSale() {
         </div>
       </PageHeader>
 
-      {(!isLoading &&  wallet.isConnected) && (
+      {wallet.isConnected && (
         <GradientCard className="card">
           <div className="card-body">
             <div className="d-lg-flex">
@@ -98,19 +101,17 @@ export default function TokenSale() {
               </LeftCol>
               <VerticalLine />
               <RightCol>
-                {(!!apiData) ? (
+                {isLoading ? (
+                  <LoadingStatus status="loading" />
+                ) : (!isLoading && apiData) ? (
                   <KycProcessTimeline items={apiData} />
-                ) : (
-                    <Message title="Error" text="Could not load data from API." />
+                ) : (!isLoading && !apiData) && (
+                  <LoadingStatus status="error" />
                 )}
               </RightCol>
             </div>
           </div>
         </GradientCard>
-      )}
-
-      {isLoading && (
-        <Message title="Loading" text="Please wait, retrieving data from API ..." />
       )}
 
       {!wallet.isConnected && (

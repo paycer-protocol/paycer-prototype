@@ -1,6 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
 import TimelineActivity from '@components/molecules/timeline-activity'
 import { getKycData } from './data'
+
+const AnimatedDiv = styled.div`
+    animation: fadeIn 2s;
+
+    @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:1; }
+    }
+`
 
 // P368 | Todo: Implement CTA link (investmentReceived)
 // P368 | Todo: Show error?
@@ -18,7 +28,7 @@ const KycProcessTimeline = (props: any) => {
 
   return (
     <>
-      <div className="list-group list-group-flush list-group-activity">
+      <AnimatedDiv className="list-group list-group-flush list-group-activity">
         {Object.entries(kycData).map(([key, values], i) => (
           <TimelineActivity key={`timeline-activity-${key}`} iconComponent={values.symbol} title={values.title}>
             <TimelineActivity.Content>
@@ -30,7 +40,7 @@ const KycProcessTimeline = (props: any) => {
             </TimelineActivity.Content>
           </TimelineActivity>
         ))}
-      </div>
+      </AnimatedDiv>
     </>
   )
 }
