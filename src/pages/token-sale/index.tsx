@@ -115,7 +115,7 @@ export default function TokenSale() {
       )}
 
       {!wallet.isConnected && (
-        <div>
+        <div className="text-center">
           <p>Please sign into your wallet first:</p>
           <WalletConnect />
         </div>
