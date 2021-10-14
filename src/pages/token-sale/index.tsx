@@ -13,7 +13,7 @@ import api from '../../api/index'
 const GradientCard = styled.div`
     @media only screen and (min-width : 979px) {
         background: rgb(25,36,52);
-        background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 10%, rgba(25,36,52,1) 35%);
+        background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 15%, rgba(25,36,52,1) 40%);
     }
 `
 const VerticalLine = styled.div`
@@ -42,7 +42,7 @@ const RightCol = styled.div`
 // P368 | Todo: Improve error messaging (toast, text)
 export default function TokenSale() {
   const [apiData, setApiData] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const wallet = useWallet()
 
   useEffect(() => {
@@ -58,17 +58,18 @@ export default function TokenSale() {
 
       if (payload) {
         setApiData(payload)
+        setIsLoading(false)
       }
       else {
-        toast(t`Something went wrong`)
+        throw 'No API response'
       }
-
-      setIsLoading(false)
     }
 
     try {
       fetchFromApi()
     } catch (_error) {
+      setApiData(null)
+      setIsLoading(false)
       toast(t`Something went wrong`)
     }
   }, [wallet.address])
@@ -108,12 +109,15 @@ export default function TokenSale() {
         </GradientCard>
       )}
 
-      {!wallet.isConnected && (
-        <WalletConnect />
-      )}
-
       {isLoading && (
         <Message title="Loading" text="Please wait, retrieving data from API ..." />
+      )}
+
+      {!wallet.isConnected && (
+        <div>
+          <p>Please sign into your wallet first:</p>
+          <WalletConnect />
+        </div>
       )}
     </div>
   )

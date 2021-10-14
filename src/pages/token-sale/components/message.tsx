@@ -9,7 +9,7 @@ export const Message = (props: any) => {
       <h2 className="h2">
         <Trans>{title}</Trans>
       </h2>
-      <p className="text-warning">
+      <p>
         <Trans>{text}</Trans>
       </p>
     </>
