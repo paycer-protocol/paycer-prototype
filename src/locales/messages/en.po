@@ -314,7 +314,7 @@ msgstr "Invest"
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:56
+#: src/pages/token-sale/index.tsx:76
 #~ msgid "Investor Dashboard"
 #~ msgstr "Investor Dashboard"
 
@@ -342,7 +342,7 @@ msgstr "KYC Status"
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
 
-#: src/pages/token-sale/index.tsx:83
+#: src/pages/token-sale/index.tsx:103
 #~ msgid "Loading ..."
 #~ msgstr "Loading ..."
 
