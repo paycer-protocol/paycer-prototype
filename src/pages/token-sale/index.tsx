@@ -10,8 +10,10 @@ import useWallet from '@hooks/use-wallet'
 import api from '../../api/index'
 
 const GradientCard = styled.div`
-  background: rgb(25,36,52);
-  background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 10%, rgba(25,36,52,1) 35%);
+    @media only screen and (min-width : 979px) {
+        background: rgb(25,36,52);
+        background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 10%, rgba(25,36,52,1) 35%);
+    }
 `
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
