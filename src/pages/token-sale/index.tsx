@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import { toast } from 'react-toastify'
-import api from '../../api/index'
 import PageHeader from '@components/molecules/page-header'
+import WalletConnect from '@components/organisms/web3/wallet-connect'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
-import WalletNotConnected from './components/wallet-not-connected'
 import useWallet from '@hooks/use-wallet'
-import * as Styles from './styles'
+import api from '../../api/index'
 
-// P368 | Todo - Fix error handling
-// Issue: States overlap and re-render too often (?)
+export const VerticalLine = styled.div`
+    border-right: 1px solid #244166;
+    margin: 0 30px;
+`
+
+export const LeftCol = styled.div`
+    width: 40%;
+
+    @media only screen and (max-width : 978px) {
+      width: 100%;
+      padding: 25px;
+    }
+`
+
+export const RightCol = styled.div`
+    width: 60%;
+
+    @media only screen and (max-width : 978px) {
+        width: 100%;
+        padding: 25px;
+    }
+`
+
 export default function TokenSale() {
   const [apiData, setApiData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
@@ -62,20 +83,20 @@ export default function TokenSale() {
         <div className="card">
           <div className="card-body">
             <div className="d-lg-flex">
-              <Styles.LeftCol>
+              <LeftCol>
                 <KycProcessInfo />
-              </Styles.LeftCol>
-              <Styles.VerticalLine />
-              <Styles.RightCol>
+              </LeftCol>
+              <VerticalLine />
+              <RightCol>
                 <KycProcessTimeline items={apiData} />
-              </Styles.RightCol>
+              </RightCol>
             </div>
           </div>
         </div>
       )}
 
       {!wallet.isConnected && (
-        <WalletNotConnected />
+        <WalletConnect />
       )}
 
       {isLoading && (
