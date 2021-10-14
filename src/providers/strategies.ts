@@ -137,7 +137,7 @@ export const strategyProvider: IStrategyProvider = {
     assets: [
       {
         name: 'weth',
-        imgPath: '/assets/icons/eth.svg',
+        imgPath: '/assets/icons/weth.svg',
         investRange: 20,
       }
     ],
