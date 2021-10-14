@@ -6,8 +6,8 @@ import PageHeader from '@components/molecules/page-header'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
+import StatusInfo from './components/status-info'
 import useWallet from '@hooks/use-wallet'
-import LoadingStatus from './components/loading-status'
 import api from '../../api/index'
 
 const GradientCard = styled.div`
@@ -42,8 +42,8 @@ const RightCol = styled.div`
 
 // P368 | Todo: Decide if to show error messages visually, besides toast
 export default function TokenSale() {
-  let [apiData, setApiData] = useState(null)
-  let [isLoading, setIsLoading] = useState(true)
+  const [apiData, setApiData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const wallet = useWallet()
 
   useEffect(() => {
@@ -102,11 +102,11 @@ export default function TokenSale() {
               <VerticalLine />
               <RightCol>
                 {isLoading ? (
-                  <LoadingStatus status="loading" />
+                  <StatusInfo status="loading" />
                 ) : (!isLoading && apiData) ? (
                   <KycProcessTimeline items={apiData} />
                 ) : (!isLoading && !apiData) && (
-                  <LoadingStatus status="error" />
+                      <StatusInfo status="error" />
                 )}
               </RightCol>
             </div>

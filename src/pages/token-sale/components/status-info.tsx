@@ -2,11 +2,16 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import Spinner from '@components/atoms/spinner'
 
-export default function LoadingStatus(props: any) {
-  const { status } = props;
-  let content = null;
+enum StatusInfoType {
+  ERROR = 'error',
+  LOADING = 'loading',
+}
 
-  if (status === 'error') {
+export default function StatusInfo(props: any) {
+  const { status } = props;
+  let content = <></>;
+
+  if (status === StatusInfoType.ERROR) {
     content = <>
         <h2 className="h2 text-danger">
           <Trans>Error</Trans>
@@ -16,7 +21,8 @@ export default function LoadingStatus(props: any) {
         </p>
       </>
   }
-  if (status === 'loading') {
+
+  if (status === StatusInfoType.LOADING) {
     content = <>
       <Spinner className="mb-4" animation="border" variant="light" />
       <h2 className="h2">
@@ -36,3 +42,5 @@ export default function LoadingStatus(props: any) {
     </div>
   )
 }
+
+
