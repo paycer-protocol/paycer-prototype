@@ -22,8 +22,8 @@ const TotalSupply = () => {
                     <CurrencyIcon
                         symbol={values.marketPair.token0.symbol}
                         className="me-2"
-                        width={30}
-                        height={30}
+                        width={20}
+                        height={20}
                     />
                     <div className="d-flex align-items-center">
                         {totalSupplyToken0}
@@ -35,8 +35,8 @@ const TotalSupply = () => {
                     <CurrencyIcon
                         symbol={values.marketPair.token1.symbol}
                         className="me-2"
-                        width={30}
-                        height={30}
+                        width={20}
+                        height={20}
                     />
                     <div className="d-flex align-items-center">
                         {totalSupplyToken1}
