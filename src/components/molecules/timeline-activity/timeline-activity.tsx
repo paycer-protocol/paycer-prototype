@@ -5,7 +5,10 @@ import * as Styles from './styles'
 export interface TimelineActivityProps {
   children?: any
   iconComponent?: any
-  title?: string
+  title?: string,
+  isIndendet?: boolean
+  isIndendetOpener?: boolean
+  isActive?: boolean
 }
 
 const Content = ({ children }) => (
@@ -18,11 +21,11 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
   const { iconComponent, title } = props
 
   return (
-    <div className="list-group-item">
+    <Styles.StyledListGroupItem className="list-group-item" isIndendet={props.isIndendet} isIndendetOpener={props.isIndendetOpener} isActive={props.isActive}>
       <div className="row align-items-center">
         <div className="col-auto">
           <div className="avatar avatar-sm">
-            <Styles.StyledTimeline className="avatar-title fs-lg rounded-circle text-primary">
+            <Styles.StyledTimeline isActive={props.isActive} className="avatar-title fs-lg rounded-circle text-primary">
               <Icon component={iconComponent} size={18} />
             </Styles.StyledTimeline>
           </div>
@@ -36,7 +39,7 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </Styles.StyledListGroupItem>
   )
 }
 
