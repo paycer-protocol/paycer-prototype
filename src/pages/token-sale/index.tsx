@@ -40,7 +40,6 @@ const RightCol = styled.div`
     }
 `
 
-// P368 | Todo: Decide if to show error messages visually, besides toast
 export default function TokenSale() {
   const [apiData, setApiData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -48,34 +47,25 @@ export default function TokenSale() {
 
   useEffect(() => {
     const fetchFromApi = async () => {
-      if (!wallet.address) {
-        return
-      }
-
       setIsLoading(true)
 
-      const response = await api.fetchTokenSaleKycStatus(wallet.address)
-      const payload = response?.data || null
+      try {
+        const response = await api.fetchTokenSaleInfo(wallet.address)
+        const payload = response?.data || null
 
-      setIsLoading(false)
-
-      if (payload) {
         setApiData(payload)
-      }
-      else {
+        setIsLoading(false)
+      } catch (err) {
         setApiData(null)
+        setIsLoading(false)
+        toast(t`Something went wrong`)
       }
     }
 
-    try {
+    if (wallet.isConnected && wallet.address) {
       fetchFromApi()
-    } catch (_error) {
-      // P368 | Todo - This never triggers (async issue)?
-      setApiData(null)
-      setIsLoading(false)
-      toast(t`Something went wrong`)
     }
-  }, [wallet.address])
+  }, [wallet.isConnected, wallet.address])
 
   return (
     <div className="container mt-3 mb-8">
@@ -91,35 +81,19 @@ export default function TokenSale() {
           </div>
         </div>
       </PageHeader>
-
-      {wallet.isConnected && (
-        <GradientCard className="card">
-          <div className="card-body">
-            <div className="d-lg-flex">
-              <LeftCol>
-                <KycProcessInfo />
-              </LeftCol>
-              <VerticalLine />
-              <RightCol>
-                {isLoading ? (
-                  <StatusInfo status="loading" />
-                ) : (!isLoading && apiData) ? (
-                  <KycProcessTimeline items={apiData} />
-                ) : (!isLoading && !apiData) && (
-                      <StatusInfo status="error" />
-                )}
-              </RightCol>
-            </div>
+      <GradientCard className="card">
+        <div className="card-body">
+          <div className="d-lg-flex">
+            <LeftCol>
+              <KycProcessInfo />
+            </LeftCol>
+            <VerticalLine />
+            <RightCol>
+              <KycProcessTimeline {...apiData} />
+            </RightCol>
           </div>
-        </GradientCard>
-      )}
-
-      {!wallet.isConnected && (
-        <div className="text-center">
-          <p>Please sign into your wallet first:</p>
-          <WalletConnect />
         </div>
-      )}
+      </GradientCard>
     </div>
   )
 }

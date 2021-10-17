@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { t } from '@lingui/macro'
 import TimelineActivity from '@components/molecules/timeline-activity'
-import { getKycData } from './data'
+import { CalendarCheck, CashCoin, FileText, GraphUp, Person } from '@styled-icons/bootstrap'
+import { FormattedNumber } from 'react-intl'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -12,34 +14,79 @@ const AnimatedDiv = styled.div`
     }
 `
 
-// P368 | Todo: Implement CTA link (investmentReceived)
-// P368 | Todo: Show error?
-const KycProcessTimeline = (props: any) => {
-  const { items } = props
+interface KycProcessTimelineProps {
+  kycStatus?: boolean
+  kycApproved?: boolean
+  saftStatus?: boolean
+  saftApproved?: boolean
+  investmentReceived?: boolean
+  pcrTokenAmount?: number
+  vestingPhase?: number
+  tokenAmount?: number
+  investSymbol?: string
+}
 
-  const kycData = getKycData(items)
-  const isEmpty = Object.keys(kycData).length === 0
-
-  if (isEmpty) {
-    return (
-      <></>
-    )
+const renderStateLabel = (state) => {
+  if (state === undefined) {
+    return t`Open`;
   }
 
+  return state ? t`Confirmed` : t`Pending`
+}
+
+const getStateContext = (state) => {
+  if (state === undefined) {
+    return 'primary';
+  }
+
+  return state ? 'success' : 'warning'
+}
+
+const KycProcessTimeline = (props: KycProcessTimelineProps) => {
   return (
     <>
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-        {Object.entries(kycData).map(([key, values], i) => (
-          <TimelineActivity key={`timeline-activity-${key}`} iconComponent={values.symbol} title={values.title}>
-            <TimelineActivity.Content>
-              <span className={`text-${values.state} me-3`}>●</span>
-              <span className="text-light">{values.content}</span>
-              {key === 'investmentReceived' && (
-                <a className="linkInfo ms-3" href="#" target="_blank" rel="nofollow noopener noreferrer">Check transaction</a>
-              )}
-            </TimelineActivity.Content>
-          </TimelineActivity>
-        ))}
+        <TimelineActivity iconComponent={Person} title={t`KYC Status`}>
+          <TimelineActivity.Content>
+            <span className={`text-${getStateContext(props.kycApproved)} me-3`}>●</span>
+            <span className="text-light">
+              {renderStateLabel(props.kycApproved)}
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={FileText} title={t`SAFT Status`}>
+          <TimelineActivity.Content>
+            <span className={`text-${getStateContext(props.saftApproved)} me-3`}>●</span>
+            <span className="text-light">
+              {renderStateLabel(props.saftApproved)}
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={CashCoin} title={t`Investment received`}>
+          <TimelineActivity.Content>
+            <span className={`text-${getStateContext(props.investmentReceived)} me-3`}>●</span>
+            <span className="text-light">
+              {renderStateLabel(props.investmentReceived)}
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={GraphUp} title={t`PCR Token amount`}>
+          <TimelineActivity.Content>
+            <span className={`text-${props.tokenAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className="text-light">
+              <FormattedNumber value={props.tokenAmount || 0} />
+              &nbsp;PCR
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={CalendarCheck} title={t`Vesting Phase`}>
+          <TimelineActivity.Content>
+            <span className={`text-${props.tokenAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className="text-light">
+              {t`12 months after TGE`}
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
       </AnimatedDiv>
     </>
   )

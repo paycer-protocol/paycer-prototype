@@ -1,11 +1,6 @@
 import { t } from '@lingui/macro'
 import { supportedChains, supportedStakingChains } from './network'
 
-// P368 | Todo: Outsource domain in global config?
-export const apiEndpoints = {
-  fetchPrivateSaleKycStatus: 'https://api.paycer.io/private_sales/:walletAddress',
-}
-
 export const routes = [
   {
     label: t`Portfolio`,
