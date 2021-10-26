@@ -1,28 +1,37 @@
-/**
- * @todo Decide for portal solution
- * @todo Outsource selector
- */
-
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-// import Portal from 'react-overlays/Portal'
 
 /**
  * Portal HTML element ID.
+ *
+ * @todo P314 | Should a hardcoded ID be part of this component?
  */
 export const portalRootIdSelector: string = 'portal-root'
 
-const Portal = ({ children }) => {
-  const [mounted, setMounted] = useState(false)
+interface PortalProps {
+  rootElement: HTMLElement | null
+  children: any
+}
+
+/**
+ * Purely functional, design agnostic portal component.
+ */
+const Portal = (props: PortalProps) => {
+  const { rootElement, children } = props
+
+  if (!rootElement) {
+    throw 'Property `element` must exist and be of type `HTMLElement`'
+  }
+
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    return () => setMounted(false)
+    setIsMounted(true)
+    return () => setIsMounted(false)
   }, [])
 
-  return mounted
-    ? createPortal(children,
-      document.getElementById(portalRootIdSelector))
+  return isMounted
+    ? createPortal(children, rootElement)
     : null
 }
 

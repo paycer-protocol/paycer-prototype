@@ -1,8 +1,5 @@
-import { useRef } from 'react'
 import { useBlockNumber } from '@usedapp/core'
 import Portal from '../../components/atoms/portal'
-// import Portal from 'react-overlays/Portal'
-import Overlay from 'react-bootstrap/Overlay'
 
 const PortalBlockNumber = (props) => {
   const blockNumber = useBlockNumber()
