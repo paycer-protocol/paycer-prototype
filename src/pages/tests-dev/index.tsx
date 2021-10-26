@@ -1,20 +1,8 @@
-import { createPortal } from 'react-dom'
 import { useRef } from 'react'
 import { useBlockNumber } from '@usedapp/core'
+import Portal from '../../components/atoms/portal'
 // import Portal from 'react-overlays/Portal'
-
-interface PortalProps {
-  children: any
-}
-
-const Portal = (Component) => (props) => {
-  console.log('> Portal')
-
-  return createPortal(
-    <Component {...props} />,
-    document.getElementById('portal-root')
-  )
-}
+import Overlay from 'react-bootstrap/Overlay'
 
 const PortalBlockNumber = (props) => {
   const blockNumber = useBlockNumber()
@@ -22,38 +10,22 @@ const PortalBlockNumber = (props) => {
   console.log('> PortalBlockNumber')
 
   return (
-    <div {...props}>
-      {blockNumber && (
-        <h1>Block Number: {blockNumber}</h1>
-      )}
-    </div>
-  )
-}
-
-
-
-export default function TestsDev() {
-  // const containerRef = useRef(null)
-
-  // const portalRoot = document.getElementById('portal-root')
-  // const portalBlock = Portal(PortalBlockNumber)
-  Portal(PortalBlockNumber)
-
-  console.log('TestsDev')
-  // console.log(blockNumber)
-  // console.log(portalBlock)
-  // return ReactDOM.createPortal(PortalContent, portalRoot)
-
-  return (
-    <>
-      <div />
-      {/*
-      <Portal container={containerRef}>
+    <Portal>
+      <div {...props} style={{ position: 'fixed', bottom: '1rem', right: '1rem'}}>
         {blockNumber && (
           <h1>Block Number: {blockNumber}</h1>
         )}
-      </Portal>
-       */}
+      </div>
+    </Portal>
+  )
+}
+
+export default function TestsDev() {
+  console.log('## TestsDev')
+
+  return (
+    <>
+      <PortalBlockNumber />
     </>
   )
 }
