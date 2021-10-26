@@ -26,5 +26,10 @@ export const routes = [
     label: t`Swap`,
     path: '/swap',
     supportedChains
+  },
+  {
+    label: t`Tests - DEV`,
+    path: '/tests-dev',
+    supportedChains
   }
 ]
