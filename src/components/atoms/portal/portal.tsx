@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -16,7 +17,7 @@ interface PortalProps {
 /**
  * Purely functional, design agnostic portal component.
  */
-const Portal = (props: PortalProps) => {
+const Portal: React.FC<PortalProps> = (props: PortalProps) => {
   const { rootElement, children } = props
 
   if (!rootElement) {
