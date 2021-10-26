@@ -21,7 +21,7 @@ const Portal: React.FC<PortalProps> = (props: PortalProps) => {
   const { rootElement, children } = props
 
   if (!rootElement) {
-    throw 'Property `element` must exist and be of type `HTMLElement`'
+    throw 'Property `element` be of type `HTMLElement` (not: null). Does the element exist in DOM?'
   }
 
   const [isMounted, setIsMounted] = useState(false)
