@@ -1,1 +1,1 @@
-export { default } from './alert'
+export { default } from './link-external'

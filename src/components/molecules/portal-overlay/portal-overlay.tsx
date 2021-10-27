@@ -1,6 +1,6 @@
 import React from 'react'
-import Portal from '../../atoms/portal'
-import { selectors } from '../../../config/selectors'
+import Portal from '@components/atoms/portal'
+import { selectors } from '@config/selectors'
 import styled from 'styled-components'
 
 const StyledPortal = styled.div`
@@ -20,6 +20,8 @@ interface PortalOverlayProps {
 const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) => {
     const { children } = props
     const portalRoot = document.getElementById(selectors.portalContainerId)
+
+    console.log('PortalOverlay')
 
     return (
         <Portal rootElement={portalRoot}>

@@ -1,5 +1,6 @@
-interface LinkProps {
-  href: string
+import { AnchorHTMLAttributes } from 'react';
+
+interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: any
 }
 
@@ -8,6 +9,8 @@ interface LinkProps {
  * For security and privacy, tracking and JS interactions are disabled via 'rel'.
  */
 export default function LinkExternal({ href, children, ...props }: LinkProps) {
+  console.log('LinkExternal')
+
   if (!href) {
     throw 'Property `href` must be a valid string (not: empty/undefined)'
   }
