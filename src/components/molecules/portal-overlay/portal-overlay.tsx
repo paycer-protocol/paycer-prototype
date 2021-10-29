@@ -21,8 +21,6 @@ const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) 
     const { children } = props
     const portalRoot = document.getElementById(selectors.portalContainerId)
 
-    console.log('PortalOverlay')
-
     return (
         <Portal rootElement={portalRoot}>
             <StyledPortal className="position-fixed">

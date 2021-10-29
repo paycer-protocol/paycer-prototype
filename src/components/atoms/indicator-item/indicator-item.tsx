@@ -32,8 +32,6 @@ const StyledIndicatorItem = styled.div`
 export default function IndicatorItem({ children, ...props }: IndicatorProps) {
   const { state } = props;
 
-  console.log('IndicatorItem')
-
   return (
     <StyledIndicatorItem {...props}>
       <span className={`icon-indicator text-${state} bg-${state}`}></span>

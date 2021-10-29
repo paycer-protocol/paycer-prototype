@@ -9,8 +9,6 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
  * For security and privacy, tracking and JS interactions are disabled via 'rel'.
  */
 export default function LinkExternal({ children, href, ...props }: LinkProps) {
-  console.log('LinkExternal')
-
   if (!href) {
     throw 'Property `href` must be a valid string (not: empty/undefined)'
   }
