@@ -1,43 +1,51 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import classnames from 'classnames'
 import styled from 'styled-components'
 import Image from "@components/atoms/image";
 import Icon from "@components/atoms/icon";
-import { Twitter, Github, Instagram, Linkedin, Telegram, ArrowDown} from "@styled-icons/bootstrap";
+import { Twitter, Github, Instagram, Linkedin, Telegram, ArrowDown, Discord} from "@styled-icons/bootstrap";
 import Button from "@components/atoms/button";
 import GradientButton from "@components/atoms/button/gradient-button";
 import {t} from "@lingui/macro";
+import {useRouter} from "next/router";
+import useWallet from "@hooks/use-wallet";
+import {routes} from "@config/routes";
+import classnames from "classnames";
 
 const StyledGradientButton = styled(GradientButton)`
-    padding: 7px 40px;
+    padding: 10px 40px;
     font-size: 14px;
     font-weight: 400;
 `
 
 const StyledLogo = styled.a`
   img {
-    width: 100px;
+    width: 110px;
   }
 `
 
-const Footer = () => {
+const NavHeader = styled.div`
+  font-size: 15px;
+`
 
+const Footer = () => {
+    const { pathname } = useRouter()
+    const wallet = useWallet()
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
 
     return (
       <>
           <footer className="border-top mt-8">
-            <div className="container py-6">
+            <div className="container pt-6 pb-4">
                 <div className="row">
-                    <div className="col-md-5">
+                    <div className="col-md-6 mb-6 mb-lg-0">
                         <Link href="/">
-                            <StyledLogo>
+                            <StyledLogo className="d-flex justify-content-center justify-content-lg-start">
                                 <Image src="/assets/logo.svg" alt="Paycer" /> <br />
                             </StyledLogo>
                         </Link>
                         <div className="row">
-                            <small className="text-muted col-8 mt-4" style={{lineHeight: '25px'}}>
+                            <small className="text-muted col-lg-8 mt-4 text-center text-lg-start" style={{lineHeight: '25px'}}>
                                 The Paycr community is building a decentralized trading platform for the future of finance.
                                 <span className="text-light px-2 fw-bold">Join us on</span>
                                 <Icon
@@ -49,18 +57,13 @@ const Footer = () => {
                             </small>
                         </div>
 
-                        <div className="mt-4 mb-5">
-                            <div className="mb-3">
-                                Social Media
-                            </div>
-
-                            <div className="d-flex">
-
+                        <div className="mt-lg-4 mb-lg-5 my-5">
+                            <div className="d-flex justify-content-center justify-content-lg-start">
                                 <a className="me-3" target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/paycerprotocol">
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Twitter}
-                                            size={18}
+                                            size={17}
                                             color="white"
                                         />
                                     </Button>
@@ -69,7 +72,7 @@ const Footer = () => {
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Telegram}
-                                            size={18}
+                                            size={17}
                                             color="white"
                                         />
                                     </Button>
@@ -78,7 +81,7 @@ const Footer = () => {
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Github}
-                                            size={18}
+                                            size={17}
                                             color="white"
                                         />
                                     </Button>
@@ -87,7 +90,7 @@ const Footer = () => {
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Instagram}
-                                            size={18}
+                                            size={17}
                                             color="white"
                                         />
                                     </Button>
@@ -96,14 +99,23 @@ const Footer = () => {
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Linkedin}
-                                            size={18}
+                                            size={17}
+                                            color="white"
+                                        />
+                                    </Button>
+                                </a>
+                                <a className="me-3"  target="_blank" rel="noopener noreferrer" href="https://discord.gg/BVbrZh5A4H">
+                                    <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
+                                        <Icon
+                                            component={Discord}
+                                            size={17}
                                             color="white"
                                         />
                                     </Button>
                                 </a>
                                 <a target="_blank" rel="noopener noreferrer" href="https://paycerprotocol.medium.com/">
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
-                                        <svg width="16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="medium"
+                                        <svg width="15" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="medium"
                                              role="img"
                                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path fill="currentColor"
@@ -112,16 +124,36 @@ const Footer = () => {
                                     </Button>
                                 </a>
                             </div>
+                        </div>
 
+                        <div className="d-flex justify-content-center justify-content-lg-start">
+                            <StyledGradientButton as="a" href='https://www.paycer.io/token-sale'>
+                                {t`Private Sale`}
+                            </StyledGradientButton>
                         </div>
-                        <StyledGradientButton>
-                            {t`Private Sale`}
-                        </StyledGradientButton>
                     </div>
-                    <div className="col-md-3">
-                        <div className="mb-4">
+
+                    <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
+                        <NavHeader className="mb-4">
+                            Features
+                        </NavHeader>
+                        <ul className="nav nav-tabs d-block border-0">
+                            {qualifiedRoutes.map((route, key) => (
+                                <li className="nav-item m-0" key={`nav${key}`}>
+                                    <Link href={route.path}>
+                                        <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link pt-0 pb-4 border-0')} title={route.label}>
+                                            {route.label}
+                                        </a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="col-md-2 mb-6 mb-lg-0 text-center text-lg-start">
+                        <NavHeader className="mb-4">
                             Paycer
-                        </div>
+                        </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-HowItWorks">
@@ -129,31 +161,31 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a className="nav-link pt-0 pb-4" href="#!">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-PaycerToken">
                                     Paycer Token
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a className="nav-link pt-0 pb-4" href="#!">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-TokenAllocation">
                                     Distribution
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a className="nav-link pt-0 pb-4" href="#!">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-Team">
                                     Team
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a className="nav-link p-0" href="#!">
+                                <a target="_blank" className="nav-link p-0" href="https://www.paycer.io/#anchor-RoadMap">
                                     Roadmap
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div className="col-md-3">
-                        <div className="mb-4">
+                    <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
+                        <NavHeader className="mb-4">
                             Service
-                        </div>
+                        </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.io/paycer_litepaper.pdf?t=1635467490116">
@@ -166,11 +198,33 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/documentation/whitepaper">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/token-sale">
                                     Private Sale
                                 </a>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                <div className="border-top border-bottom-0 mt-lg-6 mt-5 pt-4 justify-content-lg-between d-lg-flex">
+                    <ul className="nav nav-tabs border-0 m-0 d-flex justify-content-lg-start justify-content-center">
+                        <li className="nav-item m-0 me-4">
+                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/imprint">
+                                Imprint
+                            </a>
+                        </li>
+                        <li className="nav-item m-0 me-4">
+                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/privacy">
+                                Privacy
+                            </a>
+                        </li>
+                        <li className="nav-item m-0">
+                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/disclaimer">
+                                Risk Disclaimer
+                            </a>
+                        </li>
+                    </ul>
+                    <div className="text-muted text-center text-lg-start mt-4 mt-lg-0">
+                        &copy; 2021 Paycer &nbsp;&nbsp;|&nbsp;&nbsp; <a  href="https://www.paycer.io">paycer.io</a>
                     </div>
                 </div>
             </div>
