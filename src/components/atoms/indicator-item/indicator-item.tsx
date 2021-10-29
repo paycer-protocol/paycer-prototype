@@ -1,16 +1,18 @@
 import styled from 'styled-components'
 
-// Matches Bootstrap states
-type IndicatorStates = 'success' | 'danger' | 'warning' | 'error';
+// Matches Bootstrap
+type IndicatorStates = 'danger' | 'info' | 'success' | 'warning';
 
 interface IndicatorProps {
   children: any
   state: IndicatorStates
+  title?: string
 }
 
 const StyledIndicatorItem = styled.div`
-  align-items: center;
   display: inline-flex;
+  align-items: center;
+  user-select: none;
 
   .icon-indicator {
     display: inline-block;
@@ -18,7 +20,6 @@ const StyledIndicatorItem = styled.div`
     margin-right: .375em;
     width: .5em;
     height: .5em;
-    background:red;
     box-shadow: 0 0 0.5em 0.025em;
   }
 `
@@ -28,11 +29,13 @@ const StyledIndicatorItem = styled.div`
  * Derived from Dashkit layout for online/offline states and table legends;
  * but with better text alignment for scalable typefaces.
  */
-export default function IndicatorItem({ children, state, ...props }: IndicatorProps) {
+export default function IndicatorItem({ children, ...props }: IndicatorProps) {
+  const { state, title, ...rest } = props;
+
   console.log('IndicatorItem')
 
   return (
-    <StyledIndicatorItem>
+    <StyledIndicatorItem title={title || null}>
       <span className={`icon-indicator text-${state} bg-${state}`}></span>
       {children}
     </ StyledIndicatorItem>
