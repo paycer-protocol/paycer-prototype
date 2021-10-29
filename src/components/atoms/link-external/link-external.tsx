@@ -8,7 +8,7 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
  * External link that opens in new tab/window.
  * For security and privacy, tracking and JS interactions are disabled via 'rel'.
  */
-export default function LinkExternal({ href, children, ...props }: LinkProps) {
+export default function LinkExternal({ children, href, ...props }: LinkProps) {
   console.log('LinkExternal')
 
   if (!href) {

@@ -1,12 +1,12 @@
+import { HTMLAttributes } from 'react';
 import styled from 'styled-components'
 
 // Matches Bootstrap
 type IndicatorStates = 'danger' | 'info' | 'success' | 'warning';
 
-interface IndicatorProps {
+interface IndicatorProps extends HTMLAttributes<HTMLElement> {
   children: any
   state: IndicatorStates
-  title?: string
 }
 
 const StyledIndicatorItem = styled.div`
@@ -30,12 +30,12 @@ const StyledIndicatorItem = styled.div`
  * but with better text alignment for scalable typefaces.
  */
 export default function IndicatorItem({ children, ...props }: IndicatorProps) {
-  const { state, title, ...rest } = props;
+  const { state } = props;
 
   console.log('IndicatorItem')
 
   return (
-    <StyledIndicatorItem title={title || null}>
+    <StyledIndicatorItem {...props}>
       <span className={`icon-indicator text-${state} bg-${state}`}></span>
       {children}
     </ StyledIndicatorItem>

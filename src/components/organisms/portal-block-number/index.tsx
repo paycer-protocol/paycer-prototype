@@ -1,35 +1,64 @@
-import { useEthers } from '@usedapp/core'
+import { useEffect, useState } from 'react'
+import { useBlockNumber } from '@usedapp/core'
 import { t, Trans } from '@lingui/macro'
-import { useConfig, useBlockNumber, useNotifications } from '@usedapp/core'
 import IndicatorItem from '@components/atoms/indicator-item'
 import LinkExternal from '@components/atoms/link-external'
 import PortalOverlay from '@components/molecules/portal-overlay'
-import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
-import { ChainId } from '@usedapp/core'
+import { explorerBlockURLs } from '@providers/explorers'
 
+/**
+ * @todo P314 | Add link
+ */
 export default function PortalBlockNumber() {
-  const blockNumber = useBlockNumber()
-  const { active, account, chainId } = useEthers()
-  const wallet = useWallet()
-  const config = useConfig()
-  const { notifications } = useNotifications()
+  const blockNumber = useBlockNumber() // Can be undefined
   const network = useNetwork()
+  const [href, setHref] = useState(null)
 
-  console.warn('> PortalBlockNumber')
-  console.log(blockNumber)
-  console.log(ChainId)
-  console.log(active, account, chainId)
-  console.log(wallet.isConnected, wallet.chainName, wallet.chainId)
-  console.log(config)
-  console.log(notifications)
-  console.log(network)
+  console.info('> PortalBlockNumber')
+  console.log('href', href)
+  console.log('blockNumber', blockNumber)
+
+  /* * /
+  const changeHref = () => {
+    const blockUrl = explorerBlockURLs[network.chainId]
+
+    console.info('>>> changeHref')
+    console.log([blockNumber, network])
+    console.log(blockUrl)
+
+    if (!blockUrl) {
+      return
+    }
+
+    console.log('::: setHref')
+
+    setHref(blockUrl.replace('%BLOCKNUMBER%', blockNumber))
+  }
+  /* */
+
+  // Todo: Effect not called on update of blockNumber?
+  useEffect(() => {
+    console.info('>> useEffect')
+
+    const blockUrl = explorerBlockURLs[network.chainId]
+
+    console.log(
+      blockNumber,
+      network,
+      blockUrl
+    )
+
+    return () => setHref(null)
+  }, [blockNumber])
 
   return (
     <PortalOverlay>
       {blockNumber ? (
         <IndicatorItem state="success" title={t`View block details`}>
-          <Trans>Connected</Trans>: {blockNumber}
+          <LinkExternal href={href}>
+            <Trans>Connected</Trans>: {blockNumber}
+          </LinkExternal>
         </IndicatorItem>
       ) : (
           <IndicatorItem state="danger" title={t`Login to your wallet to see block details`}>
