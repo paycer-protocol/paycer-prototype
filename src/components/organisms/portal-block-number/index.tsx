@@ -1,5 +1,7 @@
 import { useEthers } from '@usedapp/core'
+import { Trans } from '@lingui/macro'
 import { useConfig, useBlockNumber, useNotifications } from '@usedapp/core'
+import IndicatorItem from '@components/atoms/indicator-item'
 import LinkExternal from '@components/atoms/link-external'
 import PortalOverlay from '@components/molecules/portal-overlay'
 import useWallet from '@hooks/use-wallet'
@@ -25,14 +27,21 @@ export default function PortalBlockNumber() {
   console.log(network)
 
   return (
-    <>
-      { blockNumber && (
-        <PortalOverlay>
-          <LinkExternal className="" href="1">
-            Block Number: {blockNumber}
-          </LinkExternal>
-        </PortalOverlay>
+    <PortalOverlay>
+      <IndicatorItem state="success">
+        SUCCESS
+      </IndicatorItem>
+      {blockNumber ? (
+        <LinkExternal className="" href="1">
+          <span className="text-success chart-legend-indicator">●</span>
+          <Trans>Connected</Trans>: {blockNumber}
+        </LinkExternal>
+      ) : (
+        <div>
+            <span className="text-danger chart-legend-indicator">●</span>
+          <Trans>Disconnected</Trans>
+        </div>
       )}
-    </>
+    </PortalOverlay>
   )
 }
