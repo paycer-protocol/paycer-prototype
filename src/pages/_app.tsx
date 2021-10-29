@@ -20,9 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Layout>
           <ToastContainer position="top-center" />
           <Component {...pageProps} />
-
           <Footer />
-
         </Layout>
       </I18nProvider>
     </Web3Context>
