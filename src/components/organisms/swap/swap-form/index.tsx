@@ -4,10 +4,11 @@ import { tokenProvider }  from '@providers/tokens'
 import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
-import { SwapProps } from '../types'
+import { SwapProps } from './types'
 import Token0Select from './fields/token0-select'
 import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
+import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import PriceImpact from './price-impact'
 import PriceChart from './price-chart'
@@ -86,9 +87,7 @@ export default function SwapForm() {
                   <MinimumToReceiveDropdown />
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
-                  <Styles.StyledButton className="btn">
-                    {t`Swap`}
-                  </Styles.StyledButton>
+                  <SubmitButton />
                 </div>
               </Styles.LeftCol>
               <Styles.VerticalLine />

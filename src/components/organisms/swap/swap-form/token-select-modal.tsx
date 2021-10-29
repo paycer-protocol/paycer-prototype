@@ -4,7 +4,7 @@ import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../../types/investment'
 import { useFormikContext } from "formik";
-import { SwapProps } from "@components/organisms/swap/types";
+import { SwapProps } from "@components/organisms/swap/swap-form/types";
 
 interface TokenSelectModalProps {
   show: boolean

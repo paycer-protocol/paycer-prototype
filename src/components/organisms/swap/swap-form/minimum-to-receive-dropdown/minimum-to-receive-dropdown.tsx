@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
 import { t } from '@lingui/macro'
-import { SwapProps } from '../../types'
+import { SwapProps } from '../types'
 import Input from '@components/atoms/form/input'
 import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import calculateMinimumToReceive from '../../helper/minimum-to-receive'
