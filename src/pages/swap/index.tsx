@@ -5,7 +5,6 @@ import PageHeader from '@components/molecules/page-header'
 import SwapForm from '@components/organisms/swap/swap-form'
 import SupplyForm from '@components/organisms/swap/supply-form'
 
-
 const Tab = styled.div`
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;

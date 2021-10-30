@@ -1,34 +1,67 @@
 import React from 'react'
+import * as Yup from 'yup'
 import {t, Trans} from '@lingui/macro'
 import Card from '@components/molecules/card'
-import GradientButton from "@components/atoms/button/gradient-button";
+import GradientButton from '@components/atoms/button/gradient-button'
+import Form from '@components/atoms/form/form'
+import Input from '@components/atoms/form/input'
+import { useTokenSale } from '@context/token-sale-context'
 
-// P368 | Todo: Replace demo content (stateful?)
 const KycProcessInfo = () => {
+    const tokenSale = useTokenSale()
+
+    const initialValues = {
+        walletAddress: tokenSale.walletAddress
+    }
+
+    const validationSchema = Yup.object().shape({
+        walletAddress: Yup.string().required(),
+    })
+
+    const handleSubmit = (values) => {
+        tokenSale.checkWalletStatus(values.walletAddress)
+    }
+
     return (
       <>
-        <h2>
-            <Trans>Paycer Private is Live</Trans>
-        </h2>
-        <Card.Text className="mb-5">
+        <h2><Trans>Paycer Private is Live</Trans></h2>
+        <a
+          target="_blank"
+          href="https://www.paycer.io/token-sale"
+          className="d-flex justify-content-center mb-5"
+        >
+          <img
+            className="rounded"
+            alt="token sale"
+            style={{ width: '100%'}}
+            src="https://pbs.twimg.com/media/FBSCTq0WUAcEFWx?format=jpg&name=medium"
+          />
+        </a>
+        <Card.Text>
+            <Form
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+              enableReinitialize
+              className="mb-5"
+            >
+                <Input
+                  name="walletAddress"
+                  className="w-100 mb-3"
+                  label="ERC20 Wallet Address"
+                />
+                <GradientButton type="submit" className="w-100">
+                    {t`Check Status`}
+                </GradientButton>
+            </Form>
+
             <p className="text-muted">
-                <Trans>As an active investor, you can log in with your wallet and have your current status displayed.</Trans>
+                <Trans>Check your wallet address to check your status.</Trans>
             </p>
             <p className="text-muted">
                 <Trans>If you have not yet invested in Paycer you should have a look at our token sale.</Trans>
             </p>
         </Card.Text>
-
-        <div className="d-flex justify-content-center">
-            <GradientButton target="_blank" href="https://www.paycer.io/token-sale">
-              {t`Join Private Sale`}
-            </GradientButton>
-        </div>
-
-        <a target="_blank" href="https://www.paycer.io/token-sale" className="d-flex justify-content-center mb-3">
-          <img className="mt-5 rounded" style={{ width: '75%'}} src="https://pbs.twimg.com/media/FBSCTq0WUAcEFWx?format=jpg&name=medium" />
-        </a>
-
       </>
     )
 }

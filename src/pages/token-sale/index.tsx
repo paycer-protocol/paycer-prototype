@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { t, Trans } from '@lingui/macro'
-import { toast } from 'react-toastify'
+import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import KycProcessInfo from '@components/organisms/kyc-process/info/index'
 import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
-import useWallet from '@hooks/use-wallet'
-import api from '../../api/index'
+import { TokenSaleProvider } from '@context/token-sale-context'
 
 const GradientCard = styled.div`
     @media only screen and (min-width : 979px) {
@@ -39,59 +37,35 @@ const RightCol = styled.div`
 `
 
 export default function TokenSale() {
-  const [apiData, setApiData] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const wallet = useWallet()
-
-  useEffect(() => {
-    const fetchFromApi = async () => {
-      setIsLoading(true)
-
-      try {
-        const response = await api.fetchTokenSaleInfo(wallet.address)
-        const payload = response?.data || null
-
-        setApiData(payload)
-        setIsLoading(false)
-      } catch (err) {
-        setApiData(null)
-        setIsLoading(false)
-        toast(t`Something went wrong`)
-      }
-    }
-
-    if (wallet.isConnected && wallet.address) {
-      fetchFromApi()
-    }
-  }, [wallet.isConnected, wallet.address])
-
   return (
-    <div className="container mt-3 mb-8">
-      <PageHeader>
-        <div className="row align-items-center">
-          <div className="col">
-            <PageHeader.Subtitle>
-              <Trans>Token Sale</Trans>
-            </PageHeader.Subtitle>
-            <PageHeader.Title>
-              <Trans>Investor Dashboard</Trans>
-            </PageHeader.Title>
+    <TokenSaleProvider>
+      <div className="container mt-3 mb-8">
+        <PageHeader>
+          <div className="row align-items-center">
+            <div className="col">
+              <PageHeader.Subtitle>
+                <Trans>Token Sale</Trans>
+              </PageHeader.Subtitle>
+              <PageHeader.Title>
+                <Trans>Investor Dashboard</Trans>
+              </PageHeader.Title>
+            </div>
           </div>
-        </div>
-      </PageHeader>
-      <GradientCard className="card">
-        <div className="card-body">
-          <div className="d-lg-flex">
-            <LeftCol>
-              <KycProcessInfo />
-            </LeftCol>
-            <VerticalLine />
-            <RightCol>
-              <KycProcessTimeline {...apiData} />
-            </RightCol>
+        </PageHeader>
+        <GradientCard className="card">
+          <div className="card-body">
+            <div className="d-lg-flex">
+              <LeftCol>
+                <KycProcessInfo />
+              </LeftCol>
+              <VerticalLine />
+              <RightCol>
+                <KycProcessTimeline />
+              </RightCol>
+            </div>
           </div>
-        </div>
-      </GradientCard>
-    </div>
+        </GradientCard>
+      </div>
+    </TokenSaleProvider>
   )
 }
