@@ -23,7 +23,9 @@ export default function Invest() {
                     </div>
                 </div>
             </PageHeader>
-          <InvestList strategies={investmentStrategies} />
+            <div className="position-relative blur-background">
+                <InvestList strategies={investmentStrategies} />
+            </div>
           <WalletProvider
               providers={connectors}
               onHide={() => setShowWalletProviderModal(false)}
