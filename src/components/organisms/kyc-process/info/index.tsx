@@ -6,12 +6,14 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import Form from '@components/atoms/form/form'
 import Input from '@components/atoms/form/input'
 import { useTokenSale } from '@context/token-sale-context'
+import useWallet from "@hooks/use-wallet";
 
 const KycProcessInfo = () => {
     const tokenSale = useTokenSale()
+    const wallet = useWallet()
 
     const initialValues = {
-        walletAddress: tokenSale.walletAddress
+        walletAddress: wallet.isConnected ? wallet.address : null
     }
 
     const validationSchema = Yup.object().shape({
@@ -20,6 +22,7 @@ const KycProcessInfo = () => {
 
     const handleSubmit = (values) => {
         tokenSale.checkWalletStatus(values.walletAddress)
+        tokenSale.setWalletAddress(values.walletAddress)
     }
 
     return (

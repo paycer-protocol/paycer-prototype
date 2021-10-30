@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify'
 import { t } from '@lingui/macro'
-import useWallet from '@hooks/use-wallet'
+import { tokenPriceUSD } from '@config/token-price'
 import api from '../api'
 
 interface TransactionProps {
@@ -22,7 +22,6 @@ interface TokenSaleDataProps {
   kycApproved?: boolean
   saftStatus?: boolean
   saftApproved?: boolean
-  investmentReceived?: boolean
   pcrTokenAmount?: number
   vestingPhase?: number
   tokenAmount?: number
@@ -37,45 +36,68 @@ interface TokenSaleProps {
   setWalletAddress: (walletAddress: string) => void
   checkWalletStatus: (walletAddress: string) => void
   tokenSaleData: TokenSaleDataProps,
+  totalInvest?: number
+  totalReceived?: number
 }
 
 export const TokenSaleContext = React.createContext<TokenSaleProps>({
   walletAddress: '',
   setWalletAddress: (walletAddress: string) => {},
   checkWalletStatus: (walletAddress: string) => {},
-  tokenSaleData: {},
+  tokenSaleData: null,
 })
 
 export const useTokenSale = () => useContext(TokenSaleContext)
 
+
+const calculateTotalInvested = (transactions) => {
+
+  let totalInvest = 0
+  let totalReceived = 0
+
+  Object.keys(transactions).map((key) => {
+
+    if (transactions[key].historicalUSDPrice) {
+      const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice
+      totalReceived+= USDAmount / tokenPriceUSD
+      totalInvest+= USDAmount
+    } else {
+      const USDAmount = transactions[key].value
+      totalReceived+= USDAmount / tokenPriceUSD
+      totalInvest+= USDAmount
+    }
+
+  })
+
+  return {
+    totalInvest,
+    totalReceived
+  }
+
+}
+
 export const TokenSaleProvider = ({ children }) => {
-  const wallet = useWallet()
   const [walletAddress, setWalletAddress] = useState<string>('')
-  const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>({})
+  const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>(null)
+  const [totalInvest, setTotalInvest] = useState<number>(0)
+  const [totalReceived, setTotalReceived] = useState<number>(0)
 
   const checkWalletStatus = async (address: string) => {
     try {
-      try {
-        const response = await api.fetchTokenSaleInfo(address)
-        const payload = response?.data || null
 
-        setTokenSaleData(payload)
-      } catch (err) {
-        setTokenSaleData(null)
-        toast(t`Address not found`)
-      }
-    } catch (e) {
-      throw e
+      const response = await api.fetchTokenSaleInfo(address)
+      const payload = response?.data || null
+      setTokenSaleData(payload)
+      setTotalInvest(calculateTotalInvested(payload.transactions).totalInvest)
+      setTotalReceived(calculateTotalInvested(payload.transactions).totalReceived)
+
+      console.log(payload)
+
+    } catch (err) {
+      setTokenSaleData(null)
+      toast(t`Address not found`)
     }
   }
-
-  useEffect(() => {
-    setWalletAddress(wallet.address)
-
-    if (wallet.isConnected && wallet.address) {
-      checkWalletStatus(wallet.address)
-    }
-  }, [wallet.isConnected, wallet.address])
 
   return (
     <TokenSaleContext.Provider
@@ -83,6 +105,8 @@ export const TokenSaleProvider = ({ children }) => {
         walletAddress,
         setWalletAddress,
         tokenSaleData,
+        totalInvest,
+        totalReceived,
         checkWalletStatus
       }}
     >

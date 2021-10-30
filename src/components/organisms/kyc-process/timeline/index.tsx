@@ -32,7 +32,15 @@ const getStateContext = (state) => {
 }
 
 const KycProcessTimeline = () => {
-  const { tokenSaleData } = useTokenSale()
+  const {
+    tokenSaleData,
+    totalInvest,
+    totalReceived
+  } = useTokenSale()
+
+  if(!tokenSaleData) {
+    return null
+  }
 
   return (
     <>
@@ -53,29 +61,29 @@ const KycProcessTimeline = () => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={Terminal} title={t`Investment received`} isIndendetOpener isActive={tokenSaleData?.investmentReceived} >
+        <TimelineActivity iconComponent={Terminal} title={t`Investment received`} isIndendetOpener isActive={totalInvest > 0} >
           <TimelineActivity.Content>
-            <span className={`text-${getStateContext(tokenSaleData?.investmentReceived)} me-3`}>●</span>
+            <span className={`text-${getStateContext(totalInvest > 0)} me-3`}>●</span>
             <span className="text-light">
-              {renderStateLabel(tokenSaleData?.investmentReceived)}
+              {renderStateLabel(totalInvest > 0)}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={CashCoin} title={t`Invested`} isIndendet isActive={tokenSaleData?.investAmount > 0}>
+        <TimelineActivity iconComponent={CashCoin} title={t`Invested`} isIndendet isActive={totalInvest > 0}>
           <TimelineActivity.Content>
-            <span className={`text-${tokenSaleData?.investAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className={`text-${totalInvest > 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
-              <FormattedNumber value={tokenSaleData?.investAmount || 0} />
+              <FormattedNumber value={totalInvest || 0} />
               &nbsp;
-              ${tokenSaleData?.investSymbol}
+              $USD
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={GraphUp} title={t`PCR Token amount`} isIndendet isActive={tokenSaleData?.tokenAmount > 0}>
+        <TimelineActivity iconComponent={GraphUp} title={t`PCR Token amount`} isIndendet isActive={totalReceived > 0}>
           <TimelineActivity.Content>
-            <span className={`text-${tokenSaleData?.tokenAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className={`text-${totalReceived > 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
-              <FormattedNumber value={tokenSaleData?.tokenAmount || 0} />
+              <FormattedNumber value={totalReceived || 0} />
               &nbsp;PCR
             </span>
           </TimelineActivity.Content>
