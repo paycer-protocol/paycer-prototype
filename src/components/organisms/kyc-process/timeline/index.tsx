@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import TimelineActivity from '@components/molecules/timeline-activity'
-import { CalendarCheck, CashCoin, FileText, GraphUp, Person } from '@styled-icons/bootstrap'
+import {CalendarCheck, CashCoin, FileText, GraphUp, Person, Terminal} from '@styled-icons/bootstrap'
 import { FormattedNumber } from 'react-intl'
 
 const AnimatedDiv = styled.div`
@@ -24,6 +24,7 @@ interface KycProcessTimelineProps {
   vestingPhase?: number
   tokenAmount?: number
   investSymbol?: string
+  investAmount?: number
 }
 
 const renderStateLabel = (state) => {
@@ -46,7 +47,7 @@ const KycProcessTimeline = (props: KycProcessTimelineProps) => {
   return (
     <>
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-        <TimelineActivity iconComponent={Person} title={t`KYC Status`}>
+        <TimelineActivity iconComponent={Person} title={t`KYC Status`} isActive={props.kycApproved}>
           <TimelineActivity.Content>
             <span className={`text-${getStateContext(props.kycApproved)} me-3`}>●</span>
             <span className="text-light">
@@ -54,7 +55,7 @@ const KycProcessTimeline = (props: KycProcessTimelineProps) => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={FileText} title={t`SAFT Status`}>
+        <TimelineActivity iconComponent={FileText} title={t`SAFT Status`} isActive={props.saftApproved}>
           <TimelineActivity.Content>
             <span className={`text-${getStateContext(props.saftApproved)} me-3`}>●</span>
             <span className="text-light">
@@ -62,7 +63,7 @@ const KycProcessTimeline = (props: KycProcessTimelineProps) => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={CashCoin} title={t`Investment received`}>
+        <TimelineActivity iconComponent={Terminal} title={t`Investment received`} isIndendetOpener isActive={props.investmentReceived} >
           <TimelineActivity.Content>
             <span className={`text-${getStateContext(props.investmentReceived)} me-3`}>●</span>
             <span className="text-light">
@@ -70,7 +71,17 @@ const KycProcessTimeline = (props: KycProcessTimelineProps) => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={GraphUp} title={t`PCR Token amount`}>
+        <TimelineActivity iconComponent={CashCoin} title={t`Invested`} isIndendet isActive={props.investAmount > 0}>
+          <TimelineActivity.Content>
+            <span className={`text-${props.investAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className="text-light">
+              <FormattedNumber value={props.investAmount || 0} />
+              &nbsp;
+              ${props.investSymbol}
+            </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={GraphUp} title={t`PCR Token amount`} isIndendet isActive={props.tokenAmount > 0}>
           <TimelineActivity.Content>
             <span className={`text-${props.tokenAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
@@ -79,9 +90,9 @@ const KycProcessTimeline = (props: KycProcessTimelineProps) => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={CalendarCheck} title={t`Vesting Phase`}>
+        <TimelineActivity iconComponent={CalendarCheck} title={t`Vesting Phase`} isIndendet>
           <TimelineActivity.Content>
-            <span className={`text-${props.tokenAmount > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className={`text-${props.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
               {t`12 months after TGE`}
             </span>

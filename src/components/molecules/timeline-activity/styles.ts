@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledTimeline = styled.div`
     background: #1B2236;
@@ -7,4 +7,36 @@ export const StyledTimeline = styled.div`
     svg {
       fill: #3B506C;
     }
+    
+   ${props => props.isActive && css`
+    border: 1px solid #00D97E;
+    svg {
+      fill: #00D97E;
+    }
+  `}
+    
+`
+
+
+export const StyledListGroupItem = styled.div`
+  ${props => props.isIndendet && css`
+    margin-left: 30px;
+  `}
+  
+  ${props => props.isIndendetOpener && css`
+    &:before {
+      transform: rotate(150deg);
+      top: 46px!important;
+      left: 32px!important;
+      height: 69%!important;
+    }
+  `}
+  
+  ${props => props.isActive && css`
+
+    &:before {
+      border-color: #00D97E!important;
+    }
+  `}
+  
 `
