@@ -53,11 +53,11 @@ const KycProcessTimeline = () => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={Terminal} title={t`Investment received`} isIndendetOpener isActive={tokenSaleData?.investmentReceived} >
+        <TimelineActivity iconComponent={Terminal} title={t`Investment received`} isIndendetOpener isActive={tokenSaleData?.transactions.length > 0} >
           <TimelineActivity.Content>
-            <span className={`text-${getStateContext(tokenSaleData?.investmentReceived)} me-3`}>●</span>
+            <span className={`text-${getStateContext(tokenSaleData?.transactions.length > 0)} me-3`}>●</span>
             <span className="text-light">
-              {renderStateLabel(tokenSaleData?.investmentReceived)}
+              {renderStateLabel(tokenSaleData?.transactions.length > 0)}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>

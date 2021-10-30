@@ -22,7 +22,6 @@ interface TokenSaleDataProps {
   kycApproved?: boolean
   saftStatus?: boolean
   saftApproved?: boolean
-  investmentReceived?: boolean
   pcrTokenAmount?: number
   vestingPhase?: number
   tokenAmount?: number
@@ -43,7 +42,7 @@ export const TokenSaleContext = React.createContext<TokenSaleProps>({
   walletAddress: '',
   setWalletAddress: (walletAddress: string) => {},
   checkWalletStatus: (walletAddress: string) => {},
-  tokenSaleData: {},
+  tokenSaleData: {} as TokenSaleDataProps,
 })
 
 export const useTokenSale = () => useContext(TokenSaleContext)
@@ -51,7 +50,7 @@ export const useTokenSale = () => useContext(TokenSaleContext)
 export const TokenSaleProvider = ({ children }) => {
   const wallet = useWallet()
   const [walletAddress, setWalletAddress] = useState<string>('')
-  const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>({})
+  const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>({} as TokenSaleDataProps)
 
   const checkWalletStatus = async (address: string) => {
     try {
