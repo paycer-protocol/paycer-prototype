@@ -37,7 +37,7 @@ export default function Staking () {
           </div>
         </div>
       </PageHeader>
-      <div className="card">
+      <div className="card blur-background">
         <div className="card-body">
           <div className="d-flex flex-column flex-md-row">
             <div className="w-100">
