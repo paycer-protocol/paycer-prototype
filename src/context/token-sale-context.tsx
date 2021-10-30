@@ -1,8 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
-import api from "../api";
-import {toast} from "react-toastify";
-import {t} from "@lingui/macro";
-import useWallet from "@hooks/use-wallet";
+import { toast } from 'react-toastify'
+import { t } from '@lingui/macro'
+import useWallet from '@hooks/use-wallet'
+import api from '../api'
+
+interface TransactionProps {
+  id: number
+  transactionHash: string
+  unixTimestamp: number
+  transactionDateTime: string,
+  from: string,
+  to: string,
+  value: number,
+  tokenName: string,
+  tokenSymbol: string,
+  historicalUSDPrice: number
+}
 
 interface TokenSaleDataProps {
   kycStatus?: boolean
@@ -15,6 +28,7 @@ interface TokenSaleDataProps {
   tokenAmount?: number
   investSymbol?: string
   investAmount?: number
+  transactions: TransactionProps[]
 }
 
 

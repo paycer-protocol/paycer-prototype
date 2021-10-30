@@ -54,12 +54,8 @@ const KycProcessInfo = () => {
                     {t`Check Status`}
                 </GradientButton>
             </Form>
-
             <p className="text-muted">
                 <Trans>Check your wallet address to check your status.</Trans>
-            </p>
-            <p className="text-muted">
-                <Trans>If you have not yet invested in Paycer you should have a look at our token sale.</Trans>
             </p>
         </Card.Text>
       </>
