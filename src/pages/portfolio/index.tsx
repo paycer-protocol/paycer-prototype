@@ -53,7 +53,7 @@ export default function Home() {
                 strategies={qualifiedStrategies}
             />
           </div>
-          <div className="row position-relatives">
+          <div className="row position-relatives blur-background">
             <div className="col-12">
               <Portfolio
                 strategies={qualifiedStrategies}
