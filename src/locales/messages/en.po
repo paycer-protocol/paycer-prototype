@@ -121,6 +121,10 @@ msgstr "Connect to a wallet"
 #~ msgid "Connect to wallet"
 #~ msgstr "Connect to wallet"
 
+#: src/components/organisms/portal-block-number/index.tsx:40
+msgid "Connected"
+msgstr "Connected"
+
 #: src/components/organisms/web3/account-detail.tsx:92
 #~ msgid "Connected to wallet"
 #~ msgstr "Connected to wallet"
@@ -181,6 +185,10 @@ msgstr "Dark Mode"
 #: src/components/organisms/web3/wallet-detail.tsx:131
 msgid "Disconnect"
 msgstr "Disconnect"
+
+#: src/components/organisms/portal-block-number/index.tsx:45
+msgid "Disconnected"
+msgstr "Disconnected"
 
 #: src/pages/invest/create/index.tsx:98
 msgid "Distribution"
@@ -315,6 +323,10 @@ msgstr "Light Mode"
 #: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:34
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
+
+#: src/components/organisms/portal-block-number/index.tsx:44
+msgid "Login to your wallet to see block details"
+msgstr "Login to your wallet to see block details"
 
 #: src/locales/index.ts:5
 #: src/pages/invest/create/fields/risk-choice.tsx:10
@@ -599,6 +611,10 @@ msgstr "Total supply"
 #: src/pages/dashboard/components/staking-rewards/index.tsx:43
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
+
+#: src/components/organisms/portal-block-number/index.tsx:38
+msgid "View block details"
+msgstr "View block details"
 
 #: src/components/organisms/web3/wallet-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"

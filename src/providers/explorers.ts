@@ -14,13 +14,13 @@ export const explorers = {
 
 // P314 | Todo - Discuss solution (simplify?)
 export const explorerBlockURLs = {
-    [ChainId.Mainnet]: 'https://etherscan.io/block/%BLOCKNUMBER%',
-    [ChainId.Ropsten]: 'https://ropsten.etherscan.io/block/%BLOCKNUMBER%',
-    [ChainId.Kovan]: 'https://kovan.etherscan.io/block/%BLOCKNUMBER%',
-    [ChainId.Rinkeby]: 'https://rinkeby.etherscan.io/block/%BLOCKNUMBER%',
-    [ChainId.Goerli]: 'https://goerli.etherscan.io/block/%BLOCKNUMBER%',
-    [ChainId.BSC]: 'https://bscscan.com/block/%BLOCKNUMBER%',
-    [ChainId.xDai]: 'https://blockscout.com/xdai/mainnet/blocks/%BLOCKNUMBER%',
-    [ChainId.Polygon]: 'https://polygon-explorer-mainnet.chainstacklabs.com/blocks/%BLOCKNUMBER%/transactions',
-    [ChainId.Mumbai]: 'https://polygon-explorer-mumbai.chainstacklabs.com/blocks/%BLOCKNUMBER%/transactions',
+    [ChainId.Mainnet]: '/block/%BLOCKNUMBER%',
+    [ChainId.Ropsten]: '/block/%BLOCKNUMBER%',
+    [ChainId.Kovan]: '/block/%BLOCKNUMBER%',
+    [ChainId.Rinkeby]: '/block/%BLOCKNUMBER%',
+    [ChainId.Goerli]: '/block/%BLOCKNUMBER%',
+    [ChainId.BSC]: '/block/%BLOCKNUMBER%',
+    [ChainId.xDai]: '/xdai/mainnet/blocks/%BLOCKNUMBER%',
+    [ChainId.Polygon]: '/blocks/%BLOCKNUMBER%/transactions',
+    [ChainId.Mumbai]: '/blocks/%BLOCKNUMBER%/transactions',
 }

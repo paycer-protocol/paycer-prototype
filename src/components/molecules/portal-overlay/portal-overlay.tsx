@@ -1,6 +1,5 @@
 import React from 'react'
 import Portal from '@components/atoms/portal'
-import { selectors } from '@config/selectors'
 import styled from 'styled-components'
 
 const StyledPortal = styled.div`
@@ -19,10 +18,9 @@ interface PortalOverlayProps {
  */
 const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) => {
     const { children } = props
-    const portalRoot = document.getElementById(selectors.portalContainerId)
 
     return (
-        <Portal rootElement={portalRoot}>
+        <Portal>
             <StyledPortal className="position-fixed">
                 {children}
             </StyledPortal>

@@ -1,16 +1,8 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-
-/**
- * Portal HTML element ID.
- *
- * @todo P314 | Should a hardcoded ID be part of this component?
- */
-export const portalRootIdSelector: string = 'portal-root'
+import { getRootElement } from './root'
 
 interface PortalProps {
-  rootElement: HTMLElement | null
   children: any
 }
 
@@ -18,13 +10,9 @@ interface PortalProps {
  * Purely functional, design agnostic portal component.
  */
 const Portal: React.FC<PortalProps> = (props: PortalProps) => {
-  const { rootElement, children } = props
-
-  if (!rootElement) {
-    throw 'Property `element` be of type `HTMLElement` (not: null). Does the element exist in DOM?'
-  }
-
+  const {children} = props
   const [isMounted, setIsMounted] = useState(false)
+  const rootElement: Element = getRootElement()
 
   useEffect(() => {
     setIsMounted(true)
