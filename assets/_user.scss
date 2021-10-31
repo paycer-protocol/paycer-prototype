@@ -36,3 +36,46 @@ main {
 a {
   text-decoration: none;
 }
+
+
+.PCR-Tab {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 46px;
+  padding: 0 32px 3px 32px;
+  cursor: pointer;
+  background: #111723;
+  border: 1px solid #213752;
+  border-bottom: none;
+  margin-right: 1px;
+  top: 4px;
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  color: #4a658c;
+  &:hover {
+    color: #FFF;
+  }
+
+  &--isActive {
+    z-index: 2;
+    color: #FFF;
+    background: #192434;
+    &:before {
+      content: "";
+      background: #192434;
+      height: 4px;
+      position: absolute;
+      z-index: 3;
+      bottom: -1px;
+      left: -1px;
+      width: 103%;
+    }
+    &:first-child:before {
+      left: 0;
+    }
+  }
+}

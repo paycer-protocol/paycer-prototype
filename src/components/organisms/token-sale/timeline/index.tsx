@@ -38,9 +38,7 @@ const KycProcessTimeline = () => {
     totalReceived
   } = useTokenSale()
 
-  if(!tokenSaleData) {
-    return null
-  }
+
 
   return (
     <>

@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { t } from '@lingui/macro'
+import useWallet from '@hooks/use-wallet'
 import { tokenPriceUSD } from '@config/token-price'
 import api from '../api'
 
@@ -77,6 +78,7 @@ const calculateTotalInvested = (transactions) => {
 }
 
 export const TokenSaleProvider = ({ children }) => {
+  const wallet = useWallet()
   const [walletAddress, setWalletAddress] = useState<string>('')
   const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>(null)
   const [totalInvest, setTotalInvest] = useState<number>(0)
@@ -90,14 +92,19 @@ export const TokenSaleProvider = ({ children }) => {
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions).totalInvest)
       setTotalReceived(calculateTotalInvested(payload.transactions).totalReceived)
-
-      console.log(payload)
-
     } catch (err) {
       setTokenSaleData(null)
       toast(t`Address not found`)
     }
   }
+
+  useEffect(() => {
+    setWalletAddress(wallet.address)
+
+    if (wallet.isConnected && wallet.address) {
+      checkWalletStatus(wallet.address)
+    }
+  }, [wallet.isConnected, wallet.address])
 
   return (
     <TokenSaleContext.Provider

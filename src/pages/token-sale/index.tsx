@@ -1,17 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
-import { Trans } from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import KycProcessInfo from '@components/organisms/kyc-process/info/index'
-import KycProcessTimeline from '@components/organisms/kyc-process/timeline/index'
+import KycProcessInfo from '@components/organisms/token-sale/info'
+import KycProcessTimeline from '@components/organisms/token-sale/timeline'
+import Transactions from '@components/organisms/token-sale/transactions'
 import { TokenSaleProvider } from '@context/token-sale-context'
-
-const GradientCard = styled.div`
-    @media only screen and (min-width : 979px) {
-        background: rgb(25,36,52);
-        background: linear-gradient(90deg, rgba(25,36,52,1) 0%, rgba(15,21,38,1) 15%, rgba(25,36,52,1) 40%);
-    }
-`
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
@@ -37,6 +31,7 @@ const RightCol = styled.div`
 `
 
 export default function TokenSale() {
+  const [transactionTabActive, setTransactionTabActive] = useState(false)
   return (
     <TokenSaleProvider>
       <div className="container mt-3 mb-8">
@@ -52,19 +47,35 @@ export default function TokenSale() {
             </div>
           </div>
         </PageHeader>
-        <GradientCard className="card">
+
+        <div className="d-flex">
+          <div className={transactionTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setTransactionTabActive(false)}>{t`Overview`}</div>
+          <div className={transactionTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setTransactionTabActive(true)}>{t`Transactions`}</div>
+        </div>
+
+        <div className="card blur-background">
           <div className="card-body">
             <div className="d-lg-flex">
-              <LeftCol>
-                <KycProcessInfo />
-              </LeftCol>
-              <VerticalLine />
-              <RightCol>
-                <KycProcessTimeline />
-              </RightCol>
+
+              {(transactionTabActive
+                ?
+                    <Transactions />
+                :
+                    <>
+                      <LeftCol>
+                        <KycProcessInfo />
+                      </LeftCol>
+                      <VerticalLine />
+                      <RightCol>
+                        <KycProcessTimeline />
+                      </RightCol>
+                    </>
+              )}
+
+
             </div>
           </div>
-        </GradientCard>
+        </div>
       </div>
     </TokenSaleProvider>
   )
