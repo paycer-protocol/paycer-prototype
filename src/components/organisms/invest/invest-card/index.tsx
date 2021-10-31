@@ -76,7 +76,7 @@ const InvestCard = (props: StrategyType) => {
                     </li>
                 </ul>
 
-                <Button onClick={() => setShowInvestModal(true)} variant="primary" className='w-100'>
+                <Button onClick={() => setShowInvestModal(true)} variant="primary" className='w-100 mt-4'>
                     {investedBalance ? t`Edit invest` : t`Start invest`}
                 </Button>
             </Card.Body>
