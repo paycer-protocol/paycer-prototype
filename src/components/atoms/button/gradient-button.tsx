@@ -5,7 +5,7 @@ const GradientButton = styled(Button)`
   background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
   color: #FFF;
   font-weight: bold;
-  padding: 8px 80px;
+  padding: 8px 40px;
   transition: all;
   border-radius: 25px;
   text-align: center;

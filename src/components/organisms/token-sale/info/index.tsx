@@ -45,16 +45,19 @@ const KycProcessInfo = () => {
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
               enableReinitialize
-              className="mb-5"
+              className="mb-md-5"
             >
                 <Input
                   name="walletAddress"
-                  className="w-100 mb-4"
+                  className="w-100 mb-5"
                   label="Submit your ERC20 Wallet Address"
                 />
-                <GradientButton type="submit" className="w-100">
-                    {t`Check Status`}
-                </GradientButton>
+
+                <div className="d-flex align-items-center justify-content-center">
+                    <GradientButton type="submit" className="w-75">
+                        {t`Check Status`}
+                    </GradientButton>
+                </div>
             </Form>
         </Card.Text>
       </>
