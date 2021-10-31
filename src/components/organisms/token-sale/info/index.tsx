@@ -32,7 +32,7 @@ const KycProcessInfo = () => {
 
     return (
       <>
-        <h2><Trans>Check your Private Sale Status</Trans></h2>
+        <h2 className="mb-4"><Trans>Check your Private Sale Status</Trans></h2>
 
         <Card.Text>
             <Form
@@ -54,7 +54,7 @@ const KycProcessInfo = () => {
         </Card.Text>
 
           <HorizontalLine />
-          <h2><Trans>Join the Paycer Private Sale</Trans></h2>
+          <h2 className="mb-4"><Trans>Join the Paycer Private Sale</Trans></h2>
           <a
               target="_blank"
               href="https://www.paycer.io/token-sale"
