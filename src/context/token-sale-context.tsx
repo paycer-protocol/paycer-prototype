@@ -5,7 +5,7 @@ import useWallet from '@hooks/use-wallet'
 import { tokenPriceUSD } from '@config/token-price'
 import api from '../api'
 
-interface TransactionProps {
+export interface TransactionProps {
   id: number
   transactionHash: string
   unixTimestamp: number

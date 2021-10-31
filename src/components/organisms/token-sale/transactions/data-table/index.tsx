@@ -4,22 +4,9 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 import { tokenPriceUSD } from "@config/token-price";
 import {FormattedNumber} from "@components/atoms/number";
 import Button from "@components/atoms/button";
+import { TransactionProps} from '../../../../../context/token-sale-context'
 
-export interface DataTableProps {
-  unixTimestamp: number
-  tokenSymbol: string
-  id: string
-  type: string
-  fromAddress: string
-  historicalUSDPrice: number
-  toAddress: string
-  tokenName: string
-  transactionDateTime: string
-  transactionHash: string
-  value: number
-}
-
-const DataTable = (props: DataTableProps) => {
+const DataTable = (props: TransactionProps) => {
   const [showTable, setShowTable] = useState(false)
   const date = new Date(props.transactionDateTime)
   let received = 0

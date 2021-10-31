@@ -1,8 +1,8 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import styled from 'styled-components'
 import { useTokenSale } from '@context/token-sale-context'
 import DataTable from './data-table'
+import {Trans} from "@lingui/macro";
 
 export const Wrapper = styled.div`
     padding: 30px;
@@ -13,8 +13,17 @@ export const Wrapper = styled.div`
 `
 
 const Transactions = () => {
+
     const { tokenSaleData } = useTokenSale()
-    const { transactions } = tokenSaleData
+    const transactions = tokenSaleData?.transactions
+
+    if (!transactions) {
+        return(
+            <Wrapper>
+                <Trans>No available transactions</Trans>
+            </Wrapper>
+        )
+    }
 
     return (
       <Wrapper>
