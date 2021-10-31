@@ -13,8 +13,6 @@ interface PortalOverlayProps {
 
 /**
  * Generic portal overlay aligned to screen corner.
- *
- * @todo P314 | Discuss: Container ID is generic, but styles are not. Improve to achieve position independence?
  */
 const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) => {
     const { children } = props

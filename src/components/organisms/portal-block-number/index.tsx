@@ -8,25 +8,18 @@ import useNetwork from '@hooks/use-network'
 import useWallet from '@hooks/use-wallet'
 import { getExplorerBlockUrl } from '@providers/explorers'
 
-/**
- * @todo P314 | Finish
- */
 export default function PortalBlockNumber() {
   const network = useNetwork()
   const blockNumber: number | undefined = useBlockNumber()
   const wallet = useWallet()
   const [href, setHref] = useState(null)
 
-  // P314 | Todo - Improve string replacement? Security = Ok?
-  // P314 | Todo - Discuss: Block number can be undefined. Also it might still exist even after logout (?).
   useEffect(() => {
-    if (wallet.isConnected === false || !blockNumber) {
+    if (!wallet.isConnected || !blockNumber) {
       return
     }
 
     const explorerBlockUrl = getExplorerBlockUrl(network.chainId, blockNumber)
-    console.log('explorerBlockUrl', explorerBlockUrl)
-
     setHref(explorerBlockUrl)
 
     return () => setHref(null)

@@ -1,7 +1,9 @@
 import PortalBlockNumber from '../../components/organisms/portal-block-number'
 
-// P314 | Todo: Implement Portal in all pages + Remove dummy
-// P314 | Todo: Exclude dummy from Git to reuse it in future?
+/**
+ * @todo P314 | Discuss - Implement Portal in all pages OR in 'document.tsx' for all at once?
+ * @todo P314 | Remove this dummy page
+ */
 export default function TestsDev() {
   return <PortalBlockNumber />
 }

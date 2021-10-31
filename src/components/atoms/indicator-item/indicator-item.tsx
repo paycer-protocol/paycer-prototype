@@ -1,12 +1,10 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 
-// Matches Bootstrap
-type IndicatorStates = 'danger' | 'info' | 'success' | 'warning';
-
+// state = Matches Bootstrap
 interface IndicatorProps extends HTMLAttributes<HTMLElement> {
   children: any
-  state: IndicatorStates
+  state: 'danger' | 'info' | 'success' | 'warning'
 }
 
 const StyledIndicatorItem = styled.div`
@@ -26,11 +24,10 @@ const StyledIndicatorItem = styled.div`
 
 /**
  * Text item with state indicator visual (dot).
- * Derived from Dashkit layout for online/offline states and table legends;
- * but with better text alignment for scalable typefaces.
+ * Derived from Dashkit for online/offline states and table legends with better text alignment for scalable typefaces.
  */
 export default function IndicatorItem({ children, ...props }: IndicatorProps) {
-  const { state } = props;
+  const { state } = props
 
   return (
     <StyledIndicatorItem {...props}>
