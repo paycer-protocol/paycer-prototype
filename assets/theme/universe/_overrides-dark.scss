@@ -55,11 +55,25 @@ p {
   &:before {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 100%;
-    background: $pacer-gradient;
-    filter: blur(110px);
-    opacity: 0.15;
+    background: linear-gradient(284deg,#5129c3,#6808c0,#864091);
+    filter: blur(112px);
+    opacity: .23;
     z-index: -1;
+    border-radius: 25%;
+    left:0;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(284deg,#864091,#6808c0,#5129c3);
+    filter: blur(112px);
+    opacity: .23;
+    z-index: -1;
+    border-radius: 25%;
+    right: 0;
   }
 }
