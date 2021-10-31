@@ -19,7 +19,7 @@ const HorizontalLine = styled.div`
 `
 
 export const LeftCol = styled.div`
-    width: 40%;
+    width: 50%;
     padding: 30px 0 30px 30px;
   
     @media only screen and (max-width : 978px) {
@@ -30,7 +30,7 @@ export const LeftCol = styled.div`
 `
 
 export const RightCol = styled.div`
-    width: 60%;
+    width: 50%;
     padding: 30px 30px 30px 0;
       
     @media only screen and (max-width : 978px) {
