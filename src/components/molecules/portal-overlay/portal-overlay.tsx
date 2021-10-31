@@ -2,9 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import Portal from '@components/atoms/portal'
 
+/**
+ * z-index is intentionally below any of Bootstrap's components.
+ *
+ * @see https://getbootstrap.com/docs/5.0/layout/z-index
+ */
 const StyledPortal = styled.div`
-    bottom: 1rem;
+    z-index: 990;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 0.25rem;
     right: 1rem;
+    bottom: 1rem;
+    padding: 0.25rem 0.5rem;
 `
 
 interface PortalOverlayProps {

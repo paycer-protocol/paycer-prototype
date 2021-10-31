@@ -30,7 +30,7 @@ export default function PortalBlockNumber() {
       {href ? (
         <IndicatorItem state="success" title={t`View block details`}>
           <LinkExternal href={href}>
-            <Trans>Connected</Trans>: {blockNumber}
+            {blockNumber}
           </LinkExternal>
         </IndicatorItem>
       ) : (
