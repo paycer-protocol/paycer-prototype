@@ -58,7 +58,7 @@ export default function TokenSale() {
         </PageHeader>
 
         <div className="d-flex">
-          <div className={transactionTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setTransactionTabActive(false)}>{t`Overview`}</div>
+          <div className={transactionTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setTransactionTabActive(false)}>{t`Status`}</div>
           <div className={transactionTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setTransactionTabActive(true)}>{t`Transactions`}</div>
         </div>
 
