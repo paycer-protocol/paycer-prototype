@@ -28,7 +28,7 @@ interface TokenSaleDataProps {
   tokenAmount?: number
   investSymbol?: string
   investAmount?: number
-  transactions: TransactionProps[]
+  transactions?: TransactionProps[]
 }
 
 
@@ -45,7 +45,7 @@ export const TokenSaleContext = React.createContext<TokenSaleProps>({
   walletAddress: '',
   setWalletAddress: (walletAddress: string) => {},
   checkWalletStatus: (walletAddress: string) => {},
-  tokenSaleData: null,
+  tokenSaleData: {},
 })
 
 export const useTokenSale = () => useContext(TokenSaleContext)
