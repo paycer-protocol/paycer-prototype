@@ -54,7 +54,7 @@ const KycProcessInfo = () => {
                 />
 
                 <div className="d-flex align-items-center justify-content-center">
-                    <GradientButton type="submit" className="w-75">
+                    <GradientButton type="submit" className="w-50">
                         {t`Check Status`}
                     </GradientButton>
                 </div>
