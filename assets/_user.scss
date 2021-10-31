@@ -37,6 +37,10 @@ a {
   text-decoration: none;
 }
 
+a:focus, button:focus {
+  outline: none !important;
+  box-shadow: none!important;
+}
 
 .PCR-Tab {
   border-top-right-radius: 5px;
@@ -44,7 +48,7 @@ a {
   height: 46px;
   padding: 0 32px 3px 32px;
   cursor: pointer;
-  background: #111723;
+  background: #0B1120;
   border: 1px solid #213752;
   border-bottom: none;
   margin-right: 1px;
