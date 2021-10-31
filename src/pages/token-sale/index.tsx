@@ -6,11 +6,16 @@ import KycProcessInfo from '@components/organisms/token-sale/info'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import Transactions from '@components/organisms/token-sale/transactions'
 import { TokenSaleProvider } from '@context/token-sale-context'
-import * as Styles from "@components/organisms/swap/Styles";
 
 const VerticalLine = styled.div`
     border-right: 1px solid #244166;
     margin: 0 30px;
+`
+
+const HorizontalLine = styled.div`
+    border-top: 1px solid #244166;
+    margin: 30px 0;
+    position: relative;
 `
 
 export const LeftCol = styled.div`
@@ -60,7 +65,6 @@ export default function TokenSale() {
         <div className="card blur-background">
           <div className="card-body p-0">
             <div className="d-lg-flex">
-
               {(transactionTabActive
                 ?
                     <Transactions />
@@ -70,14 +74,12 @@ export default function TokenSale() {
                       <KycProcessInfo />
                     </LeftCol>
                     <VerticalLine />
-                    <Styles.HorizontalLine className="d-md-none" />
+                    <HorizontalLine className="d-md-none" />
                     <RightCol>
                       <KycProcessTimeline />
                     </RightCol>
                   </>
               )}
-
-
             </div>
           </div>
         </div>

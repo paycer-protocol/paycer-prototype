@@ -18,16 +18,15 @@ const Transactions = () => {
 
     return (
       <Wrapper>
-        <h2><Trans>Transactions</Trans></h2>
-            <div>
-                {Object.keys(transactions).map((key, value) => (
-                    <div className="mb-4">
-                        <DataTable
-                            { ...transactions[key] }
-                        />
-                    </div>
-                ))}
-            </div>
+        <div>
+            {Object.keys(transactions).map((key, value) => (
+                <div className="mb-4">
+                    <DataTable
+                        { ...transactions[key] }
+                    />
+                </div>
+            ))}
+        </div>
       </Wrapper>
     )
 }

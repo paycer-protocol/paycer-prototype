@@ -45,7 +45,8 @@ const DataTable = (props: DataTableProps) => {
           <tr>
             <th>
               <span className="pe-3">
-                <span className="text-muted pe-2">ID:</span>
+                <span className="text-muted pe-2 d-none d-md-inline">Transaction ID:</span>
+                  <span className="text-muted pe-2 d-md-none">ID:</span>
                 <span className="text-white">{props['@id'].split('/')[2]}</span>
               </span>
             </th>
