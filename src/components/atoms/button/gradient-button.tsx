@@ -7,6 +7,8 @@ const GradientButton = styled(Button)`
   font-weight: bold;
   padding: 8px 80px;
   transition: all;
+  border-radius: 25px;
+  text-align: center;
 
   &:hover {
     background: linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%);

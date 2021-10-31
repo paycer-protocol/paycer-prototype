@@ -39,7 +39,7 @@ const DataTable = (props: TransactionProps) => {
             </th>
             <th className="d-flex justify-content-end">
               <Button active={showTable} variant="primary">
-                {showTable ? t`Hide` : t`Show`}
+                {showTable ? t`Hide Details` : t`Show Details`}
               </Button>
             </th>
           </tr>

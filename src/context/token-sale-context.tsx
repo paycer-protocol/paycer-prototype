@@ -10,8 +10,8 @@ export interface TransactionProps {
   transactionHash: string
   unixTimestamp: number
   transactionDateTime: string,
-  from: string,
-  to: string,
+  fromAddress: string,
+  toAddress: string,
   value: number,
   tokenName: string,
   tokenSymbol: string,

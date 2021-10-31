@@ -14,6 +14,11 @@ const HorizontalLine = styled.div`
     position: relative;
 `
 
+const StyledImg = styled.img`
+    border: 1px solid #244166;
+    width: 100%;
+`
+
 
 const KycProcessInfo = () => {
     const tokenSale = useTokenSale()
@@ -52,21 +57,6 @@ const KycProcessInfo = () => {
                 </GradientButton>
             </Form>
         </Card.Text>
-
-          <HorizontalLine />
-          <h2 className="mb-4"><Trans>Join the Paycer Private Sale</Trans></h2>
-          <a
-              target="_blank"
-              href="https://www.paycer.io/token-sale"
-              className="d-flex justify-content-center"
-          >
-              <img
-                  className="rounded"
-                  alt="token sale"
-                  style={{ width: '100%'}}
-                  src="https://pbs.twimg.com/media/FBSCTq0WUAcEFWx?format=jpg&name=medium"
-              />
-          </a>
       </>
     )
 }
