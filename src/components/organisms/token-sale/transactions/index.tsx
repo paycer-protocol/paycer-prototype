@@ -28,8 +28,8 @@ const Transactions = () => {
     return (
       <Wrapper>
         <div>
-            {Object.keys(transactions).map((key, value) => (
-                <div className="mb-4">
+            {Object.keys(transactions).map((key, idx) => (
+                <div className={idx !== transactions.length-1 ? 'mb-4' : ''}>
                     <DataTable
                         { ...transactions[key] }
                     />
