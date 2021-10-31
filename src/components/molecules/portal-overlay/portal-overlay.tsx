@@ -1,6 +1,6 @@
 import React from 'react'
-import Portal from '@components/atoms/portal'
 import styled from 'styled-components'
+import Portal from '@components/atoms/portal'
 
 const StyledPortal = styled.div`
     bottom: 1rem;
@@ -12,7 +12,7 @@ interface PortalOverlayProps {
 }
 
 /**
- * Generic portal overlay aligned to bottom-right page corner.
+ * Generic portal overlay aligned to screen corner.
  *
  * @todo P314 | Discuss: Container ID is generic, but styles are not. Improve to achieve position independence?
  */

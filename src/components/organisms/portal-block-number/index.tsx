@@ -6,14 +6,14 @@ import LinkExternal from '@components/atoms/link-external'
 import PortalOverlay from '@components/molecules/portal-overlay'
 import useNetwork from '@hooks/use-network'
 import useWallet from '@hooks/use-wallet'
-import { explorerBlockURLs } from '@providers/explorers'
+import { getExplorerBlockUrl } from '@providers/explorers'
 
 /**
  * @todo P314 | Finish
  */
 export default function PortalBlockNumber() {
   const network = useNetwork()
-  const blockNumber:number|undefined = useBlockNumber()
+  const blockNumber: number | undefined = useBlockNumber()
   const wallet = useWallet()
   const [href, setHref] = useState(null)
 
@@ -24,10 +24,10 @@ export default function PortalBlockNumber() {
       return
     }
 
-    const blockUrl:string = explorerBlockURLs[network.chainId]
-    const newHref: string = blockUrl.replace('%BLOCKNUMBER%', `${blockNumber}`)
+    const explorerBlockUrl = getExplorerBlockUrl(network.chainId, blockNumber)
+    console.log('explorerBlockUrl', explorerBlockUrl)
 
-    setHref(newHref)
+    setHref(explorerBlockUrl)
 
     return () => setHref(null)
   }, [blockNumber, network.chainId])

@@ -11,6 +11,7 @@ export const getRootElement: any = (): Element => {
   const rootElement: Element | null = document.querySelector(`#${rootSelectorName}`)
 
   if (!rootElement) {
+    // console.error?('Element `null` for given selector. Does it exist in DOM?')
     throw 'Element `null` for given selector. Does it exist in DOM?'
   }
 

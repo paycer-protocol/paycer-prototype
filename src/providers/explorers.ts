@@ -12,15 +12,31 @@ export const explorers = {
     [ChainId.Mumbai]: 'https://polygon-explorer-mumbai.chainstacklabs.com',
 }
 
-// P314 | Todo - Discuss solution (simplify?)
-export const explorerBlockURLs = {
-    [ChainId.Mainnet]: '/block/%BLOCKNUMBER%',
-    [ChainId.Ropsten]: '/block/%BLOCKNUMBER%',
-    [ChainId.Kovan]: '/block/%BLOCKNUMBER%',
-    [ChainId.Rinkeby]: '/block/%BLOCKNUMBER%',
-    [ChainId.Goerli]: '/block/%BLOCKNUMBER%',
-    [ChainId.BSC]: '/block/%BLOCKNUMBER%',
-    [ChainId.xDai]: '/xdai/mainnet/blocks/%BLOCKNUMBER%',
-    [ChainId.Polygon]: '/blocks/%BLOCKNUMBER%/transactions',
-    [ChainId.Mumbai]: '/blocks/%BLOCKNUMBER%/transactions',
+const blockUrlSegment: string = '%BLOCKNUMBER%'
+
+export const explorerBlockURLs =  {
+    [ChainId.Mainnet]: `/block/${blockUrlSegment}`,
+    [ChainId.Ropsten]: `/block/${blockUrlSegment}`,
+    [ChainId.Kovan]: `/block/${blockUrlSegment}`,
+    [ChainId.Rinkeby]: `/block/${blockUrlSegment}`,
+    [ChainId.Goerli]: `/block/${blockUrlSegment}`,
+    [ChainId.BSC]: `/block/${blockUrlSegment}`,
+    [ChainId.xDai]: `/xdai/mainnet/blocks/${blockUrlSegment}`,
+    [ChainId.Polygon]: `/blocks/${blockUrlSegment}/transactions`,
+    [ChainId.Mumbai]: `/blocks/${blockUrlSegment}/transactions`,
+}
+
+/**
+ * Security hint: Enforce number type for 'blockNumber' during runtime, as it's coming from a potentially unsafe source.
+ * Non-numeric values result in the 'NaN' type, which is desired over possible unsafe behavior.
+ */
+export const getExplorerBlockUrl = (chainId: ChainId, blockNumber: number): string => {
+    const explorerBlockURL: string = explorerBlockURLs[chainId]
+    const blockNumberSanitized: number = Number(blockNumber)
+
+    if (!explorerBlockURL || blockNumberSanitized === NaN) {
+        throw new Error(`No or broken URL for chainId: ${chainId} and blockNumber: ${blockNumberSanitized}`)
+    }
+
+    return explorerBlockURL.replace(blockUrlSegment, blockNumberSanitized.toString())
 }
