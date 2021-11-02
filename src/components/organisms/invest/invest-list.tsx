@@ -42,7 +42,7 @@ export default function InvestList(props: InvestListProps) {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ values }) => (
+      {() => (
         <>
           <Card className="border-0">
             <div className="card-header">
