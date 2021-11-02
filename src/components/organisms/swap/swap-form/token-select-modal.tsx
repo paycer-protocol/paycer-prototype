@@ -26,8 +26,8 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
         </Modal.Header>
         <Modal.Body>
           <ul className="list-group list-group-flush">
-            {tokens.map((token) => (
-              <li className="list-group-item list-group-item-action px-3">
+            {tokens.map((token, i) => (
+              <li key={i} className="list-group-item list-group-item-action px-3">
                 <a
                   className="d-flex align-items-center"
                   onClick={() => onClick(token)}

@@ -16,11 +16,11 @@ import useWallet from '@hooks/use-wallet'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
-  
+
     img {
       max-height: 40px;
     }
-    
+
     @media screen and (max-width: 768px) {
         img {
           max-height: 26px;
@@ -64,7 +64,10 @@ const Header = () => {
     const [ showModalNav, setShowModalNav ] = useState(false)
     const wallet = useWallet()
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
+    const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
+
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId)
+        && isAuthenticatedRoute(route, wallet))
 
     return (
       <>
@@ -93,7 +96,7 @@ const Header = () => {
                           {qualifiedRoutes.map((route, key) => (
                             <li className="nav-item me-3" key={`nav${key}`}>
                                 <Link href={route.path}>
-                                    <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')} title={route.label}>
+                                    <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link', 'text-nowrap')} title={route.label}>
                                         {route.label}
                                     </a>
                                 </Link>
