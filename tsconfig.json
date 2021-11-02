@@ -21,6 +21,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
+      "@context/*": ["context/*"],
       "@config/*": ["config/*"],
       "@types/*": ["types/*"],
       "@contracts/*": ["contracts/*"],
