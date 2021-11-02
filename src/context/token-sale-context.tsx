@@ -96,6 +96,13 @@ export const TokenSaleProvider = ({ children }) => {
     }
   }
 
+  useEffect(() => {
+    if (wallet.isConnected && !walletAddress) {
+      setWalletAddress(wallet.address)
+    }
+
+  }, [wallet.isConnected])
+
   return (
     <TokenSaleContext.Provider
       value={{
