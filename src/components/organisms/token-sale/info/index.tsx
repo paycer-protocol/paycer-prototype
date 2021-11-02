@@ -44,7 +44,6 @@ const KycProcessInfo = () => {
                       label="Submit your ERC20 Wallet Address"
                     />
                 </div>
-
                 <div className="d-flex align-items-center justify-content-center">
                     <GradientButton type="submit" className="w-50">
                         {t`Check Status`}

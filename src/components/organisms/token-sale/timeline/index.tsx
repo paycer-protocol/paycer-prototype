@@ -51,11 +51,11 @@ const KycProcessTimeline = () => {
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
-        <TimelineActivity iconComponent={FileText} title={t`SAFT Status`} isActive={tokenSaleData?.saftApproved}>
+        <TimelineActivity iconComponent={FileText} title={t`SAFT Status`} isActive={totalInvest > 0}>
           <TimelineActivity.Content>
-            <span className={`text-${getStateContext(tokenSaleData?.saftApproved)} me-3`}>●</span>
+            <span className={`text-${getStateContext(totalInvest > 0)} me-3`}>●</span>
             <span className="text-light">
-              {renderStateLabel(tokenSaleData?.saftApproved)}
+              {renderStateLabel(totalInvest > 0)}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
