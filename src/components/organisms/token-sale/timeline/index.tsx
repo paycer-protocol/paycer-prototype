@@ -38,8 +38,6 @@ const KycProcessTimeline = () => {
     totalReceived
   } = useTokenSale()
 
-
-
   return (
     <>
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
