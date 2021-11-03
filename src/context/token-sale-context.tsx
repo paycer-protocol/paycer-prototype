@@ -7,7 +7,7 @@ import api from '../api'
 
 export interface TransactionProps {
   id: number
-  transactionHash: string<
+  transactionHash: string
   unixTimestamp: number
   transactionDateTime: string,
   fromAddress: string,
