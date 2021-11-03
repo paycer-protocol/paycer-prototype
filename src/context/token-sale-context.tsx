@@ -92,6 +92,8 @@ export const TokenSaleProvider = ({ children }) => {
       setTotalReceived(calculateTotalInvested(payload.transactions).totalReceived)
     } catch (err) {
       setTokenSaleData(null)
+      setTotalInvest(0)
+      setTotalReceived(0)
       toast(t`Address not found`)
     }
   }
