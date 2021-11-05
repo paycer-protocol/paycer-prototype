@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
 import dynamic from 'next/dynamic'
-import { SwapProps } from '@components/organisms/swap/types'
+import { SwapProps } from '@components/organisms/swap/swap-form/types'
 import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 import { ApexOptions } from 'apexcharts'

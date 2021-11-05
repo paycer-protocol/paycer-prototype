@@ -46,7 +46,7 @@ msgstr "Account"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/context/token-sale-context.tsx:97
+#: src/context/token-sale-context.tsx:95
 msgid "Address not found"
 msgstr "Address not found"
 
@@ -99,13 +99,17 @@ msgstr "Change network"
 msgid "Change your wallet provider"
 msgstr "Change your wallet provider"
 
-#: src/components/organisms/token-sale/info/index.tsx:58
+#: src/components/organisms/token-sale/info/index.tsx:49
 msgid "Check Status"
 msgstr "Check Status"
 
 #: src/components/organisms/token-sale/info/index.tsx:40
-msgid "Check your Private Sale Status"
-msgstr "Check your Private Sale Status"
+#~ msgid "Check your Private Sale Status"
+#~ msgstr "Check your Private Sale Status"
+
+#: src/components/organisms/token-sale/info/index.tsx:29
+msgid "Check your investment status"
+msgstr "Check your investment status"
 
 #: src/components/organisms/kyc-process/info/index.tsx:59
 #~ msgid "Check your wallet address to check your status."
@@ -210,7 +214,7 @@ msgstr "Dark Mode"
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:50
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:43
 msgid "Date"
 msgstr "Date"
 
@@ -289,8 +293,8 @@ msgstr "Fee"
 #~ msgstr "Fetching data from API failed."
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:96
-msgid "From Wallet Address"
-msgstr "From Wallet Address"
+#~ msgid "From Wallet Address"
+#~ msgstr "From Wallet Address"
 
 #: src/components/molecules/languages/language-choice.tsx:10
 msgid "German"
@@ -305,8 +309,8 @@ msgid "Hide"
 msgstr "Hide"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:42
-msgid "Hide Details"
-msgstr "Hide Details"
+#~ msgid "Hide Details"
+#~ msgstr "Hide Details"
 
 #: src/locales/index.ts:7
 #: src/pages/invest/create/fields/risk-choice.tsx:12
@@ -341,7 +345,7 @@ msgid "Invest now"
 msgstr "Invest now"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:70
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:54
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:47
 msgid "Invested"
 msgstr "Invested"
 
@@ -369,7 +373,7 @@ msgstr "Investment ratio"
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:54
+#: src/pages/token-sale/index.tsx:53
 msgid "Investor Dashboard"
 msgstr "Investor Dashboard"
 
@@ -452,7 +456,7 @@ msgstr "Network-Switch Pending, please open your Wallet"
 msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
-#: src/components/organisms/token-sale/transactions/index.tsx:23
+#: src/components/organisms/token-sale/transactions/index.tsx:22
 msgid "No available transactions"
 msgstr "No available transactions"
 
@@ -526,7 +530,11 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Price impact"
 msgstr "Price impact"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:75
+#: src/components/organisms/footer/footer.tsx:131
+#~ msgid "Private Sale"
+#~ msgstr "Private Sale"
+
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:68
 msgid "Received"
 msgstr "Received"
 
@@ -594,8 +602,8 @@ msgid "Show"
 msgstr "Show"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:42
-msgid "Show Details"
-msgstr "Show Details"
+#~ msgid "Show Details"
+#~ msgstr "Show Details"
 
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:32
 msgid "Slippage tolerance"
@@ -637,8 +645,8 @@ msgid "Start invest"
 msgstr "Start invest"
 
 #: src/pages/token-sale/index.tsx:61
-msgid "Status"
-msgstr "Status"
+#~ msgid "Status"
+#~ msgstr "Status"
 
 #: src/components/organisms/invest/invest-table.tsx:17
 #: src/pages/portfolio/components/portfolio.tsx:42
@@ -654,17 +662,17 @@ msgstr "Supply"
 msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/swap-form/index.tsx:90
+#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:13
 #: src/config/routes.ts:29
 #: src/pages/swap/index.tsx:22
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/index.tsx:53
+#: src/components/organisms/swap/swap-form/index.tsx:54
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/index.tsx:70
+#: src/components/organisms/swap/swap-form/index.tsx:71
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -699,7 +707,7 @@ msgid "Token Balance"
 msgstr "Token Balance"
 
 #: src/config/routes.ts:35
-#: src/pages/token-sale/index.tsx:51
+#: src/pages/token-sale/index.tsx:50
 msgid "Token Sale"
 msgstr "Token Sale"
 
@@ -738,12 +746,12 @@ msgstr "Total supply"
 #~ msgstr "Trade"
 
 #: src/pages/token-sale/index.tsx:62
-msgid "Transactions"
-msgstr "Transactions"
+#~ msgid "Transactions"
+#~ msgstr "Transactions"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:100
-msgid "Type"
-msgstr "Type"
+#~ msgid "Type"
+#~ msgstr "Type"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51

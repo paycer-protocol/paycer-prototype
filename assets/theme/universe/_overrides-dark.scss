@@ -55,11 +55,11 @@ p {
   &:before {
     content: "";
     position: absolute;
-    width: 50%;
+    width: 60%;
     height: 100%;
     background: linear-gradient(284deg,#5129c3,#6808c0,#864091);
     filter: blur(112px);
-    opacity: .24;
+    opacity: .225;
     z-index: -1;
     border-radius: 25%;
     left:0;
@@ -67,11 +67,11 @@ p {
   &:after {
     content: "";
     position: absolute;
-    width: 50%;
+    width: 60%;
     height: 100%;
     background: linear-gradient(284deg,#864091,#6808c0,#5129c3);
     filter: blur(112px);
-    opacity: .24;
+    opacity: .225;
     z-index: -1;
     border-radius: 25%;
     right: 0;

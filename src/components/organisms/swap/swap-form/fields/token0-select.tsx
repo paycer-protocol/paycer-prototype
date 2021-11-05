@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
 import { marketPairs } from '@config/market-pairs'
-import { SwapProps } from '../../types'
+import { SwapProps } from '../types'
 import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
 import TokenToggle from './token-toggle'
 
