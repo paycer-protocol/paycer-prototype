@@ -336,7 +336,7 @@ msgstr "Holdings"
 #: src/config/routes.ts:12
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
-#: src/pages/invest/index.tsx:22
+#: src/pages/invest/index.tsx:23
 msgid "Invest"
 msgstr "Invest"
 
@@ -377,7 +377,7 @@ msgstr "Investment ratio"
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:53
+#: src/pages/token-sale/index.tsx:55
 msgid "Investor Dashboard"
 msgstr "Investor Dashboard"
 
@@ -480,8 +480,8 @@ msgstr "Not enough"
 msgid "Open"
 msgstr "Open"
 
-#: src/pages/invest/index.tsx:19
-#: src/pages/portfolio/index.tsx:42
+#: src/pages/invest/index.tsx:20
+#: src/pages/portfolio/index.tsx:43
 msgid "Overview"
 msgstr "Overview"
 
@@ -522,7 +522,7 @@ msgid "Pool"
 msgstr "Pool"
 
 #: src/config/routes.ts:6
-#: src/pages/portfolio/index.tsx:45
+#: src/pages/portfolio/index.tsx:46
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -662,13 +662,13 @@ msgstr "Strategy"
 msgid "Supply"
 msgstr "Supply"
 
-#: src/pages/swap/index.tsx:24
+#: src/pages/swap/index.tsx:25
 msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/swap-form/index.tsx:90
 #: src/config/routes.ts:29
-#: src/pages/swap/index.tsx:23
+#: src/pages/swap/index.tsx:24
 msgid "Swap"
 msgstr "Swap"
 
@@ -711,7 +711,7 @@ msgid "Token Balance"
 msgstr "Token Balance"
 
 #: src/config/routes.ts:35
-#: src/pages/token-sale/index.tsx:50
+#: src/pages/token-sale/index.tsx:52
 msgid "Token Sale"
 msgstr "Token Sale"
 

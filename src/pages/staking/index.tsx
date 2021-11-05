@@ -28,30 +28,32 @@ export default function Staking () {
   }
 
   return (
-    <div className="container mt-3">
-      <PageHeader>
-        <div className="row align-items-center">
-          <div className="col">
-            <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
-            <PageHeader.Title>Staking Rewards</PageHeader.Title>
-          </div>
-        </div>
-      </PageHeader>
-      <div className="card blur-background">
-        <div className="card-body">
-          <div className="d-flex flex-column flex-md-row">
-            <div className="w-100">
-              <StakingForm />
+    <>
+      <div className="container mt-3">
+        <PageHeader>
+          <div className="row align-items-center">
+            <div className="col">
+              <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
+              <PageHeader.Title>Staking Rewards</PageHeader.Title>
             </div>
-            <VerticalLine className="d-none d-md-block" />
-            <HorizontalLine className="d-block d-md-none" />
-            <div className="w-100">
-              <ClaimForm />
+          </div>
+        </PageHeader>
+        <div className="card blur-background">
+          <div className="card-body">
+            <div className="d-flex flex-column flex-md-row">
+              <div className="w-100">
+                <StakingForm />
+              </div>
+              <VerticalLine className="d-none d-md-block" />
+              <HorizontalLine className="d-block d-md-none" />
+              <div className="w-100">
+                <ClaimForm />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    && (<PortalBlockNumber />)
+      <PortalBlockNumber />
+    </>
   )
 }
