@@ -122,8 +122,8 @@ msgstr "Connect to a wallet"
 #~ msgstr "Connect to wallet"
 
 #: src/components/organisms/portal-block-number/index.tsx:40
-msgid "Connected"
-msgstr "Connected"
+#~ msgid "Connected"
+#~ msgstr "Connected"
 
 #: src/components/organisms/web3/account-detail.tsx:92
 #~ msgid "Connected to wallet"
@@ -186,7 +186,7 @@ msgstr "Dark Mode"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/portal-block-number/index.tsx:45
+#: src/components/organisms/portal-block-number/index.tsx:38
 msgid "Disconnected"
 msgstr "Disconnected"
 
@@ -276,7 +276,7 @@ msgstr "Holdings"
 #: src/config/routes.ts:11
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
-#: src/pages/invest/index.tsx:21
+#: src/pages/invest/index.tsx:22
 msgid "Invest"
 msgstr "Invest"
 
@@ -324,7 +324,7 @@ msgstr "Light Mode"
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
 
-#: src/components/organisms/portal-block-number/index.tsx:44
+#: src/components/organisms/portal-block-number/index.tsx:37
 msgid "Login to your wallet to see block details"
 msgstr "Login to your wallet to see block details"
 
@@ -375,8 +375,8 @@ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or v
 msgid "Not enough"
 msgstr "Not enough"
 
-#: src/pages/invest/index.tsx:18
-#: src/pages/portfolio/index.tsx:41
+#: src/pages/invest/index.tsx:19
+#: src/pages/portfolio/index.tsx:42
 msgid "Overview"
 msgstr "Overview"
 
@@ -397,7 +397,7 @@ msgid "Pool"
 msgstr "Pool"
 
 #: src/config/routes.ts:6
-#: src/pages/portfolio/index.tsx:44
+#: src/pages/portfolio/index.tsx:45
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -551,10 +551,6 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/config/routes.ts:31
-msgid "Tests - DEV"
-msgstr "Tests - DEV"
-
 #: src/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
@@ -612,7 +608,7 @@ msgstr "Total supply"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/portal-block-number/index.tsx:38
+#: src/components/organisms/portal-block-number/index.tsx:31
 msgid "View block details"
 msgstr "View block details"
 

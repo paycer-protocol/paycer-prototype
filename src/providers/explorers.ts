@@ -36,8 +36,8 @@ export const explorers: ExplorerUrlsType = {
  * Security: Enforce number type for 'blockNumber' during runtime, as it's coming from a potentially unsafe source.
  * isValid check: 'url' can be 'NaN', a strange effect of 'undefined + undefined' in JavaScript. As 'NaN' is falsy, a simple check is sufficient.
  *
- * @todo P314 | Discuss - Architectural solution ok (functional logic allowed in 'providers')?
- * @todo P314 | Discuss - Validation ok? Return empty string -or- rather throw/log error?
+ * @todo P314 | Architectural solution ok (functional logic allowed in 'providers')?
+ * @todo P314 | Validation ok? Return empty string -or- rather throw/log error?
  * @throws blockNumber: Non-numeric, tampered with values are rejected.
  */
 export const getExplorerBlockUrl = (chainId: ChainId, blockNumberUnsafe: number): string => {
