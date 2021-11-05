@@ -1,0 +1,1 @@
+export const tokenPriceUSD = 0.025
