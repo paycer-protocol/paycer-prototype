@@ -39,7 +39,7 @@ export default function Portfolio(props: PortfolioProps) {
             <tr>
               <th>
                   <span className="text-muted">
-                    <Trans>Strategy</Trans>
+                    <Trans>Pool</Trans>
                   </span>
               </th>
               <th>
