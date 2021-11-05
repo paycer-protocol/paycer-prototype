@@ -1,16 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Image from "@components/atoms/image";
-import Icon from "@components/atoms/icon";
-import { Twitter, Github, Instagram, Linkedin, Telegram, ArrowDown, Discord} from "@styled-icons/bootstrap";
-import Button from "@components/atoms/button";
-import GradientButton from "@components/atoms/button/gradient-button";
-import {t} from "@lingui/macro";
-import {useRouter} from "next/router";
-import useWallet from "@hooks/use-wallet";
-import {routes} from "@config/routes";
-import classnames from "classnames";
+import Image from '@components/atoms/image'
+import Icon from '@components/atoms/icon'
+import { Twitter, Github, Instagram, Linkedin, Telegram, ArrowDown, Discord} from '@styled-icons/bootstrap'
+import Button from '@components/atoms/button'
+import GradientButton from '@components/atoms/button/gradient-button'
+import { t, Trans } from '@lingui/macro'
+import {useRouter} from 'next/router'
+import useWallet from '@hooks/use-wallet'
+import {routes} from '@config/routes'
+import classnames from 'classnames'
 
 const StyledGradientButton = styled(GradientButton)`
     padding: 10px 40px;
@@ -46,13 +46,16 @@ const Footer = () => {
                         </Link>
                         <div className="row">
                             <small className="text-muted col-lg-8 mt-4 text-center text-lg-start" style={{lineHeight: '25px'}}>
-                                The Paycr community is building a decentralized trading platform for the future of finance.
-                                <span className="text-light px-2 fw-bold">Join us on</span>
+                                <Trans>The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain.</Trans>
+                                <br />
+                                <span className="text-light px-2 fw-bold">
+                                    <Trans>Join us on</Trans>
+                                </span>
                                 <Icon
-                                    component={ArrowDown}
-                                    size={12}
-                                    color="white"
-                                    className=""
+                                  component={ArrowDown}
+                                  size={12}
+                                  color="white"
+                                  className=""
                                 />
                             </small>
                         </div>
@@ -81,15 +84,6 @@ const Footer = () => {
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Github}
-                                            size={17}
-                                            color="white"
-                                        />
-                                    </Button>
-                                </a>
-                                <a className="me-3"  target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/paycer_protocol">
-                                    <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
-                                        <Icon
-                                            component={Instagram}
                                             size={17}
                                             color="white"
                                         />
@@ -125,12 +119,6 @@ const Footer = () => {
                                 </a>
                             </div>
                         </div>
-
-                        <div className="d-flex justify-content-center justify-content-lg-start">
-                            <StyledGradientButton as="a" href='https://www.paycer.io/token-sale'>
-                                {t`Private Sale`}
-                            </StyledGradientButton>
-                        </div>
                     </div>
 
                     <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
@@ -156,50 +144,45 @@ const Footer = () => {
                         </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-HowItWorks">
-                                    How it works
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/imprint">
+                                    <Trans>Imprint</Trans>
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-PaycerToken">
-                                    Paycer Token
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/privacy">
+                                    <Trans>Privacy</Trans>
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-TokenAllocation">
-                                    Distribution
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/#anchor-Team">
-                                    Team
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/disclaimer">
+                                    <Trans>Risk Disclaimer</Trans>
                                 </a>
                             </li>
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link p-0" href="https://www.paycer.io/#anchor-RoadMap">
-                                    Roadmap
+                                    <Trans>Roadmap</Trans>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
                         <NavHeader className="mb-4">
-                            Service
+                            <Trans>Service</Trans>
                         </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/">
+                                    <Trans>Docs</Trans>
+                                </a>
+                            </li>
+                            <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.io/paycer_litepaper.pdf?t=1635467490116">
-                                    Whitepaper
+                                    <Trans>Whitepaper</Trans>
                                 </a>
                             </li>
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/documentation/whitepaper">
-                                    Lightpaper
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/token-sale">
-                                    Private Sale
+                                    <Trans>Lightpaper</Trans>
                                 </a>
                             </li>
                         </ul>
@@ -209,17 +192,17 @@ const Footer = () => {
                     <ul className="nav nav-tabs border-0 m-0 d-flex justify-content-lg-start justify-content-center">
                         <li className="nav-item m-0 me-4">
                             <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/imprint">
-                                Imprint
+                                <Trans>Imprint</Trans>
                             </a>
                         </li>
                         <li className="nav-item m-0 me-4">
                             <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/privacy">
-                                Privacy
+                                <Trans>Privacy</Trans>
                             </a>
                         </li>
                         <li className="nav-item m-0">
                             <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/disclaimer">
-                                Risk Disclaimer
+                                <Trans>Risk Disclaimer</Trans>
                             </a>
                         </li>
                     </ul>
