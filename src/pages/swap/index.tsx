@@ -4,7 +4,7 @@ import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import SwapForm from '@components/organisms/swap/swap-form'
 import SupplyForm from '@components/organisms/swap/supply-form'
-
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 
 const Tab = styled.div`
   border-top-right-radius: 5px;
@@ -23,11 +23,11 @@ const Tab = styled.div`
   font-size: 13px;
   align-items: center;
   display: flex;
-  color: #4a658c;  
+  color: #4a658c;
   &:hover {
     color: #FFF;
   }
-  
+
   ${props => props.isActive && css`
     z-index: 2;
     color: #FFF;
@@ -44,9 +44,9 @@ const Tab = styled.div`
     }
     &:first-child:before {
       left: 0;
-    }  
-  `} 
-  
+    }
+  `}
+
 `
 
 export default function Trade () {
@@ -78,5 +78,6 @@ export default function Trade () {
         </div>
       </div>
     </div>
+    && (<PortalBlockNumber />)
   )
 }

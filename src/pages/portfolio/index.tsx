@@ -1,6 +1,7 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
@@ -63,6 +64,7 @@ export default function Home() {
           </div>
       </div>
     </div>
+    && (<PortalBlockNumber />)
   )
 }
 

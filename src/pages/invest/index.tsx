@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import InvestList from '@components/organisms/invest/invest-list'
@@ -32,5 +33,6 @@ export default function Invest() {
               show={showWalletProviderModal}
           />
         </div>
+        && (<PortalBlockNumber />)
     )
 }
