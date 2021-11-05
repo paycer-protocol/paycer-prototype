@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import InvestList from '@components/organisms/invest/invest-list'
@@ -23,12 +24,15 @@ export default function Invest() {
                     </div>
                 </div>
             </PageHeader>
-          <InvestList strategies={investmentStrategies} />
+            <div className="position-relative blur-background">
+                <InvestList strategies={investmentStrategies} />
+            </div>
           <WalletProvider
               providers={connectors}
               onHide={() => setShowWalletProviderModal(false)}
               show={showWalletProviderModal}
           />
         </div>
+        && (<PortalBlockNumber />)
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
@@ -53,7 +54,7 @@ export default function Home() {
                 strategies={qualifiedStrategies}
             />
           </div>
-          <div className="row position-relatives">
+          <div className="row position-relatives blur-background">
             <div className="col-12">
               <Portfolio
                 strategies={qualifiedStrategies}
@@ -63,6 +64,7 @@ export default function Home() {
           </div>
       </div>
     </div>
+    && (<PortalBlockNumber />)
   )
 }
 
