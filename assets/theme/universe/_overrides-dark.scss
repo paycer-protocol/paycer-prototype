@@ -63,6 +63,7 @@ p {
     z-index: -1;
     border-radius: 25%;
     left:0;
+    top:0;
   }
   &:after {
     content: "";
@@ -75,5 +76,6 @@ p {
     z-index: -1;
     border-radius: 25%;
     right: 0;
+    top:0;
   }
 }
