@@ -31,6 +31,7 @@ const Transactions = () => {
                 <div className={idx !== transactions.length-1 ? 'mb-4' : ''}>
                     <DataTable
                         { ...transactions[key] }
+                        initiallyOpen={transactions.length === 1 || idx === 0}
                     />
                 </div>
             ))}
