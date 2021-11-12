@@ -28,7 +28,9 @@ interface TokenSaleDataProps {
   tokenAmount?: number
   investSymbol?: string
   investAmount?: number
-  transactions?: TransactionProps[]
+  transactions?: TransactionProps[],
+  bonusPercentage?: string
+  immediateAvailabilityPercentage?: string
 }
 
 
@@ -89,7 +91,14 @@ export const TokenSaleProvider = ({ children }) => {
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions).totalInvest)
-      setTotalReceived(calculateTotalInvested(payload.transactions).totalReceived)
+
+      let totalReceived = calculateTotalInvested(payload.transactions).totalReceived
+
+      if (payload?.bonusPercentage) {
+        totalReceived = totalReceived + (Number(payload?.bonusPercentage) * totalReceived / 100)
+      }
+
+      setTotalReceived(totalReceived)
     } catch (err) {
       setTokenSaleData(null)
       setTotalInvest(0)
@@ -102,7 +111,6 @@ export const TokenSaleProvider = ({ children }) => {
     if (wallet.isConnected && !walletAddress) {
       setWalletAddress(wallet.address)
     }
-
   }, [wallet.isConnected])
 
   return (

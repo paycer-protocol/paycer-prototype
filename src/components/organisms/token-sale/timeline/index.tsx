@@ -81,6 +81,11 @@ const KycProcessTimeline = () => {
             <span className="text-light">
               <FormattedNumber value={totalReceived || 0} />
               &nbsp;PCR
+              {(tokenSaleData?.bonusPercentage &&
+                  <span className="text-muted">
+                    &nbsp;(+{tokenSaleData?.bonusPercentage}{t`% Bonus included`})
+                  </span>
+              )}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
