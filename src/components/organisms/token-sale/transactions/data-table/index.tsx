@@ -74,18 +74,10 @@ const DataTable = (props: DataTableProps) => {
                         />
                       </span>
                   <span className="fw-bold pe-2">{props.tokenName}</span>
-                  <span style={{position: 'relative', top: '-2px'}}>
-                        <CurrencyIcon
-                            symbol={props.tokenSymbol}
-                            className="me-2"
-                            width={30}
-                            height={30}
-                        />
-                      </span>
                 </td>
               </tr>
               <tr>
-                <td><Trans>Received</Trans></td>
+                <td><Trans>PCR Token amount</Trans></td>
                 <td>
                     <span className="pe-2">
                       <FormattedNumber
@@ -94,16 +86,12 @@ const DataTable = (props: DataTableProps) => {
                           maximumFractionDigits={4}
                       />
                     </span>
-                  <span className="fw-bold pe-2">PCR Token</span>
-                  <span style={{position: 'relative', top: '-2px'}}>
-                        <CurrencyIcon
-                            symbol="PCR"
-                            className="me-2"
-                            width={30}
-                            height={30}
-                        />
-                    </span>
+                  <span className="fw-bold pe-2">PCR</span>
                 </td>
+              </tr>
+              <tr>
+                <td><Trans>Transaction Hash</Trans></td>
+                <td>{props.transactionHash}</td>
               </tr>
               <tr>
                 <td><Trans>From Wallet Address</Trans></td>

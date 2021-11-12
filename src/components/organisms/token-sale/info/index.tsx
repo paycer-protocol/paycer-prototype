@@ -21,6 +21,7 @@ const KycProcessInfo = () => {
     })
 
     const handleSubmit = (values) => {
+        tokenSale.setWalletAddress(values.walletAddress)
         tokenSale.checkWalletStatus(values.walletAddress)
     }
 
@@ -50,23 +51,23 @@ const KycProcessInfo = () => {
                         {t`Check Status`}
                     </GradientButton>
                 </div>
-                {( (bonusPercentage || immediateAvailabilityPercentage)   &&
-                  <>
-                    <div className="horizontal-line mt-5" />
-                    <h2 className="mb-4">
-                        {t`Bonus & Availability`}
-                    </h2>
-                    <div className="text-muted transform-uppercase">
-                        {t`Bonus Percentage`}
-                    </div>
-                    {bonusPercentage}%
-                    <div className="text-muted transform-uppercase mt-3">
-                        {t`Immediate Availability Percentage`}
-                    </div>
-                    {immediateAvailabilityPercentage}%
-                  </>
-                )}
             </Form>
+            {( (bonusPercentage || immediateAvailabilityPercentage) &&
+              <>
+                <div className="horizontal-line mt-5" />
+                <h2 className="mb-4">
+                    {t`Bonus & Availability`}
+                </h2>
+                <div className="text-muted transform-uppercase">
+                    {t`Bonus Percentage`}
+                </div>
+                  {bonusPercentage}%
+                <div className="text-muted transform-uppercase mt-3">
+                    {t`Immediate Availability Percentage`}
+                </div>
+                  {immediateAvailabilityPercentage}%
+              </>
+            )}
         </Card.Text>
       </>
     )

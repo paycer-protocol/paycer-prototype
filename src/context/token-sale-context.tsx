@@ -111,7 +111,6 @@ export const TokenSaleProvider = ({ children }) => {
     if (wallet.isConnected && !walletAddress) {
       setWalletAddress(wallet.address)
     }
-
   }, [wallet.isConnected])
 
   return (
