@@ -58,10 +58,18 @@ const KycProcessInfo = () => {
                 <h2 className="mb-4">
                     {t`Bonus & Availability`}
                 </h2>
+              </>
+             )}
+            {(bonusPercentage &&
+              <>
                 <div className="text-muted transform-uppercase">
                     {t`Bonus Percentage`}
                 </div>
-                  {bonusPercentage}%
+                {bonusPercentage}%
+              </>
+            )}
+            {(immediateAvailabilityPercentage &&
+              <>
                 <div className="text-muted transform-uppercase mt-3">
                     {t`Immediate Availability Percentage`}
                 </div>
