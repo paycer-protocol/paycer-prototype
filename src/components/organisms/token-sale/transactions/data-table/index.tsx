@@ -45,7 +45,7 @@ const DataTable = (props: DataTableProps) => {
         <table className="table table-sm table-nowrap card-table">
           <thead>
           <tr>
-            <th>
+            <th className="pe-0">
               <span className="text-white">
                 <TxnLink
                     chain={props.chain}
