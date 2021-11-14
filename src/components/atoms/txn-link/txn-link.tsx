@@ -23,7 +23,7 @@ const TxnLink = (props: TxnLinkProps) => {
         <div className="d-flex align-items-center">
             <Icon
                 component={Link45deg}
-                size={16}
+                size={18}
                 color="white"
                 className="me-3"
             />
