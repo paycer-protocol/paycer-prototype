@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {t, Trans} from '@lingui/macro'
-import CurrencyIcon from "@components/atoms/currency-icon";
-import { tokenPriceUSD } from "@config/token-price";
-import {FormattedNumber} from "@components/atoms/number";
-import Button from "@components/atoms/button";
+import TxnLink from '@components/atoms/txn-link'
+import { tokenPriceUSD } from '@config/token-price'
+import {FormattedNumber} from '@components/atoms/number'
+import Button from '@components/atoms/button'
 
 export interface DataTableProps {
   unixTimestamp: number
@@ -17,6 +17,7 @@ export interface DataTableProps {
   transactionDateTime: string
   transactionHash: string
   value: number
+  chain: string
   initiallyOpen?: boolean
 }
 
@@ -42,16 +43,18 @@ const DataTable = (props: DataTableProps) => {
   return (
       <div className="table-responsive mb-0">
         <table className="table table-sm table-nowrap card-table">
-          <thead onClick={() => setShowTable(!showTable)} style={!showTable ? {borderBottom: '0', cursor: 'pointer'} : {cursor: 'pointer'}}>
+          <thead>
           <tr>
             <th>
-              <span className="pe-3">
-                <span className="text-muted pe-2">ID:</span>
-                <span className="text-white">{props['@id'].split('/')[2]}</span>
+              <span className="text-white">
+                <TxnLink
+                    chain={props.chain}
+                    txnHash={props.transactionHash}
+                />
               </span>
             </th>
             <th className="d-flex justify-content-end">
-              <Button active={showTable} variant="primary">
+              <Button onClick={() => setShowTable(!showTable)} style={!showTable ? {borderBottom: '0', cursor: 'pointer'} : {cursor: 'pointer'}} active={showTable} variant="primary">
                 {showTable ? t`Hide` : t`Show`}
               </Button>
             </th>
@@ -88,10 +91,6 @@ const DataTable = (props: DataTableProps) => {
                     </span>
                   <span className="fw-bold pe-2">PCR</span>
                 </td>
-              </tr>
-              <tr>
-                <td><Trans>Transaction Hash</Trans></td>
-                <td>{props.transactionHash}</td>
               </tr>
               <tr>
                 <td><Trans>From Wallet Address</Trans></td>
