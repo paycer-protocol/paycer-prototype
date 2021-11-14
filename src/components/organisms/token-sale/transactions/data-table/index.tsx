@@ -43,9 +43,9 @@ const DataTable = (props: DataTableProps) => {
   return (
       <div className="table-responsive mb-0">
         <table className="table table-sm table-nowrap card-table">
-          <thead>
+          <thead style={!showTable ? {borderBottom: '0'} : {}}>
           <tr>
-            <th>
+            <th className="pe-0">
               <span className="text-white">
                 <TxnLink
                     chain={props.chain}
@@ -54,7 +54,7 @@ const DataTable = (props: DataTableProps) => {
               </span>
             </th>
             <th className="d-flex justify-content-end">
-              <Button onClick={() => setShowTable(!showTable)} style={!showTable ? {borderBottom: '0', cursor: 'pointer'} : {cursor: 'pointer'}} active={showTable} variant="primary">
+              <Button onClick={() => setShowTable(!showTable)} active={showTable} variant="primary">
                 {showTable ? t`Hide` : t`Show`}
               </Button>
             </th>
