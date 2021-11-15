@@ -144,23 +144,13 @@ const Footer = () => {
                         </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/imprint">
-                                    <Trans>Imprint</Trans>
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/privacy">
-                                    <Trans>Privacy</Trans>
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://www.paycer.io/disclaimer">
-                                    <Trans>Risk Disclaimer</Trans>
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link p-0" href="https://www.paycer.io/#anchor-RoadMap">
+                                <a target="_blank" className="nav-link p-0 pb-4" href="https://www.paycer.io/#anchor-RoadMap">
                                     <Trans>Roadmap</Trans>
+                                </a>
+                            </li>
+                            <li className="nav-item m-0">
+                                <a target="_blank" className="nav-link p-0" href="https://webrigade-gmbh.jobs.personio.de">
+                                    <Trans>Jobs</Trans>
                                 </a>
                             </li>
                         </ul>
