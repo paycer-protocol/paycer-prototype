@@ -1,8 +1,10 @@
 import React from 'react'
-import BlockExplorers from '@config/block-explorers'
-import {ArrowDown, Link45deg} from '@styled-icons/bootstrap'
+import {explorers} from '../../../providers/explorers'
+import {Link45deg} from '@styled-icons/bootstrap'
 import TruncateText from '../../../helpers/truncate-text'
 import Icon from "@components/atoms/icon";
+import {ChainId} from "@usedapp/core";
+
 interface TxnLinkProps {
     chain: string
     txnHash: string
@@ -10,15 +12,24 @@ interface TxnLinkProps {
 
 const TxnLink = (props: TxnLinkProps) => {
     const { chain, txnHash } = props
-    const blockExplorer = BlockExplorers.find(b => b.chain === chain)
-    if (!blockExplorer) {
+
+    let href = ''
+
+    if (chain === 'eth') {
+        href = explorers[ChainId.Mainnet] + '/tx/' + txnHash
+    }
+
+    if (chain === 'bsc') {
+        href = explorers[ChainId.BSC] + '/tx/' + txnHash
+    }
+
+    if (!href) {
         return (
             <span>
                 {txnHash}
             </span>
         )
     }
-    const href = `${blockExplorer.url}${blockExplorer.txnSearchParam}${txnHash}`
     return (
         <div className="d-flex align-items-center">
             <Icon
