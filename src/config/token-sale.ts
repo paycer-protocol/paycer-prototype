@@ -5,7 +5,6 @@ export const TokenSale = [
     tokenProvider.DAI,
     tokenProvider.USDC,
     tokenProvider.USDT,
-    tokenProvider.wETH,
     tokenProvider.ETH
 ]
 
