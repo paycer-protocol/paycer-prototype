@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
 import { marketPairs } from '@config/market-pairs'
 import { SwapProps } from '../types'
-import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
-import TokenToggle from './token-toggle'
+import TokenSelectModal from '../token-select-modal'
+import TokenToggle from '../token-toggle'
 
 export default function Token0Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()

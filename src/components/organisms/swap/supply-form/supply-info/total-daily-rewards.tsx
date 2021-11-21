@@ -5,6 +5,7 @@ import {t} from '@lingui/macro'
 import * as Styles from '../../Styles'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { tokenProvider }  from '@providers/tokens'
+import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 
 const TotalDailyRewards = () => {
     const { values } = useFormikContext<SupplyProps>()
@@ -26,7 +27,11 @@ const TotalDailyRewards = () => {
                     height={30}
                 />
                 <div className="d-flex align-items-center">
-                    {totalDailyRewards}
+                    <FormattedNumber
+                        value={totalDailyRewards}
+                        minimumFractionDigits={2}
+                        maximumFractionDigits={4}
+                    />
                     &nbsp;
                     {tokenProvider.PCR.symbol}
                 </div>

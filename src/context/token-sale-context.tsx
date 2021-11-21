@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { t } from '@lingui/macro'
 import useWallet from '@hooks/use-wallet'
-import { tokenPriceUSD } from '@config/token-price'
+import { tokenPricePrivateSale } from '@config/token-price'
 import api from '../api'
 
 export interface TransactionProps {
@@ -61,11 +61,11 @@ const calculateTotalInvested = (transactions) => {
   Object.keys(transactions).map((key) => {
     if (transactions[key].historicalUSDPrice) {
       const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice
-      totalReceived+= USDAmount / tokenPriceUSD
+      totalReceived+= USDAmount / tokenPricePrivateSale
       totalInvest+= USDAmount
     } else {
       const USDAmount = transactions[key].value
-      totalReceived+= USDAmount / tokenPriceUSD
+      totalReceived+= USDAmount / tokenPricePrivateSale
       totalInvest+= USDAmount
     }
   })

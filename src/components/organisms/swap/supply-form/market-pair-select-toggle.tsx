@@ -2,7 +2,7 @@ import React from 'react'
 import {ChevronDown} from '@styled-icons/bootstrap'
 import * as Styles from '@components/organisms/swap/Styles'
 import Icon from '@components/atoms/icon'
-import { MarketPair } from '../types'
+import { MarketPair } from './types'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 interface TokenToggleProps {

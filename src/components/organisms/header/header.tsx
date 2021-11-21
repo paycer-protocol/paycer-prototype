@@ -94,12 +94,26 @@ const Header = () => {
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {qualifiedRoutes.map((route, key) => (
-                            <li className="nav-item me-3" key={`nav${key}`}>
+                            <li className={classnames({'dropdown': route.subroutes && route?.hasDropdown}, 'nav-item', 'me-3')} key={`nav${key}`}>
                                 <Link href={route.path}>
-                                    <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link', 'text-nowrap')} title={route.label}>
+                                    <a aria-haspopup={route.subroutes && route?.hasDropdown} data-bs-toggle={route.subroutes && route?.hasDropdown ? 'dropdown' : ''} className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false), 'dropdown-toggle': route.subroutes && route?.hasDropdown}, 'nav-link', 'text-nowrap')} title={route.label}>
                                         {route.label}
                                     </a>
                                 </Link>
+                                {(route.subroutes && route?.hasDropdown) && (
+                                    <ul className="dropdown-menu">
+                                        {route.subroutes.map((subRoute, subRouteKey) => (
+                                            <li key={`dropdownItem${subRouteKey}`}>
+                                                <Link href={subRoute.path}>
+                                                    <a className="dropdown-item">
+                                                        {subRoute?.label}
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                        ))}
+
+                                    </ul>
+                                )}
                             </li>
                           ))}
                       </ul>

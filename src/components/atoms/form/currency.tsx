@@ -21,6 +21,7 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
             label={label}
             helpText={helpText}
             error={error}
+            aria-disabled={props.disabled}
         >
             <Cleave
                 {...props}

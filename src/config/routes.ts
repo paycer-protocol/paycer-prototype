@@ -32,6 +32,12 @@ export const routes = [
     auth: false
   },
   {
+    label: t`Investor Dashboard`,
+    path: '/investor-dashboard',
+    supportedChains,
+    auth: false
+  },
+  {
     label: t`Token Sale`,
     path: '/token-sale',
     supportedChains,

@@ -4,6 +4,7 @@ import { SupplyProps } from '../types'
 import {t} from "@lingui/macro";
 import * as Styles from '../../Styles'
 import CurrencyIcon from "@components/atoms/currency-icon";
+import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 
 const TotalSupply = () => {
     const { values } = useFormikContext<SupplyProps>()
@@ -26,7 +27,11 @@ const TotalSupply = () => {
                         height={20}
                     />
                     <div className="d-flex align-items-center">
-                        {totalSupplyToken0}
+                        <FormattedNumber
+                            value={totalSupplyToken0}
+                            minimumFractionDigits={2}
+                            maximumFractionDigits={4}
+                        />
                         &nbsp;
                         {values.marketPair.token0.symbol}
                     </div>
@@ -39,7 +44,11 @@ const TotalSupply = () => {
                         height={20}
                     />
                     <div className="d-flex align-items-center">
-                        {totalSupplyToken1}
+                        <FormattedNumber
+                            value={totalSupplyToken1}
+                            minimumFractionDigits={2}
+                            maximumFractionDigits={4}
+                        />
                         &nbsp;
                         {values.marketPair.token1.symbol}
                     </div>

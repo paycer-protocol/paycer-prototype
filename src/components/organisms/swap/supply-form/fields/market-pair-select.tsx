@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 import { marketPairs } from '@config/market-pairs'
-import MarketPairSelectModal from "@components/organisms/swap/supply-form/market-pair-select-modal";
-import MarketPairSelectToggle from "@components/organisms/swap/supply-form/fields/market-pair-select-toggle";
-import useToken from "@hooks/use-token";
+import MarketPairSelectModal from '../market-pair-select-modal'
+import MarketPairSelectToggle from '../market-pair-select-toggle'
+import useToken from '@hooks/use-token'
 
 export default function MarketPairSelect() {
     const { values, setFieldValue } = useFormikContext<SupplyProps>()
