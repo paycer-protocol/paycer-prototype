@@ -98,10 +98,10 @@ const Summary = () => {
             <Styles.HorizontalLine />
 
             <Styles.CurrencyInputLabel>
-                {t`Use referral bonus code`}
+                {t`Referral Bonus`}
             </Styles.CurrencyInputLabel>
             <p>
-                <Trans>Use a referral code provided by a friend and you and your friend will get a 5% Bonus based on your transaction.</Trans>
+                <Trans>Use a referral code provided by a friend and you and your friend will get a 5% Bonus based on your invest.</Trans>
             </p>
 
             <div className="row">
