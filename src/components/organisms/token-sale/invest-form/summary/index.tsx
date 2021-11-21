@@ -29,28 +29,7 @@ const Summary = () => {
     return (
         <>
 
-            <div className="mb-4">
-                <Styles.CurrencyInputLabel>
-                    {t`Your Balance`}
-                </Styles.CurrencyInputLabel>
-                <div className="d-flex align-items-center mb-2">
-                    <CurrencyIcon
-                        symbol={values.token0.symbol}
-                        className="me-2"
-                        width={20}
-                        height={20}
-                    />
-                    <FormattedNumber
-                        value={values.token0Balance - values.token0Value}
-                        minimumFractionDigits={2}
-                        maximumFractionDigits={4}
-                    />
-                    &nbsp;
-                    {values.token0.symbol}
-                </div>
-            </div>
-
-            <div className="mb-4">
+            <div className="mb-5">
                 <Styles.CurrencyInputLabel>
                     {t`Your Invest`}
                 </Styles.CurrencyInputLabel>
@@ -63,6 +42,27 @@ const Summary = () => {
                     />
                     <FormattedNumber
                         value={values.token0Value}
+                        minimumFractionDigits={2}
+                        maximumFractionDigits={4}
+                    />
+                    &nbsp;
+                    {values.token0.symbol}
+                </div>
+            </div>
+
+            <div className="mb-5">
+                <Styles.CurrencyInputLabel>
+                    {values.token0Value ? t`Your Balance after Invest` : t`Your Balance`}
+                </Styles.CurrencyInputLabel>
+                <div className="d-flex align-items-center mb-2">
+                    <CurrencyIcon
+                        symbol={values.token0.symbol}
+                        className="me-2"
+                        width={20}
+                        height={20}
+                    />
+                    <FormattedNumber
+                        value={values.token0Balance - values.token0Value}
                         minimumFractionDigits={2}
                         maximumFractionDigits={4}
                     />
