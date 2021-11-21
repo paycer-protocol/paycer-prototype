@@ -6,6 +6,7 @@ import TokenSelectModal from '@components/organisms/token-sale/invest-form/token
 import TokenToggle from '../token-toggle'
 import useToken from "@hooks/use-token";
 import useWallet from "@hooks/use-wallet";
+import { tokenProvider } from '@providers/tokens'
 
 export default function TokenSelect() {
     const { values, setFieldValue } = useFormikContext<InvestFormProps>()
@@ -14,7 +15,7 @@ export default function TokenSelect() {
     const token0Balance = useToken(values.token0.symbol).tokenBalance()
 
     const handleChange = (token) => {
-        if (token.symbol === 'ETH') {
+        if (token === tokenProvider.ETH) {
             setFieldValue('token0Balance', Number(wallet.etherBalance))
         }
 
@@ -25,7 +26,7 @@ export default function TokenSelect() {
     }
 
     useEffect(() => {
-        if(values.token0.symbol !== 'ETH') {
+        if(values.token0 !== tokenProvider.ETH) {
             setFieldValue('token0Balance', token0Balance)
         }
     }, [values.token0]);

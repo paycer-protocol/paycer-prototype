@@ -3,9 +3,12 @@ import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import setWillReceive from '../../helper/set-will-receive'
 import { InvestFormProps } from "@components/organisms/token-sale/invest-form/types";
+import { tokenProvider } from '@providers/tokens'
+import { preSaleMaxInvest } from '@config/token-sale'
+
 
 export default function Token0Input() {
-    const { values, setFieldValue, setFieldError } = useFormikContext<InvestFormProps>()
+    const { values, setFieldValue } = useFormikContext<InvestFormProps>()
 
     return (
       <Currency
@@ -19,12 +22,12 @@ export default function Token0Input() {
             let value  = Number(e.target.rawValue.split(' ')[1])
             let balance = values.token0Balance
             let token0Value = value
-            let max = 5000
+            let max = preSaleMaxInvest
 
-            if (values.token0.symbol === 'ETH') {
+            if (values.token0 === tokenProvider.ETH) {
                 max = max / 4367.24
             }
-            
+
             if (value > balance) {
                 if (balance <= max) {
                     token0Value = balance

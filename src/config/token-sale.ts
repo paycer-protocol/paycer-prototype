@@ -10,3 +10,4 @@ export const TokenSale = [
 ]
 
 export const preSaleReferralBonusPercantage = 5
+export const preSaleMaxInvest = 5000
