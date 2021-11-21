@@ -3,7 +3,7 @@ import {tokenPricePreSale } from '@config/token-price'
 import { preSaleReferralBonusPercantage } from "@config/token-sale";
 
 const setWillReceive = (token0, token0Value, referralCode, setFieldValue)  => {
-
+    // TODO FETCH ETH / USD FROM SOMEWHERE (4367.24 )
     if (token0 === tokenProvider.ETH) {
         if (referralCode) {
             const referralBonus = ((token0Value * 4367.24) / 100 * preSaleReferralBonusPercantage) / tokenPricePreSale

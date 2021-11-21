@@ -25,6 +25,7 @@ export default function Token0Input() {
             let max = preSaleMaxInvest
 
             if (values.token0 === tokenProvider.ETH) {
+                // TODO FETCH ETH / USD FROM SOMEWHERE
                 max = max / 4367.24
             }
 
