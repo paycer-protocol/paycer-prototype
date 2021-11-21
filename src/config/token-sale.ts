@@ -5,8 +5,8 @@ export const TokenSale = [
     tokenProvider.DAI,
     tokenProvider.USDC,
     tokenProvider.USDT,
-    tokenProvider.BUSD,
-    tokenProvider.wETH
+    tokenProvider.wETH,
+    tokenProvider.ETH
 ]
 
 export const preSaleReferralBonusPercantage = 5

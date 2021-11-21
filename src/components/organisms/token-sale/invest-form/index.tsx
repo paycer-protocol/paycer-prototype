@@ -5,7 +5,6 @@ import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { TokenSale } from '@config/token-sale'
 import Token0Input from './fields/token0-input'
-import TokenRangeSlider from './fields/token-range-slider'
 import TokenSelect from './fields/token-select'
 import SubmitButton from './fields/submit-button'
 import Summary from './summary'
@@ -58,10 +57,6 @@ export default function InvestForm() {
                         <div className="w-25 me-4">
                           <TokenSelect />
                         </div>
-                      </div>
-
-                      <div className="d-flex flex-column flex-md-row mb-5 pt-2 mt-4 pb-3">
-                        <TokenRangeSlider />
                       </div>
 
                       <div className="row">

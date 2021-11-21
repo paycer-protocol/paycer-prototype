@@ -1,9 +1,8 @@
 import React from 'react'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import calculateWillReceive from '../../helper/calculate-will-receive'
+import setWillReceive from '../../helper/set-will-receive'
 import { InvestFormProps } from "@components/organisms/token-sale/invest-form/types";
-import {preSaleReferralBonusPercantage} from "@config/token-sale";
 
 export default function Token0Input() {
     const { values, setFieldValue, setFieldError } = useFormikContext<InvestFormProps>()
@@ -14,17 +13,34 @@ export default function Token0Input() {
         className="w-100"
         required
         disabled={!values.token0Balance}
-        max={values.token0Balance}
         currency={values.token0.symbol}
         decimals={4}
         onChange={(e) => {
-            const value  = Number(e.target.rawValue.split(' ')[1])
-            // force max balance if input too high TODO: Doesnt update the input display value correctly after it was forced to the users total balance for some reason...
-            const token0Value = value > values.token0Balance ? values.token0Balance : value
-            const referralBonus = (token0Value / preSaleReferralBonusPercantage)
-            calculateWillReceive(values.token0, token0Value, referralBonus, setFieldValue)
-            setFieldValue('referralBonus', referralBonus)
+            let value  = Number(e.target.rawValue.split(' ')[1])
+            let balance = values.token0Balance
+            let token0Value = value
+            let max = 5000
+
+            if (values.token0.symbol === 'ETH') {
+                max = max / 4367.24
+            }
+            
+            if (value > balance) {
+                if (balance <= max) {
+                    token0Value = balance
+                } else {
+                    token0Value = max
+                }
+            } else {
+                if (value <= max) {
+                    token0Value = value
+                } else {
+                    token0Value = max
+                }
+            }
+
             setFieldValue('token0Value', token0Value)
+            setWillReceive(values.token0, token0Value, values.referralCode, setFieldValue)
         }}
       />
     )

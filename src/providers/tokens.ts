@@ -72,14 +72,16 @@ export const tokenProvider: ITokenProvider = {
         [ChainId.Kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
       }
     },
-    BUSD: {
-      symbol: 'BUSD',
-      name: 'BUSD',
+    ETH: {
+      symbol: 'ETH',
+      name: 'ETH',
       decimals: 18,
       chainAddresses: {
-        [ChainId.Mainnet]: '0x4Fabb145d64652a948d72533023f6E7A623C7C53',
-        [ChainId.Kovan]: '0x942364e96d4482bbb3b42a5a08310b5894077007',
+        [ChainId.Mainnet]: '',
+        [ChainId.Kovan]: '',
       }
     }
   }
 }
+
+
