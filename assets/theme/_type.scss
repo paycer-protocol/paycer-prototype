@@ -29,7 +29,8 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  margin-bottom: ($headings-margin-bottom * .5);
+  margin-bottom: ($headings-margin-bottom * .95);
+  letter-spacing: .08em;
 }
 
 h6, .h6 {
@@ -57,7 +58,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 // Headings
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6 {
   letter-spacing: $headings-letter-spacing;
 }
 

@@ -1,64 +1,26 @@
 import styled from 'styled-components'
 import Select from '@components/atoms/form/select'
 
-export const VerticalLine = styled.div`
-    border-right: 1px solid #244166;
-    margin: 0 30px;
-`
-
-export const HorizontalLine = styled.div`
-    border-top: 1px solid #244166;
-    margin: 30px 0 40px;
-    position: relative;
-    div {
-        background: #192434;
-        position: absolute;
-        top: -12px;
-        left: 45%;
-        width: 30px;
-        height: 25px;
-        span {
-            position: absolute;
-            display: inline-block;
-            vertical-align: middle;
-            color: #a6a6a6;
-            box-sizing: border-box;
-            width: 0;
-            height: 0;
-            border-width: 3px;
-            border-style: solid;
-            border-bottom-color: transparent;
-            border-left-color: transparent;
-            margin: 10px;
-            transform: rotate(135deg);
-            left: 4px;
-            top: 2px;
-            &:after, &:before {
-                content: "";
-                box-sizing: border-box;
-            }
-            &:before {
-                right: -2px;
-                top: -3px;
-                position: absolute;
-                height: 2px;
-                box-shadow: inset 0 0 0 32px;
-                transform: rotate(-45deg);
-                width: 10px;
-                -webkit-transform-origin: right top;
-                -ms-transform-origin: right top;
-                transform-origin: right top;
-            }
-            
-            &:last-child { 
-                transform: rotate(314deg);
-                left: -1px;
-                top: -6px;
-            }
-        }
+export const LeftCol = styled.div`
+    width: 50%;
+    padding: 30px 0 30px 30px;
+  
+    @media only screen and (max-width : 978px) {
+      width: 100%;
+      padding: 25px;
     }
-
 `
+
+export const RightCol = styled.div`
+    width: 50%;
+    padding: 30px 30px 30px 0;
+      
+    @media only screen and (max-width : 978px) {
+        width: 100%;
+        padding: 25px;
+    }
+`
+
 
 export const StyledSelect = styled(Select)`
     background: transparent;
@@ -70,13 +32,6 @@ export const StyledSelect = styled(Select)`
     &:focus {
       background: transparent;
     }
-`
-
-export const CurrencyInputLabel = styled.h5`
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: #a6a6a6;
-    margin-bottom: 15px;
 `
 
 export const InfoHeadline = styled.h5`
@@ -101,27 +56,6 @@ export const SelectWrapper = styled.div`
     
     > div {
       width: 100%;
-    }
-`
-
-export const LeftCol = styled.div`
-    width: 40%;
-    padding: 30px 0 30px 30px;
-  
-    @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 25px;
-    }
-  
-`
-
-export const RightCol = styled.div`
-    width: 60%;
-    padding: 30px 30px 30px 0;
-      
-    @media only screen and (max-width : 978px) {
-        width: 100%;
-        padding: 25px;
     }
 `
 

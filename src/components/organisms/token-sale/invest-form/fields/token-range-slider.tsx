@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik'
 import calculateWillReceive from '../../helper/calculate-will-receive'
 import { InvestFormProps} from '@components/organisms/token-sale/invest-form/types'
 import useToken from '@hooks/use-token'
+import {preSaleReferralBonusPercantage} from "@config/token-sale";
 
 export default function InvestRangeSlider() {
     const { values, setFieldValue } = useFormikContext<InvestFormProps>()
@@ -23,8 +24,14 @@ export default function InvestRangeSlider() {
                 value={values.token0Value * 100 / token0Balance}
                 onChange={(value) => {
                     const amount = token0Balance * value / 100
-                    const willReceive = calculateWillReceive(values.token0, amount, values.referralCode)
-                    setFieldValue('willReceive', willReceive)
+
+                    let referralBonus = 0
+                    if (values.referralCode) {
+                        referralBonus = (amount / preSaleReferralBonusPercantage)
+                    }
+
+                    calculateWillReceive(values.token0, amount, referralBonus, setFieldValue)
+                    setFieldValue('referralBonus', referralBonus)
                     setFieldValue('token0Value', amount)
                 }}
             />

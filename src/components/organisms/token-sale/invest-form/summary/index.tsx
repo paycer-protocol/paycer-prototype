@@ -28,52 +28,58 @@ const Summary = () => {
 
     return (
         <>
+            <h2 className="mb-4">
+                <Trans>Summary</Trans>
+            </h2>
+            <div className="row">
 
-            <div className="mb-5">
-                <Styles.CurrencyInputLabel>
-                    {t`Your Invest`}
-                </Styles.CurrencyInputLabel>
-                <div className="d-flex align-items-center mb-2">
+                <div className="col-lg-6 mb-5 mb-lg-0">
+                    <div className="text-muted text-uppercase h5">
+                        {t`Your Invest`}
+                    </div>
+                    <div className="d-flex align-items-center mb-2">
+                        <CurrencyIcon
+                            symbol={values.token0.symbol}
+                            className="me-2"
+                            width={20}
+                            height={20}
+                        />
+                        <FormattedNumber
+                            value={values.token0Value}
+                            minimumFractionDigits={2}
+                            maximumFractionDigits={4}
+                        />
+                        &nbsp;
+                        {values.token0.symbol}
+                    </div>
+                </div>
+            </div>
+
+            {(values.referralBonus > 0 && values.token0Value > 0) && (
+                <>
+                    <div className="horizontal-line" />
+                    <div className="text-muted text-uppercase h5">
+                        {t`Referral Bonus`}
+                    </div>
                     <CurrencyIcon
-                        symbol={values.token0.symbol}
+                        symbol="PCR"
                         className="me-2"
                         width={20}
                         height={20}
                     />
                     <FormattedNumber
-                        value={values.token0Value}
+                        value={values.referralBonus}
                         minimumFractionDigits={2}
                         maximumFractionDigits={4}
                     />
-                    &nbsp;
-                    {values.token0.symbol}
-                </div>
-            </div>
+                </>
+            )}
 
-            <div className="mb-5">
-                <Styles.CurrencyInputLabel>
-                    {values.token0Value ? t`Your Balance after Invest` : t`Your Balance`}
-                </Styles.CurrencyInputLabel>
-                <div className="d-flex align-items-center mb-2">
-                    <CurrencyIcon
-                        symbol={values.token0.symbol}
-                        className="me-2"
-                        width={20}
-                        height={20}
-                    />
-                    <FormattedNumber
-                        value={values.token0Balance - values.token0Value}
-                        minimumFractionDigits={2}
-                        maximumFractionDigits={4}
-                    />
-                    &nbsp;
-                    {values.token0.symbol}
-                </div>
-            </div>
+            <div className="horizontal-line" />
 
-            <Styles.CurrencyInputLabel>
+            <div className="text-muted text-uppercase h5">
                 {t`You will receive`}
-            </Styles.CurrencyInputLabel>
+            </div>
             <div className="d-flex align-items-center mb-2">
                 <CurrencyIcon
                     symbol="PCR"
@@ -88,26 +94,6 @@ const Summary = () => {
                 />
                 &nbsp;
                 PCR
-                {(values.referralCode && values.token0Value > 0) && (
-                    <>
-                        &nbsp; ({t`including`} {preSaleReferralBonusPercantage}% {t`referral Bonus`})
-                    </>
-                )}
-            </div>
-
-            <Styles.HorizontalLine />
-
-            <Styles.CurrencyInputLabel>
-                {t`Referral Bonus`}
-            </Styles.CurrencyInputLabel>
-            <p>
-                <Trans>Use a referral code provided by a friend and you and your friend will get a 5% Bonus based on your invest.</Trans>
-            </p>
-
-            <div className="row">
-                <div className="col-lg-6">
-                    <ReferralCodeInput />
-                </div>
             </div>
 
         </>

@@ -54,9 +54,9 @@ export default function SupplyForm() {
                 <Styles.LeftCol>
                   <div className="d-flex flex-column flex-md-row">
                     <div className="w-100">
-                      <Styles.CurrencyInputLabel>
+                      <div className="text-muted text-uppercase h5">
                         {t`Supply`}
-                      </Styles.CurrencyInputLabel>
+                      </div>
 
                       <div className="d-flex flex-column flex-md-row">
                         <div className="w-100 me-4">
@@ -86,8 +86,9 @@ export default function SupplyForm() {
                       <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Value}</div>
                   ) : null}
 
+                  <div className="horizontal-line mt-5" />
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
-                  <SubmitButton />
+                    <SubmitButton />
                   </div>
                 </Styles.LeftCol>
 

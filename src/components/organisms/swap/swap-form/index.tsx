@@ -50,9 +50,9 @@ export default function SwapForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row">
                   <div className="w-100">
-                    <Styles.CurrencyInputLabel>
+                    <div className="text-muted text-uppercase h5">
                       {t`Swap from`}
-                    </Styles.CurrencyInputLabel>
+                    </div>
                     <div className="d-flex flex-column flex-md-row">
                       <div className="w-100 me-4 mb-3">
                         <Token0Select />
@@ -67,9 +67,9 @@ export default function SwapForm() {
                         <span />
                       </div>
                     </Styles.HorizontalLine>
-                    <Styles.CurrencyInputLabel>
+                    <div className="text-muted text-uppercase h5">
                       {t`Swap to`}
-                    </Styles.CurrencyInputLabel>
+                    </div>
                     <div className="d-flex flex-column flex-md-row">
                       <div className="w-100 me-4 mb-3">
                         <Token1Select />
@@ -86,6 +86,7 @@ export default function SwapForm() {
                   </div>
                   <MinimumToReceiveDropdown />
                 </div>
+                <div className="horizontal-line mt-5" />
                 <div className="d-flex align-items-center justify-content-center">
                   <SubmitButton />
                 </div>

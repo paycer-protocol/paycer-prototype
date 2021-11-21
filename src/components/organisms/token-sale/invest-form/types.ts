@@ -6,6 +6,7 @@ export interface InvestFormProps {
   token0Balance: number
   referralCode: string
   willReceive: number
+  referralBonus: number
 }
 
 

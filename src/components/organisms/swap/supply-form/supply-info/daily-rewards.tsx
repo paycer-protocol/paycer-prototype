@@ -12,9 +12,9 @@ const DailyRewards = () => {
 
     return (
         <>
-            <Styles.CurrencyInputLabel>
+            <div className="text-muted text-uppercase h5">
                 {t`Daily rewards`}
-            </Styles.CurrencyInputLabel>
+            </div>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
                     symbol={tokenProvider.PCR.symbol}

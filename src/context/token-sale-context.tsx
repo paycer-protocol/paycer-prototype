@@ -33,7 +33,6 @@ interface TokenSaleDataProps {
   immediateAvailabilityPercentage?: string
 }
 
-
 interface TokenSaleProps {
   walletAddress: string
   setWalletAddress: (walletAddress: string) => void
@@ -51,7 +50,6 @@ export const TokenSaleContext = React.createContext<TokenSaleProps>({
 })
 
 export const useTokenSale = () => useContext(TokenSaleContext)
-
 
 const calculateTotalInvested = (transactions) => {
 

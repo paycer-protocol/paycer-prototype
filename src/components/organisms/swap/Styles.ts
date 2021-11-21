@@ -71,14 +71,6 @@ export const StyledSelect = styled(Select)`
       background: transparent;
     }
 `
-
-export const CurrencyInputLabel = styled.h5`
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: #a6a6a6;
-    margin-bottom: 15px;
-`
-
 export const InfoHeadline = styled.h5`
     text-transform: uppercase;
     letter-spacing: .08em;

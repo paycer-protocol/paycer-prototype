@@ -11,18 +11,22 @@ import SubmitButton from './fields/submit-button'
 import Summary from './summary'
 import { InvestFormProps } from './types'
 import useToken from "@hooks/use-token";
-import {LeftCol, RightCol} from "../../../../pages/token-sale";
+import ReferralCodeInput from "@components/organisms/token-sale/invest-form/fields/referral-code-input";
 
 const initialToken = TokenSale[0]
 
 export default function InvestForm() {
 
+  const queryParams = new URLSearchParams(window.location.search)
+  const referralCode = queryParams.get('referralCode')
+
   const initialValues: InvestFormProps = {
     token0: initialToken,
     token0Value: 0,
     token0Balance: useToken(initialToken.symbol).tokenBalance(),
-    referralCode: 'blubb',
-    willReceive: 0
+    referralCode: referralCode || '',
+    willReceive: 0,
+    referralBonus: 0
   }
 
   const validationSchema = Yup.object().shape({
@@ -43,22 +47,18 @@ export default function InvestForm() {
         {({ errors }) => {
           return (
               <div className="d-lg-flex">
-                <LeftCol>
+                <Styles.LeftCol>
                   <div className="d-flex flex-column flex-md-row">
                     <div className="w-100">
-                      <Styles.CurrencyInputLabel>
+                      <div className="text-muted text-uppercase h5">
                         {t`Select a token`}
-                      </Styles.CurrencyInputLabel>
+                      </div>
 
                       <div className="d-flex flex-column flex-md-row mb-5">
-                        <div className="w-100 me-4">
+                        <div className="w-25 me-4">
                           <TokenSelect />
                         </div>
                       </div>
-
-                      <Styles.CurrencyInputLabel>
-                        {t`Enter the amount you would like to invest`}
-                      </Styles.CurrencyInputLabel>
 
                       <div className="d-flex flex-column flex-md-row mb-5 pt-2 mt-4 pb-3">
                         <TokenRangeSlider />
@@ -69,6 +69,19 @@ export default function InvestForm() {
                           <Token0Input />
                         </div>
                       </div>
+
+                      <div className="horizontal-line mt-5" />
+
+                      <div className="text-muted text-uppercase h5">
+                        {t`Referral Bonus Code`} ¹
+                      </div>
+
+                      <div className="row">
+                        <div className="col-lg-6">
+                          <ReferralCodeInput />
+                        </div>
+                      </div>
+
                     </div>
                   </div>
 
@@ -76,15 +89,17 @@ export default function InvestForm() {
                       <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token0Value}</div>
                   ) : null}
 
+                  <div className="horizontal-line" />
+
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
                     <SubmitButton />
                   </div>
-                </LeftCol>
+                </Styles.LeftCol>
                 <div className="vertical-line" />
                 <div className="horizontal-line d-md-none" />
-                <RightCol>
+                <Styles.RightCol>
                   <Summary />
-                </RightCol>
+                </Styles.RightCol>
               </div>
           )
         }}

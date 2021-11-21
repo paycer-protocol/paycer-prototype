@@ -3,7 +3,7 @@ import {tokenPricePreSale, tokenPricePrivateSale} from '@config/token-price'
 import { preSaleReferralBonusPercantage } from '@config/token-sale'
 import { InvestFormProps } from '@components/organisms/token-sale/invest-form/types'
 
-const calculateWillReceive = (token0, token0Value, referralCode)  => {
+const calculateWillReceive = (token0, token0Value, referralBonus, setFieldValue)  => {
     let willReceive
     if (token0 === tokenProvider.wETH) {
         // TODO FETCH ETH / DOLLAR EXCHANGE RATE FROM LIVE DATA
@@ -12,11 +12,11 @@ const calculateWillReceive = (token0, token0Value, referralCode)  => {
         willReceive = token0Value / tokenPricePreSale
     }
 
-    if (referralCode) {
-        willReceive = (willReceive / preSaleReferralBonusPercantage) + willReceive
+    if (referralBonus) {
+        willReceive = referralBonus + willReceive
     }
 
-    return willReceive
+    setFieldValue('willReceive', willReceive)
 }
 
 export default calculateWillReceive

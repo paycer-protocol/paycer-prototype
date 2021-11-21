@@ -311,9 +311,9 @@ const PriceChart = () => {
                             {exchangeRate || 1} {values.token1.symbol}
                         </MainStyles.Headline>
                             &nbsp;
-                        <MainStyles.CurrencyInputLabel>
+                        <div className="text-muted text-uppercase h5">
                             <span style={{textTransform: 'none'}}>per</span> {values.token0.symbol}
-                        </MainStyles.CurrencyInputLabel>
+                        </div>
                     </div>
                 </div>
                 <Styles.Toolbar>

@@ -11,9 +11,9 @@ const YourSupply = () => {
 
     return (
         <>
-            <Styles.CurrencyInputLabel>
+            <div className="text-muted text-uppercase h5">
                 {t`Your supply`}
-            </Styles.CurrencyInputLabel>
+            </div>
             <div className="">
                 <div className="d-flex align-items-center mb-2">
                     <CurrencyIcon

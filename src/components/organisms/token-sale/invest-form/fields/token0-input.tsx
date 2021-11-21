@@ -3,6 +3,7 @@ import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
 import calculateWillReceive from '../../helper/calculate-will-receive'
 import { InvestFormProps } from "@components/organisms/token-sale/invest-form/types";
+import {preSaleReferralBonusPercantage} from "@config/token-sale";
 
 export default function Token0Input() {
     const { values, setFieldValue, setFieldError } = useFormikContext<InvestFormProps>()
@@ -20,8 +21,9 @@ export default function Token0Input() {
             const value  = Number(e.target.rawValue.split(' ')[1])
             // force max balance if input too high TODO: Doesnt update the input display value correctly after it was forced to the users total balance for some reason...
             const token0Value = value > values.token0Balance ? values.token0Balance : value
-            const willReceive = calculateWillReceive(values.token0, value, values.referralCode)
-            setFieldValue('willReceive', willReceive)
+            const referralBonus = (token0Value / preSaleReferralBonusPercantage)
+            calculateWillReceive(values.token0, token0Value, referralBonus, setFieldValue)
+            setFieldValue('referralBonus', referralBonus)
             setFieldValue('token0Value', token0Value)
         }}
       />

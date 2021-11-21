@@ -1,30 +1,9 @@
-import React, {useEffect, useState} from 'react'
-import styled from 'styled-components'
+import React from 'react'
+
 import {t, Trans} from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import InvestForm from '@components/organisms/token-sale/invest-form'
-import {TokenSaleProvider, useTokenSale} from '@context/token-sale-context'
-import * as Styles from "@components/organisms/swap/Styles";
-
-export const LeftCol = styled.div`
-    width: 50%;
-    padding: 30px 0 30px 30px;
-  
-    @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 25px;
-    }
-`
-
-export const RightCol = styled.div`
-    width: 50%;
-    padding: 30px 30px 30px 0;
-      
-    @media only screen and (max-width : 978px) {
-        width: 100%;
-        padding: 25px;
-    }
-`
+import { TokenSaleProvider } from '@context/token-sale-context'
 
 export default function TokenSale() {
 
@@ -49,6 +28,9 @@ export default function TokenSale() {
                 <InvestForm />
             </div>
           </div>
+          <small className="text-muted">
+            <Trans>¹ Use a referral code provided by a friend and you and your friend will get a 5% Bonus based on your invest.</Trans>
+          </small>
         </div>
       </TokenSaleProvider>
   )
