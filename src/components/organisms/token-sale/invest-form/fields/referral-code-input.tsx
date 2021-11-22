@@ -19,12 +19,8 @@ export default function ReferralCodeInput() {
                     disabled={!values.token0Balance}
                     onChange={(e) => {
                         const value = e.target.value
-
-                        if (!value) {
-                            setFieldValue('referralCodeValid', false)
-                            setWillReceive(values.token0, values.token0Value, false, setFieldValue)
-                        }
-
+                        setWillReceive(values.token0, values.token0Value, false, setFieldValue)
+                        setFieldValue('referralCodeValid', false)
                         setFieldValue('referralCode', value)
                     }}
                 />
