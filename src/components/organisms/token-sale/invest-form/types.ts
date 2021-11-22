@@ -7,6 +7,7 @@ export interface InvestFormProps {
   referralCode: string
   willReceive: number
   referralBonus: number
+  referralCodeValid: boolean
 }
 
 

@@ -24,6 +24,7 @@ export default function InvestForm() {
     token0Value: 0,
     token0Balance: useToken(initialToken.symbol).tokenBalance(),
     referralCode: referralCode || '',
+    referralCodeValid: false,
     willReceive: 0,
     referralBonus: 0
   }
@@ -49,18 +50,21 @@ export default function InvestForm() {
                 <Styles.LeftCol>
                   <div className="d-flex flex-column flex-md-row">
                     <div className="w-100">
-                      <div className="text-muted text-uppercase h5">
-                        {t`Select a token`}
-                      </div>
-
-                      <div className="d-flex flex-column flex-md-row mb-5">
-                        <div className="w-25 me-4">
-                          <TokenSelect />
-                        </div>
-                      </div>
-
                       <div className="row">
                         <div className="col-lg-6">
+                          <div className="w-75">
+                            <div className="text-muted text-uppercase h5">
+                              {t`Select a token`}
+                            </div>
+                            <div className="pt-1">
+                              <TokenSelect />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="text-muted text-uppercase h5">
+                            {t`Invest amount`}
+                          </div>
                           <Token0Input />
                         </div>
                       </div>
@@ -71,11 +75,7 @@ export default function InvestForm() {
                         {t`Referral Bonus Code`} ¹
                       </div>
 
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <ReferralCodeInput />
-                        </div>
-                      </div>
+                      <ReferralCodeInput />
 
                     </div>
                   </div>
@@ -84,7 +84,7 @@ export default function InvestForm() {
                       <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token0Value}</div>
                   ) : null}
 
-                  <div className="horizontal-line" />
+                  <div className="horizontal-line mt-5" />
 
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
                     <SubmitButton />

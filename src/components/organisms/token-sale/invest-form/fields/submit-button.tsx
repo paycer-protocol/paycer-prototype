@@ -9,7 +9,7 @@ export default function SubmitButton() {
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value
 
     return (
-        <GradientButton disabled={isDisabled}>
+        <GradientButton className="px-6" disabled={isDisabled}>
             {t`Buy PCR`}
         </GradientButton>
     )

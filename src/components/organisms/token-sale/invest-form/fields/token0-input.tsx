@@ -44,7 +44,7 @@ export default function Token0Input() {
             }
 
             setFieldValue('token0Value', token0Value)
-            setWillReceive(values.token0, token0Value, values.referralCode, setFieldValue)
+            setWillReceive(values.token0, token0Value, values.referralCodeValid, setFieldValue)
         }}
       />
     )
