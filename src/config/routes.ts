@@ -6,7 +6,8 @@ export const routes = [
     label: t`Portfolio`,
     path: '/',
     supportedChains,
-    auth: false
+    auth: false,
+    hasDropdown: false
   },
   {
     label: t`Invest`,
@@ -14,33 +15,39 @@ export const routes = [
     supportedChains,
     subroutes: [
       {
+        label: false,
         path: '/invest/create',
       }
     ],
-    auth: false
+    auth: false,
+    hasDropdown: false
   },
   {
     label: t`Staking`,
     path: '/staking',
     supportedChains: supportedStakingChains,
-    auth: false
+    auth: false,
+    hasDropdown: false
   },
   {
     label: t`Swap`,
     path: '/swap',
     supportedChains,
-    auth: false
+    auth: false,
+    hasDropdown: false
   },
   {
     label: t`Investor Dashboard`,
     path: '/investor-dashboard',
     supportedChains,
-    auth: false
+    auth: false,
+    hasDropdown: false
   },
   {
     label: t`Token Sale`,
     path: '/token-sale',
     supportedChains,
-    auth: false
+    auth: false,
+    hasDropdown: false
   }
 ]
