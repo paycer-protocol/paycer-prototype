@@ -3,7 +3,7 @@ import {ChevronDown} from '@styled-icons/bootstrap'
 import * as Styles from '@components/organisms/swap/Styles'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import Icon from '@components/atoms/icon'
-import { TokenType } from '@types/investment'
+import { TokenType } from '../../../../types/investment'
 
 interface TokenToggleProps {
   token: TokenType
