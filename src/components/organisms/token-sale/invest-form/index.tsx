@@ -18,13 +18,17 @@ export default function InvestForm() {
 
   const queryParams = new URLSearchParams(window.location.search)
   const referralCode = queryParams.get('referralCode')
+  let referralCodeValid = false
+  if (referralCode) {
+    referralCodeValid = true
+  }
 
   const initialValues: InvestFormProps = {
     token0: initialToken,
     token0Value: 0,
     token0Balance: useToken(initialToken.symbol).tokenBalance(),
     referralCode: referralCode || '',
-    referralCodeValid: false,
+    referralCodeValid: referralCodeValid,
     willReceive: 0,
     referralBonus: 0
   }

@@ -1,9 +1,8 @@
-import React from 'react'
+import React, from 'react'
 import Input from '@components/atoms/form/input'
 import { useFormikContext } from 'formik'
 import { InvestFormProps } from '../types'
 import setWillReceive from '../../helper/set-will-receive'
-import {preSaleReferralBonusPercantage} from "@config/token-sale";
 import GradientButton from "@components/atoms/button/gradient-button";
 import {t} from "@lingui/macro";
 
@@ -16,6 +15,7 @@ export default function ReferralCodeInput() {
                 <Input
                     name="referralCode"
                     className="w-100"
+                    value={values.referralCode}
                     disabled={!values.token0Balance}
                     onChange={(e) => {
                         const value = e.target.value
@@ -25,17 +25,19 @@ export default function ReferralCodeInput() {
                     }}
                 />
             </div>
-            <div className="col-6 d-flex align-items-center">
-                <GradientButton className="px-4" onClick={() => {
-                    //TODO API CALL
-                    const referralCodeValid = true
-                    setFieldValue('referralCodeValid', referralCodeValid)
-                    setWillReceive(values.token0, values.token0Value, referralCodeValid, setFieldValue)
-                }} disabled={!values.referralCode}>
-                    {t`Check Code`}
-                </GradientButton>
-            </div>
 
+            {!values.referralCode && (
+                <div className="col-6 d-flex align-items-center">
+                    <GradientButton className="px-4" onClick={() => {
+                        //TODO API CALL
+                        const referralCodeValid = true
+                        setFieldValue('referralCodeValid', referralCodeValid)
+                        setWillReceive(values.token0, values.token0Value, referralCodeValid, setFieldValue)
+                    }}>
+                        {t`Apply Code`}
+                    </GradientButton>
+                </div>
+            )}
         </div>
     )
 }

@@ -24,7 +24,7 @@ export const tokenProvider: ITokenProvider = {
       decimals: 6,
       chainAddresses: {
         [ChainId.Mainnet]: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        [ChainId.Kovan]: '0x2F375e94FC336Cdec2Dc0cCB5277FE59CBf1cAe5',
+        [ChainId.Kovan]: '0xb7a4F3E9097C08dA09517b5aB877F7a917224ede',
       }
     },
     DAI: {
@@ -33,7 +33,7 @@ export const tokenProvider: ITokenProvider = {
       decimals: 18,
       chainAddresses: {
         [ChainId.Mainnet]: '0x6b175474e89094c44da98b954eedeac495271d0f',
-        [ChainId.Kovan]: '0x1528F3FCc26d13F7079325Fb78D9442607781c8C',
+        [ChainId.Kovan]: '0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa',
       }
     },
     LUSD: {

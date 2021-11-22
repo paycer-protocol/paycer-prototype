@@ -1,9 +1,8 @@
 import { tokenProvider } from "@providers/tokens";
 
 export const TokenSale = [
-    tokenProvider.PCR,
-    tokenProvider.DAI,
     tokenProvider.USDC,
+    tokenProvider.DAI,
     tokenProvider.USDT,
     tokenProvider.ETH
 ]
