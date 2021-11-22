@@ -18,7 +18,7 @@ export default function InvestForm() {
 
   const queryParams = new URLSearchParams(window.location.search)
   const referralCode = queryParams.get('referralCode')
-  // API CALL VALIDATE MOVE TO CONTEXT
+  // TODO: API CALL VALIDATE MOVE TO CONTEXT
   let referralCodeValid = false
   if (referralCode) {
     referralCodeValid = true
