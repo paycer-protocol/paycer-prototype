@@ -72,15 +72,6 @@ export default function InvestForm() {
                           <Token0Input />
                         </div>
                       </div>
-
-                      <div className="horizontal-line mt-5" />
-
-                      <div className="text-muted text-uppercase h5">
-                        {t`Referral Bonus Code`} ¹
-                      </div>
-
-                      <ReferralCodeInput />
-
                     </div>
                   </div>
 

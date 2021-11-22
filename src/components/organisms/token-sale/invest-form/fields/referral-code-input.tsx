@@ -1,4 +1,4 @@
-import React, from 'react'
+import React from 'react'
 import Input from '@components/atoms/form/input'
 import { useFormikContext } from 'formik'
 import { InvestFormProps } from '../types'
@@ -26,18 +26,17 @@ export default function ReferralCodeInput() {
                 />
             </div>
 
-            {!values.referralCode && (
-                <div className="col-6 d-flex align-items-center">
-                    <GradientButton className="px-4" onClick={() => {
-                        //TODO API CALL
-                        const referralCodeValid = true
-                        setFieldValue('referralCodeValid', referralCodeValid)
-                        setWillReceive(values.token0, values.token0Value, referralCodeValid, setFieldValue)
-                    }}>
-                        {t`Apply Code`}
-                    </GradientButton>
-                </div>
-            )}
+            <div className="col-6 d-flex align-items-center">
+                <GradientButton className="px-4" onClick={() => {
+                    //TODO API CALL
+                    const referralCodeValid = true
+                    setFieldValue('referralCodeValid', referralCodeValid)
+                    setWillReceive(values.token0, values.token0Value, referralCodeValid, setFieldValue)
+                }}>
+                    {t`Apply Code`}
+                </GradientButton>
+            </div>
+
         </div>
     )
 }
