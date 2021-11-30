@@ -12,7 +12,7 @@ export const tokenProvider: ITokenProvider = {
       decimals: 18,
       chainAddresses: {
         [ChainId.Mainnet]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
-        [ChainId.Kovan]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c',
+        [ChainId.Kovan]: '0xcd3861FbB5F5256d368f6B6E943DEA964F1f8846',
         [ChainId.Polygon]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
         [ChainId.Mumbai]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo
         [ChainId.BSC]: '0x7fc6761b9119f3d1448e1eed559b3a9b7205085c', // todo

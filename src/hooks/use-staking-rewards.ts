@@ -12,7 +12,7 @@ export default function useStakingRewards() {
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId || ChainId.Mainnet]
 
   const contract = new Contract(contractAddress, stakingAbi.abi)
-  const stakeFn = useContractFunction(contract, 'interestRateOf', { transactionName: 'interestRateOf' })
+  const stakeFn = useContractFunction(contract, 'stake', { transactionName: 'stake' })
   const claimFn = useContractFunction(contract, 'claim', { transactionName: 'claim' })
   const withdrawFn = useContractFunction(contract, 'withdraw', { transactionName: 'withdraw' })
 

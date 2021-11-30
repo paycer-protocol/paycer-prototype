@@ -5,18 +5,11 @@ import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import { Twitter, Github, Instagram, Linkedin, Telegram, ArrowDown, Discord} from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
-import GradientButton from '@components/atoms/button/gradient-button'
 import { t, Trans } from '@lingui/macro'
 import {useRouter} from 'next/router'
 import useWallet from '@hooks/use-wallet'
 import {routes} from '@config/routes'
 import classnames from 'classnames'
-
-const StyledGradientButton = styled(GradientButton)`
-    padding: 10px 40px;
-    font-size: 14px;
-    font-weight: 400;
-`
 
 const StyledLogo = styled.a`
   img {
@@ -149,9 +142,16 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link p-0" href="https://webrigade-gmbh.jobs.personio.de">
+                                <a target="_blank" className="nav-link p-0 pb-4" href="https://webrigade-gmbh.jobs.personio.de">
                                     <Trans>Jobs</Trans>
                                 </a>
+                            </li>
+                            <li className="nav-item m-0">
+                                <Link href="/referral">
+                                    <a className="nav-link p-0 pb-4">
+                                        <Trans>Referral Program</Trans>
+                                    </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

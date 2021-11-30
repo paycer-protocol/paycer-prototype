@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import styled from 'styled-components'
-import {t, Trans} from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import KycProcessInfo from '@components/organisms/token-sale/info'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import Transactions from '@components/organisms/token-sale/transactions'
-import {TokenSaleProvider, useTokenSale} from '@context/token-sale-context'
-import * as Styles from "@components/organisms/swap/Styles";
+import { TokenSaleProvider, useTokenSale } from '@context/token-sale-context'
 
 export const LeftCol = styled.div`
     width: 40%;
@@ -69,12 +68,10 @@ export default function TokenSale() {
               </div>
             </div>
           </PageHeader>
-
           <Tabs
               transactionTabActive={transactionTabActive}
               setTransactionTabActive={setTransactionTabActive}
           />
-
           <div className="card blur-background">
             <div className="card-body p-0">
               <div className="d-lg-flex">
