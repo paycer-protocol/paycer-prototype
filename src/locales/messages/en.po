@@ -13,7 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:93
+#: src/components/organisms/token-sale/timeline/index.tsx:86
+msgid "% Bonus included"
+msgstr "% Bonus included"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:96
 msgid "12 months after TGE"
 msgstr "12 months after TGE"
 
@@ -46,7 +50,7 @@ msgstr "Account"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/context/token-sale-context.tsx:95
+#: src/context/token-sale-context.tsx:106
 msgid "Address not found"
 msgstr "Address not found"
 
@@ -54,7 +58,7 @@ msgstr "Address not found"
 msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:78
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:83
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:24
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:77
@@ -83,6 +87,14 @@ msgstr "Available Balance"
 msgid "Balance"
 msgstr "Balance"
 
+#: src/components/organisms/token-sale/info/index.tsx:59
+msgid "Bonus & Availability"
+msgstr "Bonus & Availability"
+
+#: src/components/organisms/token-sale/info/index.tsx:66
+msgid "Bonus Percentage"
+msgstr "Bonus Percentage"
+
 #: src/pages/staking/index.tsx:34
 #~ msgid "Buy PCR Token"
 #~ msgstr "Buy PCR Token"
@@ -99,7 +111,7 @@ msgstr "Change network"
 msgid "Change your wallet provider"
 msgstr "Change your wallet provider"
 
-#: src/components/organisms/token-sale/info/index.tsx:49
+#: src/components/organisms/token-sale/info/index.tsx:51
 msgid "Check Status"
 msgstr "Check Status"
 
@@ -107,7 +119,7 @@ msgstr "Check Status"
 #~ msgid "Check your Private Sale Status"
 #~ msgstr "Check your Private Sale Status"
 
-#: src/components/organisms/token-sale/info/index.tsx:29
+#: src/components/organisms/token-sale/info/index.tsx:31
 msgid "Check your investment status"
 msgstr "Check your investment status"
 
@@ -115,7 +127,7 @@ msgstr "Check your investment status"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:83
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:88
 msgid "Claim"
 msgstr "Claim"
 
@@ -123,7 +135,7 @@ msgstr "Claim"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:41
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:45
 msgid "Claimable rewards"
 msgstr "Claimable rewards"
 
@@ -214,7 +226,7 @@ msgstr "Dark Mode"
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:43
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:66
 msgid "Date"
 msgstr "Date"
 
@@ -230,9 +242,9 @@ msgstr "Disconnect"
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/config/routes.ts:22
-#~ msgid "Docs"
-#~ msgstr "Docs"
+#: src/components/organisms/footer/footer.tsx:165
+msgid "Docs"
+msgstr "Docs"
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
@@ -293,8 +305,8 @@ msgstr "Fee"
 #~ msgstr "Fetching data from API failed."
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:96
-#~ msgid "From Wallet Address"
-#~ msgstr "From Wallet Address"
+msgid "From Wallet Address"
+msgstr "From Wallet Address"
 
 #: src/components/molecules/languages/language-choice.tsx:10
 msgid "German"
@@ -305,6 +317,7 @@ msgstr "German"
 #~ msgstr "Height"
 
 #: src/components/organisms/invest/invest-item.tsx:48
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:58
 msgid "Hide"
 msgstr "Hide"
 
@@ -325,6 +338,14 @@ msgstr "Holdings"
 #~ msgid "If you have not yet invested in Paycer you should have a look at our token sale."
 #~ msgstr "If you have not yet invested in Paycer you should have a look at our token sale."
 
+#: src/components/organisms/token-sale/info/index.tsx:74
+msgid "Immediate Availability Percentage"
+msgstr "Immediate Availability Percentage"
+
+#: src/components/organisms/footer/footer.tsx:185
+msgid "Imprint"
+msgstr "Imprint"
+
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:13
 #: src/components/organisms/invest/invest-modal.tsx:17
@@ -344,8 +365,8 @@ msgstr "Invest amount"
 msgid "Invest now"
 msgstr "Invest now"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:70
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:47
+#: src/components/organisms/token-sale/timeline/index.tsx:68
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:70
 msgid "Invested"
 msgstr "Invested"
 
@@ -369,15 +390,23 @@ msgstr "Investment ratio"
 #~ msgid "Investment receivd"
 #~ msgstr "Investment receivd"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:62
+#: src/components/organisms/token-sale/timeline/index.tsx:60
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:53
+#: src/pages/token-sale/index.tsx:67
 msgid "Investor Dashboard"
 msgstr "Investor Dashboard"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:46
+#: src/components/organisms/footer/footer.tsx:153
+msgid "Jobs"
+msgstr "Jobs"
+
+#: src/components/organisms/footer/footer.tsx:52
+msgid "Join us on"
+msgstr "Join us on"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:44
 msgid "KYC Status"
 msgstr "KYC Status"
 
@@ -385,13 +414,17 @@ msgstr "KYC Status"
 msgid "Language"
 msgstr "Language"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:64
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:68
 msgid "Last claimed"
 msgstr "Last claimed"
 
 #: src/components/molecules/dark-mode-toggle/index.tsx:15
 msgid "Light Mode"
 msgstr "Light Mode"
+
+#: src/components/organisms/footer/footer.tsx:175
+msgid "Lightpaper"
+msgstr "Lightpaper"
 
 #: src/pages/portfolio/components/portfolio.tsx:62
 #~ msgid "Liquidity"
@@ -477,7 +510,8 @@ msgstr "Open"
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:80
+#: src/components/organisms/token-sale/timeline/index.tsx:78
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:83
 msgid "PCR Token amount"
 msgstr "PCR Token amount"
 
@@ -510,6 +544,7 @@ msgstr "Please open your wallet and connect your account."
 #~ msgstr "Please wait, retrieving data from API ..."
 
 #: src/components/organisms/swap/supply-form/market-pair-select-modal.tsx:112
+#: src/pages/portfolio/components/portfolio.tsx:42
 msgid "Pool"
 msgstr "Pool"
 
@@ -530,13 +565,17 @@ msgstr "Previously added network Pending, please open your Wallet"
 msgid "Price impact"
 msgstr "Price impact"
 
+#: src/components/organisms/footer/footer.tsx:190
+msgid "Privacy"
+msgstr "Privacy"
+
 #: src/components/organisms/footer/footer.tsx:131
 #~ msgid "Private Sale"
 #~ msgstr "Private Sale"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:68
-msgid "Received"
-msgstr "Received"
+#~ msgid "Received"
+#~ msgstr "Received"
 
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
@@ -548,12 +587,20 @@ msgstr "Rewards"
 msgid "Risk"
 msgstr "Risk"
 
+#: src/components/organisms/footer/footer.tsx:195
+msgid "Risk Disclaimer"
+msgstr "Risk Disclaimer"
+
 #: src/components/organisms/invest/invest-table.tsx:22
 #: src/pages/portfolio/components/portfolio.tsx:47
 msgid "Risk Level"
 msgstr "Risk Level"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:54
+#: src/components/organisms/footer/footer.tsx:148
+msgid "Roadmap"
+msgstr "Roadmap"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:52
 msgid "SAFT Status"
 msgstr "SAFT Status"
 
@@ -593,11 +640,16 @@ msgstr "Select a token"
 #~ msgid "Sent and in Progress"
 #~ msgstr "Sent and in Progress"
 
+#: src/components/organisms/footer/footer.tsx:160
+msgid "Service"
+msgstr "Service"
+
 #: src/components/organisms/header/settings-modal.tsx:28
 msgid "Settings"
 msgstr "Settings"
 
 #: src/components/organisms/invest/invest-item.tsx:48
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:58
 msgid "Show"
 msgstr "Show"
 
@@ -644,12 +696,11 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/pages/token-sale/index.tsx:61
-#~ msgid "Status"
-#~ msgstr "Status"
+#: src/pages/token-sale/index.tsx:43
+msgid "Status"
+msgstr "Status"
 
 #: src/components/organisms/invest/invest-table.tsx:17
-#: src/pages/portfolio/components/portfolio.tsx:42
 msgid "Strategy"
 msgstr "Strategy"
 
@@ -692,6 +743,10 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
+#: src/components/organisms/footer/footer.tsx:49
+msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
+msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
+
 #: src/providers/connectors.ts:95
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
@@ -707,7 +762,7 @@ msgid "Token Balance"
 msgstr "Token Balance"
 
 #: src/config/routes.ts:35
-#: src/pages/token-sale/index.tsx:50
+#: src/pages/token-sale/index.tsx:64
 msgid "Token Sale"
 msgstr "Token Sale"
 
@@ -732,7 +787,7 @@ msgstr "Total Investment"
 msgid "Total Volume"
 msgstr "Total Volume"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:69
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:73
 msgid "Total claimed"
 msgstr "Total claimed"
 
@@ -745,9 +800,9 @@ msgstr "Total supply"
 #~ msgid "Trade"
 #~ msgstr "Trade"
 
-#: src/pages/token-sale/index.tsx:62
-#~ msgid "Transactions"
-#~ msgstr "Transactions"
+#: src/pages/token-sale/index.tsx:47
+msgid "Transactions"
+msgstr "Transactions"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:100
 #~ msgid "Type"
@@ -762,7 +817,7 @@ msgstr "Total supply"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:89
+#: src/components/organisms/token-sale/timeline/index.tsx:92
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
@@ -773,6 +828,10 @@ msgstr "View your wallet in Blockchain Explorer"
 #: src/components/organisms/off-canvas/index.tsx:43
 msgid "Wallet"
 msgstr "Wallet"
+
+#: src/components/organisms/footer/footer.tsx:170
+msgid "Whitepaper"
+msgstr "Whitepaper"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:52
 msgid "Withdraw"
