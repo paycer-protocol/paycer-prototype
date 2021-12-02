@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {t, Trans} from '@lingui/macro'
 import TxnLink from '@components/atoms/txn-link'
-import { tokenPriceUSD } from '@config/token-price'
+import { privateSalePriceUSD, preSalePriceUSD } from '@config/token-price'
 import {FormattedNumber} from '@components/atoms/number'
 import Button from '@components/atoms/button'
 
@@ -26,11 +26,18 @@ const DataTable = (props: DataTableProps) => {
   const date = new Date(props.transactionDateTime)
   let received = 0
 
+  let tokenSalePriceUSD = 0
+  if (new Date(props.transactionDateTime) > new Date('2021-12-01 00:00:00')) {
+    tokenSalePriceUSD = preSalePriceUSD
+  } else {
+    tokenSalePriceUSD = privateSalePriceUSD
+  }
+
   if (props.historicalUSDPrice) {
     const USDAmount = props.value * props.historicalUSDPrice
-    received = USDAmount / tokenPriceUSD
+    received = USDAmount / tokenSalePriceUSD
   } else {
-    received = props.value / tokenPriceUSD
+    received = props.value / tokenSalePriceUSD
   }
 
   const formattedDate = date.getDate()+

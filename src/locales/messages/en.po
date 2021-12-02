@@ -154,6 +154,7 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
 #: src/components/organisms/web3/wallet-connect.tsx:29
 #: src/components/organisms/web3/wallet-detail.tsx:139
+#: src/pages/referral/index.tsx:35
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
@@ -227,6 +228,7 @@ msgstr "Dark Mode"
 #~ msgstr "Dashboard"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:66
+#: src/pages/referral/components/Referrals.tsx:28
 msgid "Date"
 msgstr "Date"
 
@@ -253,6 +255,10 @@ msgstr "Docs"
 #: src/pages/invest/create/index.tsx:67
 msgid "Earn interest"
 msgstr "Earn interest"
+
+#: src/pages/referral/components/ReferralUrl.tsx:36
+msgid "Earn up to 5% commission on every transaction."
+msgstr "Earn up to 5% commission on every transaction."
 
 #: src/components/organisms/invest/invest-card/index.tsx:114
 #~ msgid "Earned"
@@ -303,6 +309,10 @@ msgstr "Fee"
 #: src/pages/token-sale/components/alert.tsx:12
 #~ msgid "Fetching data from API failed."
 #~ msgstr "Fetching data from API failed."
+
+#: src/pages/referral/components/Referrals.tsx:13
+msgid "Friend`s User ID"
+msgstr "Friend`s User ID"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:96
 msgid "From Wallet Address"
@@ -394,15 +404,15 @@ msgstr "Investment ratio"
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:67
+#: src/pages/token-sale/index.tsx:66
 msgid "Investor Dashboard"
 msgstr "Investor Dashboard"
 
-#: src/components/organisms/footer/footer.tsx:153
+#: src/components/organisms/footer/footer.tsx:146
 msgid "Jobs"
 msgstr "Jobs"
 
-#: src/components/organisms/footer/footer.tsx:52
+#: src/components/organisms/footer/footer.tsx:45
 msgid "Join us on"
 msgstr "Join us on"
 
@@ -577,6 +587,15 @@ msgstr "Privacy"
 #~ msgid "Received"
 #~ msgstr "Received"
 
+#: src/pages/referral/components/Referrals.tsx:18
+msgid "Referral Bonus"
+msgstr "Referral Bonus"
+
+#: src/components/organisms/footer/footer.tsx:152
+#: src/pages/referral/components/ReferralUrl.tsx:35
+msgid "Referral Program"
+msgstr "Referral Program"
+
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
 msgstr "Rewards"
@@ -596,7 +615,7 @@ msgstr "Risk Disclaimer"
 msgid "Risk Level"
 msgstr "Risk Level"
 
-#: src/components/organisms/footer/footer.tsx:148
+#: src/components/organisms/footer/footer.tsx:141
 msgid "Roadmap"
 msgstr "Roadmap"
 
@@ -696,7 +715,7 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/pages/token-sale/index.tsx:43
+#: src/pages/token-sale/index.tsx:42
 msgid "Status"
 msgstr "Status"
 
@@ -743,7 +762,7 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/components/organisms/footer/footer.tsx:49
+#: src/components/organisms/footer/footer.tsx:42
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 
@@ -762,7 +781,7 @@ msgid "Token Balance"
 msgstr "Token Balance"
 
 #: src/config/routes.ts:35
-#: src/pages/token-sale/index.tsx:64
+#: src/pages/token-sale/index.tsx:63
 msgid "Token Sale"
 msgstr "Token Sale"
 
@@ -800,7 +819,11 @@ msgstr "Total supply"
 #~ msgid "Trade"
 #~ msgstr "Trade"
 
-#: src/pages/token-sale/index.tsx:47
+#: src/pages/referral/components/Referrals.tsx:23
+msgid "Transaction Typ"
+msgstr "Transaction Typ"
+
+#: src/pages/token-sale/index.tsx:46
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -840,6 +863,10 @@ msgstr "Withdraw"
 #: src/pages/portfolio/components/portfolio.tsx:122
 msgid "You have no investments in your portfolio"
 msgstr "You have no investments in your portfolio"
+
+#: src/pages/referral/components/Referrals.tsx:38
+msgid "You have no referrals"
+msgstr "You have no referrals"
 
 #: src/components/organisms/web3/wallet-provider.tsx:32
 #~ msgid "You're connected to an unsupported network."
