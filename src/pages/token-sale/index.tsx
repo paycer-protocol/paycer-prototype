@@ -1,37 +1,29 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import styled from 'styled-components'
-import {t, Trans} from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import KycProcessInfo from '@components/organisms/token-sale/info'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import Transactions from '@components/organisms/token-sale/transactions'
-import { TokenSaleProvider } from '@context/token-sale-context'
-
-const VerticalLine = styled.div`
-    border-right: 1px solid #244166;
-    margin: 0 30px;
-`
-
-const HorizontalLine = styled.div`
-    border-top: 1px solid #244166;
-    margin: 30px 0;
-    position: relative;
-`
+import { TokenSaleProvider, useTokenSale } from '@context/token-sale-context'
 
 export const LeftCol = styled.div`
-    width: 50%;
+    width: 40%;
     padding: 30px 0 30px 30px;
 
     @media only screen and (max-width : 978px) {
       width: 100%;
       padding: 25px;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 `
 
 export const RightCol = styled.div`
-    width: 50%;
+    width: 60%;
     padding: 30px 30px 30px 0;
 
     @media only screen and (max-width : 978px) {
@@ -40,7 +32,32 @@ export const RightCol = styled.div`
     }
 `
 
+interface TabsProps {
+  transactionTabActive: boolean,
+  setTransactionTabActive: any,
+}
+
+const Tabs = ({ transactionTabActive, setTransactionTabActive }: TabsProps) => {
+  const { tokenSaleData } = useTokenSale()
+  const transactions = tokenSaleData?.transactions
+
+  return (
+      <div className="d-flex">
+        <div className={transactionTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setTransactionTabActive(false)}>
+          {t`Status`}
+        </div>
+        {(transactions?.length > 0  &&
+            <div className={transactionTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setTransactionTabActive(true)}>
+              {t`Transactions`}
+            </div>
+        )}
+      </div>
+  )
+}
+
 export default function TokenSale() {
+  const [transactionTabActive, setTransactionTabActive] = useState(false)
+
   return (
     <>
       <TokenSaleProvider>
@@ -57,19 +74,28 @@ export default function TokenSale() {
               </div>
             </div>
           </PageHeader>
+          <Tabs
+              transactionTabActive={transactionTabActive}
+              setTransactionTabActive={setTransactionTabActive}
+          />
           <div className="card blur-background">
             <div className="card-body p-0">
               <div className="d-lg-flex">
-                <>
-                  <LeftCol>
-                    <KycProcessInfo />
-                  </LeftCol>
-                  <VerticalLine />
-                  <HorizontalLine className="d-md-none" />
-                  <RightCol>
-                    <KycProcessTimeline />
-                  </RightCol>
-                </>
+                {(transactionTabActive
+                  ?
+                  <Transactions />
+                  :
+                  <>
+                    <LeftCol>
+                      <KycProcessInfo />
+                    </LeftCol>
+                    <div className="vertical-line" />
+                    <div className="horizontal-line d-md-none" />
+                    <RightCol>
+                      <KycProcessTimeline />
+                    </RightCol>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -79,3 +105,4 @@ export default function TokenSale() {
     </>
   )
 }
+

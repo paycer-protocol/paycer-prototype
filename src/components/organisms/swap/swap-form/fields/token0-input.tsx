@@ -1,7 +1,7 @@
 import React from 'react'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { SwapProps } from '../../types'
+import { SwapProps } from '../types'
 import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
 import { ChainId } from '@usedapp/core'

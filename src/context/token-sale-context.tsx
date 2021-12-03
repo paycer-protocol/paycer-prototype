@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { t } from '@lingui/macro'
 import useWallet from '@hooks/use-wallet'
-import { tokenPriceUSD } from '@config/token-price'
+import { privateSalePriceUSD, preSalePriceUSD } from '@config/token-price'
 import api from '../api'
 
 export interface TransactionProps {
@@ -28,7 +28,9 @@ interface TokenSaleDataProps {
   tokenAmount?: number
   investSymbol?: string
   investAmount?: number
-  transactions?: TransactionProps[]
+  transactions?: TransactionProps[],
+  bonusPercentage?: string
+  immediateAvailabilityPercentage?: string
 }
 
 
@@ -57,13 +59,20 @@ const calculateTotalInvested = (transactions) => {
   let totalReceived = 0
 
   Object.keys(transactions).map((key) => {
+    let tokenSalePriceUSD = 0
+    if (new Date(transactions[key].transactionDateTime) > new Date('2021-12-01 00:00:00')) {
+      tokenSalePriceUSD = preSalePriceUSD
+    } else {
+      tokenSalePriceUSD = privateSalePriceUSD
+    }
+
     if (transactions[key].historicalUSDPrice) {
       const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice
-      totalReceived+= USDAmount / tokenPriceUSD
+      totalReceived+= USDAmount / tokenSalePriceUSD
       totalInvest+= USDAmount
     } else {
       const USDAmount = transactions[key].value
-      totalReceived+= USDAmount / tokenPriceUSD
+      totalReceived+= USDAmount / tokenSalePriceUSD
       totalInvest+= USDAmount
     }
   })
@@ -89,7 +98,14 @@ export const TokenSaleProvider = ({ children }) => {
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions).totalInvest)
-      setTotalReceived(calculateTotalInvested(payload.transactions).totalReceived)
+
+      let totalReceived = calculateTotalInvested(payload.transactions).totalReceived
+
+      if (payload?.bonusPercentage) {
+        totalReceived = totalReceived + (Number(payload?.bonusPercentage) * totalReceived / 100)
+      }
+
+      setTotalReceived(totalReceived)
     } catch (err) {
       setTokenSaleData(null)
       setTotalInvest(0)
@@ -102,7 +118,6 @@ export const TokenSaleProvider = ({ children }) => {
     if (wallet.isConnected && !walletAddress) {
       setWalletAddress(wallet.address)
     }
-
   }, [wallet.isConnected])
 
   return (

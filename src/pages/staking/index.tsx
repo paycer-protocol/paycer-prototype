@@ -4,7 +4,6 @@ import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
-import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
 
 const VerticalLine = styled.div`
@@ -18,7 +17,6 @@ const HorizontalLine = styled.div`
 `
 
 export default function Staking () {
-  const { isConnected } = useWallet()
   const { supportedStakingChain } = useNetwork()
 
   if (!supportedStakingChain) {

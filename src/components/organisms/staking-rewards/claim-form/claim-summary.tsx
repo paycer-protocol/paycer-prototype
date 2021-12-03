@@ -30,7 +30,11 @@ export default function ClaimSummary() {
   const totalClaimed = stakingRewards.totalClaimed()
 
   const handleClaim = () => {
-    stakingRewards.claim()
+    try {
+      stakingRewards.claim()
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -75,6 +79,7 @@ export default function ClaimSummary() {
 
       <div className="d-flex align-items-center justify-content-center mb-3">
         <Button
+          type="submit"
           title={t`Apply`}
           variant={'primary'}
           className="px-5"
