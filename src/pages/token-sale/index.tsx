@@ -16,10 +16,6 @@ export const LeftCol = styled.div`
       width: 100%;
       padding: 25px;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 `
 
 export const RightCol = styled.div`
