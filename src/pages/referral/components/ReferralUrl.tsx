@@ -12,6 +12,7 @@ export default function ReferralUrl () {
   const [isCopied, setCopied] = useCopyClipboard()
   const [code, setCode] = useState()
   const wallet = useWallet()
+  const tokenSaleUrl = 'https://paycer.io/token-sale'
 
   useEffect(() => {
     async function fetchReferralCode(walletAddress) {
@@ -39,10 +40,10 @@ export default function ReferralUrl () {
         <InputGroup className="mb-3">
           <InputGroup.Text>Your Referral Url</InputGroup.Text>
           <FormControl
-            value={code ? `https://paycer.io/token-sale?r=${code}` : ''}
+            value={code ? `${tokenSaleUrl}?r=${code}` : ''}
             aria-describedby="copy-btn"
           />
-          <InputGroup.Text id="copy-btn" onClick={() => setCopied(code ? `https://paycer.io?r=${code}`: '')}>
+          <InputGroup.Text id="copy-btn" onClick={() => setCopied(code ? `${tokenSaleUrl}?r=${code}`: '')}>
             {isCopied ? (<Icon component={BookmarkCheck} size={22} />) : (<Icon component={Bookmark} size={22} />)}
           </InputGroup.Text>
         </InputGroup>
