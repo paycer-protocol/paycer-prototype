@@ -39,7 +39,7 @@ export default function ReferralUrl () {
         <InputGroup className="mb-3">
           <InputGroup.Text>Your Referral Url</InputGroup.Text>
           <FormControl
-            value={code ? `https://paycer.io?r=${code}` : ''}
+            value={code ? `https://paycer.io/token-sale?r=${code}` : ''}
             aria-describedby="copy-btn"
           />
           <InputGroup.Text id="copy-btn" onClick={() => setCopied(code ? `https://paycer.io?r=${code}`: '')}>

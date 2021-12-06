@@ -36,5 +36,11 @@ export const routes = [
     path: '/token-sale',
     supportedChains,
     auth: false
+  },
+  {
+    label: t`Referral`,
+    path: '/referral',
+    supportedChains,
+    auth: false
   }
 ]
