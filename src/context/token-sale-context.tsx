@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { t } from '@lingui/macro'
 import useWallet from '@hooks/use-wallet'
-import { privateSalePriceUSD, preSalePriceUSD } from '@config/token-price'
+import {privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD} from '@config/token-price'
 import api from '../api'
 
 export interface TransactionProps {
@@ -31,6 +31,7 @@ interface TokenSaleDataProps {
   transactions?: TransactionProps[],
   bonusPercentage?: string
   immediateAvailabilityPercentage?: string
+  type?: string
 }
 
 
@@ -53,17 +54,18 @@ export const TokenSaleContext = React.createContext<TokenSaleProps>({
 export const useTokenSale = () => useContext(TokenSaleContext)
 
 
-const calculateTotalInvested = (transactions) => {
+const calculateTotalInvested = (transactions, type = 'public') => {
 
   let totalInvest = 0
   let totalReceived = 0
 
   Object.keys(transactions).map((key) => {
-    let tokenSalePriceUSD = 0
-    if (new Date(transactions[key].transactionDateTime) > new Date('2021-12-01 00:00:00')) {
-      tokenSalePriceUSD = preSalePriceUSD
-    } else {
+
+    let tokenSalePriceUSD = publicSalePriceUSD
+    if (type === 'private') {
       tokenSalePriceUSD = privateSalePriceUSD
+    } else if (type === 'pre') {
+      tokenSalePriceUSD = preSalePriceUSD
     }
 
     if (transactions[key].historicalUSDPrice) {
@@ -97,9 +99,9 @@ export const TokenSaleProvider = ({ children }) => {
       const response = await api.fetchTokenSaleInfo(address)
       const payload = response?.data || null
       setTokenSaleData(payload)
-      setTotalInvest(calculateTotalInvested(payload.transactions).totalInvest)
+      setTotalInvest(calculateTotalInvested(payload.transactions, payload.type).totalInvest)
 
-      let totalReceived = calculateTotalInvested(payload.transactions).totalReceived
+      let totalReceived = calculateTotalInvested(payload.transactions, payload.type).totalReceived
 
       if (payload?.bonusPercentage) {
         totalReceived = totalReceived + (Number(payload?.bonusPercentage) * totalReceived / 100)
