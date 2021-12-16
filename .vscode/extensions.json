@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "eg2.vscode-npm-script",
+        "github.copilot",
+        "mikestead.dotenv",
+        "mrmlnc.vscode-scss",
+        "ofhumanbondage.react-proptypes-intellisense",
+        "zignd.html-css-class-completion"
+    ]
+}
