@@ -4,12 +4,12 @@ import Modal from '@components/molecules/modal'
 import ChildrenType from '../../../types/children'
 
 interface TradeModalProps {
-    className: string | undefined
+    className?: string
     children: ChildrenType
     content: ChildrenType
     title: string
     show: boolean
-    onHide: () => void
+    onHide?: () => void
 }
 
 /**
@@ -21,7 +21,7 @@ export default function TradeModal(props: TradeModalProps) {
     const { children, className, content, show, onHide, title } = props
 
     return (
-        <Modal show={show} onHide={() => { onHide() }} className={className}>
+        <Modal show={show} onHide={onHide ?? (() => { onHide() })} className={className ?? ""}>
             <StyledModalInner>
                 <Modal.Header closeButton>
                     <Modal.Title>
