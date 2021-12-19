@@ -10,12 +10,10 @@ import { rpcUrls } from './rpcs'
 
 const APP_URL = process.env.APP_URL
 const APP_EMAIL = process.env.APP_EMAIL
-const POLLING_INTERVAL = 15000
 
 export const walletConnectConnector = new WalletConnectConnector({
     rpc: { [ChainId.Mainnet]: rpcUrls[ChainId.Mainnet] },
     bridge: 'https://bridge.walletconnect.org',
-    pollingInterval: POLLING_INTERVAL,
     qrcode: true,
 })
 
@@ -44,7 +42,6 @@ export const injectedConnector = new InjectedConnector({
 export const trezorConnector = new TrezorConnector({
     chainId: ChainId.Mainnet,
     url: rpcUrls[ChainId.Mainnet],
-    pollingInterval: POLLING_INTERVAL,
     manifestEmail: APP_EMAIL,
     manifestAppUrl: APP_URL
 })
@@ -52,7 +49,6 @@ export const trezorConnector = new TrezorConnector({
 export const ledgerConnector = new LedgerConnector({
     chainId: ChainId.Mainnet,
     url: rpcUrls[ChainId.Mainnet],
-    pollingInterval: POLLING_INTERVAL
 })
 
 export interface IConnectorProvider {
