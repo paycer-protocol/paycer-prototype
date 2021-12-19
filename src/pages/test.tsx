@@ -1,3 +1,4 @@
+// @ts-ignore
 import { ERC20, useContractFunction } from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
 import CompoundStrategyUSDC from "../deployments/kovan/CompoundStrategyUSDC.json"
