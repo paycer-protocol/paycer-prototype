@@ -15,7 +15,6 @@ const POLLING_INTERVAL = 15000
 export const walletConnectConnector = new WalletConnectConnector({
     rpc: { [ChainId.Mainnet]: rpcUrls[ChainId.Mainnet] },
     bridge: 'https://bridge.walletconnect.org',
-    pollingInterval: POLLING_INTERVAL,
     qrcode: true,
 })
 

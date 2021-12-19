@@ -1,17 +1,47 @@
-import { ERC20, useContractFunction } from '@usedapp/core'
+import React, { useState, useEffect } from 'react'
+import { useContractCall, useContractFunction} from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
-import Staking from "../deployments/kovan/Staking.json"
+import Staking from "../deployments/localhost/Staking.json"
 import useWallet from '@hooks/use-wallet'
+import { Interface } from '@ethersproject/abi'
+import { BigNumber } from '@ethersproject/bignumber'
 
 export default function StakingTest () {
   const wallet = useWallet()
+  const [rewardAPY, setRewardAPY] = useState(0)
+  const [availableReward, setAvailableReward] = useState(0)
+
   const stakingContract = new Contract(Staking.address, Staking.abi)
   const { send: deposit, state: depositTx } = useContractFunction(stakingContract, 'deposit')
   const { send: withdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
   const { send: claim, state: claimTx } = useContractFunction(stakingContract, 'claim')
-  const { send: pendingReward, state: pendingRewardTx } = useContractFunction(stakingContract, 'pendingReward')
-  const { send: rewardAPY, state: rewardAPYTx } = useContractFunction(stakingContract, 'rewardAPY')
-  const { send: availableReward, state: availableRewardTx } = useContractFunction(stakingContract, 'availableReward')
+
+  const pendingRewardResult = useContractCall({
+      abi: new Interface(Staking.abi),
+      address: Staking.address,
+      method: 'pendingReward',
+      args: [wallet.address]
+  })
+
+  useEffect(() => {
+    if (pendingRewardResult) {
+      setRewardAPY(BigNumber.isBigNumber(pendingRewardResult[0]) ? pendingRewardResult[0].toNumber() : 0)
+    }
+  }, [pendingRewardResult, wallet.address])
+
+
+  const availableRewardResult = useContractCall({
+    abi: new Interface(Staking.abi),
+    address: Staking.address,
+    method: 'availableReward',
+    args: []
+  })
+
+  useEffect(() => {
+    if (availableRewardResult) {
+      setAvailableReward(BigNumber.isBigNumber(availableRewardResult[0]) ? availableRewardResult[0].toNumber() : 0)
+    }
+  }, [availableRewardResult, wallet.address])
 
   return (
     <div className="container">
@@ -19,38 +49,32 @@ export default function StakingTest () {
 
       <div className="row">
         <div className="col-12">
-          <h2>availableReward status: {availableRewardTx.status}</h2>
-          <button onClick={() => availableReward()}>
-            availableReward
-          </button>
+          <h2>availableReward: {availableReward}</h2>
         </div>
         <div className="col-12">
-          <h2>RewardAPY status: {rewardAPYTx.status}</h2>
-          <button onClick={() => rewardAPY(wallet.address)}>
-            rewardAPY
-          </button>
-        </div>
-        <div className="col-12">
-          <h2>PendingReward status: {pendingRewardTx.status}</h2>
-          <button onClick={() => pendingReward(wallet.address)}>
-            pendingReward
-          </button>
+          <h2>RewardAPY: {rewardAPY}</h2>
         </div>
         <div className="col-12">
           <h2>Claim status: {claimTx.status}</h2>
-          <button onClick={() => claim(wallet.address)}>
+          <button onClick={async () => {
+            console.log(await claim(wallet.address))
+          }}>
             Claim
           </button>
         </div>
         <div className="col-12">
           <h2>Withdraw status: {withdrawTx.status}</h2>
-          <button onClick={() => withdraw(100, wallet.address)}>
+          <button onClick={async () => {
+            console.log(await withdraw(0, wallet.address))
+          }}>
             Withdraw
           </button>
         </div>
         <div className="col-12">
           <h2>Deposit status: {depositTx.status}</h2>
-          <button onClick={() => deposit(100, wallet.address)}>
+          <button onClick={async () => {
+            console.log(await deposit(0, wallet.address))
+          }}>
             Deposit
           </button>
         </div>

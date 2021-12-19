@@ -108,4 +108,15 @@ export const mainNetProviders: INetworkProvider = {
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
     },
+    [ChainId.Kovan]: {
+        chainId: '0x2A',
+        chainName: 'Kovan',
+        nativeCurrency: {
+            name: 'Ethereum - Kovan',
+            symbol: 'ETH',
+            decimals: 18,
+        },
+        rpcUrls: [rpcUrls[ChainId.Kovan]],
+        blockExplorerUrls: [explorers[ChainId.Kovan]],
+    },
 }
