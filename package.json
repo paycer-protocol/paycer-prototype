@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@usedapp/coingecko": "^0.3.24",
-    "@usedapp/core": "^0.4.1",
+    "@usedapp/core": "^0.7.1",
     "apexcharts": "^3.28.3",
     "axios": "^0.23.0",
     "bootstrap": "^5.0.0-beta2",

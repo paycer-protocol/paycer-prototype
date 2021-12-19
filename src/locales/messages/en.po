@@ -50,7 +50,7 @@ msgstr "Account"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/context/token-sale-context.tsx:113
+#: src/context/token-sale-context.tsx:115
 msgid "Address not found"
 msgstr "Address not found"
 
@@ -207,11 +207,11 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:93
+#: src/components/organisms/invest/invest-form/index.tsx:121
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:86
+#: src/components/organisms/invest/invest-form/index.tsx:114
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:84
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 #: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:15
@@ -227,7 +227,7 @@ msgstr "Dark Mode"
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:73
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:75
 #: src/pages/referral/components/Referrals.tsx:28
 msgid "Date"
 msgstr "Date"
@@ -314,7 +314,7 @@ msgstr "Fee"
 msgid "Friend`s User ID"
 msgstr "Friend`s User ID"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:103
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:105
 msgid "From Wallet Address"
 msgstr "From Wallet Address"
 
@@ -327,7 +327,7 @@ msgstr "German"
 #~ msgstr "Height"
 
 #: src/components/organisms/invest/invest-item.tsx:48
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:65
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:67
 msgid "Hide"
 msgstr "Hide"
 
@@ -357,7 +357,8 @@ msgid "Imprint"
 msgstr "Imprint"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
-#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:13
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:14
+#: src/components/organisms/invest/invest-form/fields/submit-button.tsx:18
 #: src/components/organisms/invest/invest-modal.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:16
 #: src/config/routes.ts:12
@@ -376,7 +377,7 @@ msgid "Invest now"
 msgstr "Invest now"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:68
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:77
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:79
 msgid "Invested"
 msgstr "Invested"
 
@@ -521,7 +522,7 @@ msgid "Overview"
 msgstr "Overview"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:78
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:90
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:92
 msgid "PCR Token amount"
 msgstr "PCR Token amount"
 
@@ -668,7 +669,7 @@ msgid "Settings"
 msgstr "Settings"
 
 #: src/components/organisms/invest/invest-item.tsx:48
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:65
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:67
 msgid "Show"
 msgstr "Show"
 

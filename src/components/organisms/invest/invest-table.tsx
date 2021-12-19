@@ -43,7 +43,7 @@ export default function InvestList() {
         <tbody className="list">
         {values.strategies.map((strategy, key) => (
           <InvestItem
-            key={`invest${key}`}
+            key={`invest-table-item-${key}`}
             strategy={strategy}
           />
         ))}
