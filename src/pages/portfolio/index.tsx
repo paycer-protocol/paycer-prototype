@@ -1,6 +1,7 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import DashCards from './components/dash-cards'
 import Portfolio from './components/portfolio'
 import { StrategyType } from '../../types/investment'
@@ -33,36 +34,39 @@ export default function Home() {
   })
 
   return (
-    <div className="container mt-3 mb-8">
-      <PageHeader>
-        <div className="row align-items-center">
-          <div className="col">
-            <PageHeader.Subtitle>
-                <Trans>Overview</Trans>
-            </PageHeader.Subtitle>
-            <PageHeader.Title>
-                <Trans>Portfolio</Trans>
-            </PageHeader.Title>
-          </div>
-        </div>
-      </PageHeader>
-      <div>
-          <div className="mb-7 mb-md-3">
-            <DashCards
-                totalBalance={totalBalance}
-                strategies={qualifiedStrategies}
-            />
-          </div>
-          <div className="row position-relatives blur-background">
-            <div className="col-12">
-              <Portfolio
-                strategies={qualifiedStrategies}
-                totalBalance={totalBalance}
-              />
+    <>
+      <div className="container mt-3 mb-8">
+        <PageHeader>
+          <div className="row align-items-center">
+            <div className="col">
+              <PageHeader.Subtitle>
+                  <Trans>Overview</Trans>
+              </PageHeader.Subtitle>
+              <PageHeader.Title>
+                  <Trans>Portfolio</Trans>
+              </PageHeader.Title>
             </div>
           </div>
+        </PageHeader>
+        <div>
+            <div className="mb-7 mb-md-3">
+              <DashCards
+                  totalBalance={totalBalance}
+                  strategies={qualifiedStrategies}
+              />
+            </div>
+            <div className="row position-relatives blur-background">
+              <div className="col-12">
+                <Portfolio
+                  strategies={qualifiedStrategies}
+                  totalBalance={totalBalance}
+                />
+              </div>
+            </div>
+        </div>
       </div>
-    </div>
+      <PortalBlockNumber />
+    </>
   )
 }
 
