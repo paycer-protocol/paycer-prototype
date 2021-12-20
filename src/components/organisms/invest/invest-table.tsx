@@ -14,7 +14,7 @@ export default function InvestList() {
         <tr>
           <th>
           <span className="text-muted">
-            <Trans>Strategy</Trans>
+            <Trans>POOL</Trans>
           </span>
           </th>
           <th>
