@@ -23,7 +23,7 @@ export default function PortalBlockNumber() {
     setHref(explorerBlockUrl)
 
     return () => setHref(null)
-  }, [blockNumber, network.chainId])
+  }, [blockNumber, network.chainId, wallet.isConnected])
 
   return (
     <PortalOverlay>

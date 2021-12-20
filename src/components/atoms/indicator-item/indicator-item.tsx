@@ -11,6 +11,7 @@ const StyledIndicatorItem = styled.div`
   display: inline-flex;
   align-items: center;
   user-select: none;
+  font-size: 12px;
 
   .icon-indicator {
     display: inline-block;

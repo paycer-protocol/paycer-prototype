@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { PortalRoot } from '../components/atoms/portal'
+import { PortalRoot } from '@components/atoms/portal'
 
 export default class AppDocument extends Document {
   static async getInitialProps(ctx) {
