@@ -50,7 +50,7 @@ msgstr "Account"
 msgid "Adding Network to Wallet ..."
 msgstr "Adding Network to Wallet ..."
 
-#: src/context/token-sale-context.tsx:113
+#: src/context/token-sale-context.tsx:115
 msgid "Address not found"
 msgstr "Address not found"
 
@@ -227,7 +227,7 @@ msgstr "Dark Mode"
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:73
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:75
 #: src/pages/referral/components/Referrals.tsx:28
 msgid "Date"
 msgstr "Date"
@@ -239,6 +239,10 @@ msgstr "Date"
 #: src/components/organisms/web3/wallet-detail.tsx:131
 msgid "Disconnect"
 msgstr "Disconnect"
+
+#: src/components/organisms/portal-block-number/index.tsx:38
+msgid "Disconnected"
+msgstr "Disconnected"
 
 #: src/pages/invest/create/index.tsx:98
 msgid "Distribution"
@@ -314,7 +318,7 @@ msgstr "Fee"
 msgid "Friend`s User ID"
 msgstr "Friend`s User ID"
 
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:103
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:105
 msgid "From Wallet Address"
 msgstr "From Wallet Address"
 
@@ -327,7 +331,7 @@ msgstr "German"
 #~ msgstr "Height"
 
 #: src/components/organisms/invest/invest-item.tsx:48
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:65
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:67
 msgid "Hide"
 msgstr "Hide"
 
@@ -363,7 +367,7 @@ msgstr "Imprint"
 #: src/config/routes.ts:12
 #: src/pages/invest/create/fields/submit-button.tsx:12
 #: src/pages/invest/create/fields/submit-button.tsx:13
-#: src/pages/invest/index.tsx:21
+#: src/pages/invest/index.tsx:23
 msgid "Invest"
 msgstr "Invest"
 
@@ -376,7 +380,7 @@ msgid "Invest now"
 msgstr "Invest now"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:68
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:77
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:79
 msgid "Invested"
 msgstr "Invested"
 
@@ -404,7 +408,7 @@ msgstr "Investment ratio"
 msgid "Investment received"
 msgstr "Investment received"
 
-#: src/pages/token-sale/index.tsx:66
+#: src/pages/token-sale/index.tsx:68
 msgid "Investor Dashboard"
 msgstr "Investor Dashboard"
 
@@ -451,6 +455,10 @@ msgstr "Liquidity Pool"
 #: src/pages/token-sale/index.tsx:103
 #~ msgid "Loading ..."
 #~ msgstr "Loading ..."
+
+#: src/components/organisms/portal-block-number/index.tsx:37
+msgid "Login to your wallet to see block details"
+msgstr "Login to your wallet to see block details"
 
 #: src/components/organisms/kyc-process/info/index.tsx:12
 #~ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
@@ -515,13 +523,13 @@ msgstr "Not enough"
 msgid "Open"
 msgstr "Open"
 
-#: src/pages/invest/index.tsx:18
-#: src/pages/portfolio/index.tsx:41
+#: src/pages/invest/index.tsx:20
+#: src/pages/portfolio/index.tsx:43
 msgid "Overview"
 msgstr "Overview"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:78
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:90
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:92
 msgid "PCR Token amount"
 msgstr "PCR Token amount"
 
@@ -559,7 +567,7 @@ msgid "Pool"
 msgstr "Pool"
 
 #: src/config/routes.ts:6
-#: src/pages/portfolio/index.tsx:44
+#: src/pages/portfolio/index.tsx:46
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -668,7 +676,7 @@ msgid "Settings"
 msgstr "Settings"
 
 #: src/components/organisms/invest/invest-item.tsx:48
-#: src/components/organisms/token-sale/transactions/data-table/index.tsx:65
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:67
 msgid "Show"
 msgstr "Show"
 
@@ -715,7 +723,7 @@ msgstr "Staking"
 msgid "Start invest"
 msgstr "Start invest"
 
-#: src/pages/token-sale/index.tsx:42
+#: src/pages/token-sale/index.tsx:43
 msgid "Status"
 msgstr "Status"
 
@@ -728,13 +736,13 @@ msgstr "Strategy"
 msgid "Supply"
 msgstr "Supply"
 
-#: src/pages/swap/index.tsx:23
+#: src/pages/swap/index.tsx:25
 msgid "Supply Liquidity"
 msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/swap-form/fields/submit-button.tsx:13
 #: src/config/routes.ts:29
-#: src/pages/swap/index.tsx:22
+#: src/pages/swap/index.tsx:24
 msgid "Swap"
 msgstr "Swap"
 
@@ -781,7 +789,7 @@ msgid "Token Balance"
 msgstr "Token Balance"
 
 #: src/config/routes.ts:35
-#: src/pages/token-sale/index.tsx:63
+#: src/pages/token-sale/index.tsx:65
 msgid "Token Sale"
 msgstr "Token Sale"
 
@@ -823,7 +831,7 @@ msgstr "Total supply"
 msgid "Transaction Typ"
 msgstr "Transaction Typ"
 
-#: src/pages/token-sale/index.tsx:46
+#: src/pages/token-sale/index.tsx:47
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -843,6 +851,10 @@ msgstr "Transactions"
 #: src/components/organisms/token-sale/timeline/index.tsx:92
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
+
+#: src/components/organisms/portal-block-number/index.tsx:31
+msgid "View block details"
+msgstr "View block details"
 
 #: src/components/organisms/web3/wallet-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"

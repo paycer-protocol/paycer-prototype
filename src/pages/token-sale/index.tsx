@@ -2,6 +2,7 @@ import React, { useState} from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
 import KycProcessInfo from '@components/organisms/token-sale/info'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import Transactions from '@components/organisms/token-sale/transactions'
@@ -10,7 +11,7 @@ import { TokenSaleProvider, useTokenSale } from '@context/token-sale-context'
 export const LeftCol = styled.div`
     width: 40%;
     padding: 30px 0 30px 30px;
-  
+
     @media only screen and (max-width : 978px) {
       width: 100%;
       padding: 25px;
@@ -20,7 +21,7 @@ export const LeftCol = styled.div`
 export const RightCol = styled.div`
     width: 60%;
     padding: 30px 30px 30px 0;
-      
+
     @media only screen and (max-width : 978px) {
         width: 100%;
         padding: 25px;
@@ -54,6 +55,7 @@ export default function TokenSale() {
   const [transactionTabActive, setTransactionTabActive] = useState(false)
 
   return (
+    <>
       <TokenSaleProvider>
         <div className="container mt-3 mb-8">
           <PageHeader>
@@ -95,6 +97,8 @@ export default function TokenSale() {
           </div>
         </div>
       </TokenSaleProvider>
+      <PortalBlockNumber />
+    </>
   )
 }
 
