@@ -65,7 +65,7 @@ export default function Referrals () {
         </tr>
         </thead>
         <tbody className="list">
-        {rewards.length && rewards.map((reward) => (
+        {rewards.length ? rewards.map((reward) => (
           <tr key={reward.transactionHash}>
             <td>{reward.transactionDateTime}</td>
             <td>
@@ -84,8 +84,8 @@ export default function Referrals () {
               />
             </td>
           </tr>
-        ))}
-        {rewards.length === 0 && (
+        )) : null}
+        {rewards.length === 0 ? (
           <tr>
             <td colSpan={3}>
               <div className="text-center">
@@ -95,7 +95,7 @@ export default function Referrals () {
               </div>
             </td>
           </tr>
-        )}
+        ) : null}
         </tbody>
       </table>
     </div>
