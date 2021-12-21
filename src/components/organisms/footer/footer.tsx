@@ -190,9 +190,14 @@ const Footer = () => {
                                 <Trans>Privacy</Trans>
                             </a>
                         </li>
-                        <li className="nav-item m-0">
-                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/disclaimer">
+                        <li className="nav-item m-0 me-4">
+                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://app.gitbook.com/o/-MchadhJzlykMyEDvvUG/s/-MhxXu45T290Q1xsWzti/c/VgGiuMzXBsg9ySaDrRBI/risk-disclaimer">
                                 <Trans>Risk Disclaimer</Trans>
+                            </a>
+                        </li>
+                        <li className="nav-item m-0">
+                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://app.gitbook.com/o/-MchadhJzlykMyEDvvUG/s/-MhxXu45T290Q1xsWzti/c/VgGiuMzXBsg9ySaDrRBI/general-terms-and-conditions">
+                                <Trans>General Terms and Conditions</Trans>
                             </a>
                         </li>
                     </ul>
