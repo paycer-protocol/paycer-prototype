@@ -9,5 +9,10 @@ export default {
   ),
   createReferralCode: (walletAddress: string): Promise<any> => (
     axios.post(`https://api.paycer.io/referrals`, { walletAddress })
+  ),
+  fetchReferralRewards: (walletAddress: string): Promise<any> => (
+    axios.get(`https://api.paycer.io/referrals/${walletAddress}/rewards`)
   )
+
+
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import PageHeader from '@components/molecules/page-header'
+import { Trans } from '@lingui/macro'
+import { connectors } from '@providers/connectors'
+import Button from '@components/atoms/button'
 import ReferralUrl from './components/ReferralUrl'
 import Referrals from './components/Referrals'
 import useWallet from '@hooks/use-wallet'
-import Button from '@components/atoms/button'
-import {connectors} from '@providers/connectors'
-import {Trans} from '@lingui/macro'
 
 export default function Referral () {
   const wallet = useWallet()

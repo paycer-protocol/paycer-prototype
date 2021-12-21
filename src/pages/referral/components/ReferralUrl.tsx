@@ -33,7 +33,7 @@ export default function ReferralUrl () {
     <div className="mb-5">
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 className="m-0"><Trans>Referral Program</Trans></h2>
-        <span><Trans>Earn up to 5% commission on every transaction.</Trans></span>
+        <small className="text-muted"><Trans>Earn up to 2.5% rewards for you and your friend on every transaction.</Trans></small>
       </div>
       <div className="mb-5">
         <InputGroup className="mb-3">
