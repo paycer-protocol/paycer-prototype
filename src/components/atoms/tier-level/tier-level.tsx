@@ -30,7 +30,7 @@ const TierLevel: React.FC<TierLevelProps> = (props) => {
 
     if (!tokenAmount) {
         return (
-            <span>t`none`</span>
+            <span>{t`none`}</span>
         )
     }
 
