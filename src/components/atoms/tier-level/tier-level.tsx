@@ -12,8 +12,9 @@ export interface TierLevelProps {
 
 const TierLevel: React.FC<TierLevelProps> = (props) => {
     const { tokenAmount, hasLegend } = props
-    
+
     const calculateTierLevel = () => {
+        console.log(tokenAmount)
         if (tokenAmount >= 100000) {
             return t`Partner`
         }
@@ -26,11 +27,13 @@ const TierLevel: React.FC<TierLevelProps> = (props) => {
         if (tokenAmount >= 5000) {
             return t`Associate`
         }
+
+        return t`none`
     }
 
     if (!tokenAmount) {
         return (
-            <span>{t`none`}</span>
+            <div>{t`none`}</div>
         )
     }
 

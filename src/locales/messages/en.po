@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:86
+#: src/components/organisms/token-sale/timeline/index.tsx:87
 msgid "% Bonus included"
 msgstr "% Bonus included"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:96
+#: src/components/organisms/token-sale/timeline/index.tsx:110
 msgid "12 months after TGE"
 msgstr "12 months after TGE"
 
@@ -54,7 +54,7 @@ msgstr "Adding Network to Wallet ..."
 msgid "Address not found"
 msgstr "Address not found"
 
-#: src/pages/referral/components/Referrals.tsx:35
+#: src/pages/referral/components/Referrals.tsx:34
 msgid "An error has occurred. Please refresh the page"
 msgstr "An error has occurred. Please refresh the page"
 
@@ -80,6 +80,11 @@ msgstr "Apy"
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
 #~ msgid "Assets"
 #~ msgstr "Assets"
+
+#: src/components/atoms/tier-level/tier-level.tsx:27
+#: src/components/atoms/tier-level/tier-level.tsx:46
+msgid "Associate"
+msgstr "Associate"
 
 #: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
 #: src/pages/portfolio/components/dash-cards.tsx:67
@@ -148,7 +153,7 @@ msgstr "Claimable rewards"
 #~ msgid "Color Scheme"
 #~ msgstr "Color Scheme"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:23
+#: src/components/organisms/token-sale/timeline/index.tsx:24
 msgid "Confirmed"
 msgstr "Confirmed"
 
@@ -232,7 +237,7 @@ msgstr "Dark Mode"
 #~ msgstr "Dashboard"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:75
-#: src/pages/referral/components/Referrals.tsx:53
+#: src/pages/referral/components/Referrals.tsx:52
 msgid "Date"
 msgstr "Date"
 
@@ -334,6 +339,10 @@ msgstr "Fee"
 msgid "From Wallet Address"
 msgstr "From Wallet Address"
 
+#: src/components/organisms/footer/footer.tsx:200
+msgid "General Terms and Conditions"
+msgstr "General Terms and Conditions"
+
 #: src/components/molecules/languages/language-choice.tsx:10
 msgid "German"
 msgstr "German"
@@ -391,7 +400,7 @@ msgstr "Invest amount"
 msgid "Invest now"
 msgstr "Invest now"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:68
+#: src/components/organisms/token-sale/timeline/index.tsx:69
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:79
 msgid "Invested"
 msgstr "Invested"
@@ -416,7 +425,7 @@ msgstr "Investment ratio"
 #~ msgid "Investment receivd"
 #~ msgstr "Investment receivd"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:60
+#: src/components/organisms/token-sale/timeline/index.tsx:61
 msgid "Investment received"
 msgstr "Investment received"
 
@@ -432,7 +441,7 @@ msgstr "Jobs"
 msgid "Join us on"
 msgstr "Join us on"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:44
+#: src/components/organisms/token-sale/timeline/index.tsx:45
 msgid "KYC Status"
 msgstr "KYC Status"
 
@@ -480,6 +489,15 @@ msgstr "Login to your wallet to see block details"
 #: src/pages/invest/create/fields/risk-choice.tsx:10
 msgid "Low"
 msgstr "Low"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:93
+msgid "Loyalty Tier Level"
+msgstr "Loyalty Tier Level"
+
+#: src/components/atoms/tier-level/tier-level.tsx:21
+#: src/components/atoms/tier-level/tier-level.tsx:48
+msgid "Manager"
+msgstr "Manager"
 
 #: src/locales/index.ts:6
 #: src/pages/invest/create/fields/risk-choice.tsx:11
@@ -531,7 +549,7 @@ msgstr "Not enough"
 #~ msgid "OK"
 #~ msgstr "OK"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:20
+#: src/components/organisms/token-sale/timeline/index.tsx:21
 msgid "Open"
 msgstr "Open"
 
@@ -540,7 +558,7 @@ msgstr "Open"
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:78
+#: src/components/organisms/token-sale/timeline/index.tsx:79
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:92
 msgid "PCR Token amount"
 msgstr "PCR Token amount"
@@ -548,6 +566,11 @@ msgstr "PCR Token amount"
 #: src/components/organisms/invest/invest-table.tsx:17
 msgid "POOL"
 msgstr "POOL"
+
+#: src/components/atoms/tier-level/tier-level.tsx:18
+#: src/components/atoms/tier-level/tier-level.tsx:49
+msgid "Partner"
+msgstr "Partner"
 
 #: src/components/organisms/kyc-process/info/index.tsx:27
 #~ msgid "Paycer Private is Live"
@@ -557,7 +580,7 @@ msgstr "POOL"
 msgid "Paycer Token"
 msgstr "Paycer Token"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:23
+#: src/components/organisms/token-sale/timeline/index.tsx:24
 msgid "Pending"
 msgstr "Pending"
 
@@ -615,7 +638,7 @@ msgstr "Privacy"
 #~ msgid "Received"
 #~ msgstr "Received"
 
-#: src/pages/referral/components/Referrals.tsx:58
+#: src/pages/referral/components/Referrals.tsx:57
 msgid "Referral Bonus"
 msgstr "Referral Bonus"
 
@@ -647,7 +670,7 @@ msgstr "Risk Level"
 msgid "Roadmap"
 msgstr "Roadmap"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:52
+#: src/components/organisms/token-sale/timeline/index.tsx:53
 msgid "SAFT Status"
 msgstr "SAFT Status"
 
@@ -682,6 +705,11 @@ msgstr "Select a token"
 #: src/components/organisms/swap/swap-form/fields/token0-select.tsx:37
 #~ msgid "Select token"
 #~ msgstr "Select token"
+
+#: src/components/atoms/tier-level/tier-level.tsx:24
+#: src/components/atoms/tier-level/tier-level.tsx:47
+msgid "Senior"
+msgstr "Senior"
 
 #: src/components/organisms/kyc-process/timeline/data.tsx:29
 #~ msgid "Sent and in Progress"
@@ -847,7 +875,7 @@ msgstr "Total supply"
 #~ msgid "Trade"
 #~ msgstr "Trade"
 
-#: src/pages/referral/components/Referrals.tsx:63
+#: src/pages/referral/components/Referrals.tsx:62
 msgid "Transaction"
 msgstr "Transaction"
 
@@ -872,7 +900,7 @@ msgstr "Transactions"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/token-sale/timeline/index.tsx:92
+#: src/components/organisms/token-sale/timeline/index.tsx:106
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
@@ -904,7 +932,7 @@ msgstr "You have no investments in your portfolio"
 #~ msgid "You have no referrals"
 #~ msgstr "You have no referrals"
 
-#: src/pages/referral/components/Referrals.tsx:94
+#: src/pages/referral/components/Referrals.tsx:93
 msgid "You have no rewards"
 msgstr "You have no rewards"
 
@@ -928,6 +956,10 @@ msgstr "Your supply"
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
 #~ msgid "by"
 #~ msgstr "by"
+
+#: src/components/atoms/tier-level/tier-level.tsx:33
+msgid "none"
+msgstr "none"
 
 #: src/components/organisms/web3/network-provider.tsx:29
 #: src/components/organisms/web3/network-provider.tsx:46
