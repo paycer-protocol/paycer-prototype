@@ -15,7 +15,7 @@ export const tokenProvider: ITokenProvider = {
         [ChainId.Kovan]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
         [ChainId.Polygon]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
         [ChainId.Mumbai]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
-        [ChainId.BSC]: '0x5b080d86546448b26141a88835014d181843c3f0',
+        [ChainId.BSC]: '0x5B080d86546448b26141a88835014D181843c3F0',
       }
     },
     USDC: {

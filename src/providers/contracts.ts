@@ -1,4 +1,4 @@
-import {ChainId} from '@usedapp/core'
+import { ChainId } from '@usedapp/core'
 
 
 export interface IContractProvider {
@@ -21,16 +21,12 @@ export interface IContractProvider {
 export const contractProvider: IContractProvider = {
   StakingRewards: {
     chainAddresses: {
-      [ChainId.Mainnet]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
-      [ChainId.Ropsten]: '',
-      [ChainId.Kovan]: '0x752a4e8a8c381921d56bEBcddD50F74E6e0A9099',
-      [ChainId.Rinkeby]: '',
-      [ChainId.Goerli]: '',
+      [ChainId.Mainnet]: '##TODO##',
+      [ChainId.Kovan]: '0x95d1f154655aa4E0ab519CF595647fc9EDfE9fdD',
+      [ChainId.Mumbai]: '0x24FdBF97A95d425E2e53D1d35C4920c82Ba784f1',
       [ChainId.BSC]: '',
-      [ChainId.xDai]: '',
       [ChainId.Polygon]: '',
-      [ChainId.Mumbai]: '',
-      [ChainId.Hardhat]: '0x9d4454B023096f34B160D6B654540c56A1F81688',
+      [ChainId.Hardhat]: '## TODO ##',
     }
   },
 }
