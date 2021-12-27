@@ -9,7 +9,6 @@ export const supportedChains = [
   ChainId.Hardhat,
 ]
 
-
 export const supportedStakingChains = [
   ChainId.Mainnet,
   ChainId.Kovan,

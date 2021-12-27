@@ -24,7 +24,7 @@ export const contractProvider: IContractProvider = {
     chainAddresses: {
       [ChainId.Mainnet]: '0xDdB24eC5fFf14f4809eB5163126F41307d93d184',
       [ChainId.Ropsten]: '',
-      [ChainId.Kovan]: '0x752a4e8a8c381921d56bEBcddD50F74E6e0A9099',
+      [ChainId.Kovan]: '0x0E82F205cbc6FF249212D36befb29E87b8d51cDb',
       [ChainId.Rinkeby]: '',
       [ChainId.Goerli]: '',
       [ChainId.BSC]: '',

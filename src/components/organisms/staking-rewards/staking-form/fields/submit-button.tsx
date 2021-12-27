@@ -6,7 +6,7 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
-    const { values, initialValues, dirty, isValid, isValidating, setFieldValue } = useFormikContext<StakingProps>()
+    const { values, initialValues, dirty, isValid, isValidating, setFieldValue, touched } = useFormikContext<StakingProps>()
     const isDisabled = !dirty || !isValid || isValidating
 
     return (

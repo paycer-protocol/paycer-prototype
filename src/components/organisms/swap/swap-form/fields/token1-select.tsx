@@ -8,11 +8,11 @@ import TokenToggle from './token-toggle'
 
 export default function Token1Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const [showModal, setShopModal] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const handleChange = (token) => {
         setFieldValue('token1', token)
-        setShopModal(false)
+        setShowModal(false)
 
         let token1Value
         if (values.exchangeRate) {
@@ -36,12 +36,12 @@ export default function Token1Select() {
       <>
         <TokenToggle
           token={values.token1}
-          onClick={() => setShopModal(true)}
+          onClick={() => setShowModal(true)}
         />
         <TokenSelectModal
           show={showModal}
           tokens={marketPairs.find((market) => market.base.symbol === values.token0.symbol)?.markets.filter(({ symbol }) => symbol !== values.token1.symbol) || []}
-          onHide={() => setShopModal(false)}
+          onHide={() => setShowModal(false)}
           onClick={handleChange}
         />
       </>

@@ -10,6 +10,8 @@ export default function useToken(symbol: string) {
   const token = tokenProvider[symbol]
   const tokenAddress = token.chainAddresses[chainId || ChainId.Mainnet]
 
+  console.log(tokenAddress)
+
   return {
     tokenAddress,
     decimals: token.decimals,
