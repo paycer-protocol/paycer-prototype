@@ -13,6 +13,8 @@ export default function StakingTest () {
   const { account, chainId } = useEthers()
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId || ChainId.Mainnet]
 
+  console.log(chainId)
+
   const result = useContractCall(
       {
         abi: new Interface(stakingAbi.abi),
@@ -47,7 +49,7 @@ export default function StakingTest () {
         <div className="col-12">
           <h2>Deposit status: {depositTx.status}</h2>
           <button onClick={async () => {
-            console.log(await deposit(0))
+            console.log(await deposit(10))
           }}>
             Deposit
           </button>

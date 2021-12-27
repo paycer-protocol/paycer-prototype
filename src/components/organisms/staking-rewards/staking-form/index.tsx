@@ -18,14 +18,10 @@ import { StakingProps } from '../types'
 
 export default function StakingForm() {
   const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-  const { withdraw, withdrawTx, deposit, depositTx } = useStaking()
+  const { withdraw, withdrawTx, deposit, depositTx, stakedBalance } = useStaking()
   const token = useToken(rewardSymbol)
 
-
-
   const tokenBalance = token.tokenBalance()
-
-  const stakedBalance = 0 // todo staked balance
   const rewardRate = 10 // todo rewardrate
 
   const initialValues: StakingProps = {
