@@ -62,11 +62,11 @@ export default function useStaking() {
     isLoading,
     hasException,
     hasFailed,
-    accRewardPerShare: BigNumber.isBigNumber(userInfo?.accRewardPerShare) ? userInfo?.accRewardPerShare.toNumber() : 0,
+    //accRewardPerShare: BigNumber.isBigNumber(userInfo?.accRewardPerShare) ? userInfo?.accRewardPerShare.toNumber() : 0,
     stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
-    lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? userInfo?.lastDepositedAt.toNumber() : 0,
-    lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? userInfo?.lastRewardTime.toNumber() : 0,
-    rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
+    //lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? userInfo?.lastDepositedAt.toNumber() : 0,
+    //lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? userInfo?.lastRewardTime.toNumber() : 0,
+    //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
     rewardRate: BigNumber.isBigNumber(rewardRate) ? rewardRate.toNumber() : 0,
   }
 }

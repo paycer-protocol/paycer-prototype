@@ -122,26 +122,24 @@ export default function StakingForm() {
                     </div>
                   </div>
                 </div>
-                <div className="mb-4 pb-4">
-                  <div className="row">
-                    <div className="col-4">
+                <div className="mb-4 pb-3">
+                  <div className="row mb-5">
+                    <div className="col-6">
                       <DashNumber
                           label={t`Daily rewards`}
                           value={values.stakedBalance * values.rewardRate / 100 / 365}
                           symbol={values.rewardSymbol}
                       />
                     </div>
-                    <div className="col-4">
+                    <div className="col-6">
                       <DashNumber
                           label={t`Monthly rewards`}
                           value={values.stakedBalance * values.rewardRate / 100 / 30}
                           symbol={values.rewardSymbol}
                       />
                     </div>
-                    <div className="col-4">
-                      <RewardFee />
-                    </div>
                   </div>
+                  <RewardFee />
                 </div>
                 <SubmitButton />
               </div>
@@ -155,33 +153,39 @@ export default function StakingForm() {
                   errorMessage={hasFailed || hasException ? t`Something went wrong` : null}
               >
                 <>
-                  <div className="pb-3 mb-3">
-                    <DashNumber
-                        label={t`Amount`}
-                        value={values.stakedBalance}
-                        symbol={values.rewardSymbol}
-                    />
+
+                  <div className="row mb-4">
+                    <div className="col-6">
+                      <DashNumber
+                          label={values.stakedBalance > initialValues.stakedBalance ? t`Staking Deposit` : t`Staking Withdraw`}
+                          value={values.stakedBalance}
+                          symbol={values.rewardSymbol}
+                      />
+                    </div>
+                    <div className="col-6">
+                      <DashNumber
+                          label={t`Balance after`}
+                          value={values.tokenBalance}
+                          symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
-                  <div className="pb-3 mb-3">
-                    <DashNumber
-                        label={t`Balance after`}
-                        value={values.tokenBalance}
-                        symbol={values.rewardSymbol}
-                    />
-                  </div>
-                  <div className="pb-3 mb-3">
-                    <DashNumber
-                        label={t`Daily rewards`}
-                        value={values.stakedBalance * values.rewardRate / 100 / 365}
-                        symbol={values.rewardSymbol}
-                    />
-                  </div>
-                  <div className="pb-3 mb-3">
-                    <DashNumber
-                        label={t`Monthly rewards`}
-                        value={values.stakedBalance * values.rewardRate / 100 / 30}
-                        symbol={values.rewardSymbol}
-                    />
+
+                  <div className="row mb-4">
+                    <div className="col-6">
+                      <DashNumber
+                          label={t`Daily rewards`}
+                          value={values.stakedBalance * values.rewardRate / 100 / 365}
+                          symbol={values.rewardSymbol}
+                      />
+                    </div>
+                    <div className="col-6">
+                      <DashNumber
+                          label={t`Monthly rewards`}
+                          value={values.stakedBalance * values.rewardRate / 100 / 30}
+                          symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <RewardFee />
                 </>
