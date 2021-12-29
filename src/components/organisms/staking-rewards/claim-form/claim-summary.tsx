@@ -5,7 +5,7 @@ import Button from '@components/atoms/button'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import useStakingRewards from '@hooks/use-staking-rewards'
+
 import { rewardSymbol } from '@config/staking-rewards'
 
 const RewardContainer = styled.div`
@@ -24,14 +24,14 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const stakingRewards = useStakingRewards()
-  const rewardBalance = stakingRewards.rewardBalance()
-  const lastClaimed = stakingRewards.lastClaimed()
-  const totalClaimed = stakingRewards.totalClaimed()
+  const stakingRewards = 0
+  const rewardBalance = 0
+  const lastClaimed = 0
+  const totalClaimed = 0
 
   const handleClaim = () => {
     try {
-      stakingRewards.claim()
+      //stakingRewards.claim()
     } catch (e) {
       console.log(e)
     }

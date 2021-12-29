@@ -1,8 +1,8 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
-import { FormattedNumber } from '@components/atoms/number'
 import { StakingProps } from '../types'
+import DashNumber from "@components/organisms/dashboard/dash-number";
 
 export default function RewardFee() {
   const { values, initialValues, dirty } = useFormikContext<StakingProps>()
@@ -23,19 +23,10 @@ export default function RewardFee() {
   }
 
   return (
-    <div className="text-center">
-      <small className="text-muted me-2">
-        <Trans>Fee</Trans>
-      </small>
-      <small>
-          +&nbsp;
-          <FormattedNumber
-              value={fee}
-              minimumFractionDigits={2}
-              maximumFractionDigits={4}
-          />
-          &nbsp;{values.rewardSymbol}
-      </small>
-    </div>
+      <DashNumber
+          label={t`Fee`}
+          value={fee}
+          symbol={values.rewardSymbol}
+      />
   )
 }

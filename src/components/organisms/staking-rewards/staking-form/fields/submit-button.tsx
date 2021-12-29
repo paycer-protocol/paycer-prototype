@@ -7,7 +7,7 @@ import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
     const { values, initialValues, dirty, isValid, isValidating, setFieldValue, touched } = useFormikContext<StakingProps>()
-    const isDisabled = !dirty || !isValid || isValidating
+    const isDisabled = !dirty || !isValid || isValidating || values.stakedBalance === initialValues.stakedBalance
 
     return (
       <div className="d-flex align-items-center justify-content-center mb-3">
@@ -24,8 +24,9 @@ export default function SubmitButton() {
             title={t`Apply`}
             className="px-5"
             disabled={isDisabled}
+            style={{width: '150px'}}
           >
-              {t`Apply`}
+              {values.stakedBalance === initialValues.stakedBalance ? t`Apply` : values.stakedBalance > initialValues.stakedBalance ? t`Deposit` : t`Withdraw`}
           </GradientButton>
       </div>
     )

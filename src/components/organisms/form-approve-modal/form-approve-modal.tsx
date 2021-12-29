@@ -2,6 +2,7 @@ import React, {ReactElement} from 'react'
 import {t, Trans} from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import GradientButton from '@components/atoms/button/gradient-button'
+import Spinner from "@components/atoms/spinner";
 
 interface FormApproveModalProps {
   show: boolean
@@ -9,12 +10,14 @@ interface FormApproveModalProps {
   onClick: () => void
   title?: string
   children?: ReactElement | string | number | null,
+  isLoading?: boolean
+  errorMessage?: any
 }
 
 export default function FormApproveModal(props: FormApproveModalProps) {
-  const { show, onHide, onClick, title, children,  } = props
+  const { show, onHide, onClick, title, isLoading, errorMessage,  children } = props
   return (
-    <Modal size="sm" centered show={show} onHide={onHide} className="mb-5">
+    <Modal centered show={show} onHide={onHide} className="mb-5">
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title>
@@ -22,12 +25,21 @@ export default function FormApproveModal(props: FormApproveModalProps) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">
-          <div className="border-bottom pb-5 mb-5">
+          <div className="pb-3 mb-3">
             {children}
+            {(errorMessage &&
+                <div className="text-danger mt-5 text-center">
+                  {errorMessage}
+                </div>
+            )}
           </div>
-          <GradientButton className="w-100" onClick={onClick}>
+          <GradientButton className="w-100" onClick={onClick} disabled={isLoading}>
             {t`Approve`}
           </GradientButton>
+
+          <div style={{position: 'absolute', left: '50%', top: '30%'}}>
+            <Spinner animation="border" show={isLoading} />
+          </div>
         </Modal.Body>
       </>
     </Modal>

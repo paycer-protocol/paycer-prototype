@@ -13,8 +13,6 @@ export default function StakingTest () {
   const { account, chainId } = useEthers()
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId || ChainId.Mainnet]
 
-  console.log(chainId)
-
   const result = useContractCall(
       {
         abi: new Interface(stakingAbi.abi),
@@ -23,8 +21,6 @@ export default function StakingTest () {
         args: [wallet.address],
       }
   )
-
-  console.log(result);
 
   return (
     <div className="container">
