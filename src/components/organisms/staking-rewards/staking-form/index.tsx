@@ -25,8 +25,7 @@ export default function StakingForm() {
     stakedBalance,
     rewardRate,
     isLoading,
-    hasFailed,
-    hasException
+    hasError
   } = useStaking()
 
   const token = useToken(rewardSymbol)
@@ -150,7 +149,7 @@ export default function StakingForm() {
                   title={values.stakedBalance > initialValues.stakedBalance ? t`Deposit the current selection?` : t`Withdraw the current Selection?`}
                   onClick={() => handleStaking(values)}
                   isLoading={isLoading}
-                  errorMessage={hasFailed || hasException ? t`Something went wrong` : null}
+                  errorMessage={hasError ? t`Something went wrong` : null}
               >
                 <>
 

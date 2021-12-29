@@ -15,11 +15,11 @@ interface FormApproveModalProps {
 }
 
 export default function FormApproveModal(props: FormApproveModalProps) {
-  const { show, onHide, onClick, title, isLoading, errorMessage,  children } = props
+  const { show, onHide, onClick, title, isLoading, errorMessage, children } = props
   return (
-    <Modal centered show={show} onHide={onHide} className="mb-5">
+    <Modal centered show={show} onHide={!isLoading ? onHide : null} className="mb-5">
       <>
-        <Modal.Header closeButton onHide={onHide}>
+        <Modal.Header closeButton={!isLoading} onHide={onHide}>
           <Modal.Title>
             <Trans>{title}</Trans>
           </Modal.Title>
