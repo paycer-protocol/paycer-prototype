@@ -29,11 +29,13 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
         <Modal.Body className="pt-0">
           <div className="pb-3 mb-3">
             {children}
-            <TransactionStatus
-                error={error}
-                success={success}
-                loading={loading}
-            />
+            <div className="mt-4">
+              <TransactionStatus
+                  error={error}
+                  success={success}
+                  loading={loading}
+              />
+            </div>
           </div>
           <GradientButton className="w-100" onClick={onClick} disabled={loading}>
             {t`Submit`}

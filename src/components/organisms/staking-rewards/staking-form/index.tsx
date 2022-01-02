@@ -1,11 +1,10 @@
-import React, {ReactElement, useEffect, useState} from 'react'
-import { t, Trans } from '@lingui/macro'
+import React from 'react'
+import { t } from '@lingui/macro'
 import * as Yup from 'yup'
 import { FormikValues } from 'formik'
 import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import TransactionStatus from '@components/organisms/transaction-status'
 import Form from '@components/atoms/form/form'
 import useToken from '@hooks/use-token'
 import useStaking from '@hooks/use-staking'
@@ -31,14 +30,9 @@ export default function StakingForm() {
     setShowFormApproveModal
   } = useStaking()
 
-
-
-  useEffect(() => {
-    console.log('hi', depositTx, approveTx)
-  }, [])
-
   const token = useToken(rewardSymbol)
   const tokenBalance = token.tokenBalance()
+
   const initialValues: StakingProps = {
     rewardSymbol,
     stakedBalance,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import useStaking from '@hooks/use-staking'
@@ -7,6 +7,9 @@ import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import { rewardSymbol } from '@config/staking-rewards'
+import GradientButton from "@components/atoms/button/gradient-button";
+import TransactionStatus from "@components/organisms/transaction-status";
+import Spinner from "@components/atoms/spinner";
 
 
 const RewardContainer = styled.div`
@@ -25,13 +28,9 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const stakingRewards = 0
-  const rewardBalance = 0
-  const lastClaimed = 0
-  const totalClaimed = 0
-
   const {
     claim,
+    claimTx,
     pendingReward,
     lastDepositedAt,
     lastRewardTime
@@ -39,10 +38,8 @@ export default function ClaimSummary() {
 
   const handleClaim = async () => {
     try {
-      console.log('blub')
       await claim()
     } catch (e) {
-      console.log(e)
     }
   }
 
@@ -86,15 +83,26 @@ export default function ClaimSummary() {
       </RewardContainer>
 
       <div className="d-flex align-items-center justify-content-center mb-3">
-        <Button
-          type="submit"
-          title={t`Apply`}
-          variant={'primary'}
-          className="px-5"
-          onClick={handleClaim}
+        <GradientButton
+            type="submit"
+            title={t`Claim`}
+            className="px-5"
+            onClick={handleClaim}
+            disabled={pendingReward === 0}
+            style={{width: '150px'}}
         >
           {t`Claim`}
-        </Button>
+
+        </GradientButton>
+      </div>
+      <TransactionStatus
+          error={claimTx.status === 'Fail' || claimTx.status === 'Exception'}
+          success={claimTx.status === 'Success'}
+          loading={claimTx.status === 'Mining'}
+      />
+
+      <div style={{position: 'absolute', left: '50%', top: '30%'}}>
+        <Spinner animation="border" show={claimTx.status === 'Mining'} />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
-import { useState } from "react";
+import { useState } from 'react'
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
@@ -44,11 +44,7 @@ export default function useStaking():UseStakingProps {
     const { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
 
     let allowance = useTokenAllowance(paycerToken.address, wallet.address, staking.address)
-    const bla = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
-
-
-
-
+    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
     const userInfo = useContractCall(
         {
@@ -76,10 +72,19 @@ export default function useStaking():UseStakingProps {
             args: [wallet.address],
         }
     )
-    
+
+    const rewardAllowedForThisPool = useContractCall(
+        {
+            abi: new Interface(staking.abi),
+            address: staking.address,
+            method: 'rewardAllowedForThisPool',
+            args: [wallet.address],
+        }
+    )
+
     const depositStaking = async (amount: Number) => {
         try {
-            if (!allowance) {
+            if (!formattedAllowance) {
                 await approve(staking.address, parseUnits(String(amount), 18))
             }
             await deposit(parseUnits(String(amount), 18), wallet.address)
@@ -94,7 +99,7 @@ export default function useStaking():UseStakingProps {
 
     const withdrawStaking = async (amount: Number) => {
         try {
-            if (!allowance) {
+            if (!formattedAllowance) {
                 await approve(staking.address, parseUnits(String(amount), 18))
             }
             await withdraw(parseUnits(String(amount), 18), wallet.address)
