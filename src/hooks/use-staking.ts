@@ -83,6 +83,8 @@ export default function useStaking():UseStakingProps {
     )
 
     const depositStaking = async (amount: Number) => {
+
+        /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             if (!formattedAllowance) {
                 await approve(staking.address, parseUnits(String(amount), 18))
@@ -98,6 +100,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const withdrawStaking = async (amount: Number) => {
+        /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             if (!formattedAllowance) {
                 await approve(staking.address, parseUnits(String(amount), 18))
