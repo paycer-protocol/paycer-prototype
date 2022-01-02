@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
+import TierLevel from '@components/atoms/tier-level'
 import TimelineActivity from '@components/molecules/timeline-activity'
-import {CalendarCheck, CashCoin, FileText, GraphUp, Person, Terminal} from '@styled-icons/bootstrap'
+import { CalendarCheck, CashCoin, FileText, GraphUp, Person, Terminal, Gift } from '@styled-icons/bootstrap'
 import { FormattedNumber } from 'react-intl'
 import { useTokenSale } from '@context/token-sale-context'
 
@@ -87,6 +88,19 @@ const KycProcessTimeline = () => {
                   </span>
               )}
             </span>
+          </TimelineActivity.Content>
+        </TimelineActivity>
+        <TimelineActivity iconComponent={Gift} title={t`Loyalty Tier Level`} isIndendet isActive={totalReceived > 0}>
+          <TimelineActivity.Content>
+            <div className="d-flex">
+              <span className={`text-${totalReceived > 0 ? 'success' : 'primary'} me-3`}>●</span>
+              <span className="text-light">
+              <TierLevel
+                  hasLegend
+                  tokenAmount={totalReceived}
+              />
+              </span>
+            </div>
           </TimelineActivity.Content>
         </TimelineActivity>
         <TimelineActivity iconComponent={CalendarCheck} title={t`Vesting Phase`} isIndendet>
