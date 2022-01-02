@@ -20,8 +20,7 @@ export default function InvestRangeSlider() {
         min={0}
         max={100}
         step={1}
-        value={dirty ? values.stakeRange : undefined}
-        defaultValue={values.stakeRange * 100 / totalBalance}
+        value={values.stakeRange}
         onChange={(value) => {
           let stakedBalance = 0 as number
           let tokenBalance = 0 as number

@@ -1,4 +1,4 @@
-import { useContractCall, useContractFunction } from '@usedapp/core'
+import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from "@usedapp/core";
 import { formatUnits, parseUnits } from '@ethersproject/units'
@@ -7,16 +7,23 @@ import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
-import {useState} from "react";
+import { useState } from "react";
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     claim: () => Promise<void>
-    isLoading: boolean
-    hasError: boolean
+    pendingReward: number
     stakedBalance: number
     rewardRate: number
+    lastDepositedAt: string
+    lastRewardTime: string
+    depositTx: any
+    withdrawTx: any
+    claimTx: any
+    approveTx: any
+    showFormApproveModal: boolean
+    setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function useStaking():UseStakingProps {
@@ -25,6 +32,7 @@ export default function useStaking():UseStakingProps {
     const stakingConfig = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Mainnet]
     const staking = stakingConfig.contract
     const stakingContract = new Contract(staking.address, staking.abi)
+    const [showFormApproveModal, setShowFormApproveModal] = useState(false)
 
     const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Mainnet]
     const paycerToken = paycerTokenConfig.contract
@@ -34,8 +42,13 @@ export default function useStaking():UseStakingProps {
     const { send: withdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
     const { send: claim, state: claimTx } = useContractFunction(stakingContract, 'claim')
     const { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
-    const isLoading = depositTx.status === 'Mining' || withdrawTx.status === 'Mining' || approveTx.status === 'Mining'
-    const [hasError, setHasError] = useState<boolean>( depositTx.status === 'Fail' || withdrawTx.status === 'Fail' || approveTx.status === 'Fail' || depositTx.status === 'Exception' || withdrawTx.status === 'Exception' || approveTx.status === 'Exception')
+
+    let allowance = useTokenAllowance(paycerToken.address, wallet.address, staking.address)
+    const bla = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
+
+
+
+
 
     const userInfo = useContractCall(
         {
@@ -55,21 +68,42 @@ export default function useStaking():UseStakingProps {
         }
     )
 
+    const pendingReward = useContractCall(
+        {
+            abi: new Interface(staking.abi),
+            address: staking.address,
+            method: 'pendingReward',
+            args: [wallet.address],
+        }
+    )
+    
     const depositStaking = async (amount: Number) => {
         try {
-          await approve(staking.address, parseUnits(String(amount), 18))
-          await deposit(parseUnits(String(amount), 18), wallet.address)
+            if (!allowance) {
+                await approve(staking.address, parseUnits(String(amount), 18))
+            }
+            await deposit(parseUnits(String(amount), 18), wallet.address)
+            if (depositTx.status === 'Success') {
+                setTimeout(() =>{
+                    setShowFormApproveModal(false)
+                }, 3000);
+            }
         } catch(e) {
-            setHasError(true)
         }
     }
 
-    const widthDrawStaking = async (amount: Number) => {
+    const withdrawStaking = async (amount: Number) => {
         try {
-          await approve(staking.address, parseUnits(String(amount), 18))
-          await withdraw(parseUnits(String(amount), 18), wallet.address)
+            if (!allowance) {
+                await approve(staking.address, parseUnits(String(amount), 18))
+            }
+            await withdraw(parseUnits(String(amount), 18), wallet.address)
+            if (withdrawTx.status === 'Success') {
+                setTimeout(() =>{
+                    setShowFormApproveModal(false)
+                }, 3000);
+            }
         } catch(e) {
-            setHasError(true)
         }
     }
 
@@ -77,21 +111,25 @@ export default function useStaking():UseStakingProps {
         try {
           await claim(wallet.address)
         } catch(e) {
-            setHasError(true)
+
         }
     }
 
     return {
         deposit: depositStaking,
-        withdraw: widthDrawStaking,
+        withdraw: withdrawStaking,
         claim: claimStaking,
-        isLoading,
-        hasError,
-        //accRewardPerShare: BigNumber.isBigNumber(userInfo?.accRewardPerShare) ? userInfo?.accRewardPerShare.toNumber() : 0,
+        pendingReward: BigNumber.isBigNumber(pendingReward?.pending) ? Number(formatUnits(pendingReward?.pending, 18)) : 0,
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
-        //lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? userInfo?.lastDepositedAt.toNumber() : 0,
-        //lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? userInfo?.lastRewardTime.toNumber() : 0,
+        lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? new Date(userInfo?.lastDepositedAt * 1000).toLocaleDateString("en-US") : '',
+        lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? new Date(userInfo?.lastRewardTime * 1000).toLocaleDateString("en-US") : '',
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate: BigNumber.isBigNumber(rewardRate) ? rewardRate.toNumber() : 0,
+        depositTx,
+        withdrawTx,
+        claimTx,
+        approveTx,
+        showFormApproveModal,
+        setShowFormApproveModal
     }
 }

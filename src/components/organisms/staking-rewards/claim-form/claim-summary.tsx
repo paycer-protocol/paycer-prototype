@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
+import useStaking from '@hooks/use-staking'
 import Button from '@components/atoms/button'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-
 import { rewardSymbol } from '@config/staking-rewards'
+
 
 const RewardContainer = styled.div`
   display: flex;
@@ -29,9 +30,17 @@ export default function ClaimSummary() {
   const lastClaimed = 0
   const totalClaimed = 0
 
-  const handleClaim = () => {
+  const {
+    claim,
+    pendingReward,
+    lastDepositedAt,
+    lastRewardTime
+  } = useStaking()
+
+  const handleClaim = async () => {
     try {
-      //stakingRewards.claim()
+      console.log('blub')
+      await claim()
     } catch (e) {
       console.log(e)
     }
@@ -47,7 +56,7 @@ export default function ClaimSummary() {
           <span className="display-4">
               +&nbsp;
             <FormattedNumber
-              value={rewardBalance}
+              value={pendingReward}
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
@@ -64,16 +73,15 @@ export default function ClaimSummary() {
         <HorizontalLine className="d-none d-md-block"/>
 
         <div className="d-flex align-items-center justify-content-between w-75">
-          <DashNumber
-            label={t`Last claimed`}
-            value={lastClaimed}
-            symbol={rewardSymbol}
-          />
-          <DashNumber
-            label={t`Total claimed`}
-            value={totalClaimed}
-            symbol={rewardSymbol}
-          />
+          <div>
+            <label className="form-label d-block">{t`Last Deposited at`}</label>
+            {lastDepositedAt}
+          </div>
+
+          <div>
+            <label className="form-label d-block">{t`Last Rewardet at`}</label>
+            {lastRewardTime}
+          </div>
         </div>
       </RewardContainer>
 
