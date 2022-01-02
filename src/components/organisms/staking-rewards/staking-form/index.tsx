@@ -86,12 +86,12 @@ export default function StakingForm() {
 
               <div className="border-bottom mb-5 py-5">
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-12 col-md-6 pb-3 pb-md-0">
                     <label className="form-label">
                       {values.stakedBalance !== initialValues.stakedBalance  ? t`Token Balance after` : t` Current Token Balance`}
                     </label>
 
-                    <div className="form-control bg-transparent border-0 ps-0">
+                    <div className="form-control bg-transparent border-0 ps-0 pt-0 pt-md-3">
                       <CurrencyIcon
                         symbol='PCR'
                         className="me-2"
@@ -109,12 +109,12 @@ export default function StakingForm() {
                     </div>
 
                   </div>
-                  <div className="col-6">
+                  <div className="col-12 col-md-6">
                     <StakedInput />
                   </div>
                 </div>
               </div>
-              <div className="mb-4 pb-3">
+              <div className="mb-4 pb-md-3">
                 <div className="row mb-5">
                   <div className="col-6">
                     <DashNumber

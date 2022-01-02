@@ -46,7 +46,7 @@ export default function ClaimSummary() {
   return (
     <div>
       <RewardContainer>
-        <div className="d-flex flex-column text-center">
+        <div className="d-flex flex-column text-center mb-4 mb-md-0">
           <span className="text-muted">
               <Trans>Claimable rewards</Trans>
           </span>
@@ -67,15 +67,15 @@ export default function ClaimSummary() {
           </span>
         </div>
 
-        <HorizontalLine className="d-none d-md-block"/>
+        <HorizontalLine className="d-none pt-3 d-md-block"/>
 
-        <div className="d-flex align-items-center justify-content-between w-75">
-          <div>
+        <div className="mt-3 row w-100 justify-content-md-between">
+          <div className="col-6 text-center">
             <label className="form-label d-block">{t`Last Deposited at`}</label>
             {lastDepositedAt}
           </div>
 
-          <div>
+          <div className="col-6 text-center">
             <label className="form-label d-block">{t`Last Rewardet at`}</label>
             {lastRewardTime}
           </div>
