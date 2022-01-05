@@ -82,11 +82,11 @@ export default function useStaking():UseStakingProps {
         }
     )
 
-    const depositStaking = async (amount: Number) => {
+    const depositStaking = async (amount: number) => {
 
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
-            if (!formattedAllowance) {
+            if (amount - formattedAllowance <= 0) {
                 await approve(staking.address, parseUnits(String(amount), 18))
             }
             await deposit(parseUnits(String(amount), 18), wallet.address)
@@ -99,10 +99,10 @@ export default function useStaking():UseStakingProps {
         }
     }
 
-    const withdrawStaking = async (amount: Number) => {
+    const withdrawStaking = async (amount: number) => {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
-            if (!formattedAllowance) {
+            if (amount - formattedAllowance <= 0) {
                 await approve(staking.address, parseUnits(String(amount), 18))
             }
             await withdraw(parseUnits(String(amount), 18), wallet.address)
