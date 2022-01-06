@@ -120,7 +120,7 @@ export const TokenSaleProvider = ({ children }) => {
       }
       checkStatus()
     }
-  }, [])
+  }, [wallet.isConnected])
 
   return (
     <TokenSaleContext.Provider
