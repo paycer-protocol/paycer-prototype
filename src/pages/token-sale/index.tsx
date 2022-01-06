@@ -4,6 +4,7 @@ import { t, Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import KycProcessInfo from '@components/organisms/token-sale/info'
+import Vesting from '@components/organisms/token-sale/vesting'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import Transactions from '@components/organisms/token-sale/transactions'
 import { TokenSaleProvider, useTokenSale } from '@context/token-sale-context'
@@ -83,6 +84,7 @@ export default function TokenSale() {
                   :
                   <>
                     <LeftCol>
+                      <Vesting />
                       <KycProcessInfo />
                     </LeftCol>
                     <div className="vertical-line" />

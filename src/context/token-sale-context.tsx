@@ -36,8 +36,6 @@ interface TokenSaleDataProps {
 
 
 interface TokenSaleProps {
-  walletAddress: string
-  setWalletAddress: (walletAddress: string) => void
   checkWalletStatus: (walletAddress: string) => void
   tokenSaleData: TokenSaleDataProps,
   totalInvest?: number
@@ -45,8 +43,6 @@ interface TokenSaleProps {
 }
 
 export const TokenSaleContext = React.createContext<TokenSaleProps>({
-  walletAddress: '',
-  setWalletAddress: (walletAddress: string) => {},
   checkWalletStatus: (walletAddress: string) => {},
   tokenSaleData: {},
 })
@@ -88,20 +84,21 @@ const calculateTotalInvested = (transactions, type = 'public') => {
 
 export const TokenSaleProvider = ({ children }) => {
   const wallet = useWallet()
-  const [walletAddress, setWalletAddress] = useState<string>('')
   const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>(null)
   const [totalInvest, setTotalInvest] = useState<number>(0)
   const [totalReceived, setTotalReceived] = useState<number>(0)
 
-  const checkWalletStatus = async (address: string) => {
+  const checkWalletStatus = async () => {
     try {
 
-      const response = await api.fetchTokenSaleInfo(address)
+      const response = await api.fetchTokenSaleInfo('0xb3b11e6e934cbbbebd0533193aa266828ae6d634')
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions, payload.type).totalInvest)
 
       let totalReceived = calculateTotalInvested(payload.transactions, payload.type).totalReceived
+
+      console.log('hi')
 
       if (payload?.bonusPercentage) {
         totalReceived = totalReceived + (Number(payload?.bonusPercentage) * totalReceived / 100)
@@ -117,16 +114,17 @@ export const TokenSaleProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (wallet.isConnected && !walletAddress) {
-      setWalletAddress(wallet.address)
+    if (wallet.isConnected) {
+      async function checkStatus() {
+        await checkWalletStatus()
+      }
+      checkStatus()
     }
-  }, [wallet.isConnected])
+  }, [])
 
   return (
     <TokenSaleContext.Provider
       value={{
-        walletAddress,
-        setWalletAddress,
         tokenSaleData,
         totalInvest,
         totalReceived,
