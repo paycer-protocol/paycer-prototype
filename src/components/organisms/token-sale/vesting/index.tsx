@@ -24,7 +24,7 @@ const Vesting = () => {
     return (
       <>
         <h2 className="mb-4">
-        <Trans>Claimable rewards</Trans>
+        <Trans>Claimable PCR Tokens</Trans>
         </h2>
 
         <div className="d-flex flex-column mb-4">
