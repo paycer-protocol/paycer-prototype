@@ -14,7 +14,7 @@ export default function StakedInput() {
     return (
         <Currency
             name="stakedBalance"
-            label={t`Current Staked`}
+            label={values.stakedBalance !== initialValues.stakedBalance  ? t`Staked after` : t`Current Staked`}
             required
             max={10}
             currency={values.rewardSymbol}

@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import styled, { css } from 'styled-components'
 import BaseModal, { ModalProps as BaseModalProps } from 'react-bootstrap/Modal'
 import ModalBody from 'react-bootstrap/ModalBody'
 import ModalContext from 'react-bootstrap/ModalContext'
@@ -10,6 +11,11 @@ import BaseModalHeader, { ModalHeaderProps } from 'react-bootstrap/ModalHeader'
 import { XLg } from '@styled-icons/bootstrap'
 import Icon from '@components/atoms/icon'
 
+const StyledModalTitle = styled(ModalTitle)`
+    font-size: 16px;
+    margin-bottom: 0;
+    font-weight: 600;
+`
 export interface ModalProps extends BaseModalProps {
     vertical?: boolean
 }
@@ -26,7 +32,7 @@ const Modal = (props: ModalProps) => {
 }
 
 const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
-    <BaseModalHeader>
+    <BaseModalHeader className="border-bottom mb-4">
         {children}
         {closeButton && (
             <a className="text-muted" onClick={onHide}>
@@ -43,7 +49,7 @@ const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
 Modal.Body = ModalBody
 Modal.Context = ModalContext
 Modal.Dialog = ModalDialog
-Modal.Title = ModalTitle
+Modal.Title = StyledModalTitle
 Modal.Header = ModalHeader
 Modal.Footer = ModalFooter
 

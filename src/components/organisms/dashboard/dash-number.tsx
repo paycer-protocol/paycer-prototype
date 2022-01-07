@@ -3,7 +3,7 @@ import { FormattedNumber } from '../../atoms/number/formatted-number'
 import CurrencyIcon from '@components/atoms/currency-icon'
 
 export interface DashNumberProps {
-    label: string
+    label?: string
     value: number
     symbol: string,
     withIcon?: boolean

@@ -6,7 +6,6 @@ import stakingAbi from '@contracts/abi/StakingRewards.json'
 import { contractProvider } from '@providers/contracts'
 import { utils } from 'ethers'
 
-
 export default function useStakingRewards() {
   const { account, chainId } = useEthers()
   const contractAddress = contractProvider.StakingRewards.chainAddresses[chainId || ChainId.Mainnet]

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
+import useStaking from '@hooks/use-staking'
 import Button from '@components/atoms/button'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import DashNumber from '@components/organisms/dashboard/dash-number'
-import useStakingRewards from '@hooks/use-staking-rewards'
 import { rewardSymbol } from '@config/staking-rewards'
+import GradientButton from "@components/atoms/button/gradient-button";
+import TransactionStatus from "@components/organisms/transaction-status";
+import Spinner from "@components/atoms/spinner";
+
 
 const RewardContainer = styled.div`
   display: flex;
@@ -24,30 +28,32 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const stakingRewards = useStakingRewards()
-  const rewardBalance = stakingRewards.rewardBalance()
-  const lastClaimed = stakingRewards.lastClaimed()
-  const totalClaimed = stakingRewards.totalClaimed()
+  const {
+    claim,
+    claimTx,
+    pendingReward,
+    lastDepositedAt,
+    lastRewardTime
+  } = useStaking()
 
-  const handleClaim = () => {
+  const handleClaim = async () => {
     try {
-      stakingRewards.claim()
+      await claim()
     } catch (e) {
-      console.log(e)
     }
   }
 
   return (
     <div>
       <RewardContainer>
-        <div className="d-flex flex-column text-center">
+        <div className="d-flex flex-column text-center mb-4 mb-md-0">
           <span className="text-muted">
               <Trans>Claimable rewards</Trans>
           </span>
           <span className="display-4">
               +&nbsp;
             <FormattedNumber
-              value={rewardBalance}
+              value={pendingReward}
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
@@ -61,32 +67,42 @@ export default function ClaimSummary() {
           </span>
         </div>
 
-        <HorizontalLine className="d-none d-md-block"/>
+        <HorizontalLine className="d-none pt-3 d-md-block"/>
 
-        <div className="d-flex align-items-center justify-content-between w-75">
-          <DashNumber
-            label={t`Last claimed`}
-            value={lastClaimed}
-            symbol={rewardSymbol}
-          />
-          <DashNumber
-            label={t`Total claimed`}
-            value={totalClaimed}
-            symbol={rewardSymbol}
-          />
+        <div className="mt-3 row w-100 justify-content-md-between">
+          <div className="col-6 text-center">
+            <label className="form-label d-block">{t`Last Deposited at`}</label>
+            {lastDepositedAt}
+          </div>
+
+          <div className="col-6 text-center">
+            <label className="form-label d-block">{t`Last Rewardet at`}</label>
+            {lastRewardTime}
+          </div>
         </div>
       </RewardContainer>
 
       <div className="d-flex align-items-center justify-content-center mb-3">
-        <Button
-          type="submit"
-          title={t`Apply`}
-          variant={'primary'}
-          className="px-5"
-          onClick={handleClaim}
+        <GradientButton
+            type="submit"
+            title={t`Claim`}
+            className="px-5"
+            onClick={handleClaim}
+            disabled={pendingReward === 0}
+            style={{width: '150px'}}
         >
           {t`Claim`}
-        </Button>
+
+        </GradientButton>
+      </div>
+      <TransactionStatus
+          error={claimTx.status === 'Fail' || claimTx.status === 'Exception'}
+          success={claimTx.status === 'Success'}
+          loading={claimTx.status === 'Mining'}
+      />
+
+      <div style={{position: 'absolute', left: '50%', top: '30%'}}>
+        <Spinner animation="border" show={claimTx.status === 'Mining'} />
       </div>
     </div>
   )
