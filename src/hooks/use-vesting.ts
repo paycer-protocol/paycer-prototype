@@ -1,7 +1,7 @@
-import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
+import { useContractCall, useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from "@usedapp/core";
-import { formatUnits, parseUnits } from '@ethersproject/units'
+import { formatUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
 import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
@@ -20,9 +20,6 @@ export default function useVesting():UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
     const vestingConfig = VestingContractProvider[chainId] || VestingContractProvider[ChainId.Mainnet]
-
-    console.log(vestingConfig)
-
     const vesting = vestingConfig.contract
     const vestingContract = new Contract(vesting.address, vesting.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
@@ -31,10 +28,10 @@ export default function useVesting():UseVestingProps {
 
     const vested = useContractCall(
         {
-        abi: new Interface(vesting.abi),
-        address: vesting.address,
-        method: 'vested',
-        args: [wallet.address],
+            abi: new Interface(vesting.abi),
+            address: vesting.address,
+            method: 'vested',
+            args: [wallet.address],
         }
     )
 
@@ -45,7 +42,7 @@ export default function useVesting():UseVestingProps {
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
                     setShowFormApproveModal(false)
-                }, 3000);
+                }, 3000)
             }
         } catch(e) {
         }
