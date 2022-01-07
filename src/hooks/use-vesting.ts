@@ -30,7 +30,7 @@ export default function useVesting():UseVestingProps {
                 abi: new Interface(vesting.abi),
                 address: vesting.address,
                 method: 'withdrawable',
-                args: ['0x596Ee9e6612571914b80510D577CF34a3B2e0269'],
+                args: [wallet.address],
             }
         ) ?? 0
         return BigNumber.isBigNumber(result) ? result.toNumber() : 0

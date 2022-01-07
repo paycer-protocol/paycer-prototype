@@ -32,12 +32,14 @@ interface TokenSaleDataProps {
   type?: string
 }
 
-
 interface TokenSaleProps {
   checkWalletStatus: (walletAddress: string) => void
   tokenSaleData: TokenSaleDataProps,
   totalInvest?: number
   totalReceived?: number
+  loading?: boolean
+  transactionTabActive?: boolean
+  setTransactionTabActive?: React.SetStateAction<any>
 }
 
 export const TokenSaleContext = React.createContext<TokenSaleProps>({
@@ -85,11 +87,14 @@ export const TokenSaleProvider = ({ children }) => {
   const [tokenSaleData, setTokenSaleData] = useState<TokenSaleDataProps>(null)
   const [totalInvest, setTotalInvest] = useState<number>(0)
   const [totalReceived, setTotalReceived] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(true)
+  const [transactionTabActive, setTransactionTabActive] = useState(false)
 
   const checkWalletStatus = async () => {
-    try {
 
-      const response = await api.fetchTokenSaleInfo('0xb3b11e6e934cbbbebd0533193aa266828ae6d634')
+    try {
+      setLoading(true)
+      const response = await api.fetchTokenSaleInfo(wallet.address)
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions, payload.type).totalInvest)
@@ -99,9 +104,10 @@ export const TokenSaleProvider = ({ children }) => {
       if (payload?.bonusPercentage) {
         totalReceived = totalReceived + (Number(payload?.bonusPercentage) * totalReceived / 100)
       }
-
       setTotalReceived(totalReceived)
+      setLoading(false)
     } catch (err) {
+      setLoading(false)
       setTokenSaleData(null)
       setTotalInvest(0)
       setTotalReceived(0)
@@ -122,9 +128,12 @@ export const TokenSaleProvider = ({ children }) => {
     <TokenSaleContext.Provider
       value={{
         tokenSaleData,
+        loading,
         totalInvest,
         totalReceived,
-        checkWalletStatus
+        checkWalletStatus,
+        transactionTabActive,
+        setTransactionTabActive
       }}
     >
       {children}
