@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import useWallet from '@hooks/use-wallet'
-import WalletProvider from '../components/organisms/web3/wallet-provider'
-import {privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD} from '@config/token-price'
+import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price'
 import api from '../api'
 
 export interface TransactionProps {
@@ -90,7 +89,7 @@ export const TokenSaleProvider = ({ children }) => {
   const checkWalletStatus = async () => {
     try {
 
-      const response = await api.fetchTokenSaleInfo(wallet.address)
+      const response = await api.fetchTokenSaleInfo('0xb3b11e6e934cbbbebd0533193aa266828ae6d634')
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions, payload.type).totalInvest)
@@ -111,6 +110,7 @@ export const TokenSaleProvider = ({ children }) => {
 
   useEffect(() => {
     if (wallet.isConnected) {
+      // @ts-ignore
       async function checkStatus() {
         await checkWalletStatus()
       }

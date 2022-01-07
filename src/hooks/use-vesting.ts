@@ -1,7 +1,6 @@
 import { useContractCall, useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId } from "@usedapp/core";
-import { formatUnits } from '@ethersproject/units'
+import { ChainId } from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
 import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
@@ -23,7 +22,6 @@ export default function useVesting():UseVestingProps {
     const vesting = vestingConfig.contract
     const vestingContract = new Contract(vesting.address, vesting.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
     const getWithdrawable = (): number => {
