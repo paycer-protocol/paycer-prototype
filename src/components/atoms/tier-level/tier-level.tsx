@@ -14,7 +14,6 @@ const TierLevel: React.FC<TierLevelProps> = (props) => {
     const { tokenAmount, hasLegend } = props
 
     const calculateTierLevel = () => {
-        console.log(tokenAmount)
         if (tokenAmount >= 100000) {
             return t`Partner`
         }

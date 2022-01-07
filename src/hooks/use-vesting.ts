@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 interface UseVestingProps {
     withdraw: () => Promise<void>
-    vested: number
+    withdrawAble: number
     withdrawTx: any
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -26,14 +26,17 @@ export default function useVesting():UseVestingProps {
 
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
-    const vested = useContractCall(
-        {
-            abi: new Interface(vesting.abi),
-            address: vesting.address,
-            method: 'vested',
-            args: [wallet.address],
-        }
-    )
+    const getWithdrawable = (): number => {
+        const result = useContractCall(
+            {
+                abi: new Interface(vesting.abi),
+                address: vesting.address,
+                method: 'withdrawable',
+                args: ['0x596Ee9e6612571914b80510D577CF34a3B2e0269'],
+            }
+        ) ?? 0
+        return BigNumber.isBigNumber(result) ? result.toNumber() : 0
+    }
 
     const withdrawVesting = async () => {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
@@ -49,7 +52,7 @@ export default function useVesting():UseVestingProps {
     }
 
     return {
-        vested: BigNumber.isBigNumber(vested) ? Number(formatUnits(vested, 18)) : 0,
+        withdrawAble: getWithdrawable(),
         withdrawTx,
         withdraw: withdrawVesting,
         showFormApproveModal,

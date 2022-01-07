@@ -10,7 +10,7 @@ import { rewardSymbol } from '@config/staking-rewards'
 const Vesting = () => {
 
     const {
-        vested,
+        withdrawAble,
         withdrawTx,
         withdraw,
         showFormApproveModal,
@@ -31,7 +31,7 @@ const Vesting = () => {
               <span className="display-4">
               +&nbsp;
                   <FormattedNumber
-                      value={vested}
+                      value={withdrawAble}
                       minimumFractionDigits={2}
                       maximumFractionDigits={4}
                   />

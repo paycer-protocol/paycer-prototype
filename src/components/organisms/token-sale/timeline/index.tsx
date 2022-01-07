@@ -107,7 +107,7 @@ const KycProcessTimeline = () => {
           <TimelineActivity.Content>
             <span className={`text-${tokenSaleData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
-              {t`12 months after TGE`}
+              {tokenSaleData?.type === 'private' || tokenSaleData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
