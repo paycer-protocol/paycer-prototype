@@ -37,7 +37,7 @@ const TokenSaleDashboard = () => {
             <div className="card blur-background">
                 <div className="card-body">
                     <p className="mb-0">
-                        {t`No transactions found, please connect with a wallet address that has token sale transactions.`}
+                        {t`No investment found for this wallet. Please connect another wallet address.`}
                     </p>
                     <div className="w-25 mt-4">
                         <GradientButton
