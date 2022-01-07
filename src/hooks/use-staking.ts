@@ -8,6 +8,7 @@ import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
 import { useState } from 'react'
+import stakingAbi from "@contracts/abi/StakingRewards.json";
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
@@ -48,30 +49,37 @@ export default function useStaking():UseStakingProps {
 
     const userInfo = useContractCall(
         {
-        abi: new Interface(staking.abi),
-        address: staking.address,
-        method: 'userInfo',
-        args: [wallet.address],
-        }
-    )
-
-    const rewardRate = useContractCall(
-    {
-        abi: new Interface(staking.abi),
-        address: staking.address,
-        method: 'rewardAPY',
-        args: [wallet.address],
-        }
-    )
-
-    const pendingReward = useContractCall(
-        {
             abi: new Interface(staking.abi),
             address: staking.address,
-            method: 'pendingReward',
+            method: 'userInfo',
             args: [wallet.address],
         }
     )
+
+    const getRewardRate = (): number => {
+        const result = useContractCall(
+            {
+                abi: new Interface(staking.abi),
+                address: staking.address,
+                method: 'rewardAPY',
+                args: [wallet.address],
+            }
+        ) ?? 0
+
+        return BigNumber.isBigNumber(result) ? result.toNumber() : 0
+    }
+
+    const getPendingReward = (): number => {
+        const [result] = useContractCall(
+            {
+                abi: new Interface(staking.abi),
+                address: staking.address,
+                method: 'pendingReward',
+                args: [wallet.address],
+            }
+        ) ?? []
+        return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
+    }
 
     const rewardAllowedForThisPool = useContractCall(
         {
@@ -127,12 +135,15 @@ export default function useStaking():UseStakingProps {
         deposit: depositStaking,
         withdraw: withdrawStaking,
         claim: claimStaking,
-        pendingReward: BigNumber.isBigNumber(pendingReward?.pending) ? Number(formatUnits(pendingReward?.pending, 18)) : 0,
+        pendingReward: getPendingReward(),
+        // @ts-ignore
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
+        // @ts-ignore
         lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? new Date(userInfo?.lastDepositedAt * 1000).toLocaleDateString("en-US") : '',
+        // @ts-ignore
         lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? new Date(userInfo?.lastRewardTime * 1000).toLocaleDateString("en-US") : '',
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
-        rewardRate: BigNumber.isBigNumber(rewardRate) ? rewardRate.toNumber() : 0,
+        rewardRate: getRewardRate(),
         depositTx,
         withdrawTx,
         claimTx,

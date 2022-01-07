@@ -11,5 +11,6 @@ export const supportedChains = [
 
 export const supportedStakingChains = [
   ChainId.Mainnet,
-  ChainId.Kovan,
+  ChainId.Polygon,
+  ChainId.Mumbai,
 ]

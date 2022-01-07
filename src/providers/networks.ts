@@ -99,7 +99,7 @@ export const mainNetProviders: INetworkProvider = {
     },
     [ChainId.Polygon]: {
         chainId: '0x89',
-        chainName: 'Polygon (Matic)',
+        chainName: 'Polygon - Mainnet',
         nativeCurrency: {
             name: 'Matic',
             symbol: 'MATIC',
@@ -108,15 +108,15 @@ export const mainNetProviders: INetworkProvider = {
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
     },
-    [ChainId.Kovan]: {
-        chainId: '0x2A',
-        chainName: 'Kovan',
+    [ChainId.Mumbai]: {
+        chainId: '0x13881',
+        chainName: 'Polygon - Testnet',
         nativeCurrency: {
-            name: 'Ethereum - Kovan',
-            symbol: 'ETH',
+            name: 'Polygon (MATIC Mumbai)',
+            symbol: 'MATIC',
             decimals: 18,
         },
-        rpcUrls: [rpcUrls[ChainId.Kovan]],
-        blockExplorerUrls: [explorers[ChainId.Kovan]],
+        rpcUrls: [rpcUrls[ChainId.Mumbai]],
+        blockExplorerUrls: [explorers[ChainId.Mumbai]],
     },
 }
