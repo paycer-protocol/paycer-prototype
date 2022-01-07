@@ -8,7 +8,6 @@ import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
 import { useState } from 'react'
-import stakingAbi from "@contracts/abi/StakingRewards.json";
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
