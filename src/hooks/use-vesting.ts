@@ -11,6 +11,7 @@ interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
     withdrawTx: any
+    withdrawError?: boolean
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -22,6 +23,7 @@ export default function useVesting():UseVestingProps {
     const vesting = vestingConfig.contract
     const vestingContract = new Contract(vesting.address, vesting.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+    const [withdrawError, setWithdrawError] = useState(false)
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
     const getWithdrawable = (): number => {
@@ -46,12 +48,14 @@ export default function useVesting():UseVestingProps {
                 }, 3000)
             }
         } catch(e) {
+            setWithdrawError(true)
         }
     }
 
     return {
         withdrawAble: getWithdrawable(),
         withdrawTx,
+        withdrawError,
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal

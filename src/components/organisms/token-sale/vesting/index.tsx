@@ -17,7 +17,8 @@ const Vesting = () => {
         withdrawTx,
         withdraw,
         showFormApproveModal,
-        setShowFormApproveModal
+        setShowFormApproveModal,
+        withdrawError
     } = useVesting()
 
     const handleSubmit = async () => {
@@ -57,7 +58,7 @@ const Vesting = () => {
               onHide={() => setShowFormApproveModal(false)}
               title={t`Claim PCR Tokens?`}
               onClick={() => handleSubmit()}
-              error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception'}
+              error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
               success={withdrawTx.status === 'Success'}
               loading={withdrawTx.status === 'Mining'}
           >
