@@ -94,7 +94,7 @@ export const TokenSaleProvider = ({ children }) => {
 
     try {
       setLoading(true)
-      const response = await api.fetchTokenSaleInfo(wallet.address)
+      const response = await api.fetchTokenSaleInfo('0xb3b11e6e934cbbbebd0533193aa266828ae6d634')
       const payload = response?.data || null
       setTokenSaleData(payload)
       setTotalInvest(calculateTotalInvested(payload.transactions, payload.type).totalInvest)

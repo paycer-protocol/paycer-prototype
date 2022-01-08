@@ -36,14 +36,14 @@ const TokenSaleDashboard = () => {
         return (
             <div className="card blur-background">
                 <div className="card-body">
-                    <p className="mb-0">
+                    <h2 className="mb-0 text-center">
                         {t`No investment found for this wallet. Please connect another wallet address.`}
-                    </p>
-                    <div className="w-25 mt-4">
+                    </h2>
+                    <div className="w-25 mx-auto mt-4">
                         <GradientButton
                             type="submit"
                             title={t`Claim`}
-                            className="px-5"
+                            className="px-5 w-100"
                             onClick={() => setShowWalletProviderModal(true)}
                         >
                             <Trans>Connect to a Wallet</Trans>
@@ -79,9 +79,8 @@ const TokenSaleDashboard = () => {
                             <Transactions />
                             :
                             <>
-                                <LeftCol>
+                                <LeftCol className="align-items-center d-flex">
                                     <Vesting />
-                                    <KycProcessInfo />
                                 </LeftCol>
                                 <div className="vertical-line" />
                                 <div className="horizontal-line d-md-none" />
