@@ -21,10 +21,6 @@ const Vesting = () => {
         dashboardData
     } = useTokenSaleDashboard()
 
-    if (!dashboardData?.type) {
-        return <div></div>
-    }
-
     const {
         withdrawAble,
         withdrawTx,

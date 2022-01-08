@@ -30,10 +30,8 @@ export const RightCol = styled.div`
 const TokenSaleDashboard = () => {
 
     const { dashboardData } = useTokenSaleDashboard()
-
     const transactions = dashboardData?.transactions
     const [transactionTabActive, setTransactionTabActive] = useState(false)
-
 
     const renderTabLabel = () => {
         const type = dashboardData?.type
