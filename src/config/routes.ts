@@ -34,7 +34,6 @@ export const routes = [
   {
     label: t`Token Sale`,
     path: '/token-sale',
-    supportedChains,
-    auth: true
+    supportedChains
   }
 ]
