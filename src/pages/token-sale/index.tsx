@@ -7,9 +7,8 @@ import KycProcessInfo from '@components/organisms/token-sale/info'
 import Vesting from '@components/organisms/token-sale/vesting'
 import GradientButton from '@components/atoms/button/gradient-button'
 import KycProcessTimeline from '@components/organisms/token-sale/timeline'
-import Dashboard from '@components/organisms/token-sale/dashboard'
+import TokenSaleWrapper from '@components/organisms/token-sale/token-sale'
 import Transactions from '@components/organisms/token-sale/transactions'
-import { TokenSaleProvider, useTokenSale } from '@context/token-sale-context'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import {connectors} from '@providers/connectors'
 import useWallet from '@hooks/use-wallet'
@@ -38,24 +37,23 @@ export const RightCol = styled.div`
 export default function TokenSale() {
   return (
     <>
-      <TokenSaleProvider>
-        <div className="container mt-3 mb-8">
-          <PageHeader>
-            <div className="row align-items-center">
-              <div className="col">
-                <PageHeader.Subtitle>
-                  <Trans>Token Sale</Trans>
-                </PageHeader.Subtitle>
-                <PageHeader.Title>
-                  <Trans>Investor Dashboard</Trans>
-                </PageHeader.Title>
-              </div>
+      <div className="container mt-3 mb-8">
+        <PageHeader>
+          <div className="row align-items-center">
+            <div className="col">
+              <PageHeader.Subtitle>
+                <Trans>Token Sale</Trans>
+              </PageHeader.Subtitle>
+              <PageHeader.Title>
+                <Trans>Investor Dashboard</Trans>
+              </PageHeader.Title>
             </div>
-          </PageHeader>
-          <Dashboard />
-          <Dashboard />
-        </div>
-      </TokenSaleProvider>
+          </div>
+        </PageHeader>
+
+        <TokenSaleWrapper />
+
+      </div>
       <PortalBlockNumber />
     </>
   )

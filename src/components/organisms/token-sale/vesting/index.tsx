@@ -6,9 +6,9 @@ import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { rewardSymbol } from '@config/staking-rewards'
-import DashNumber from "@components/organisms/dashboard/dash-number";
-import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
-import {useTokenSale} from "@context/token-sale-context";
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
 
 export const StyledVestingCard = styled.div`
@@ -18,11 +18,11 @@ export const StyledVestingCard = styled.div`
 const Vesting = () => {
 
     const {
-        tokenSaleData
-    } = useTokenSale()
+        dashboardData
+    } = useTokenSaleDashboard()
 
-    if (!tokenSaleData?.type) {
-        return ''
+    if (!dashboardData?.type) {
+        return <div></div>
     }
 
     const {
@@ -32,7 +32,7 @@ const Vesting = () => {
         showFormApproveModal,
         setShowFormApproveModal,
         withdrawError
-    } = useVesting(tokenSaleData?.type)
+    } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
         await withdraw()

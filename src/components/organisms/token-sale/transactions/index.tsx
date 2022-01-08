@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTokenSale } from '@context/token-sale-context'
+import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 import DataTable from './data-table'
-import {Trans} from "@lingui/macro";
+import { Trans } from '@lingui/macro'
 
 export const Wrapper = styled.div`
     padding: 30px;
@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
 `
 
 const Transactions = () => {
-    const { tokenSaleData } = useTokenSale()
-    const transactions = tokenSaleData?.transactions
+    const { dashboardData } = useTokenSaleDashboard()
+    const { transactions } = dashboardData
 
     if (!transactions) {
         return(

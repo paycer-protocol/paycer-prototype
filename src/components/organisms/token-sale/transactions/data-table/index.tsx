@@ -4,7 +4,7 @@ import TxnLink from '@components/atoms/txn-link'
 import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price'
 import {FormattedNumber} from '@components/atoms/number'
 import Button from '@components/atoms/button'
-import {useTokenSale} from "@context/token-sale-context";
+import { useTokenSaleDashboard } from "@context/token-sale-dashboard-context";
 
 export interface DataTableProps {
   unixTimestamp: number
@@ -23,15 +23,15 @@ export interface DataTableProps {
 }
 
 const DataTable = (props: DataTableProps) => {
-  const { tokenSaleData } = useTokenSale()
+  const { dashboardData } = useTokenSaleDashboard()
   const [showTable, setShowTable] = useState(props?.initiallyOpen)
   const date = new Date(props.transactionDateTime)
   let received = 0
 
   let tokenSalePriceUSD = publicSalePriceUSD
-  if (tokenSaleData.type === 'private') {
+  if (dashboardData.type === 'private') {
     tokenSalePriceUSD = privateSalePriceUSD
-  } else if (tokenSaleData.type === 'pre') {
+  } else if (dashboardData.type === 'pre') {
     tokenSalePriceUSD = preSalePriceUSD
   }
 

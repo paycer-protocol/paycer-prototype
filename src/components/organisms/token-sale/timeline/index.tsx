@@ -5,7 +5,7 @@ import TierLevel from '@components/atoms/tier-level'
 import TimelineActivity from '@components/molecules/timeline-activity'
 import { CalendarCheck, CashCoin, FileText, GraphUp, Person, Terminal, Gift } from '@styled-icons/bootstrap'
 import { FormattedNumber } from 'react-intl'
-import { useTokenSale } from '@context/token-sale-context'
+import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -34,19 +34,19 @@ const getStateContext = (state) => {
 
 const KycProcessTimeline = () => {
   const {
-    tokenSaleData,
+    dashboardData,
     totalInvest,
     totalReceived
-  } = useTokenSale()
+  } = useTokenSaleDashboard()
 
   return (
     <>
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-        <TimelineActivity iconComponent={Person} title={t`KYC Status`} isActive={tokenSaleData?.kycApproved}>
+        <TimelineActivity iconComponent={Person} title={t`KYC Status`} isActive={dashboardData?.kycApproved}>
           <TimelineActivity.Content>
-            <span className={`text-${getStateContext(tokenSaleData?.kycApproved)} me-3`}>●</span>
+            <span className={`text-${getStateContext(dashboardData?.kycApproved)} me-3`}>●</span>
             <span className="text-light">
-              {renderStateLabel(tokenSaleData?.kycApproved)}
+              {renderStateLabel(dashboardData?.kycApproved)}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>
@@ -82,9 +82,9 @@ const KycProcessTimeline = () => {
             <span className="text-light">
               <FormattedNumber value={totalReceived || 0} />
               &nbsp;PCR
-              {(tokenSaleData?.bonusPercentage &&
+              {(dashboardData?.bonusPercentage &&
                   <span className="text-muted">
-                    &nbsp;(+{tokenSaleData?.bonusPercentage}{t`% Bonus included`})
+                    &nbsp;(+{dashboardData?.bonusPercentage}{t`% Bonus included`})
                   </span>
               )}
             </span>
@@ -105,9 +105,9 @@ const KycProcessTimeline = () => {
         </TimelineActivity>
         <TimelineActivity iconComponent={CalendarCheck} title={t`Vesting Phase`} isIndendet>
           <TimelineActivity.Content>
-            <span className={`text-${tokenSaleData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className={`text-${dashboardData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
-              {tokenSaleData?.type === 'private' || tokenSaleData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
+              {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
             </span>
           </TimelineActivity.Content>
         </TimelineActivity>

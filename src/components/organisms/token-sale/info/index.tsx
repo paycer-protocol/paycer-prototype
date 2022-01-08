@@ -1,12 +1,16 @@
 import React from 'react'
-import {t, Trans} from '@lingui/macro'
+import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import { useTokenSale } from '@context/token-sale-context'
+import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
 const KycProcessInfo = () => {
-    const tokenSale = useTokenSale()
-    const bonusPercentage = tokenSale?.tokenSaleData?.bonusPercentage
-    const immediateAvailabilityPercentage = tokenSale?.tokenSaleData?.immediateAvailabilityPercentage
+
+    const { dashboardData } = useTokenSaleDashboard()
+
+    const {
+        bonusPercentage,
+        immediateAvailabilityPercentage
+    } = dashboardData
 
     return (
       <>
