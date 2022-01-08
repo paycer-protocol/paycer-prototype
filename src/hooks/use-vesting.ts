@@ -16,15 +16,17 @@ interface UseVestingProps {
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function useVesting():UseVestingProps {
+export default function useVesting(type):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
-    const vestingConfig = VestingContractProvider[chainId] || VestingContractProvider[ChainId.Mainnet]
+    const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId][type] : VestingContractProvider[ChainId.Mainnet][type]
     const vesting = vestingConfig.contract
     const vestingContract = new Contract(vesting.address, vesting.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
+
+    console.log(vestingConfig)
 
     const getWithdrawable = (): number => {
         const result = useContractCall(
