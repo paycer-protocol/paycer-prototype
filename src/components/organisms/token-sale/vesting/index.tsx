@@ -33,7 +33,7 @@ const Vesting = () => {
         <StyledVestingCard className="card bg-dark border-0 mb-0">
             <div className="card-body">
                 <div className="d-flex justify-content-center mb-5">
-                    <img width="125" src="/assets/paycer-gradient.svg" alt="Paycer" />
+                    <img width="100" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
                 </div>
 
                 <h2 className="mb-3 text-center fw-bold text-center">
@@ -46,19 +46,18 @@ const Vesting = () => {
 
                 <div className="d-flex flex-column mb-4 text-center">
                       <span className="display-4">
-                      +&nbsp;
                           <FormattedNumber
                               value={withdrawAble}
                               minimumFractionDigits={2}
                               maximumFractionDigits={4}
                           />
-                    <CurrencyIcon
-                        symbol={rewardSymbol}
-                        className="ms-2"
-                        width={28}
-                        height={28}
-                        style={{marginTop: '-4px'}}
-                    />
+                        <CurrencyIcon
+                            symbol={rewardSymbol}
+                            className="ms-2"
+                            width={28}
+                            height={28}
+                            style={{marginTop: '-4px'}}
+                        />
                   </span>
                 </div>
 
