@@ -33,7 +33,7 @@ export default function useVesting(type):UseVestingProps {
                 abi: new Interface(vesting.abi),
                 address: vesting.address,
                 method: 'withdrawable',
-                args: ['0x596Ee9e6612571914b80510D577CF34a3B2e0269'],
+                args: [wallet.address],
             }
         ) ?? []
         return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
@@ -44,9 +44,7 @@ export default function useVesting(type):UseVestingProps {
         try {
             await withdraw()
             if (withdrawTx.status === 'Success') {
-                setTimeout(() => {
-                    setShowFormApproveModal(false)
-                }, 3000)
+                setShowFormApproveModal(false)
             }
         } catch(e) {
             setWithdrawError(true)

@@ -1,38 +1,9 @@
-import React, { useState} from 'react'
-import styled from 'styled-components'
-import { t, Trans } from '@lingui/macro'
+import React from 'react'
+import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
-import KycProcessInfo from '@components/organisms/token-sale/info'
-import Vesting from '@components/organisms/token-sale/vesting'
-import GradientButton from '@components/atoms/button/gradient-button'
-import KycProcessTimeline from '@components/organisms/token-sale/timeline'
 import TokenSaleWrapper from '@components/organisms/token-sale/token-sale'
-import Transactions from '@components/organisms/token-sale/transactions'
-import WalletProvider from '@components/organisms/web3/wallet-provider'
-import {connectors} from '@providers/connectors'
-import useWallet from '@hooks/use-wallet'
-import Spinner from '@components/atoms/spinner'
 
-export const LeftCol = styled.div`
-    width: 40%;
-    padding: 30px 0 30px 30px;
-
-    @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 25px;
-    }
-`
-
-export const RightCol = styled.div`
-    width: 60%;
-    padding: 30px 30px 30px 0;
-
-    @media only screen and (max-width : 978px) {
-        width: 100%;
-        padding: 25px;
-    }
-`
 
 export default function TokenSale() {
   return (
@@ -50,9 +21,7 @@ export default function TokenSale() {
             </div>
           </div>
         </PageHeader>
-
         <TokenSaleWrapper />
-
       </div>
       <PortalBlockNumber />
     </>

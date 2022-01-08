@@ -1,10 +1,31 @@
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
-import React, {useState} from 'react'
-import {t, Trans} from '@lingui/macro'
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { t } from '@lingui/macro'
 import Transactions from '@components/organisms/token-sale/transactions'
 import Vesting from '@components/organisms/token-sale/vesting'
-import KycProcessTimeline from '@components/organisms/token-sale/timeline'
-import { LeftCol, RightCol } from '../../../../pages/token-sale'
+import Overview from '@components/organisms/token-sale/overview'
+
+export const LeftCol = styled.div`
+    width: 40%;
+    padding: 80px 0 80px 30px;
+
+    @media only screen and (max-width : 978px) {
+      width: 100%;
+      padding: 25px;
+    }
+`
+
+export const RightCol = styled.div`
+    width: 60%;
+    padding: 60px;
+
+    @media only screen and (max-width : 978px) {
+        width: 100%;
+        padding: 25px;
+    }
+`
+
 
 const TokenSaleDashboard = () => {
 
@@ -13,11 +34,24 @@ const TokenSaleDashboard = () => {
     const transactions = dashboardData?.transactions
     const [transactionTabActive, setTransactionTabActive] = useState(false)
 
+
+    const renderTabLabel = () => {
+        const type = dashboardData?.type
+        switch (type) {
+            case 'pre':
+                return t`Pre Sale`
+            case 'public':
+                return t`Public Sale`
+            default:
+                return t`Private Sale`
+        }
+    }
+
     return (
         <>
             <div className="d-flex">
                 <div className={transactionTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setTransactionTabActive(false)}>
-                    {t`Status`}
+                    {renderTabLabel()}
                 </div>
                 {(transactions?.length > 0  &&
                   <div className={transactionTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setTransactionTabActive(true)}>
@@ -39,7 +73,7 @@ const TokenSaleDashboard = () => {
                                 <div className="vertical-line" />
                                 <div className="horizontal-line d-md-none" />
                                 <RightCol>
-                                    <KycProcessTimeline />
+                                    <Overview />
                                 </RightCol>
                             </>
                         )}

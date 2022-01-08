@@ -1,6 +1,6 @@
 import useWallet from '@hooks/use-wallet'
 import {useEffect, useState} from 'react'
-import api from "../api";
+import api from '../api'
 
 interface TokenSaleProps {
     tokenSaleData: any
@@ -16,7 +16,7 @@ export default function UseTokenSale():TokenSaleProps {
 
         try {
             setLoading(true)
-            const response = await api.fetchAllTokenSaleInfo('0xb3b11e6e934cbbbebd0533193aa266828ae6d634')
+            const response = await api.fetchAllTokenSaleInfo(wallet.address)
             const payload = response?.data || null
             setTokenSaleData(payload['hydra:member'])
             setLoading(false)
@@ -33,8 +33,6 @@ export default function UseTokenSale():TokenSaleProps {
                 await fetchTokensaleData()
             }
             fetch()
-        } else {
-            setLoading(false)
         }
     }, [wallet.isConnected])
 

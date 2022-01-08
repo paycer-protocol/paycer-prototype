@@ -5,7 +5,7 @@ import Spinner from '@components/atoms/spinner'
 import {t, Trans} from '@lingui/macro'
 import GradientButton from '@components/atoms/button/gradient-button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import {connectors} from '@providers/connectors'
+import { connectors } from '@providers/connectors'
 import Dashboard from '../dashboard'
 
 const TokenSale = () => {
@@ -26,7 +26,7 @@ const TokenSale = () => {
         )
     }
 
-    if (!tokenSaleData) {
+    if (!tokenSaleData.length) {
         return (
             <div className="card blur-background">
                 <div className="card-body">
@@ -55,9 +55,11 @@ const TokenSale = () => {
 
     return (
         <>
-            {tokenSaleData.map((dashboardData) => (
+            {tokenSaleData.map((dashboardData, index) => (
                 <TokenSaleDashboardProvider dashboardData={dashboardData}>
-                    <Dashboard />
+                    <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
+                        <Dashboard />
+                    </div>
                 </TokenSaleDashboardProvider>
             ))}
         </>
