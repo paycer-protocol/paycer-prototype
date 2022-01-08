@@ -1,4 +1,4 @@
-import KovanVestingContract from '../deployments/vesting/kovan/Vesting.json'
+import KovanVestingContract from '../deployments/kovan/Vesting.json'
 import { ChainId } from '@usedapp/core'
 
 /*TODO DEPLOY TO ALL NETWORKS */
