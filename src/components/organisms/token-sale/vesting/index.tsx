@@ -54,8 +54,8 @@ const Vesting = () => {
                         <CurrencyIcon
                             symbol={rewardSymbol}
                             className="ms-2"
-                            width={28}
-                            height={28}
+                            width={30}
+                            height={30}
                             style={{marginTop: '-4px'}}
                         />
                   </span>
