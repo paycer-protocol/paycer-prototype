@@ -76,7 +76,7 @@ const TokenSaleDashboard = () => {
                     <div className="d-lg-flex">
                         {(transactionTabActive
                             ?
-                            <Transactions />
+                                <Transactions />
                             :
                             <>
                                 <LeftCol className="align-items-center d-flex">

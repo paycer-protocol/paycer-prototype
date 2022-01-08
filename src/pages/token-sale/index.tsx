@@ -35,8 +35,6 @@ export const RightCol = styled.div`
     }
 `
 
-
-
 export default function TokenSale() {
   return (
     <>
@@ -54,6 +52,7 @@ export default function TokenSale() {
               </div>
             </div>
           </PageHeader>
+          <Dashboard />
           <Dashboard />
         </div>
       </TokenSaleProvider>

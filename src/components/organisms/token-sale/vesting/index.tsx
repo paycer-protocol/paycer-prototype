@@ -21,6 +21,10 @@ const Vesting = () => {
         tokenSaleData
     } = useTokenSale()
 
+    if (!tokenSaleData?.type) {
+        return ''
+    }
+
     const {
         withdrawAble,
         withdrawTx,
