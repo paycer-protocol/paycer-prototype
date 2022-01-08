@@ -26,43 +26,43 @@ const TokenSale = () => {
         )
     }
 
-    if (!tokenSaleData.length) {
+    if (tokenSaleData && tokenSaleData.length) {
         return (
-            <div className="card blur-background">
-                <div className="card-body">
-                    <h2 className="mb-0 text-center">
-                        {t`No investment found for this wallet. Please connect another wallet address.`}
-                    </h2>
-                    <div className="w-25 mx-auto mt-4">
-                        <GradientButton
-                            type="submit"
-                            title={t`Claim`}
-                            className="px-5 w-100"
-                            onClick={() => setShowWalletProviderModal(true)}
-                        >
-                            <Trans>Connect to a Wallet</Trans>
-                        </GradientButton>
-                        <WalletProvider
-                            providers={connectors}
-                            onHide={() => setShowWalletProviderModal(false)}
-                            show={showWalletProviderModal}
-                        />
-                    </div>
-                </div>
-            </div>
+            <>
+                {tokenSaleData.map((dashboardData, index) => (
+                    <TokenSaleDashboardProvider dashboardData={dashboardData}>
+                        <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
+                            <Dashboard />
+                        </div>
+                    </TokenSaleDashboardProvider>
+                ))}
+            </>
         )
     }
 
     return (
-        <>
-            {tokenSaleData.map((dashboardData, index) => (
-                <TokenSaleDashboardProvider dashboardData={dashboardData}>
-                    <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
-                        <Dashboard />
-                    </div>
-                </TokenSaleDashboardProvider>
-            ))}
-        </>
+        <div className="card blur-background">
+            <div className="card-body">
+                <h2 className="mb-0 text-center">
+                    {t`No investment found for this wallet. Please connect another wallet address.`}
+                </h2>
+                <div className="w-25 mx-auto mt-4">
+                    <GradientButton
+                        type="submit"
+                        title={t`Claim`}
+                        className="px-5 w-100"
+                        onClick={() => setShowWalletProviderModal(true)}
+                    >
+                        <Trans>Connect to a Wallet</Trans>
+                    </GradientButton>
+                    <WalletProvider
+                        providers={connectors}
+                        onHide={() => setShowWalletProviderModal(false)}
+                        show={showWalletProviderModal}
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 
