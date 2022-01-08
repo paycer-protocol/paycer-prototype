@@ -62,7 +62,7 @@ const Vesting = () => {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                    <GradientButton className="w-75" disabled={withdrawAble === 0} onClick={withdrawAble > 0 ? () => setShowFormApproveModal(true) : null}>
+                    <GradientButton className="w-75"  onClick={withdrawAble > 0 ? () => setShowFormApproveModal(true) : null}>
                         {t`Claim`}
                     </GradientButton>
 
