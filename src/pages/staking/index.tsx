@@ -33,6 +33,7 @@ export default function Staking () {
             <div className="col">
               <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
               <PageHeader.Title>Staking Rewards</PageHeader.Title>
+              <span className="badge bg-danger-soft mt-3 text-white py-2 px-3">This page is a demo</span>
             </div>
           </div>
         </PageHeader>
