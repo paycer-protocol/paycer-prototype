@@ -6,6 +6,7 @@ import TimelineActivity from '@components/molecules/timeline-activity'
 import { CalendarCheck, CashCoin, FileText, GraphUp, Person, Terminal, Gift } from '@styled-icons/bootstrap'
 import { FormattedNumber } from 'react-intl'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
+import useVesting from '@hooks/use-vesting'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -20,12 +21,17 @@ const Overview = () => {
   const {
     dashboardData,
     totalInvest,
-    totalReceived
+    totalReceived,
   } = useTokenSaleDashboard()
 
   const {
     bonusPercentage
   } = dashboardData
+
+  const {
+    startTime,
+    endTime
+  } = useVesting(dashboardData?.type)
 
   return (
     <>
@@ -81,15 +87,28 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="row justify-content-md-between align-items-center">
+        <div className="row justify-content-md-between align-items-center mb-5">
           <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
             <img width="35" className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/calendar-svgrepo-com.svg" />
-            {t`Vesting Phase`}
+            {t`Vesting Phase Start`}
           </div>
           <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
             <span className={`text-${dashboardData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
-              {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
+              {startTime}
+            </span>
+          </div>
+        </div>
+
+        <div className="row justify-content-md-between align-items-center">
+          <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
+            <img width="35" className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/calendar-svgrepo-com.svg" />
+            {t`Vesting Phase End`}
+          </div>
+          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
+            <span className={`text-${dashboardData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className="text-light">
+              {endTime}
             </span>
           </div>
         </div>

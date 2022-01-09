@@ -11,11 +11,11 @@ export const tokenProvider: ITokenProvider = {
       name: 'Paycer',
       decimals: 18,
       chainAddresses: {
-        [ChainId.Mainnet]: '0xa6083abe845fbB8649d98B8586cBF50b7f233612',
+        [ChainId.Mainnet]: '0x24FdBF97A95d425E2e53D1d35C4920c82Ba784f1',
         [ChainId.Kovan]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
-        [ChainId.Polygon]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
-        [ChainId.Mumbai]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62',
-        [ChainId.BSC]: '0x5B080d86546448b26141a88835014D181843c3F0',
+        [ChainId.Polygon]: '0xa6083abe845fbB8649d98B8586cBF50b7f233612',
+        [ChainId.Mumbai]: '0xD8eA7F7D3eebB5193AE76E3280b8650FD1468663',
+        [ChainId.BSC]: '0xa9f31589E0a8c0b12068329736ed6385A8F77b62'
       }
     },
     USDC: {
