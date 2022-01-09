@@ -33,7 +33,8 @@ export default function ClaimSummary() {
     claimTx,
     pendingReward,
     lastDepositedAt,
-    lastRewardTime
+    lastRewardTime,
+    claimError
   } = useStaking()
 
   const handleClaim = async () => {
@@ -96,7 +97,7 @@ export default function ClaimSummary() {
         </GradientButton>
       </div>
       <TransactionStatus
-          error={claimTx.status === 'Fail' || claimTx.status === 'Exception'}
+          error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
           success={claimTx.status === 'Success'}
           loading={claimTx.status === 'Mining'}
       />

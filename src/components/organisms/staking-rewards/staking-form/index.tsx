@@ -27,7 +27,9 @@ export default function StakingForm() {
     approveTx,
     depositTx,
     showFormApproveModal,
-    setShowFormApproveModal
+    setShowFormApproveModal,
+    withdrawError,
+    depositError
   } = useStaking()
 
   const token = useToken(rewardSymbol)
@@ -141,9 +143,24 @@ export default function StakingForm() {
               onHide={() => setShowFormApproveModal(false)}
               title={t`Stake the current Selection?`}
               onClick={() => handleStaking(values)}
-              error={depositTx.status === 'Fail' || depositTx.status === 'Exception' || approveTx.status === 'Fail' || approveTx.status === 'Exception' || withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception'}
-              success={depositTx.status === 'Success' || withdrawTx.status === 'Success'}
-              loading={depositTx.status === 'Mining' || withdrawTx.status === 'Mining' || approveTx.status === 'Mining'}
+              error={
+                depositTx.status === 'Fail' ||
+                depositTx.status === 'Exception' ||
+                approveTx.status === 'Fail' ||
+                approveTx.status === 'Exception' ||
+                withdrawTx.status === 'Fail' ||
+                withdrawTx.status === 'Exception' ||
+                withdrawError || depositError
+              }
+              success={
+                depositTx.status === 'Success' ||
+                withdrawTx.status === 'Success'
+              }
+              loading={
+                depositTx.status === 'Mining' ||
+                withdrawTx.status === 'Mining' ||
+                approveTx.status === 'Mining'
+              }
             >
               <>
                 <div className="row mb-4">

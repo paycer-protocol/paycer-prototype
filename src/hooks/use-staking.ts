@@ -24,6 +24,9 @@ interface UseStakingProps {
     approveTx: any
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
+    withdrawError?: boolean
+    depositError?: boolean
+    claimError?: boolean
 }
 
 export default function useStaking():UseStakingProps {
@@ -33,7 +36,9 @@ export default function useStaking():UseStakingProps {
     const staking = stakingConfig.contract
     const stakingContract = new Contract(staking.address, staking.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-
+    const [withdrawError, setWithdrawError] = useState(false)
+    const [depositError, setDepositError] = useState(false)
+    const [claimError, setClaimError] = useState(false)
     const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Mainnet]
     const paycerToken = paycerTokenConfig.contract
     const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
@@ -80,15 +85,6 @@ export default function useStaking():UseStakingProps {
         return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
     }
 
-    const rewardAllowedForThisPool = useContractCall(
-        {
-            abi: new Interface(staking.abi),
-            address: staking.address,
-            method: 'rewardAllowedForThisPool',
-            args: [wallet.address],
-        }
-    )
-
     const depositStaking = async (amount: number) => {
 
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
@@ -103,6 +99,7 @@ export default function useStaking():UseStakingProps {
                 }, 3000);
             }
         } catch(e) {
+            setDepositError(true)
         }
     }
 
@@ -119,6 +116,7 @@ export default function useStaking():UseStakingProps {
                 }, 3000);
             }
         } catch(e) {
+            setWithdrawError(true)
         }
     }
 
@@ -126,7 +124,7 @@ export default function useStaking():UseStakingProps {
         try {
           await claim(wallet.address)
         } catch(e) {
-
+            setClaimError(true)
         }
     }
 
@@ -148,6 +146,9 @@ export default function useStaking():UseStakingProps {
         claimTx,
         approveTx,
         showFormApproveModal,
-        setShowFormApproveModal
+        setShowFormApproveModal,
+        withdrawError,
+        depositError,
+        claimError
     }
 }
