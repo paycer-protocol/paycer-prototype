@@ -4,6 +4,7 @@ import { ChainId } from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
+import VestingAbi from '../deployments/vesting/VestingAbi.json'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
 import { useState } from 'react'
@@ -21,8 +22,8 @@ export default function useVesting(type):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
     const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId][type] : VestingContractProvider[ChainId.Mumbai][type]
-    const vesting = vestingConfig.contract
-    const vestingContract = new Contract(vesting.address, vesting.abi)
+    const vestingContract = new Contract(vestingConfig.address, VestingAbi.abi)
+
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
@@ -30,10 +31,10 @@ export default function useVesting(type):UseVestingProps {
     const getWithdrawable = (): number => {
         const [result] = useContractCall(
             {
-                abi: new Interface(vesting.abi),
-                address: vesting.address,
+                abi: new Interface(VestingAbi.abi),
+                address: vestingConfig.address,
                 method: 'withdrawable',
-                args: [wallet.address],
+                args: ['0x596Ee9e6612571914b80510D577CF34a3B2e0269'],
             }
         ) ?? []
         return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
