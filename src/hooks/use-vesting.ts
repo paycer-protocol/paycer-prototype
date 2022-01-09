@@ -44,7 +44,7 @@ export default function useVesting(type):UseVestingProps {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             await withdraw()
-            if (withdrawTx.status === 'Success') {
+            if (withdrawTx.status === 'Success' || withdrawTx.status === 'None') {
                 setShowFormApproveModal(false)
             }
         } catch(e) {
