@@ -13,15 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/token-sale/overview/index.tsx:61
+#: src/components/organisms/token-sale/overview/index.tsx:66
 msgid "% Bonus included"
 msgstr "% Bonus included"
 
-#: src/components/organisms/token-sale/overview/index.tsx:92
+#: src/components/organisms/token-sale/overview/index.tsx:110
 msgid "12 months after TGE"
 msgstr "12 months after TGE"
 
-#: src/components/organisms/token-sale/overview/index.tsx:92
+#: src/components/organisms/token-sale/overview/index.tsx:110
 msgid "6 months after TGE"
 msgstr "6 months after TGE"
 
@@ -57,6 +57,10 @@ msgstr "Adding Network to Wallet ..."
 #: src/context/token-sale-context.tsx:115
 #~ msgid "Address not found"
 #~ msgstr "Address not found"
+
+#: src/components/organisms/token-sale/dashboard/index.tsx:46
+msgid "Advisor distribution"
+msgstr "Advisor distribution"
 
 #: src/pages/referral/components/Referrals.tsx:34
 msgid "An error has occurred. Please refresh the page"
@@ -149,12 +153,12 @@ msgstr "Change your wallet provider"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:89
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:95
-#: src/components/organisms/token-sale/index.tsx:52
-#: src/components/organisms/token-sale/vesting/index.tsx:71
+#: src/components/organisms/token-sale/index.tsx:64
+#: src/components/organisms/token-sale/vesting/index.tsx:52
 msgid "Claim"
 msgstr "Claim"
 
-#: src/components/organisms/token-sale/vesting/index.tsx:78
+#: src/components/organisms/token-sale/vesting/index.tsx:59
 msgid "Claim PCR Tokens?"
 msgstr "Claim PCR Tokens?"
 
@@ -162,7 +166,7 @@ msgstr "Claim PCR Tokens?"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/token-sale/vesting/index.tsx:45
+#: src/components/organisms/token-sale/vesting/index.tsx:37
 msgid "Claimable PCR Tokens"
 msgstr "Claimable PCR Tokens"
 
@@ -183,7 +187,7 @@ msgstr "Claimable rewards"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/token-sale/index.tsx:56
+#: src/components/organisms/token-sale/index.tsx:68
 #: src/components/organisms/web3/wallet-connect.tsx:29
 #: src/components/organisms/web3/wallet-detail.tsx:139
 #: src/pages/referral/index.tsx:35
@@ -275,8 +279,8 @@ msgid "Deposit"
 msgstr "Deposit"
 
 #: src/pages/pre-sale-wallet.tsx:21
-msgid "Deposit Wallet Address"
-msgstr "Deposit Wallet Address"
+#~ msgid "Deposit Wallet Address"
+#~ msgstr "Deposit Wallet Address"
 
 #: src/components/organisms/invest/invest-card/index.tsx:110
 #~ msgid "Deposited"
@@ -437,7 +441,7 @@ msgstr "Invest amount"
 msgid "Invest now"
 msgstr "Invest now"
 
-#: src/components/organisms/token-sale/overview/index.tsx:38
+#: src/components/organisms/token-sale/overview/index.tsx:40
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:79
 msgid "Invested"
 msgstr "Invested"
@@ -539,7 +543,7 @@ msgstr "Login to your wallet to see block details"
 msgid "Low"
 msgstr "Low"
 
-#: src/components/organisms/token-sale/overview/index.tsx:71
+#: src/components/organisms/token-sale/overview/index.tsx:83
 msgid "Loyalty Tier Level"
 msgstr "Loyalty Tier Level"
 
@@ -592,8 +596,8 @@ msgid "No available transactions"
 msgstr "No available transactions"
 
 #: src/components/organisms/token-sale/index.tsx:47
-msgid "No investment found for this wallet. Please connect another wallet address."
-msgstr "No investment found for this wallet. Please connect another wallet address."
+#~ msgid "No investment found for this wallet. Please connect another wallet address."
+#~ msgstr "No investment found for this wallet. Please connect another wallet address."
 
 #: src/components/organisms/swap/supply-form/fields/token0-input.tsx:26
 msgid "Not enough"
@@ -617,7 +621,7 @@ msgstr "Overview"
 msgid "PCR"
 msgstr "PCR"
 
-#: src/components/organisms/token-sale/overview/index.tsx:52
+#: src/components/organisms/token-sale/overview/index.tsx:59
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:92
 msgid "PCR Token amount"
 msgstr "PCR Token amount"
@@ -647,13 +651,17 @@ msgstr "Paycer Token"
 msgid "Please authorize this website to access your Ethereum account."
 msgstr "Please authorize this website to access your Ethereum account."
 
+#: src/components/organisms/token-sale/index.tsx:59
+msgid "Please connect to your wallet."
+msgstr "Please connect to your wallet."
+
 #: src/pages/token-sale/components/wallet-not-connected.tsx:7
 #~ msgid "Please connect your wallet to see this area."
 #~ msgstr "Please connect your wallet to see this area."
 
 #: src/components/organisms/token-sale/vesting/index.tsx:49
-msgid "Please find your claimable PCR tokens below, you can claim your PCR daily."
-msgstr "Please find your claimable PCR tokens below, you can claim your PCR daily."
+#~ msgid "Please find your claimable PCR tokens below, you can claim your PCR daily."
+#~ msgstr "Please find your claimable PCR tokens below, you can claim your PCR daily."
 
 #: src/components/organisms/web3/wallet-provider.tsx:36
 msgid "Please open your wallet and connect your account."
@@ -677,13 +685,13 @@ msgstr "Portfolio"
 #~ msgid "Portfolio Balance"
 #~ msgstr "Portfolio Balance"
 
-#: src/components/organisms/token-sale/dashboard/index.tsx:40
+#: src/components/organisms/token-sale/dashboard/index.tsx:38
 msgid "Pre Sale"
 msgstr "Pre Sale"
 
 #: src/pages/pre-sale-wallet.tsx:18
-msgid "PreSale"
-msgstr "PreSale"
+#~ msgid "PreSale"
+#~ msgstr "PreSale"
 
 #: src/components/organisms/web3/network-provider.tsx:48
 msgid "Previously added network Pending, please open your Wallet"
@@ -697,11 +705,11 @@ msgstr "Price impact"
 msgid "Privacy"
 msgstr "Privacy"
 
-#: src/components/organisms/token-sale/dashboard/index.tsx:42
+#: src/components/organisms/token-sale/dashboard/index.tsx:40
 msgid "Private Sale"
 msgstr "Private Sale"
 
-#: src/components/organisms/token-sale/dashboard/index.tsx:44
+#: src/components/organisms/token-sale/dashboard/index.tsx:42
 msgid "Public Sale"
 msgstr "Public Sale"
 
@@ -900,6 +908,10 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
+#: src/components/organisms/token-sale/dashboard/index.tsx:44
+msgid "Team distribution"
+msgstr "Team distribution"
+
 #: src/components/organisms/footer/footer.tsx:42
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
@@ -968,7 +980,7 @@ msgstr "Transaction"
 #~ msgid "Transaction Typ"
 #~ msgstr "Transaction Typ"
 
-#: src/components/organisms/token-sale/dashboard/index.tsx:56
+#: src/components/organisms/token-sale/dashboard/index.tsx:58
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -985,7 +997,7 @@ msgstr "Transactions"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/components/organisms/token-sale/overview/index.tsx:87
+#: src/components/organisms/token-sale/overview/index.tsx:107
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
@@ -1010,7 +1022,7 @@ msgstr "Whitepaper"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/components/organisms/token-sale/vesting/index.tsx:90
+#: src/components/organisms/token-sale/vesting/index.tsx:71
 msgid "Withdrawable"
 msgstr "Withdrawable"
 
@@ -1025,6 +1037,10 @@ msgstr "You have no investments in your portfolio"
 #: src/pages/referral/components/Referrals.tsx:93
 msgid "You have no rewards"
 msgstr "You have no rewards"
+
+#: src/components/organisms/token-sale/index.tsx:47
+msgid "You have not participated in the paycer token sale."
+msgstr "You have not participated in the paycer token sale."
 
 #: src/components/organisms/web3/wallet-provider.tsx:32
 #~ msgid "You're connected to an unsupported network."

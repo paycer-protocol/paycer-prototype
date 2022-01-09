@@ -66,16 +66,14 @@ const TokenSaleDashboard = () => {
                             ?
                                 <Transactions />
                             :
-                            <>
-                                <LeftCol className="align-items-center d-flex">
+                            <div className="d-block d-md-flex w-100 p-5 align-items-stretch">
+                                <div className="w-100 w-md-50 p-3">
                                     <Vesting />
-                                </LeftCol>
-                                <div className="vertical-line" />
-                                <div className="horizontal-line d-md-none" />
-                                <RightCol>
+                                </div>
+                                <div className="w-100 w-md-50 p-3">
                                     <Overview />
-                                </RightCol>
-                            </>
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>

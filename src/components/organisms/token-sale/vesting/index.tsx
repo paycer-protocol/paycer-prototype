@@ -10,6 +10,15 @@ import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
+const AnimatedDiv = styled.div`
+    animation: fadeIn 2s;
+
+    @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:1; }
+    }
+`
+
 const Vesting = () => {
     const { dashboardData } = useTokenSaleDashboard()
 
@@ -27,44 +36,37 @@ const Vesting = () => {
     }
 
     return (
-        <div className="card bg-dark border-0 mb-0">
-            <div className="card-body">
-                <div className="d-flex justify-content-center mb-5">
-                    <img width="100" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
-                </div>
+      <AnimatedDiv className="list-group list-group-flush list-group-activity">
+          <div className="display-4 fw-normal pb-4 text-center text-md-start">
+              {t`Claim`}
+          </div>
+          <div className="card bg-dark border-0 w-100">
+              <div className="card-body">
+                  <div className="d-flex justify-content-center mb-5">
+                      <img width="80" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
+                  </div>
 
-                <h2 className="mb-3 text-center fw-bold text-center">
-                    <Trans>Claimable PCR Tokens</Trans>
-                </h2>
+                  <h3 className="mb-3 text-center fw-bold text-center">
+                      <Trans>Claimable PCR Tokens</Trans>
+                  </h3>
 
-                <p className="text-center">
-                    <Trans>Please find your claimable PCR tokens below, you can claim your PCR daily.</Trans>
-                </p>
-
-                <div className="d-flex flex-column mb-4 text-center">
-                      <span className="display-4">
+                  <div className="d-flex flex-column mb-4 text-center">
+                      <span className="display-2">
                           <FormattedNumber
-                              value={withdrawAble}
-                              minimumFractionDigits={2}
-                              maximumFractionDigits={4}
+                            value={withdrawAble}
+                            minimumFractionDigits={2}
+                            maximumFractionDigits={2}
                           />
-                        <CurrencyIcon
-                            symbol={rewardSymbol}
-                            className="ms-2"
-                            width={30}
-                            height={30}
-                            style={{marginTop: '-4px'}}
-                        />
-                  </span>
-                </div>
+                      </span>
+                  </div>
 
-                <div className="d-flex justify-content-center">
-                    <GradientButton className="w-75" disabled={withdrawAble === 0} onClick={withdrawAble > 0 ? () => setShowFormApproveModal(true) : null}>
-                        {t`Claim`}
-                    </GradientButton>
-                </div>
+                  <div className="d-flex justify-content-center">
+                      <GradientButton className="w-75" disabled={withdrawAble === 0} onClick={withdrawAble > 0 ? () => setShowFormApproveModal(true) : null}>
+                          {t`Claim`}
+                      </GradientButton>
+                  </div>
 
-                <TransactionApproveModal
+                  <TransactionApproveModal
                     show={showFormApproveModal}
                     onHide={() => setShowFormApproveModal(false)}
                     title={t`Claim PCR Tokens?`}
@@ -72,25 +74,26 @@ const Vesting = () => {
                     error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
                     success={withdrawTx.status === 'Success'}
                     loading={withdrawTx.status === 'Mining'}
-                >
-                <>
-                  <div className="row mb-4">
-                      <div className="col-6">
+                  >
+                      <>
                           <div className="row mb-4">
                               <div className="col-6">
-                                  <DashNumber
-                                      label={t`Withdrawable`}
-                                      value={withdrawAble}
-                                      symbol="PCR"
-                                  />
+                                  <div className="row mb-4">
+                                      <div className="col-6">
+                                          <DashNumber
+                                            label={t`Withdrawable`}
+                                            value={withdrawAble}
+                                            symbol="PCR"
+                                          />
+                                      </div>
+                                  </div>
                               </div>
                           </div>
-                      </div>
-                  </div>
-                </>
-                </TransactionApproveModal>
-        </div>
-    </div>
+                      </>
+                  </TransactionApproveModal>
+              </div>
+          </div>
+      </AnimatedDiv>
     )
 }
 
