@@ -50,7 +50,7 @@ const Overview = () => {
         {t`Overview`}
       </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-5">
+      <div className="card bg-dark border-0 shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
@@ -69,7 +69,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-5">
+      <div className="card bg-dark border-0 shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
@@ -93,7 +93,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-5">
+      <div className="card bg-dark border-0 shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
