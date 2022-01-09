@@ -8,7 +8,6 @@ import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
 import { useState } from 'react'
-import {t} from "@lingui/macro";
 
 interface UseVestingProps {
     withdraw: () => Promise<void>
