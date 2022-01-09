@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import GradientButton from '@components/atoms/button/gradient-button'
 import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import CurrencyIcon from '@components/atoms/currency-icon'
-import { rewardSymbol } from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
@@ -28,7 +26,8 @@ const Vesting = () => {
         withdraw,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError
+        withdrawError,
+        isLoading
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -69,27 +68,27 @@ const Vesting = () => {
                   <TransactionApproveModal
                     show={showFormApproveModal}
                     onHide={() => setShowFormApproveModal(false)}
-                    title={t`Claim PCR Tokens?`}
+                    title={t`Claim confirmation`}
+                    btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
                     error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
                     success={withdrawTx.status === 'Success'}
-                    loading={withdrawTx.status === 'Mining'}
+                    loading={isLoading || withdrawTx.status === 'Mining'}
                   >
-                      <>
-                          <div className="row mb-4">
-                              <div className="col-6">
-                                  <div className="row mb-4">
-                                      <div className="col-6">
-                                          <DashNumber
-                                            label={t`Withdrawable`}
-                                            value={withdrawAble}
-                                            symbol="PCR"
-                                          />
-                                      </div>
-                                  </div>
-                              </div>
+                      <div className="my-5">
+                          <h3 className="mb-0 pb-0 text-center text-center text-muted">
+                              <Trans>Claim PCR Tokens</Trans>
+                          </h3>
+                          <div className="d-flex flex-column mb-4 text-center">
+                              <span className="display-2 my-3">
+                                  <FormattedNumber
+                                    value={withdrawAble}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={2}
+                                  />
+                              </span>
                           </div>
-                      </>
+                      </div>
                   </TransactionApproveModal>
               </div>
           </div>

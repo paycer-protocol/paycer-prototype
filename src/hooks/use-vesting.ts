@@ -16,6 +16,7 @@ interface UseVestingProps {
     amountWithdrawn: number
     withdrawTx: any
     withdrawError?: boolean
+    isLoading?: boolean
     showFormApproveModal: boolean
     startTime: string
     endTime: string
@@ -30,6 +31,7 @@ export default function useVesting(type):UseVestingProps {
     const vestingContract = new Contract(vestingAddress, vestingConfig.abi)
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+    const [isLoading, setLoading] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
@@ -70,6 +72,7 @@ export default function useVesting(type):UseVestingProps {
     startTime = BigNumber.isBigNumber(startTime) ? new Date(startTime * 1000).toLocaleDateString("en-US") + ', ' + new Date(startTime * 1000).toLocaleTimeString("en-US")  : ''
 
     const withdrawVesting = async () => {
+        setLoading(true)
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             await withdraw()
@@ -79,6 +82,8 @@ export default function useVesting(type):UseVestingProps {
         } catch(e) {
             setWithdrawError(true)
         }
+
+        setLoading(false)
     }
 
     return {
@@ -90,6 +95,7 @@ export default function useVesting(type):UseVestingProps {
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal,
+        isLoading,
         startTime,
         endTime
     }

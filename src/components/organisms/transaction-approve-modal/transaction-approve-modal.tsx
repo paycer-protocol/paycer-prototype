@@ -13,11 +13,12 @@ interface TransactionApproveModalProps {
   error?: boolean
   success?: boolean
   loading?: boolean
+  btnLabel?: string
   children?: ReactElement | string | number | null,
 }
 
 export default function TransactionApproveModal(props: TransactionApproveModalProps) {
-  const { show, onHide, onClick, title, children, error, success, loading } = props
+  const { show, onHide, onClick, title, children, error, success, loading, btnLabel } = props
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null} className="mb-5">
       <>
@@ -29,16 +30,18 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
         <Modal.Body className="pt-0">
           <div className="pb-3 mb-3">
             {children}
-            <div className="mt-4">
-              <TransactionStatus
+            {!show && (
+              <div className="mt-4">
+                <TransactionStatus
                   error={error}
                   success={success}
                   loading={loading}
-              />
-            </div>
+                />
+              </div>
+            )}
           </div>
           <GradientButton className="w-100" onClick={onClick} disabled={loading}>
-            {t`Approve`}
+            {btnLabel ? btnLabel : t`Approve`}
           </GradientButton>
           <div style={{position: 'absolute', left: '47.2%', top: '23%'}}>
             <Spinner animation="border" show={loading} />
