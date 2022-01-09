@@ -77,7 +77,7 @@ const calculateTotalInvested = (transactions, type = 'public') => {
 
 export const TokenSaleDashboardProvider = ({ children, dashboardData }) => {
 
-  const { totalInvest,  totalReceived } = calculateTotalInvested(dashboardData?.transactions, dashboardData?.type)
+  const { totalInvest, totalReceived } = calculateTotalInvested(dashboardData?.transactions, dashboardData?.type)
 
   return (
     <TokenSaleDashboardContext.Provider

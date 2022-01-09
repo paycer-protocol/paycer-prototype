@@ -30,14 +30,14 @@ const Overview = () => {
   return (
     <>
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-        <div className="display-4 fw-normal border-bottom pb-4 mb-5">{t`Overview`}</div>
+        <div className="display-4 fw-normal border-bottom pb-4 mb-5 text-center text-md-start">{t`Overview`}</div>
 
-        <div className="row justify-content-between align-items-center mb-5 mt-2">
-          <div className="col-8">
-            <img width="35" className="me-4" src="/assets/special-icons/candlestick-chart-svgrepo-com.svg" />
+        <div className="row justify-content-md-between align-items-center mb-5 mt-2">
+          <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
+            <img width="35" className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/candlestick-chart-svgrepo-com.svg" />
             <span>{t`Invested`}</span>
           </div>
-          <div className="col-4 d-flex">
+          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
             <span className={`text-${totalInvest > 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
               <FormattedNumber value={totalInvest || 0} />
@@ -46,12 +46,12 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="row justify-content-between align-items-center mb-5">
-          <div className="col-8">
-            <img width="35" className="me-4" src="/assets/special-icons/coins-svgrepo-com.svg" />
+        <div className="row justify-content-md-between align-items-center mb-5">
+          <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
+            <img width="35" className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/coins-svgrepo-com.svg" />
             {t`PCR Token amount`}
           </div>
-          <div className="col-4 d-flex">
+          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
             <span className={`text-${totalReceived > 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
               <FormattedNumber value={totalReceived || 0} />
@@ -65,12 +65,12 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="row justify-content-between align-items-center mb-5">
-          <div className="col-8">
-            <img width="39" style={{position: 'relative', left: '-3px' }} className="me-4" src="/assets/special-icons/loyalty-svgrepo-com.svg" />
+        <div className="row justify-content-md-between align-items-center mb-5">
+          <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
+            <img width="39" style={{position: 'relative', left: '-3px' }} className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/loyalty-svgrepo-com.svg" />
             <span style={{position: 'relative', left: '-3px'}}>{t`Loyalty Tier Level`}</span>
           </div>
-          <div className="col-4 d-flex">
+          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
             <span className={`text-success me-3`}>●</span>
             <span className="text-light">
              <TierLevel
@@ -81,12 +81,12 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="row justify-content-between align-items-center">
-          <div className="col-8">
-            <img width="35" className="me-4" src="/assets/special-icons/calendar-svgrepo-com.svg" />
+        <div className="row justify-content-md-between align-items-center">
+          <div className="col-12 col-md-8 mb-md-0 mb-3 d-flex align-items-center justify-content-center justify-content-md-start flex-column flex-md-row">
+            <img width="35" className="me-md-4 mb-3 mb-md-0" src="/assets/special-icons/calendar-svgrepo-com.svg" />
             {t`Vesting Phase`}
           </div>
-          <div className="col-4 d-flex">
+          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center align-items-md-start justify-content-md-start">
             <span className={`text-${dashboardData?.tokenAmount < 0 ? 'success' : 'primary'} me-3`}>●</span>
             <span className="text-light">
               {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
