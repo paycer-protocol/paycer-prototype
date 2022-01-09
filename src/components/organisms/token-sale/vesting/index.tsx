@@ -46,12 +46,12 @@ const Vesting = () => {
                       <img width="80" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
                   </div>
 
-                  <h3 className="mb-3 text-center fw-bold text-center">
+                  <h3 className="mb-3 text-center text-center text-muted">
                       <Trans>Claimable PCR Tokens</Trans>
                   </h3>
 
                   <div className="d-flex flex-column mb-4 text-center">
-                      <span className="display-2">
+                      <span className="display-2 my-3">
                           <FormattedNumber
                             value={withdrawAble}
                             minimumFractionDigits={2}
