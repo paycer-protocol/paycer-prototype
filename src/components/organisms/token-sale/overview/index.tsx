@@ -87,7 +87,7 @@ const Overview = () => {
                 </span>
             </div>
             <div className="col-auto">
-              <span className={`text-${totalReceived < 0 ? 'success' : 'primary'} me-3`}>●</span>
+              <span className={`text-${(totalReceived || totalAmount || 0) ? 'success' : 'primary'} me-3`}>●</span>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ const Overview = () => {
                 </span>
             </div>
             <div className="col-auto">
-              <span className={`text-${totalReceived ? 'success' : 'primary'} me-3`}>●</span>
+              <span className={`text-${(totalReceived || totalAmount || 0) ? 'success' : 'primary'} me-3`}>●</span>
             </div>
           </div>
         </div>
