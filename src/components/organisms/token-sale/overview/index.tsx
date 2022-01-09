@@ -28,7 +28,8 @@ const Overview = () => {
 
   const {
     startTime,
-    endTime
+    endTime,
+    totalAmount
   } = useVesting(dashboardData?.type)
 
   function renderVestingLabel() {
@@ -76,7 +77,7 @@ const Overview = () => {
                 {t`PCR Token amount`}
               </h6>
               <span className="h2 mb-0">
-                  <FormattedNumber value={totalReceived || 0} />
+                  <FormattedNumber value={totalReceived || totalAmount || 0} />
                 &nbsp;PCR
                 {(bonusPercentage &&
                   <span className="text-muted">
@@ -102,7 +103,7 @@ const Overview = () => {
               <span className="h2 mb-0">
                  <TierLevel
                    hasLegend
-                   tokenAmount={totalReceived}
+                   tokenAmount={totalReceived || totalAmount || 0}
                  />
                 </span>
             </div>
