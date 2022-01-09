@@ -48,7 +48,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                         <CurrencyIcon
                           style={{ marginTop: '4px' }}
                           className="ms-1"
-                          symbol="eth"
+                          symbol={wallet.etherSymbol}
                         />
                         <div className="pt-1 pb-1 mx-2">
                             <FormattedNumber
