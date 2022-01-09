@@ -7,22 +7,21 @@ import Vesting from '@components/organisms/token-sale/vesting'
 import Overview from '@components/organisms/token-sale/overview'
 
 export const LeftCol = styled.div`
-    width: 40%;
-    padding: 80px 0 80px 30px;
-
+    width: 50%;
+    padding: 40px 20px 40px 40px;
+    align-items: stretch;
     @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 25px;
+      width: 100%; padding: 40px 20px 20px 20px;    
     }
 `
 
 export const RightCol = styled.div`
-    width: 60%;
-    padding: 60px;
+    width: 50%;
+    padding: 40px 40px 40px 20px;
 
     @media only screen and (max-width : 978px) {
       width: 100%;
-      padding: 0 25px 25px 25px;
+      padding: 20px;
     }
 `
 
@@ -66,14 +65,14 @@ const TokenSaleDashboard = () => {
                             ?
                                 <Transactions />
                             :
-                            <div className="d-block d-md-flex w-100 p-md-5 align-items-stretch">
-                                <div className="w-100 w-md-50 p-3">
+                            <>
+                                <LeftCol>
                                     <Vesting />
-                                </div>
-                                <div className="w-100 w-md-50 p-3">
+                                </LeftCol>
+                                <RightCol>
                                     <Overview />
-                                </div>
-                            </div>
+                                </RightCol>
+                            </>
                         )}
                     </div>
                 </div>

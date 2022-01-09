@@ -63,11 +63,22 @@ export default function useVesting(type):UseVestingProps {
         args: [],
     }) ?? []
 
+    function getVestingMonths():number {
+        switch (type) {
+            case 'public':
+                return 6
+            case 'team':
+                return 36
+            default:
+                return 12
+        }
+    }
+
     withdrawAble = BigNumber.isBigNumber(withdrawAble) ? Number(formatUnits(withdrawAble, 18)) : 0
     totalAmount = BigNumber.isBigNumber(totalAmount) ? Number(formatUnits(totalAmount, 18)) : 0
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
     releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
-    const endTime = addMonth(new Date(startTime * 1000), 6).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
+    const endTime = addMonth(new Date(startTime * 1000), getVestingMonths()).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
     // @ts-ignore
     startTime = BigNumber.isBigNumber(startTime) ? new Date(startTime * 1000).toLocaleDateString("en-US") + ', ' + new Date(startTime * 1000).toLocaleTimeString("en-US")  : ''
 
