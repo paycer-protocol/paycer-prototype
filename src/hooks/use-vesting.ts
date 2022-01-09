@@ -105,15 +105,13 @@ export default function useVesting(type):UseVestingProps {
     // @ts-ignore
     startTime = startTime ? moment(startTime.toNumber() * 1000).format('MM/DD/YYYY, h:mm:ss a') : null
 
-
-
     const withdrawVesting = async () => {
         setLoading(true)
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             await withdraw()
             if (withdrawTx.status === 'Success' || withdrawTx.status === 'None') {
-                setShowFormApproveModal(false)
+
             }
         } catch(e) {
             setWithdrawError(true)

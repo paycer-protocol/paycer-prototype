@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import TierLevel from '@components/atoms/tier-level'
 import { FormattedNumber } from 'react-intl'
-import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 import useVesting from '@hooks/use-vesting'
 
 const AnimatedDiv = styled.div`
@@ -20,7 +20,7 @@ const Overview = () => {
     dashboardData,
     totalInvest,
     totalReceived,
-  } = useTokenSaleDashboard()
+  } = useVestingDashboard()
 
   const {
     bonusPercentage

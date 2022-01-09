@@ -5,7 +5,7 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -16,8 +16,8 @@ const AnimatedDiv = styled.div`
     }
 `
 
-const Vesting = () => {
-    const { dashboardData } = useTokenSaleDashboard()
+const Claim = () => {
+    const { dashboardData } = useVestingDashboard()
 
     const {
         withdrawAble,
@@ -36,9 +36,6 @@ const Vesting = () => {
 
     return (
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-          <div className="display-4 fw-normal mb-5 text-center text-md-start">
-              {t`Claim`}
-          </div>
           <div className="card bg-dark border-0 w-100 mb-0 shadow-none">
               <div className="card-body p-5">
                   <div className="d-flex justify-content-center mb-5">
@@ -107,4 +104,4 @@ const Vesting = () => {
     )
 }
 
-export default Vesting
+export default Claim

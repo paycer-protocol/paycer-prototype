@@ -4,7 +4,7 @@ import TxnLink from '@components/atoms/txn-link'
 import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price'
 import {FormattedNumber} from '@components/atoms/number'
 import Button from '@components/atoms/button'
-import { useTokenSaleDashboard } from "@context/token-sale-dashboard-context";
+import { useVestingDashboard } from "@context/vesting-dashboard-context";
 
 export interface DataTableProps {
   unixTimestamp: number
@@ -23,7 +23,7 @@ export interface DataTableProps {
 }
 
 const DataTable = (props: DataTableProps) => {
-  const { dashboardData } = useTokenSaleDashboard()
+  const { dashboardData } = useVestingDashboard()
   const [showTable, setShowTable] = useState(props?.initiallyOpen)
   const date = new Date(props.transactionDateTime)
   let received = 0

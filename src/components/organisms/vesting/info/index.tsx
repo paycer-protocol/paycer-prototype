@@ -1,11 +1,11 @@
 import React from 'react'
 import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
-import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 const KycProcessInfo = () => {
 
-    const { dashboardData } = useTokenSaleDashboard()
+    const { dashboardData } = useVestingDashboard()
 
     const {
         bonusPercentage,

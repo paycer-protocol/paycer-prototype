@@ -30,19 +30,19 @@ export interface TransactionProps {
   historicalUSDPrice: number
 }
 
-interface TokenSaleProps {
+interface VestingProps {
   dashboardData: DashboardProps,
   totalInvest?: number
   totalReceived?: number
 }
 
-export const TokenSaleDashboardContext = React.createContext<TokenSaleProps>({
+export const VestingDashboardContext = React.createContext<VestingProps>({
   dashboardData: {},
   totalInvest: 0,
   totalReceived: 0,
 })
 
-export const useTokenSaleDashboard = () => useContext(TokenSaleDashboardContext)
+export const useVestingDashboard = () => useContext(VestingDashboardContext)
 
 const calculateTotalInvested = (transactions, type = 'public') => {
 
@@ -75,12 +75,12 @@ const calculateTotalInvested = (transactions, type = 'public') => {
   }
 }
 
-export const TokenSaleDashboardProvider = ({ children, dashboardData }) => {
+export const VestingDashboardProvider = ({ children, dashboardData }) => {
 
   const { totalInvest, totalReceived } = calculateTotalInvested(dashboardData?.transactions, dashboardData?.type)
 
   return (
-    <TokenSaleDashboardContext.Provider
+    <VestingDashboardContext.Provider
       value={{
         dashboardData,
         totalInvest,
@@ -88,6 +88,6 @@ export const TokenSaleDashboardProvider = ({ children, dashboardData }) => {
       }}
     >
       {children}
-    </TokenSaleDashboardContext.Provider>
+    </VestingDashboardContext.Provider>
   )
 }

@@ -2,8 +2,8 @@ import React, {ReactElement} from 'react'
 import {t, Trans} from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import GradientButton from '@components/atoms/button/gradient-button'
-import TransactionStatus from "@components/organisms/transaction-status";
-import Spinner from "@components/atoms/spinner";
+import TransactionStatus from '@components/organisms/transaction-status'
+import Spinner from '@components/atoms/spinner'
 
 interface TransactionApproveModalProps {
   show: boolean
@@ -30,15 +30,13 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
         <Modal.Body className="pt-0">
           <div className="pb-3 mb-3">
             {children}
-            {!show && (
-              <div className="mt-4">
-                <TransactionStatus
+            <div className="mt-4">
+              <TransactionStatus
                   error={error}
                   success={success}
                   loading={loading}
-                />
-              </div>
-            )}
+              />
+            </div>
           </div>
           <GradientButton className="w-100" onClick={onClick} disabled={loading}>
             {btnLabel ? btnLabel : t`Approve`}

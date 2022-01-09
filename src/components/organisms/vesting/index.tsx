@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {t, Trans} from '@lingui/macro'
-import { TokenSaleDashboardProvider } from '@context/token-sale-dashboard-context'
+import { VestingDashboardProvider } from '@context/vesting-dashboard-context'
 import useTokenSale from '@hooks/use-token-sale'
 import useWallet from '@hooks/use-wallet'
 import Spinner from '@components/atoms/spinner'
@@ -9,7 +9,7 @@ import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import Dashboard from './dashboard'
 
-const TokenSale = () => {
+const Vesting = () => {
     const wallet = useWallet()
     const { tokenSaleData, loading, } = useTokenSale()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -28,11 +28,11 @@ const TokenSale = () => {
         return (
             <>
                 {tokenSaleData.map((dashboardData, index) => (
-                    <TokenSaleDashboardProvider dashboardData={dashboardData}>
+                    <VestingDashboardProvider dashboardData={dashboardData}>
                         <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
                             <Dashboard />
                         </div>
-                    </TokenSaleDashboardProvider>
+                    </VestingDashboardProvider>
                 ))}
             </>
         )
@@ -78,4 +78,4 @@ const TokenSale = () => {
     )
 }
 
-export default TokenSale
+export default Vesting
