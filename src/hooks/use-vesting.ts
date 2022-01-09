@@ -8,6 +8,7 @@ import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
 import { useState } from 'react'
+import moment from 'moment'
 
 interface UseVestingProps {
     withdraw: () => Promise<void>
@@ -20,6 +21,7 @@ interface UseVestingProps {
     showFormApproveModal: boolean
     startTime: string
     endTime: string
+    nextDistribution: string
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -74,13 +76,36 @@ export default function useVesting(type):UseVestingProps {
         }
     }
 
+    function getEndTime():any {
+        if (!startTime) {
+            return null
+        }
+        const momentStartTime = moment(startTime.toNumber() * 1000)
+        return momentStartTime.add(getVestingMonths(), 'months')
+
+    }
+
+    function calculateNextDistribution():any {
+        if (!startTime) {
+            return null
+        }
+        const momentStartTime = moment(startTime.toNumber() * 1000)
+        const currentTime = moment()
+        const timePassed = currentTime.diff(momentStartTime)
+        const passedIntervals = timePassed / (releaseInterval * 1000)
+        return momentStartTime.add(Math.ceil(passedIntervals) * releaseInterval, 'seconds')
+    }
+
     withdrawAble = BigNumber.isBigNumber(withdrawAble) ? Number(formatUnits(withdrawAble, 18)) : 0
     totalAmount = BigNumber.isBigNumber(totalAmount) ? Number(formatUnits(totalAmount, 18)) : 0
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
     releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
-    const endTime = addMonth(new Date(startTime * 1000), getVestingMonths()).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
+    const nextDistribution = calculateNextDistribution() && startTime ? calculateNextDistribution().format('MM/DD/YYYY, h:mm:ss a') : null
+    const endTime = calculateNextDistribution() && startTime ? getEndTime().format('MM/DD/YYYY, h:mm:ss a') : null
     // @ts-ignore
-    startTime = BigNumber.isBigNumber(startTime) ? new Date(startTime * 1000).toLocaleDateString("en-US") + ', ' + new Date(startTime * 1000).toLocaleTimeString("en-US")  : ''
+    startTime = startTime ? moment(startTime.toNumber() * 1000).format('MM/DD/YYYY, h:mm:ss a') : null
+
+
 
     const withdrawVesting = async () => {
         setLoading(true)
@@ -108,6 +133,7 @@ export default function useVesting(type):UseVestingProps {
         setShowFormApproveModal,
         isLoading,
         startTime,
-        endTime
+        endTime,
+        nextDistribution
     }
 }

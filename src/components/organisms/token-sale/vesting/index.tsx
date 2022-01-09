@@ -26,7 +26,8 @@ const Vesting = () => {
         showFormApproveModal,
         setShowFormApproveModal,
         withdrawError,
-        isLoading
+        isLoading,
+        nextDistribution
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -63,6 +64,17 @@ const Vesting = () => {
                           {t`Claim`}
                       </GradientButton>
                   </div>
+
+                  {(nextDistribution &&
+                    <small className="text-center pt-5 d-block">
+                        <div className="text-muted">
+                            {t`Next distribution`}
+                        </div>
+                        <div>
+                            {nextDistribution}
+                        </div>
+                    </small>
+                  )}
 
                   <TransactionApproveModal
                     show={showFormApproveModal}
