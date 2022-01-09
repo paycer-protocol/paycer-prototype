@@ -67,7 +67,8 @@ export default function useVesting(type):UseVestingProps {
     totalAmount = BigNumber.isBigNumber(totalAmount) ? Number(formatUnits(totalAmount, 18)) : 0
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
     releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
-    const endTime = addMonth(new Date(startTime * 1000), 6).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
+    const vestingMonths = type === 'public' ? 6 : type === 'team' ? 36 : 12
+    const endTime = addMonth(new Date(startTime * 1000), vestingMonths).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
     // @ts-ignore
     startTime = BigNumber.isBigNumber(startTime) ? new Date(startTime * 1000).toLocaleDateString("en-US") + ', ' + new Date(startTime * 1000).toLocaleTimeString("en-US")  : ''
 
