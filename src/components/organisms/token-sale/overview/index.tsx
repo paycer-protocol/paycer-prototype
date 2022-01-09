@@ -46,7 +46,7 @@ const Overview = () => {
 
   return (
     <AnimatedDiv className="list-group list-group-flush list-group-activity">
-      <div className="display-4 fw-normal pb-4 text-center text-md-start">
+      <div className="display-4 fw-normal mb-5 text-center text-md-start">
         {t`Overview`}
       </div>
 

@@ -35,7 +35,7 @@ const Vesting = () => {
 
     return (
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-          <div className="display-4 fw-normal pb-4 text-center text-md-start">
+          <div className="display-4 fw-normal mb-5 text-center text-md-start">
               {t`Claim`}
           </div>
           <div className="card bg-dark border-0 w-100 mb-0 shadow-none">
