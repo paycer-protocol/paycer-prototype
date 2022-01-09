@@ -1,8 +1,10 @@
 import { ChainId } from '@usedapp/core'
+import VestingAbi from '../deployments/mumbai/VestingAbi.json'
 
 /*TODO DEPLOY TO ALL NETWORKS */
 export default {
     [ChainId.Mumbai]: {
+        abi: VestingAbi.abi,
         private: {
             address: '0xc9f5Da44fd99D6aAf46582646cFf6648671578db'
         },

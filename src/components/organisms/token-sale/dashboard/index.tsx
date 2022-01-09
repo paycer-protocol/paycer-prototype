@@ -38,10 +38,10 @@ const TokenSaleDashboard = () => {
         switch (type) {
             case 'pre':
                 return t`Pre Sale`
-            case 'public':
-                return t`Public Sale`
-            default:
+            case 'private':
                 return t`Private Sale`
+            default:
+                return t`Public Sale`
         }
     }
 

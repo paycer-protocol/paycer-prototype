@@ -16,22 +16,6 @@ const AnimatedDiv = styled.div`
     }
 `
 
-const renderStateLabel = (state) => {
-  if (state === undefined) {
-    return t`Open`;
-  }
-
-  return state ? t`Confirmed` : t`Pending`
-}
-
-const getStateContext = (state) => {
-  if (state === undefined) {
-    return 'primary';
-  }
-
-  return state ? 'success' : 'warning'
-}
-
 const Overview = () => {
   const {
     dashboardData,
@@ -87,7 +71,7 @@ const Overview = () => {
             <span style={{position: 'relative', left: '-3px'}}>{t`Loyalty Tier Level`}</span>
           </div>
           <div className="col-4 d-flex">
-            <span className={`text-${totalReceived > 0 ? 'success' : 'primary'} me-3`}>●</span>
+            <span className={`text-success me-3`}>●</span>
             <span className="text-light">
              <TierLevel
                  hasLegend
