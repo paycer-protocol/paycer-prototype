@@ -114,7 +114,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0">
+      <div className="card bg-dark border-0 mb-0">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">

@@ -38,7 +38,7 @@ const Vesting = () => {
           <div className="display-4 fw-normal pb-4 text-center text-md-start">
               {t`Claim`}
           </div>
-          <div className="card bg-dark border-0 w-100">
+          <div className="card bg-dark border-0 w-100 mb-0">
               <div className="card-body">
                   <div className="d-flex justify-content-center mb-5">
                       <img width="80" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
