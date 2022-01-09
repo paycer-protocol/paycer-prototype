@@ -84,7 +84,7 @@ const Overview = () => {
         <div className="row justify-content-between align-items-center mb-5">
           <div className="col-8">
             <img width="39" style={{position: 'relative', left: '-3px' }} className="me-4" src="/assets/special-icons/loyalty-svgrepo-com.svg" />
-            {t`Loyalty Tier Level`}
+            <span style={{position: 'relative', left: '-3px'}}>{t`Loyalty Tier Level`}</span>
           </div>
           <div className="col-4 d-flex">
             <span className={`text-${totalReceived > 0 ? 'success' : 'primary'} me-3`}>●</span>

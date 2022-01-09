@@ -6,7 +6,7 @@ import {t, Trans} from '@lingui/macro'
 import GradientButton from '@components/atoms/button/gradient-button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
-import Dashboard from '../dashboard'
+import Dashboard from './dashboard'
 
 const TokenSale = () => {
     const {
