@@ -31,6 +31,18 @@ const Overview = () => {
     endTime
   } = useVesting(dashboardData?.type)
 
+  function renderVestingLabel() {
+    const type = dashboardData?.type
+    switch (type) {
+      case 'public':
+        return t`6 months`
+      case 'team':
+        return t`36 months`
+      default:
+        return t`12 months`
+    }
+  }
+
   return (
     <AnimatedDiv className="list-group list-group-flush list-group-activity">
       <div className="display-4 fw-normal pb-4 text-center text-md-start">
@@ -109,7 +121,7 @@ const Overview = () => {
                 {t`Vesting Phase`}
               </h6>
               <span className="h2 mb-0 d-block">
-                {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months` : t`6 months`}
+                {renderVestingLabel()}
               </span>
               {(startTime && endTime) && (
                 <small className="text-muted">

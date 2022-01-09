@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import GradientButton from '@components/atoms/button/gradient-button'
 import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
