@@ -58,19 +58,19 @@ const TokenSale = () => {
                 <h2 className="mb-0 text-center">
                     {t`Please connect to your wallet.`}
                 </h2>
-                <div className="w-25 mx-auto mt-4">
+                <div className="d-flex justify-content-center align-items-center mt-4">
                     <GradientButton
-                        type="submit"
-                        title={t`Claim`}
-                        className="px-5 w-100"
-                        onClick={() => setShowWalletProviderModal(true)}
+                      type="submit"
+                      title={t`Connect to a Wallet`}
+                      className="px-5"
+                      onClick={() => setShowWalletProviderModal(true)}
                     >
                         <Trans>Connect to a Wallet</Trans>
                     </GradientButton>
                     <WalletProvider
-                        providers={connectors}
-                        onHide={() => setShowWalletProviderModal(false)}
-                        show={showWalletProviderModal}
+                      providers={connectors}
+                      onHide={() => setShowWalletProviderModal(false)}
+                      show={showWalletProviderModal}
                     />
                 </div>
             </div>
