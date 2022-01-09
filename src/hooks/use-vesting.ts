@@ -1,6 +1,7 @@
 import { useContractCall, useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
+import addMonth from '../helpers/add-month'
 import { Contract } from '@ethersproject/contracts'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
@@ -16,6 +17,8 @@ interface UseVestingProps {
     withdrawTx: any
     withdrawError?: boolean
     showFormApproveModal: boolean
+    startTime: string
+    endTime: string
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -44,9 +47,27 @@ export default function useVesting(type):UseVestingProps {
         args: [wallet.address],
     }) ?? []
 
+    let [startTime] = useContractCall({
+        abi: new Interface(vestingConfig.abi),
+        address: vestingAddress,
+        method: 'startTime',
+        args: [],
+    }) ?? []
+
+    let [releaseInterval] = useContractCall({
+        abi: new Interface(vestingConfig.abi),
+        address: vestingAddress,
+        method: 'releaseInterval',
+        args: [],
+    }) ?? []
+    console.log(releaseInterval)
+
     withdrawAble = BigNumber.isBigNumber(withdrawAble) ? Number(formatUnits(withdrawAble, 18)) : 0
     totalAmount = BigNumber.isBigNumber(totalAmount) ? Number(formatUnits(totalAmount, 18)) : 0
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
+    releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
+    const endTime = addMonth(new Date(startTime * 1000), 6).toLocaleDateString("en-US") + ', ' +  addMonth(new Date(startTime * 1000), 6).toLocaleTimeString("en-US")
+    startTime = BigNumber.isBigNumber(startTime) ? new Date(startTime * 1000).toLocaleDateString("en-US") + ', ' + new Date(startTime * 1000).toLocaleTimeString("en-US")  : ''
 
     const withdrawVesting = async () => {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
@@ -68,6 +89,8 @@ export default function useVesting(type):UseVestingProps {
         withdrawError,
         withdraw: withdrawVesting,
         showFormApproveModal,
-        setShowFormApproveModal
+        setShowFormApproveModal,
+        startTime,
+        endTime
     }
 }

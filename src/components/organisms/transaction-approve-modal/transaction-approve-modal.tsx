@@ -40,7 +40,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
           <GradientButton className="w-100" onClick={onClick} disabled={loading}>
             {t`Approve`}
           </GradientButton>
-          <div style={{position: 'absolute', left: '50%', top: '30%'}}>
+          <div style={{position: 'absolute', left: '47.2%', top: '23%'}}>
             <Spinner animation="border" show={loading} />
           </div>
         </Modal.Body>

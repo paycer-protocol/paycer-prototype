@@ -4,6 +4,7 @@ import { t } from '@lingui/macro'
 import TierLevel from '@components/atoms/tier-level'
 import { FormattedNumber } from 'react-intl'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
+import useVesting from '@hooks/use-vesting'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -18,12 +19,17 @@ const Overview = () => {
   const {
     dashboardData,
     totalInvest,
-    totalReceived
+    totalReceived,
   } = useTokenSaleDashboard()
 
   const {
     bonusPercentage
   } = dashboardData
+
+  const {
+    startTime,
+    endTime
+  } = useVesting(dashboardData?.type)
 
   return (
     <AnimatedDiv className="list-group list-group-flush list-group-activity">
@@ -102,12 +108,17 @@ const Overview = () => {
               <h6 className="text-uppercase text-muted mb-2">
                 {t`Vesting Phase`}
               </h6>
-              <span className="h2 mb-0">
-                  {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months after TGE` : t`6 months after TGE`}
-                </span>
+              <span className="h2 mb-0 d-block">
+                {dashboardData?.type === 'private' || dashboardData?.type === 'pre' ? t`12 months` : t`6 months`}
+              </span>
+              {(startTime && endTime) && (
+                <small className="text-muted">
+                  {startTime} - {endTime}
+                </small>
+              )}
             </div>
             <div className="col-auto">
-              <span className={`text-${totalReceived ? 'success' : 'primary'} me-3`}>●</span>
+              <span className={`text-${startTime && endTime ? 'success' : 'primary'} me-3`}>●</span>
             </div>
           </div>
         </div>
