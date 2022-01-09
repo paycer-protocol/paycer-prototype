@@ -5,19 +5,19 @@ export default {
     [ChainId.Polygon]: {
         abi: VestingAbi.abi,
         private: {
-            address: '##todo##'
+            address: '0x7Fd3DA382bcF1C1d66813E3a8d1b12eE56368618'
         },
         pre: {
-            address: '##todo##'
+            address: '0xfd7EC62C0d20C799b01E3D61EC53A2780893fc10'
         },
         public: {
-            address: '##todo##'
+            address: '0x35D186198D8429f2ED678bE7C6158f974e7c7BBd'
         },
         team: {
-            address: '##todo##'
+            address: '0xB3e2b6a260B967aCa2875d687eb7099Cd04537DE'
         },
         advisor: {
-            address: '##todo##'
+            address: '0x4702f9794d0B8DEDD55a488D8198a1781396BCE6'
         }
     },
     [ChainId.Mumbai]: {
