@@ -10,16 +10,8 @@ import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useTokenSaleDashboard } from '@context/token-sale-dashboard-context'
 
-
-export const StyledVestingCard = styled.div`
-    border: 1px solid #2c2f4c!important;
-`
-
 const Vesting = () => {
-
-    const {
-        dashboardData
-    } = useTokenSaleDashboard()
+    const { dashboardData } = useTokenSaleDashboard()
 
     const {
         withdrawAble,
@@ -35,7 +27,7 @@ const Vesting = () => {
     }
 
     return (
-        <StyledVestingCard className="card bg-dark border-0 mb-0">
+        <div className="card bg-dark border-0 mb-0">
             <div className="card-body">
                 <div className="d-flex justify-content-center mb-5">
                     <img width="100" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
@@ -98,7 +90,7 @@ const Vesting = () => {
                 </>
                 </TransactionApproveModal>
         </div>
-    </StyledVestingCard>
+    </div>
     )
 }
 

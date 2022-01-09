@@ -11,6 +11,8 @@ import { useState } from 'react'
 interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
+    totalAmount: number
+    amountWithdrawn: number
     withdrawTx: any
     withdrawError?: boolean
     showFormApproveModal: boolean
@@ -28,17 +30,23 @@ export default function useVesting(type):UseVestingProps {
     const [withdrawError, setWithdrawError] = useState(false)
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
-    const getWithdrawable = (): number => {
-        const [result] = useContractCall(
-            {
-                abi: new Interface(vestingConfig.abi),
-                address: vestingAddress,
-                method: 'withdrawable',
-                args: [wallet.address],
-            }
-        ) ?? []
-        return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
-    }
+    let [withdrawAble] = useContractCall({
+        abi: new Interface(vestingConfig.abi),
+        address: vestingAddress,
+        method: 'withdrawable',
+        args: [wallet.address],
+    }) ?? []
+
+    let [totalAmount, amountWithdrawn] = useContractCall({
+        abi: new Interface(vestingConfig.abi),
+        address: vestingAddress,
+        method: 'recipients',
+        args: [wallet.address],
+    }) ?? []
+
+    withdrawAble = BigNumber.isBigNumber(withdrawAble) ? Number(formatUnits(withdrawAble, 18)) : 0
+    totalAmount = BigNumber.isBigNumber(totalAmount) ? Number(formatUnits(totalAmount, 18)) : 0
+    amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
 
     const withdrawVesting = async () => {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
@@ -53,7 +61,9 @@ export default function useVesting(type):UseVestingProps {
     }
 
     return {
-        withdrawAble: getWithdrawable(),
+        withdrawAble,
+        totalAmount,
+        amountWithdrawn,
         withdrawTx,
         withdrawError,
         withdraw: withdrawVesting,

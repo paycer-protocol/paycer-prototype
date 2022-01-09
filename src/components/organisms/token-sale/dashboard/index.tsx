@@ -27,7 +27,6 @@ export const RightCol = styled.div`
 `
 
 const TokenSaleDashboard = () => {
-
     const { dashboardData } = useTokenSaleDashboard()
     const transactions = dashboardData?.transactions
     const [transactionTabActive, setTransactionTabActive] = useState(false)
@@ -39,8 +38,12 @@ const TokenSaleDashboard = () => {
                 return t`Pre Sale`
             case 'private':
                 return t`Private Sale`
-            default:
+            case 'public':
                 return t`Public Sale`
+            case 'team':
+                return t`Team distribution`
+            case 'advisor':
+                return t`Advisor distribution`
         }
     }
 
