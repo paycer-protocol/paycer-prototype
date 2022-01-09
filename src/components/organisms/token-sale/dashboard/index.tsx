@@ -21,11 +21,10 @@ export const RightCol = styled.div`
     padding: 60px;
 
     @media only screen and (max-width : 978px) {
-        width: 100%;
-        padding: 25px;
+      width: 100%;
+      padding: 0 25px 25px 25px;
     }
 `
-
 
 const TokenSaleDashboard = () => {
 
