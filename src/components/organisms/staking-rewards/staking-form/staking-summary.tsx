@@ -39,7 +39,7 @@ export default function StakingSummary() {
         <div className="col-6">
           <StakeContainer className="mb-5">
             <DashNumber
-              label={t`Token Balance`}
+              label={t`Current Token Balance`}
               value={initialValues.tokenBalance}
               symbol={initialValues.rewardSymbol}
             />

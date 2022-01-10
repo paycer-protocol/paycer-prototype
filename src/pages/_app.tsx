@@ -27,4 +27,8 @@ const App = ({ Component, pageProps }: AppProps) => {
   )
 }
 
+export async function getStaticProps(context) {
+   alert("HI")
+}
+
 export default App

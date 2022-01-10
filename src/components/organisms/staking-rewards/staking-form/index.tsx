@@ -1,33 +1,50 @@
 import React from 'react'
-import { t, Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import * as Yup from 'yup'
-import Form from '@components/atoms/form/form'
+import { FormikValues } from 'formik'
+import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import Form from '@components/atoms/form/form'
 import useToken from '@hooks/use-token'
-import useStakingRewards from '@hooks/use-staking-rewards'
+import useWallet from '@hooks/use-wallet'
+import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
-import TokenInput from './fields/token-input'
 import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
-import StakingSummary from './staking-summary'
 import { StakingProps } from '../types'
-import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import truncateText from '../../../../helpers/truncate-text'
 
 export default function StakingForm() {
-  const stakingRewards = useStakingRewards()
-  const token = useToken(rewardSymbol)
+  const wallet = useWallet()
 
+  const {
+    withdraw,
+    deposit,
+    stakedBalance,
+    rewardRate,
+    withdrawTx,
+    approveTx,
+    depositTx,
+    showFormApproveModal,
+    setShowFormApproveModal,
+    withdrawError,
+    depositError,
+    isLoading
+  } = useStaking()
+
+  const token = useToken(rewardSymbol)
   const tokenBalance = token.tokenBalance()
-  const stakedBalance = stakingRewards.stakedBalance()
-  const rewardRate = stakingRewards.rewardRate()
 
   const initialValues: StakingProps = {
     rewardSymbol,
     stakedBalance,
     tokenBalance,
     rewardRate,
-    stakeRange: 0,
+    stakeRange: stakedBalance ? (stakedBalance * 100) / (stakedBalance + tokenBalance) : 0,
     depositFee,
     withdrawFee,
     disabled: true,
@@ -38,14 +55,17 @@ export default function StakingForm() {
     tokenBalance: Yup.number().min(0).required(),
   })
 
-  const handleSubmit = (values: StakingProps) => {
+  const handleSubmit = () => {
+    setShowFormApproveModal(true)
+  }
+
+  const handleStaking = async (values: FormikValues) => {
     if (values.stakedBalance > initialValues.stakedBalance) {
       const stakeAmount = values.stakedBalance - initialValues.stakedBalance
-      console.log('stakeAmount', values.stakedBalance, initialValues.stakedBalance, stakeAmount)
-      stakingRewards.stake(stakeAmount, 2)
+      await deposit(stakeAmount)
     } else {
       const withdrawAmount = initialValues.stakedBalance - values.stakedBalance
-      stakingRewards.withdraw(withdrawAmount)
+      await withdraw(withdrawAmount)
     }
   }
 
@@ -57,46 +77,147 @@ export default function StakingForm() {
       enableReinitialize
     >
       {({ values }) => {
-        if (values.disabled) {
-          return <StakingSummary />
-        }
-
         return (
-          <div>
-            <div className="d-flex align-items-center justify-content-between mb-4">
-              <h2 className="m-0"><Trans>Staking</Trans></h2>
-              <span>{initialValues.rewardRate}% <Trans>APY</Trans></span>
-            </div>
-            <div className="mb-5">
-              <StakeRangeSlider />
-            </div>
-            <div className="row mb-4">
-              <div className="col-6">
-                <TokenInput />
+          <>
+            <div>
+              <div className="d-flex mb-4">
+                <label className="form-label">
+                  {t`APY`}
+                </label>
+                <span className="ps-3">{initialValues.rewardRate}%</span>
               </div>
-              <div className="col-6">
-                <StakedInput />
+              <div className="mb-2 pb-2">
+                <StakeRangeSlider />
               </div>
+
+              <div className="border-bottom mb-5 py-5">
+                <div className="row">
+                  <div className="col-12 col-md-6 pb-3 pb-md-0">
+                    <label className="form-label">
+                      {values.stakedBalance !== initialValues.stakedBalance  ? t`Token Balance after` : t` Current Token Balance`}
+                    </label>
+
+                    <div className="form-control bg-transparent border-0 ps-0 pt-0 pt-md-3">
+                      <CurrencyIcon
+                        symbol='PCR'
+                        className="me-2"
+                        width={28}
+                        height={28}
+                        style={{marginTop: '-2px', marginLeft: '-5px'}}
+                      />
+                      <FormattedNumber
+                        value={values.tokenBalance}
+                        minimumFractionDigits={2}
+                        maximumFractionDigits={4}
+                      />
+                      &nbsp;
+                      {t`PCR`}
+                    </div>
+
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <StakedInput />
+                  </div>
+                </div>
+              </div>
+              <div className="mb-4 pb-md-3">
+                <div className="row mb-5">
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Daily rewards`}
+                      value={values.stakedBalance * values.rewardRate / 100 / 365}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Monthly rewards`}
+                      value={values.stakedBalance * values.rewardRate / 100 / 12}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                </div>
+                <RewardFee />
+              </div>
+              <SubmitButton />
             </div>
-            <div className="row mb-5">
-              <div className="col-6">
-                <DashNumber
-                  label={t`Daily rewards`}
-                  value={values.stakedBalance * values.rewardRate / 100 / 365}
-                  symbol={values.rewardSymbol}
-                />
-              </div>
-              <div className="col-6">
-                <DashNumber
-                  label={t`Monthly rewards`}
-                  value={values.stakedBalance * values.rewardRate / 100 / 30}
-                  symbol={values.rewardSymbol}
-                />
-              </div>
-            </div>
-            <SubmitButton />
-            <RewardFee />
-          </div>
+
+            <TransactionApproveModal
+              show={showFormApproveModal}
+              onHide={() => setShowFormApproveModal(false)}
+              title={t`Stake the current Selection?`}
+              onClick={() => handleStaking(values)}
+              successMessage={t`The transfer is on the way.`}
+              error={
+                depositTx.status === 'Fail' ||
+                depositTx.status === 'Exception' ||
+                approveTx.status === 'Fail' ||
+                approveTx.status === 'Exception' ||
+                withdrawTx.status === 'Fail' ||
+                withdrawTx.status === 'Exception' ||
+                withdrawError || depositError
+              }
+              success={
+                depositTx.status === 'Success' ||
+                withdrawTx.status === 'Success'
+              }
+              loading={
+                depositTx.status === 'Mining' ||
+                withdrawTx.status === 'Mining' ||
+                approveTx.status === 'Mining' ||
+                isLoading
+              }
+            >
+              <>
+                <div className="row mb-4">
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Staked`}
+                      value={values.stakedBalance}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Balance after`}
+                      value={values.tokenBalance}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                </div>
+
+                <div className="row mb-4">
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Daily rewards`}
+                      value={values.stakedBalance * values.rewardRate / 100 / 365}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                  <div className="col-6">
+                    <DashNumber
+                      label={t`Monthly rewards`}
+                      value={values.stakedBalance * values.rewardRate / 100 / 30}
+                      symbol={values.rewardSymbol}
+                    />
+                  </div>
+                </div>
+
+                {wallet.isConnected &&
+                  <div className="row mb-4">
+                    <div className="col-6">
+                      <div className="d-flex flex-column">
+                        <span className="text-muted mb-1">{t`Transfer from:`}</span>
+                        <span>{truncateText(wallet.address, wallet.address.length / 2 )}</span>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+                <RewardFee />
+              </>
+            </TransactionApproveModal>
+          </>
         )
       }}
     </Form>

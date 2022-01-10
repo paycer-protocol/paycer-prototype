@@ -6,12 +6,15 @@ import { useEthers } from '@usedapp/core'
 import useToken from '../../../hooks/use-token'
 import {toast} from "react-toastify";
 import {t} from "@lingui/macro";
+import CurrencyIcon from "@components/atoms/currency-icon";
+import {FormattedNumber} from "../../atoms/number/formatted-number";
 
 const AddPaycerToken = () => {
     const { library, chainId } = useEthers()
     const wallet = useWallet()
     const token = useToken('PCR')
-    const { tokenAddress, symbol, decimals } = token
+    const { tokenAddress, symbol, decimals, tokenBalance } = token
+    const balance = tokenBalance()
 
     const addToken = async () => {
 
@@ -54,14 +57,23 @@ const AddPaycerToken = () => {
 
     return (
       <Button
-          className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle"
+          className="d-flex align-items-center justify-content-center bg-dark"
           onClick={async () => {
             await addToken()
           }}
       >
-          <span>
-            <img width="28" src={`/assets/icons/pcr.svg`} alt="Add PCR token" />
-          </span>
+         <CurrencyIcon
+             width={25}
+             height={25}
+             symbol={symbol}
+         />
+        <div className="pt-1 pb-1 mx-2">
+            <FormattedNumber
+                value={balance}
+                minimumFractionDigits={2}
+                maximumFractionDigits={4}
+            />
+        </div>
       </Button>
     )
 }

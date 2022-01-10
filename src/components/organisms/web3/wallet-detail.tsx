@@ -73,7 +73,7 @@ const AccountBalance = () => {
                 </p>
             </div>
             <CurrencyIcon
-              symbol="eth"
+              symbol={wallet.etherSymbol}
               className="ms-2 mt-3"
               width={40}
               height={40}

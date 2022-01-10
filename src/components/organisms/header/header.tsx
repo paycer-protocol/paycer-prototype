@@ -116,9 +116,6 @@ const Header = () => {
                       </ul>
                   </div>
               </div>
-              <DemoBadge>
-                  Demo
-              </DemoBadge>
           </header>
           <OffCanvas
             show={showModalNav}

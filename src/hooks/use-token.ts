@@ -9,7 +9,6 @@ export default function useToken(symbol: string) {
   const { account, chainId } = useEthers()
   const token = tokenProvider[symbol]
   const tokenAddress = token.chainAddresses[chainId || ChainId.Mainnet]
-
   return {
     tokenAddress,
     decimals: token.decimals,

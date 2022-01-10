@@ -10,5 +10,11 @@ export default [
         url: 'https://bscscan.com',
         txnSearchParam: '/tx/',
         chain: 'bsc'
+    },
+    {
+        label: 'Polygon',
+        url: 'https://polygonscan.com',
+        txnSearchParam: '/tx/',
+        chain: 'matic'
     }
 ]

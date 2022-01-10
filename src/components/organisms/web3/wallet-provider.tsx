@@ -15,7 +15,6 @@ export interface WalletProviderProps {
   onHide?: any
 }
 
-
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], show = false, onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
