@@ -120,7 +120,7 @@ export default function ClaimSummary() {
       >
         <div className="my-5">
           <h3 className="mb-0 pb-0 text-center text-center text-muted">
-            <Trans>Claim PCR Tokens</Trans>
+            <Trans>Claim PCR</Trans>
           </h3>
           <div className="d-flex flex-column mb-4 text-center">
             <span className="display-2 my-3">
@@ -129,6 +129,12 @@ export default function ClaimSummary() {
                     minimumFractionDigits={2}
                     maximumFractionDigits={2}
                 />
+              <CurrencyIcon
+                  style={{position: 'relative', top: '-4px'}}
+                  width={70}
+                  height={70}
+                  symbol="PCR"
+              />
             </span>
           </div>
             {wallet.isConnected &&

@@ -10,6 +10,7 @@ import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
 import useWallet from "@hooks/use-wallet";
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -99,7 +100,7 @@ const Claim = () => {
                   >
                       <div className="my-5">
                           <h3 className="mb-0 pb-0 text-center text-center text-muted">
-                              <Trans>Claim PCR Tokens</Trans>
+                              <Trans>Claim PCR</Trans>
                           </h3>
                           <div className="d-flex flex-column mb-5 text-center">
                               <span className="display-2 my-3">
@@ -108,6 +109,12 @@ const Claim = () => {
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                   />
+                                 <CurrencyIcon
+                                     style={{position: 'relative', top: '-4px'}}
+                                     width={70}
+                                     height={70}
+                                     symbol="PCR"
+                                 />
                               </span>
                           </div>
                           <div className="w-75 m-auto">

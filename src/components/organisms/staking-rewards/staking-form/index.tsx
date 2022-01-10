@@ -169,51 +169,66 @@ export default function StakingForm() {
               }
             >
               <>
-                <div className="row mb-4">
-                  <div className="col-6">
-                    <DashNumber
-                      label={t`Staked`}
-                      value={values.stakedBalance}
-                      symbol={values.rewardSymbol}
-                    />
-                  </div>
-                  <div className="col-6">
-                    <DashNumber
-                      label={t`Balance after`}
-                      value={values.tokenBalance}
-                      symbol={values.rewardSymbol}
-                    />
-                  </div>
-                </div>
 
-                <div className="row mb-4">
-                  <div className="col-6">
-                    <DashNumber
-                      label={t`Daily rewards`}
-                      value={values.stakedBalance * values.rewardRate / 100 / 365}
-                      symbol={values.rewardSymbol}
-                    />
-                  </div>
-                  <div className="col-6">
-                    <DashNumber
-                      label={t`Monthly rewards`}
-                      value={values.stakedBalance * values.rewardRate / 100 / 30}
-                      symbol={values.rewardSymbol}
-                    />
-                  </div>
-                </div>
 
-                {wallet.isConnected &&
-                  <div className="row mb-4">
-                    <div className="col-6">
-                      <div className="d-flex flex-column">
-                        <span className="text-muted mb-1">{t`Transfer from:`}</span>
-                        <span>{truncateText(wallet.address, wallet.address.length / 2 )}</span>
+                <div className="card blur-background">
+                  <div className="card-body">
+                    <div className="row mb-4">
+                      <div className="col-6">
+                        {t`Staked:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <DashNumber
+                            value={values.stakedBalance}
+                            symbol={values.rewardSymbol}
+                        />
                       </div>
                     </div>
+                    <div className="row mb-4">
+                      <div className="col-6">
+                        {t`Balance after:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <DashNumber
+                            value={values.tokenBalance}
+                            symbol={values.rewardSymbol}
+                        />
+                      </div>
+                    </div>
+                    <div className="row mb-4">
+                      <div className="col-6">
+                        {t`Daily rewards:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <DashNumber
+                            value={values.stakedBalance * values.rewardRate / 100 / 365}
+                            symbol={values.rewardSymbol}
+                        />
+                      </div>
+                    </div>
+                    <div className="row mb-4">
+                      <div className="col-6">
+                        {t`Monthly rewards:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <DashNumber
+                            value={values.stakedBalance * values.rewardRate / 100 / 30}
+                            symbol={values.rewardSymbol}
+                        />
+                      </div>
+                    </div>
+                    {wallet.isConnected &&
+                    <div className="row">
+                      <div className="col-6">
+                        {t`Transfer from:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        {truncateText(wallet.address, wallet.address.length / 2 )}
+                      </div>
+                    </div>
+                    }
                   </div>
-                }
-
+                </div>
                 <RewardFee />
               </>
             </TransactionApproveModal>
