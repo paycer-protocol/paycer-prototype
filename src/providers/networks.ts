@@ -86,17 +86,17 @@ export const mainNetProviders: INetworkProvider = {
         rpcUrls: ['https://mainnet.infura.io/v3'],
         blockExplorerUrls: [explorers[ChainId.Mainnet]],
     },
-    [ChainId.BSC]: {
-        chainId: '0x38',
-        chainName: 'BSC',
-        nativeCurrency: {
-            name: 'Binance Coin',
-            symbol: 'BNB',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.BSC]],
-        blockExplorerUrls: [explorers[ChainId.BSC]],
-    },
+    // [ChainId.BSC]: {
+    //     chainId: '0x38',
+    //     chainName: 'BSC',
+    //     nativeCurrency: {
+    //         name: 'Binance Coin',
+    //         symbol: 'BNB',
+    //         decimals: 18,
+    //     },
+    //     rpcUrls: [rpcUrls[ChainId.BSC]],
+    //     blockExplorerUrls: [explorers[ChainId.BSC]],
+    // },
     [ChainId.Polygon]: {
         chainId: '0x89',
         chainName: 'Polygon - Mainnet',
@@ -108,15 +108,15 @@ export const mainNetProviders: INetworkProvider = {
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
     },
-    [ChainId.Mumbai]: {
-        chainId: '0x13881',
-        chainName: 'Polygon - Testnet',
-        nativeCurrency: {
-            name: 'Polygon (MATIC Mumbai)',
-            symbol: 'MATIC',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Mumbai]],
-        blockExplorerUrls: [explorers[ChainId.Mumbai]],
-    },
+    // [ChainId.Mumbai]: {
+    //     chainId: '0x13881',
+    //     chainName: 'Polygon - Testnet',
+    //     nativeCurrency: {
+    //         name: 'Polygon (MATIC Mumbai)',
+    //         symbol: 'MATIC',
+    //         decimals: 18,
+    //     },
+    //     rpcUrls: [rpcUrls[ChainId.Mumbai]],
+    //     blockExplorerUrls: [explorers[ChainId.Mumbai]],
+    // },
 }

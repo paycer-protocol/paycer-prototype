@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { supportedChains, supportedStakingChains } from './network'
+import {supportedChains, supportedStakingChains, supportedVestingChains} from './network'
 
 export const routes = [
   {
@@ -34,6 +34,6 @@ export const routes = [
   {
     label: t`Vesting`,
     path: '/vesting',
-    supportedChains
+    supportedChains: supportedVestingChains
   }
 ]

@@ -3,7 +3,7 @@ import { DAppProvider, Config, ChainId } from '@usedapp/core'
 import { rpcUrls } from '@providers/rpcs'
 
 const config: Config = {
-    readOnlyChainId: ChainId.Mainnet,
+    readOnlyChainId: ChainId.Polygon,
     readOnlyUrls: rpcUrls,
 }
 

@@ -2,15 +2,16 @@ import { ChainId } from '@usedapp/core'
 
 export const supportedChains = [
   ChainId.Mainnet,
-  ChainId.Kovan,
   ChainId.Polygon,
-  ChainId.BSC,
   ChainId.Mumbai,
-  ChainId.Hardhat,
 ]
 
 export const supportedStakingChains = [
-  ChainId.Mainnet,
+  ChainId.Polygon,
+  ChainId.Mumbai,
+]
+
+export const supportedVestingChains = [
   ChainId.Polygon,
   ChainId.Mumbai,
 ]
