@@ -14,9 +14,11 @@ const DashNumber = (props: DashNumberProps) => {
 
     return (
       <div className="d-flex flex-column">
-          <span className="text-muted mb-1">
-              {label}
-          </span>
+          {label &&
+              <span className="text-muted mb-1">
+                  {label}
+              </span>
+          }
           <span>
             <FormattedNumber
               value={value}
