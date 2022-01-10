@@ -27,6 +27,7 @@ interface UseStakingProps {
     withdrawError?: boolean
     depositError?: boolean
     claimError?: boolean
+    isLoading?: boolean
 }
 
 export default function useStaking():UseStakingProps {
@@ -36,6 +37,7 @@ export default function useStaking():UseStakingProps {
     const staking = stakingConfig.contract
     const stakingContract = new Contract(staking.address, staking.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+    const [isLoading, setLoading] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const [depositError, setDepositError] = useState(false)
     const [claimError, setClaimError] = useState(false)
@@ -88,6 +90,7 @@ export default function useStaking():UseStakingProps {
     const depositStaking = async (amount: number) => {
 
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
+        setLoading(true)
         try {
             if (amount - formattedAllowance <= 0) {
                 await approve(staking.address, parseUnits(String(amount), 18))
@@ -101,10 +104,12 @@ export default function useStaking():UseStakingProps {
         } catch(e) {
             setDepositError(true)
         }
+        setLoading(false)
     }
 
     const withdrawStaking = async (amount: number) => {
         /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
+        setLoading(true)
         try {
             if (amount - formattedAllowance <= 0) {
                 await approve(staking.address, parseUnits(String(amount), 18))
@@ -118,14 +123,17 @@ export default function useStaking():UseStakingProps {
         } catch(e) {
             setWithdrawError(true)
         }
+        setLoading(false)
     }
 
     const claimStaking = async () => {
+        setLoading(true)
         try {
           await claim(wallet.address)
         } catch(e) {
             setClaimError(true)
         }
+        setLoading(true)
     }
 
     return {
@@ -149,6 +157,7 @@ export default function useStaking():UseStakingProps {
         setShowFormApproveModal,
         withdrawError,
         depositError,
-        claimError
+        claimError,
+        isLoading
     }
 }

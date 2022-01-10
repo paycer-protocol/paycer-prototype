@@ -7,16 +7,19 @@ import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
 import useToken from '@hooks/use-token'
+import useWallet from '@hooks/use-wallet'
 import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
 import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import { StakingProps } from '../types'
-import CurrencyIcon from "@components/atoms/currency-icon";
-import { FormattedNumber } from "../../../atoms/number/formatted-number";
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import truncateText from '../../../../helpers/truncate-text'
 
 export default function StakingForm() {
+  const wallet = useWallet()
 
   const {
     withdraw,
@@ -29,7 +32,8 @@ export default function StakingForm() {
     showFormApproveModal,
     setShowFormApproveModal,
     withdrawError,
-    depositError
+    depositError,
+    isLoading
   } = useStaking()
 
   const token = useToken(rewardSymbol)
@@ -143,6 +147,7 @@ export default function StakingForm() {
               onHide={() => setShowFormApproveModal(false)}
               title={t`Stake the current Selection?`}
               onClick={() => handleStaking(values)}
+              successMessage={t`The transfer is on the way.`}
               error={
                 depositTx.status === 'Fail' ||
                 depositTx.status === 'Exception' ||
@@ -159,7 +164,8 @@ export default function StakingForm() {
               loading={
                 depositTx.status === 'Mining' ||
                 withdrawTx.status === 'Mining' ||
-                approveTx.status === 'Mining'
+                approveTx.status === 'Mining' ||
+                isLoading
               }
             >
               <>
@@ -196,6 +202,18 @@ export default function StakingForm() {
                     />
                   </div>
                 </div>
+
+                {wallet.isConnected &&
+                  <div className="row mb-4">
+                    <div className="col-6">
+                      <div className="d-flex flex-column">
+                        <span className="text-muted mb-1">{t`Transfer from:`}</span>
+                        <span>{truncateText(wallet.address, wallet.address.length / 2 )}</span>
+                      </div>
+                    </div>
+                  </div>
+                }
+
                 <RewardFee />
               </>
             </TransactionApproveModal>
