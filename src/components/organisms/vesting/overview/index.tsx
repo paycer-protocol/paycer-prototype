@@ -58,7 +58,7 @@ const Overview = () => {
                 {t`Invested`}
               </h6>
               <span className="h2 mb-0">
-                  <FormattedNumber value={totalInvest || 0} />
+                  <FormattedNumber value={totalInvest || 0} /> USDC
                 </span>
               <span className="badge bg-success-soft mt-n1" />
             </div>
