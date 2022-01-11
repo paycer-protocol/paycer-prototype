@@ -88,7 +88,7 @@ const Claim = () => {
                     onClick={() => handleSubmit()}
                     error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
                     success={withdrawTx.status === 'Success'}
-                    successMessage={t`The transfer is on the way. Tokens will be transferred to you in 1-2 minutes.`}
+                    successMessage={t`The tokens will be transferred to your wallet.`}
                     loading={isLoading || withdrawTx.status === 'Mining'}
                     /*additionalSuccessContent={
                         <div className="d-flex justify-content-center">

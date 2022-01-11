@@ -29,7 +29,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
       return t`Something went wrong!`
     }
     if (success) {
-      return t`Request Submitted`
+      return t`Transaction submitted`
     }
     if (loading) {
       return t`Loading ...`
@@ -43,7 +43,14 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
       return (
           <>
             <div className="d-flex justify-content-center mt-3 mb-5">
-              <Icon component={CheckAll} fill="#00D97E" size={100} />
+                <div className="sa">
+                    <div className="sa-success">
+                        <div className="sa-success-tip" />
+                        <div className="sa-success-long" />
+                        <div className="sa-success-placeholder" />
+                        <div className="sa-success-fix" />
+                    </div>
+                </div>
             </div>
 
             <p className="mb-0 text-center text-muted">{successMessage}</p>
@@ -55,7 +62,16 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
       return (
           <>
             <div className="d-flex justify-content-center mt-3 mb-5">
-              <Icon component={Error} fill="#E63757" size={100} />
+                <div className="sa">
+                    <div className="sa-error">
+                        <div className="sa-error-x">
+                            <div className="sa-error-left" />
+                            <div className="sa-error-right" />
+                        </div>
+                        <div className="sa-error-placeholder" />
+                        <div className="sa-error-fix" />
+                    </div>
+                </div>
             </div>
 
             <p className="mb-0 text-center text-muted">{t`Transaction failed, please try again or contact the Support`}</p>
