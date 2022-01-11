@@ -90,13 +90,13 @@ const Claim = () => {
                     success={withdrawTx.status === 'Success'}
                     successMessage={t`The transfer is on the way. Tokens will be transferred to you in 1-2 minutes.`}
                     loading={isLoading || withdrawTx.status === 'Mining'}
-                    additionalSuccessContent={
+                    /*additionalSuccessContent={
                         <div className="d-flex justify-content-center">
                             <GradientButton className="w-100 mt-5" onClick={() => router.push('/staking')}>
                                 {t`Visit Staking`}
                             </GradientButton>
                         </div>
-                    }
+                    }*/
                   >
                       <div className="my-5">
                           <h3 className="mb-0 pb-0 text-center text-center text-muted">
