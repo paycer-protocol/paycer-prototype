@@ -52,8 +52,9 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                     </div>
                 </div>
             </div>
-
-            <p className="mb-0 text-center text-muted">{successMessage}</p>
+            {(successMessage &&
+                <p className="mb-0 text-center text-muted">{successMessage}</p>
+            )}
           </>
       )
     }
