@@ -46,7 +46,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
               <Icon component={CheckAll} fill="#00D97E" size={100} />
             </div>
 
-            <p className="mb-0 text-center">{successMessage}</p>
+            <p className="mb-0 text-center text-muted">{successMessage}</p>
           </>
       )
     }
@@ -58,7 +58,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
               <Icon component={Error} fill="#E63757" size={100} />
             </div>
 
-            <p className="mb-0 text-center">{t`Transaction failed, please try again or contact the Support`}</p>
+            <p className="mb-0 text-center text-muted">{t`Transaction failed, please try again or contact the Support`}</p>
           </>
        )
     }
@@ -69,7 +69,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
           <>
             <div className="d-flex justify-content-center mt-6 pt-6">
                 <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
-                <p className="mb-0 text-center">{t`Transaction is proccessing...`}</p>
+                <p className="mb-0 text-center text-muted">{t`Transaction is proccessing...`}</p>
             </div>
           </>
       )
