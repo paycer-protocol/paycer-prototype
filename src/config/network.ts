@@ -7,8 +7,8 @@ export const supportedChains = [
 ]
 
 export const supportedStakingChains = [
-  ChainId.Polygon,
-  ChainId.Mumbai,
+  //ChainId.Polygon,
+  //ChainId.Mumbai,
 ]
 
 export const supportedVestingChains = [

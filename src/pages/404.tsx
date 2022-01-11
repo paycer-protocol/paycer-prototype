@@ -1,17 +1,15 @@
 import PageHeader from '@components/molecules/page-header'
 import { Trans } from '@lingui/macro'
 import { useRouter } from 'next/router'
-import React, {useEffect} from 'react'
+import React from 'react'
 
 export default function Custom404() {
 
     const router = useRouter()
 
-    useEffect(() => {
-        if (router.asPath === '/token-sale') {
-            router.push('/vesting')
-        }
-    }, []);
+    if (router.asPath === '/token-sale') {
+        router.push('/vesting')
+    }
 
     return (
         <>
