@@ -1,7 +1,6 @@
 import { useContractCall, useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
-import addMonth from '../helpers/add-month'
 import { Contract } from '@ethersproject/contracts'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
@@ -28,7 +27,7 @@ interface UseVestingProps {
 export default function useVesting(type):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
-    const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Mumbai]
+    const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const vestingContract = new Contract(vestingAddress, vestingConfig.abi)
 
@@ -68,6 +67,8 @@ export default function useVesting(type):UseVestingProps {
     function getVestingMonths():number {
         switch (type) {
             case 'public':
+                return 6
+            case 'public_v2':
                 return 6
             case 'team':
                 return 36
