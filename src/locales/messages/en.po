@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/404.tsx:22
+#: src/pages/404.tsx:20
 msgid "404"
 msgstr "404"
 
@@ -74,7 +74,7 @@ msgstr "Adding Network to Wallet ..."
 #~ msgid "Address not found"
 #~ msgstr "Address not found"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:44
+#: src/components/organisms/vesting/dashboard/index.tsx:49
 msgid "Advisor distribution"
 msgstr "Advisor distribution"
 
@@ -92,7 +92,7 @@ msgstr "An unknown error occurred. Please try again."
 msgid "Apply"
 msgstr "Apply"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:105
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:122
 msgid "Approve"
 msgstr "Approve"
 
@@ -174,7 +174,7 @@ msgstr "Change your wallet provider"
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:99
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:105
 #: src/components/organisms/vesting/claim/index.tsx:68
-#: src/components/organisms/vesting/dashboard/index.tsx:55
+#: src/components/organisms/vesting/dashboard/index.tsx:60
 msgid "Claim"
 msgstr "Claim"
 
@@ -679,7 +679,7 @@ msgstr "PCR Token amount"
 msgid "POOL"
 msgstr "POOL"
 
-#: src/pages/404.tsx:25
+#: src/pages/404.tsx:23
 msgid "Page not found"
 msgstr "Page not found"
 
@@ -742,7 +742,8 @@ msgstr "Portfolio"
 #~ msgid "Pre Sale"
 #~ msgstr "Pre Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:36
+#: src/components/organisms/vesting/dashboard/index.tsx:35
+#: src/components/organisms/vesting/dashboard/index.tsx:41
 msgid "Pre Sale distribution"
 msgstr "Pre Sale distribution"
 
@@ -766,7 +767,8 @@ msgstr "Privacy"
 #~ msgid "Private Sale"
 #~ msgstr "Private Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:38
+#: src/components/organisms/vesting/dashboard/index.tsx:37
+#: src/components/organisms/vesting/dashboard/index.tsx:43
 msgid "Private Sale distribution"
 msgstr "Private Sale distribution"
 
@@ -774,7 +776,8 @@ msgstr "Private Sale distribution"
 #~ msgid "Public Sale"
 #~ msgstr "Public Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:40
+#: src/components/organisms/vesting/dashboard/index.tsx:39
+#: src/components/organisms/vesting/dashboard/index.tsx:45
 msgid "Public Sale distribution"
 msgstr "Public Sale distribution"
 
@@ -792,8 +795,8 @@ msgid "Referral Program"
 msgstr "Referral Program"
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
-msgid "Request Submitted"
-msgstr "Request Submitted"
+#~ msgid "Request Submitted"
+#~ msgstr "Request Submitted"
 
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
@@ -985,7 +988,7 @@ msgstr "Switch wallet"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:42
+#: src/components/organisms/vesting/dashboard/index.tsx:47
 msgid "Team distribution"
 msgstr "Team distribution"
 
@@ -997,14 +1000,19 @@ msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
 
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
+#: src/components/organisms/vesting/claim/index.tsx:91
+msgid "The tokens will be transferred to your wallet."
+msgstr "The tokens will be transferred to your wallet."
+
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:150
 msgid "The transfer is on the way."
 msgstr "The transfer is on the way."
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/vesting/claim/index.tsx:91
-msgid "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
-msgstr "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
+#~ msgid "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
+#~ msgstr "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
 
 #: src/components/organisms/header/settings-modal.tsx:39
 #: src/components/organisms/off-canvas/index.tsx:81
@@ -1066,13 +1074,17 @@ msgstr "Transaction"
 #~ msgid "Transaction Typ"
 #~ msgstr "Transaction Typ"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:61
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:78
 msgid "Transaction failed, please try again or contact the Support"
 msgstr "Transaction failed, please try again or contact the Support"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:72
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:89
 msgid "Transaction is proccessing..."
 msgstr "Transaction is proccessing..."
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
+msgid "Transaction submitted"
+msgstr "Transaction submitted"
 
 #: src/components/organisms/token-sale/dashboard/index.tsx:58
 #~ msgid "Transactions"
@@ -1118,8 +1130,8 @@ msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
 
 #: src/components/organisms/vesting/claim/index.tsx:96
-msgid "Visit Staking"
-msgstr "Visit Staking"
+#~ msgid "Visit Staking"
+#~ msgstr "Visit Staking"
 
 #: src/components/organisms/off-canvas/index.tsx:43
 msgid "Wallet"

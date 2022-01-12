@@ -75,7 +75,9 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                 </div>
             </div>
 
-            <p className="mb-0 text-center text-muted">{t`Transaction failed, please try again or contact the Support`}</p>
+            <p className="mb-0 text-center text-muted">
+              {t`Transaction failed, please try again or contact the Support`}
+            </p>
           </>
        )
     }

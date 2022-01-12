@@ -17,17 +17,6 @@ export interface INetworkProvider {
 }
 
 export const testNetNetworks: INetworkProvider = {
-    [ChainId.Ropsten]: {
-        chainId: '0x3',
-        chainName: 'Ropsten',
-        nativeCurrency: {
-            name: 'Ethereum - Ropsten',
-            symbol: 'ETH',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Ropsten]],
-        blockExplorerUrls: [explorers[ChainId.Ropsten]],
-    },
     [ChainId.Kovan]: {
         chainId: '0x2A',
         chainName: 'Kovan',
@@ -38,28 +27,6 @@ export const testNetNetworks: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Kovan]],
         blockExplorerUrls: [explorers[ChainId.Kovan]],
-    },
-    [ChainId.Rinkeby]: {
-        chainId: '0x4',
-        chainName: 'Rinkeby',
-        nativeCurrency: {
-            name: 'Ethereum - Rinkeby',
-            symbol: 'ETH',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Rinkeby]],
-        blockExplorerUrls: [explorers[ChainId.Rinkeby]],
-    },
-    [ChainId.Goerli]: {
-        chainId: '0x5',
-        chainName: 'Goerli',
-        nativeCurrency: {
-            name: 'Ethereum - Goerli',
-            symbol: 'ETH',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Goerli]],
-        blockExplorerUrls: [explorers[ChainId.Goerli]],
     },
     [ChainId.Mumbai]: {
         chainId: '0x13881',
@@ -108,15 +75,15 @@ export const mainNetProviders: INetworkProvider = {
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
     },
-    // [ChainId.Mumbai]: {
-    //     chainId: '0x13881',
-    //     chainName: 'Polygon - Testnet',
-    //     nativeCurrency: {
-    //         name: 'Polygon (MATIC Mumbai)',
-    //         symbol: 'MATIC',
-    //         decimals: 18,
-    //     },
-    //     rpcUrls: [rpcUrls[ChainId.Mumbai]],
-    //     blockExplorerUrls: [explorers[ChainId.Mumbai]],
-    // },
+    [ChainId.Mumbai]: {
+        chainId: '0x13881',
+        chainName: 'Polygon - Testnet',
+        nativeCurrency: {
+            name: 'Polygon (MATIC Mumbai)',
+            symbol: 'MATIC',
+            decimals: 18,
+        },
+        rpcUrls: [rpcUrls[ChainId.Mumbai]],
+        blockExplorerUrls: [explorers[ChainId.Mumbai]],
+    },
 }

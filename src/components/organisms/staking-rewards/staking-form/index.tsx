@@ -21,20 +21,20 @@ import truncateText from '../../../../helpers/truncate-text'
 export default function StakingForm() {
   const wallet = useWallet()
 
-  const {
-    withdraw,
-    deposit,
-    stakedBalance,
-    rewardRate,
-    withdrawTx,
-    approveTx,
-    depositTx,
-    showFormApproveModal,
-    setShowFormApproveModal,
-    withdrawError,
-    depositError,
-    isLoading
-  } = useStaking()
+const {
+  withdraw,
+  deposit,
+  stakedBalance,
+  rewardRate,
+  withdrawTx,
+  approveTx,
+  depositTx,
+  showFormApproveModal,
+  setShowFormApproveModal,
+  withdrawError,
+  depositError,
+  isLoading
+} = useStaking()
 
   const token = useToken(rewardSymbol)
   const tokenBalance = token.tokenBalance()
@@ -144,7 +144,9 @@ export default function StakingForm() {
 
             <TransactionApproveModal
               show={showFormApproveModal}
-              onHide={() => setShowFormApproveModal(false)}
+              onHide={() => {
+                setShowFormApproveModal(false)
+              }}
               title={t`Stake the current Selection?`}
               onClick={() => handleStaking(values)}
               successMessage={t`The transfer is on the way.`}
@@ -169,8 +171,6 @@ export default function StakingForm() {
               }
             >
               <>
-
-
                 <div className="card blur-background">
                   <div className="card-body">
                     <div className="row mb-4">
