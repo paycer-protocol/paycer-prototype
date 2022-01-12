@@ -115,7 +115,7 @@ export default function ClaimSummary() {
           onClick={() => handleClaim()}
           error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
           success={claimTx.status === 'Success'}
-          successMessage={t`The transfer is on the way. Tokens will be transferred to you in 1-2 minutes.`}
+          successMessage={t`The tokens will be transferred to your wallet.`}
           loading={isLoading || claimTx.status === 'Mining'}
       >
         <div className="my-5">
