@@ -27,7 +27,6 @@ export const RightCol = styled.div`
 
 const VestingDashboard = () => {
     const { dashboardData } = useVestingDashboard()
-    const transactions = dashboardData?.transactions
 
     const renderTabLabel = () => {
         const type = dashboardData?.type
@@ -37,6 +36,12 @@ const VestingDashboard = () => {
             case 'private':
                 return t`Private Sale distribution`
             case 'public':
+                return t`Public Sale distribution`
+            case 'pre_v2':
+                return t`Pre Sale distribution`
+            case 'private_v2':
+                return t`Private Sale distribution`
+            case 'public_v2':
                 return t`Public Sale distribution`
             case 'team':
                 return t`Team distribution`
