@@ -54,7 +54,7 @@ export default function Portfolio(props: PortfolioProps) {
               </th>
               <th>
                   <span className="text-muted">
-                    <Trans>APY</Trans>
+                    <Trans>APR</Trans>
                   </span>
               </th>
               <th>

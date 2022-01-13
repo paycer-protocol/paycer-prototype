@@ -112,7 +112,7 @@ export default function MarketPairSelectModal(props: MarketPairSelectModalProps)
               <Trans>Pool</Trans>
             </div>
             <div className="fw-bold">
-              <Trans>APY</Trans>
+              <Trans>APR</Trans>
             </div>
           </div>
 

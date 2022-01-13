@@ -29,7 +29,7 @@ export default function InvestList() {
           </th>
           <th>
           <span className="text-muted">
-            <Trans>APY</Trans>
+            <Trans>APR</Trans>
           </span>
           </th>
           <th>

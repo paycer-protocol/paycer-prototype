@@ -8,7 +8,7 @@ export default function InvestCardHeader(props: StrategyType) {
         <Card.Header>
             <div className="d-flex align-items-center justify-content-between">
                 <h2 className="mb-0">{props.name}</h2>
-                <span>{props.interest.interestRate + props.rewards.rewardRate}% <Trans>APY</Trans></span>
+                <span>{props.interest.interestRate + props.rewards.rewardRate}% <Trans>APR</Trans></span>
             </div>
         </Card.Header>
     )

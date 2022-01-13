@@ -39,7 +39,7 @@ const SupplyInfo = () => {
                         </Styles.Headline>
 
                         <Styles.CurrencyInputLabel className="mb-0">
-                            <span style={{textTransform: 'none', paddingLeft: '4px'}}></span> {t`Apy`} {values.apy}%
+                            <span style={{textTransform: 'none', paddingLeft: '4px'}}></span> {t`APR`} {values.apy}%
                         </Styles.CurrencyInputLabel>
                     </div>
                     <p className="mb-0 text-muted">
