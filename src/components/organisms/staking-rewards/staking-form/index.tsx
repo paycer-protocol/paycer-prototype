@@ -7,7 +7,6 @@ import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
 import useToken from '@hooks/use-token'
-import useWallet from '@hooks/use-wallet'
 import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
@@ -16,10 +15,8 @@ import RewardFee from './reward-fee'
 import { StakingProps } from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import truncateText from '../../../../helpers/truncate-text'
 
 export default function StakingForm() {
-  const wallet = useWallet()
 
 const {
   withdraw,
