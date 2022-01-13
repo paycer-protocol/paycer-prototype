@@ -151,7 +151,7 @@ const {
               }}
               title={t`Confirm Transaction`}
               onClick={() => handleStaking(values)}
-              successMessage={t`The transfer is on the way.`}
+              successMessage={t`Transaction was successfully executed`}
               error={
                 depositTx.status === 'Fail' ||
                 depositTx.status === 'Exception' ||
