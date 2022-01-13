@@ -41,7 +41,7 @@ export default function useStaking():UseStakingProps {
     const [withdrawError, setWithdrawError] = useState(false)
     const [depositError, setDepositError] = useState(false)
     const [claimError, setClaimError] = useState(false)
-    const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Mainnet]
+    const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Polygon]
     const paycerToken = paycerTokenConfig.contract
     const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
 
@@ -83,7 +83,7 @@ export default function useStaking():UseStakingProps {
         setLoading(true)
         try {
             if (amount > formattedAllowance) {
-                await approve(stakingAddress, parseUnits(String(amount), 18))
+                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
             }
 
             await sendDeposit(parseUnits(String(amount), 18), wallet.address)
@@ -103,7 +103,7 @@ export default function useStaking():UseStakingProps {
         setLoading(true)
         try {
             if (amount > formattedAllowance) {
-                await approve(stakingAddress, parseUnits(String(amount), 18))
+                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
             }
 
             await sendWithdraw(parseUnits(String(amount), 18), wallet.address)

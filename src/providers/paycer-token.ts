@@ -1,16 +1,20 @@
-import MumbaiPaycerTokenContract from '../deployments/mumbai/PaycerToken.json'
-import KovanPaycerTokenContract from '../deployments/kovan/PaycerToken.json'
-import MainPaycerTokenContract from '../deployments/mainnet/PaycerToken.json'
+import MaticContract from '../deployments/matic/PaycerToken.json'
+import MumbaiContract from '../deployments/mumbai/PaycerToken.json'
+import KovanContract from '../deployments/kovan/PaycerToken.json'
+import MainContract from '../deployments/mainnet/PaycerToken.json'
 import { ChainId } from '@usedapp/core'
 
 export default {
+    [ChainId.Polygon]: {
+        contract: MaticContract
+    },
     [ChainId.Mumbai]: {
-        contract: MumbaiPaycerTokenContract
+        contract: MumbaiContract
     },
     [ChainId.Kovan]: {
-        contract: KovanPaycerTokenContract
+        contract: KovanContract
     },
     [ChainId.Mainnet]: {
-        contract: MainPaycerTokenContract
+        contract: MainContract
     }
 }
