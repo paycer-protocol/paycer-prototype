@@ -17,7 +17,6 @@ import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 
 export default function StakingForm() {
-
 const {
   withdraw,
   deposit,

@@ -1,18 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import useStaking from '@hooks/use-staking'
-import Button from '@components/atoms/button'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import DashNumber from '@components/organisms/dashboard/dash-number'
 import { rewardSymbol } from '@config/staking-rewards'
 import GradientButton from '@components/atoms/button/gradient-button'
 import Spinner from '@components/atoms/spinner'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import truncateText from '../../../../helpers/truncate-text'
-import {useMediaQuery} from 'react-responsive'
-import useWallet from '@hooks/use-wallet'
 
 
 const RewardContainer = styled.div`
@@ -31,10 +26,6 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-  const wallet = useWallet()
-
   const {
     claim,
     claimTx,
