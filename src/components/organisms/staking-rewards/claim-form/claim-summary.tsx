@@ -79,7 +79,7 @@ export default function ClaimSummary() {
           </div>
 
           <div className="col-6 text-center">
-            <label className="form-label d-block">{t`Last Rewardet at`}</label>
+            <label className="form-label d-block">{t`Last Rewarded at`}</label>
             {lastRewardTime}
           </div>
         </div>
