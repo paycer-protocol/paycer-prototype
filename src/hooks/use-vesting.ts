@@ -108,12 +108,8 @@ export default function useVesting(type):UseVestingProps {
 
     const withdrawVesting = async () => {
         setLoading(true)
-        /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
         try {
             await withdraw()
-            if (withdrawTx.status === 'Success' || withdrawTx.status === 'None') {
-
-            }
         } catch(e) {
             setWithdrawError(true)
         }

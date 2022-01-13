@@ -3,12 +3,12 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { formatUnits } from '@ethersproject/units'
 import { tokenProvider } from '@providers/tokens'
 import { Interface } from '@ethersproject/abi'
-import tokenAbi from '@contracts/abi/PaycerToken.json'
+import tokenAbi from '../deployments/matic/PaycerToken.json'
 
 export default function useToken(symbol: string) {
   const { account, chainId } = useEthers()
   const token = tokenProvider[symbol]
-  const tokenAddress = token.chainAddresses[chainId || ChainId.Mainnet]
+  const tokenAddress = token.chainAddresses[chainId || ChainId.Polygon]
   return {
     tokenAddress,
     decimals: token.decimals,

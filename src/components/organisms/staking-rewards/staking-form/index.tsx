@@ -7,7 +7,6 @@ import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
 import useToken from '@hooks/use-token'
-import useWallet from '@hooks/use-wallet'
 import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
@@ -16,25 +15,23 @@ import RewardFee from './reward-fee'
 import { StakingProps } from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import truncateText from '../../../../helpers/truncate-text'
 
 export default function StakingForm() {
-  const wallet = useWallet()
-
-  const {
-    withdraw,
-    deposit,
-    stakedBalance,
-    rewardRate,
-    withdrawTx,
-    approveTx,
-    depositTx,
-    showFormApproveModal,
-    setShowFormApproveModal,
-    withdrawError,
-    depositError,
-    isLoading
-  } = useStaking()
+const {
+  withdraw,
+  deposit,
+  stakedBalance,
+  rewardRate,
+  withdrawTx,
+  approveTx,
+  depositTx,
+  resetStatus,
+  showFormApproveModal,
+  setShowFormApproveModal,
+  withdrawError,
+  depositError,
+  isLoading
+} = useStaking()
 
   const token = useToken(rewardSymbol)
   const tokenBalance = token.tokenBalance()
@@ -144,10 +141,13 @@ export default function StakingForm() {
 
             <TransactionApproveModal
               show={showFormApproveModal}
-              onHide={() => setShowFormApproveModal(false)}
-              title={t`Stake the current Selection?`}
+              onHide={() => {
+                resetStatus()
+                setShowFormApproveModal(false)
+              }}
+              title={t`Confirm Transaction`}
               onClick={() => handleStaking(values)}
-              successMessage={t`The transfer is on the way.`}
+              successMessage={t`Transaction was successfully executed`}
               error={
                 depositTx.status === 'Fail' ||
                 depositTx.status === 'Exception' ||
@@ -169,13 +169,11 @@ export default function StakingForm() {
               }
             >
               <>
-
-
                 <div className="card blur-background">
                   <div className="card-body">
                     <div className="row mb-4">
                       <div className="col-6">
-                        {t`Staked:`}
+                        {t`You will stake:`}
                       </div>
                       <div className="col-6 fw-bold">
                         <DashNumber
@@ -217,16 +215,6 @@ export default function StakingForm() {
                         />
                       </div>
                     </div>
-                    {wallet.isConnected &&
-                    <div className="row">
-                      <div className="col-6">
-                        {t`Transfer from:`}
-                      </div>
-                      <div className="col-6 fw-bold">
-                        {truncateText(wallet.address, wallet.address.length / 2 )}
-                      </div>
-                    </div>
-                    }
                   </div>
                 </div>
                 <RewardFee />

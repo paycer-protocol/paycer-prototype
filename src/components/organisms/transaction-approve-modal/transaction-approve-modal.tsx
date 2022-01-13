@@ -29,7 +29,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
       return t`Something went wrong!`
     }
     if (success) {
-      return t`Transaction submitted`
+      return t`Transaction confirmed`
     }
     if (loading) {
       return t`Loading ...`
@@ -75,13 +75,14 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                 </div>
             </div>
 
-            <p className="mb-0 text-center text-muted">{t`Transaction failed, please try again or contact the Support`}</p>
+            <p className="mb-0 text-center text-muted">
+              {t`Transaction failed, please try again.`}
+            </p>
           </>
        )
     }
 
     if (loading) {
-
       return (
           <>
             <div className="d-flex justify-content-center mt-6 pt-6">
@@ -98,7 +99,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null}>
       <>
-        <Modal.Header closeButton={!loading} onHide={onHide}>
+        <Modal.Header closeButton={!loading || success || error} onHide={onHide}>
           <Modal.Title className="text-center w-100">
             {renderTitle()}
           </Modal.Title>
@@ -110,14 +111,13 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                 <>{children}</>
             )}
 
-            {(success && additionalSuccessContent &&
+            {(success && additionalSuccessContent) &&
                 <>
                     {additionalSuccessContent}
                 </>
+            }
 
-            )}
-
-            {(!success && !loading &&
+            {(!success && !error && !loading &&
               <GradientButton className="w-100 mt-5" onClick={onClick} disabled={loading}>
                 {btnLabel ? btnLabel : t`Approve`}
               </GradientButton>

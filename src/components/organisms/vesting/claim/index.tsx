@@ -88,15 +88,15 @@ const Claim = () => {
                     onClick={() => handleSubmit()}
                     error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
                     success={withdrawTx.status === 'Success'}
-                    successMessage={t`The tokens will be transferred to your wallet.`}
+                    successMessage={t`Transaction was successfully executed.`}
                     loading={isLoading || withdrawTx.status === 'Mining'}
-                    /*additionalSuccessContent={
-                        <div className="d-flex justify-content-center">
-                            <GradientButton className="w-100 mt-5" onClick={() => router.push('/staking')}>
-                                {t`Visit Staking`}
+                    additionalSuccessContent={
+                        <div className="d-flex justify-content-center mt-5">
+                            <GradientButton className="w-100" onClick={() => router.push('/staking')}>
+                                {t`Stake your tokens`}
                             </GradientButton>
                         </div>
-                    }*/
+                    }
                   >
                       <div className="my-5">
                           <h3 className="mb-0 pb-0 text-center text-center text-muted">

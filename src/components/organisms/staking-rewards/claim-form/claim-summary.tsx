@@ -1,18 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
 import useStaking from '@hooks/use-staking'
-import Button from '@components/atoms/button'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import DashNumber from '@components/organisms/dashboard/dash-number'
 import { rewardSymbol } from '@config/staking-rewards'
 import GradientButton from '@components/atoms/button/gradient-button'
 import Spinner from '@components/atoms/spinner'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import truncateText from '../../../../helpers/truncate-text'
-import {useMediaQuery} from 'react-responsive'
-import useWallet from '@hooks/use-wallet'
 
 
 const RewardContainer = styled.div`
@@ -31,13 +26,10 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-  const wallet = useWallet()
-
   const {
     claim,
     claimTx,
+    resetStatus,
     pendingReward,
     lastDepositedAt,
     lastRewardTime,
@@ -109,19 +101,19 @@ export default function ClaimSummary() {
 
       <TransactionApproveModal
           show={showFormApproveModal}
-          onHide={() => setShowFormApproveModal(false)}
-          title={t`Claim confirmation`}
+          onHide={() => {
+            resetStatus()
+            setShowFormApproveModal(false)
+          }}
+          title={t`Confirm Claim`}
           btnLabel={t`Claim now`}
           onClick={() => handleClaim()}
           error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
           success={claimTx.status === 'Success'}
-          successMessage={t`The tokens will be transferred to your wallet.`}
+          successMessage={t`Transaction was successfully executed`}
           loading={isLoading || claimTx.status === 'Mining'}
       >
         <div className="my-5">
-          <h3 className="mb-0 pb-0 text-center text-center text-muted">
-            <Trans>Claim PCR</Trans>
-          </h3>
           <div className="d-flex flex-column mb-4 text-center">
             <span className="display-2 my-3">
                 <FormattedNumber
@@ -137,19 +129,8 @@ export default function ClaimSummary() {
               />
             </span>
           </div>
-            {wallet.isConnected &&
-            <div className="w-75 m-auto">
-              <h3 className=" text-muted">
-                  {t`Transfer to:`}
-              </h3>
-              <span className="text-center fw-bold text-wrap">
-                    {!isTabletOrMobile ? wallet.address : truncateText(wallet.address, wallet.address.length / 2 )}
-                </span>
-            </div>
-            }
         </div>
       </TransactionApproveModal>
-
       <div style={{position: 'absolute', left: '50%', top: '30%'}}>
         <Spinner animation="border" show={claimTx.status === 'Mining'} />
       </div>

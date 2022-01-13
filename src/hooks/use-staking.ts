@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from "@usedapp/core";
@@ -7,12 +8,12 @@ import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
-import { useState } from 'react'
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     claim: () => Promise<void>
+    resetStatus: () => void
     pendingReward: number
     stakedBalance: number
     rewardRate: number
@@ -33,69 +34,60 @@ interface UseStakingProps {
 export default function useStaking():UseStakingProps {
     const wallet = useWallet()
     const { chainId } = wallet
-    const stakingConfig = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Mainnet]
-    const staking = stakingConfig.contract
-    const stakingContract = new Contract(staking.address, staking.abi)
+    const stakingAddress = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Polygon]
+    const stakingContract = new Contract(stakingAddress, StakingContractProvider.abi)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const [depositError, setDepositError] = useState(false)
     const [claimError, setClaimError] = useState(false)
-    const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Mainnet]
+    const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Polygon]
     const paycerToken = paycerTokenConfig.contract
     const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
 
-    const { send: deposit, state: depositTx } = useContractFunction(stakingContract, 'deposit')
-    const { send: withdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
-    const { send: claim, state: claimTx } = useContractFunction(stakingContract, 'claim')
-    const { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
+    let { send: sendDeposit, state: depositTx } = useContractFunction(stakingContract, 'deposit')
+    let { send: sendWithdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
+    let { send: sendClaim, state: claimTx } = useContractFunction(stakingContract, 'claim')
+    let { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
 
-    let allowance = useTokenAllowance(paycerToken.address, wallet.address, staking.address)
+    let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
     const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
-    const userInfo = useContractCall(
-        {
-            abi: new Interface(staking.abi),
-            address: staking.address,
-            method: 'userInfo',
-            args: [wallet.address],
-        }
-    )
+    const userInfo = useContractCall({
+        abi: new Interface(StakingContractProvider.abi),
+        address: stakingAddress,
+        method: 'userInfo',
+        args: [wallet.address],
+    })
 
-    const getRewardRate = (): number => {
-        const result = useContractCall(
-            {
-                abi: new Interface(staking.abi),
-                address: staking.address,
-                method: 'rewardAPY',
-                args: [wallet.address],
-            }
-        ) ?? 0
+    let rewardRate = useContractCall({
+        abi: new Interface(StakingContractProvider.abi),
+        address: stakingAddress,
+        method: 'rewardAPY',
+        args: [wallet.address],
+    }) ?? 0
 
-        return BigNumber.isBigNumber(result) ? result.toNumber() : 0
-    }
+    let [pendingReward] = useContractCall({
+        abi: new Interface(StakingContractProvider.abi),
+        address: stakingAddress,
+        method: 'pendingReward',
+        args: [wallet.address],
+    }) ?? []
 
-    const getPendingReward = (): number => {
-        const [result] = useContractCall(
-            {
-                abi: new Interface(staking.abi),
-                address: staking.address,
-                method: 'pendingReward',
-                args: [wallet.address],
-            }
-        ) ?? []
-        return BigNumber.isBigNumber(result) ? Number(formatUnits(result, 18)) : 0
-    }
+    rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
+    rewardRate = rewardRate ? rewardRate : 10
+    pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
 
-    const depositStaking = async (amount: number) => {
 
-        /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
+    const deposit = async (amount: number) => {
         setLoading(true)
         try {
-            if (amount - formattedAllowance <= 0) {
-                await approve(staking.address, parseUnits(String(amount), 18))
+            if (amount > formattedAllowance) {
+                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
             }
-            await deposit(parseUnits(String(amount), 18), wallet.address)
+
+            await sendDeposit(parseUnits(String(amount), 18), wallet.address)
+
             if (depositTx.status === 'Success') {
                 setTimeout(() =>{
                     setShowFormApproveModal(false)
@@ -107,14 +99,15 @@ export default function useStaking():UseStakingProps {
         setLoading(false)
     }
 
-    const withdrawStaking = async (amount: number) => {
-        /* TODO DEFINE BETTER ERROR HANDLING FOR FRONTEND NOTIFICATIONS */
+    const withdraw = async (amount: number) => {
         setLoading(true)
         try {
-            if (amount - formattedAllowance <= 0) {
-                await approve(staking.address, parseUnits(String(amount), 18))
+            if (amount > formattedAllowance) {
+                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
             }
-            await withdraw(parseUnits(String(amount), 18), wallet.address)
+
+            await sendWithdraw(parseUnits(String(amount), 18), wallet.address)
+
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
                     setShowFormApproveModal(false)
@@ -126,21 +119,29 @@ export default function useStaking():UseStakingProps {
         setLoading(false)
     }
 
-    const claimStaking = async () => {
+    const claim = async () => {
         setLoading(true)
         try {
-          await claim(wallet.address)
+          await sendClaim(wallet.address)
         } catch(e) {
             setClaimError(true)
         }
         setLoading(true)
     }
 
+    const resetStatus = () => {
+        depositTx.status = 'None'
+        withdrawTx.status = 'None'
+        claimTx.status = 'None'
+        approveTx.status = 'None'
+    }
+
     return {
-        deposit: depositStaking,
-        withdraw: withdrawStaking,
-        claim: claimStaking,
-        pendingReward: getPendingReward(),
+        deposit,
+        withdraw,
+        claim,
+        resetStatus,
+        pendingReward,
         // @ts-ignore
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
         // @ts-ignore
@@ -148,7 +149,7 @@ export default function useStaking():UseStakingProps {
         // @ts-ignore
         lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? new Date(userInfo?.lastRewardTime * 1000).toLocaleDateString("en-US") : '',
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
-        rewardRate: getRewardRate(),
+        rewardRate,
         depositTx,
         withdrawTx,
         claimTx,
