@@ -47,7 +47,7 @@ msgstr "APR"
 
 #: src/components/organisms/invest/invest-form/invest-card-header.tsx:11
 #: src/components/organisms/invest/invest-table.tsx:32
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:85
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 #: src/components/organisms/swap/supply-form/market-pair-select-modal.tsx:115
 #: src/pages/portfolio/components/portfolio.tsx:57
@@ -127,7 +127,7 @@ msgstr "Balance"
 #~ msgid "Balance after"
 #~ msgstr "Balance after"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:189
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:191
 msgid "Balance after:"
 msgstr "Balance after:"
 
@@ -171,14 +171,13 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:99
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:105
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:100
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:106
 #: src/components/organisms/vesting/claim/index.tsx:68
 #: src/components/organisms/vesting/dashboard/index.tsx:60
 msgid "Claim"
 msgstr "Claim"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:123
 #: src/components/organisms/vesting/claim/index.tsx:103
 msgid "Claim PCR"
 msgstr "Claim PCR"
@@ -195,12 +194,11 @@ msgstr "Claim PCR"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:113
 #: src/components/organisms/vesting/claim/index.tsx:86
 msgid "Claim confirmation"
 msgstr "Claim confirmation"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:114
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/vesting/claim/index.tsx:87
 msgid "Claim now"
 msgstr "Claim now"
@@ -209,7 +207,7 @@ msgstr "Claim now"
 msgid "Claimable PCR Tokens"
 msgstr "Claimable PCR Tokens"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:62
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:63
 msgid "Claimable rewards"
 msgstr "Claimable rewards"
 
@@ -217,6 +215,14 @@ msgstr "Claimable rewards"
 #: src/components/organisms/off-canvas/index.tsx:81
 #~ msgid "Color Scheme"
 #~ msgstr "Color Scheme"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:117
+msgid "Confirm Claim"
+msgstr "Confirm Claim"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:152
+msgid "Confirm Transaction"
+msgstr "Confirm Transaction"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:24
 #~ msgid "Confirmed"
@@ -279,7 +285,7 @@ msgstr "Current Invest"
 msgid "Current Staked"
 msgstr "Current Staked"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:97
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:98
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 msgid "Current Token Balance"
 msgstr "Current Token Balance"
@@ -293,13 +299,13 @@ msgid "Daily interest"
 msgstr "Daily interest"
 
 #: src/components/organisms/invest/invest-form/index.tsx:86
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:127
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:128
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 #: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:15
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:200
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:202
 msgid "Daily rewards:"
 msgstr "Daily rewards:"
 
@@ -532,11 +538,11 @@ msgstr "Join us on"
 msgid "Language"
 msgstr "Language"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:85
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:86
 msgid "Last Deposited at"
 msgstr "Last Deposited at"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:90
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:91
 msgid "Last Rewardet at"
 msgstr "Last Rewardet at"
 
@@ -611,12 +617,12 @@ msgstr "Minimum to receive"
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:134
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:135
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:211
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:213
 msgid "Monthly rewards:"
 msgstr "Monthly rewards:"
 
@@ -666,7 +672,7 @@ msgstr "Not enough"
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:114
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:115
 msgid "PCR"
 msgstr "PCR"
 
@@ -901,8 +907,8 @@ msgid "Stake"
 msgstr "Stake"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:148
-msgid "Stake the current Selection?"
-msgstr "Stake the current Selection?"
+#~ msgid "Stake the current Selection?"
+#~ msgstr "Stake the current Selection?"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:169
 #~ msgid "Staked"
@@ -913,8 +919,8 @@ msgid "Staked after"
 msgstr "Staked after"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:178
-msgid "Staked:"
-msgstr "Staked:"
+#~ msgid "Staked:"
+#~ msgstr "Staked:"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
 #: src/config/routes.ts:23
@@ -1000,12 +1006,11 @@ msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/vesting/claim/index.tsx:91
 msgid "The tokens will be transferred to your wallet."
 msgstr "The tokens will be transferred to your wallet."
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:150
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:154
 msgid "The transfer is on the way."
 msgstr "The transfer is on the way."
 
@@ -1023,7 +1028,7 @@ msgstr "The transfer is on the way."
 msgid "Token Balance"
 msgstr "Token Balance"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:97
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:98
 msgid "Token Balance after"
 msgstr "Token Balance after"
 
@@ -1074,27 +1079,38 @@ msgstr "Transaction"
 #~ msgid "Transaction Typ"
 #~ msgstr "Transaction Typ"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:78
-msgid "Transaction failed, please try again or contact the Support"
-msgstr "Transaction failed, please try again or contact the Support"
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
+msgid "Transaction confirmed"
+msgstr "Transaction confirmed"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:89
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:78
+#~ msgid "Transaction failed, please try again or contact the Support"
+#~ msgstr "Transaction failed, please try again or contact the Support"
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:79
+msgid "Transaction failed, please try again."
+msgstr "Transaction failed, please try again."
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:90
 msgid "Transaction is proccessing..."
 msgstr "Transaction is proccessing..."
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
-msgid "Transaction submitted"
-msgstr "Transaction submitted"
+#~ msgid "Transaction submitted"
+#~ msgstr "Transaction submitted"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:122
+msgid "Transaction was successfully executed"
+msgstr "Transaction was successfully executed"
 
 #: src/components/organisms/token-sale/dashboard/index.tsx:58
 #~ msgid "Transactions"
 #~ msgstr "Transactions"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:223
-msgid "Transfer from:"
-msgstr "Transfer from:"
+#~ msgid "Transfer from:"
+#~ msgstr "Transfer from:"
 
-#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:143
 #: src/components/organisms/vesting/claim/index.tsx:122
 msgid "Transfer to:"
 msgstr "Transfer to:"
@@ -1165,6 +1181,10 @@ msgstr "You have no rewards"
 #: src/components/organisms/vesting/index.tsx:47
 msgid "You have not participated in the paycer token sale."
 msgstr "You have not participated in the paycer token sale."
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:180
+msgid "You will stake:"
+msgstr "You will stake:"
 
 #: src/components/organisms/web3/wallet-provider.tsx:32
 #~ msgid "You're connected to an unsupported network."

@@ -30,7 +30,7 @@ export const testNetNetworks: INetworkProvider = {
     },
     [ChainId.Mumbai]: {
         chainId: '0x13881',
-        chainName: 'Matic',
+        chainName: 'Polygon - Testnet',
         nativeCurrency: {
             name: 'Polygon (MATIC Mumbai)',
             symbol: 'MATIC',
@@ -74,16 +74,5 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
-    },
-    [ChainId.Mumbai]: {
-        chainId: '0x13881',
-        chainName: 'Polygon - Testnet',
-        nativeCurrency: {
-            name: 'Polygon (MATIC Mumbai)',
-            symbol: 'MATIC',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Mumbai]],
-        blockExplorerUrls: [explorers[ChainId.Mumbai]],
     },
 }

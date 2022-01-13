@@ -20,15 +20,15 @@ export const routes = [
     auth: false
   },
   {
-    label: t`Staking`,
-    path: '/staking',
-    supportedChains: supportedStakingChains,
-    auth: false
-  },
-  {
     label: t`Swap`,
     path: '/swap',
     supportedChains,
+    auth: false
+  },
+  {
+    label: t`Staking`,
+    path: '/staking',
+    supportedChains: supportedStakingChains,
     auth: false
   },
   {
