@@ -98,7 +98,7 @@ const Overview = () => {
           <div className="row align-items-center gx-0">
             <div className="col">
               <h6 className="text-uppercase text-muted mb-2">
-                {t`Loyalty Tier Level`}
+                {t`Future Loyalty Tier Level`}
               </h6>
               <span className="h2 mb-0">
                  <TierLevel
