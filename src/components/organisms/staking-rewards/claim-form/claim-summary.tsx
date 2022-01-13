@@ -74,12 +74,12 @@ export default function ClaimSummary() {
 
         <div className="mt-3 row w-100 justify-content-md-between">
           <div className="col-6 text-center">
-            <label className="form-label d-block">{t`Last Deposited at`}</label>
+            <label className="form-label d-block">{t`Last Deposited`}</label>
             {lastDepositedAt}
           </div>
 
           <div className="col-6 text-center">
-            <label className="form-label d-block">{t`Last Rewarded at`}</label>
+            <label className="form-label d-block">{t`Last Rewarded`}</label>
             {lastRewardTime}
           </div>
         </div>

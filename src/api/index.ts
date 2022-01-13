@@ -16,6 +16,4 @@ export default {
   fetchReferralRewards: (walletAddress: string): Promise<any> => (
     axios.get(`https://api.paycer.io/referrals/${walletAddress}/rewards`)
   )
-
-
 }
