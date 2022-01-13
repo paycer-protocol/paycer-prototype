@@ -29,6 +29,7 @@ const {
   withdrawTx,
   approveTx,
   depositTx,
+  resetStatus,
   showFormApproveModal,
   setShowFormApproveModal,
   withdrawError,
@@ -145,9 +146,10 @@ const {
             <TransactionApproveModal
               show={showFormApproveModal}
               onHide={() => {
+                resetStatus()
                 setShowFormApproveModal(false)
               }}
-              title={t`Stake the current Selection?`}
+              title={t`Confirm Transaction`}
               onClick={() => handleStaking(values)}
               successMessage={t`The transfer is on the way.`}
               error={
@@ -175,7 +177,7 @@ const {
                   <div className="card-body">
                     <div className="row mb-4">
                       <div className="col-6">
-                        {t`Staked:`}
+                        {t`You will stake:`}
                       </div>
                       <div className="col-6 fw-bold">
                         <DashNumber
@@ -217,16 +219,6 @@ const {
                         />
                       </div>
                     </div>
-                    {wallet.isConnected &&
-                    <div className="row">
-                      <div className="col-6">
-                        {t`Transfer from:`}
-                      </div>
-                      <div className="col-6 fw-bold">
-                        {truncateText(wallet.address, wallet.address.length / 2 )}
-                      </div>
-                    </div>
-                    }
                   </div>
                 </div>
                 <RewardFee />

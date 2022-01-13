@@ -75,6 +75,7 @@ export default function useStaking():UseStakingProps {
     }) ?? []
 
     rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
+    rewardRate = rewardRate ? rewardRate : 10
     pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
 
 

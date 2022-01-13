@@ -3,6 +3,6 @@ import { ChainId } from '@usedapp/core'
 
 export default {
     abi: StakingAbi,
-    [ChainId.Mumbai]: '0xfeeC2EA9382802b9055A6526Dd766A953B02eD0a',
-    [ChainId.Polygon]: '0x6aa93BA947236A59B808348C433656a7Aa3e0170'
+    [ChainId.Mumbai]: '0xd62D07B8E29BA0fd9A9299f2D94c604925C5557b',
+    [ChainId.Polygon]: '0xe8d4FA6FA3065B4dB116d54644eFF05F2DD9B268'
 }

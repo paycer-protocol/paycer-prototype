@@ -6,13 +6,13 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
-    const { values, initialValues, dirty, isValid, isValidating, setFieldValue, touched } = useFormikContext<StakingProps>()
+    const { values, initialValues, dirty, isValid, isValidating, setFieldValue, resetForm } = useFormikContext<StakingProps>()
     const isDisabled = !dirty || !isValid || isValidating || values.stakedBalance === initialValues.stakedBalance
 
     return (
       <div className="d-flex align-items-center justify-content-center mb-3">
           <Button
-            onClick={() => setFieldValue('disabled', true)}
+            onClick={() => resetForm()}
             title={t`Invest`}
             className="px-5 me-3"
             variant={'outline-secondary'}
