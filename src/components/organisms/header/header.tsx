@@ -13,6 +13,8 @@ import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
+import useStaking from '@hooks/use-staking'
+import TierLevel from "@components/atoms/tier-level";
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -63,6 +65,7 @@ const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
     const wallet = useWallet()
+    const { stakedBalance } = useStaking()
 
     const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
 
@@ -91,6 +94,15 @@ const Header = () => {
                           <li className="nav-item d-flex align-items-center">
                               <WalletConnect />
                           </li>
+                          {((wallet.isConnected && stakedBalance >= 1000 ) &&
+                            <li className="nav-item d-flex align-items-center ms-3">
+                              <TierLevel
+                                hasLegend
+                                asImage
+                                tokenAmount={35000}
+                              />
+                            </li>
+                          )}
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
                           {qualifiedRoutes.map((route, key) => (
