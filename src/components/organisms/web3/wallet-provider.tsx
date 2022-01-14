@@ -23,7 +23,7 @@ const WalletProvider = (props: WalletProviderProps) => {
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
       await wallet.connect(provider)
-      await onHide()
+      onHide()
     } catch (e) {
       let message
       if (e instanceof NoEthereumProviderError) {
