@@ -58,10 +58,10 @@ const {
 
   const handleStaking = async (values: FormikValues) => {
     if (values.stakedBalance > initialValues.stakedBalance) {
-      const stakeAmount = values.stakedBalance - initialValues.stakedBalance
-      await deposit(stakeAmount)
+      const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
+      await deposit(depositAmount)
     } else {
-      const withdrawAmount = initialValues.stakedBalance - values.stakedBalance
+      const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
       await withdraw(withdrawAmount)
     }
   }
@@ -204,7 +204,7 @@ const {
                         />
                       </div>
                     </div>
-                    <div className="row mb-4">
+                    <div className="row">
                       <div className="col-6">
                         {t`Monthly rewards:`}
                       </div>
