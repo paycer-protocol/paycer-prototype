@@ -94,12 +94,12 @@ const Header = () => {
                           <li className="nav-item d-flex align-items-center">
                               <WalletConnect />
                           </li>
-                          {((wallet.isConnected && stakedBalance >= 1000 ) &&
+                          {((wallet.isConnected && stakedBalance >= 5000 ) &&
                             <li className="nav-item d-flex align-items-center ms-3">
                               <TierLevel
                                 hasLegend
                                 asImage
-                                tokenAmount={35000}
+                                tokenAmount={stakedBalance}
                               />
                             </li>
                           )}
