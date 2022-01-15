@@ -11,19 +11,18 @@ import { IConnectorProvider } from '@providers/connectors'
 
 export interface WalletProviderProps {
   providers: IConnectorProvider[]
-  show: boolean
   onHide?: any
 }
 
 const WalletProvider = (props: WalletProviderProps) => {
-  const { providers = [], show = false, onHide } = props
+  const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
   const wallet = useWallet()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
       await wallet.connect(provider)
-      await onHide()
+      onHide()
     } catch (e) {
       let message
       if (e instanceof NoEthereumProviderError) {
@@ -43,7 +42,7 @@ const WalletProvider = (props: WalletProviderProps) => {
   }
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title><Trans>Connect to a wallet</Trans></Modal.Title>

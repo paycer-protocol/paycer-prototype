@@ -29,11 +29,12 @@ export default function Invest() {
         <div className="position-relative blur-background">
           <InvestList strategies={investmentStrategies} />
         </div>
-        <WalletProvider
-          providers={connectors}
-          onHide={() => setShowWalletProviderModal(false)}
-          show={showWalletProviderModal}
-        />
+        {(showWalletProviderModal &&
+            <WalletProvider
+                providers={connectors}
+                onHide={() => setShowWalletProviderModal(false)}
+            />
+        )}
       </div>
       <PortalBlockNumber />
     </>

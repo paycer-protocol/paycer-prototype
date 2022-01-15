@@ -67,11 +67,12 @@ const Vesting = () => {
                     >
                         <Trans>Connect to a Wallet</Trans>
                     </GradientButton>
-                    <WalletProvider
-                      providers={connectors}
-                      onHide={() => setShowWalletProviderModal(false)}
-                      show={showWalletProviderModal}
-                    />
+                    {(showWalletProviderModal &&
+                      <WalletProvider
+                        providers={connectors}
+                        onHide={() => setShowWalletProviderModal(false)}
+                      />
+                    )}
                 </div>
             </div>
         </div>

@@ -28,11 +28,12 @@ const WalletConnect = (props: WalletConnectProps) => {
                 >
                     <Trans>Connect to a Wallet</Trans>
                 </Button>
-                <WalletProvider
+                {(showWalletProviderModal &&
+                  <WalletProvider
                     providers={connectors}
                     onHide={() => setShowWalletProviderModal(false)}
-                    show={showWalletProviderModal}
-                />
+                  />
+                )}
             </>
         )
     }
@@ -68,11 +69,12 @@ const WalletConnect = (props: WalletConnectProps) => {
                 show={showAccountModal}
                 setShowWalletProviderModal={setShowWalletProviderModal}
             />
-            <WalletProvider
+            {(showWalletProviderModal &&
+              <WalletProvider
                 providers={connectors}
                 onHide={() => setShowWalletProviderModal(false)}
-                show={showWalletProviderModal}
-            />
+              />
+            )}
         </>
     )
 }
