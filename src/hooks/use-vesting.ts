@@ -13,6 +13,7 @@ interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
     totalAmount: number
+    resetStatus: () => void
     amountWithdrawn: number
     withdrawTx: any
     withdrawError?: boolean
@@ -86,6 +87,10 @@ export default function useVesting(type):UseVestingProps {
 
     }
 
+    const resetStatus = () => {
+        withdrawTx.status = 'None'
+    }
+
     function calculateNextDistribution():any {
         if (!startTime) {
             return null
@@ -117,12 +122,15 @@ export default function useVesting(type):UseVestingProps {
         setLoading(false)
     }
 
+    console.log(amountWithdrawn)
+
     return {
         withdrawAble,
         totalAmount,
         amountWithdrawn,
         withdrawTx,
         withdrawError,
+        resetStatus,
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal,

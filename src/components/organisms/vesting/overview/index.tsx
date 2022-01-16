@@ -19,7 +19,7 @@ const Overview = () => {
   const {
     dashboardData,
     totalInvest,
-    totalReceived,
+    totalReceived
   } = useVestingDashboard()
 
   const {
@@ -29,7 +29,8 @@ const Overview = () => {
   const {
     startTime,
     endTime,
-    totalAmount
+    totalAmount,
+    amountWithdrawn
   } = useVesting(dashboardData?.type)
 
   function renderVestingLabel() {
@@ -85,6 +86,7 @@ const Overview = () => {
                         &nbsp;(+{bonusPercentage}{t`% Bonus included`})
                       </span>
                 )}
+                &nbsp;/ <FormattedNumber value={amountWithdrawn || 0} />&nbsp;PCR
                 </span>
             </div>
             <div className="col-auto">

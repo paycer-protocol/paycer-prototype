@@ -34,7 +34,8 @@ const Claim = () => {
         setShowFormApproveModal,
         withdrawError,
         isLoading,
-        nextDistribution
+        nextDistribution,
+        resetStatus
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -82,7 +83,10 @@ const Claim = () => {
 
                   <TransactionApproveModal
                     show={showFormApproveModal}
-                    onHide={() => setShowFormApproveModal(false)}
+                    onHide={() => {
+                        setShowFormApproveModal(false)
+                        resetStatus()
+                    }}
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
