@@ -15,6 +15,7 @@ import RewardFee from './reward-fee'
 import { StakingProps } from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import InfoTooltip from "@components/atoms/info-tooltip";
 
 export default function StakingForm() {
 const {
@@ -77,13 +78,25 @@ const {
         return (
           <>
             <div>
-              <div className="d-flex mb-4">
+              <div className="d-flex mb-3">
                 <label className="form-label">
-                  {t`APY`}
+                  {t`Your APY:`}
                 </label>
-                <span className="ps-3">{initialValues.rewardRate}%</span>
+                <span className="ps-2">
+                  <div className="d-flex">
+                    {initialValues.rewardRate}%
+                    <InfoTooltip>
+                      <>
+                        <strong>{t`Associate`}</strong> - min 5.000 PCR Stake: 15%<br />
+                        <strong>{t`Senior`}</strong> - min 15.000 PCR Stake: 18%<br />
+                        <strong>{t`Manager`}</strong> - min 35.000 PCR Stake: 21%<br />
+                        <strong>{t`Partner`}</strong> - min 100.000 PCR Stake: 24%
+                      </>
+                    </InfoTooltip>
+                  </div>
+                </span>
               </div>
-              <div className="mb-2 pb-2">
+              <div className="mb-2">
                 <StakeRangeSlider />
               </div>
 

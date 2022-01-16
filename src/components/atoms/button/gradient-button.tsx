@@ -13,7 +13,9 @@ const GradientButton = styled(Button)`
   &:hover {
     background: linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%);
   }
-
+  ${props => props.isSmall && css`
+     border-radius: 0.25rem;
+  `}
   ${props => props.disabled && css`
     background: none;
   `}
