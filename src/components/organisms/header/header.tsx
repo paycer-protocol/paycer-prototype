@@ -110,7 +110,7 @@ const Header = () => {
                               </a>
                           </li>
                       </ul>
-                      <ul className="navbar-nav flex-row d-flex d-lg-none me-4">
+                      <ul className="navbar-nav flex-row d-flex d-lg-none">
                           <li className="me-3">
                               <Icon
                                 onClick={() => setShowModalNav(true)}

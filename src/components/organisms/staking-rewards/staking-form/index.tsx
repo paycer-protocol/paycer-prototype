@@ -80,7 +80,7 @@ const {
             <div>
               <div className="d-flex mb-3">
                 <label className="form-label">
-                  {t`Your APY:`}
+                  {t`Your APR:`}
                 </label>
                 <span className="ps-2">
                   <div className="d-flex">
@@ -118,7 +118,7 @@ const {
                       <FormattedNumber
                         value={values.tokenBalance}
                         minimumFractionDigits={2}
-                        maximumFractionDigits={4}
+                        maximumFractionDigits={2}
                       />
                       &nbsp;
                       {t`PCR`}
@@ -132,22 +132,24 @@ const {
               </div>
               <div className="mb-4 pb-md-3">
                 <div className="row mb-5">
-                  <div className="col-6">
+                  <div className="col-4">
                     <DashNumber
                       label={t`Daily rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 365}
                       symbol={values.rewardSymbol}
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-4">
                     <DashNumber
                       label={t`Monthly rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 12}
                       symbol={values.rewardSymbol}
                     />
                   </div>
+                  <div className="col-4">
+                    <RewardFee />
+                  </div>
                 </div>
-                <RewardFee />
               </div>
               <SubmitButton />
             </div>

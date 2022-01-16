@@ -102,7 +102,7 @@ export default function useVesting(type):UseVestingProps {
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
     releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
     const nextDistribution = calculateNextDistribution() && startTime ? calculateNextDistribution().format('MM/DD/YYYY, h:mm:ss a') : null
-    const endTime = calculateNextDistribution() && startTime ? getEndTime().format('MM/DD/YYYY, h:mm:ss a') : null
+    const endTime = startTime ? getEndTime().format('MM/DD/YYYY, h:mm:ss a') : null
     // @ts-ignore
     startTime = startTime ? moment(startTime.toNumber() * 1000).format('MM/DD/YYYY, h:mm:ss a') : null
 

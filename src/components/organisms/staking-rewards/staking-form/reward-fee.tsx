@@ -23,11 +23,11 @@ export default function RewardFee() {
   }
 
   return (
-    <div className="text-center">
-      <small className="text-muted me-2">
+    <div className="d-flex flex-column">
+      <span className="text-muted mb-1">
         <Trans>Fee</Trans>
-      </small>
-      <small>
+      </span>
+      <span>
           +&nbsp;
           <FormattedNumber
               value={fee}
@@ -35,7 +35,7 @@ export default function RewardFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.rewardSymbol}
-      </small>
+      </span>
     </div>
   )
 }

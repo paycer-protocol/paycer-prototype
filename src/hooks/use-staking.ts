@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId } from "@usedapp/core";
+import moment from 'moment'
+import { ChainId } from '@usedapp/core'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
 import StakingContractProvider from '@providers/staking'
@@ -17,7 +18,7 @@ interface UseStakingProps {
     pendingReward: number
     stakedBalance: number
     rewardRate: number
-    lastDepositedAt: string
+    totalAmountClaimed: number
     lastRewardTime: string
     depositTx: any
     withdrawTx: any
@@ -136,6 +137,17 @@ export default function useStaking():UseStakingProps {
         approveTx.status = 'None'
     }
 
+    function getlastRewardTime():any {
+
+        if (!BigNumber.isBigNumber(userInfo?.lastRewardTime)) {
+            return null
+        }
+
+        const lastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
+
+        return lastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
+    }
+
     return {
         deposit,
         withdraw,
@@ -145,9 +157,9 @@ export default function useStaking():UseStakingProps {
         // @ts-ignore
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
         // @ts-ignore
-        lastDepositedAt: BigNumber.isBigNumber(userInfo?.lastDepositedAt) ? new Date(userInfo?.lastDepositedAt * 1000).toLocaleDateString("en-US") : '',
-        // @ts-ignore
-        lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? new Date(userInfo?.lastRewardTime * 1000).toLocaleDateString("en-US") : '',
+        /* TODO ADD TOTAL AMOUNT CLAIMED */
+        totalAmountClaimed: 1000,
+        lastRewardTime: getlastRewardTime(),
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
         depositTx,

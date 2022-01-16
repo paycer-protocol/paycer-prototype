@@ -9,7 +9,6 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import Spinner from '@components/atoms/spinner'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 
-
 const RewardContainer = styled.div`
   display: flex;
   align-items: center;
@@ -31,7 +30,7 @@ export default function ClaimSummary() {
     claimTx,
     resetStatus,
     pendingReward,
-    lastDepositedAt,
+    totalAmountClaimed,
     lastRewardTime,
     claimError,
     isLoading,
@@ -47,93 +46,102 @@ export default function ClaimSummary() {
   }
 
   return (
-    <div>
-      <RewardContainer>
-        <div className="d-flex flex-column text-center mb-4 mb-md-0">
-          <span className="text-muted">
-              <Trans>Claimable rewards</Trans>
-          </span>
-          <span className="display-4">
-              +&nbsp;
-            <FormattedNumber
-              value={pendingReward}
-              minimumFractionDigits={2}
-              maximumFractionDigits={4}
-            />
-            <CurrencyIcon
-              symbol={rewardSymbol}
-              className="ms-2"
-              width={28}
-              height={28}
-              style={{marginTop: '-4px'}}
-            />
-          </span>
-        </div>
+      <div className="list-group list-group-flush list-group-activity h-100">
+          <div className="card bg-dark border-0 w-100 mb-0 shadow-none h-100">
+              <div className="card-body p-5">
+                  <div className="d-flex justify-content-center mb-5">
+                      <img width="90" src="/assets/paycer-gradient.svg" className="mt-3" alt="Paycer" />
+                  </div>
 
-        <HorizontalLine className="d-none pt-3 d-md-block"/>
+                  <h3 className="mb-3 text-center text-center text-muted">
+                      <Trans>Claimable PCR rewards</Trans>
+                  </h3>
 
-        <div className="mt-3 row w-100 justify-content-md-between">
-          <div className="col-6 text-center">
-            <label className="form-label d-block">{t`Last Deposited`}</label>
-            {lastDepositedAt}
+                  <div className="d-flex flex-column mb-4 text-center">
+                      <span className="display-2 my-3">
+                          <FormattedNumber
+                              value={pendingReward}
+                              minimumFractionDigits={2}
+                              maximumFractionDigits={4}
+                          />
+                      </span>
+                  </div>
+
+                  <div className="d-flex justify-content-center">
+                      <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowFormApproveModal(true) : null}>
+                          {t`Claim rewards`}
+                      </GradientButton>
+                  </div>
+
+
+                  <div className="row justify-content-between">
+                      {(lastRewardTime &&
+                        <div className="col-6">
+                        <small className="text-center pt-5 d-block">
+                          <div className="text-muted">
+                              {t`Last rewarded`}
+                          </div>
+                          <div>
+                              {lastRewardTime}
+                          </div>
+                        </small>
+                        </div>
+                      )}
+                      {(totalAmountClaimed &&
+                        <div className="col-6">
+                          <small className="text-center pt-5 d-block">
+                            <div className="text-muted">
+                                {t`Total claimed`}
+                            </div>
+                            <div>
+                              <FormattedNumber
+                                value={totalAmountClaimed}
+                                minimumFractionDigits={2}
+                                maximumFractionDigits={2}
+                              />
+                            </div>
+                          </small>
+                        </div>
+                      )}
+
+                  </div>
+
+
+                  <TransactionApproveModal
+                      show={showFormApproveModal}
+                      onHide={() => {
+                          resetStatus()
+                          setShowFormApproveModal(false)
+                      }}
+                      title={t`Confirm Claim`}
+                      btnLabel={t`Claim now`}
+                      onClick={() => handleClaim()}
+                      error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
+                      success={claimTx.status === 'Success'}
+                      successMessage={t`Transaction was successfully executed`}
+                      loading={isLoading || claimTx.status === 'Mining'}
+                  >
+                      <div className="my-5">
+                          <div className="d-flex flex-column mb-4 text-center">
+                            <span className="display-2 my-3">
+                                <FormattedNumber
+                                    value={pendingReward}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={2}
+                                />
+                              <CurrencyIcon
+                                  style={{position: 'relative', top: '-4px'}}
+                                  width={70}
+                                  height={70}
+                                  symbol="PCR"
+                              />
+                            </span>
+                          </div>
+                      </div>
+                  </TransactionApproveModal>
+              </div>
           </div>
-
-          <div className="col-6 text-center">
-            <label className="form-label d-block">{t`Last Rewarded`}</label>
-            {lastRewardTime}
-          </div>
-        </div>
-      </RewardContainer>
-
-      <div className="d-flex align-items-center justify-content-center mb-3">
-        <GradientButton
-            type="submit"
-            title={t`Claim`}
-            className="px-5"
-            onClick={() => setShowFormApproveModal(true)}
-            disabled={pendingReward === 0}
-            style={{width: '150px'}}
-        >
-          {t`Claim`}
-
-        </GradientButton>
       </div>
-
-      <TransactionApproveModal
-          show={showFormApproveModal}
-          onHide={() => {
-            resetStatus()
-            setShowFormApproveModal(false)
-          }}
-          title={t`Confirm Claim`}
-          btnLabel={t`Claim now`}
-          onClick={() => handleClaim()}
-          error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
-          success={claimTx.status === 'Success'}
-          successMessage={t`Transaction was successfully executed`}
-          loading={isLoading || claimTx.status === 'Mining'}
-      >
-        <div className="my-5">
-          <div className="d-flex flex-column mb-4 text-center">
-            <span className="display-2 my-3">
-                <FormattedNumber
-                    value={pendingReward}
-                    minimumFractionDigits={2}
-                    maximumFractionDigits={2}
-                />
-              <CurrencyIcon
-                  style={{position: 'relative', top: '-4px'}}
-                  width={70}
-                  height={70}
-                  symbol="PCR"
-              />
-            </span>
-          </div>
-        </div>
-      </TransactionApproveModal>
-      <div style={{position: 'absolute', left: '50%', top: '30%'}}>
-        <Spinner animation="border" show={claimTx.status === 'Mining'} />
-      </div>
-    </div>
   )
+
 }

@@ -5,16 +5,27 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
+import {t} from "@lingui/macro";
 
-const VerticalLine = styled.div`
-    border-right: 1px solid #244166;
-    margin: 20px 30px 20px 50px;
+export const LeftCol = styled.div`
+    width: 50%;
+    padding: 40px 20px 40px 40px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    }
 `
 
-const HorizontalLine = styled.div`
-    border-top: 1px solid #244166;
-    margin: 50px 30px 0;
+export const RightCol = styled.div`
+    width: 50%;
+    padding: 40px 40px 40px 20px;
+
+    @media only screen and (max-width : 978px) {
+      width: 100%;
+      padding: 20px;
+    }
 `
+
 
 export default function Staking () {
   const { supportedStakingChain } = useNetwork()
@@ -36,17 +47,17 @@ export default function Staking () {
             </div>
           </div>
         </PageHeader>
+
         <div className="card blur-background">
-          <div className="card-body">
-            <div className="d-flex flex-column flex-md-row">
-              <div className="w-100">
+          <div className="card-body p-0">
+            <div className="d-lg-flex">
+              <LeftCol>
                 <StakingForm />
-              </div>
-              <VerticalLine className="d-none d-md-block" />
-              <HorizontalLine className="d-block d-md-none" />
-              <div className="w-100">
+              </LeftCol>
+              <RightCol>
+
                 <ClaimForm />
-              </div>
+              </RightCol>
             </div>
           </div>
         </div>
