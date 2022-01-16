@@ -87,7 +87,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
           <>
             <div className="d-flex justify-content-center mt-6 pt-6">
                 <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
-                <p className="mb-0 text-center text-muted">{t`Transaction is proccessing...`}</p>
+                <p className="mb-0 text-center text-muted">{t`Transaction is processing...`}</p>
             </div>
           </>
       )
