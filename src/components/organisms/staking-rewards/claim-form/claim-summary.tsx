@@ -73,7 +73,7 @@ export default function ClaimSummary() {
                       </GradientButton>
                   </div>
 
-                  {((lastRewardTime || totalAmountClaimed) &&
+                  {((lastRewardTime || totalAmountClaimed > 0) &&
                   <div className={(lastRewardTime && totalAmountClaimed) ? 'row justify-content-between' : 'row justify-content-center'}>
                       {(lastRewardTime &&
                         <div className="col-6">
