@@ -11,11 +11,11 @@ export default function InvestRangeSlider() {
       <>
           <Slider
               marks={{
-                  0: '0%',
+                  0: 'min',
                   25: '25%',
                   50: '50%',
                   75: '75%',
-                  100: '100%',
+                  100: 'max',
               }}
               min={0}
               max={100}
