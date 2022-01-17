@@ -138,11 +138,11 @@ export default function useStaking():UseStakingProps {
     }
 
     function getlastRewardTime():any {
-
+        // @ts-ignore
         if (!BigNumber.isBigNumber(userInfo?.lastRewardTime)) {
             return null
         }
-
+        // @ts-ignore
         const lastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
 
         return lastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
