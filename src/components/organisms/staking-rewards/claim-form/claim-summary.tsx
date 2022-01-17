@@ -48,9 +48,9 @@ export default function ClaimSummary() {
   return (
       <div className="list-group list-group-flush list-group-activity h-100">
           <div className="card bg-dark border-0 w-100 mb-0 shadow-none h-100">
-              <div className="card-body p-5">
+              <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center">
                   <div className="d-flex justify-content-center mb-5">
-                      <img width="90" src="/assets/paycer-gradient.svg" className="mt-3" alt="Paycer" />
+                      <img width="75" src="/assets/paycer-gradient.svg" className="mt-3" alt="Paycer" />
                   </div>
 
                   <h3 className="mb-3 text-center text-center text-muted">
@@ -67,7 +67,7 @@ export default function ClaimSummary() {
                       </span>
                   </div>
 
-                  <div className="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center w-100">
                       <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowFormApproveModal(true) : null}>
                           {t`Claim rewards`}
                       </GradientButton>
