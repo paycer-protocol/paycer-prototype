@@ -1,5 +1,4 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
 import { StakingProps } from '../types'
@@ -19,10 +18,6 @@ export default function RewardFee() {
   }
 
   return (
-    <div className="d-flex flex-column">
-      <span className="text-muted mb-1">
-        <Trans>Estimated fee</Trans>&nbsp;
-      </span>
       <span>
           +&nbsp;
           <FormattedNumber
@@ -32,6 +27,5 @@ export default function RewardFee() {
           />
           &nbsp;{values.rewardSymbol}
       </span>
-    </div>
   )
 }

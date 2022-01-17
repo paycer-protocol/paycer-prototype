@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import * as Yup from 'yup'
 import { FormikValues } from 'formik'
 import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
@@ -147,7 +147,12 @@ const {
                     />
                   </div>
                   <div className="col-4">
-                    <RewardFee />
+                    <div className="d-flex flex-column">
+                      <span className="text-muted mb-1">
+                        <Trans>Estimated fee</Trans>&nbsp;
+                      </span>
+                      <RewardFee />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -219,20 +224,28 @@ const {
                         />
                       </div>
                     </div>
-                    <div className="row">
+                    <div className="row mb-4">
                       <div className="col-6">
                         {t`Monthly rewards:`}
                       </div>
                       <div className="col-6 fw-bold">
                         <DashNumber
-                            value={values.stakedBalance * values.rewardRate / 100 / 30}
+                            value={values.stakedBalance * values.rewardRate / 100 / 12}
                             symbol={values.rewardSymbol}
                         />
                       </div>
                     </div>
+                    <div className="row">
+                      <div className="col-6">
+                        {t`Fee:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <RewardFee />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <RewardFee />
+
               </>
             </TransactionApproveModal>
           </>
