@@ -21,7 +21,7 @@ export default function RewardFee() {
   return (
     <div className="d-flex flex-column">
       <span className="text-muted mb-1">
-        <Trans>Fee</Trans>
+        <Trans>Estimated fee</Trans>&nbsp;
       </span>
       <span>
           +&nbsp;

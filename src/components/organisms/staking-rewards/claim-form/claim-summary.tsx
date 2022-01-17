@@ -74,7 +74,7 @@ export default function ClaimSummary() {
                   </div>
 
                   {((lastRewardTime || totalAmountClaimed > 0) &&
-                  <div className={(lastRewardTime && totalAmountClaimed) ? 'row justify-content-between' : 'row justify-content-center'}>
+                  <div className={(lastRewardTime && totalAmountClaimed) ? 'row justify-content-between w-100' : 'row justify-content-center w-100'}>
                       {(lastRewardTime &&
                         <div className="col-6">
                         <small className="text-center pt-5 d-block">
