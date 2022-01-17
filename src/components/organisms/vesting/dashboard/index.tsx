@@ -56,13 +56,14 @@ const VestingDashboard = () => {
                 <div className="card-body p-0">
                     <div className="d-lg-flex">
                         <LeftCol>
+                            <Overview />
+                        </LeftCol>
+                        <RightCol>
+
                             <div className="display-4 fw-normal mb-5 text-center text-md-start">
                                 {t`Claim`} {renderTabLabel()}
                             </div>
                             <Claim />
-                        </LeftCol>
-                        <RightCol>
-                            <Overview />
                         </RightCol>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
     totalAmount: number
+    resetStatus: () => void
     amountWithdrawn: number
     withdrawTx: any
     withdrawError?: boolean
@@ -86,6 +87,10 @@ export default function useVesting(type):UseVestingProps {
 
     }
 
+    const resetStatus = () => {
+        withdrawTx.status = 'None'
+    }
+
     function calculateNextDistribution():any {
         if (!startTime) {
             return null
@@ -102,7 +107,7 @@ export default function useVesting(type):UseVestingProps {
     amountWithdrawn = BigNumber.isBigNumber(amountWithdrawn) ? Number(formatUnits(amountWithdrawn, 18)) : 0
     releaseInterval = BigNumber.isBigNumber(releaseInterval) ? Number(releaseInterval) : 0
     const nextDistribution = calculateNextDistribution() && startTime ? calculateNextDistribution().format('MM/DD/YYYY, h:mm:ss a') : null
-    const endTime = calculateNextDistribution() && startTime ? getEndTime().format('MM/DD/YYYY, h:mm:ss a') : null
+    const endTime = startTime ? getEndTime().format('MM/DD/YYYY, h:mm:ss a') : null
     // @ts-ignore
     startTime = startTime ? moment(startTime.toNumber() * 1000).format('MM/DD/YYYY, h:mm:ss a') : null
 
@@ -117,12 +122,15 @@ export default function useVesting(type):UseVestingProps {
         setLoading(false)
     }
 
+    console.log(amountWithdrawn)
+
     return {
         withdrawAble,
         totalAmount,
         amountWithdrawn,
         withdrawTx,
         withdrawError,
+        resetStatus,
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal,

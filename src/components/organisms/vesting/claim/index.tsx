@@ -34,7 +34,8 @@ const Claim = () => {
         setShowFormApproveModal,
         withdrawError,
         isLoading,
-        nextDistribution
+        nextDistribution,
+        resetStatus
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -43,10 +44,10 @@ const Claim = () => {
 
     return (
       <AnimatedDiv className="list-group list-group-flush list-group-activity">
-          <div className="card bg-dark border-0 w-100 mb-0 shadow-none">
-              <div className="card-body p-5">
+          <div className="card bg-dark border-0 w-100 mb-0 shadow-none pt-4 pb-4 ">
+              <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center">
                   <div className="d-flex justify-content-center mb-5">
-                      <img width="88" className="mt-2" src="/assets/paycer-gradient.svg" alt="Paycer" />
+                      <img width="75" src="/assets/paycer-gradient.svg" alt="Paycer" />
                   </div>
 
                   <h3 className="mb-3 text-center text-center text-muted">
@@ -63,7 +64,7 @@ const Claim = () => {
                       </span>
                   </div>
 
-                  <div className="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center w-100">
                       <GradientButton className="w-75" disabled={withdrawAble === 0} onClick={withdrawAble > 0 ? () => setShowFormApproveModal(true) : null}>
                           {t`Claim`}
                       </GradientButton>
@@ -82,7 +83,10 @@ const Claim = () => {
 
                   <TransactionApproveModal
                     show={showFormApproveModal}
-                    onHide={() => setShowFormApproveModal(false)}
+                    onHide={() => {
+                        setShowFormApproveModal(false)
+                        resetStatus()
+                    }}
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
