@@ -54,7 +54,7 @@ export default function ClaimSummary() {
                   </div>
 
                   <h3 className="mb-3 text-center text-center text-muted">
-                      <Trans>Claimable PCR rewards</Trans>
+                      <Trans>Claim your rewards</Trans>
                   </h3>
 
                   <div className="d-flex flex-column mb-4 text-center">
@@ -73,8 +73,8 @@ export default function ClaimSummary() {
                       </GradientButton>
                   </div>
 
-
-                  <div className="row justify-content-between">
+                  {((lastRewardTime || totalAmountClaimed) &&
+                  <div className={(lastRewardTime && totalAmountClaimed) ? 'row justify-content-between' : 'row justify-content-center'}>
                       {(lastRewardTime &&
                         <div className="col-6">
                         <small className="text-center pt-5 d-block">
@@ -87,7 +87,7 @@ export default function ClaimSummary() {
                         </small>
                         </div>
                       )}
-                      {(totalAmountClaimed &&
+                      {(totalAmountClaimed > 0 &&
                         <div className="col-6">
                           <small className="text-center pt-5 d-block">
                             <div className="text-muted">
@@ -103,9 +103,8 @@ export default function ClaimSummary() {
                           </small>
                         </div>
                       )}
-
                   </div>
-
+                  )}
 
                   <TransactionApproveModal
                       show={showFormApproveModal}

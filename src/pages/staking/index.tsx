@@ -55,7 +55,6 @@ export default function Staking () {
                 <StakingForm />
               </LeftCol>
               <RightCol>
-
                 <ClaimForm />
               </RightCol>
             </div>

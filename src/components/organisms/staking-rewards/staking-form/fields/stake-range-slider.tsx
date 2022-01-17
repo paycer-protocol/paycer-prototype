@@ -2,8 +2,6 @@ import React from 'react'
 import Slider from '@components/atoms/form/range'
 import { useFormikContext } from 'formik'
 import { StakingProps } from '../../types'
-import GradientButton from "@components/atoms/button/gradient-button";
-import {t} from "@lingui/macro";
 
 export default function InvestRangeSlider() {
   const { values, initialValues, setFieldValue, dirty } = useFormikContext<StakingProps>()
@@ -42,25 +40,6 @@ export default function InvestRangeSlider() {
                   setFieldValue('stakeRange', value)
               }}
           />
-          <div className="mt-5 d-flex justify-content-between">
-              <div
-                  onClick={() => {
-                      setFieldValue('stakeRange', 0)
-                      setFieldValue('stakedBalance', 0)
-                  }}
-                  className="btn-sm d-flex align-items-center btn-primary px-3 py-1 fw-normal cursor-pointer">
-                  {t`min`}
-              </div>
-              <GradientButton
-                isSmall
-                onClick={() => {
-                    setFieldValue('stakeRange', 100)
-                    setFieldValue('stakedBalance', totalBalance)
-                }}
-                className="btn-sm d-flex align-items-center btn-primary px-3 py-1 fw-normal cursor-pointer">
-                    {t`max`}
-              </GradientButton>
-          </div>
       </>
 
   )

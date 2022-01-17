@@ -158,7 +158,7 @@ export default function useStaking():UseStakingProps {
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
-        totalAmountClaimed: 1000,
+        totalAmountClaimed: 0,
         lastRewardTime: getlastRewardTime(),
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,

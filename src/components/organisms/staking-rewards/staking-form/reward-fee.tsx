@@ -18,10 +18,6 @@ export default function RewardFee() {
     fee = diff * values.withdrawFee / 100
   }
 
-  if (fee <= 0 || !dirty) {
-    return null
-  }
-
   return (
     <div className="d-flex flex-column">
       <span className="text-muted mb-1">

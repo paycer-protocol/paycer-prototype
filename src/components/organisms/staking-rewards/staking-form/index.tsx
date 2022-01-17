@@ -87,16 +87,16 @@ const {
                     {initialValues.rewardRate}%
                     <InfoTooltip>
                       <>
-                        <strong>{t`Associate`}</strong> - min 5.000 PCR Stake: 15%<br />
-                        <strong>{t`Senior`}</strong> - min 15.000 PCR Stake: 18%<br />
-                        <strong>{t`Manager`}</strong> - min 35.000 PCR Stake: 21%<br />
-                        <strong>{t`Partner`}</strong> - min 100.000 PCR Stake: 24%
+                        <strong>{t`Associate`}</strong> - Stake min 5.000 PCR: 15%<br />
+                        <strong>{t`Senior`}</strong> - Stake min 15.000 PCR: 18%<br />
+                        <strong>{t`Manager`}</strong> - Stake min 35.000 PCR: 21%<br />
+                        <strong>{t`Partner`}</strong> - Stake min 100.000 PCR: 24%
                       </>
                     </InfoTooltip>
                   </div>
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="mb-4">
                 <StakeRangeSlider />
               </div>
 
