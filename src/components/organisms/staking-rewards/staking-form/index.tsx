@@ -132,21 +132,21 @@ const {
               </div>
               <div className="mb-4 pb-md-3">
                 <div className="row mb-5">
-                  <div className="col-4">
+                  <div className="col-6 col-md-4">
                     <DashNumber
                       label={t`Daily rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 365}
                       symbol={values.rewardSymbol}
                     />
                   </div>
-                  <div className="col-4">
+                  <div className="col-6 col-md-4">
                     <DashNumber
                       label={t`Monthly rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 12}
                       symbol={values.rewardSymbol}
                     />
                   </div>
-                  <div className="col-4">
+                  <div className="col-4 d-none d-md-flex">
                     <div className="d-flex flex-column">
                       <span className="text-muted mb-1">
                         <Trans>Estimated fee</Trans>&nbsp;
@@ -155,6 +155,12 @@ const {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="d-flex flex-column d-md-none mb-5">
+                <span className="text-muted mb-1">
+                  <Trans>Estimated fee</Trans>&nbsp;
+                </span>
+                <RewardFee />
               </div>
               <SubmitButton />
             </div>
