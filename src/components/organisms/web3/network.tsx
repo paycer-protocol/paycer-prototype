@@ -3,7 +3,12 @@ import classnames from 'classnames'
 import Button from '@components/atoms/button'
 import useWallet from '@hooks/use-wallet'
 import NetworkProvider  from './network-provider'
-import { mainNetProviders } from '@providers/networks'
+import { mainNetProviders, chainedNetworkProvider } from '@providers/networks'
+
+function isDebug() {
+  return window.location.hostname === 'localhost'
+    || window.location.search === '?debug=1'
+}
 
 const Network = (props) => {
   const [showNetworkModal, setShowNetworkModal] = useState(false)
@@ -22,7 +27,7 @@ const Network = (props) => {
         {props.children ? props.children : <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>}
       </Button>
       <NetworkProvider
-        providers={mainNetProviders}
+        providers={isDebug() ? chainedNetworkProvider : mainNetProviders}
         show={showNetworkModal}
         onHide={() => setShowNetworkModal(false)}
       />
