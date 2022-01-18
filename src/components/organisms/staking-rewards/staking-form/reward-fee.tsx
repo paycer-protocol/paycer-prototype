@@ -1,5 +1,4 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { FormattedNumber } from '@components/atoms/number'
 import { StakingProps } from '../types'
@@ -18,16 +17,8 @@ export default function RewardFee() {
     fee = diff * values.withdrawFee / 100
   }
 
-  if (fee <= 0 || !dirty) {
-    return null
-  }
-
   return (
-    <div className="text-center">
-      <small className="text-muted me-2">
-        <Trans>Fee</Trans>
-      </small>
-      <small>
+      <span>
           +&nbsp;
           <FormattedNumber
               value={fee}
@@ -35,7 +26,6 @@ export default function RewardFee() {
               maximumFractionDigits={4}
           />
           &nbsp;{values.rewardSymbol}
-      </small>
-    </div>
+      </span>
   )
 }

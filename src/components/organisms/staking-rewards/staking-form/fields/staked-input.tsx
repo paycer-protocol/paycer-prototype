@@ -18,7 +18,7 @@ export default function StakedInput() {
             required
             max={10}
             currency={values.rewardSymbol}
-            decimals={4}
+            decimals={2}
             onChange={(e) => {
                 let stakedBalance = Number(e.target.rawValue.split(' ')[1])
                 let tokenBalance = 0 as number

@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import * as Yup from 'yup'
 import { FormikValues } from 'formik'
 import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
@@ -15,6 +15,7 @@ import RewardFee from './reward-fee'
 import { StakingProps } from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import InfoTooltip from "@components/atoms/info-tooltip";
 
 export default function StakingForm() {
 const {
@@ -77,13 +78,25 @@ const {
         return (
           <>
             <div>
-              <div className="d-flex mb-4">
+              <div className="d-flex mb-3">
                 <label className="form-label">
-                  {t`APY`}
+                  {t`Your APR:`}
                 </label>
-                <span className="ps-3">{initialValues.rewardRate}%</span>
+                <span className="ps-2">
+                  <div className="d-flex">
+                    {initialValues.rewardRate}%
+                    <InfoTooltip>
+                      <>
+                        <strong>{t`Associate`}</strong> - Stake min 5.000 PCR: 15%<br />
+                        <strong>{t`Senior`}</strong> - Stake min 15.000 PCR: 18%<br />
+                        <strong>{t`Manager`}</strong> - Stake min 35.000 PCR: 21%<br />
+                        <strong>{t`Partner`}</strong> - Stake min 100.000 PCR: 24%
+                      </>
+                    </InfoTooltip>
+                  </div>
+                </span>
               </div>
-              <div className="mb-2 pb-2">
+              <div className="mb-4">
                 <StakeRangeSlider />
               </div>
 
@@ -105,7 +118,7 @@ const {
                       <FormattedNumber
                         value={values.tokenBalance}
                         minimumFractionDigits={2}
-                        maximumFractionDigits={4}
+                        maximumFractionDigits={2}
                       />
                       &nbsp;
                       {t`PCR`}
@@ -119,21 +132,34 @@ const {
               </div>
               <div className="mb-4 pb-md-3">
                 <div className="row mb-5">
-                  <div className="col-6">
+                  <div className="col-6 col-md-4">
                     <DashNumber
                       label={t`Daily rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 365}
                       symbol={values.rewardSymbol}
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-6 col-md-4">
                     <DashNumber
                       label={t`Monthly rewards`}
                       value={values.stakedBalance * values.rewardRate / 100 / 12}
                       symbol={values.rewardSymbol}
                     />
                   </div>
+                  <div className="col-4 d-none d-md-flex">
+                    <div className="d-flex flex-column">
+                      <span className="text-muted mb-1">
+                        <Trans>Estimated fee</Trans>&nbsp;
+                      </span>
+                      <RewardFee />
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className="d-flex flex-column d-md-none mb-5">
+                <span className="text-muted mb-1">
+                  <Trans>Estimated fee</Trans>&nbsp;
+                </span>
                 <RewardFee />
               </div>
               <SubmitButton />
@@ -204,20 +230,28 @@ const {
                         />
                       </div>
                     </div>
-                    <div className="row">
+                    <div className="row mb-4">
                       <div className="col-6">
                         {t`Monthly rewards:`}
                       </div>
                       <div className="col-6 fw-bold">
                         <DashNumber
-                            value={values.stakedBalance * values.rewardRate / 100 / 30}
+                            value={values.stakedBalance * values.rewardRate / 100 / 12}
                             symbol={values.rewardSymbol}
                         />
                       </div>
                     </div>
+                    <div className="row">
+                      <div className="col-6">
+                        {t`Fee:`}
+                      </div>
+                      <div className="col-6 fw-bold">
+                        <RewardFee />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <RewardFee />
+
               </>
             </TransactionApproveModal>
           </>

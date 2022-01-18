@@ -1,9 +1,6 @@
 import React from 'react'
-import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import { t } from '@lingui/macro'
-import * as Styles from './Styles'
-import { InfoCircle } from '@styled-icons/bootstrap'
-import Icon from '@components/atoms/icon'
+import InfoTooltip from '@components/atoms/info-tooltip'
 
 export interface TierLevelProps {
     tokenAmount: number
@@ -40,17 +37,14 @@ const TierLevel: React.FC<TierLevelProps> = (props) => {
         <div className="d-flex">
             {calculateTierLevel()}
             {(hasLegend &&
-            <DropdownComponent className="d-inline-block mr-2 mb-2">
-              <Styles.StyledDropdownToggle className="font-size-sm">
-                <Icon component={InfoCircle} size={12} />
-              </Styles.StyledDropdownToggle>
-              <Styles.StyledDropdownMenu>
+            <InfoTooltip>
+              <>
                 <strong>{t`Associate`}</strong> - 5.000 or more PCR Tokens<br />
                 <strong>{t`Senior`}</strong> - 15.000 or more PCR Tokens<br />
                 <strong>{t`Manager`}</strong> - 35.000 or more PCR Tokens<br />
                 <strong>{t`Partner`}</strong> - 100.000 or more PCR Tokens
-              </Styles.StyledDropdownMenu>
-            </DropdownComponent>
+              </>
+            </InfoTooltip>
             )}
         </div>
     )

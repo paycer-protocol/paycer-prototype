@@ -19,7 +19,7 @@ const Overview = () => {
   const {
     dashboardData,
     totalInvest,
-    totalReceived,
+    totalReceived
   } = useVestingDashboard()
 
   const {
@@ -29,7 +29,8 @@ const Overview = () => {
   const {
     startTime,
     endTime,
-    totalAmount
+    totalAmount,
+    amountWithdrawn
   } = useVesting(dashboardData?.type)
 
   function renderVestingLabel() {
@@ -59,6 +60,7 @@ const Overview = () => {
               </h6>
               <span className="h2 mb-0">
                   <FormattedNumber value={totalInvest || 0} />
+                  &nbsp;{t`USD`}
                 </span>
               <span className="badge bg-success-soft mt-n1" />
             </div>
@@ -84,6 +86,7 @@ const Overview = () => {
                         &nbsp;(+{bonusPercentage}{t`% Bonus included`})
                       </span>
                 )}
+                &nbsp;/ <FormattedNumber value={amountWithdrawn || 0} />&nbsp;PCR
                 </span>
             </div>
             <div className="col-auto">
@@ -98,7 +101,7 @@ const Overview = () => {
           <div className="row align-items-center gx-0">
             <div className="col">
               <h6 className="text-uppercase text-muted mb-2">
-                {t`Future Loyalty Tier Level`}
+                {t`Future Loyalty Tier`}
               </h6>
               <span className="h2 mb-0">
                  <TierLevel

@@ -7,8 +7,8 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     border: 0 none;
     padding: 0;
     font-weight: 300;    
-    top: -4px;
-    left: 5px;
+    top: -5px;
+    left: 4px;
     &:after { display: none }
     &:focus {
       box-shadow: none!important;

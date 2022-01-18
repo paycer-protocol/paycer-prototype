@@ -7,8 +7,7 @@ import { StakingProps } from '../../types'
 
 export default function SubmitButton() {
     const { values, initialValues, dirty, isValid, isValidating, setFieldValue, resetForm } = useFormikContext<StakingProps>()
-    const isDisabled = !dirty || !isValid || isValidating || values.stakedBalance === initialValues.stakedBalance
-
+    const isDisabled = !dirty || !isValid || isValidating || Math.round(values.stakedBalance) === Math.round(initialValues.stakedBalance)
     return (
       <div className="d-flex align-items-center justify-content-center mb-3">
           <Button
