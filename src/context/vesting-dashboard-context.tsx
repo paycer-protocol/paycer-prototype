@@ -49,14 +49,14 @@ const calculateTotalInvested = (transactions, type = 'public') => {
   let totalInvest = 0
   let totalReceived = 0
 
-  Object.keys(transactions).map((key) => {
+  let tokenSalePriceUSD = publicSalePriceUSD
+  if (type === 'private' || type === 'private_v2') {
+    tokenSalePriceUSD = privateSalePriceUSD
+  } else if (type === 'pre') {
+    tokenSalePriceUSD = preSalePriceUSD
+  }
 
-    let tokenSalePriceUSD = publicSalePriceUSD
-    if (type === 'private') {
-      tokenSalePriceUSD = privateSalePriceUSD
-    } else if (type === 'pre') {
-      tokenSalePriceUSD = preSalePriceUSD
-    }
+  Object.keys(transactions).map((key) => {
 
     if (transactions[key].historicalUSDPrice) {
       const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice

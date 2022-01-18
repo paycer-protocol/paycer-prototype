@@ -42,8 +42,8 @@ export default function Staking () {
         <PageHeader>
           <div className="row align-items-center">
             <div className="col">
-              <PageHeader.Subtitle>Overview</PageHeader.Subtitle>
-              <PageHeader.Title>Staking Rewards</PageHeader.Title>
+              <PageHeader.Subtitle>Staking</PageHeader.Subtitle>
+              <PageHeader.Title>Earn rewards</PageHeader.Title>
             </div>
           </div>
         </PageHeader>
