@@ -76,3 +76,8 @@ export const mainNetProviders: INetworkProvider = {
         blockExplorerUrls: [explorers[ChainId.Polygon]],
     },
 }
+
+export const chainedNetworkProvider = {
+    ...testNetNetworks,
+    ...mainNetProviders,
+}
