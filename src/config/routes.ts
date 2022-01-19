@@ -3,8 +3,19 @@ import {supportedChains, supportedStakingChains, supportedVestingChains} from '.
 
 export const routes = [
   {
-    label: t`Portfolio`,
+    label: t`Staking`,
     path: '/',
+    supportedChains: supportedStakingChains,
+    auth: false
+  },
+  {
+    label: t`Vesting`,
+    path: '/vesting',
+    supportedChains: supportedVestingChains
+  },
+  {
+    label: t`Portfolio`,
+    path: '/portfolio',
     supportedChains,
     auth: false
   },
@@ -24,16 +35,5 @@ export const routes = [
     path: '/swap',
     supportedChains,
     auth: false
-  },
-  {
-    label: t`Staking`,
-    path: '/staking',
-    supportedChains: supportedStakingChains,
-    auth: false
-  },
-  {
-    label: t`Vesting`,
-    path: '/vesting',
-    supportedChains: supportedVestingChains
   }
 ]
