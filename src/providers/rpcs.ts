@@ -11,7 +11,7 @@ export const rpcUrls: IRpcUrl = {
     [ChainId.Goerli]: 'https://eth-goerli.alchemyapi.io/v2/Dkk5d02QjttYEoGmhZnJG37rKt8Yl3Im',
     [ChainId.Kovan]: 'https://eth-kovan.alchemyapi.io/v2/6OVAa_B_rypWWl9HqtiYK26IRxXiYqER',
     [ChainId.BSC]: 'https://bsc-dataseed.binance.org',
-    [ChainId.Polygon]: 'https://rpc-mainnet.maticvigil.com',
+    [ChainId.Polygon]: 'https://polygon-rpc.com/',
     [ChainId.Mumbai]: 'https://rpc-mumbai.maticvigil.com',
     [ChainId.xDai]: 'https://rpc.xdaichain.com',
     [ChainId.Hardhat]: 'http://127.0.0.1:8545',
