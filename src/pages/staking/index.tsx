@@ -28,14 +28,6 @@ export const RightCol = styled.div`
 
 
 export default function Staking () {
-  const { supportedStakingChain } = useNetwork()
-
-  if (!supportedStakingChain) {
-    location.href = '/'
-
-    return
-  }
-
   return (
     <>
       <div className="container mt-3">
