@@ -5,7 +5,7 @@ export const routes = [
   {
     label: t`Staking`,
     path: '/',
-    supportedChains,
+    supportedChains: supportedStakingChains,
     auth: false
   },
   {
