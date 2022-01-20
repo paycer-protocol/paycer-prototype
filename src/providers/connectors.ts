@@ -13,13 +13,13 @@ const APP_EMAIL = process.env.APP_EMAIL
 const POLLING_INTERVAL = 15000
 
 export const walletConnectConnector = new WalletConnectConnector({
-    rpc: { [ChainId.Mainnet]: rpcUrls[ChainId.Mainnet] },
+    rpc: rpcUrls,
     bridge: 'https://bridge.walletconnect.org',
     qrcode: true,
 })
 
 export const walletlink = new WalletLinkConnector({
-    url: rpcUrls[ChainId.Mainnet],
+    url: rpcUrls[ChainId.Polygon],
     appName: 'Paycer',
     appLogoUrl: 'https://www.paycer.io/logo.svg',
 })
@@ -41,16 +41,16 @@ export const injectedConnector = new InjectedConnector({
 })
 
 export const trezorConnector = new TrezorConnector({
-    chainId: ChainId.Mainnet,
-    url: rpcUrls[ChainId.Mainnet],
+    chainId: ChainId.Polygon,
+    url: rpcUrls[ChainId.Polygon],
     pollingInterval: POLLING_INTERVAL,
     manifestEmail: APP_EMAIL,
     manifestAppUrl: APP_URL
 })
 
 export const ledgerConnector = new LedgerConnector({
-    chainId: ChainId.Mainnet,
-    url: rpcUrls[ChainId.Mainnet],
+    chainId: ChainId.Polygon,
+    url: rpcUrls[ChainId.Polygon],
     pollingInterval: POLLING_INTERVAL
 })
 
