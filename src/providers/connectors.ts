@@ -78,14 +78,7 @@ export const connectors: IConnectorProvider[] = [
         name: 'WalletConnect',
         description: t`Connect to Trust Wallet, Rainbow Wallet and more...`,
         icon: '/assets/wallets/wallet-connect.svg',
-        beforeConnect: (provider: IConnectorProvider) => {
-            const { connector } = provider
-            if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
-                connector.walletConnectProvider = undefined
-            }
-
-            return connector
-        }
+        beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
         connector: walletlink,
@@ -103,6 +96,7 @@ export const connectors: IConnectorProvider[] = [
         icon: '/assets/wallets/trezor.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
+    /*
     {
         connector: ledgerConnector,
         rejectedError: UserRejectedRequestError,
@@ -111,4 +105,5 @@ export const connectors: IConnectorProvider[] = [
         icon: '/assets/wallets/ledger.svg',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
+     */
 ]
