@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { t, Trans} from '@lingui/macro'
-import { NoEthereumProviderError } from '@web3-react/injected-connector'
+import { NoEthereumProviderError, InjectedConnector } from '@web3-react/injected-connector'
 import useWallet from '@hooks/use-wallet'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
@@ -8,6 +8,8 @@ import Spinner from '@components/atoms/spinner'
 import ListGroup from '@components/molecules/list-group'
 import Modal from '@components/molecules/modal'
 import { IConnectorProvider } from '@providers/connectors'
+import {WalletConnectConnector} from "@web3-react/walletconnect-connector";
+import {LedgerConnector} from "@web3-react/ledger-connector";
 
 export interface WalletProviderProps {
   providers: IConnectorProvider[]
@@ -29,14 +31,19 @@ const WalletProvider = (props: WalletProviderProps) => {
         message = t`No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.`
       } else if (e.message.includes('Unsupported chain')) {
         message = t`You're connected to an unsupported network. Please open your browser extension and change the network.`
-      } else if (provider.rejectedError && e instanceof provider.rejectedError) {
+      } else if (provider.rejectedError && e instanceof provider.rejectedError || e.message.includes('authorization') || e.message.includes('rejected')) {
+        // if the connector is walletconnect manually reset the connector
+        if (provider.connector instanceof WalletConnectConnector) {
+          provider.connector.walletConnectProvider = undefined
+        }
         message = t`Please authorize this website to access your Ethereum account.`
       } else if (e.message.includes('already pending')) {
         message = t`Please open your wallet and connect your account.`
+      } else if (provider.connector instanceof LedgerConnector) {
+        message = e.message
       } else {
         message = t`An unknown error occurred. Please try again.`
       }
-
       setErrorMessage(message)
     }
   }
