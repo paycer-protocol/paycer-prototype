@@ -31,7 +31,7 @@ export default function Staking () {
   const { supportedStakingChain } = useNetwork()
 
   if (!supportedStakingChain) {
-    location.href = '/'
+    location.href = '/portfolio'
 
     return
   }
