@@ -158,12 +158,12 @@ export default function useStaking():UseStakingProps {
         resetStatus,
         pendingReward,
         // @ts-ignore
-        stakedBalance: BigNumber.isBigNumber(userInfo.amount) ? Number(formatUnits(userInfo.amount, 18)) : 0,
+        stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         totalAmountClaimed: 0,
         // @ts-ignore
-        lastRewardTime: BigNumber.isBigNumber(userInfo.lastRewardTime) ? formatLastRewardtime() : 0,
+        lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? formatLastRewardtime() : 0,
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
         depositTx,
