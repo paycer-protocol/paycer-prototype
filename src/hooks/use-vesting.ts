@@ -122,8 +122,6 @@ export default function useVesting(type):UseVestingProps {
         setLoading(false)
     }
 
-    console.log(amountWithdrawn)
-
     return {
         withdrawAble,
         totalAmount,

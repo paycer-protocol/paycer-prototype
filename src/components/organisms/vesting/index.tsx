@@ -28,7 +28,7 @@ const Vesting = () => {
         return (
             <>
                 {tokenSaleData.map((dashboardData, index) => (
-                    <VestingDashboardProvider dashboardData={dashboardData}>
+                    <VestingDashboardProvider key={index} dashboardData={dashboardData}>
                         <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
                             <Dashboard />
                         </div>

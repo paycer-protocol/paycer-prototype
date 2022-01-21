@@ -54,31 +54,45 @@ export default function useStaking():UseStakingProps {
     let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
     const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
-    const userInfo = useContractCall({
+    const userInfoArgs:any = wallet.isConnected ? {
         abi: new Interface(StakingContractProvider.abi),
         address: stakingAddress,
         method: 'userInfo',
         args: [wallet.address],
-    })
+    } : false
 
-    let rewardRate = useContractCall({
+    const rewardRateArgs:any = wallet.isConnected ? {
         abi: new Interface(StakingContractProvider.abi),
         address: stakingAddress,
         method: 'rewardAPY',
         args: [wallet.address],
-    }) ?? 0
+    } : false
 
-    let [pendingReward] = useContractCall({
+    const pendingRewardArgs:any = wallet.isConnected ? {
         abi: new Interface(StakingContractProvider.abi),
         address: stakingAddress,
         method: 'pendingReward',
         args: [wallet.address],
-    }) ?? []
+    } : false
+
+    let userInfo = useContractCall(userInfoArgs) ?? 0
+    let rewardRate = useContractCall(rewardRateArgs) ?? 0
+    let [pendingReward] = useContractCall(pendingRewardArgs) ?? []
 
     rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
     rewardRate = rewardRate ? rewardRate : 10
     pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
 
+    function formatLastRewardtime():any {
+        // @ts-ignore
+        if (!userInfo?.lastRewardTime) {
+            return null
+        }
+        // @ts-ignore
+        let momentLastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
+
+        return momentLastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
+    }
 
     const deposit = async (amount: number) => {
         setLoading(true)
@@ -123,7 +137,7 @@ export default function useStaking():UseStakingProps {
     const claim = async () => {
         setLoading(true)
         try {
-          await sendClaim(wallet.address)
+            await sendClaim(wallet.address)
         } catch(e) {
             setClaimError(true)
         }
@@ -137,17 +151,6 @@ export default function useStaking():UseStakingProps {
         approveTx.status = 'None'
     }
 
-    function getlastRewardTime():any {
-        // @ts-ignore
-        if (!BigNumber.isBigNumber(userInfo?.lastRewardTime)) {
-            return null
-        }
-        // @ts-ignore
-        const lastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
-
-        return lastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
-    }
-
     return {
         deposit,
         withdraw,
@@ -155,11 +158,12 @@ export default function useStaking():UseStakingProps {
         resetStatus,
         pendingReward,
         // @ts-ignore
-        stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
+        stakedBalance: BigNumber.isBigNumber(userInfo.amount) ? Number(formatUnits(userInfo.amount, 18)) : 0,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         totalAmountClaimed: 0,
-        lastRewardTime: getlastRewardTime(),
+        // @ts-ignore
+        lastRewardTime: BigNumber.isBigNumber(userInfo.lastRewardTime) ? formatLastRewardtime() : 0,
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
         depositTx,
