@@ -202,7 +202,7 @@ const Footer = () => {
                         </li>
                     </ul>
                     <div className="text-muted text-center text-lg-start mt-4 mt-lg-0">
-                        &copy; 2021 Paycer &nbsp;&nbsp;|&nbsp;&nbsp; <a  href="https://www.paycer.io">paycer.io</a>
+                        &copy; 2022 Paycer &nbsp;&nbsp;|&nbsp;&nbsp; <a  href="https://www.paycer.io">paycer.io</a>
                     </div>
                 </div>
             </div>
