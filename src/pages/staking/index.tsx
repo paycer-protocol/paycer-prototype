@@ -5,8 +5,9 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
-import {t} from "@lingui/macro";
+import { t } from '@lingui/macro'
 import useLoyaltyTier from '@hooks/use-loyalty-tier'
+import InfoTooltip from "@components/atoms/info-tooltip";
 
 export const LeftCol = styled.div`
     width: 50%;
@@ -30,7 +31,7 @@ export const RightCol = styled.div`
 
 export default function Staking () {
   const { supportedStakingChain } = useNetwork()
-  const { currentTierLevel } = useLoyaltyTier()
+  const { tierLevel } = useLoyaltyTier()
 
   if (!supportedStakingChain) {
     location.href = '/portfolio'
@@ -49,10 +50,17 @@ export default function Staking () {
             </div>
           </div>
           <div className="d-flex mt-2" style={{fontSize: "13px"}}>
-            <span className="text-muted pe-2">Loyalty Tier:</span><span>{currentTierLevel.label}</span>
+            <span className="text-muted pe-2">{t`Loyalty Tier:`}</span><span>{tierLevel.label}</span>
+            <InfoTooltip>
+              <>
+                <strong>{t`Associate`}</strong> - Stake min 5.000 PCR<br />
+                <strong>{t`Senior`}</strong> - Stake min 15.000 PCR<br />
+                <strong>{t`Manager`}</strong> - Stake min 35.000 PCR<br />
+                <strong>{t`Partner`}</strong> - Stake min 100.000 PCR
+              </>
+            </InfoTooltip>
           </div>
         </PageHeader>
-
         <div className="card blur-background">
           <div className="card-body p-0">
             <div className="d-lg-flex">

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 
 export default [
     {
-        label: t`None`,
+        label: t`none`,
         value: 4999
     },
     {
