@@ -13,13 +13,13 @@ const APP_EMAIL = process.env.APP_EMAIL
 const POLLING_INTERVAL = 15000
 
 export const walletConnectConnector = new WalletConnectConnector({
-    rpc: { [ChainId.Mainnet]: rpcUrls[ChainId.Mainnet] },
+    rpc: rpcUrls,
     bridge: 'https://bridge.walletconnect.org',
     qrcode: true,
 })
 
 export const walletlink = new WalletLinkConnector({
-    url: rpcUrls[ChainId.Mainnet],
+    url: rpcUrls[ChainId.Polygon],
     appName: 'Paycer',
     appLogoUrl: 'https://www.paycer.io/logo.svg',
 })
@@ -41,16 +41,16 @@ export const injectedConnector = new InjectedConnector({
 })
 
 export const trezorConnector = new TrezorConnector({
-    chainId: ChainId.Mainnet,
-    url: rpcUrls[ChainId.Mainnet],
+    chainId: ChainId.Polygon,
+    url: rpcUrls[ChainId.Polygon],
     pollingInterval: POLLING_INTERVAL,
     manifestEmail: APP_EMAIL,
     manifestAppUrl: APP_URL
 })
 
 export const ledgerConnector = new LedgerConnector({
-    chainId: ChainId.Mainnet,
-    url: rpcUrls[ChainId.Mainnet],
+    chainId: ChainId.Polygon,
+    url: rpcUrls[ChainId.Polygon],
     pollingInterval: POLLING_INTERVAL
 })
 
@@ -78,14 +78,7 @@ export const connectors: IConnectorProvider[] = [
         name: 'WalletConnect',
         description: t`Connect to Trust Wallet, Rainbow Wallet and more...`,
         icon: '/assets/wallets/wallet-connect.svg',
-        beforeConnect: (provider: IConnectorProvider) => {
-            const { connector } = provider
-            if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
-                connector.walletConnectProvider = undefined
-            }
-
-            return connector
-        }
+        beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
     {
         connector: walletlink,
@@ -103,6 +96,7 @@ export const connectors: IConnectorProvider[] = [
         icon: '/assets/wallets/trezor.png',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
+    /*
     {
         connector: ledgerConnector,
         rejectedError: UserRejectedRequestError,
@@ -111,4 +105,5 @@ export const connectors: IConnectorProvider[] = [
         icon: '/assets/wallets/ledger.svg',
         beforeConnect: (provider: IConnectorProvider) => provider.connector
     },
+     */
 ]

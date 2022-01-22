@@ -76,7 +76,7 @@ const Overview = () => {
           <div className="row align-items-center gx-0">
             <div className="col">
               <h6 className="text-uppercase text-muted mb-2">
-                {t`PCR Token amount`}
+                {t`Total amount`}
               </h6>
               <span className="h2 mb-0">
                   <FormattedNumber value={totalReceived || totalAmount || 0} />
@@ -86,7 +86,6 @@ const Overview = () => {
                         &nbsp;(+{bonusPercentage}{t`% Bonus included`})
                       </span>
                 )}
-                &nbsp;/ <FormattedNumber value={amountWithdrawn || 0} />&nbsp;PCR
                 </span>
             </div>
             <div className="col-auto">
@@ -101,17 +100,16 @@ const Overview = () => {
           <div className="row align-items-center gx-0">
             <div className="col">
               <h6 className="text-uppercase text-muted mb-2">
-                {t`Future Loyalty Tier`}
+                {t`Total claimed`}
               </h6>
               <span className="h2 mb-0">
-                 <TierLevel
-                   hasLegend
-                   tokenAmount={totalReceived || totalAmount || 0}
-                 />
+                  <FormattedNumber value={amountWithdrawn || 0} />
+                &nbsp;PCR
                 </span>
+              <span className="badge bg-success-soft mt-n1" />
             </div>
             <div className="col-auto">
-              <span className={`text-${(totalReceived || totalAmount || 0) ? 'success' : 'primary'} me-3`}>●</span>
+              <span className={`text-${amountWithdrawn ? 'success' : 'primary'} me-3`}>●</span>
             </div>
           </div>
         </div>
