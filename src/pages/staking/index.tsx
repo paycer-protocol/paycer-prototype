@@ -48,7 +48,7 @@ export default function Staking () {
               <PageHeader.Title>Earn rewards</PageHeader.Title>
             </div>
           </div>
-          <div className="d-flex mt-3" style={{fontSize: "13px"}}>
+          <div className="d-flex mt-2" style={{fontSize: "13px"}}>
             <span className="text-muted pe-2">Loyalty Tier:</span><span>{currentTierLevel.label}</span>
           </div>
         </PageHeader>
