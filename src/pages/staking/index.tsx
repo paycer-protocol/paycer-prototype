@@ -6,6 +6,7 @@ import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
 import {t} from "@lingui/macro";
+import useLoyaltyTier from '@hooks/use-loyalty-tier'
 
 export const LeftCol = styled.div`
     width: 50%;
@@ -29,6 +30,7 @@ export const RightCol = styled.div`
 
 export default function Staking () {
   const { supportedStakingChain } = useNetwork()
+  const { currentTierLevel } = useLoyaltyTier()
 
   if (!supportedStakingChain) {
     location.href = '/portfolio'
@@ -45,6 +47,9 @@ export default function Staking () {
               <PageHeader.Subtitle>Staking</PageHeader.Subtitle>
               <PageHeader.Title>Earn rewards</PageHeader.Title>
             </div>
+          </div>
+          <div className="d-flex mt-2">
+            <span className="text-muted pe-2">Loyalty Tier:</span><span>{currentTierLevel.label}</span>
           </div>
         </PageHeader>
 
