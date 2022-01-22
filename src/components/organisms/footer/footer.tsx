@@ -181,28 +181,28 @@ const Footer = () => {
                 <div className="border-top border-bottom-0 mt-lg-6 mt-5 pt-4 justify-content-lg-between d-lg-flex">
                     <ul className="nav nav-tabs border-0 m-0 d-flex justify-content-lg-start justify-content-center">
                         <li className="nav-item m-0 me-4">
-                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/imprint">
+                            <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://www.paycer.io/imprint">
                                 <Trans>Imprint</Trans>
                             </a>
                         </li>
                         <li className="nav-item m-0 me-4">
-                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://www.paycer.io/privacy">
+                            <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://www.paycer.io/privacy">
                                 <Trans>Privacy</Trans>
                             </a>
                         </li>
                         <li className="nav-item m-0 me-4">
-                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://app.gitbook.com/o/-MchadhJzlykMyEDvvUG/s/-MhxXu45T290Q1xsWzti/c/VgGiuMzXBsg9ySaDrRBI/risk-disclaimer">
+                            <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://paycer.gitbook.io/paycer/legal/risk-disclaimer">
                                 <Trans>Risk Disclaimer</Trans>
                             </a>
                         </li>
                         <li className="nav-item m-0">
-                            <a target="_blank" className="nav-link pt-0 pb-0" href="https://app.gitbook.com/o/-MchadhJzlykMyEDvvUG/s/-MhxXu45T290Q1xsWzti/c/VgGiuMzXBsg9ySaDrRBI/general-terms-and-conditions">
+                            <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://paycer.gitbook.io/paycer/legal/general-terms-and-conditions">
                                 <Trans>General Terms and Conditions</Trans>
                             </a>
                         </li>
                     </ul>
                     <div className="text-muted text-center text-lg-start mt-4 mt-lg-0">
-                        &copy; 2021 Paycer &nbsp;&nbsp;|&nbsp;&nbsp; <a  href="https://www.paycer.io">paycer.io</a>
+                        &copy; 2022 Paycer &nbsp;&nbsp;|&nbsp;&nbsp; <a  href="https://www.paycer.io">paycer.io</a>
                     </div>
                 </div>
             </div>
