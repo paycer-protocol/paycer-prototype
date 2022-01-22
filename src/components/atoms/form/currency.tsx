@@ -27,7 +27,6 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
                 name={name}
                 key={currency}
                 value={value?.toString()}
-                isInvalid={Boolean(error) && touched}
                 className="form-control"
                 onChange={handleChange}
                 onBlur={onBlur}
