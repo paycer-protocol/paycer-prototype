@@ -71,7 +71,7 @@ const Header = () => {
 
     return (
       <>
-          <header className="mx-md-4 mx-lg-5">
+          <header className="mx-md-4 mx-lg-5 mb-md-5 pt-0 pt-md-3">
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
@@ -81,7 +81,7 @@ const Header = () => {
                               </StyledBrand>
                           </StyledLogo>
                       </Link>
-                      <ul className="navbar-nav flex-row d-none d-lg-flex mt-3">
+                      <ul className="navbar-nav flex-row d-none d-lg-flex">
                           <li className="nav-item me-3 d-flex align-items-center">
                               <Network />
                           </li>
@@ -92,9 +92,9 @@ const Header = () => {
                               <WalletConnect />
                           </li>
                       </ul>
-                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3">
+                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3 ms-5 ps-3">
                           {qualifiedRoutes.map((route, key) => (
-                            <li className="nav-item me-3" key={`nav${key}`}>
+                            <li className="nav-item me-4" key={`nav${key}`}>
                                 <Link href={route.path}>
                                     <a className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link', 'text-nowrap')} title={route.label}>
                                         {route.label}
