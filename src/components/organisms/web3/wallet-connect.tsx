@@ -42,7 +42,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                 className={classnames(className, 'd-flex align-items-center justify-content-center bg-dark text-light bg-primary')}
                 onClick={() => setShowAccountModal(true)}
             >
-                <div className="mx-2 pt-1 pb-1 me-2">
+                <div className="mx-2 me-2">
                     {wallet.shortenAddress}
                 </div>
             </Button>

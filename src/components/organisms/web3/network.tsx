@@ -39,11 +39,12 @@ const Network = (props) => {
           <div className="me-3">
               <div className="d-flex">
                   <CurrencyIcon
-                      style={{ marginTop: '4px' }}
+                      style={{ marginTop: '1px' }}
                       className="ms-1"
                       symbol={wallet.etherSymbol}
+                      width={18}
                   />
-                  <div className="pt-1 pb-1 mx-2">
+                  <div className="mx-2">
                       <FormattedNumber
                           value={wallet.etherBalance}
                           minimumFractionDigits={2}
@@ -56,7 +57,7 @@ const Network = (props) => {
       </StyledButton>
 
       <Button onClick={() => setShowNetworkModal(true)} className="mb-3 mb-md-0 w-100 d-flex align-items-center justify-content-center bg-dark text-light bg-primary">
-          <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>
+          <span className="mx-2">{wallet.chainName}</span>
       </Button>
 
       <NetworkProvider
