@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import {Trans, t} from '@lingui/macro'
 import {toast} from 'react-toastify';
 import useWallet from '@hooks/use-wallet'
@@ -15,17 +14,6 @@ export interface NetworkProviderProps {
   show: boolean
   onHide?: any
 }
-
-const StyledModalBody = styled(Modal.Body)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-    background: url(https://images.unsplash.com/photo-1590907047706-ee9c08cf3189?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80);
-    background-size: cover;
-    background-repeat: no-repeat;
-`
-
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
@@ -53,13 +41,13 @@ const NetworkProvider = (props: NetworkProviderProps) => {
   }
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal size="sm" show={show} onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title><Trans>Switch network</Trans></Modal.Title>
         </Modal.Header>
-        <StyledModalBody>
-          <div className="d-flex flex-column align-items-center w-50">
+        <Modal.Body>
+          <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
               const provider = providers[chainId]
               const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
@@ -80,7 +68,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
               )
             })}
           </div>
-        </StyledModalBody>
+        </Modal.Body>
       </>
     </Modal>
   )

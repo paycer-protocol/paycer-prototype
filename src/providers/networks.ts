@@ -66,7 +66,7 @@ export const mainNetProviders: INetworkProvider = {
     // },
     [ChainId.Polygon]: {
         chainId: '0x89',
-        chainName: 'Polygon - Mainnet',
+        chainName: 'Polygon',
         nativeCurrency: {
             name: 'Matic',
             symbol: 'MATIC',
