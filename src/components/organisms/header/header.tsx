@@ -103,8 +103,8 @@ const Header = () => {
                             </li>
                           ))}
                           <li className="nav-item me-3">
-                              <a className="nav-link text-nowrap" title="Buy PCR" href="https://info.uniswap.org/#/polygon/tokens/0xa6083abe845fbb8649d98b8586cbf50b7f233612" target="_blank" rel="noopener noreferrer">
-                                 PCR Token
+                              <a className="nav-link text-nowrap" title="Buy PCR" href="https://app.uniswap.org/#/swap?exactField=input&exactAmount=100&inputCurrency=0x2791bca1f2de4661ed88a30c99a7a9449aa84174&outputCurrency=0xa6083abe845fbb8649d98b8586cbf50b7f233612" target="_blank" rel="noopener noreferrer">
+                                 Buy PCR
                               </a>
                           </li>
                       </ul>
