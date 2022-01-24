@@ -102,8 +102,7 @@ msgstr "Approve"
 #~ msgid "Assets"
 #~ msgstr "Assets"
 
-#: src/components/atoms/tier-level/tier-level.tsx:24
-#: src/components/atoms/tier-level/tier-level.tsx:42
+#: src/config/loyalty-tiers.ts:9
 msgid "Associate"
 msgstr "Associate"
 
@@ -606,8 +605,11 @@ msgstr "Low"
 #~ msgid "Loyalty Tier Level"
 #~ msgstr "Loyalty Tier Level"
 
-#: src/components/atoms/tier-level/tier-level.tsx:18
-#: src/components/atoms/tier-level/tier-level.tsx:44
+#: src/pages/staking/index.tsx:52
+msgid "Loyalty Tier:"
+msgstr "Loyalty Tier:"
+
+#: src/config/loyalty-tiers.ts:17
 msgid "Manager"
 msgstr "Manager"
 
@@ -696,8 +698,7 @@ msgstr "Overview"
 #~ msgid "Page not found"
 #~ msgstr "Page not found"
 
-#: src/components/atoms/tier-level/tier-level.tsx:15
-#: src/components/atoms/tier-level/tier-level.tsx:45
+#: src/config/loyalty-tiers.ts:21
 msgid "Partner"
 msgstr "Partner"
 
@@ -869,8 +870,7 @@ msgstr "Safe hardware wallet for your coins."
 #~ msgid "Select token"
 #~ msgstr "Select token"
 
-#: src/components/atoms/tier-level/tier-level.tsx:21
-#: src/components/atoms/tier-level/tier-level.tsx:43
+#: src/config/loyalty-tiers.ts:13
 msgid "Senior"
 msgstr "Senior"
 
@@ -1243,8 +1243,7 @@ msgstr "Your supply"
 #~ msgid "min"
 #~ msgstr "min"
 
-#: src/components/atoms/tier-level/tier-level.tsx:27
-#: src/components/atoms/tier-level/tier-level.tsx:32
+#: src/config/loyalty-tiers.ts:5
 msgid "none"
 msgstr "none"
 

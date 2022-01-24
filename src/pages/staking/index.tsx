@@ -5,7 +5,7 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
-import {t} from "@lingui/macro";
+import { t } from '@lingui/macro'
 
 export const LeftCol = styled.div`
     width: 50%;
@@ -47,7 +47,6 @@ export default function Staking () {
             </div>
           </div>
         </PageHeader>
-
         <div className="card blur-background">
           <div className="card-body p-0">
             <div className="d-lg-flex">
