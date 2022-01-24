@@ -15,7 +15,7 @@ function isDebug() {
 
 const StyledButton = styled(Button)`
     @media screen and (min-width: 769px) {
-         background-color: #1b2334!important;
+         background-color: #192434!important;
         margin-right: -100px;
         padding-right: 98px;
     }
