@@ -47,9 +47,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
                 <WalletConnect className="w-100" />
               </div>
               {wallet.isConnected && (
-                <div className="me-3 w-100">
-                  <Network className="w-100" />
-                </div>
+                <Network />
               )}
             </div>
           </div>

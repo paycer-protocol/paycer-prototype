@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import {Trans, t} from '@lingui/macro'
 import {toast} from 'react-toastify';
 import useWallet from '@hooks/use-wallet'

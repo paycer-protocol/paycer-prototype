@@ -14,10 +14,13 @@ function isDebug() {
 }
 
 const StyledButton = styled(Button)`
-    background-color: #182435!important;
-    margin-right: -100px;
-    padding-right: 98px;
+    @media screen and (min-width: 769px) {
+         background-color: #182435!important;
+        margin-right: -100px;
+        padding-right: 98px;
+    }
 `
+
 
 const Network = (props) => {
   const [showNetworkModal, setShowNetworkModal] = useState(false)
@@ -28,12 +31,11 @@ const Network = (props) => {
   }
 
   return (
-    <>
+    <div className="d-flex flex-column-reverse flex-md-row">
       <StyledButton
-        className={classnames('d-flex align-items-center justify-content-center bg-dark text-light', props.className)}
+        className={classnames('d-flex align-items-center justify-content-center bg-dark text-light w-100', props.className)}
         onClick={() => setShowNetworkModal(true)}
       >
-
           <div className="me-3">
               <div className="d-flex">
                   <CurrencyIcon
@@ -53,7 +55,7 @@ const Network = (props) => {
 
       </StyledButton>
 
-      <Button onClick={() => setShowNetworkModal(true)} className="d-flex align-items-center justify-content-center bg-dark text-light bg-primary">
+      <Button onClick={() => setShowNetworkModal(true)} className="mb-3 mb-md-0 w-100 d-flex align-items-center justify-content-center bg-dark text-light bg-primary">
           <span className="mx-2 pt-1 pb-1">{wallet.chainName}</span>
       </Button>
 
@@ -62,7 +64,7 @@ const Network = (props) => {
         show={showNetworkModal}
         onHide={() => setShowNetworkModal(false)}
       />
-    </>
+    </div>
   )
 }
 

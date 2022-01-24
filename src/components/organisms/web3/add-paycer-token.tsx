@@ -11,9 +11,11 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../atoms/number/formatted-number";
 
 const StyledButton = styled(Button)`
-    background-color: #182435!important;
-    margin-right: -100px;
-    padding-right: 98px;
+    @media screen and (min-width: 769px) {
+         background-color: #182435!important;
+        margin-right: -100px;
+        padding-right: 98px;
+    }
 `
 
 const AddPaycerToken = () => {
