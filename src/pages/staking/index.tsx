@@ -31,7 +31,6 @@ export const RightCol = styled.div`
 
 export default function Staking () {
   const { supportedStakingChain } = useNetwork()
-  const { tierLevel } = useLoyaltyTier()
 
   if (!supportedStakingChain) {
     location.href = '/portfolio'
@@ -48,17 +47,6 @@ export default function Staking () {
               <PageHeader.Subtitle>Staking</PageHeader.Subtitle>
               <PageHeader.Title>Earn rewards</PageHeader.Title>
             </div>
-          </div>
-          <div className="d-flex mt-2" style={{fontSize: "13px"}}>
-            <span className="text-muted pe-2">{t`Loyalty Tier:`}</span><span>{tierLevel.label}</span>
-            <InfoTooltip>
-              <>
-                <strong>{t`Associate`}</strong> - Stake min 5.000 PCR<br />
-                <strong>{t`Senior`}</strong> - Stake min 15.000 PCR<br />
-                <strong>{t`Manager`}</strong> - Stake min 35.000 PCR<br />
-                <strong>{t`Partner`}</strong> - Stake min 100.000 PCR
-              </>
-            </InfoTooltip>
           </div>
         </PageHeader>
         <div className="card blur-background">
