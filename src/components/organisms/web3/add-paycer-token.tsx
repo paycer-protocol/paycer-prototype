@@ -2,12 +2,19 @@ import React from 'react'
 import useWallet from '@hooks/use-wallet'
 import Button from '@components/atoms/button'
 import { ChainId } from '@usedapp/core'
+import styled from 'styled-components'
 import { useEthers } from '@usedapp/core'
 import useToken from '../../../hooks/use-token'
 import {toast} from "react-toastify";
 import {t} from "@lingui/macro";
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../atoms/number/formatted-number";
+
+const StyledButton = styled(Button)`
+    background-color: #182435!important;
+    margin-right: -100px;
+    padding-right: 98px;
+`
 
 const AddPaycerToken = () => {
     const { library, chainId } = useEthers()
@@ -56,7 +63,7 @@ const AddPaycerToken = () => {
     }
 
     return (
-      <Button
+      <StyledButton
           className="d-flex align-items-center justify-content-center bg-dark"
           onClick={async () => {
             await addToken()
@@ -74,7 +81,7 @@ const AddPaycerToken = () => {
                 maximumFractionDigits={4}
             />
         </div>
-      </Button>
+      </StyledButton>
     )
 }
 

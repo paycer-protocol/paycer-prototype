@@ -83,10 +83,10 @@ const Header = () => {
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex mt-3">
                           <li className="nav-item me-3 d-flex align-items-center">
-                              <AddPaycerToken />
+                              <Network />
                           </li>
                           <li className="nav-item me-3 d-flex align-items-center">
-                              <Network />
+                              <AddPaycerToken />
                           </li>
                           <li className="nav-item d-flex align-items-center">
                               <WalletConnect />
