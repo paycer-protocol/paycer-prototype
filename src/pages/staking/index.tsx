@@ -6,8 +6,6 @@ import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
 import { t } from '@lingui/macro'
-import useLoyaltyTier from '@hooks/use-loyalty-tier'
-import InfoTooltip from "@components/atoms/info-tooltip";
 
 export const LeftCol = styled.div`
     width: 50%;
