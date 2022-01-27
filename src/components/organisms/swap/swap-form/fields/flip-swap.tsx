@@ -21,14 +21,13 @@ const handleFlip = (values: SwapProps) => {
         token1Value
     } = values
 
-    
+
 
 
 }
 
 export default function FlipSwap() {
   const { values, setFieldValue } = useFormikContext<SwapProps>()
-  const {  } = props
   return (
     <Circle onClick={() => handleFlip(values)} className="cursor-pointer d-flex rounded-circle bg-dark border border-secondary-dark justify-content-center align-items-center">
         <Icon
