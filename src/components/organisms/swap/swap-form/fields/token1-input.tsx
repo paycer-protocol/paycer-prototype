@@ -18,6 +18,8 @@ export default function Token1Input() {
                 required
                 max={10}
                 currency={values.token1.symbol}
+                className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus"
+                showCurrencyPrefix={false}
                 decimals={4}
                 onChange={(e) => {
                     const token1Value = Number(e.target.rawValue.split(' ')[1])

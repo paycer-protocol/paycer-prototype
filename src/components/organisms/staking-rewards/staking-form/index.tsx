@@ -110,9 +110,9 @@ const {
                     <div className="form-control bg-transparent border-0 ps-0 pt-0 pt-md-3">
                       <CurrencyIcon
                         symbol='PCR'
-                        className="me-2"
-                        width={28}
-                        height={28}
+                        className="me-3"
+                        width={22}
+                        height={22}
                         style={{marginTop: '-2px', marginLeft: '-5px'}}
                       />
                       <FormattedNumber
@@ -123,7 +123,6 @@ const {
                       &nbsp;
                       {t`PCR`}
                     </div>
-
                   </div>
                   <div className="col-12 col-md-6">
                     <StakedInput />

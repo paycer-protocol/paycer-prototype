@@ -5,6 +5,7 @@ import calculateMinimumToReceive from '@components/organisms/swap/helper/minimum
 import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
 import { marketPairs } from '@config/market-pairs'
 import TokenToggle from './token-toggle'
+import {t} from "@lingui/macro";
 
 export default function Token1Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
@@ -37,6 +38,7 @@ export default function Token1Select() {
         <TokenToggle
           token={values.token1}
           onClick={() => setShowModal(true)}
+          label={t`Swap to`}
         />
         <TokenSelectModal
           show={showModal}

@@ -13,8 +13,8 @@ interface TokenToggleProps {
 export default function MarketPairSelectToggle(props: TokenToggleProps) {
     const { marketPair, onClick } = props
     return (
-        <Styles.SelectWrapper onClick={onClick}>
-            <Styles.TokenToggle>
+        <div onClick={onClick}>
+            <div>
                 <div className="d-flex">
                     <div className="d-flex align-items-center">
                         <CurrencyIcon
@@ -38,12 +38,12 @@ export default function MarketPairSelectToggle(props: TokenToggleProps) {
                         {marketPair.token1.symbol}
                     </div>
                 </div>
-            </Styles.TokenToggle>
+            </div>
             <Icon
                 component={ChevronDown}
                 size={20}
                 style={{ fontWeight: 'bold' }}
             />
-        </Styles.SelectWrapper>
+        </div>
     )
 }

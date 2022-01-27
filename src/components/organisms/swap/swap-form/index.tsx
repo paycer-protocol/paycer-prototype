@@ -1,7 +1,6 @@
 import React from 'react'
-import { t } from '@lingui/macro'
+import styled from 'styled-components'
 import { tokenProvider }  from '@providers/tokens'
-import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from './types'
@@ -10,9 +9,28 @@ import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
+import FlipSwap from './fields/flip-swap'
 import PriceImpact from './price-impact'
 import PriceChart from './price-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
+
+export const LeftCol = styled.div`
+    width: 45%;
+    padding: 40px 20px 40px 40px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    } .card-body { padding: 20px; }
+`
+
+export const RightCol = styled.div`
+    width: 55%;
+    padding: 40px 40px 40px 20px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    }
+`
 
 export default function SwapForm() {
   const initialValues: SwapProps = {
@@ -47,34 +65,30 @@ export default function SwapForm() {
       {() => {
         return (
             <div className="d-lg-flex">
-              <Styles.LeftCol>
+              <LeftCol>
                 <div className="d-flex flex-column flex-md-row">
-                  <div className="w-100">
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap from`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4 mb-3">
-                        <Token0Select />
-                      </div>
-                      <div className="w-100">
-                        <Token0Input />
+                  <div className="d-flex flex-column">
+                    <div className="card bg-dark shadow-none mb-2">
+                      <div className="card-body">
+                        <div className="row">
+                          <div className="col-5">
+                            <Token0Select />
+                          </div>
+                          <div className="col-7 d-flex align-items-center">
+                            <Token0Input />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <Styles.HorizontalLine className="d-block">
-                      <div>
-                        <span />
-                        <span />
-                      </div>
-                    </Styles.HorizontalLine>
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap to`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4 mb-3">
+
+                    <div className="d-flex justify-content-center mt-n5 position-relative" style={{zIndex: 1, top: '16px'}}>
+                      <FlipSwap />
+                    </div>
+
+
+                    <div className="card bg-dark shadow-none mt-2">
+                      <div className="card-body d-flex justify-content-between align-items-center">
                         <Token1Select />
-                      </div>
-                      <div className="w-100">
                         <Token1Input />
                       </div>
                     </div>
@@ -89,12 +103,10 @@ export default function SwapForm() {
                 <div className="d-flex align-items-center justify-content-center">
                   <SubmitButton />
                 </div>
-              </Styles.LeftCol>
-              <Styles.VerticalLine />
-              <Styles.HorizontalLine className="d-md-none" />
-              <Styles.RightCol>
+              </LeftCol>
+              <RightCol>
                 <PriceChart />
-              </Styles.RightCol>
+              </RightCol>
           </div>
         )
       }}

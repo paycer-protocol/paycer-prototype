@@ -1,5 +1,6 @@
 import React from 'react'
 import { t } from '@lingui/macro'
+import styled from 'styled-components'
 import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
@@ -13,6 +14,25 @@ import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
 import {tokenProvider} from "@providers/tokens";
 import useToken from "@hooks/use-token";
+
+export const LeftCol = styled.div`
+    width: 50%;
+    padding: 40px 20px 40px 40px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    }
+  
+`
+
+export const RightCol = styled.div`
+    width: 50%;
+    padding: 40px 40px 40px 20px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    }
+`
 
 const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
 
@@ -51,7 +71,7 @@ export default function SupplyForm() {
         {({ errors }) => {
           return (
               <div className="d-lg-flex">
-                <Styles.LeftCol>
+                <LeftCol>
                   <div className="d-flex flex-column flex-md-row">
                     <div className="w-100">
                       <Styles.CurrencyInputLabel>
@@ -63,8 +83,6 @@ export default function SupplyForm() {
                           <MarketPairSelect />
                         </div>
                       </div>
-
-                      <Styles.HorizontalLine />
 
                       <div className="d-flex flex-column flex-md-row mb-5 mt-5 pt-1 pb-3">
                         <TokenRangeSlider />
@@ -89,14 +107,11 @@ export default function SupplyForm() {
                   <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
                   <SubmitButton />
                   </div>
-                </Styles.LeftCol>
+                </LeftCol>
 
-                <Styles.VerticalLine />
-                <Styles.HorizontalLine className="d-md-none" />
-
-                <Styles.RightCol>
+                <RightCol>
                   <SupplyInfo />
-                </Styles.RightCol>
+                </RightCol>
               </div>
           )
         }}

@@ -15,6 +15,7 @@ export default function InvestInput() {
         <Currency
             name="investBalance"
             label={t`Current Invest`}
+            className="form-control "
             required
             currency={values.investSymbol}
             decimals={4}

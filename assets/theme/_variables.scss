@@ -27,6 +27,7 @@ $gray-700: #6E84A3 !default;
 $gray-800: #3B506C !default;
 $gray-900: #283E59 !default;
 $black: #12263F !default;
+$blue-200: #223f4c;
 
 /* beautify ignore:start */
 $grays: (
@@ -86,7 +87,9 @@ $theme-colors: map-merge(
     "light": $light,
     "dark": $dark,
     "white": $white,
-    "secondary-dark": $gray-600-dark
+    "light-grey": $gray-100,
+    "secondary-dark": $gray-600-dark,
+    "light-blue": $blue-200
   ),
 $theme-colors);
 /* beautify ignore:end */

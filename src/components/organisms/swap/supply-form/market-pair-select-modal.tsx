@@ -116,8 +116,6 @@ export default function MarketPairSelectModal(props: MarketPairSelectModalProps)
             </div>
           </div>
 
-          <Styles.HorizontalLine className="mb-2 mt-1" />
-
           <StyledListGroup className="list-group list-group-flush">
             {marketPairs.map((marketPair) => (
               <>

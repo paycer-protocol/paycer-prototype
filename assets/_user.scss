@@ -14,6 +14,16 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input[type=text],
+input[type=number]{
+  &.no-focus {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+
 .cursor-pointer {
   cursor: pointer;
 }

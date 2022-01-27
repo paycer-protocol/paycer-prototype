@@ -72,17 +72,16 @@ const AddPaycerToken = () => {
           }}
       >
          <CurrencyIcon
-             width={22}
-             height={22}
+             className="me-3"
+             width={20}
+             height={20}
              symbol={symbol}
          />
-        <div className="mx-2">
-            <FormattedNumber
-                value={balance}
-                minimumFractionDigits={2}
-                maximumFractionDigits={4}
-            />
-        </div>
+          <FormattedNumber
+              value={balance}
+              minimumFractionDigits={2}
+              maximumFractionDigits={4}
+          />
       </StyledButton>
     )
 }

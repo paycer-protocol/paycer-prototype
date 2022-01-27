@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@styled-icons/boxicons-regular": "^10.38.0",
+    "@styled-icons/fluentui-system-regular": "^10.35.0",
+    "@styled-icons/material-outlined": "^10.34.0",
     "@usedapp/coingecko": "^0.3.24",
     "@usedapp/core": "^0.4.5",
     "apexcharts": "^3.28.3",
@@ -74,7 +76,6 @@
     "babel-preset-react-app": "^10.0.0",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
-    "cryptocurrency-icons": "^0.17.2",
     "css-loader": "^5.2.6",
     "fibers": "^5.0.0",
     "file-loader": "^6.2.0",

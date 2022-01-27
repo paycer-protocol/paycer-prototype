@@ -14,6 +14,7 @@ export default function StakedInput() {
     return (
         <Currency
             name="stakedBalance"
+            className="form-control"
             label={values.stakedBalance !== initialValues.stakedBalance  ? t`Staked after` : t`Current Staked`}
             required
             max={10}

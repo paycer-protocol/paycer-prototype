@@ -48,8 +48,6 @@ const SupplyInfo = () => {
                 </div>
             </div>
 
-            <Styles.HorizontalLine />
-
             <div className="d-flex">
                 <div className="row w-100">
                     <div className="col-md-6">
@@ -58,7 +56,6 @@ const SupplyInfo = () => {
                         </div>
                         <TokenBalance />
                     </div>
-                    <Styles.HorizontalLine className="d-md-none" />
                     <StylesSupplyInfoColWithBorder className="col-md-6">
                         <div className="mb-5  ">
                             <TotalSupply />

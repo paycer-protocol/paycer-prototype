@@ -4,6 +4,7 @@ import { marketPairs } from '@config/market-pairs'
 import { SwapProps } from '../types'
 import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
 import TokenToggle from './token-toggle'
+import {t} from "@lingui/macro";
 
 export default function Token0Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
@@ -32,6 +33,7 @@ export default function Token0Select() {
         <TokenToggle
           token={values.token0}
           onClick={() => setShowModal(true)}
+          label={t`Swap from`}
         />
         <TokenSelectModal
           show={showModal}
