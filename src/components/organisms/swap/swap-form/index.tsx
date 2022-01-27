@@ -10,9 +10,9 @@ import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
-import PriceImpact from './price-impact'
 import PriceChart from './price-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
+import {t} from "@lingui/macro";
 
 export const LeftCol = styled.div`
     width: 45%;
@@ -62,11 +62,11 @@ export default function SwapForm() {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {() => {
+      {({ values }) => {
         return (
             <div className="d-lg-flex">
               <LeftCol>
-                <div className="d-flex flex-column flex-md-row">
+                <div className="d-flex flex-column flex-md-row mb-5">
                   <div className="d-flex flex-column">
                     <div className="card bg-dark shadow-none mb-2">
                       <div className="card-body">
@@ -80,13 +80,10 @@ export default function SwapForm() {
                         </div>
                       </div>
                     </div>
-
                     <div className="d-flex justify-content-center mt-n5 position-relative" style={{zIndex: 1, top: '16px'}}>
                       <FlipSwap />
                     </div>
-
-
-                    <div className="card bg-dark shadow-none mt-2">
+                    <div className="card bg-dark shadow-none mt-2 mb-0">
                       <div className="card-body d-flex justify-content-between align-items-center">
                         <Token1Select />
                         <Token1Input />
@@ -94,11 +91,19 @@ export default function SwapForm() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 mb-5">
+                <div className="mb-5">
                   <div className="mb-2">
-                    <PriceImpact />
+                    <div className="d-flex justify-content-between">
+                      <span className="text-muted">{t`Price impact`}</span>
+                      <span>{values.priceImpact}&nbsp;%</span>
+                    </div>
                   </div>
-                  <MinimumToReceiveDropdown />
+
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="text-muted">{t`Minimum to receive`}</span>
+                    <MinimumToReceiveDropdown />
+                  </div>
+
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
                   <SubmitButton />

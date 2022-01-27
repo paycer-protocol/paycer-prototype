@@ -6,17 +6,8 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     border: 0 none;
     padding: 0;
     font-weight: 300;
-    :after {
-        content: "";
-        display: inline-block;
-        border-right: 2px solid #FFF!important;
-        border-bottom: 2px solid #FFF!important;
-        width: 8px;
-        height: 8px;
-        transform: rotate(45deg);
-        margin-left: 13px;
-        position: relative;
-        top: -3px;
+    &:after {
+      display: none;
     }
     
     &:focus {
