@@ -13,23 +13,29 @@ width: 30px;
 }
 `
 
-const handleFlip = (values: SwapProps) => {
-    const {
-        token0,
-        token0Value,
-        token1,
-        token1Value
-    } = values
 
-
-
-
-}
 
 export default function FlipSwap() {
-  const { values, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setFieldValue } = useFormikContext<SwapProps>()
+
+    const handleFlip = () => {
+        const {
+            token0,
+            token0Value,
+            token1,
+            token1Value
+        } = values
+
+
+        setFieldValue('token0', token1)
+        setFieldValue('token1', token0)
+        setFieldValue('token0Value', token1Value)
+        setFieldValue('token1Value', token0Value)
+
+    }
+
   return (
-    <Circle onClick={() => handleFlip(values)} className="cursor-pointer d-flex rounded-circle bg-dark border border-secondary-dark justify-content-center align-items-center">
+    <Circle onClick={() => handleFlip()} className="cursor-pointer d-flex rounded-circle bg-dark border border-secondary-dark justify-content-center align-items-center">
         <Icon
             component={ArrowSort}
             size={14}

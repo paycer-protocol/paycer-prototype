@@ -8,8 +8,8 @@ import { ChainId } from '@usedapp/core'
 
 export default function Token1Input() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const token0Price = useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Mainnet], 'usd')
-    const token1Price = useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Mainnet], 'usd')
+    const token0Price = useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd')
+    const token1Price = useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Polygon], 'usd')
 
     return (
         <div>

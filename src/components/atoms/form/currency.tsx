@@ -9,16 +9,13 @@ interface CurrencyFieldProps extends FormInputFieldProps {
     currency: string
     decimals: number
     showCurrencyPrefix?: boolean
-    placeholder?: any
 }
 
 const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals = 2, showCurrencyPrefix = true,  ...props }: CurrencyFieldProps) => {
-    const [{ name, value, onBlur }, { error, touched, initialValue }] = useField(props)
+    const [{ name, value, onBlur }, { error, touched }] = useField(props)
     const handleChange = useChange(props)
 
     const { className } = props
-
-    console.log(touched)
 
     return (
         <Group

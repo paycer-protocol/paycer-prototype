@@ -35,9 +35,9 @@ export const RightCol = styled.div`
 export default function SwapForm() {
   const initialValues: SwapProps = {
     token0: tokenProvider.PCR,
-    token0Value: 0,
+    token0Value: null,
     token1: tokenProvider.USDC,
-    token1Value: 0,
+    token1Value: null,
     minimumToReceive: 0,
     slippageTolerance: 0,
     exchangeRate: 1,
