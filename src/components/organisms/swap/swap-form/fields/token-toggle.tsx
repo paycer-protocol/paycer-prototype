@@ -1,6 +1,5 @@
 import React from 'react'
 import { ArrowDropDown } from '@styled-icons/material-outlined'
-import styled from 'styled-components'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import Icon from '@components/atoms/icon'
 import { TokenType } from '../../../../../types/investment'
@@ -18,16 +17,16 @@ export default function TokenToggle(props: TokenToggleProps) {
         <CurrencyIcon
             symbol={token.symbol}
             className="me-3"
-            width={36}
-            height={36}
+            width={32}
+            height={32}
         />
         <div>
-            <small className="text-muted d-block">{label}</small>
+            <small className="text-muted d-block fw-lighter">{label}</small>
             <div className="d-flex align-items-center">
-                <h3 className="mb-0 text-white me-1 fw-normal">{token.symbol}</h3>
+                <h3 className="mb-0 text-white fw-lighter">{token.symbol}</h3>
                 <Icon
                     component={ArrowDropDown}
-                    size={23}
+                    size={20}
                 />
             </div>
         </div>

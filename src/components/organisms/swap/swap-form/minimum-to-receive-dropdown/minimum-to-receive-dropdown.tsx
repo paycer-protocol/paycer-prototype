@@ -7,7 +7,7 @@ import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 import * as Styles from './Styles'
 import Icon from '@components/atoms/icon'
-import { ArrowDropDown } from '@styled-icons/material-outlined'
+import { ArrowDropDown } from '@styled-icons/material'
 
 const MinimumToReceiveDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
@@ -15,10 +15,11 @@ const MinimumToReceiveDropdown = () => {
     return (
         <DropdownComponent>
             <Styles.StyledDropdownToggle className="d-flex align-items-center">
-                <div>{values.minimumToReceive} {values.token1.symbol}</div>
+                <div className="me-3">{values.minimumToReceive} {values.token1.symbol}</div>
                 <Icon
                     component={ArrowDropDown}
                     size={23}
+                    style={{position: 'relative', top: '-1px'}}
                 />
             </Styles.StyledDropdownToggle>
             <Styles.StyledDropdownMenu>
@@ -32,7 +33,7 @@ const MinimumToReceiveDropdown = () => {
                     <span>{values.token0Value * values.feeFactor} {values.token0.symbol}</span>
                 </div>
 
-                <div className="d-flex justify-content-between mb-3">
+                <div className="d-flex justify-content-between">
                     <span className="w-50 d-flex align-items-center">{t`Slippage tolerance`}</span>
                     <div className="w-50 d-flex justify-content-between ">
                         <div className="w-75">

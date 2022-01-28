@@ -48,6 +48,7 @@ $gray-700-dark: #1E3A5C !default;
 $gray-800-dark: #152E4D !default;
 $gray-900-dark: #132A46 !default;
 $black-dark: #12263F !default;
+$darkest: #090E1A !default;
 
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default; // NOT USED
@@ -86,6 +87,7 @@ $theme-colors: map-merge(
     "danger": $danger,
     "light": $light,
     "dark": $dark,
+    "darkest": $darkest,
     "white": $white,
     "light-grey": $gray-100,
     "secondary-dark": $gray-600-dark,
