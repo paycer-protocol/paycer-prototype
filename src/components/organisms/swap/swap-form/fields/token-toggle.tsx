@@ -23,7 +23,7 @@ export default function TokenToggle(props: TokenToggleProps) {
         <div>
             <small className="text-muted d-block fw-lighter">{label}</small>
             <div className="d-flex align-items-center">
-                <h3 className="mb-0 text-white fw-lighter">{token.symbol}</h3>
+                <h3 className="mb-0 text-white">{token.symbol}</h3>
                 <Icon
                     component={ArrowDropDown}
                     size={20}

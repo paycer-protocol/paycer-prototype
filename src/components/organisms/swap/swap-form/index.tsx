@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { tokenProvider }  from '@providers/tokens'
+import { marketPairs, swapTokens } from '@config/market-pairs'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from './types'
@@ -13,6 +14,7 @@ import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
 import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
 import {t} from "@lingui/macro";
+import useToken from "@hooks/use-token";
 
 export const LeftCol = styled.div`
     width: 40%;
@@ -20,7 +22,7 @@ export const LeftCol = styled.div`
     align-items: stretch;
     @media only screen and (max-width : 978px) {
       width: 100%; padding: 20px;    
-    } .card-body { padding: 20px; }
+    } 
 `
 
 export const RightCol = styled.div`
@@ -32,15 +34,31 @@ export const RightCol = styled.div`
     }
 `
 
+export const SwapCard = styled.div`
+  .card-body { padding: 20px; }
+`
+
 export default function SwapForm() {
+
+  const pcrToken = useToken(tokenProvider.PCR.symbol)
+  const initialToken1Balance = pcrToken.tokenBalance()
+
+  const usdcToken = useToken(tokenProvider.USDC.symbol)
+  const initialToken0Balance = usdcToken.tokenBalance()
+
   const initialValues: SwapProps = {
-    token0: tokenProvider.PCR,
-    token0Value: null,
-    token1: tokenProvider.USDC,
+    token1: tokenProvider.PCR,
     token1Value: null,
+    token1Markets: swapTokens.filter(mi => mi.symbol !== tokenProvider.USDC.symbol),
+    token1Balance: initialToken1Balance,
+    token1Price: 0.06182,
+    token0: tokenProvider.USDC,
+    token0Value: null,
+    token0Markets: marketPairs.find(m => m.base.symbol === tokenProvider.PCR.symbol).markets,
+    token0Balance: initialToken0Balance,
+    token0Price: 1,
     minimumToReceive: 0,
     slippageTolerance: 0.5,
-    exchangeRate: 1,
     priceImpact: 0.01,
     feeFactor: 0.01,
     fee: 0
@@ -68,10 +86,10 @@ export default function SwapForm() {
               <LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-5">
                   <div className="d-flex flex-column">
-                    <div className="card bg-dark shadow-none mb-2">
+                    <SwapCard className="card bg-dark shadow-none mb-2">
                       <div className="card-body">
                         <div className="row">
-                          <div className="col-5">
+                          <div className="col-5 d-flex">
                             <Token0Select />
                           </div>
                           <div className="col-7 d-flex align-items-center">
@@ -79,36 +97,36 @@ export default function SwapForm() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </SwapCard>
                     <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '16px', marginTop: '-39px'}}>
                       <FlipSwap />
                     </div>
-                    <div className="card bg-dark shadow-none mt-2 mb-0">
-                      <div className="card-body d-flex justify-content-between align-items-center">
-                        <Token1Select />
-                        <Token1Input />
+                    <SwapCard className="card bg-dark shadow-none mt-2 mb-0">
+                      <div className="card-body">
+                        <div className="row">
+                          <div className="col-5 d-flex">
+                            <Token1Select />
+                          </div>
+                          <div className="col-7 d-flex align-items-center">
+                            <Token1Input />
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </SwapCard>
                   </div>
                 </div>
                 <div className="mb-5">
-                  <div className="mb-3">
-                    <div className="d-flex justify-content-between">
-                      <span className="text-muted">{t`Price impact`}</span>
-                      <span>{values.priceImpact}&nbsp;%</span>
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <span className="text-muted">{t`Minimum to receive`}</span>
-                    <MinimumToReceiveDropdown />
-                  </div>
+                  <MinimumToReceiveDropdown />
                 </div>
-                <div className="d-flex align-items-center justify-content-center">
+                <div className="d-flex align-items-center justify-content-center w-100">
                   <SubmitButton />
                 </div>
               </LeftCol>
               <RightCol>
-                <PriceChart />
+                <PriceChart
+                  token0={values.token0}
+                  token1={values.token1}
+                />
               </RightCol>
           </div>
         )

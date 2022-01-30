@@ -35,7 +35,7 @@ const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
     <BaseModalHeader className="p-4">
         {children}
         {closeButton && (
-            <a className="text-muted" style={{position: 'relative', top: '-10px', right: '-5px'}} onClick={onHide}>
+            <a className="text-muted" style={{position: 'relative', top: '-2px', right: '2px'}} onClick={onHide}>
                 <Icon
                     onClick={onHide}
                     component={XLg}

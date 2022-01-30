@@ -1,21 +1,47 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Trans } from '@lingui/macro'
+import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../../types/investment'
-import { useFormikContext } from "formik";
-import { SwapProps } from "@components/organisms/swap/swap-form/types";
+import useToken from "@hooks/use-token";
+import {FormattedNumber} from "../../../atoms/number/formatted-number";
 
 interface TokenSelectModalProps {
   show: boolean
   onHide: () => void
-  onClick: (token: TokenType) => void
+  activeToken: TokenType
+  onClick: (token: TokenType, balance: number) => void
   tokens: TokenType[]
 }
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
-  const { show, onHide, onClick, tokens } = props
-  const { values } = useFormikContext<SwapProps>()
+  const { show, onHide, onClick, tokens, activeToken } = props
+  const [ filteredTokens, setFilteredTokens ] = useState<TokenType[]>(tokens)
+
+  useEffect(() => {
+    setFilteredTokens(tokens)
+  }, [tokens])
+
+  const handleSearch = (e) => {
+    let keywords = e.target.value
+
+    if (keywords) {
+      keywords = keywords.toLowerCase().split(' ')
+      keywords = keywords.filter(f => f !== '')
+
+      const nextTokens = tokens.filter(f =>
+          keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
+          || keywords.some(k => f.symbol.toLowerCase().includes(k.toLowerCase()))
+      )
+
+      setFilteredTokens(nextTokens)
+
+    } else {
+      setFilteredTokens(tokens)
+    }
+  }
+
   return (
     <Modal centered show={show} onHide={onHide} className="mb-5">
       <>
@@ -25,26 +51,22 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">
+          <input
+              className="form-control bg-darkest border-primary mb-3 fw-light"
+              type="search"
+              placeholder="Search ..."
+              onChange={handleSearch}
+          />
           <div className="card bg-darkest shadow-none mb-2">
             <div className="card-body p-0">
               <ul className="list-group list-group-flush">
-                {tokens.map((token, i) => (
-                  <li key={i} className="list-group-item list-group-item-action px-4 border-0">
-                    <a
-                      className="d-flex align-items-center"
-                      onClick={() => onClick(token)}
-                    >
-                      <CurrencyIcon
-                        symbol={token.symbol}
-                        className="me-3"
-                        width={32}
-                        height={32}
-                      />
-                      <div className="d-flex flex-column">
-                        <small className="text-muted fw-lighter">{token.name}</small>
-                        <h3 className="mb-0 text-white">{token.symbol}</h3>
-                      </div>
-                    </a>
+                {filteredTokens.map((token, i) => (
+                  <li key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken.symbol ? 'disabled opacity-20' : ''}`}>
+                    <ListItem
+                        token={token}
+                        onClick={onClick}
+                        isActive={token.symbol === activeToken.symbol }
+                    />
                   </li>
                 ))}
               </ul>
@@ -54,4 +76,51 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
       </>
     </Modal>
   )
+}
+
+export const TokenBalanceLabel = styled.div`
+font-size: 18px; font-weight: 300;
+`
+
+interface ListItemProps {
+  token: TokenType
+  isActive: boolean
+  onClick: (token: TokenType, balance: number) => void
+}
+
+const ListItem = (props: ListItemProps) => {
+  const {
+    token,
+    onClick,
+    isActive
+  } = props
+
+  const tokenForBalance = useToken(token.symbol)
+  const { tokenBalance } = tokenForBalance
+  const balance = tokenBalance()
+
+  return (
+      <a onClick={!isActive ? () => onClick(token, balance) : null} className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center">
+          <CurrencyIcon
+              symbol={token.symbol}
+              className="me-3"
+              width={33}
+              height={33}
+          />
+          <div className="d-flex flex-column">
+            <small className="text-muted fw-lighter">{token.name}</small>
+            <h3 className="mb-0 text-white">{token.symbol}</h3>
+          </div>
+        </div>
+        <TokenBalanceLabel>
+          <FormattedNumber
+              value={balance}
+              minimumFractionDigits={2}
+              maximumFractionDigits={4}
+          />
+        </TokenBalanceLabel>
+      </a>
+  )
+
 }

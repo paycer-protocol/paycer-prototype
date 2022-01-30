@@ -9,7 +9,7 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     &:after {
       display: none;
     }
-    
+    &[aria-expanded="true"] { background: #0B1120!important; border-radius: 0; }
     &:focus {
       box-shadow: none!important;
     }
