@@ -6,12 +6,12 @@ import { SwapProps } from '../types'
 import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
 import { ChainId } from '@usedapp/core'
-import useToken from "@hooks/use-token";
 import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 import {t} from "@lingui/macro";
 
 export const TokenBalanceLabel = styled.small`
-font-size: 10px; padding-top:2px;
+   font-size: 11px;
+   padding-top:2px;
 `
 
 export default function Token0Input() {
@@ -52,8 +52,8 @@ export default function Token0Input() {
               )
             }}
           />
-          <TokenBalanceLabel>
-              <span className="fw-lighter text-muted">{t`Balance:`}</span>&nbsp;
+          <TokenBalanceLabel className="text-muted">
+              <span>{t`Balance:`}</span>&nbsp;
               <FormattedNumber
                   value={values.token0Balance}
                   minimumFractionDigits={2}

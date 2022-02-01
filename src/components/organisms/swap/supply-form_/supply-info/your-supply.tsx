@@ -5,48 +5,40 @@ import {t} from "@lingui/macro";
 import * as Styles from '../../Styles'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
-const TotalSupply = () => {
+const YourSupply = () => {
     const { values } = useFormikContext<SupplyProps>()
-
-    /* TODO GET FROM BLOCKCHAIN */
-    const totalSupplyToken0 = 50344390
-    const totalSupplyToken1 = 10276983
 
     return (
         <>
             <Styles.CurrencyInputLabel>
-                {t`Total supply`}
+                {t`Your supply`}
             </Styles.CurrencyInputLabel>
             <div className="">
-                <div className="d-flex mb-2">
+                <div className="d-flex align-items-center mb-2">
                     <CurrencyIcon
-                        symbol={values.token0.symbol}
+                        symbol={values.marketPair.token0.symbol}
                         className="me-2"
                         width={20}
                         height={20}
                     />
-                    <div className="d-flex align-items-center">
-                        {totalSupplyToken0}
-                        &nbsp;
-                        {values.token0.symbol}
-                    </div>
+                    {values.token0Value}
+                    &nbsp;
+                    {values.marketPair.token0.symbol}
                 </div>
-                <div className="d-flex">
+                <div className="d-flex align-items-center">
                     <CurrencyIcon
-                        symbol={values.token1.symbol}
+                        symbol={values.marketPair.token1.symbol}
                         className="me-2"
                         width={20}
                         height={20}
                     />
-                    <div className="d-flex align-items-center">
-                        {totalSupplyToken1}
-                        &nbsp;
-                        {values.token1.symbol}
-                    </div>
+                    {values.token0Value}
+                    &nbsp;
+                    {values.marketPair.token1.symbol}
                 </div>
             </div>
         </>
     )
 }
 
-export default TotalSupply
+export default YourSupply

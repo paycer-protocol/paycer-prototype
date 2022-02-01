@@ -16,25 +16,25 @@ const YourSupply = () => {
             <div className="">
                 <div className="d-flex align-items-center mb-2">
                     <CurrencyIcon
-                        symbol={values.marketPair.token0.symbol}
+                        symbol={values.token0.symbol}
                         className="me-2"
                         width={20}
                         height={20}
                     />
                     {values.token0Value}
                     &nbsp;
-                    {values.marketPair.token0.symbol}
+                    {values.token0.symbol}
                 </div>
                 <div className="d-flex align-items-center">
                     <CurrencyIcon
-                        symbol={values.marketPair.token1.symbol}
+                        symbol={values.token1.symbol}
                         className="me-2"
                         width={20}
                         height={20}
                     />
                     {values.token0Value}
                     &nbsp;
-                    {values.marketPair.token1.symbol}
+                    {values.token1.symbol}
                 </div>
             </div>
         </>

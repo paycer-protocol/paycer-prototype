@@ -7,7 +7,6 @@ import { TokenType } from '../../../../../types/investment'
 
 interface TokenToggleProps {
   token: TokenType
-  label: string
   onClick: () => void
 }
 
@@ -16,7 +15,7 @@ export const Label = styled.small`
 `
 
 export default function TokenToggle(props: TokenToggleProps) {
-  const { token, onClick, label } = props
+  const { token, onClick } = props
   return (
     <div className="d-flex align-items-center cursor-pointer" onClick={onClick}>
         <CurrencyIcon
@@ -26,7 +25,6 @@ export default function TokenToggle(props: TokenToggleProps) {
             height={32}
         />
         <div>
-            <Label className="text-muted d-block fw-lighter">{label}</Label>
             <div className="d-flex align-items-center">
                 <h3 className="mb-0 text-white">{token.symbol}</h3>
                 <Icon

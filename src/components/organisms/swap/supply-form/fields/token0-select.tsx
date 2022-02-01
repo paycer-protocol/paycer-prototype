@@ -11,7 +11,6 @@ export default function Token0Select() {
     const [showModal, setShowModal] = useState(false)
 
     const handleChange = (token, balance) => {
-        setFieldValue('minimumToReceive', 0)
         const token1Markets = marketPairs.find(m => m.base.symbol === token.symbol).markets
         setFieldValue('token1Markets', token1Markets)
         setFieldValue('token0Markets', swapTokens)
@@ -26,7 +25,6 @@ export default function Token0Select() {
         <TokenToggle
           token={values.token0}
           onClick={() => setShowModal(true)}
-          label={t`Swap from`}
         />
         <TokenSelectModal
           show={showModal}

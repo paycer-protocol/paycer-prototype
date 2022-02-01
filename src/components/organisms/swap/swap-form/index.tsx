@@ -12,7 +12,7 @@ import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
-import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
+import SummaryDropdown from './summary-dropdown'
 import {t} from "@lingui/macro";
 import useToken from "@hooks/use-token";
 
@@ -83,7 +83,7 @@ export default function SwapForm() {
         return (
             <div className="d-lg-flex">
               <LeftCol>
-                <div className="d-flex flex-column flex-md-row mb-5">
+                <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
                     <SwapCard className="card bg-dark shadow-none mb-2">
                       <div className="card-body">
@@ -114,10 +114,8 @@ export default function SwapForm() {
                     </SwapCard>
                   </div>
                 </div>
-                <div className="mb-5">
-                  <MinimumToReceiveDropdown />
-                </div>
-                <div className="d-flex align-items-center justify-content-center w-100">
+                <SummaryDropdown />
+                <div className="d-flex align-items-center justify-content-center w-100 mt-5">
                   <SubmitButton />
                 </div>
               </LeftCol>

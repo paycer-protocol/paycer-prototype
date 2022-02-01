@@ -4,8 +4,9 @@ import { SupplyProps } from '../types'
 import {t} from '@lingui/macro'
 import * as Styles from '../../Styles'
 import CurrencyIcon from '@components/atoms/currency-icon'
+import { tokenProvider }  from '@providers/tokens'
 
-const TokenBalance = () => {
+const TotalDailyRewards = () => {
     const { values } = useFormikContext<SupplyProps>()
 
     /* TODO GET TOTAL DAILY REWARDS */
@@ -15,36 +16,23 @@ const TokenBalance = () => {
     return (
         <>
             <Styles.CurrencyInputLabel>
-                {t`Token Balance`}
+                {t`Total Daily rewards`}
             </Styles.CurrencyInputLabel>
-            <div className="d-flex align-items-center mb-2">
-                <CurrencyIcon
-                    symbol={values.token0.symbol}
-                    className="me-2"
-                    width={20}
-                    height={20}
-                />
-                <div className="d-flex align-items-center">
-                    {values.token0Balance}
-                    &nbsp;
-                    {values.token0.symbol}
-                </div>
-            </div>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
-                    symbol={values.token1.symbol}
+                    symbol={tokenProvider.PCR.symbol}
                     className="me-2"
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                 />
                 <div className="d-flex align-items-center">
-                    {values.token1Balance}
+                    {totalDailyRewards}
                     &nbsp;
-                    {values.token1.symbol}
+                    {tokenProvider.PCR.symbol}
                 </div>
             </div>
         </>
     )
 }
 
-export default TokenBalance
+export default TotalDailyRewards

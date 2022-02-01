@@ -11,18 +11,18 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 
 export const Header = styled.div`
-  .card-body { padding: 12px 15px 10px 15px;  }
+  .card-body { padding: 12px 15px 10px 15px;  } font-size: 14px;
 `
 export const Content = styled.div`
     z-index: 2; 
     border-top-left-radius: 0; 
     border-top-right-radius: 0;
     margin-top: -4px;
-    .card-body { padding: 15px 15px 10px 15px;  }
+    .card-body { padding: 15px 15px 10px 15px;  } font-size: 14px;
 `
 
 
-const MinimumToReceiveDropdown = () => {
+const SummaryDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
     const [open, setOpen] = useState(false)
 
@@ -31,7 +31,7 @@ const MinimumToReceiveDropdown = () => {
             <Header className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
                 <div className="card-body">
                     <div onClick={() => setOpen(!open)} className="d-flex align-items-center justify-content-between w-100">
-                        <div className="me-2 text-muted">1 {values.token0.symbol} = {values.exchangeRate} {values.token1.symbol}</div>
+                        <div className="me-2">1 {values.token0.symbol} = {values.exchangeRate} {values.token1.symbol}</div>
                         <Icon
                             component={open ? ArrowDropUp : ArrowDropDown}
                             size={25}
@@ -114,4 +114,4 @@ const MinimumToReceiveDropdown = () => {
     )
 }
 
-export default MinimumToReceiveDropdown
+export default SummaryDropdown

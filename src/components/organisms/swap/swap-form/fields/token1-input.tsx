@@ -11,7 +11,8 @@ import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 import useToken from "@hooks/use-token";
 
 export const TokenBalanceLabel = styled.small`
-font-size: 10px; padding-top:2px;
+   font-size: 11px;
+   padding-top:2px;
 `
 
 export default function Token1Input() {
@@ -52,8 +53,8 @@ export default function Token1Input() {
                     )
                 }}
             />
-            <TokenBalanceLabel>
-                <span className="fw-lighter text-muted">{t`Balance:`}</span>&nbsp;
+            <TokenBalanceLabel className="text-muted">
+                <span>{t`Balance:`}</span>&nbsp;
                 <FormattedNumber
                     value={values.token1Balance}
                     minimumFractionDigits={2}

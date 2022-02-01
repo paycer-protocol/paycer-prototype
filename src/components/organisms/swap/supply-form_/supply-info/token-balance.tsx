@@ -19,7 +19,7 @@ const TokenBalance = () => {
             </Styles.CurrencyInputLabel>
             <div className="d-flex align-items-center mb-2">
                 <CurrencyIcon
-                    symbol={values.token0.symbol}
+                    symbol={values.marketPair.token0.symbol}
                     className="me-2"
                     width={20}
                     height={20}
@@ -27,12 +27,12 @@ const TokenBalance = () => {
                 <div className="d-flex align-items-center">
                     {values.token0Balance}
                     &nbsp;
-                    {values.token0.symbol}
+                    {values.marketPair.token0.symbol}
                 </div>
             </div>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
-                    symbol={values.token1.symbol}
+                    symbol={values.marketPair.token1.symbol}
                     className="me-2"
                     width={20}
                     height={20}
@@ -40,7 +40,7 @@ const TokenBalance = () => {
                 <div className="d-flex align-items-center">
                     {values.token1Balance}
                     &nbsp;
-                    {values.token1.symbol}
+                    {values.marketPair.token1.symbol}
                 </div>
             </div>
         </>
