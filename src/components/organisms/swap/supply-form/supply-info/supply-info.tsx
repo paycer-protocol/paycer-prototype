@@ -35,18 +35,10 @@ const SupplyInfo = () => {
 
             <div className="row w-100">
                 <div className="col-md-6">
-                    <div className="card bg-dark shadow-none mb-0">
-                        <div className="card-body">
-                            <TotalSupply />
-                        </div>
-                    </div>
+                    <TotalSupply />
                 </div>
                 <div className="col-md-6">
-                    <div className="card bg-dark shadow-none mb-0">
-                        <div className="card-body">
-                            <DailyRewards />
-                        </div>
-                    </div>
+                    <DailyRewards />
                 </div>
             </div>
         </div>

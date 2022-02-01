@@ -14,7 +14,7 @@ const TotalSupply = () => {
 
     return (
         <>
-            <h5 className="text-uppercase text-muted">
+            <h5 className="text-uppercase text-muted mb-3">
                 {t`Total Pool Supply`}
             </h5>
             <div className="d-flex mb-2">

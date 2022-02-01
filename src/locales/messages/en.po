@@ -17,11 +17,11 @@ msgstr ""
 #~ msgid "404"
 #~ msgstr "404"
 
-#: src/components/organisms/vesting/overview/index.tsx:86
+#: src/components/organisms/vesting/overview/index.tsx:85
 msgid "% Bonus included"
 msgstr "% Bonus included"
 
-#: src/components/organisms/vesting/overview/index.tsx:44
+#: src/components/organisms/vesting/overview/index.tsx:43
 msgid "12 months"
 msgstr "12 months"
 
@@ -29,11 +29,11 @@ msgstr "12 months"
 #~ msgid "12 months after TGE"
 #~ msgstr "12 months after TGE"
 
-#: src/components/organisms/vesting/overview/index.tsx:42
+#: src/components/organisms/vesting/overview/index.tsx:41
 msgid "36 months"
 msgstr "36 months"
 
-#: src/components/organisms/vesting/overview/index.tsx:40
+#: src/components/organisms/vesting/overview/index.tsx:39
 msgid "6 months"
 msgstr "6 months"
 
@@ -41,7 +41,8 @@ msgstr "6 months"
 #~ msgid "6 months after TGE"
 #~ msgstr "6 months after TGE"
 
-#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:42
+#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:27
+#: src/components/organisms/swap/supply-form_/supply-info/supply-info.tsx:42
 msgid "APR"
 msgstr "APR"
 
@@ -110,7 +111,7 @@ msgstr "Associate"
 msgid "Available Balance"
 msgstr "Available Balance"
 
-#: src/components/organisms/swap/supply-form/fields/token0-input.tsx:26
+#: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
 msgid "Balance"
 msgstr "Balance"
 
@@ -121,6 +122,13 @@ msgstr "Balance"
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:213
 #~ msgid "Balance after:"
 #~ msgstr "Balance after:"
+
+#: src/components/organisms/swap/supply-form/fields/token0-input.tsx:60
+#: src/components/organisms/swap/supply-form/fields/token1-input.tsx:56
+#: src/components/organisms/swap/swap-form/fields/token0-input.tsx:59
+#: src/components/organisms/swap/swap-form/fields/token1-input.tsx:60
+msgid "Balance:"
+msgstr "Balance:"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -162,7 +170,7 @@ msgstr "Cancel"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/vesting/dashboard/index.tsx:64
+#: src/components/organisms/vesting/dashboard/index.tsx:63
 msgid "Claim"
 msgstr "Claim"
 
@@ -276,7 +284,7 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgid "Current Invest"
 msgstr "Current Invest"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
 msgid "Current Staked"
 msgstr "Current Staked"
 
@@ -294,7 +302,8 @@ msgid "Daily interest"
 msgstr "Daily interest"
 
 #: src/components/organisms/invest/invest-form/index.tsx:86
-#: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:15
+#: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:14
+#: src/components/organisms/swap/supply-form_/supply-info/daily-rewards.tsx:15
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
@@ -318,6 +327,10 @@ msgstr "Daily rewards"
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 msgid "Deposit"
 msgstr "Deposit"
+
+#: src/pages/swap/index.tsx:26
+msgid "Deposit Liquidity"
+msgstr "Deposit Liquidity"
 
 #: src/pages/pre-sale-wallet.tsx:21
 #~ msgid "Deposit Wallet Address"
@@ -383,7 +396,7 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 #~ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
-#: src/pages/invest/create/fields/invest-input.tsx:14
+#: src/pages/invest/create/fields/invest-input.tsx:15
 msgid "Enter your invest amount"
 msgstr "Enter your invest amount"
 
@@ -397,8 +410,8 @@ msgstr "Enter your invest amount"
 #~ msgstr "Estimated fee"
 
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:22
-msgid "Exchangerate"
-msgstr "Exchangerate"
+#~ msgid "Exchangerate"
+#~ msgstr "Exchangerate"
 
 #: src/components/organisms/web3/wallet-detail.tsx:104
 #~ msgid "Explorer"
@@ -408,7 +421,7 @@ msgstr "Exchangerate"
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
-#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:27
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:94
 msgid "Fee"
 msgstr "Fee"
 
@@ -493,7 +506,7 @@ msgstr "Invest"
 #~ msgid "Invest now"
 #~ msgstr "Invest now"
 
-#: src/components/organisms/vesting/overview/index.tsx:59
+#: src/components/organisms/vesting/overview/index.tsx:58
 msgid "Invested"
 msgstr "Invested"
 
@@ -573,7 +586,8 @@ msgstr "Invested"
 #~ msgid "Liquidity"
 #~ msgstr "Liquidity"
 
-#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:34
+#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:17
+#: src/components/organisms/swap/supply-form_/supply-info/supply-info.tsx:34
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
 
@@ -606,8 +620,8 @@ msgstr "Low"
 #~ msgstr "Loyalty Tier Level"
 
 #: src/pages/staking/index.tsx:52
-msgid "Loyalty Tier:"
-msgstr "Loyalty Tier:"
+#~ msgid "Loyalty Tier:"
+#~ msgstr "Loyalty Tier:"
 
 #: src/config/loyalty-tiers.ts:17
 msgid "Manager"
@@ -621,9 +635,13 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:73
+msgid "Minimum received"
+msgstr "Minimum received"
+
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:15
-msgid "Minimum to receive"
-msgstr "Minimum to receive"
+#~ msgid "Minimum to receive"
+#~ msgstr "Minimum to receive"
 
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
@@ -666,7 +684,7 @@ msgstr "Minimum to receive"
 #~ msgid "No investment found for this wallet. Please connect another wallet address."
 #~ msgstr "No investment found for this wallet. Please connect another wallet address."
 
-#: src/components/organisms/swap/supply-form/fields/token0-input.tsx:26
+#: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
 msgid "Not enough"
 msgstr "Not enough"
 
@@ -678,7 +696,7 @@ msgstr "Not enough"
 #~ msgid "Open"
 #~ msgstr "Open"
 
-#: src/components/organisms/vesting/overview/index.tsx:51
+#: src/components/organisms/vesting/overview/index.tsx:50
 msgid "Overview"
 msgstr "Overview"
 
@@ -768,7 +786,7 @@ msgstr "Pre Sale distribution"
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/components/organisms/swap/swap-form/price-impact.tsx:11
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:90
 msgid "Price impact"
 msgstr "Price impact"
 
@@ -895,12 +913,12 @@ msgstr "Senior"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:32
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:47
 msgid "Slippage tolerance"
 msgstr "Slippage tolerance"
 
-#: src/components/organisms/web3/add-paycer-token.tsx:45
-#: src/components/organisms/web3/add-paycer-token.tsx:50
+#: src/components/organisms/web3/add-paycer-token.tsx:54
+#: src/components/organisms/web3/add-paycer-token.tsx:59
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
@@ -924,7 +942,7 @@ msgstr "Something went wrong!"
 #~ msgid "Staked"
 #~ msgstr "Staked"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
 msgid "Staked after"
 msgstr "Staked after"
 
@@ -964,26 +982,31 @@ msgstr "Staking"
 #~ msgid "Successful"
 #~ msgstr "Successful"
 
-#: src/components/organisms/swap/supply-form/fields/submit-button.tsx:13
-#: src/components/organisms/swap/supply-form/index.tsx:58
+#: src/components/organisms/swap/supply-form/fields/token-toggle.tsx:42
+msgid "Supplied:"
+msgstr "Supplied:"
+
+#: src/components/organisms/swap/supply-form/fields/submit-button.tsx:16
+#: src/components/organisms/swap/supply-form_/fields/submit-button.tsx:13
+#: src/components/organisms/swap/supply-form_/index.tsx:78
 msgid "Supply"
 msgstr "Supply"
 
 #: src/pages/swap/index.tsx:26
-msgid "Supply Liquidity"
-msgstr "Supply Liquidity"
+#~ msgid "Supply Liquidity"
+#~ msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:13
+#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:16
 #: src/config/routes.ts:34
 #: src/pages/swap/index.tsx:25
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/index.tsx:54
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:28
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/index.tsx:71
+#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:27
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -1033,7 +1056,7 @@ msgstr "The secure app to store crypto yourself"
 #~ msgid "Theme"
 #~ msgstr "Theme"
 
-#: src/components/organisms/swap/supply-form/supply-info/token-balance.tsx:18
+#: src/components/organisms/swap/supply-form_/supply-info/token-balance.tsx:18
 msgid "Token Balance"
 msgstr "Token Balance"
 
@@ -1054,7 +1077,7 @@ msgstr "Token Balance"
 #~ msgid "Total Balance"
 #~ msgstr "Total Balance"
 
-#: src/components/organisms/swap/supply-form/supply-info/total-daily-rewards.tsx:19
+#: src/components/organisms/swap/supply-form_/supply-info/total-daily-rewards.tsx:19
 msgid "Total Daily rewards"
 msgstr "Total Daily rewards"
 
@@ -1062,20 +1085,24 @@ msgstr "Total Daily rewards"
 #~ msgid "Total Investment"
 #~ msgstr "Total Investment"
 
+#: src/components/organisms/swap/supply-form/supply-info/total-supply.tsx:18
+msgid "Total Pool Supply"
+msgstr "Total Pool Supply"
+
 #: src/components/organisms/invest/invest-card/index.tsx:51
 #: src/components/organisms/invest/invest-table.tsx:37
 #~ msgid "Total Volume"
 #~ msgstr "Total Volume"
 
-#: src/components/organisms/vesting/overview/index.tsx:79
+#: src/components/organisms/vesting/overview/index.tsx:78
 msgid "Total amount"
 msgstr "Total amount"
 
-#: src/components/organisms/vesting/overview/index.tsx:103
+#: src/components/organisms/vesting/overview/index.tsx:102
 msgid "Total claimed"
 msgstr "Total claimed"
 
-#: src/components/organisms/swap/supply-form/supply-info/total-supply.tsx:18
+#: src/components/organisms/swap/supply-form_/supply-info/total-supply.tsx:18
 msgid "Total supply"
 msgstr "Total supply"
 
@@ -1141,7 +1168,7 @@ msgstr "Transaction is processing..."
 #~ msgid "Type"
 #~ msgstr "Type"
 
-#: src/components/organisms/vesting/overview/index.tsx:63
+#: src/components/organisms/vesting/overview/index.tsx:62
 msgid "USD"
 msgstr "USD"
 
@@ -1158,7 +1185,7 @@ msgstr "USD"
 msgid "Vesting"
 msgstr "Vesting"
 
-#: src/components/organisms/vesting/overview/index.tsx:123
+#: src/components/organisms/vesting/overview/index.tsx:122
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
@@ -1222,7 +1249,7 @@ msgstr "Withdraw"
 #~ msgid "Your APR:"
 #~ msgstr "Your APR:"
 
-#: src/components/organisms/swap/supply-form/supply-info/your-supply.tsx:14
+#: src/components/organisms/swap/supply-form_/supply-info/your-supply.tsx:14
 msgid "Your supply"
 msgstr "Your supply"
 
