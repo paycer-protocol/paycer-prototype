@@ -23,7 +23,7 @@ export default function Trade () {
         <div>
           <div className="d-flex">
             <div className={supplyTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive' } onClick={() => setSupplyTabActive(false)}>{t`Swap`}</div>
-            <div className={supplyTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setSupplyTabActive(true)}>{t`Supply Liquidity`}</div>
+            <div className={supplyTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab' } onClick={() => setSupplyTabActive(true)}>{t`Deposit Liquidity`}</div>
           </div>
           <div className="card blur-background">
             <div className="card-body p-0">

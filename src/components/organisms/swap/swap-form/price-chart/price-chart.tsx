@@ -151,9 +151,9 @@ const PriceChart = (props: PriceChartProps) => {
         <div>
             <div className="d-md-flex justify-content-between">
                 <div>
-                    <MainStyles.InfoHeadline>
+                    <h5 className="text-uppercase text-muted mb-3">
                         {token0.symbol} / {token1.symbol}
-                    </MainStyles.InfoHeadline>
+                    </h5>
                     <div className="d-flex justify-content-md-between align-items-baseline">
                         <MainStyles.Headline>
                             {1} {token1.symbol}

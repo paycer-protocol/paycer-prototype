@@ -44,31 +44,31 @@ const SummaryDropdown = () => {
             <Content className="cursor-pointer card shadow-none mb-2 bg-dark border-top-0 position-absolute w-100">
                 <div className="card-body">
                     <div className="d-flex justify-content-between border-bottom mb-4 pb-4">
-            <span className="w-50 d-flex align-items-center text-muted">{t`Slippage tolerance`}</span>
-            <div className="w-50 d-flex justify-content-between ">
-            <div className="w-100 d-flex align-items-center">
-            <Input
-            name="slippageTolerance"
-            style={{ padding: '4px 10px'}}
-            type="number"
-            value={values.slippageTolerance}
-            onChange={(e) => {
-            let slippageTolerance = e.target.value
-            // limit to 100 force 100
-            if (slippageTolerance > 100) {
-            slippageTolerance = 100
-            }
-            if (slippageTolerance === 0) {
-            return
-            }
-            setFieldValue('slippageTolerance', slippageTolerance)
-            calculateMinimumToReceive(values.token0Value, values.exchangeRate, slippageTolerance, values.feeFactor, setFieldValue)
-            }}
-            />
-            &nbsp;&nbsp;%
-            </div>
-            </div>
-            </div>
+                        <span className="w-50 d-flex align-items-center text-muted">{t`Slippage tolerance`}</span>
+                        <div className="w-50 d-flex justify-content-between ">
+                            <div className="w-100 d-flex align-items-center">
+                                <Input
+                                    name="slippageTolerance"
+                                    style={{ padding: '4px 10px'}}
+                                    type="number"
+                                    value={values.slippageTolerance}
+                                    onChange={(e) => {
+                                        let slippageTolerance = e.target.value
+                                        // limit to 100 force 100
+                                        if (slippageTolerance > 100) {
+                                            slippageTolerance = 100
+                                        }
+                                        if (slippageTolerance === 0) {
+                                            return
+                                        }
+                                        setFieldValue('slippageTolerance', slippageTolerance)
+                                        calculateMinimumToReceive(values.token0Value, values.exchangeRate, slippageTolerance, values.feeFactor, setFieldValue)
+                                    }}
+                                />
+                                &nbsp;&nbsp;%
+                            </div>
+                        </div>
+                    </div>
                     <div className="d-flex justify-content-between mb-2">
                         <span className="text-muted">{t`Minimum received`}</span>
                         <span className="d-flex align-items-center">

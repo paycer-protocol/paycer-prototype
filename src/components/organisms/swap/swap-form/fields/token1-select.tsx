@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
-import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
+import TokenSelectModal from '@components/molecules/token-select-modal'
 import TokenToggle from './token-toggle'
 import {t} from '@lingui/macro'
 import {marketPairs, swapTokens} from '@config/market-pairs'
@@ -10,13 +10,12 @@ export default function Token1Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
 
-    const handleChange = (token, balance) => {
+    const handleChange = (token) => {
         setFieldValue('minimumToReceive', 0)
         const token1Markets = marketPairs.find(m => m.base.symbol === values.token0.symbol).markets
         setFieldValue('token1Markets', token1Markets)
         setFieldValue('token0Markets', swapTokens)
         setFieldValue('token1', token)
-        setFieldValue('token1Balance', balance)
         setShowModal(false)
     }
 

@@ -11,12 +11,15 @@ import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 import useToken from "@hooks/use-token";
 
 export const TokenBalanceLabel = styled.small`
-   font-size: 11px;
+   font-size: 12px;
    padding-top:2px;
 `
 
 export default function Token1Input() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
+    const tokenForBalance = useToken(values.token1.symbol)
+    const { tokenBalance } = tokenForBalance
+    const balance = tokenBalance()
     let token0Price = Number(useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
     let token1Price = Number(useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
 
@@ -56,7 +59,7 @@ export default function Token1Input() {
             <TokenBalanceLabel className="text-muted">
                 <span>{t`Balance:`}</span>&nbsp;
                 <FormattedNumber
-                    value={values.token1Balance}
+                    value={balance}
                     minimumFractionDigits={2}
                     maximumFractionDigits={4}
                 />

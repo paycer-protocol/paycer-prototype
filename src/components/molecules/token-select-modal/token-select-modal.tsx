@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../../types/investment'
-import useToken from "@hooks/use-token";
-import {FormattedNumber} from "../../../atoms/number/formatted-number";
+import useToken from '@hooks/use-token'
+import {FormattedNumber} from '@components/atoms/number/formatted-number'
 
 interface TokenSelectModalProps {
   show: boolean
   onHide: () => void
   activeToken: TokenType
-  onClick: (token: TokenType, balance: number) => void
+  onClick: (token: TokenType) => void
   tokens: TokenType[]
 }
 
@@ -61,11 +61,9 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
             <div className="card-body p-0">
               <ul className="list-group list-group-flush">
                 {filteredTokens.map((token, i) => (
-                  <li key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken.symbol ? 'disabled opacity-20' : ''}`}>
+                  <li onClick={token.symbol !== activeToken.symbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken.symbol ? 'disabled opacity-20' : ''}`}>
                     <ListItem
                         token={token}
-                        onClick={onClick}
-                        isActive={token.symbol === activeToken.symbol }
                     />
                   </li>
                 ))}
@@ -84,23 +82,19 @@ font-size: 18px; font-weight: 300;
 
 interface ListItemProps {
   token: TokenType
-  isActive: boolean
-  onClick: (token: TokenType, balance: number) => void
 }
 
 const ListItem = (props: ListItemProps) => {
   const {
-    token,
-    onClick,
-    isActive
+    token
   } = props
 
-  const tokenForBalance = useToken(token.symbol)
-  const { tokenBalance } = tokenForBalance
+  const tokenData = useToken(token.symbol)
+  const { tokenBalance, totalSupply } = tokenData
   const balance = tokenBalance()
 
   return (
-      <a onClick={!isActive ? () => onClick(token, balance) : null} className="d-flex align-items-center justify-content-between">
+      <a className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <CurrencyIcon
               symbol={token.symbol}

@@ -1,27 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 import {t} from "@lingui/macro";
 import * as Styles from '../../Styles'
-import YourSupply from './your-supply'
 import TotalSupply from './total-supply'
 import DailyRewards from './daily-rewards'
-import TokenBalance from './token-balance'
-
-export const StylesSupplyInfoColWithBorder = styled.div`
-  @media only screen and (min-width : 978px) {
-      position: relative;
-      &:before {
-          content: "";
-          position: absolute;
-          height: 100%;
-          width: 1px;
-          background: #244166;
-          left: -15%;
-      }
-  }
-`
 
 const SupplyInfo = () => {
     const { values } = useFormikContext<SupplyProps>()
@@ -30,8 +13,10 @@ const SupplyInfo = () => {
         <div>
             <div className="d-flex flex-column flex-md-row mb-5">
                 <div>
-                    <Styles.CurrencyInputLabel>
+                    <h5 className="text-uppercase text-muted mb-3">
                         {t`Liquidity Pool`}
+                    </h5>
+                    <Styles.CurrencyInputLabel>
                     </Styles.CurrencyInputLabel>
                     <div className="d-flex align-items-baseline mb-4">
                         <Styles.Headline className="mb-0">
@@ -43,25 +28,25 @@ const SupplyInfo = () => {
                         </Styles.CurrencyInputLabel>
                     </div>
                     <p className="mb-0 text-muted">
-                        Supply an equal amount of {values.token0.symbol} and {values.token1.symbol} to earn Interest. Your assets will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards.
+                        Supply {values.token0.symbol} to earn {values.token1.symbol} Tokens. Your {values.token0.symbol} will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards. This pool works like a queue, so you can withdraw your {values.token0.symbol} from the liquidity details section as your order is filled.
                     </p>
                 </div>
             </div>
 
-            <div className="d-flex">
-                <div className="row w-100">
-                    <div className="col-md-6">
-                        <div className="mb-5">
-                            <YourSupply />
-                        </div>
-                        <TokenBalance />
-                    </div>
-                    <StylesSupplyInfoColWithBorder className="col-md-6">
-                        <div className="mb-5  ">
+            <div className="row w-100">
+                <div className="col-md-6">
+                    <div className="card bg-dark shadow-none mb-0">
+                        <div className="card-body">
                             <TotalSupply />
                         </div>
-                        <DailyRewards />
-                    </StylesSupplyInfoColWithBorder>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div className="card bg-dark shadow-none mb-0">
+                        <div className="card-body">
+                            <DailyRewards />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

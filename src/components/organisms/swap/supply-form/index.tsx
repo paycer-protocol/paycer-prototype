@@ -11,7 +11,6 @@ import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import SupplyInfo from './supply-info'
-import SummaryDropdown from './summary-dropdown'
 import {t} from "@lingui/macro";
 import useToken from "@hooks/use-token";
 
@@ -56,7 +55,7 @@ export default function SupplyForm() {
     token0Markets: marketPairs.find(m => m.base.symbol === tokenProvider.PCR.symbol).markets,
     token0Balance: initialToken0Balance,
     apr: 8,
-    dailyRewards: 19
+    dailyRewards: 0
   }
 
   const validationSchema = Yup.object().shape({

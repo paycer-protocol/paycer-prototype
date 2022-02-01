@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import { tokenProvider }  from '@providers/tokens'
 import { marketPairs, swapTokens } from '@config/market-pairs'
@@ -13,8 +13,8 @@ import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
 import SummaryDropdown from './summary-dropdown'
-import {t} from "@lingui/macro";
 import useToken from "@hooks/use-token";
+import { formatUnits } from '@ethersproject/units'
 
 export const LeftCol = styled.div`
     width: 40%;
@@ -40,22 +40,14 @@ export const SwapCard = styled.div`
 
 export default function SwapForm() {
 
-  const pcrToken = useToken(tokenProvider.PCR.symbol)
-  const initialToken1Balance = pcrToken.tokenBalance()
-
-  const usdcToken = useToken(tokenProvider.USDC.symbol)
-  const initialToken0Balance = usdcToken.tokenBalance()
-
   const initialValues: SwapProps = {
     token1: tokenProvider.PCR,
     token1Value: null,
     token1Markets: swapTokens.filter(mi => mi.symbol !== tokenProvider.USDC.symbol),
-    token1Balance: initialToken1Balance,
     exchangeRate: 0.06182,
     token0: tokenProvider.USDC,
     token0Value: null,
     token0Markets: marketPairs.find(m => m.base.symbol === tokenProvider.PCR.symbol).markets,
-    token0Balance: initialToken0Balance,
     minimumToReceive: 0,
     slippageTolerance: 0.5,
     priceImpact: 0.01,

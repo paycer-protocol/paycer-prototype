@@ -2,7 +2,6 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 import {t} from "@lingui/macro";
-import * as Styles from '../../Styles'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import { tokenProvider }  from '@providers/tokens'
 
@@ -11,9 +10,9 @@ const DailyRewards = () => {
 
     return (
         <>
-            <Styles.CurrencyInputLabel>
+            <h5 className="text-uppercase text-muted">
                 {t`Daily rewards`}
-            </Styles.CurrencyInputLabel>
+            </h5>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
                     symbol={tokenProvider.PCR.symbol}

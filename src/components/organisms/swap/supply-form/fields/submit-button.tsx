@@ -2,11 +2,11 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import GradientButton from '@components/atoms/button/gradient-button'
-import { SwapProps } from '../types'
+import { SupplyProps } from '../types'
 import useToken from "@hooks/use-token";
 
 export default function SubmitButton() {
-    const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SwapProps>()
+    const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SupplyProps>()
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value || !values.token1Value
 
     const outOfBalance = values.token0Value > values.token0Balance
