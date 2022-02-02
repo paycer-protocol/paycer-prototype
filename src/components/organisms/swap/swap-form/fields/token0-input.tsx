@@ -16,8 +16,13 @@ export const TokenBalanceLabel = styled.small`
 `
 
 export const MaxButton = styled.small`
-   font-size: 10px;
-   padding: 0 4px; line-height: 16px;
+    font-size: 9px;
+    padding: 0 4px;
+    line-height: 15px;
+    position: relative;
+    top: 2px;
+    font-weight: 400;
+    height: 17px; &:hover { border-color #365172!important; }
 `
 
 export default function Token0Input() {
@@ -66,7 +71,7 @@ export default function Token0Input() {
                   />
               </TokenBalanceLabel>
               {(balance > 0) &&
-              <MaxButton onClick={() => handleChange(balance)} className="ms-2 border-primary border rounded-2 bg-transparent">
+              <MaxButton onClick={() => handleChange(balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
                 max
               </MaxButton>
               }

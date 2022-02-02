@@ -4,10 +4,6 @@ import { TokenType } from '@types/investment'
 import * as Styles from './Styles'
 import * as MainStyles from '../../Styles'
 import { ApexOptions } from 'apexcharts'
-import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
-import { ChainId } from '@usedapp/core'
-import GradientButton from "@components/atoms/button/gradient-button";
-import {t} from "@lingui/macro";
 import api from "../../../../../api";
 
 interface PriceChartProps {
@@ -18,6 +14,7 @@ interface PriceChartProps {
 const PriceChart = (props: PriceChartProps) => {
     const { token0, token1 } = props
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
+    const [range, setRange] =  useState<string>('')
     const [data, setData] =  useState<any>(null)
     const options =  {
         colors: ["#6d16eb"],
@@ -124,10 +121,10 @@ const PriceChart = (props: PriceChartProps) => {
     } as ApexOptions
     const selection = 'one_month'
 
-    const fetchChartData = async () => {
+    const fetchChartData = async (range:string = '') => {
         try {
-            const response = await api.fetchPriceChart(token0.symbol, token1.symbol)
-
+            const response = await api.fetchPriceChart(token0.symbol, token1.symbol, range)
+            setRange(range)
             setData({
                     series: [{
                         data: response
@@ -165,7 +162,36 @@ const PriceChart = (props: PriceChartProps) => {
                     </div>
                 </div>
                 <Styles.Toolbar>
-
+                    <div
+                        onClick={async () => await fetchChartData('day')}
+                        className={(range === 'day' ? 'is--Active' : '')}
+                    >
+                        D
+                    </div>
+                    <div
+                        onClick={async () => await fetchChartData('week')}
+                        className={(range === 'week' ? 'is--Active' : '')}
+                    >
+                        W
+                    </div>
+                    <div
+                        onClick={async () => await fetchChartData('month')}
+                        className={(range === 'month' ? 'is--Active' : '')}
+                    >
+                        M
+                    </div>
+                    <div
+                        onClick={async () => await fetchChartData('year')}
+                        className={(range === 'year' ? 'is--Active' : '')}
+                    >
+                        Y
+                    </div>
+                    <div
+                        onClick={async () => await fetchChartData()}
+                        className={(range === '' ? 'is--Active' : '')}
+                    >
+                        ALL
+                    </div>
                 </Styles.Toolbar>
             </div>
 

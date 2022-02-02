@@ -39,7 +39,7 @@ const SummaryDropdown = () => {
             <Header className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
                 <div className="card-body">
                     <div onClick={() => setOpen(!open)} className="d-flex align-items-center justify-content-between w-100">
-                        <div className="me-2">1 {values.token0.symbol} = {values.exchangeRate} {values.token1.symbol}</div>
+                        <div className="me-2">1 {values.token0.symbol} = {values.token1Price} {values.token1.symbol}</div>
                         <Icon
                             component={open ? ArrowDropUp : ArrowDropDown}
                             size={25}
