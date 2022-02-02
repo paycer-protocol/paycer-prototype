@@ -11,7 +11,7 @@ const SupplyInfo = () => {
 
     return (
         <div>
-            <div className="d-flex flex-column flex-md-row mb-5">
+            <div className="d-flex flex-column flex-md-row mb-5 border-bottom pb-5">
                 <div>
                     <h5 className="text-uppercase text-muted mb-3">
                         {t`Liquidity Pool`}
@@ -35,10 +35,10 @@ const SupplyInfo = () => {
 
             <div className="row w-100">
                 <div className="col-md-6">
-                    <TotalSupply />
+                    <DailyRewards />
                 </div>
                 <div className="col-md-6">
-                    <DailyRewards />
+                    <TotalSupply />
                 </div>
             </div>
         </div>

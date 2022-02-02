@@ -15,20 +15,30 @@ export const TokenBalanceLabel = styled.small`
    padding-top:2px;
 `
 
+export const MaxButton = styled.small`
+   font-size: 10px;
+   padding: 0 4px; line-height: 16px;
+`
+
 export default function Token0Input() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
     const tokenForBalance = useToken(values.token0.symbol)
     const { tokenBalance } = tokenForBalance
     const balance = tokenBalance()
-    let token0Price = Number(useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
-    let token1Price = Number(useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
 
-    if (values.token0.symbol === 'PCR') {
-        token0Price = 0.06182
-    }
+    const handleChange = (value:number) => {
+        // todo fetch prices
 
-    if (values.token1.symbol === 'PCR') {
-        token1Price = 0.06182
+        const token1Value = Number(value) / values.token1Price
+        setFieldValue('token0Value', value)
+        setFieldValue('token1Value', token1Value)
+        calculateMinimumToReceive(
+            value,
+            token1Value,
+            values.slippageTolerance,
+            values.feeFactor,
+            setFieldValue
+        )
     }
 
     return (
@@ -43,26 +53,25 @@ export default function Token0Input() {
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus"
             onChange={(e) => {
               const token0Value = Number(e.target.rawValue)
-              const token1Value = Number(token0Value) / token1Price
-              setFieldValue('token0Value', token0Value)
-              setFieldValue('token1Value', token1Value)
-              calculateMinimumToReceive(
-                token0Value,
-                token1Value,
-                values.slippageTolerance,
-                values.feeFactor,
-                setFieldValue
-              )
+              handleChange(token0Value)
             }}
           />
-          <TokenBalanceLabel className="text-muted">
-              <span>{t`Balance:`}</span>&nbsp;
-              <FormattedNumber
-                  value={balance}
-                  minimumFractionDigits={2}
-                  maximumFractionDigits={4}
-              />
-          </TokenBalanceLabel>
+          <div className="d-flex justify-content-end">
+              <TokenBalanceLabel className="text-muted">
+                  <span>{t`Balance:`}</span>&nbsp;
+                  <FormattedNumber
+                      value={balance}
+                      minimumFractionDigits={2}
+                      maximumFractionDigits={4}
+                  />
+              </TokenBalanceLabel>
+              {(balance > 0) &&
+              <MaxButton onClick={() => handleChange(balance)} className="ms-2 border-primary border rounded-2 bg-transparent">
+                max
+              </MaxButton>
+              }
+          </div>
+
       </div>
     )
 }

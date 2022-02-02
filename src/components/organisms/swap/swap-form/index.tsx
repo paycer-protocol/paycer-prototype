@@ -35,7 +35,7 @@ export const RightCol = styled.div`
 `
 
 export const SwapCard = styled.div`
-  .card-body { padding: 20px; }
+  .card-body { padding: 20px; } &:hover { border-color #365172; }
 `
 
 export default function SwapForm() {
@@ -43,11 +43,12 @@ export default function SwapForm() {
   const initialValues: SwapProps = {
     token1: tokenProvider.PCR,
     token1Value: null,
-    token1Markets: swapTokens.filter(mi => mi.symbol !== tokenProvider.USDC.symbol),
-    exchangeRate: 0.06182,
+    token1Markets: swapTokens,
+    token1Price: 0.06182,
     token0: tokenProvider.USDC,
     token0Value: null,
-    token0Markets: marketPairs.find(m => m.base.symbol === tokenProvider.PCR.symbol).markets,
+    token0Markets: swapTokens,
+    token0Price: 1,
     minimumToReceive: 0,
     slippageTolerance: 0.5,
     priceImpact: 0.01,
@@ -72,6 +73,7 @@ export default function SwapForm() {
       enableReinitialize
     >
       {({ values }) => {
+
         return (
             <div className="d-lg-flex">
               <LeftCol>

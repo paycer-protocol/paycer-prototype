@@ -11,6 +11,16 @@ export default function Token0Select() {
     const [showModal, setShowModal] = useState(false)
 
     const handleChange = (token) => {
+
+        // TODO FETCH PRICES
+        let token0Price = 0
+
+        if (token.symbol === 'PCR') {
+            token0Price = 0.06182
+        }
+
+        setFieldValue('token0Price', token0Price)
+
         setFieldValue('minimumToReceive', 0)
         const token1Markets = marketPairs.find(m => m.base.symbol === token.symbol).markets
         setFieldValue('token1Markets', token1Markets)

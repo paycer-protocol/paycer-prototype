@@ -17,10 +17,18 @@ export const Content = styled.div`
     z-index: 2; 
     border-top-left-radius: 0; 
     border-top-right-radius: 0;
-    margin-top: -4px;
-    .card-body { padding: 15px 15px 10px 15px;  } font-size: 14px;
+    margin-top: -2px;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden; font-size: 14px;
+    &.is--Open {
+        max-height: 700px;
+        transition: max-height 0.15s ease-in;
+    }
+    .card-body { 
+        padding: 15px 15px 10px 15px; 
+    } 
 `
-
 
 const SummaryDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
@@ -40,8 +48,7 @@ const SummaryDropdown = () => {
                     </div>
                 </div>
             </Header>
-            {open &&
-            <Content className="cursor-pointer card shadow-none mb-2 bg-dark border-top-0 position-absolute w-100">
+            <Content className={`cursor-pointer card shadow-none mb-2 bg-dark position-absolute w-100 border-top-0 ${open ? 'is--Open' : ''}`}>
                 <div className="card-body">
                     <div className="d-flex justify-content-between border-bottom mb-4 pb-4">
                         <span className="w-50 d-flex align-items-center text-muted">{t`Slippage tolerance`}</span>
@@ -109,7 +116,6 @@ const SummaryDropdown = () => {
                     </div>
                 </div>
             </Content>
-            }
         </div>
     )
 }

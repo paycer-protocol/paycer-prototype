@@ -12,7 +12,8 @@ export interface SwapProps {
   priceImpact: number
   feeFactor: number
   fee: number
-  exchangeRate: number
+  token0Price: number
+  token1Price: number
 }
 
 

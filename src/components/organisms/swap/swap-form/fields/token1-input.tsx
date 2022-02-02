@@ -20,16 +20,6 @@ export default function Token1Input() {
     const tokenForBalance = useToken(values.token1.symbol)
     const { tokenBalance } = tokenForBalance
     const balance = tokenBalance()
-    let token0Price = Number(useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
-    let token1Price = Number(useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
-
-    if (values.token0.symbol === 'PCR') {
-        token0Price = 0.06182
-    }
-
-    if (values.token1.symbol === 'PCR') {
-        token1Price = 0.06182
-    }
 
     return (
         <div className="d-flex flex-column text-end">
@@ -44,12 +34,12 @@ export default function Token1Input() {
                 decimals={4}
                 onChange={(e) => {
                     const token1Value = Number(e.target.rawValue)
-                    const token0Value = token1Value * token1Price
+                    const token0Value = token1Value * values.token1Price
                     setFieldValue('token1Value', token1Value)
                     setFieldValue('token0Value', token0Value)
                     calculateMinimumToReceive(
                       token0Value,
-                      token0Price,
+                      values.token0Price,
                       values.slippageTolerance,
                       values.feeFactor,
                       setFieldValue
