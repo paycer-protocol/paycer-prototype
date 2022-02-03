@@ -15,6 +15,8 @@ interface DashboardProps {
   bonusPercentage?: string
   immediateAvailabilityPercentage?: string
   type?: string
+  launchpad?: string
+
 }
 
 export interface TransactionProps {

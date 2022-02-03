@@ -36,6 +36,7 @@ const Overview = () => {
     const type = dashboardData?.type
     switch (type) {
       case 'public':
+      case 'public_v2':
         return t`6 months`
       case 'team':
         return t`36 months`
