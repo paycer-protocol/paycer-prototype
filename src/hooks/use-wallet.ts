@@ -20,6 +20,7 @@ export default function useWallet() {
         try {
             const nextConnector = provider.beforeConnect(provider)
             setActivatingConnector(nextConnector)
+            // @ts-ignore
             await activate(nextConnector, undefined, true)
         } catch (e) {
             setActivatingConnector(undefined)
