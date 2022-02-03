@@ -26,7 +26,8 @@ const AddPaycerToken = () => {
     const balance = tokenBalance()
 
     const addToken = async () => {
-
+        
+        // @ts-ignore
       if (!library && !library.provider.isMetaMask && !library.provider.request) {
           return false
       }
