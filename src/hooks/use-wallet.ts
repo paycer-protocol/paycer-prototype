@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ChainId, getExplorerAddressLink, shortenIfAddress, useEtherBalance, useEthers } from '@usedapp/core'
+import { ChainId, getExplorerAddressLink, shortenIfAddress, useEtherBalance, useEthers, Polygon, Mainnet } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
@@ -29,7 +29,7 @@ export default function useWallet() {
     }
 
     const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Mainnet]
-
+    
     return {
         connector,
         address: account,
@@ -41,7 +41,7 @@ export default function useWallet() {
         etherBalance: formatEther(etherBalance || 0),
         etherSymbol: Symbols[chainId] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
-        explorerUrl: getExplorerAddressLink(account, chainId),
+        explorerUrl: chainProvider.getExplorerAddressLink(account),
         activatingConnector,
         chainId
     }
