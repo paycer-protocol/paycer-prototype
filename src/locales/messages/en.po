@@ -41,10 +41,9 @@ msgstr "6 months"
 #~ msgid "6 months after TGE"
 #~ msgstr "6 months after TGE"
 
-#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:27
 #: src/components/organisms/swap/supply-form_/supply-info/supply-info.tsx:42
-msgid "APR"
-msgstr "APR"
+#~ msgid "APR"
+#~ msgstr "APR"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:82
 #~ msgid "APY"
@@ -112,8 +111,8 @@ msgid "Available Balance"
 msgstr "Available Balance"
 
 #: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
-msgid "Balance"
-msgstr "Balance"
+#~ msgid "Balance"
+#~ msgstr "Balance"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:176
 #~ msgid "Balance after"
@@ -125,8 +124,8 @@ msgstr "Balance"
 
 #: src/components/organisms/swap/supply-form/fields/token0-input.tsx:60
 #: src/components/organisms/swap/supply-form/fields/token1-input.tsx:56
-#: src/components/organisms/swap/swap-form/fields/token0-input.tsx:59
-#: src/components/organisms/swap/swap-form/fields/token1-input.tsx:60
+#: src/components/organisms/swap/swap-form/fields/token0-input.tsx:64
+#: src/components/organisms/swap/swap-form/fields/token1-input.tsx:50
 msgid "Balance:"
 msgstr "Balance:"
 
@@ -303,7 +302,6 @@ msgstr "Daily interest"
 
 #: src/components/organisms/invest/invest-form/index.tsx:86
 #: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:14
-#: src/components/organisms/swap/supply-form_/supply-info/daily-rewards.tsx:15
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
@@ -329,8 +327,8 @@ msgid "Deposit"
 msgstr "Deposit"
 
 #: src/pages/swap/index.tsx:26
-msgid "Deposit Liquidity"
-msgstr "Deposit Liquidity"
+#~ msgid "Deposit Liquidity"
+#~ msgstr "Deposit Liquidity"
 
 #: src/pages/pre-sale-wallet.tsx:21
 #~ msgid "Deposit Wallet Address"
@@ -421,7 +419,7 @@ msgstr "Enter your invest amount"
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:94
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:67
 msgid "Fee"
 msgstr "Fee"
 
@@ -582,12 +580,11 @@ msgstr "Invested"
 #~ msgid "Lightpaper"
 #~ msgstr "Lightpaper"
 
-#: src/pages/portfolio/components/portfolio.tsx:62
-#~ msgid "Liquidity"
-#~ msgstr "Liquidity"
+#: src/pages/swap/index.tsx:26
+msgid "Liquidity"
+msgstr "Liquidity"
 
 #: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:17
-#: src/components/organisms/swap/supply-form_/supply-info/supply-info.tsx:34
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
 
@@ -635,7 +632,7 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:73
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:40
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -685,8 +682,8 @@ msgstr "Minimum received"
 #~ msgstr "No investment found for this wallet. Please connect another wallet address."
 
 #: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
-msgid "Not enough"
-msgstr "Not enough"
+#~ msgid "Not enough"
+#~ msgstr "Not enough"
 
 #: src/pages/token-sale/components/alert.tsx:16
 #~ msgid "OK"
@@ -786,7 +783,7 @@ msgstr "Pre Sale distribution"
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:90
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:59
 msgid "Price impact"
 msgstr "Price impact"
 
@@ -913,12 +910,12 @@ msgstr "Senior"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:47
+#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:30
 msgid "Slippage tolerance"
 msgstr "Slippage tolerance"
 
-#: src/components/organisms/web3/add-paycer-token.tsx:54
-#: src/components/organisms/web3/add-paycer-token.tsx:59
+#: src/components/organisms/web3/add-paycer-token.tsx:56
+#: src/components/organisms/web3/add-paycer-token.tsx:61
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
@@ -987,8 +984,6 @@ msgid "Supplied:"
 msgstr "Supplied:"
 
 #: src/components/organisms/swap/supply-form/fields/submit-button.tsx:16
-#: src/components/organisms/swap/supply-form_/fields/submit-button.tsx:13
-#: src/components/organisms/swap/supply-form_/index.tsx:78
 msgid "Supply"
 msgstr "Supply"
 
@@ -996,7 +991,7 @@ msgstr "Supply"
 #~ msgid "Supply Liquidity"
 #~ msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:16
+#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:13
 #: src/config/routes.ts:34
 #: src/pages/swap/index.tsx:25
 msgid "Swap"
@@ -1057,8 +1052,8 @@ msgstr "The secure app to store crypto yourself"
 #~ msgstr "Theme"
 
 #: src/components/organisms/swap/supply-form_/supply-info/token-balance.tsx:18
-msgid "Token Balance"
-msgstr "Token Balance"
+#~ msgid "Token Balance"
+#~ msgstr "Token Balance"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:107
 #~ msgid "Token Balance after"
@@ -1078,8 +1073,8 @@ msgstr "Token Balance"
 #~ msgstr "Total Balance"
 
 #: src/components/organisms/swap/supply-form_/supply-info/total-daily-rewards.tsx:19
-msgid "Total Daily rewards"
-msgstr "Total Daily rewards"
+#~ msgid "Total Daily rewards"
+#~ msgstr "Total Daily rewards"
 
 #: src/pages/portfolio/components/dash-cards.tsx:75
 #~ msgid "Total Investment"
@@ -1103,8 +1098,8 @@ msgid "Total claimed"
 msgstr "Total claimed"
 
 #: src/components/organisms/swap/supply-form_/supply-info/total-supply.tsx:18
-msgid "Total supply"
-msgstr "Total supply"
+#~ msgid "Total supply"
+#~ msgstr "Total supply"
 
 #: src/config/routes.ts:26
 #: src/pages/trade/index.tsx:67
@@ -1250,8 +1245,8 @@ msgstr "Withdraw"
 #~ msgstr "Your APR:"
 
 #: src/components/organisms/swap/supply-form_/supply-info/your-supply.tsx:14
-msgid "Your supply"
-msgstr "Your supply"
+#~ msgid "Your supply"
+#~ msgstr "Your supply"
 
 #: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:14
 #~ msgid "apy"
