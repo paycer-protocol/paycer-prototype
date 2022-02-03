@@ -32,3 +32,11 @@ export const Toolbar = styled.div`
     
 `
 
+export const CurrencyInputLabel = styled.h5`
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #a6a6a6;
+    margin-bottom: 15px;
+`
+
+

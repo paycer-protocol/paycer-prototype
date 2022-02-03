@@ -6,8 +6,8 @@ import {FormikValues, useFormikContext} from "formik";
 import {SwapProps} from "@components/organisms/swap/swap-form/types";
 
 export const Circle = styled.div`
-height: 31px;
-width: 31px;  border: 1px solid #324b68!important;
+height: 34px;
+width: 34px;  border: 1px solid #324b68!important;
 &:hover {
   border-color: #446791!important;
 }
@@ -22,8 +22,8 @@ export default function FlipSwap() {
             token0Value,
             token1,
             token1Value,
-            token0Balance,
-            token1Balance,
+            token0Price,
+            token1Price,
             token0Markets,
             token1Markets
         } = values
@@ -31,8 +31,8 @@ export default function FlipSwap() {
         setFieldValue('token1', token0)
         setFieldValue('token0Value', token1Value)
         setFieldValue('token1Value', token0Value)
-        setFieldValue('token1Balance', token0Balance)
-        setFieldValue('token0Balance', token1Balance)
+        setFieldValue('token0Price', token1Price)
+        setFieldValue('token1Price', token0Price)
         setFieldValue('token1Markets', token0Markets)
         setFieldValue('token0Markets', token1Markets)
     }

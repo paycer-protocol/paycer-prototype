@@ -32,8 +32,6 @@ export default function Token0Input() {
     const balance = tokenBalance()
 
     const handleChange = (value:number) => {
-        // todo fetch prices
-
         const token1Value = Number(value) / values.token1Price
         setFieldValue('token0Value', value)
         setFieldValue('token1Value', token1Value)

@@ -1,31 +1,6 @@
 import styled from 'styled-components'
 import Select from '@components/atoms/form/select'
 
-export const StyledSelect = styled(Select)`
-    background: transparent;
-    border: 0;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 400;
-    cursor: pointer;
-    &:focus {
-      background: transparent;
-    }
-`
-
-export const CurrencyInputLabel = styled.h5`
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: #a6a6a6;
-    margin-bottom: 15px;
-`
-
-export const InfoHeadline = styled.h5`
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: #a6a6a6;
-    margin-bottom: 15px;
-`
 
 export const Headline = styled.h2`
     text-transform: uppercase;
@@ -38,4 +13,26 @@ export const StyledButton = styled.button`
     color: #FFF;
     font-weight: 300;
     padding: 8px 80px;
+`
+
+export const LeftCol = styled.div`
+    width: 40%;
+    padding: 35px 20px 35px 35px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    } 
+`
+
+export const RightCol = styled.div`
+    width: 60%;
+    padding: 35px 35px 35px 20px;
+    align-items: stretch;
+    @media only screen and (max-width : 978px) {
+      width: 100%; padding: 20px;    
+    }
+`
+
+export const SwapCard = styled.div`
+  .card-body { padding: 20px; } &:hover { border-color #365172; }
 `

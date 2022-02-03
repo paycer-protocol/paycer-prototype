@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
-import styled from 'styled-components'
 import { tokenProvider }  from '@providers/tokens'
-import { marketPairs, swapTokens } from '@config/market-pairs'
+import { swapTokens } from '@config/market-pairs'
+import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from './types'
@@ -13,30 +13,7 @@ import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
 import SummaryDropdown from './summary-dropdown'
-import useToken from "@hooks/use-token";
-import { formatUnits } from '@ethersproject/units'
-
-export const LeftCol = styled.div`
-    width: 40%;
-    padding: 35px 20px 35px 35px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 20px;    
-    } 
-`
-
-export const RightCol = styled.div`
-    width: 60%;
-    padding: 35px 35px 35px 20px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 20px;    
-    }
-`
-
-export const SwapCard = styled.div`
-  .card-body { padding: 20px; } &:hover { border-color #365172; }
-`
+import SettingsDropdown from './settings-dropdown'
 
 export default function SwapForm() {
 
@@ -44,7 +21,7 @@ export default function SwapForm() {
     token1: tokenProvider.PCR,
     token1Value: null,
     token1Markets: swapTokens,
-    token1Price: 0.06182,
+    token1Price: 1,
     token0: tokenProvider.USDC,
     token0Value: null,
     token0Markets: swapTokens,
@@ -76,10 +53,10 @@ export default function SwapForm() {
 
         return (
             <div className="d-lg-flex">
-              <LeftCol>
+              <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-                    <SwapCard className="card bg-dark shadow-none mb-2">
+                    <Styles.SwapCard className="card bg-dark shadow-none mb-1">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -90,11 +67,11 @@ export default function SwapForm() {
                           </div>
                         </div>
                       </div>
-                    </SwapCard>
-                    <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '16px', marginTop: '-39px'}}>
+                    </Styles.SwapCard>
+                    <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '21px', marginTop: '-40px'}}>
                       <FlipSwap />
                     </div>
-                    <SwapCard className="card bg-dark shadow-none mt-2 mb-0">
+                    <Styles.SwapCard className="card bg-dark shadow-none mb-0 mt-2">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -105,20 +82,29 @@ export default function SwapForm() {
                           </div>
                         </div>
                       </div>
-                    </SwapCard>
+                    </Styles.SwapCard>
                   </div>
                 </div>
-                <SummaryDropdown />
+                <div className="row">
+                  <div className="col-10">
+                    <SummaryDropdown />
+                  </div>
+                  <div className="col-2 ps-0">
+                    <SettingsDropdown />
+                  </div>
+                </div>
+
                 <div className="d-flex align-items-center justify-content-center w-100 mt-5">
                   <SubmitButton />
                 </div>
-              </LeftCol>
-              <RightCol>
+              </Styles.LeftCol>
+              <Styles.RightCol>
                 <PriceChart
                   token0={values.token0}
                   token1={values.token1}
+                  token1Price={values.token1Price}
                 />
-              </RightCol>
+              </Styles.RightCol>
           </div>
         )
       }}

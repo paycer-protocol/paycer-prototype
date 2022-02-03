@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import * as Styles from '../Styles'
 import { tokenProvider }  from '@providers/tokens'
 import { marketPairs, swapTokens } from '@config/market-pairs'
 import * as Yup from 'yup'
@@ -11,30 +11,8 @@ import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import SupplyInfo from './supply-info'
-import {t} from "@lingui/macro";
+
 import useToken from "@hooks/use-token";
-
-export const LeftCol = styled.div`
-    width: 40%;
-    padding: 35px 20px 35px 35px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 20px;    
-    } 
-`
-
-export const RightCol = styled.div`
-    width: 60%;
-    padding: 35px 35px 35px 20px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 20px;    
-    }
-`
-
-export const SwapCard = styled.div`
-  .card-body { padding: 20px; }
-`
 
 export default function SupplyForm() {
 
@@ -77,10 +55,10 @@ export default function SupplyForm() {
       {({ values }) => {
         return (
             <div className="d-lg-flex">
-              <LeftCol>
+              <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-                    <SwapCard className="card bg-dark shadow-none mb-0">
+                    <Styles.SwapCard className="card bg-dark shadow-none mb-0">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -91,8 +69,8 @@ export default function SupplyForm() {
                           </div>
                         </div>
                       </div>
-                    </SwapCard>
-                    <SwapCard className="card bg-dark shadow-none mt-1 mb-0">
+                    </Styles.SwapCard>
+                    <Styles.SwapCard className="card bg-dark shadow-none mt-1 mb-0">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -103,16 +81,16 @@ export default function SupplyForm() {
                           </div>
                         </div>
                       </div>
-                    </SwapCard>
+                    </Styles.SwapCard>
                   </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center w-100 mt-5">
                   <SubmitButton />
                 </div>
-              </LeftCol>
-              <RightCol>
+              </Styles.LeftCol>
+              <Styles.RightCol>
                 <SupplyInfo />
-              </RightCol>
+              </Styles.RightCol>
           </div>
         )
       }}

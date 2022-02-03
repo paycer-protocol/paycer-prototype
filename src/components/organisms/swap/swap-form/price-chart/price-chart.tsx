@@ -1,18 +1,18 @@
 import React, {useEffect, useState, memo} from 'react'
 import dynamic from 'next/dynamic'
-import { TokenType } from '@types/investment'
+import { TokenType } from '../../../../../types/investment'
 import * as Styles from './Styles'
-import * as MainStyles from '../../Styles'
 import { ApexOptions } from 'apexcharts'
 import api from "../../../../../api";
 
 interface PriceChartProps {
     token0: TokenType
     token1: TokenType
+    token1Price: number
 }
 
 const PriceChart = (props: PriceChartProps) => {
-    const { token0, token1 } = props
+    const { token0, token1, token1Price } = props
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     const [range, setRange] =  useState<string>('')
     const [data, setData] =  useState<any>(null)
@@ -151,16 +151,17 @@ const PriceChart = (props: PriceChartProps) => {
                     <h5 className="text-uppercase text-muted mb-3">
                         {token0.symbol} / {token1.symbol}
                     </h5>
-                    <div className="d-flex justify-content-md-between align-items-baseline">
-                        <MainStyles.Headline>
-                            {1} {token1.symbol}
-                        </MainStyles.Headline>
-                            &nbsp;
-                        <MainStyles.CurrencyInputLabel>
+                    <div className="d-flex justify-content-md-between align-items-baseline pt-1">
+                        <h2 className="text-uppercase">
+                            {token1Price} {token1.symbol}
+                        </h2>
+                        &nbsp;
+                        <Styles.CurrencyInputLabel>
                             <span style={{textTransform: 'none'}}>per</span> {token0.symbol}
-                        </MainStyles.CurrencyInputLabel>
+                        </Styles.CurrencyInputLabel>
                     </div>
                 </div>
+
                 <Styles.Toolbar>
                     <div
                         onClick={async () => await fetchChartData('day')}
