@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro'
 import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
-import { TokenType } from '../../../../types/investment'
+import { TokenType } from '../../../types/investment'
 import useToken from '@hooks/use-token'
 import {FormattedNumber} from '@components/atoms/number/formatted-number'
 
