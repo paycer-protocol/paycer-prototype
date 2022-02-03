@@ -36,6 +36,7 @@ const Overview = () => {
     const type = dashboardData?.type
     switch (type) {
       case 'public':
+      case 'public_v2':
         return t`6 months`
       case 'team':
         return t`36 months`
@@ -80,7 +81,7 @@ const Overview = () => {
               <span className="h2 mb-0">
                   <FormattedNumber value={totalReceived || totalAmount || 0} />
                 &nbsp;PCR
-                {(bonusPercentage &&
+                {(Number(bonusPercentage) > 0 &&
                   <span className="text-muted">
                         &nbsp;(+{bonusPercentage}{t`% Bonus included`})
                       </span>

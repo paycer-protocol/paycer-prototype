@@ -30,23 +30,25 @@ const VestingDashboard = () => {
 
     const renderTabLabel = () => {
         const type = dashboardData?.type
+        const launchpad = dashboardData?.launchpad
         switch (type) {
             case 'pre':
                 return t`Pre Sale distribution`
             case 'private':
                 return t`Private Sale distribution`
             case 'public':
-                return t`Public Sale distribution`
+            case 'public_v2':
+                return t`Public Sale distribution` + (launchpad ? ' ' + launchpad : '')
             case 'pre_v2':
                 return t`Pre Sale distribution`
             case 'private_v2':
                 return t`Private Sale distribution`
-            case 'public_v2':
-                return t`Public Sale distribution`
             case 'team':
                 return t`Team distribution`
             case 'advisor':
                 return t`Advisor distribution`
+            default:
+                return t`Token distribution`
         }
     }
 
