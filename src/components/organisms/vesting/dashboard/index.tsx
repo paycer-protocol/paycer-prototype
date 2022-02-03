@@ -47,6 +47,8 @@ const VestingDashboard = () => {
                 return t`Team distribution`
             case 'advisor':
                 return t`Advisor distribution`
+            default:
+                return t`Token distribution`
         }
     }
 

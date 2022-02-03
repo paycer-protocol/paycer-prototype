@@ -57,7 +57,6 @@ const calculateTotalInvested = (transactions, type = 'public') => {
   }
 
   Object.keys(transactions).map((key) => {
-
     if (transactions[key].historicalUSDPrice) {
       const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice
       totalReceived+= USDAmount / tokenSalePriceUSD
@@ -76,15 +75,12 @@ const calculateTotalInvested = (transactions, type = 'public') => {
 }
 
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
-
-  const { totalInvest, totalReceived } = calculateTotalInvested(dashboardData?.transactions, dashboardData?.type)
-
   return (
     <VestingDashboardContext.Provider
       value={{
         dashboardData,
-        totalInvest,
-        totalReceived
+        totalInvest: dashboardData.amountUSD,
+        totalReceived: dashboardData.amountPCR
       }}
     >
       {children}
