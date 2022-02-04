@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core'
+import { ChainId, Mainnet, Polygon, Kovan, Mumbai } from '@usedapp/core'
 import { explorers } from './explorers'
 import { rpcUrls } from './rpcs'
 
@@ -13,6 +13,7 @@ export interface INetworkProvider {
         }
         rpcUrls: string[]
         blockExplorerUrls: string[],
+        getExplorerAddressLink: any
     }
 }
 
@@ -27,6 +28,7 @@ export const testNetNetworks: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Kovan]],
         blockExplorerUrls: [explorers[ChainId.Kovan]],
+        getExplorerAddressLink: Kovan.getExplorerAddressLink
     },
     [ChainId.Mumbai]: {
         chainId: '0x13881',
@@ -38,6 +40,7 @@ export const testNetNetworks: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Mumbai]],
         blockExplorerUrls: [explorers[ChainId.Mumbai]],
+        getExplorerAddressLink: Mumbai.getExplorerAddressLink
     },
 }
 
@@ -52,6 +55,7 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: ['https://mainnet.infura.io/v3'],
         blockExplorerUrls: [explorers[ChainId.Mainnet]],
+        getExplorerAddressLink: Mainnet.getExplorerAddressLink
     },
     // [ChainId.BSC]: {
     //     chainId: '0x38',
@@ -74,6 +78,7 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
+        getExplorerAddressLink: Polygon.getExplorerAddressLink
     },
 }
 

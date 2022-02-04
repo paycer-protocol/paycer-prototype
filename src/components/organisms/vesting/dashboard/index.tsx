@@ -61,7 +61,6 @@ const VestingDashboard = () => {
                             <Overview />
                         </LeftCol>
                         <RightCol>
-
                             <div className="display-4 fw-normal mb-5 text-center text-md-start">
                                 {t`Claim`} {renderTabLabel()}
                             </div>

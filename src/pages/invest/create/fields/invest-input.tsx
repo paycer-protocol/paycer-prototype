@@ -11,6 +11,7 @@ export default function InvestInput() {
       <div className="form-group">
           <Currency
             name="investAmount"
+            className="form-control "
             label={t`Enter your invest amount`}
             required
             max={10}

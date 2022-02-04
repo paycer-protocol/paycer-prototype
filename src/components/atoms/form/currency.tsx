@@ -6,13 +6,16 @@ import Group from './group'
 import { FormInputFieldProps } from './types'
 
 interface CurrencyFieldProps extends FormInputFieldProps {
-    currency: string;
-    decimals: number;
+    currency: string
+    decimals: number
+    showCurrencyPrefix?: boolean
 }
 
-const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals = 2, ...props }: CurrencyFieldProps) => {
+const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals = 2, showCurrencyPrefix = true,  ...props }: CurrencyFieldProps) => {
     const [{ name, value, onBlur }, { error, touched }] = useField(props)
     const handleChange = useChange(props)
+
+    const { className } = props
 
     return (
         <Group
@@ -27,14 +30,15 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
                 name={name}
                 key={currency}
                 value={value?.toString()}
-                className="form-control"
+                className={`${className}`}
                 onChange={handleChange}
                 onBlur={onBlur}
                 spellCheck="false"
+                placeholder="0.00"
                 options={{
                     numeral: true,
                     numeralThousandsGroupStyle: 'thousand',
-                    prefix: currency + ' ',
+                    prefix: showCurrencyPrefix ? currency + ' ' : null,
                     numeralDecimalScale: decimals,
                     max: 10,
                 }}

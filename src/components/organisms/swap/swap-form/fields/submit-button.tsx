@@ -9,7 +9,7 @@ export default function SubmitButton() {
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value || !values.token1Value
 
     return (
-        <GradientButton disabled={isDisabled}>
+        <GradientButton disabled={isDisabled} className="w-75">
             {t`Swap`}
         </GradientButton>
     )

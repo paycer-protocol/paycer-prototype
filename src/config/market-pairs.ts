@@ -1,5 +1,16 @@
 import { tokenProvider } from '@providers/tokens'
 import { MarketPairType } from '../types/market'
+import { TokenType } from '../types/investment'
+
+export const swapTokens: TokenType[] = [
+  tokenProvider.PCR,
+  tokenProvider.DAI,
+  tokenProvider.USDC,
+  tokenProvider.USDT,
+  tokenProvider.BUSD,
+  tokenProvider.wBTC,
+  tokenProvider.wETH,
+]
 
 export const marketPairs: MarketPairType[] = [
   {
@@ -17,8 +28,8 @@ export const marketPairs: MarketPairType[] = [
     base: tokenProvider.DAI,
     markets: [
       tokenProvider.PCR,
-      tokenProvider.USDC,
       tokenProvider.USDT,
+      tokenProvider.USDC,
       tokenProvider.BUSD,
       tokenProvider.wBTC,
       tokenProvider.wETH,

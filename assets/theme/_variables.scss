@@ -27,6 +27,7 @@ $gray-700: #6E84A3 !default;
 $gray-800: #3B506C !default;
 $gray-900: #283E59 !default;
 $black: #12263F !default;
+$blue-200: #223f4c;
 
 /* beautify ignore:start */
 $grays: (
@@ -47,6 +48,7 @@ $gray-700-dark: #1E3A5C !default;
 $gray-800-dark: #152E4D !default;
 $gray-900-dark: #132A46 !default;
 $black-dark: #12263F !default;
+$darkest: #090E1A !default;
 
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default; // NOT USED
@@ -85,8 +87,11 @@ $theme-colors: map-merge(
     "danger": $danger,
     "light": $light,
     "dark": $dark,
+    "darkest": $darkest,
     "white": $white,
-    "secondary-dark": $gray-600-dark
+    "light-grey": $gray-100,
+    "secondary-dark": $gray-600-dark,
+    "light-blue": $blue-200
   ),
 $theme-colors);
 /* beautify ignore:end */
@@ -244,7 +249,7 @@ $display-font-sizes: (
   1: 4rem,
   2: 3.25rem,
   3: 2.625rem,
-  4: 1.6rem,
+  4: 1.9rem,
 ) !default;
 /* beautify ignore:end */
 

@@ -16,6 +16,7 @@ export default function BaseInput() {
             name="baseBalance"
             label={t`Available Balance`}
             required
+            className="form-control "
             currency={values.baseSymbol}
             decimals={4}
             onChange={(e) => {

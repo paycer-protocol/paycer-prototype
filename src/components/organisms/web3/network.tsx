@@ -40,17 +40,15 @@ const Network = (props) => {
               <div className="d-flex">
                   <CurrencyIcon
                       style={{ marginTop: '1px' }}
-                      className="ms-1"
+                      className="me-3"
                       symbol={wallet.etherSymbol}
-                      width={18}
+                      width={20}
                   />
-                  <div className="mx-2">
-                      <FormattedNumber
-                          value={wallet.etherBalance}
-                          minimumFractionDigits={2}
-                          maximumFractionDigits={4}
-                      />
-                  </div>
+                  <FormattedNumber
+                      value={wallet.etherBalance}
+                      minimumFractionDigits={2}
+                      maximumFractionDigits={4}
+                  />
               </div>
           </div>
 

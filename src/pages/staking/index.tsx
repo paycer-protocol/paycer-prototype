@@ -9,7 +9,7 @@ import { t } from '@lingui/macro'
 
 export const LeftCol = styled.div`
     width: 50%;
-    padding: 40px 20px 40px 40px;
+    padding: 35px 20px 35px 35px;
     align-items: stretch;
     @media only screen and (max-width : 978px) {
       width: 100%; padding: 20px;    
@@ -18,7 +18,7 @@ export const LeftCol = styled.div`
 
 export const RightCol = styled.div`
     width: 50%;
-    padding: 40px 40px 40px 20px;
+    padding: 35px 35px 35px 20px;
 
     @media only screen and (max-width : 978px) {
       width: 100%;

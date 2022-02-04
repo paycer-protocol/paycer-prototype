@@ -1,40 +1,70 @@
 import React from 'react'
+import styled from 'styled-components'
 import Currency from '@components/atoms/form/currency'
 import { useFormikContext } from 'formik'
-import { t } from '@lingui/macro'
-import { SupplyProps } from "@components/organisms/swap/supply-form/types";
+import { SupplyProps } from '../types'
+import calculateMinimumToReceive from '../../helper/minimum-to-receive'
+import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
+import { ChainId } from '@usedapp/core'
+import {FormattedNumber} from "../../../../atoms/number/formatted-number";
+import {t} from "@lingui/macro";
+import useToken from "@hooks/use-token";
+
+export const TokenBalanceLabel = styled.small`
+   font-size: 12px;
+   padding-top:2px;
+`
 
 export default function Token0Input() {
-    const { values, setFieldValue, setFieldError } = useFormikContext<SupplyProps>()
+    const { values, setFieldValue } = useFormikContext<SupplyProps>()
+    let token0Price = Number(useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
+    let token1Price = Number(useCoingeckoTokenPrice(values.token1.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))
+    const token0TotalSupply = useToken(values.token0.symbol).totalSupply
+    const token1TotalSupply = useToken(values.token1.symbol).totalSupply
+
+    if (values.token0.symbol === 'PCR') {
+        token0Price = 0.06182
+    }
+
+    if (values.token1.symbol === 'PCR') {
+        token1Price = 0.06182
+    }
+
+
+
 
     return (
-      <Currency
-        name="token0Value"
-        className="w-100"
-        required
-        disabled={!values.token1Balance || !values.token0Balance}
-        max={values.token0Balance}
-        currency={values.marketPair.token0.symbol}
-        decimals={4}
-        onChange={(e) => {
-            const value  = Number(e.target.rawValue.split(' ')[1])
-            // force max balance if input too high TODO: Doesnt update the input display value correctly after it was forced to the users total balance for some reason...
-            const token0Value = value > values.token0Balance ? values.token0Balance : value
-            const token1Value = token0Value * values.exchangeRate
+      <div className="d-flex flex-column text-end">
+          <Currency
+            name="token0Value"
+            required
+            max={10}
+            currency={values.token0.symbol}
+            showCurrencyPrefix={false}
+            decimals={4}
+            className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus"
+            onChange={(e) => {
+              const token0Value = Number(e.target.rawValue)
+              const token1Value = Number(token0Value) / token1Price
 
-            if (token1Value > values.token1Balance) {
-                setFieldError('token1Value', `${t` Not enough`} ${values.marketPair.token1.symbol} ${t`Balance`}`)
-                return false
-            }
+              const apr = values.apr
+              const token0valueInUSD = token0Value * token0Price
+              const token1valueInUSD = token1Value * token1Price
+              setFieldValue('dailyRewards', (token0valueInUSD + token1valueInUSD) / 100 * apr)
 
-            setFieldValue('token0Value', token0Value)
-            setFieldValue('token1Value', token1Value)
-
-
-            /* TODO CALCULATE DAILY REWARDS */
-            setFieldValue('dailyRewards', (token0Value / 100000000) * 75000)
-        }}
-      />
+              setFieldValue('token0Value', token0Value)
+              setFieldValue('token1Value', token1Value)
+            }}
+          />
+          <TokenBalanceLabel className="text-muted">
+              <span>{t`Balance:`}</span>&nbsp;
+              <FormattedNumber
+                  value={values.token0Balance}
+                  minimumFractionDigits={2}
+                  maximumFractionDigits={4}
+              />
+          </TokenBalanceLabel>
+      </div>
     )
 }
 
