@@ -166,12 +166,12 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.io/paycer_litepaper.pdf?t=1635467490116">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/documentation/whitepaper">
                                     <Trans>Whitepaper</Trans>
                                 </a>
                             </li>
                             <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/documentation/whitepaper">
+                                <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.io/paycer_litepaper.pdf?t=1635467490116">
                                     <Trans>Lightpaper</Trans>
                                 </a>
                             </li>
