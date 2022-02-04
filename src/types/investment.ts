@@ -6,12 +6,6 @@ export enum RiskLevel {
   High = 2,
 }
 
-export interface AssetType {
-  name: string
-  imgPath: string
-  investRange: number
-}
-
 export interface FeesType {
   investFee: number
   withdrawFee: number
@@ -67,7 +61,7 @@ export interface StrategyType {
   rewards: RewardType
   interest: InterestType
   fees: FeesType
-  assets: AssetType[]
+  investRange: number
   color: string
 }
 

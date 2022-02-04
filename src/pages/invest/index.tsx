@@ -5,7 +5,7 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import InvestList from '@components/organisms/invest/invest-list'
-import { investmentStrategies } from '@config/investment/strategies'
+
 
 export default function Invest() {
   const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
@@ -27,7 +27,7 @@ export default function Invest() {
           </div>
         </PageHeader>
         <div className="position-relative blur-background">
-          <InvestList strategies={investmentStrategies} />
+          <InvestList />
         </div>
         {(showWalletProviderModal &&
             <WalletProvider

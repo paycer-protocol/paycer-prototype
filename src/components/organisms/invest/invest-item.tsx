@@ -5,6 +5,7 @@ import { Money, Percentage } from '@components/atoms/number'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import InvestForm  from '@components/organisms/invest/invest-form'
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 interface InvestItemProps {
   strategy: StrategyType,
@@ -14,19 +15,19 @@ interface InvestItemProps {
 export default function InvestItem(props: InvestItemProps) {
   const [showForm, setShowForm] = useState(false)
   const { strategy } = props
-  const tdClass = showForm ? 'bg-dark' : ''
+  const tdClass = 'bg-dark'
 
   return (
     <>
       <tr>
         <td className={tdClass}>
           <div className="d-flex align-items-center">
-            <img
-              src={strategy.assets[0].imgPath}
-              alt={strategy.assets[0].name}
-              width={35}
-              height={35}
-              className="me-3"
+            <CurrencyIcon
+                symbol={strategy.input.symbol}
+                className="me-3 pe-1 position-relative"
+                style={{top: '-1px'}}
+                width={30}
+                height={30}
             />
             <strong className="font-size-lg">{strategy.name}</strong>
           </div>

@@ -7,6 +7,7 @@ import InvestModal from '@components/organisms/invest/invest-modal'
 import useToken from '@hooks/use-token'
 import { StrategyType } from '../../../../types/investment'
 import { riskLabels } from '../../../../locales'
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 const InvestCard = (props: StrategyType) => {
     const [showInvestModal, setShowInvestModal] = useState(false)
@@ -42,9 +43,13 @@ const InvestCard = (props: StrategyType) => {
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span className="">Assets</span>
                         <div className="d-flex justify-content-center">
-                            {props.assets.map((asset, key) => (
-                                <img width="32" key={key} src={asset.imgPath} alt={asset.name} />
-                            ))}
+                            <CurrencyIcon
+                                symbol={props.input.symbol}
+                                className="ms-2 position-relative"
+                                style={{top: '-1px'}}
+                                width={30}
+                                height={30}
+                            />
                         </div>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">

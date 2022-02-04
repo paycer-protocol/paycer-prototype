@@ -7,17 +7,16 @@
 // Bootstrap Overrides =====================================
 //
 
+.table > :not(:first-child) {
+  border-top: 0;
+}
+
 .table thead th {
   text-transform: uppercase;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
   letter-spacing: .08em;
   color: $table-head-color;
-}
-
-.table thead {
-  background-color: $black-dark;
-  border-bottom: 1px solid $card-outline-color;
 }
 
 .table thead th, tbody th, tbody td {
@@ -32,13 +31,6 @@
 .table td {
   background: $gray-500-dark;
   color: $gray-200;
-}
-
-.table tr {
-  border-bottom: 1px solid $card-outline-color;
-  &:last-child {
-    border: 0 none;
-  }
 }
 
 .table-responsive {

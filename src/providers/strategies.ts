@@ -9,6 +9,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.USDC,
     output: paycerProvider.pUSDC,
+    investRange: 30,
+    color: '#2775CA',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -21,15 +23,7 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDC.symbol,
-    },
-    assets: [
-      {
-        name: 'usdc',
-        imgPath: '/assets/icons/usdc.svg',
-        investRange: 30,
-      },
-    ],
-    color: '#2775CA',
+    }
   },
   DAIStable: {
     riskLevel: RiskLevel.Medium,
@@ -37,6 +31,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.DAI,
     output: paycerProvider.pDAI,
+    investRange: 20,
+    color: '#B47208',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -49,15 +45,7 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.DAI.symbol,
-    },
-    assets: [
-      {
-        name: 'dai',
-        imgPath: '/assets/icons/dai.svg',
-        investRange: 20,
-      },
-    ],
-    color: '#B47208',
+    }
   },
   USDTStable: {
     riskLevel: RiskLevel.High,
@@ -65,6 +53,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.USDT,
     output: paycerProvider.pUSDT,
+    investRange: 20,
+    color: '#0ecc8d',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -77,15 +67,7 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDT.symbol,
-    },
-    assets: [
-      {
-        name: 'usdt',
-        imgPath: '/assets/icons/usdt.svg',
-        investRange: 20,
-      }
-    ],
-    color: '#0ecc8d',
+    }
   },
   WBTCPool: {
     riskLevel: RiskLevel.High,
@@ -93,6 +75,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.wBTC,
     output: paycerProvider.pwBTC,
+    investRange: 20,
+    color: '#f2a900',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -105,15 +89,7 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wBTC.symbol,
-    },
-    assets: [
-      {
-        name: 'wbtc',
-        imgPath: '/assets/icons/wbtc.svg',
-        investRange: 20,
-      }
-    ],
-    color: '#f2a900',
+    }
   },
   WETHPool: {
     riskLevel: RiskLevel.High,
@@ -121,6 +97,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.wETH,
     output: paycerProvider.pwETH,
+    investRange: 20,
+    color: '#ecf0f1',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -133,15 +111,7 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wETH.symbol,
-    },
-    assets: [
-      {
-        name: 'weth',
-        imgPath: '/assets/icons/weth.svg',
-        investRange: 20,
-      }
-    ],
-    color: '#ecf0f1',
+    }
   },
   BUSDstable: {
     riskLevel: RiskLevel.Low,
@@ -149,6 +119,8 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.BUSD,
     output: paycerProvider.pBUSD,
+    investRange: 20,
+    color: '#F5D178',
     rewards: {
       rewardRate: 25,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -161,14 +133,6 @@ export const strategyProvider: IStrategyProvider = {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.BUSD.symbol,
-    },
-    assets: [
-      {
-        name: 'busd',
-        imgPath: '/assets/icons/busd.svg',
-        investRange: 20,
-      }
-    ],
-    color: '#F5D178',
+    }
   },
 }
