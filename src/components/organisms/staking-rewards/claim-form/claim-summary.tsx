@@ -128,12 +128,13 @@ export default function ClaimSummary() {
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
-                              <CurrencyIcon
-                                  style={{position: 'relative', top: '-4px'}}
-                                  width={70}
-                                  height={70}
-                                  symbol="PCR"
-                              />
+                            <CurrencyIcon
+                                style={{position: 'relative', top: '-5px'}}
+                                width={55}
+                                height={55}
+                                symbol="PCR"
+                                className="ms-3"
+                            />
                             </span>
                           </div>
                       </div>
