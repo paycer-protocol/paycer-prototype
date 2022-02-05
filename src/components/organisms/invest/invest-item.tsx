@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {t, Trans} from '@lingui/macro'
 import { Money, Percentage } from '@components/atoms/number'
 import GradientButton from '@components/atoms/button/gradient-button'
@@ -16,7 +16,7 @@ export default function InvestItem(props: InvestItemProps) {
   const { strategy } = props
 
   const {
-    setShowInvestForm
+    setInvestFormStrategy
   } = useInvestList()
 
   return (
@@ -47,10 +47,10 @@ export default function InvestItem(props: InvestItemProps) {
           <Money value={0} />
         </td>
         <td className="mb-3 bg-dark card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0">
-          <GradientButton className="me-5" onClick={() => setShowInvestForm(strategy)}>
+          <GradientButton className="me-5" onClick={() => setInvestFormStrategy(strategy)}>
             <span>{t`Invest`}</span>
           </GradientButton>
-          <GradientButton isInverted onClick={() => setShowInvestForm(strategy)}>
+          <GradientButton isInverted onClick={() => setInvestFormStrategy(strategy)}>
             <span className="bg-dark">
               {t`Withdraw`}
             </span>

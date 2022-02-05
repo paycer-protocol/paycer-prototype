@@ -3,21 +3,27 @@ import { Trans } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import InvestForm  from '@components/organisms/invest/invest-form'
 import { StrategyType } from '../../../types/investment'
+import {useInvestList} from "@context/invest-list-context";
 
-interface InvestModalProps {
-    show?: boolean,
-    onHide?: any,
-}
+const InvestModal = () => {
 
-const InvestModal = ({ show, onHide, ...props}: InvestModalProps & StrategyType) => {
+    const {
+        setInvestFormStrategy,
+        investFormStrategy
+    } = useInvestList()
+
+    if (!investFormStrategy) {
+        return null
+    }
+
     return (
-        <Modal show={show} onHide={onHide}>
+        <Modal show onHide={() => setInvestFormStrategy(null)}>
           <>
-            <Modal.Header closeButton onHide={onHide} className="pb-0">
+            <Modal.Header closeButton onHide={() => setInvestFormStrategy(null)} className="pb-0">
                 <Trans>Invest</Trans>
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <InvestForm {...props} />
+                <InvestForm />
             </Modal.Body>
           </>
         </Modal>

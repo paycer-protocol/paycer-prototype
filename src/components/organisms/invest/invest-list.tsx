@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchForm from './search-form'
-import Icon from "@components/atoms/icon";
+import InvestModal from './invest-modal'
+import Icon from '@components/atoms/icon'
 import { Grid, List } from '@styled-icons/bootstrap'
 import ListTable from './invest-table'
 import InvestCards from './invest-cards'
@@ -33,6 +34,7 @@ export default function InvestList() {
           </div>
           {isListView ? <ListTable /> : null}
           {!isListView ? <InvestCards /> : null}
+          <InvestModal />
       </>
   )
 }

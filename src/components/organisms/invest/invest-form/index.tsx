@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { memo } from 'react'
 import * as Yup from 'yup'
-import classnames from 'classnames'
 import Form from '@components/atoms/form/form'
 import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
@@ -12,17 +11,17 @@ import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
 import { InvestFormFields } from '../types'
 import useToken from '@hooks/use-token'
-import { StrategyType } from '../../../../types/investment'
 import { t } from '@lingui/macro'
+import {useInvestList} from '@context/invest-list-context'
 
-interface InvestFormProps extends StrategyType {
-    setShowInvestForm?: any
-    className?: string
-}
+const InvestForm = () => {
 
-const InvestForm = (props: InvestFormProps) => {
-    const baseToken = useToken(props.input.symbol)
-    const investToken = useToken(props.output.symbol)
+    const {
+        investFormStrategy
+    } = useInvestList()
+
+    const baseToken = useToken(investFormStrategy.input.symbol)
+    const investToken = useToken(investFormStrategy.output.symbol)
 
     const handleSubmit = (values: InvestFormFields) => {
         alert(values.investBalance)
@@ -30,23 +29,23 @@ const InvestForm = (props: InvestFormProps) => {
 
     const initialValues: InvestFormFields = {
         // invest pairs
-        baseSymbol: props.input.symbol,
+        baseSymbol: investFormStrategy.input.symbol,
         baseBalance: baseToken.tokenBalance() || 1000,
-        investSymbol: props.output.symbol,
+        investSymbol: investFormStrategy.output.symbol,
         investBalance: investToken.tokenBalance() || 1000,
 
         // interest
-        interestRate: props.interest.interestRate,
-        interestSymbol: props.interest.interestSymbol,
+        interestRate: investFormStrategy.interest.interestRate,
+        interestSymbol: investFormStrategy.interest.interestSymbol,
 
         // rewards
-        rewardSymbol: props.rewards.rewardSymbol,
-        rewardRate: props.rewards.rewardRate,
+        rewardSymbol: investFormStrategy.rewards.rewardSymbol,
+        rewardRate: investFormStrategy.rewards.rewardRate,
 
         // fees
-        feeSymbol: props.fees.feeSymbol,
-        withdrawFee: props.fees.withdrawFee,
-        investFee: props.fees.investFee,
+        feeSymbol: investFormStrategy.fees.feeSymbol,
+        withdrawFee: investFormStrategy.fees.withdrawFee,
+        investFee: investFormStrategy.fees.investFee,
 
         // form
         investRange: 0,
@@ -66,8 +65,8 @@ const InvestForm = (props: InvestFormProps) => {
             enableReinitialize
         >
             {({ values }) => (
-              <Card className={classnames(props.className, 'shadow-none mb-0')}>
-                  <InvestCardHeader {...props} />
+              <Card className="shadow-none mb-0">
+                  <InvestCardHeader {...investFormStrategy} />
                   <Card.Body>
                       <div className="mb-5">
                           <InvestRangeSlider />
@@ -107,4 +106,4 @@ const InvestForm = (props: InvestFormProps) => {
     )
 }
 
-export default InvestForm
+export default memo(InvestForm)

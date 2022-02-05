@@ -1,12 +1,12 @@
-import React, {ChangeEventHandler, createContext, FormEventHandler, useContext, useEffect, useState} from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { StrategyType } from '..././../types/investment'
 import { useMediaQuery } from "react-responsive";
 import { investmentStrategies } from "@config/investment/strategies";
 import {riskLabels} from "../locales";
 
 export type InvestListContextTypes = {
-    setShowInvestForm: React.Dispatch<React.SetStateAction<StrategyType>>,
-    showInvestForm: StrategyType,
+    setInvestFormStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
+    investFormStrategy: StrategyType,
     toggleListView: (isListView: boolean) => void,
     isListView: boolean,
     strategies: StrategyType[],
@@ -14,8 +14,8 @@ export type InvestListContextTypes = {
 }
 
 const contextDefaultValues: InvestListContextTypes = {
-    setShowInvestForm: null,
-    showInvestForm: null,
+    setInvestFormStrategy: null,
+    investFormStrategy: null,
     toggleListView: null,
     isListView: false,
     strategies: null,
@@ -29,7 +29,7 @@ const InvestListContext = createContext<InvestListContextTypes>(
 export const useInvestList = () => useContext(InvestListContext)
 
 const InvestListContextProvider = ({ children }) => {
-    const [showInvestForm, setShowInvestForm] = useState<StrategyType | null>(null)
+    const [investFormStrategy, setInvestFormStrategy] = useState<StrategyType | null>(null)
     const [isListView, setIsListView] = useState<boolean>(false)
     const [strategies, setStrategies] = useState<StrategyType[] | null>(investmentStrategies)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
@@ -46,14 +46,14 @@ const InvestListContextProvider = ({ children }) => {
             keywords = keywords.toLowerCase().split(' ')
             keywords = keywords.filter(f => f !== '')
 
-            const nextStrategies = investmentStrategies.filter(f =>
+            const nextStrategys = investmentStrategies.filter(f =>
                 keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
                 || keywords.some(k => f.type.toLowerCase().includes(k.toLowerCase()))
                 || keywords.some(k => riskLabels[f.riskLevel].id.toLowerCase().includes(k.toLowerCase()))
                 || keywords.some(k => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase()))
             )
 
-            setStrategies(nextStrategies)
+            setStrategies(nextStrategys)
         } else {
             setStrategies(investmentStrategies)
         }
@@ -71,8 +71,8 @@ const InvestListContextProvider = ({ children }) => {
     return (
         <InvestListContext.Provider
             value={{
-                showInvestForm,
-                setShowInvestForm,
+                investFormStrategy,
+                setInvestFormStrategy,
                 isListView,
                 toggleListView,
                 strategies,
