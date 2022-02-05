@@ -73,6 +73,8 @@
 
 .card-table {
   margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0 10px;
 }
 
 .card-table thead th {
@@ -84,10 +86,6 @@
 
   &:first-child {
     padding-left: $card-spacer-x !important;
-  }
-
-  &:last-child {
-    padding-right: $card-spacer-x !important;
   }
 }
 
@@ -320,4 +318,20 @@
 
 .card-divider {
   border-color: $card-border-color;
+}
+
+.card-border-top-left-radius {
+  border-top-left-radius: $card-border-radius;
+}
+
+.card-border-top-right-radius {
+  border-top-right-radius: $card-border-radius;
+}
+
+.card-border-bottom-right-radius {
+  border-bottom-right-radius: $card-border-radius;
+}
+
+.card-border-bottom-left-radius {
+  border-bottom-left-radius: $card-border-radius;
 }

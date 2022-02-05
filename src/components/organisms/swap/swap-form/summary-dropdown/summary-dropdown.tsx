@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 import * as Styles from './Styles'
-import { useFormikContext } from 'formik'
-import { t } from '@lingui/macro'
-import { SwapProps } from '../types'
+import {useFormikContext} from 'formik'
+import {t} from '@lingui/macro'
+import {SwapProps} from '../types'
 import Icon from '@components/atoms/icon'
-import { ArrowDropDown, ArrowDropUp } from '@styled-icons/material'
+import {ArrowDropDown, ArrowDropUp} from '@styled-icons/material'
 import CurrencyIcon from "@components/atoms/currency-icon";
-import { FormattedNumber } from "../../../../atoms/number/formatted-number";
+import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 
 const SummaryDropdown = () => {
-    const { values } = useFormikContext<SwapProps>()
+    const {values} = useFormikContext<SwapProps>()
     const [open, setOpen] = useState(false)
 
     return (
@@ -33,7 +33,8 @@ const SummaryDropdown = () => {
                 </div>
 
             </Styles.Header>
-            <Styles.Content className={`cursor-pointer card shadow-none mb-2 bg-dark position-absolute w-100 border-bottom-0 border-top-0 ${open ? 'is--Open' : ''}`}>
+            <Styles.Content
+                className={`cursor-pointer card shadow-none mb-2 bg-dark position-absolute w-100 border-bottom-0 border-top-0 ${open ? 'is--Open' : ''}`}>
                 <div className="card-body">
                     <div className="d-flex justify-content-between mb-3">
                         <span className="text-muted">
@@ -53,7 +54,7 @@ const SummaryDropdown = () => {
                                 height={13}
                             />
                         </span>
-                     </div>
+                    </div>
                     <div className="d-flex justify-content-between mb-3">
                         <span className="text-muted">
                             {t`Price impact`}

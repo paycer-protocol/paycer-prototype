@@ -9,7 +9,15 @@ const GradientButton = styled(Button)`
   transition: all;
   border-radius: 25px;
   text-align: center;
-
+  ${props => props.isInverted && css`
+      background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
+      padding: 9px 2px;
+      height: 41px;
+       span { 
+       padding: 9px 38px 9px 36px; 
+       border-radius: 25px; 
+      }
+  `}
   &:hover {
     background: linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%);
   }
@@ -22,3 +30,5 @@ const GradientButton = styled(Button)`
 `
 
 export default GradientButton
+
+
