@@ -85,11 +85,6 @@ const InvestCard = (props: StrategyType) => {
                     {investedBalance ? t`Edit invest` : t`Start invest`}
                 </Button>
             </Card.Body>
-            <InvestModal
-                {...props}
-                show={showInvestModal}
-                onHide={onHide}
-            />
         </Card>
     )
 }

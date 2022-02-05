@@ -55,17 +55,6 @@ export default function InvestItem(props: InvestItemProps) {
           </GradientButton>
         </td>
       </tr>
-      {showForm && (
-        <tr>
-          <td colSpan={6}>
-            <InvestForm
-              {...strategy}
-              className="border-0"
-              setShowInvestForm={setShowForm}
-            />
-          </td>
-        </tr>
-      )}
     </>
   )
 }
