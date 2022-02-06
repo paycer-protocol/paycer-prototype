@@ -5,6 +5,7 @@ import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from './types'
+import TokenInputPanel from '@components/organisms/token-input-panel'
 import Token0Select from './fields/token0-select'
 import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
@@ -64,6 +65,11 @@ export default function SwapForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
+
+
+                    <TokenInputPanel TokenInput={Token0Input} />
+
+
                     <div className="card bg-dark shadow-none mb-1 input-card">
                       <div className="card-body">
                         <div className="row">
