@@ -22,7 +22,7 @@ const SupplyInfo = () => {
                         </Styles.Headline>
                     </div>
                     <p className="mb-0 text-muted">
-                        Supply {values.token0.symbol} and {values.token1.symbol} to earn {values.token1.symbol} Tokens. Your {values.token0.symbol} will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards. This pool works like a queue, so you can withdraw your {values.token0.symbol} from the liquidity details section as your order is filled.
+                        Supply {values.token0.symbol} and {values.token1.symbol} to earn PCR Token rewards and trading fees. Your {values.token0.symbol} will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards. This pool works like a queue, so you can withdraw your {values.token0.symbol} from the liquidity details section as your order is filled.
                     </p>
                 </div>
             </div>
