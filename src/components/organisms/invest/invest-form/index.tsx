@@ -1,60 +1,56 @@
 import React, { memo } from 'react'
 import * as Yup from 'yup'
+import useToken from '@hooks/use-token'
 import Form from '@components/atoms/form/form'
-import Card from '@components/molecules/card'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import InvestRangeSlider from './fields/invest-range-slider'
-import InvestInput from './fields/invest-input'
 import InvestCardHeader from './invest-card-header'
-import BaseInput from './fields/base-Input'
+import InvestInput from './fields/invest-input'
 import SubmitButton from './fields/submit-button'
 import InvestFee from './invest-fee'
 import { InvestFormFields } from '../types'
-import useToken from '@hooks/use-token'
 import { t } from '@lingui/macro'
 import {useInvestList} from '@context/invest-list-context'
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 const InvestForm = () => {
 
     const {
-        investFormStrategy
+        strategy
     } = useInvestList()
 
-    const baseToken = useToken(investFormStrategy.input.symbol)
-    const investToken = useToken(investFormStrategy.output.symbol)
-
     const handleSubmit = (values: InvestFormFields) => {
-        alert(values.investBalance)
+        alert(values.investAmount)
     }
+
+    const baseToken = useToken(strategy.input.symbol)
 
     const initialValues: InvestFormFields = {
         // invest pairs
-        baseSymbol: investFormStrategy.input.symbol,
-        baseBalance: baseToken.tokenBalance() || 1000,
-        investSymbol: investFormStrategy.output.symbol,
-        investBalance: investToken.tokenBalance() || 1000,
+        baseSymbol: strategy.input.symbol,
+        investAmount: null,
+        balance: baseToken.tokenBalance(),
+        investSymbol: strategy.output.symbol,
 
         // interest
-        interestRate: investFormStrategy.interest.interestRate,
-        interestSymbol: investFormStrategy.interest.interestSymbol,
+        interestRate: strategy.interest.interestRate,
+        interestSymbol: strategy.interest.interestSymbol,
 
         // rewards
-        rewardSymbol: investFormStrategy.rewards.rewardSymbol,
-        rewardRate: investFormStrategy.rewards.rewardRate,
+        rewardSymbol: strategy.rewards.rewardSymbol,
+        rewardRate: strategy.rewards.rewardRate,
 
         // fees
-        feeSymbol: investFormStrategy.fees.feeSymbol,
-        withdrawFee: investFormStrategy.fees.withdrawFee,
-        investFee: investFormStrategy.fees.investFee,
+        feeSymbol: strategy.fees.feeSymbol,
+        withdrawFee: strategy.fees.withdrawFee,
+        investFee: strategy.fees.investFee,
 
         // form
-        investRange: 0,
-        submitAction: 'invest'
+        investRange: 0
     }
 
     const validationSchema = Yup.object().shape({
-        baseBalance: Yup.number().min(0).required(),
-        investBalance: Yup.number().min(0).required(),
+        investAmount: Yup.number().min(0).required()
     })
 
     return (
@@ -65,20 +61,41 @@ const InvestForm = () => {
             enableReinitialize
         >
             {({ values }) => (
-              <Card className="shadow-none mb-0">
-                  <InvestCardHeader {...investFormStrategy} />
-                  <Card.Body>
+              <div className="shadow-none mb-0">
+                  <InvestCardHeader {...strategy} />
+                  <div>
+                      <div className="card bg-dark shadow-none mb-0 mt-2 input-card">
+                          <div className="card-body">
+                              <div className="row">
+                                  <div className="col-5 d-flex">
+                                      <div className="d-flex align-items-center cursor-pointer">
+                                          <CurrencyIcon
+                                              symbol={strategy.input.symbol}
+                                              className="me-3"
+                                              width={32}
+                                              height={32}
+                                          />
+                                          <div>
+                                              <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{t`Balance`}</small>
+                                              <div className="d-flex align-items-center">
+                                                  <h3 className="mb-0 text-white">{strategy.input.symbol}</h3>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-7 d-flex align-items-center">
+                                      <InvestInput />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                       <div className="mb-5">
                           <InvestRangeSlider />
                       </div>
-                      <div className="row mb-4">
-                          <div className="col-12 col-md-6 mb-4 mb-md-0">
-                              <BaseInput />
-                          </div>
-                          <div className="col-12 col-md-6 mb-4 mb-md-0">
-                              <InvestInput />
-                          </div>
-                      </div>
+
+
+
+
                       <div className="row mb-5">
                           <div className="col-6">
                               <DashNumber
@@ -99,8 +116,8 @@ const InvestForm = () => {
                           <SubmitButton />
                           <InvestFee />
                       </div>
-                  </Card.Body>
-              </Card>
+                  </div>
+              </div>
             )}
         </Form>
     )

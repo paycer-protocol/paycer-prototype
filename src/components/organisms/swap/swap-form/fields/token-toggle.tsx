@@ -11,10 +11,6 @@ interface TokenToggleProps {
   onClick: () => void
 }
 
-export const Label = styled.small`
-   padding-bottom: 1px;
-`
-
 export default function TokenToggle(props: TokenToggleProps) {
   const { token, onClick, label } = props
   return (
@@ -26,7 +22,7 @@ export default function TokenToggle(props: TokenToggleProps) {
             height={32}
         />
         <div>
-            <Label className="text-muted d-block fw-lighter">{label}</Label>
+            <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{label}</small>
             <div className="d-flex align-items-center">
                 <h3 className="mb-0 text-white">{token.symbol}</h3>
                 <Icon

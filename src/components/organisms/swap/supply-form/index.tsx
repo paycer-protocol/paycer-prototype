@@ -58,7 +58,7 @@ export default function SupplyForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-                    <Styles.SwapCard className="card bg-dark shadow-none mb-0">
+                    <div className="card bg-dark shadow-none mb-0 input-card">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -69,8 +69,8 @@ export default function SupplyForm() {
                           </div>
                         </div>
                       </div>
-                    </Styles.SwapCard>
-                    <Styles.SwapCard className="card bg-dark shadow-none mt-1 mb-0">
+                    </div>
+                    <div className="card bg-dark shadow-none mt-1 mb-0 input-card">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -81,7 +81,7 @@ export default function SupplyForm() {
                           </div>
                         </div>
                       </div>
-                    </Styles.SwapCard>
+                    </div>
                   </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center w-100 mt-5">

@@ -3,9 +3,6 @@ import { t } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import GradientButton from '@components/atoms/button/gradient-button'
 import { Loading } from 'react-loading-dot'
-import Icon from "@components/atoms/icon";
-import { CheckAll } from "@styled-icons/bootstrap"
-import { Error } from "@styled-icons/boxicons-regular"
 
 interface TransactionApproveModalProps {
   show: boolean

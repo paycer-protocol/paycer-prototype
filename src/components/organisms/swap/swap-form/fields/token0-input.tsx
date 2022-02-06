@@ -8,7 +8,7 @@ import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
 import { ChainId } from '@usedapp/core'
 import {FormattedNumber} from "../../../../atoms/number/formatted-number";
 import {t} from "@lingui/macro";
-import useToken from "@hooks/use-token";
+import TokenInput from '@components/molecules/token-input'
 
 export const TokenBalanceLabel = styled.small`
    font-size: 12px;
@@ -27,9 +27,6 @@ export const MaxButton = styled.small`
 
 export default function Token0Input() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const tokenForBalance = useToken(values.token0.symbol)
-    const { tokenBalance } = tokenForBalance
-    const balance = tokenBalance()
 
     const handleChange = (value:number) => {
         const token1Value = Number(value) / values.token1Price
@@ -45,37 +42,15 @@ export default function Token0Input() {
     }
 
     return (
-      <div className="d-flex flex-column text-end">
-          <Currency
+        <TokenInput
             name="token0Value"
             required
-            max={10}
             currency={values.token0.symbol}
-            showCurrencyPrefix={false}
+            handleChange={handleChange}
+            raiseMax
+            balance={values.token0Balance}
             decimals={4}
-            className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus"
-            onChange={(e) => {
-              const token0Value = Number(e.target.rawValue)
-              handleChange(token0Value)
-            }}
-          />
-          <div className="d-flex justify-content-end">
-              <TokenBalanceLabel className="text-muted">
-                  <span>{t`Balance:`}</span>&nbsp;
-                  <FormattedNumber
-                      value={balance}
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={4}
-                  />
-              </TokenBalanceLabel>
-              {(balance > 0) &&
-              <MaxButton onClick={() => handleChange(balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
-                max
-              </MaxButton>
-              }
-          </div>
-
-      </div>
+        />
     )
 }
 

@@ -335,3 +335,13 @@
 .card-border-bottom-left-radius {
   border-bottom-left-radius: $card-border-radius;
 }
+
+.input-card {
+  border-color: $gray-700-dark;
+  .card-body {
+    padding: 20px;
+  }
+  &:hover {
+    border-color: $gray-400-dark
+  }
+}

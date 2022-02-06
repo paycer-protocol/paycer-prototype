@@ -14,18 +14,26 @@ import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
 import SummaryDropdown from './summary-dropdown'
 import SettingsDropdown from './settings-dropdown'
+import useToken from "@hooks/use-token";
 
 export default function SwapForm() {
+
+  const getToken0Balance = useToken(tokenProvider.USDC.symbol)
+  const getToken1Balance = useToken(tokenProvider.PCR.symbol)
 
   const initialValues: SwapProps = {
     token1: tokenProvider.PCR,
     token1Value: null,
     token1Markets: swapTokens,
     token1Price: 1,
+    token0Balance: getToken0Balance.tokenBalance(),
+
     token0: tokenProvider.USDC,
     token0Value: null,
     token0Markets: swapTokens,
     token0Price: 1,
+    token1Balance: getToken1Balance.tokenBalance(),
+
     minimumToReceive: 0,
     slippageTolerance: 0.5,
     priceImpact: 0.01,
@@ -56,7 +64,7 @@ export default function SwapForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-                    <Styles.SwapCard className="card bg-dark shadow-none mb-1">
+                    <div className="card bg-dark shadow-none mb-1 input-card">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -67,11 +75,11 @@ export default function SwapForm() {
                           </div>
                         </div>
                       </div>
-                    </Styles.SwapCard>
+                    </div>
                     <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '21px', marginTop: '-40px'}}>
                       <FlipSwap />
                     </div>
-                    <Styles.SwapCard className="card bg-dark shadow-none mb-0 mt-2">
+                    <div className="card bg-dark shadow-none mb-0 mt-2 input-card">
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 d-flex">
@@ -82,7 +90,7 @@ export default function SwapForm() {
                           </div>
                         </div>
                       </div>
-                    </Styles.SwapCard>
+                    </div>
                   </div>
                 </div>
                 <div className="row">

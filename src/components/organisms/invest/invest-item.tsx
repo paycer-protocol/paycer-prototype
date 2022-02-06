@@ -16,7 +16,7 @@ export default function InvestItem(props: InvestItemProps) {
   const { strategy } = props
 
   const {
-    setInvestFormStrategy
+    setStrategy
   } = useInvestList()
 
   return (
@@ -47,10 +47,10 @@ export default function InvestItem(props: InvestItemProps) {
           <Money value={0} />
         </td>
         <td className="mb-3 bg-dark card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0">
-          <GradientButton className="me-5" onClick={() => setInvestFormStrategy(strategy)}>
+          <GradientButton className="me-5" onClick={() => setStrategy(strategy)}>
             <span>{t`Invest`}</span>
           </GradientButton>
-          <GradientButton isInverted onClick={() => setInvestFormStrategy(strategy)}>
+          <GradientButton isInverted onClick={() => setStrategy(strategy)}>
             <span className="bg-dark">
               {t`Withdraw`}
             </span>

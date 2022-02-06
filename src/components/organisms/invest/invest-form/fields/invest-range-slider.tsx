@@ -8,7 +8,7 @@ export default function InvestRangeSlider() {
 
     // todo: price feed missing
     const exchangePrice = 1
-    const totalBalance = initialValues.baseBalance + (initialValues.investBalance * exchangePrice)
+    const totalBalance = initialValues.investAmount + (initialValues.investBalance * exchangePrice)
 
     return (
         <div style={{ width: '100%' }}>
@@ -26,20 +26,20 @@ export default function InvestRangeSlider() {
                 value={dirty ? values.investRange : undefined}
                 defaultValue={values.investBalance * 100 / totalBalance}
                 onChange={(value) => {
-                    let baseBalance = 0 as number
+                    let investAmount = 0 as number
                     let investBalance = 0 as number
 
                     const walletDiff = totalBalance * value / 100
                     investBalance = walletDiff * exchangePrice
-                    baseBalance = totalBalance - walletDiff
+                    investAmount = totalBalance - walletDiff
 
-                    baseBalance = baseBalance > totalBalance ? totalBalance : baseBalance
-                    baseBalance = baseBalance < 0 ? 0 : baseBalance
+                    investAmount = investAmount > totalBalance ? totalBalance : investAmount
+                    investAmount = investAmount < 0 ? 0 : investAmount
 
                     investBalance = investBalance > totalBalance ? totalBalance : investBalance
                     investBalance = investBalance < 0 ? 0 : investBalance
 
-                    setFieldValue('baseBalance', baseBalance)
+                    setFieldValue('investAmount', investAmount)
                     setFieldValue('investBalance', investBalance)
                     setFieldValue('investRange', value)
                     setFieldValue('submitAction', investBalance < initialValues.investBalance ? 'withdraw' : 'invest')

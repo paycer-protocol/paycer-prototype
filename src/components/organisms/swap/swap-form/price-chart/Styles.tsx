@@ -3,9 +3,9 @@ import styled from 'styled-components'
 export const Toolbar = styled.div`
     margin-bottom: 30px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; 
     div {
-        border: 1px solid #FFF;
+        border: 1px solid #FFF; height: 40px;
         font-weight: bold;
         transition: all;
         border-radius: 25px;

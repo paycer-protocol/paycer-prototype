@@ -148,10 +148,10 @@ const PriceChart = (props: PriceChartProps) => {
         <div>
             <div className="d-md-flex justify-content-between">
                 <div>
-                    <h5 className="text-uppercase text-muted mb-3">
+                    <h5 className="text-uppercase text-muted mb-4">
                         {token0.symbol} / {token1.symbol}
                     </h5>
-                    <div className="d-flex justify-content-md-between align-items-baseline pt-1">
+                    <div className="d-flex justify-content-md-between align-items-baseline">
                         <h2 className="text-uppercase">
                             {token1Price} {token1.symbol}
                         </h2>

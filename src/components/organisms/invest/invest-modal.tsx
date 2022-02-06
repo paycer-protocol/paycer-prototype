@@ -8,24 +8,24 @@ import {useInvestList} from "@context/invest-list-context";
 const InvestModal = () => {
 
     const {
-        setInvestFormStrategy,
-        investFormStrategy
+        setStrategy,
+        strategy
     } = useInvestList()
 
-    if (!investFormStrategy) {
+    if (!strategy) {
         return null
     }
 
     return (
-        <Modal show onHide={() => setInvestFormStrategy(null)}>
-          <>
-            <Modal.Header closeButton onHide={() => setInvestFormStrategy(null)} className="pb-0">
-                <Trans>Invest</Trans>
+        <Modal size="m" show onHide={() => setStrategy(null)}>
+          <div className="bg-card-blue">
+            <Modal.Header closeButton onHide={() => setStrategy(null)} className="pb-0">
+                <Modal.Title><Trans>Invest</Trans></Modal.Title>
             </Modal.Header>
             <Modal.Body className="pt-0">
                 <InvestForm />
             </Modal.Body>
-          </>
+          </div>
         </Modal>
     )
 }

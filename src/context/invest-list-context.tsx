@@ -5,8 +5,8 @@ import { investmentStrategies } from "@config/investment/strategies";
 import {riskLabels} from "../locales";
 
 export type InvestListContextTypes = {
-    setInvestFormStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
-    investFormStrategy: StrategyType,
+    setStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
+    strategy: StrategyType,
     toggleListView: (isListView: boolean) => void,
     isListView: boolean,
     strategies: StrategyType[],
@@ -14,8 +14,8 @@ export type InvestListContextTypes = {
 }
 
 const contextDefaultValues: InvestListContextTypes = {
-    setInvestFormStrategy: null,
-    investFormStrategy: null,
+    setStrategy: null,
+    strategy: null,
     toggleListView: null,
     isListView: false,
     strategies: null,
@@ -29,7 +29,7 @@ const InvestListContext = createContext<InvestListContextTypes>(
 export const useInvestList = () => useContext(InvestListContext)
 
 const InvestListContextProvider = ({ children }) => {
-    const [investFormStrategy, setInvestFormStrategy] = useState<StrategyType | null>(null)
+    const [strategy, setStrategy] = useState<StrategyType | null>(null)
     const [isListView, setIsListView] = useState<boolean>(false)
     const [strategies, setStrategies] = useState<StrategyType[] | null>(investmentStrategies)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
@@ -71,8 +71,8 @@ const InvestListContextProvider = ({ children }) => {
     return (
         <InvestListContext.Provider
             value={{
-                investFormStrategy,
-                setInvestFormStrategy,
+                strategy,
+                setStrategy,
                 isListView,
                 toggleListView,
                 strategies,

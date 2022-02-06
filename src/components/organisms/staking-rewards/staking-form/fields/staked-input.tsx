@@ -28,7 +28,7 @@ export default function StakedInput() {
                 // plus
                 if (stakedBalance > initialValues.stakedBalance) {
                     stakedDiff = stakedBalance - initialValues.stakedBalance
-                  tokenBalance = initialValues.tokenBalance - stakedDiff
+                    tokenBalance = initialValues.tokenBalance - stakedDiff
                 // minus
                 } else {
                     stakedDiff = initialValues.stakedBalance - stakedBalance

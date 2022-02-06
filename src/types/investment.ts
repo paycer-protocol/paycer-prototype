@@ -27,11 +27,10 @@ export interface InvestPairType {
   baseSymbol: string
   basePriceUSD?: number
   basePriceETH?: number
-  baseBalance?: number
   investSymbol: string
   investPriceUSD?: number
   investPriceETH?: number
-  investBalance?: number
+  investAmount?: number
 }
 
 export interface TokenType {
@@ -63,6 +62,18 @@ export interface StrategyType {
   fees: FeesType
   investRange: number
   color: string
+  chainAddresses: {
+    [ChainId.Mainnet]: string
+    [ChainId.Kovan]: string
+    [ChainId.Ropsten]?: string
+    [ChainId.Rinkeby]?: string
+    [ChainId.Goerli]?: string
+    [ChainId.BSC]?: string
+    [ChainId.xDai]?: string
+    [ChainId.Polygon]?: string
+    [ChainId.Mumbai]?: string
+    [ChainId.Hardhat]?: string
+  }
 }
 
 export interface ITokenProvider {
