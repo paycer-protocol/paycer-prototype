@@ -15,7 +15,7 @@ const DashNumber = (props: DashNumberProps) => {
     return (
       <div className="d-flex flex-column">
           {label &&
-              <span className="text-muted mb-2">
+              <span className="text-muted mb-3">
                   {label}
               </span>
           }

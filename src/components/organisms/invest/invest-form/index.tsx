@@ -29,7 +29,7 @@ const InvestForm = () => {
         // invest pairs
         baseSymbol: strategy.input.symbol,
         investAmount: null,
-        balance: 6000,
+        balance: baseToken.tokenBalance(),
         investSymbol: strategy.output.symbol,
 
         // interest
@@ -118,7 +118,6 @@ const InvestForm = () => {
                         }
                         tokenInput={<InvestInput/>}
                     />
-
 
                     <div className="card shadow-none mt-4 bg-card-blue-light">
                         <div className="card-body">

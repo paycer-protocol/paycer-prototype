@@ -14,35 +14,39 @@ const TotalSupply = () => {
 
     return (
         <>
-            <h5 className="text-uppercase text-muted mb-3">
+            <div className="text-muted mb-3">
                 {t`Total Pool Supply`}
-            </h5>
-            <div className="d-flex mb-2">
-                <CurrencyIcon
-                    symbol={values.token0.symbol}
-                    className="me-2"
-                    width={20}
-                    height={20}
-                />
-                <FormattedNumber
-                    value={token0Data.totalSupply}
-                    minimumFractionDigits={2}
-                    maximumFractionDigits={0}
-                />
             </div>
             <div className="d-flex">
-                <CurrencyIcon
-                    symbol={values.token1.symbol}
-                    className="me-2"
-                    width={20}
-                    height={20}
-                />
-                <FormattedNumber
-                    value={token1Data.totalSupply}
-                    minimumFractionDigits={2}
-                    maximumFractionDigits={0}
-                />
+                <div className="d-flex me-4 align-items-center">
+                    <CurrencyIcon
+                        symbol={values.token0.symbol}
+                        className="me-2"
+                        width={15}
+                        height={15}
+                    />
+                    <FormattedNumber
+                        value={token0Data.totalSupply}
+                        minimumFractionDigits={2}
+                        maximumFractionDigits={0}
+                    />
+                </div>
+                <div className="d-flex align-items-center">
+                    <CurrencyIcon
+                        symbol={values.token1.symbol}
+                        className="me-2"
+                        width={15}
+                        height={15}
+                    />
+                    <FormattedNumber
+                        value={token1Data.totalSupply}
+                        minimumFractionDigits={2}
+                        maximumFractionDigits={0}
+                    />
+                </div>
+
             </div>
+
         </>
     )
 }

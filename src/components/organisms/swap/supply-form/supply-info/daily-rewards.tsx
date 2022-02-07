@@ -10,15 +10,15 @@ const DailyRewards = () => {
 
     return (
         <>
-            <h5 className="text-uppercase text-muted mb-3">
+            <div className="text-muted mb-3">
                 {t`Daily rewards`}
-            </h5>
+            </div>
             <div className="d-flex align-items-center">
                 <CurrencyIcon
                     symbol={tokenProvider.PCR.symbol}
                     className="me-2"
-                    width={20}
-                    height={20}
+                    width={15}
+                    height={15}
                 />
                 <div className="d-flex align-items-center">
                     {values.dailyRewards}
