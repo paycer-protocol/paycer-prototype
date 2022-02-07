@@ -1,6 +1,7 @@
 import { tokenProvider } from '@providers/tokens'
 import { paycerProvider } from '@providers/protocols'
 import { IStrategyProvider, RiskLevel } from '../types/investment'
+import {ChainId} from "@usedapp/core";
 
 export const strategyProvider: IStrategyProvider = {
   USDCStable: {
@@ -9,20 +10,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.USDC,
     output: paycerProvider.pUSDC,
-    investRange: 30,
     color: '#2775CA',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 8,
+      interestRate: 7,
       interestSymbol: tokenProvider.USDC.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDC.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
   DAIStable: {
@@ -31,20 +35,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.DAI,
     output: paycerProvider.pDAI,
-    investRange: 20,
     color: '#B47208',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 12.5,
+      interestRate: 8,
       interestSymbol: tokenProvider.DAI.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.DAI.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
   USDTStable: {
@@ -53,20 +60,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.USDT,
     output: paycerProvider.pUSDT,
-    investRange: 20,
     color: '#0ecc8d',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 15.5,
+      interestRate: 6,
       interestSymbol: tokenProvider.USDT.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDT.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
   WBTCPool: {
@@ -75,20 +85,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.wBTC,
     output: paycerProvider.pwBTC,
-    investRange: 20,
     color: '#f2a900',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 15.5,
+      interestRate: 5,
       interestSymbol: tokenProvider.wBTC.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wBTC.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
   WETHPool: {
@@ -97,20 +110,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.wETH,
     output: paycerProvider.pwETH,
-    investRange: 20,
     color: '#ecf0f1',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 15.5,
+      interestRate: 10,
       interestSymbol: tokenProvider.wETH.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wETH.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
   BUSDstable: {
@@ -119,20 +135,23 @@ export const strategyProvider: IStrategyProvider = {
     type: 'paycer',
     input: tokenProvider.BUSD,
     output: paycerProvider.pBUSD,
-    investRange: 20,
     color: '#F5D178',
     rewards: {
-      rewardRate: 25,
+      rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
     },
     interest: {
-      interestRate: 15.5,
+      interestRate: 6,
       interestSymbol: tokenProvider.BUSD.symbol,
     },
     fees: {
       investFee: 0.1,
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.BUSD.symbol,
+    },
+    chainAddresses: {
+      [ChainId.Mainnet]: '09309932',
+      [ChainId.Polygon]: '09309932'
     }
   },
 }

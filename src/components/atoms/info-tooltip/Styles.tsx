@@ -19,8 +19,9 @@ export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
     line-height: 30px;
     inset: initial!important;
     top: 0!important;
-    width: 350px;
+    max-width: 350px;
     padding: 15px 20px;
     left: 20px!important;
     border-width: 1px;
+    min-width: 200px;
 `

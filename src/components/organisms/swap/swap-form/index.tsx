@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { tokenProvider }  from '@providers/tokens'
 import { swapTokens } from '@config/market-pairs'
 import * as Styles from '../Styles'
@@ -65,38 +65,17 @@ export default function SwapForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-
-
-                    <TokenInputPanel TokenInput={Token0Input} />
-
-
-                    <div className="card bg-dark shadow-none mb-1 input-card">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-5 d-flex">
-                            <Token0Select />
-                          </div>
-                          <div className="col-7 d-flex align-items-center">
-                            <Token0Input />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '21px', marginTop: '-40px'}}>
+                    <TokenInputPanel
+                        tokenInputSibling={<Token0Select />}
+                        tokenInput={<Token0Input />}
+                    />
+                    <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
                       <FlipSwap />
                     </div>
-                    <div className="card bg-dark shadow-none mb-0 mt-2 input-card">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-5 d-flex">
-                            <Token1Select />
-                          </div>
-                          <div className="col-7 d-flex align-items-center">
-                            <Token1Input />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <TokenInputPanel
+                        tokenInputSibling={<Token1Select />}
+                        tokenInput={<Token1Input />}
+                    />
                   </div>
                 </div>
                 <div className="row">

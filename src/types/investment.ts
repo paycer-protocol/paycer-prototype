@@ -7,8 +7,8 @@ export enum RiskLevel {
 }
 
 export interface FeesType {
-  investFee: number
-  withdrawFee: number
+  investFee?: number
+  withdrawFee?: number
   feeSymbol: string
 }
 
@@ -16,7 +16,6 @@ export interface InterestType {
   interestRate: number
   interestSymbol: string
 }
-
 
 export interface RewardType {
   rewardRate: number
@@ -30,7 +29,6 @@ export interface InvestPairType {
   investSymbol: string
   investPriceUSD?: number
   investPriceETH?: number
-  investAmount?: number
 }
 
 export interface TokenType {
@@ -60,19 +58,10 @@ export interface StrategyType {
   rewards: RewardType
   interest: InterestType
   fees: FeesType
-  investRange: number
   color: string
   chainAddresses: {
     [ChainId.Mainnet]: string
-    [ChainId.Kovan]: string
-    [ChainId.Ropsten]?: string
-    [ChainId.Rinkeby]?: string
-    [ChainId.Goerli]?: string
-    [ChainId.BSC]?: string
-    [ChainId.xDai]?: string
     [ChainId.Polygon]?: string
-    [ChainId.Mumbai]?: string
-    [ChainId.Hardhat]?: string
   }
 }
 

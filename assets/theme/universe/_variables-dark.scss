@@ -30,10 +30,10 @@ $gray-600-dark: #213752;
 $gray-700-dark: #264160;
 $gray-750-dark: #223f4c;
 $gray-800-dark: #1B2236;
+$gray-850-dark: #0b11204a;
 $gray-900-dark: #16212E;
 $black-dark: $black;
 $darkest: #090E1A !default;
-
 
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default;
@@ -62,23 +62,24 @@ $dark: $black !default;
 $theme-colors: () !default;
 
 $theme-colors: map-merge(
-                (
-                        "primary": $primary,
-                        "secondary": $secondary,
-                        "success": $success,
-                        "info": $info,
-                        "warning": $warning,
-                        "danger": $danger,
-                        "light": $light,
-                        "dark": $dark,
-                        "darkest": $darkest,
-                        "white": $white,
-                        "light-grey": $gray-100,
-                        "secondary-dark": $gray-600-dark,
-                        "light-blue": $gray-750-dark,
-                        "card-blue": $gray-500-dark
-                ),
-                $theme-colors);
+(
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "darkest": $darkest,
+  "white": $white,
+  "light-grey": $gray-100,
+  "secondary-dark": $gray-600-dark,
+  "light-blue": $gray-750-dark,
+  "card-blue": $gray-500-dark,
+  "card-blue-light": $gray-850-dark
+),
+$theme-colors);
 /* beautify ignore:end */
 
 $pacer-gradient: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
