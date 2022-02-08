@@ -46,7 +46,7 @@ const Overview = () => {
   }
 
   return (
-      <div className="card blur-background mb-0 p-4">
+      <div className="card shadow-none blur-background mb-0 p-4">
         <div className="card-body p-0 ">
 
           <AnimatedDiv className="list-group list-group-flush list-group-activity">

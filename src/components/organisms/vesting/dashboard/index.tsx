@@ -1,12 +1,8 @@
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import { t } from '@lingui/macro'
-import Transactions from '@components/organisms/vesting/transactions'
 import Claim from '@components/organisms/vesting/claim'
 import Overview from '@components/organisms/vesting/overview'
-import StakingForm from "@components/organisms/staking-rewards/staking-form";
-import ClaimForm from "@components/organisms/staking-rewards/claim-form";
 
 const VestingDashboard = () => {
     const { dashboardData } = useVestingDashboard()
