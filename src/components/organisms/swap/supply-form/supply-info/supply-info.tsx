@@ -11,15 +11,15 @@ const SupplyInfo = () => {
 
     return (
         <div>
-            <div className="d-flex flex-column flex-md-row mb-5 border-bottom pb-5">
+            <div className="d-flex flex-column flex-md-row">
                 <div>
-                    <h5 className="text-uppercase text-muted mb-3">
+                    <h5 className="text-uppercase text-muted mb-4">
                         {t`Liquidity Pool`}
                     </h5>
                     <div className="d-flex align-items-baseline mb-4">
-                        <Styles.Headline className="mb-0">
+                        <h2 className="mb-0 text-uppercase">
                             {values.token0.symbol} / {values.token1.symbol}
-                        </Styles.Headline>
+                        </h2>
                     </div>
                     <p className="mb-0 text-muted">
                         Supply {values.token0.symbol} and {values.token1.symbol} to earn PCR Token rewards and trading fees. Your {values.token0.symbol} will be locked for 24 hours, and you must be in the pool at 1pm Eastern each day to receive rewards. This pool works like a queue, so you can withdraw your {values.token0.symbol} from the liquidity details section as your order is filled.
@@ -29,12 +29,21 @@ const SupplyInfo = () => {
 
             <div className="row w-100">
                 <div className="col-md-6">
-                    <DailyRewards />
+                    <div className="card shadow-none mt-4 bg-card-blue-light ">
+                        <div className="card-body">
+                            <DailyRewards />
+                        </div>
+                    </div>
                 </div>
                 <div className="col-md-6">
-                    <TotalSupply />
+                    <div className="card shadow-none mt-4 bg-card-blue-light ">
+                        <div className="card-body">
+                            <TotalSupply />
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     )
 }

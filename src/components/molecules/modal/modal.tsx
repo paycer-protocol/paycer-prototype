@@ -12,10 +12,12 @@ import { XLg } from '@styled-icons/bootstrap'
 import Icon from '@components/atoms/icon'
 
 const StyledModalTitle = styled(ModalTitle)`
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom: 0;
     font-weight: 600;
+    line-height: 20px;
 `
+
 export interface ModalProps extends BaseModalProps {
     vertical?: boolean
 }

@@ -5,6 +5,7 @@ import { marketPairs, swapTokens } from '@config/market-pairs'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SupplyProps } from './types'
+import TokenInputPanel from '@components/organisms/token-input-panel'
 import Token0Select from './fields/token0-select'
 import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
@@ -58,30 +59,14 @@ export default function SupplyForm() {
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">
-                    <Styles.SwapCard className="card bg-dark shadow-none mb-0">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-5 d-flex">
-                            <Token0Select />
-                          </div>
-                          <div className="col-7 d-flex align-items-center">
-                            <Token0Input />
-                          </div>
-                        </div>
-                      </div>
-                    </Styles.SwapCard>
-                    <Styles.SwapCard className="card bg-dark shadow-none mt-1 mb-0">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-5 d-flex">
-                            <Token1Select />
-                          </div>
-                          <div className="col-7 d-flex align-items-center">
-                            <Token1Input />
-                          </div>
-                        </div>
-                      </div>
-                    </Styles.SwapCard>
+                    <TokenInputPanel
+                        tokenInputSibling={<Token0Select />}
+                        tokenInput={<Token0Input />}
+                    />
+                    <TokenInputPanel
+                        tokenInputSibling={<Token1Select />}
+                        tokenInput={<Token1Input />}
+                    />
                   </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center w-100 mt-5">

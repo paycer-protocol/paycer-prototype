@@ -5,7 +5,7 @@ import useChange from './useChange'
 import Group from './group'
 import { FormInputFieldProps } from './types'
 
-interface CurrencyFieldProps extends FormInputFieldProps {
+export interface CurrencyFieldProps extends FormInputFieldProps {
     currency: string
     decimals: number
     showCurrencyPrefix?: boolean

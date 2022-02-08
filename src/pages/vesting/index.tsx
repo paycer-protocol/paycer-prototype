@@ -15,7 +15,7 @@ export default function Vesting() {
                 <Trans>Vesting</Trans>
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                <Trans>Dashboard</Trans>
+                <Trans>Claim distribution</Trans>
               </PageHeader.Title>
             </div>
           </div>

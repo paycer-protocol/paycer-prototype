@@ -38,7 +38,7 @@ interface VestingProps {
   totalReceived?: number
 }
 
-export const VestingDashboardContext = React.createContext<VestingProps>({
+const VestingDashboardContext = React.createContext<VestingProps>({
   dashboardData: {},
   totalInvest: 0,
   totalReceived: 0,

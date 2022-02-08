@@ -1,12 +1,11 @@
-import {InvestPairType, FeesType, RewardType, InterestType, AssetType, StrategyType} from '../../../types/investment'
+import { InvestPairType, FeesType, RewardType, InterestType,} from '../../../types/investment'
 
 export interface InvestFormFields extends InvestPairType, FeesType, RewardType, InterestType {
+    investAmount?: number
+    balance: number
+    dailyInterest: number
+    dailyRewards: number
     investRange: number
-    submitAction: 'invest' | 'withdraw'
-    assets?: AssetType[]
+    fee: number
 }
 
-export interface InvestListProps {
-    strategies: StrategyType[]
-    search?: string
-}

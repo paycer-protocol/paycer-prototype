@@ -25,7 +25,9 @@ export default function FlipSwap() {
             token0Price,
             token1Price,
             token0Markets,
-            token1Markets
+            token1Markets,
+            token1Balance,
+            token0Balance
         } = values
         setFieldValue('token0', token1)
         setFieldValue('token1', token0)
@@ -35,6 +37,8 @@ export default function FlipSwap() {
         setFieldValue('token1Price', token0Price)
         setFieldValue('token1Markets', token0Markets)
         setFieldValue('token0Markets', token1Markets)
+        setFieldValue('token1Balance', token0Balance)
+        setFieldValue('token0Balance', token1Balance)
     }
 
   return (

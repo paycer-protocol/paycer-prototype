@@ -15,7 +15,7 @@ const DashNumber = (props: DashNumberProps) => {
     return (
       <div className="d-flex flex-column">
           {label &&
-              <span className="text-muted mb-1">
+              <span className="text-muted mb-3">
                   {label}
               </span>
           }
@@ -25,15 +25,14 @@ const DashNumber = (props: DashNumberProps) => {
               minimumFractionDigits={2}
               maximumFractionDigits={4}
             />
-            &nbsp;{symbol}
-              {(withIcon &&
+              {(withIcon ?
                 <CurrencyIcon
                   symbol={symbol}
                   className="ms-2"
                   width={28}
                   height={28}
                   style={{marginTop: '-4px'}}
-                />
+                /> : <>&nbsp; {symbol}</>
               )}
           </span>
       </div>

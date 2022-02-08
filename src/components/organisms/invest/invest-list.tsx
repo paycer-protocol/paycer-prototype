@@ -1,80 +1,40 @@
-import React, {useEffect, useState} from 'react'
-import Card from '@components/molecules/card'
-import { useMediaQuery } from 'react-responsive'
-import { StrategyType } from '../../../types/investment'
-import Form from '@components/atoms/form/form'
+import React from 'react'
 import SearchForm from './search-form'
-import Icon from "@components/atoms/icon";
+import InvestModal from './invest-modal'
+import Icon from '@components/atoms/icon'
 import { Grid, List } from '@styled-icons/bootstrap'
 import ListTable from './invest-table'
 import InvestCards from './invest-cards'
+import { useInvestList } from '@context/invest-list-context'
 
-export interface InvestListProps {
-  strategies: StrategyType[]
-  search?: string
-}
+export default function InvestList() {
 
-export default function InvestList(props: InvestListProps) {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-  const { strategies } = props
-  const [listView, setListView] = useState<boolean>(false)
-
-  useEffect(() => {
-    const listViewStorage = sessionStorage.getItem('investListView')
-    if (listViewStorage) {
-      setListView(listViewStorage !== 'false')
-    } else {
-      setListView(!isTabletOrMobile)
-    }
-  }, [])
-
-  const initialValues: InvestListProps = {
-    strategies,
-    search: ''
-  }
-
-  const handleSubmit = () => {}
+  const {
+      isListView,
+      toggleListView
+  } = useInvestList()
 
   // @ts-ignore
   return (
-    <Form
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      enableReinitialize
-    >
-      {() => (
-        <>
-          <Card className="border-0">
-            <div className="card-header">
-              <SearchForm />
-              <div className="col-auto">
-                <div className="nav btn-group">
-                  <a
-                    className={listView ? 'text-primary me-3' : 'text-light me-3'}
-                    onClick={() => {
-                      setListView(false)
-                      sessionStorage.setItem('investListView', 'false');
-                    }}
-                  >
-                    <Icon component={Grid} size={20} />
-                  </a>
-                  <a
-                    className={!listView ? 'text-primary' : 'text-light'}
-                    onClick={() =>  {
-                      setListView(true)
-                      sessionStorage.setItem('investListView', 'true');
-                    }}
-                  >
-                    <Icon component={List} size={22} />
-                  </a>
-                </div>
+      <>
+          <div className="d-flex justify-content-md-end justify-content-between mb-5">
+              <div className="me-4">
+                  <SearchForm />
               </div>
-            </div>
-            {listView ? <ListTable /> : null}
-          </Card>
-          {!listView ? <InvestCards /> : null}
-        </>
-      )}
-    </Form>
+              <div className="d-flex align-items-center">
+                  <a className={isListView ? 'text-primary me-3' : 'text-light me-3'}
+                     onClick={() => toggleListView(false)}>
+                      <Icon component={Grid} size={20} />
+                  </a>
+                  <a className={!isListView ? 'text-primary' : 'text-light'}
+                     onClick={() => toggleListView(true)}>
+                      <Icon component={List} size={22} />
+                  </a>
+              </div>
+          </div>
+          {isListView ? <ListTable /> : null}
+          {!isListView ? <InvestCards /> : null}
+          <InvestModal />
+      </>
   )
 }

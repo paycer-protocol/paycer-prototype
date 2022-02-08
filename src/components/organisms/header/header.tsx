@@ -76,7 +76,7 @@ const Header = () => {
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
-                              <StyledBrand className="me-4 py-0">
+                              <StyledBrand className="me-4 py-0 ms-2">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
                               </StyledBrand>
                           </StyledLogo>

@@ -1,65 +1,64 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {t, Trans} from '@lingui/macro'
-import Button from '@components/atoms/button'
 import { Money, Percentage } from '@components/atoms/number'
+import GradientButton from '@components/atoms/button/gradient-button'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
-import InvestForm  from '@components/organisms/invest/invest-form'
+
+import CurrencyIcon from "@components/atoms/currency-icon";
+import {useInvestList} from "@context/invest-list-context";
 
 interface InvestItemProps {
   strategy: StrategyType,
 }
 
-
 export default function InvestItem(props: InvestItemProps) {
-  const [showForm, setShowForm] = useState(false)
   const { strategy } = props
-  const tdClass = showForm ? 'bg-dark' : ''
+
+  const {
+    setStrategy
+  } = useInvestList()
+
+  const tdClass = 'bg-dark border border-purple-dark'
 
   return (
     <>
       <tr>
-        <td className={tdClass}>
+        <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
           <div className="d-flex align-items-center">
-            <img
-              src={strategy.assets[0].imgPath}
-              alt={strategy.assets[0].name}
-              width={35}
-              height={35}
-              className="me-3"
+            <CurrencyIcon
+                symbol={strategy.input.symbol}
+                className="me-3 pe-1 position-relative"
+                style={{top: '-1px'}}
+                width={30}
+                height={30}
             />
             <strong className="font-size-lg">{strategy.name}</strong>
           </div>
         </td>
-        <td className={tdClass}>
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Trans id={riskLabels[strategy.riskLevel].id}/>
         </td>
-        <td className={tdClass}>
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Percentage value={strategy.rewards.rewardRate / 100} />
         </td>
-        <td className={tdClass}>
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Percentage value={strategy.interest.interestRate / 100} />
         </td>
-        <td className={tdClass}>
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Money value={0} />
         </td>
-        <td className={tdClass}>
-          <Button onClick={() => setShowForm(!showForm)} active={showForm} variant="primary">
-            {showForm ? t`Hide` : t`Show`}
-          </Button>
+        <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0 pt-0 pb-0`}>
+          <GradientButton className="me-5" onClick={() => setStrategy(strategy)}>
+            <span>{t`Invest`}</span>
+          </GradientButton>
+          <GradientButton isInverted onClick={() => setStrategy(strategy)}>
+            <span className="bg-dark">
+              {t`Withdraw`}
+            </span>
+          </GradientButton>
         </td>
       </tr>
-      {showForm && (
-        <tr>
-          <td colSpan={6}>
-            <InvestForm
-              {...strategy}
-              className="border-0"
-              setShowInvestForm={setShowForm}
-            />
-          </td>
-        </tr>
-      )}
     </>
   )
 }
