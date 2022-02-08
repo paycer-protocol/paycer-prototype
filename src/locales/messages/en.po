@@ -21,7 +21,7 @@ msgstr ""
 msgid "% Bonus included"
 msgstr "% Bonus included"
 
-#: src/components/organisms/vesting/overview/index.tsx:43
+#: src/components/organisms/vesting/overview/index.tsx:44
 msgid "12 months"
 msgstr "12 months"
 
@@ -29,11 +29,11 @@ msgstr "12 months"
 #~ msgid "12 months after TGE"
 #~ msgstr "12 months after TGE"
 
-#: src/components/organisms/vesting/overview/index.tsx:41
+#: src/components/organisms/vesting/overview/index.tsx:42
 msgid "36 months"
 msgstr "36 months"
 
-#: src/components/organisms/vesting/overview/index.tsx:39
+#: src/components/organisms/vesting/overview/index.tsx:40
 msgid "6 months"
 msgstr "6 months"
 
@@ -69,7 +69,7 @@ msgstr "6 months"
 #~ msgid "Address not found"
 #~ msgstr "Address not found"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:49
+#: src/components/organisms/vesting/dashboard/index.tsx:32
 msgid "Advisor distribution"
 msgstr "Advisor distribution"
 
@@ -86,7 +86,7 @@ msgstr "Advisor distribution"
 msgid "Apply"
 msgstr "Apply"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:122
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:119
 msgid "Approve"
 msgstr "Approve"
 
@@ -107,8 +107,8 @@ msgid "Associate"
 msgstr "Associate"
 
 #: src/components/organisms/invest/invest-form/fields/base-Input.tsx:17
-msgid "Available Balance"
-msgstr "Available Balance"
+#~ msgid "Available Balance"
+#~ msgstr "Available Balance"
 
 #: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
 #~ msgid "Balance"
@@ -122,10 +122,7 @@ msgstr "Available Balance"
 #~ msgid "Balance after:"
 #~ msgstr "Balance after:"
 
-#: src/components/organisms/swap/supply-form/fields/token0-input.tsx:60
-#: src/components/organisms/swap/supply-form/fields/token1-input.tsx:56
-#: src/components/organisms/swap/swap-form/fields/token0-input.tsx:64
-#: src/components/organisms/swap/swap-form/fields/token1-input.tsx:50
+#: src/components/molecules/token-input/token-input.tsx:60
 msgid "Balance:"
 msgstr "Balance:"
 
@@ -170,8 +167,8 @@ msgstr "Cancel"
 #~ msgstr "Check your wallet address to check your status."
 
 #: src/components/organisms/vesting/dashboard/index.tsx:63
-msgid "Claim"
-msgstr "Claim"
+#~ msgid "Claim"
+#~ msgstr "Claim"
 
 #: src/components/organisms/vesting/claim/index.tsx:107
 #~ msgid "Claim PCR"
@@ -279,13 +276,13 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #~ msgid "Create investment"
 #~ msgstr "Create investment"
 
-#: src/components/organisms/invest/invest-form/fields/invest-input.tsx:17
-msgid "Current Invest"
-msgstr "Current Invest"
+#: src/components/organisms/invest/invest-form/fields/__invest-input.tsx:17
+#~ msgid "Current Invest"
+#~ msgstr "Current Invest"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
-msgid "Current Staked"
-msgstr "Current Staked"
+#~ msgid "Current Staked"
+#~ msgstr "Current Staked"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:107
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
@@ -296,11 +293,11 @@ msgstr "Current Staked"
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
-#: src/components/organisms/invest/invest-form/index.tsx:93
+#: src/components/organisms/invest/invest-form/index.tsx:134
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/invest-form/index.tsx:86
+#: src/components/organisms/invest/invest-form/index.tsx:127
 #: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
@@ -395,8 +392,8 @@ msgstr "Easy-to-use browser extension."
 #~ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
 
 #: src/pages/invest/create/fields/invest-input.tsx:15
-msgid "Enter your invest amount"
-msgstr "Enter your invest amount"
+#~ msgid "Enter your invest amount"
+#~ msgstr "Enter your invest amount"
 
 #: src/pages/token-sale/components/status-info.tsx:17
 #~ msgid "Error"
@@ -419,7 +416,8 @@ msgstr "Enter your invest amount"
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:67
+#: src/components/organisms/invest/invest-form/index.tsx:141
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:68
 msgid "Fee"
 msgstr "Fee"
 
@@ -491,8 +489,6 @@ msgstr "Immediate Availability Percentage"
 #: src/components/organisms/invest/invest-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:23
-#: src/pages/invest/create/fields/submit-button.tsx:12
-#: src/pages/invest/create/fields/submit-button.tsx:13
 msgid "Invest"
 msgstr "Invest"
 
@@ -592,7 +588,7 @@ msgstr "Liquidity Pool"
 #~ msgid "Loading"
 #~ msgstr "Loading"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:35
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
 msgid "Loading ..."
 msgstr "Loading ..."
 
@@ -632,7 +628,7 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:40
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:41
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -694,12 +690,12 @@ msgstr "Minimum received"
 #~ msgstr "Open"
 
 #: src/components/organisms/vesting/overview/index.tsx:50
-msgid "Overview"
-msgstr "Overview"
+#~ msgid "Overview"
+#~ msgstr "Overview"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:124
-#~ msgid "PCR"
-#~ msgstr "PCR"
+#: src/components/organisms/invest/invest-form/index.tsx:91
+msgid "PCR"
+msgstr "PCR"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:92
 #~ msgid "PCR Token amount"
@@ -770,8 +766,8 @@ msgstr "Portfolio"
 #~ msgid "Pre Sale"
 #~ msgstr "Pre Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:35
-#: src/components/organisms/vesting/dashboard/index.tsx:41
+#: src/components/organisms/vesting/dashboard/index.tsx:19
+#: src/components/organisms/vesting/dashboard/index.tsx:26
 msgid "Pre Sale distribution"
 msgstr "Pre Sale distribution"
 
@@ -783,7 +779,7 @@ msgstr "Pre Sale distribution"
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:59
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:60
 msgid "Price impact"
 msgstr "Price impact"
 
@@ -795,8 +791,8 @@ msgstr "Price impact"
 #~ msgid "Private Sale"
 #~ msgstr "Private Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:37
-#: src/components/organisms/vesting/dashboard/index.tsx:43
+#: src/components/organisms/vesting/dashboard/index.tsx:21
+#: src/components/organisms/vesting/dashboard/index.tsx:28
 msgid "Private Sale distribution"
 msgstr "Private Sale distribution"
 
@@ -804,8 +800,7 @@ msgstr "Private Sale distribution"
 #~ msgid "Public Sale"
 #~ msgstr "Public Sale"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:39
-#: src/components/organisms/vesting/dashboard/index.tsx:45
+#: src/components/organisms/vesting/dashboard/index.tsx:24
 msgid "Public Sale distribution"
 msgstr "Public Sale distribution"
 
@@ -919,7 +914,7 @@ msgstr "Slippage tolerance"
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:29
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:26
 msgid "Something went wrong!"
 msgstr "Something went wrong!"
 
@@ -940,8 +935,8 @@ msgstr "Something went wrong!"
 #~ msgstr "Staked"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
-msgid "Staked after"
-msgstr "Staked after"
+#~ msgid "Staked after"
+#~ msgstr "Staked after"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:178
 #~ msgid "Staked:"
@@ -1021,7 +1016,7 @@ msgstr "Swap to"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/components/organisms/vesting/dashboard/index.tsx:47
+#: src/components/organisms/vesting/dashboard/index.tsx:30
 msgid "Team distribution"
 msgstr "Team distribution"
 
@@ -1067,6 +1062,10 @@ msgstr "The secure app to store crypto yourself"
 #: src/components/organisms/staking-rewards/staking-form/fields/token-input.tsx:17
 #~ msgid "Token balance"
 #~ msgstr "Token balance"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:34
+msgid "Token distribution"
+msgstr "Token distribution"
 
 #: src/pages/portfolio/components/dash-cards.tsx:59
 #~ msgid "Total Balance"
@@ -1114,7 +1113,7 @@ msgstr "Total claimed"
 #~ msgid "Transaction Typ"
 #~ msgstr "Transaction Typ"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:29
 msgid "Transaction confirmed"
 msgstr "Transaction confirmed"
 
@@ -1122,7 +1121,7 @@ msgstr "Transaction confirmed"
 #~ msgid "Transaction failed, please try again or contact the Support"
 #~ msgstr "Transaction failed, please try again or contact the Support"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:79
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:76
 msgid "Transaction failed, please try again."
 msgstr "Transaction failed, please try again."
 
@@ -1130,7 +1129,7 @@ msgstr "Transaction failed, please try again."
 #~ msgid "Transaction is proccessing..."
 #~ msgstr "Transaction is proccessing..."
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:90
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:87
 msgid "Transaction is processing..."
 msgstr "Transaction is processing..."
 
@@ -1240,9 +1239,9 @@ msgstr "Withdraw"
 #~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 #~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
-#~ msgid "Your APR:"
-#~ msgstr "Your APR:"
+#: src/components/organisms/invest/invest-form/index.tsx:68
+msgid "Your APR:"
+msgstr "Your APR:"
 
 #: src/components/organisms/swap/supply-form_/supply-info/your-supply.tsx:14
 #~ msgid "Your supply"
@@ -1257,9 +1256,9 @@ msgstr "Withdraw"
 #~ msgid "by"
 #~ msgstr "by"
 
-#: src/components/organisms/staking-rewards/staking-form/fields/stake-range-slider.tsx:61
-#~ msgid "max"
-#~ msgstr "max"
+#: src/components/molecules/token-input/token-input.tsx:69
+msgid "max"
+msgstr "max"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/stake-range-slider.tsx:52
 #~ msgid "min"

@@ -5,8 +5,8 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import { InvestFormFields } from '../../types'
 
 export default function SubmitButton() {
-    const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<InvestFormFields>()
-    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || values.investBalance === initialValues.investBalance
+    const { isSubmitting, dirty, isValid, isValidating } = useFormikContext<InvestFormFields>()
+    const isDisabled = isSubmitting || !dirty || !isValid || isValidating
 
     return (
         <GradientButton className="px-6 px-md-8 mb-2" disabled={isDisabled}>

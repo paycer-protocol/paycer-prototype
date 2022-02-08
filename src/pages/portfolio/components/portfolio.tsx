@@ -8,6 +8,7 @@ import { Money, Percentage } from '@components/atoms/number'
 import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -26,7 +27,6 @@ const ProgressbarColorWrapper = styled.div`
     }
   `}
 `
-
 
 export default function Portfolio(props: PortfolioProps) {
   const { strategies, totalBalance } = props
@@ -73,13 +73,13 @@ export default function Portfolio(props: PortfolioProps) {
                 <tr key={key}>
                   <td>
                     <div className="d-flex align-items-center">
-                      <img
-                        src={strategy.assets[0].imgPath}
-                        alt={strategy.assets[0].name}
-                        width={35}
-                        height={35}
-                        className="me-3"
-                      />
+                        <CurrencyIcon
+                            symbol={strategy.input.symbol}
+                            className="me-3 pe-1 position-relative"
+                            style={{top: '-1px'}}
+                            width={30}
+                            height={30}
+                        />
                       <strong className="font-size-lg">{strategy.name}</strong>
                     </div>
                   </td>
