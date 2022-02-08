@@ -29,14 +29,14 @@ const SupplyInfo = () => {
 
             <div className="row w-100">
                 <div className="col-md-6">
-                    <div className="card shadow-none mt-4 bg-card-blue-light">
+                    <div className="card shadow-none mt-4 bg-card-blue-light ">
                         <div className="card-body">
                             <DailyRewards />
                         </div>
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="card shadow-none mt-4 bg-card-blue-light">
+                    <div className="card shadow-none mt-4 bg-card-blue-light ">
                         <div className="card-body">
                             <TotalSupply />
                         </div>

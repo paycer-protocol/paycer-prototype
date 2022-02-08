@@ -43,8 +43,8 @@ const Claim = () => {
     }
 
     return (
-      <AnimatedDiv className="list-group list-group-flush list-group-activity">
-          <div className="card bg-dark border-0 w-100 mb-0 shadow-none pt-4 pb-4 ">
+      <AnimatedDiv className="list-group list-group-flush list-group-activity h-100">
+          <div className="card bg-dark border-0 w-100 mb-0 shadow-none pt-4 pb-4 h-100">
               <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center">
                   <div className="d-flex justify-content-center mb-5">
                       <img width="75" src="/assets/paycer-gradient.svg" alt="Paycer" />

@@ -47,11 +47,8 @@ const Overview = () => {
 
   return (
     <AnimatedDiv className="list-group list-group-flush list-group-activity">
-      <div className="display-4 fw-normal mb-5 text-center text-md-start">
-        {t`Overview`}
-      </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-md-5">
+      <div className="card bg-dark shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
@@ -71,7 +68,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-md-5">
+      <div className="card bg-dark shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
@@ -95,7 +92,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0 shadow-none mb-md-5">
+      <div className="card bg-dark shadow-none mb-md-5">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">
@@ -115,7 +112,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="card bg-dark border-0 mb-0 shadow-none">
+      <div className="card bg-dark mb-0 shadow-none">
         <div className="card-body">
           <div className="row align-items-center gx-0">
             <div className="col">

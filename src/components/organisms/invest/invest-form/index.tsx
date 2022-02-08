@@ -119,7 +119,7 @@ const InvestForm = () => {
                         tokenInput={<InvestInput/>}
                     />
 
-                    <div className="card shadow-none mt-4 bg-card-blue-light">
+                    <div className="card shadow-none mt-4 bg-card-blue-light ">
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-4">

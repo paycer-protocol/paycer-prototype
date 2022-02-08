@@ -27,6 +27,7 @@ export default function InvestInput() {
             raiseMax
             balance={values.balance}
             decimals={4}
+            value={values.investAmount}
         />
     )
 }

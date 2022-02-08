@@ -34,7 +34,9 @@ export default function TokenInput(props: TokenInputProps) {
     required,
     balance,
     raiseMax,
-    handleChange
+    handleChange,
+    value,
+    autoFocus
   } = props
 
   return (
@@ -46,6 +48,7 @@ export default function TokenInput(props: TokenInputProps) {
             currency={currency}
             showCurrencyPrefix={false}
             decimals={4}
+            autoFocus
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
             onChange={(e) => {
               const tokenValue = Number(e.target.rawValue)
@@ -62,8 +65,8 @@ export default function TokenInput(props: TokenInputProps) {
             />
           </TokenBalanceLabel>
           {(raiseMax && balance > 0) &&
-          <MaxButton onClick={() => handleChange(balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
-            {t`max:`}
+          <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
+            {t`max`}
           </MaxButton>
           }
         </div>

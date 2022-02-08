@@ -14,8 +14,8 @@ import SubmitButton from './fields/submit-button'
 import RewardFee from './reward-fee'
 import {StakingProps} from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
-import {FormattedNumber} from '../../../atoms/number/formatted-number'
-import InfoTooltip from "@components/atoms/info-tooltip";
+import InfoTooltip from "@components/atoms/info-tooltip"
+import TokenInputPanel from "@components/organisms/token-input-panel"
 
 export default function StakingForm() {
     const {
@@ -100,57 +100,52 @@ export default function StakingForm() {
                                 <StakeRangeSlider/>
                             </div>
 
-                            <div className="border-bottom mb-5 py-5">
-                                <div className="row">
-                                    <div className="col-12 col-md-6 pb-3 pb-md-0">
-                                        <label className="form-label">
-                                            {values.stakedBalance !== initialValues.stakedBalance ? t`Token Balance after` : t` Current Token Balance`}
-                                        </label>
-
-                                        <div className="form-control bg-transparent border-0 ps-0 pt-0 pt-md-3">
+                            <div className="py-5">
+                                <TokenInputPanel
+                                    tokenInputSibling={
+                                        <div className="d-flex align-items-center">
                                             <CurrencyIcon
-                                                symbol='PCR'
+                                                symbol={values.rewardSymbol}
                                                 className="me-3"
-                                                width={22}
-                                                height={22}
-                                                style={{marginTop: '-2px', marginLeft: '-5px'}}
+                                                width={32}
+                                                height={32}
                                             />
-                                            <FormattedNumber
-                                                value={values.tokenBalance}
-                                                minimumFractionDigits={2}
-                                                maximumFractionDigits={2}
-                                            />
-                                            &nbsp;
-                                            {t`PCR`}
+                                            <div>
+                                                <div className="d-flex align-items-center">
+                                                    <h3 className="mb-0 text-white">{values.rewardSymbol}</h3>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-12 col-md-6">
-                                        <StakedInput/>
-                                    </div>
-                                </div>
+                                    }
+                                    tokenInput={<StakedInput/>}
+                                />
                             </div>
-                            <div className="mb-4 pb-md-3">
-                                <div className="row mb-5">
-                                    <div className="col-6 col-md-4">
-                                        <DashNumber
-                                            label={t`Daily rewards`}
-                                            value={values.stakedBalance * values.rewardRate / 100 / 365}
-                                            symbol={values.rewardSymbol}
-                                        />
-                                    </div>
-                                    <div className="col-6 col-md-4">
-                                        <DashNumber
-                                            label={t`Monthly rewards`}
-                                            value={values.stakedBalance * values.rewardRate / 100 / 12}
-                                            symbol={values.rewardSymbol}
-                                        />
-                                    </div>
-                                    <div className="col-4 d-none d-md-flex">
-                                        <div className="d-flex flex-column">
-                                            <span className="text-muted mb-1">
-                                                <Trans>Estimated fee</Trans>&nbsp;
-                                            </span>
-                                            <RewardFee/>
+                            <div className="mb-5 pb-2">
+                                <div className="card shadow-none bg-card-blue-light mb-0">
+                                    <div className="card-body">
+                                        <div className="row">
+                                            <div className="col-6 col-md-4">
+                                                <DashNumber
+                                                    label={t`Daily rewards`}
+                                                    value={values.stakedBalance * values.rewardRate / 100 / 365}
+                                                    symbol={values.rewardSymbol}
+                                                />
+                                            </div>
+                                            <div className="col-6 col-md-4">
+                                                <DashNumber
+                                                    label={t`Monthly rewards`}
+                                                    value={values.stakedBalance * values.rewardRate / 100 / 12}
+                                                    symbol={values.rewardSymbol}
+                                                />
+                                            </div>
+                                            <div className="col-4 d-none d-md-flex">
+                                                <div className="d-flex flex-column">
+                                                    <span className="text-muted mb-3">
+                                                        <Trans>Estimated fee</Trans>&nbsp;
+                                                    </span>
+                                                    <RewardFee/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

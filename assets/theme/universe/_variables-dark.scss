@@ -30,10 +30,12 @@ $gray-600-dark: #213752;
 $gray-700-dark: #264160;
 $gray-750-dark: #223f4c;
 $gray-800-dark: #1B2236;
-$gray-850-dark: #0b112030;
+$gray-850-dark: #0b112014;
 $gray-900-dark: #16212E;
 $black-dark: $black;
 $darkest: #090E1A !default;
+
+$purple-dark: #2c2754;
 
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default;
@@ -77,7 +79,8 @@ $theme-colors: map-merge(
   "secondary-dark": $gray-600-dark,
   "light-blue": $gray-750-dark,
   "card-blue": $gray-500-dark,
-  "card-blue-light": $gray-850-dark
+  "card-blue-light": $gray-850-dark,
+  "purple-dark": $purple-dark
 ),
 $theme-colors);
 /* beautify ignore:end */

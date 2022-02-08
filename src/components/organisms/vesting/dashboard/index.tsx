@@ -5,20 +5,19 @@ import { t } from '@lingui/macro'
 import Transactions from '@components/organisms/vesting/transactions'
 import Claim from '@components/organisms/vesting/claim'
 import Overview from '@components/organisms/vesting/overview'
+import StakingForm from "@components/organisms/staking-rewards/staking-form";
+import ClaimForm from "@components/organisms/staking-rewards/claim-form";
 
 export const LeftCol = styled.div`
-    width: 50%;
-    padding: 40px 20px 40px 40px;
-    align-items: stretch;
+    align-items: stretch; height: 100%;
     @media only screen and (max-width : 978px) {
-      width: 100%; padding: 40px 20px 20px 20px;    
+      width: 100%; padding: 20px;    
     }
 `
 
 export const RightCol = styled.div`
-    width: 50%;
-    padding: 40px 40px 40px 20px;
 
+    height: 100%; .card { border: 1px solid #2c2754!important }
     @media only screen and (max-width : 978px) {
       width: 100%;
       padding: 20px;
@@ -54,19 +53,20 @@ const VestingDashboard = () => {
 
     return (
         <>
-            <div className="card blur-background">
-                <div className="card-body p-0">
-                    <div className="d-lg-flex">
-                        <LeftCol>
-                            <Overview />
-                        </LeftCol>
-                        <RightCol>
-                            <div className="display-4 fw-normal mb-5 text-center text-md-start">
-                                {t`Claim`} {renderTabLabel()}
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="card blur-background mb-0">
+                        <LeftCol className="p-5">
+                            <div className="card-body p-0 ">
+                                <Overview />
                             </div>
-                            <Claim />
-                        </RightCol>
+                        </LeftCol>
                     </div>
+                </div>
+                <div className="col-md-6 blur-background">
+                    <RightCol>
+                        <Claim />
+                    </RightCol>
                 </div>
             </div>
         </>

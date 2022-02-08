@@ -11,10 +11,10 @@ const GradientButton = styled(Button)`
   text-align: center;
   ${props => props.isInverted && css`
       background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
-      padding: 9px 2px;
+      padding: 9px 1px;
       height: 41px;
        span { 
-       padding: 9px 38px 9px 36px; 
+       padding: 10px 36px 10px 36px;
        border-radius: 25px; 
       }
   `}

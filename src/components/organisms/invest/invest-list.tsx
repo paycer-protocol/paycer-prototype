@@ -17,7 +17,7 @@ export default function InvestList() {
   // @ts-ignore
   return (
       <>
-          <div className="d-flex justify-content-end mb-5">
+          <div className="d-flex justify-content-md-end justify-content-between mb-5">
               <div className="me-4">
                   <SearchForm />
               </div>

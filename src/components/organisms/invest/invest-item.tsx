@@ -19,10 +19,12 @@ export default function InvestItem(props: InvestItemProps) {
     setStrategy
   } = useInvestList()
 
+  const tdClass = 'bg-dark border border-purple-dark'
+
   return (
     <>
       <tr>
-        <td className="mb-3 bg-dark card-border-top-left-radius card-border-bottom-left-radius">
+        <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
           <div className="d-flex align-items-center">
             <CurrencyIcon
                 symbol={strategy.input.symbol}
@@ -34,19 +36,19 @@ export default function InvestItem(props: InvestItemProps) {
             <strong className="font-size-lg">{strategy.name}</strong>
           </div>
         </td>
-        <td className="mb-3 bg-dark">
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Trans id={riskLabels[strategy.riskLevel].id}/>
         </td>
-        <td className="mb-3 bg-dark">
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Percentage value={strategy.rewards.rewardRate / 100} />
         </td>
-        <td className="mb-3 bg-dark">
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Percentage value={strategy.interest.interestRate / 100} />
         </td>
-        <td className="mb-3 bg-dark">
+        <td className={`${tdClass} border-left-0 border-right-0`}>
           <Money value={0} />
         </td>
-        <td className="mb-3 bg-dark card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0">
+        <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0 pt-0 pb-0`}>
           <GradientButton className="me-5" onClick={() => setStrategy(strategy)}>
             <span>{t`Invest`}</span>
           </GradientButton>

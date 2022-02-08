@@ -39,6 +39,7 @@ export default function Token1Input() {
             handleChange={handleChange}
             balance={values.token1Balance}
             decimals={4}
+            value={values.token1Value}
         />
     )
 }
