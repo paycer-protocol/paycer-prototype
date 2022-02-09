@@ -177,3 +177,42 @@ a:focus, button:focus {
 .border-left-0 {
   border-left: 0!important;
 }
+
+.blur-background {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(284deg,#5129c3,#6808c0,#864091);
+    filter: blur(112px);
+    opacity: .225;
+    z-index: -1;
+    border-radius: 25%;
+    left:0;
+    top:0;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(284deg,#864091,#6808c0,#5129c3);
+    filter: blur(112px);
+    opacity: .225;
+    z-index: -1;
+    border-radius: 25%;
+    right: 0;
+    top:0;
+  }
+}
+
+.animated-wrapper {
+  position: relative;
+  animation: fadeIn 2s;
+  @keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:1; }
+  }
+}

@@ -5,15 +5,6 @@ import { FormattedNumber } from 'react-intl'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
 import useVesting from '@hooks/use-vesting'
 
-const AnimatedDiv = styled.div`
-    animation: fadeIn 2s;
-
-    @keyframes fadeIn {
-      0% { opacity:0; }
-      100% { opacity:1; }
-    }
-`
-
 const Overview = () => {
   const {
     dashboardData,
@@ -49,7 +40,7 @@ const Overview = () => {
       <div className="card shadow-none blur-background mb-0 p-4">
         <div className="card-body p-0 ">
 
-          <AnimatedDiv className="list-group list-group-flush list-group-activity">
+          <div className="list-group list-group-flush list-group-activity animated-wrapper">
             <div className="card bg-dark shadow-none mb-md-4">
               <div className="card-body">
                 <div className="row align-items-center gx-0">
@@ -136,7 +127,7 @@ const Overview = () => {
                 </div>
               </div>
             </div>
-          </AnimatedDiv>
+          </div>
         </div>
       </div>
   )

@@ -36,7 +36,7 @@ export default function Staking () {
           </div>
           <div className="col-md-6 blur-background">
             <div className="card bg-dark border-purple-dark w-100 mb-0 shadow-none h-100">
-              <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center">
+              <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center animated-wrapper">
                 <ClaimForm />
               </div>
             </div>

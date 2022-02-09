@@ -77,7 +77,7 @@ export default function StakingForm() {
             {({values}) => {
                 return (
                     <>
-                        <div>
+                        <div className="animated-wrapper">
                             <div className="d-flex mb-3">
                                 <label className="form-label">
                                     {t`Your APR:`}

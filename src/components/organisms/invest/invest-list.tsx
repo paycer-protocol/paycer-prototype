@@ -16,7 +16,7 @@ export default function InvestList() {
 
   // @ts-ignore
   return (
-      <>
+      <div>
           <div className="d-flex justify-content-md-end justify-content-between mb-5">
               <div className="me-4">
                   <SearchForm />
@@ -35,6 +35,6 @@ export default function InvestList() {
           {isListView ? <ListTable /> : null}
           {!isListView ? <InvestCards /> : null}
           <InvestModal />
-      </>
+      </div>
   )
 }
