@@ -61,7 +61,7 @@ export default function SwapForm() {
       {({ values }) => {
 
         return (
-            <div className="d-lg-flex">
+            <div className="d-lg-flex animated-wrapper">
               <Styles.LeftCol>
                 <div className="d-flex flex-column flex-md-row mb-3">
                   <div className="d-flex flex-column">

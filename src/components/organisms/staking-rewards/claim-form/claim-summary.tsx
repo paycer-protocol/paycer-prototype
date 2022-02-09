@@ -56,13 +56,13 @@ export default function ClaimSummary() {
           </h3>
 
           <div className="d-flex flex-column mb-4 text-center">
-                      <span className="display-2 my-3">
-                          <FormattedNumber
-                              value={pendingReward}
-                              minimumFractionDigits={2}
-                              maximumFractionDigits={4}
-                          />
-                      </span>
+              <span className="display-2 my-3">
+                  <FormattedNumber
+                      value={pendingReward}
+                      minimumFractionDigits={2}
+                      maximumFractionDigits={4}
+                  />
+              </span>
           </div>
 
           <div className="d-flex justify-content-center w-100">
