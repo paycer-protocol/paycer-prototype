@@ -100,7 +100,7 @@ export default function StakingForm() {
                                 <StakeRangeSlider/>
                             </div>
 
-                            <div className="py-5">
+                            <div className="py-4 py-md-5">
                                 <TokenInputPanel
                                     tokenInputSibling={
                                         <div className="d-flex align-items-center">
@@ -120,7 +120,7 @@ export default function StakingForm() {
                                     tokenInput={<StakedInput/>}
                                 />
                             </div>
-                            <div className="mb-5 pb-2">
+                            <div className="mb-4 mb-md-5 pb-2">
                                 <div className="card shadow-none bg-card-blue-light mb-0">
                                     <div className="card-body">
                                         <div className="row">
@@ -150,9 +150,9 @@ export default function StakingForm() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="d-flex flex-column d-md-none mb-5">
+                            <div className="mb-4 d-md-none">
                                 <span className="text-muted mb-1">
-                                    <Trans>Estimated fee</Trans>&nbsp;
+                                    <Trans>Estimated fee</Trans>&nbsp;&nbsp;
                                 </span>
                                 <RewardFee/>
                             </div>

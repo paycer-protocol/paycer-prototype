@@ -29,7 +29,7 @@ export default function Staking () {
         <div className="row">
           <div className="col-md-6 mb-4 mb-md-0">
             <div className="card blur-background mb-0 shadow-none">
-              <div className="card-body p-5">
+              <div className="card-body p-4 p-md-5">
                 <StakingForm />
               </div>
             </div>

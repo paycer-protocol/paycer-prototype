@@ -33,8 +33,8 @@ const VestingDashboard = () => {
 
     return (
         <>
-            <div className="row">
-                <div className="col-md-6">
+            <div className="row flex-column-reverse flex-md-row">
+                <div className="col-md-6 mt-4 mt-md-0">
                     <Overview />
                 </div>
                 <div className="col-md-6 blur-background">
