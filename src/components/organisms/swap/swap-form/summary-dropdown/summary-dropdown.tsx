@@ -30,10 +30,8 @@ const SummaryDropdown = () => {
     return (
         <div className="position-relative">
             <div
-                onClick={() => setOpen(!open)}
-                className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
-
-                <div className="card-body p-2 p-md-3">
+                onClick={() => setOpen(!open)} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
+                <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
                         <div className="me-2">
                             1 {values.token0.symbol} = {values.token1Price} {values.token1.symbol}
@@ -46,7 +44,6 @@ const SummaryDropdown = () => {
                         />
                     </div>
                 </div>
-
             </div>
             <Content
                 className={`cursor-pointer card shadow-none mb-2 bg-dark position-absolute w-100 border-bottom-0 border-top-0 ${open ? 'is--Open' : ''}`}>

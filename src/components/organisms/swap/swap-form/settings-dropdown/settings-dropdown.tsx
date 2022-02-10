@@ -16,14 +16,15 @@ const SettingsDropdown = () => {
     return (
         <DropdownComponent className="">
             <Styles.StyledDropdownToggle>
-                <div className="cursor-pointer card shadow-none mb-2 bg-transparent">
-                    <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2">
-                        <div className="d-none d-md-block">
-                            <Icon component={Settings} size={23} style={{width: '36px'}}/>
-                        </div>
-                        <div className="d-md-none">
-                            <Icon component={Settings} size={24} style={{width: '27px'}}/>
-                        </div>
+                <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
+                    <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
+                        <Icon component={Settings} size={23} style={{width: '32px'}}/>
+                    </div>
+                </div>
+
+                <div className="cursor-pointer card border-0 pt-2 ps-2 shadow-none mb-2 bg-transparent d-md-none">
+                    <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
+                        <Icon component={Settings} size={24} style={{width: '27px'}}/>
                     </div>
                 </div>
             </Styles.StyledDropdownToggle>
