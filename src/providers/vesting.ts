@@ -23,7 +23,7 @@ export default {
             address: '0xdb5Ca1c335e743499f2c6991b157C9b8D7786035'
         },
         pre_v2: {
-            address: '0xD6b1c54e17D7bb15D21F3e5137280fdd6868dA6f'
+            address: '0xdCdC0559B6002828f18b29A29f9c899fDFd272dD'
         },
         public_v2: {
             address: '0xD9Dac66F41c76F7A381E85DC5b6265993f5c2033'
