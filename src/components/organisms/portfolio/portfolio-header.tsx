@@ -33,7 +33,7 @@ interface DashCardsProps {
   strategies: PortfolioStrategy[]
 }
 
-export default function DashCards ({ totalBalance, strategies }: DashCardsProps) {
+export default function PortfolioHeader ({ totalBalance, strategies }: DashCardsProps) {
     const renderPieChart = () => {
         if (!strategies.length) {
             return ''
