@@ -1,7 +1,6 @@
 import React from 'react'
 import {tokenProvider} from '@providers/tokens'
 import {swapTokens} from '@config/market-pairs'
-import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import {SwapProps} from './types'
