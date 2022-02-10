@@ -27,6 +27,7 @@ const AddPaycerToken = () => {
 
     const addToken = async () => {
 
+        // @ts-ignore
       if (!library && !library.provider.isMetaMask && !library.provider.request) {
           return false
       }
@@ -41,6 +42,7 @@ const AddPaycerToken = () => {
                   image: 'https://paycer-prototype.vercel.app/assets/icons/pcr.svg',
               },
           }
+          // @ts-ignore
           library.provider
               .request({
                   method: 'wallet_watchAsset',
@@ -59,7 +61,7 @@ const AddPaycerToken = () => {
           toast(t`Something went wrong`)
       }
     }
-
+    // @ts-ignore
     if (!wallet.isConnected || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
       return null
     }
@@ -72,17 +74,16 @@ const AddPaycerToken = () => {
           }}
       >
          <CurrencyIcon
-             width={22}
-             height={22}
+             className="me-3"
+             width={20}
+             height={20}
              symbol={symbol}
          />
-        <div className="mx-2">
-            <FormattedNumber
-                value={balance}
-                minimumFractionDigits={2}
-                maximumFractionDigits={4}
-            />
-        </div>
+          <FormattedNumber
+              value={balance}
+              minimumFractionDigits={2}
+              maximumFractionDigits={4}
+          />
       </StyledButton>
     )
 }

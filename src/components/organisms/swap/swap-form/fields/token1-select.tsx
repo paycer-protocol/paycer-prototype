@@ -1,49 +1,38 @@
-import React, {useState} from 'react'
-import { useFormikContext} from 'formik'
+import React, { useState } from 'react'
+import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
-import calculateMinimumToReceive from '@components/organisms/swap/helper/minimum-to-receive'
-import TokenSelectModal from '@components/organisms/swap/swap-form/token-select-modal'
-import { marketPairs } from '@config/market-pairs'
+import TokenSelectModal from '@components/molecules/token-select-modal'
 import TokenToggle from './token-toggle'
+import {t} from '@lingui/macro'
+import {marketPairs, swapTokens} from '@config/market-pairs'
 
 export default function Token1Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
 
     const handleChange = (token) => {
+        setFieldValue('minimumToReceive', 0)
+        const token1Markets = marketPairs.find(m => m.base.symbol === values.token0.symbol).markets
+        setFieldValue('token1Markets', token1Markets)
+        setFieldValue('token0Markets', swapTokens)
         setFieldValue('token1', token)
         setShowModal(false)
-
-        let token1Value
-        if (values.exchangeRate) {
-            token1Value = (values.token1Value / values.exchangeRate) * values.exchangeRate
-        } else {
-            token1Value = values.token0Value * values.exchangeRate
-        }
-
-        setFieldValue('token1Value', token1Value)
-
-        calculateMinimumToReceive(
-          values.token0Value,
-          values.exchangeRate,
-          values.slippageTolerance,
-          values.feeFactor,
-          setFieldValue
-        )
     }
 
     return (
-      <>
-        <TokenToggle
-          token={values.token1}
-          onClick={() => setShowModal(true)}
-        />
-        <TokenSelectModal
-          show={showModal}
-          tokens={marketPairs.find((market) => market.base.symbol === values.token0.symbol)?.markets.filter(({ symbol }) => symbol !== values.token1.symbol) || []}
-          onHide={() => setShowModal(false)}
-          onClick={handleChange}
-        />
-      </>
+        <>
+            <TokenToggle
+                token={values.token1}
+                onClick={() => setShowModal(true)}
+                label={t`Swap to`}
+            />
+            <TokenSelectModal
+                show={showModal}
+                tokens={values.token1Markets}
+                activeToken={values.token1}
+                onHide={() => setShowModal(false)}
+                onClick={handleChange}
+            />
+        </>
     )
 }

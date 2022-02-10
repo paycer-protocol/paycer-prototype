@@ -1,33 +1,36 @@
 import React from 'react'
-import {ChevronDown} from '@styled-icons/bootstrap'
-import * as Styles from '@components/organisms/swap/Styles'
+import styled from 'styled-components'
+import { ArrowDropDown } from '@styled-icons/material-outlined'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import Icon from '@components/atoms/icon'
 import { TokenType } from '../../../../../types/investment'
 
 interface TokenToggleProps {
   token: TokenType
+  label: string
   onClick: () => void
 }
 
 export default function TokenToggle(props: TokenToggleProps) {
-  const { token, onClick } = props
+  const { token, onClick, label } = props
   return (
-    <Styles.SelectWrapper onClick={onClick}>
-      <CurrencyIcon
-        symbol={token.symbol}
-        className="me-3"
-        width={30}
-        height={30}
-      />
-      <Styles.TokenToggle>
-        {token.symbol}
-      </Styles.TokenToggle>
-      <Icon
-        component={ChevronDown}
-        size={20}
-        style={{ fontWeight: 'bold' }}
-      />
-    </Styles.SelectWrapper>
+    <div className="d-flex align-items-center cursor-pointer" onClick={onClick}>
+        <CurrencyIcon
+            symbol={token.symbol}
+            className="me-3"
+            width={32}
+            height={32}
+        />
+        <div>
+            <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{label}</small>
+            <div className="d-flex align-items-center">
+                <h3 className="mb-0 text-white">{token.symbol}</h3>
+                <Icon
+                    component={ArrowDropDown}
+                    size={20}
+                />
+            </div>
+        </div>
+    </div>
   )
 }

@@ -1,31 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
-import { t } from '@lingui/macro'
-
-export const LeftCol = styled.div`
-    width: 50%;
-    padding: 40px 20px 40px 40px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 20px;    
-    }
-`
-
-export const RightCol = styled.div`
-    width: 50%;
-    padding: 40px 40px 40px 20px;
-
-    @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 20px;
-    }
-`
-
 
 export default function Staking () {
   const { supportedStakingChain } = useNetwork()
@@ -47,15 +25,20 @@ export default function Staking () {
             </div>
           </div>
         </PageHeader>
-        <div className="card blur-background">
-          <div className="card-body p-0">
-            <div className="d-lg-flex">
-              <LeftCol>
+
+        <div className="row">
+          <div className="col-md-6 mb-4 mb-md-0">
+            <div className="card blur-background mb-0 shadow-none">
+              <div className="card-body p-4 p-md-5">
                 <StakingForm />
-              </LeftCol>
-              <RightCol>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 blur-background">
+            <div className="card bg-dark border-purple-dark w-100 mb-0 shadow-none h-100">
+              <div className="card-body p-5 align-items-center d-flex flex-column w-100 justify-content-center animated-wrapper">
                 <ClaimForm />
-              </RightCol>
+              </div>
             </div>
           </div>
         </div>

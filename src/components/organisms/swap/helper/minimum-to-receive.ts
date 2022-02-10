@@ -1,5 +1,4 @@
-const MinimumToReceive = (token0Value, exchangeRate, slippageTolerance, feeFactor, setFieldValue)  => {
-    const token1Value = token0Value * exchangeRate
+const MinimumToReceive = (token0Value, token1Value, slippageTolerance, feeFactor, setFieldValue)  => {
     const slippageToleranceDiff = token1Value * slippageTolerance / 100
     const valueWithoutFee = token1Value - slippageToleranceDiff
     const fee = token0Value * feeFactor

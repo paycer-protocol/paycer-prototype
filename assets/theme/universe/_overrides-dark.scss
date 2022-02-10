@@ -50,32 +50,4 @@ p {
   }
 }
 
-.blur-background {
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(284deg,#5129c3,#6808c0,#864091);
-    filter: blur(112px);
-    opacity: .225;
-    z-index: -1;
-    border-radius: 25%;
-    left:0;
-    top:0;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(284deg,#864091,#6808c0,#5129c3);
-    filter: blur(112px);
-    opacity: .225;
-    z-index: -1;
-    border-radius: 25%;
-    right: 0;
-    top:0;
-  }
-}
+

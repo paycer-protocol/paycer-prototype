@@ -11,6 +11,8 @@
 .navbar {
   border-width: 0 0 $border-width 0;
   border-style: solid;
+  padding-right: $grid-gutter-width;
+  padding-left: $grid-gutter-width;
 }
 
 .navbar > [class*="container"] {

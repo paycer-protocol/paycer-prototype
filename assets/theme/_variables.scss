@@ -27,6 +27,7 @@ $gray-700: #6E84A3 !default;
 $gray-800: #3B506C !default;
 $gray-900: #283E59 !default;
 $black: #12263F !default;
+$blue-200: #223f4c;
 
 /* beautify ignore:start */
 $grays: (
@@ -42,54 +43,7 @@ $grays: (
 ) !default;
 /* beautify ignore:end */
 
-$gray-600-dark: #244166 !default;
-$gray-700-dark: #1E3A5C !default;
-$gray-800-dark: #152E4D !default;
-$gray-900-dark: #132A46 !default;
-$black-dark: #12263F !default;
 
-$blue: #2C7BE5 !default;
-$indigo: #727cf5 !default; // NOT USED
-$purple: #6b5eae !default;
-$pink: #ff679b !default; // NOT USED
-$red: #E63757 !default;
-$orange: #fd7e14 !default; // NOT USED
-$yellow: #F6C343 !default;
-$green: #00D97E !default;
-$teal: #02a8b5 !default; // NOT USED
-$cyan: #20d2f4 !default;
-$lightgreen: #c1ff93;
-$lightblue: #6ef2ff;
-
-//
-//$primary: $white;
-//$secondary: $white;
-//$success: $green;
-//$info: $cyan;
-//$warning: $yellow;
-//$danger: $red;
-//$light: $gray-200;
-//$lighter: $gray-100;
-//$dark: $black !default;
-
-/* beautify ignore:start */
-$theme-colors: () !default;
-
-$theme-colors: map-merge(
-  (
-    "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "light": $light,
-    "dark": $dark,
-    "white": $white,
-    "secondary-dark": $gray-600-dark
-  ),
-$theme-colors);
-/* beautify ignore:end */
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
@@ -244,7 +198,7 @@ $display-font-sizes: (
   1: 4rem,
   2: 3.25rem,
   3: 2.625rem,
-  4: 1.6rem,
+  4: 1.9rem,
 ) !default;
 /* beautify ignore:end */
 
@@ -555,7 +509,7 @@ $modal-footer-border-color: transparent !default;
 $modal-header-padding-y: 1rem !default;
 $modal-header-padding: $modal-header-padding-y $modal-inner-padding !default;
 
-$modal-md: 600px !default;
+$modal-md: 520px !default;
 
 $modal-backdrop-bg: darken($black, 50%);
 $modal-backdrop-opacity: 0.75;

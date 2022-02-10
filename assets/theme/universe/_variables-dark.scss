@@ -23,12 +23,19 @@ $gray-900: darken($white, 70%) !default;
 $black: #0B1120;
 
 // #1B2E44
+
+$gray-400-dark: #365172;
 $gray-500-dark: #192434;
 $gray-600-dark: #213752;
 $gray-700-dark: #264160;
+$gray-750-dark: #223f4c;
 $gray-800-dark: #1B2236;
+$gray-850-dark: #0b112014;
 $gray-900-dark: #16212E;
 $black-dark: $black;
+$darkest: #090E1A !default;
+
+$purple-dark: #2c2754;
 
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default;
@@ -52,6 +59,31 @@ $danger: $red;
 $light: $gray-200;
 $lighter: $gray-100;
 $dark: $black !default;
+
+/* beautify ignore:start */
+$theme-colors: () !default;
+
+$theme-colors: map-merge(
+(
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "darkest": $darkest,
+  "white": $white,
+  "light-grey": $gray-100,
+  "secondary-dark": $gray-600-dark,
+  "light-blue": $gray-750-dark,
+  "card-blue": $gray-500-dark,
+  "card-blue-light": $gray-850-dark,
+  "purple-dark": $purple-dark
+),
+$theme-colors);
+/* beautify ignore:end */
 
 $pacer-gradient: linear-gradient(to left, #3C01E3, #6808C0, #8D0EA2);
 // Body

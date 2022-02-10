@@ -154,3 +154,11 @@
 .input-group-merge > .form-control.is-invalid + .input-group-text {
   border-color: $form-feedback-invalid-color;
 }
+
+.input-group-merge {
+  input {
+    &:focus {
+      outline: none;
+    }
+  }
+}

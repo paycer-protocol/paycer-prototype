@@ -1,29 +1,8 @@
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import { t } from '@lingui/macro'
-import Transactions from '@components/organisms/vesting/transactions'
 import Claim from '@components/organisms/vesting/claim'
 import Overview from '@components/organisms/vesting/overview'
-
-export const LeftCol = styled.div`
-    width: 50%;
-    padding: 40px 20px 40px 40px;
-    align-items: stretch;
-    @media only screen and (max-width : 978px) {
-      width: 100%; padding: 40px 20px 20px 20px;    
-    }
-`
-
-export const RightCol = styled.div`
-    width: 50%;
-    padding: 40px 40px 40px 20px;
-
-    @media only screen and (max-width : 978px) {
-      width: 100%;
-      padding: 20px;
-    }
-`
 
 const VestingDashboard = () => {
     const { dashboardData } = useVestingDashboard()
@@ -54,20 +33,12 @@ const VestingDashboard = () => {
 
     return (
         <>
-            <div className="card blur-background">
-                <div className="card-body p-0">
-                    <div className="d-lg-flex">
-                        <LeftCol>
-                            <Overview />
-                        </LeftCol>
-                        <RightCol>
-
-                            <div className="display-4 fw-normal mb-5 text-center text-md-start">
-                                {t`Claim`} {renderTabLabel()}
-                            </div>
-                            <Claim />
-                        </RightCol>
-                    </div>
+            <div className="row flex-column-reverse flex-md-row">
+                <div className="col-md-6 mt-4 mt-md-0">
+                    <Overview />
+                </div>
+                <div className="col-md-6 blur-background">
+                    <Claim />
                 </div>
             </div>
         </>

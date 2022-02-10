@@ -1,35 +1,40 @@
 import React from 'react'
-import { t } from '@lingui/macro'
 import * as Styles from '../Styles'
+import { tokenProvider }  from '@providers/tokens'
+import { marketPairs, swapTokens } from '@config/market-pairs'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
-import { marketPairs } from '@config/market-pairs'
-import Token0Input from './fields/token0-input'
-import Token1Input from './fields/token1-input'
-import TokenRangeSlider from './fields/token-range-slider'
-import MarketPairSelect from './fields/market-pair-select'
-import SubmitButton from './fields/submit-button'
-import SupplyInfo from './supply-info'
 import { SupplyProps } from './types'
-import {tokenProvider} from "@providers/tokens";
-import useToken from "@hooks/use-token";
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import Token0Select from './fields/token0-select'
+import Token0Input from './fields/token0-input'
+import Token1Select from './fields/token1-select'
+import SubmitButton from './fields/submit-button'
+import Token1Input from './fields/token1-input'
+import SupplyInfo from './supply-info'
 
-const initialMarketPair = marketPairs.find(m => m.base === tokenProvider.PCR)
+import useToken from "@hooks/use-token";
 
 export default function SupplyForm() {
 
+  const pcrToken = useToken(tokenProvider.PCR.symbol)
+  const initialToken1Balance = pcrToken.tokenBalance()
+
+  const usdcToken = useToken(tokenProvider.USDC.symbol)
+  const initialToken0Balance = usdcToken.tokenBalance()
+
   const initialValues: SupplyProps = {
-    token0Value: 0,
-    token1Value: 0,
-    exchangeRate: 1, // TODO
-    dailyRewards: 0,
-    token0Balance: useToken(initialMarketPair.base.symbol).tokenBalance(),
-    token1Balance: useToken(initialMarketPair.markets[0].symbol).tokenBalance(),
-    marketPair: {
-      token0: initialMarketPair.base,
-      token1: initialMarketPair.markets[0]
-    },
-    apy: 6,
+    token1: tokenProvider.PCR,
+    token1Value: null,
+    token1Markets: swapTokens.filter(mi => mi.symbol !== tokenProvider.USDC.symbol),
+    token1Balance: initialToken1Balance,
+    exchangeRate: 0.06182,
+    token0: tokenProvider.USDC,
+    token0Value: null,
+    token0Markets: marketPairs.find(m => m.base.symbol === tokenProvider.PCR.symbol).markets,
+    token0Balance: initialToken0Balance,
+    apr: 8,
+    dailyRewards: 0
   }
 
   const validationSchema = Yup.object().shape({
@@ -42,64 +47,38 @@ export default function SupplyForm() {
   }
 
   return (
-      <Form
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-          enableReinitialize
-      >
-        {({ errors }) => {
-          return (
-              <div className="d-lg-flex">
-                <Styles.LeftCol>
-                  <div className="d-flex flex-column flex-md-row">
-                    <div className="w-100">
-                      <Styles.CurrencyInputLabel>
-                        {t`Supply`}
-                      </Styles.CurrencyInputLabel>
-
-                      <div className="d-flex flex-column flex-md-row">
-                        <div className="w-100 me-4">
-                          <MarketPairSelect />
-                        </div>
-                      </div>
-
-                      <Styles.HorizontalLine />
-
-                      <div className="d-flex flex-column flex-md-row mb-5 mt-5 pt-1 pb-3">
-                        <TokenRangeSlider />
-                      </div>
-
-
-                      <div className="d-flex flex-column flex-md-row">
-                        <div className="me-2 d-md-flex align-items-center col-md-6 mb-3 mb-md-0">
-                          <Token0Input />
-                        </div>
-                        <div className="me-2 d-md-flex align-items-center col-md-6">
-                          <Token1Input />
-                        </div>
-                      </div>
-                    </div>
+    <Form
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+      enableReinitialize
+    >
+      {({ values }) => {
+        return (
+            <div className="d-lg-flex animated-wrapper">
+              <Styles.LeftCol>
+                <div className="d-flex flex-column flex-md-row mb-3">
+                  <div className="d-flex flex-column">
+                    <TokenInputPanel
+                        tokenInputSibling={<Token0Select />}
+                        tokenInput={<Token0Input />}
+                    />
+                    <TokenInputPanel
+                        tokenInputSibling={<Token1Select />}
+                        tokenInput={<Token1Input />}
+                    />
                   </div>
-
-                  {errors.token1Value ? (
-                      <div className="mb-3 mt-3 alert-danger px-3 py-3">{errors.token1Value}</div>
-                  ) : null}
-
-                  <div className="d-flex flex-column flex-md-row mb-5 mt-5 justify-content-center">
+                </div>
+                <div className="d-flex align-items-center justify-content-center w-100 mt-5">
                   <SubmitButton />
-                  </div>
-                </Styles.LeftCol>
-
-                <Styles.VerticalLine />
-                <Styles.HorizontalLine className="d-md-none" />
-
-                <Styles.RightCol>
-                  <SupplyInfo />
-                </Styles.RightCol>
-              </div>
-          )
-        }}
-      </Form>
+                </div>
+              </Styles.LeftCol>
+              <Styles.RightCol>
+                <SupplyInfo />
+              </Styles.RightCol>
+          </div>
+        )
+      }}
+    </Form>
   )
 }

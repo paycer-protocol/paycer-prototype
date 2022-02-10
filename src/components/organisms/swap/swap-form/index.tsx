@@ -1,28 +1,42 @@
 import React from 'react'
-import { t } from '@lingui/macro'
 import { tokenProvider }  from '@providers/tokens'
+import { swapTokens } from '@config/market-pairs'
 import * as Styles from '../Styles'
 import * as Yup from 'yup'
 import Form from '@components/atoms/form/form'
 import { SwapProps } from './types'
+import TokenInputPanel from '@components/organisms/token-input-panel'
 import Token0Select from './fields/token0-select'
 import Token0Input from './fields/token0-input'
 import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
-import PriceImpact from './price-impact'
+import FlipSwap from './fields/flip-swap'
 import PriceChart from './price-chart'
-import MinimumToReceiveDropdown from './minimum-to-receive-dropdown'
+import SummaryDropdown from './summary-dropdown'
+import SettingsDropdown from './settings-dropdown'
+import useToken from "@hooks/use-token";
 
 export default function SwapForm() {
+
+  const getToken0Balance = useToken(tokenProvider.USDC.symbol)
+  const getToken1Balance = useToken(tokenProvider.PCR.symbol)
+
   const initialValues: SwapProps = {
-    token0: tokenProvider.PCR,
-    token0Value: 0,
-    token1: tokenProvider.USDC,
-    token1Value: 0,
+    token1: tokenProvider.PCR,
+    token1Value: null,
+    token1Markets: swapTokens,
+    token1Price: 1,
+    token0Balance: getToken0Balance.tokenBalance(),
+
+    token0: tokenProvider.USDC,
+    token0Value: null,
+    token0Markets: swapTokens,
+    token0Price: 1,
+    token1Balance: getToken1Balance.tokenBalance(),
+
     minimumToReceive: 0,
-    slippageTolerance: 0,
-    exchangeRate: 1,
+    slippageTolerance: 0.5,
     priceImpact: 0.01,
     feeFactor: 0.01,
     fee: 0
@@ -44,56 +58,45 @@ export default function SwapForm() {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {() => {
+      {({ values }) => {
+
         return (
-            <div className="d-lg-flex">
+            <div className="d-lg-flex animated-wrapper">
               <Styles.LeftCol>
-                <div className="d-flex flex-column flex-md-row">
-                  <div className="w-100">
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap from`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4 mb-3">
-                        <Token0Select />
-                      </div>
-                      <div className="w-100">
-                        <Token0Input />
-                      </div>
+                <div className="d-flex flex-column flex-md-row mb-3">
+                  <div className="d-flex flex-column">
+                    <TokenInputPanel
+                        tokenInputSibling={<Token0Select />}
+                        tokenInput={<Token0Input />}
+                    />
+                    <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                      <FlipSwap />
                     </div>
-                    <Styles.HorizontalLine className="d-block">
-                      <div>
-                        <span />
-                        <span />
-                      </div>
-                    </Styles.HorizontalLine>
-                    <Styles.CurrencyInputLabel>
-                      {t`Swap to`}
-                    </Styles.CurrencyInputLabel>
-                    <div className="d-flex flex-column flex-md-row">
-                      <div className="w-100 me-4 mb-3">
-                        <Token1Select />
-                      </div>
-                      <div className="w-100">
-                        <Token1Input />
-                      </div>
-                    </div>
+                    <TokenInputPanel
+                        tokenInputSibling={<Token1Select />}
+                        tokenInput={<Token1Input />}
+                    />
                   </div>
                 </div>
-                <div className="mt-4 mb-5">
-                  <div className="mb-2">
-                    <PriceImpact />
+                <div className="row">
+                  <div className="col-10">
+                    <SummaryDropdown />
                   </div>
-                  <MinimumToReceiveDropdown />
+                  <div className="col-2 ps-0">
+                    <SettingsDropdown />
+                  </div>
                 </div>
-                <div className="d-flex align-items-center justify-content-center">
+
+                <div className="d-flex align-items-center justify-content-center w-100 mt-5">
                   <SubmitButton />
                 </div>
               </Styles.LeftCol>
-              <Styles.VerticalLine />
-              <Styles.HorizontalLine className="d-md-none" />
               <Styles.RightCol>
-                <PriceChart />
+                <PriceChart
+                  token0={values.token0}
+                  token1={values.token1}
+                  token1Price={values.token1Price}
+                />
               </Styles.RightCol>
           </div>
         )
