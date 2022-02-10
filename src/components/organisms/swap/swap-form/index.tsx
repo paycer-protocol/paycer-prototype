@@ -80,7 +80,7 @@ export default function SwapForm() {
                                         />
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="d-flex">
                                     <div className="col-10">
                                         <SummaryDropdown/>
                                     </div>
