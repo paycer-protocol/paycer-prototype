@@ -2,7 +2,6 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
 import {t} from "@lingui/macro";
-import * as Styles from '../../Styles'
 import TotalSupply from './total-supply'
 import DailyRewards from './daily-rewards'
 
@@ -11,9 +10,9 @@ const SupplyInfo = () => {
 
     return (
         <div>
-            <div className="d-flex flex-column flex-md-row">
+            <div className="d-flex flex-column flex-md-row mb-4 mb-md-5">
                 <div>
-                    <h5 className="text-uppercase text-muted mb-4">
+                    <h5 className="text-uppercase text-muted mb-3 mb-md-4">
                         {t`Liquidity Pool`}
                     </h5>
                     <div className="d-flex align-items-baseline mb-4">
@@ -27,16 +26,16 @@ const SupplyInfo = () => {
                 </div>
             </div>
 
-            <div className="row w-100">
+            <div className="row">
                 <div className="col-md-6">
-                    <div className="card shadow-none mt-4 bg-card-blue-light ">
+                    <div className="card shadow-none bg-card-blue-light">
                         <div className="card-body">
                             <DailyRewards />
                         </div>
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="card shadow-none mt-4 bg-card-blue-light ">
+                    <div className="card shadow-none bg-card-blue-light mb-0">
                         <div className="card-body">
                             <TotalSupply />
                         </div>
