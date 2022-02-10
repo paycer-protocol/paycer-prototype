@@ -21,15 +21,7 @@ export const Toolbar = styled.div`
             background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
             color: #FFF; border-color: transparent;
         }
-    }
-    @media only screen and (max-width : 978px) {
-      display: block;
-      
-      div {
-        margin-bottom: 10px;
-      }
-    }
-    
+    }    
 `
 
 export const CurrencyInputLabel = styled.h5`

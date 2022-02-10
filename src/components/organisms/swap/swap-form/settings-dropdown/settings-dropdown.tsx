@@ -10,19 +10,22 @@ import Icon from '@components/atoms/icon'
 import DropdownComponent from "@components/atoms/dropdown/dropdown";
 import { Settings } from '@styled-icons/fluentui-system-regular'
 
-
-
 const SettingsDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
 
     return (
         <DropdownComponent className="">
             <Styles.StyledDropdownToggle>
-                <Styles.Header className="cursor-pointer card shadow-none mb-2 bg-transparent">
-                    <div className="card-body bg-transparent d-flex justify-content-center">
-                        <Icon component={Settings} size={24} />
+                <div className="cursor-pointer card shadow-none mb-2 bg-transparent">
+                    <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2">
+                        <div className="d-none d-md-block">
+                            <Icon component={Settings} size={23} style={{width: '36px'}}/>
+                        </div>
+                        <div className="d-md-none">
+                            <Icon component={Settings} size={24} style={{width: '27px'}}/>
+                        </div>
                     </div>
-                </Styles.Header>
+                </div>
             </Styles.StyledDropdownToggle>
             <Styles.StyledDropdownMenu className="bg-dark border">
                 <h4 className="mb-4">Transaction-Settings</h4>
