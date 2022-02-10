@@ -2,8 +2,8 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
-import DashCards from './components/dash-cards'
-import Portfolio from './components/portfolio'
+import Header from '@components/organisms/portfolio/portfolio-header'
+import PortfolioList from '@components/organisms/portfolio/portfolio-list'
 import { StrategyType } from '../../types/investment'
 import { investmentStrategies } from '@config/investment/strategies'
 
@@ -51,14 +51,14 @@ export default function Home() {
         </PageHeader>
         <div>
             <div className="mb-7 mb-md-3">
-              <DashCards
+              <Header
                   totalBalance={totalBalance}
                   strategies={qualifiedStrategies}
               />
             </div>
             <div className="row position-relatives blur-background">
               <div className="col-12">
-                <Portfolio
+                <PortfolioList
                   strategies={qualifiedStrategies}
                   totalBalance={totalBalance}
                 />
