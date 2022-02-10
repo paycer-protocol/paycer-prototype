@@ -85,34 +85,34 @@ export default function PortfolioList(props: PortfolioProps) {
                                     </div>
                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                <Trans id={riskLabels[strategy.riskLevel].id}/>
-                              </td>
+                                    <Trans id={riskLabels[strategy.riskLevel].id}/>
+                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                <div className="row align-items-center g-0">
-                                  <div className="col-auto me-3">
-                                    <Percentage
-                                      value={(tokenBalance * 100 / totalBalance) / 100}
-                                      className="mb-2"
-                                    />
-                                  </div>
-                                  <div className="col">
-                                    <ProgressbarColorWrapper color={strategy.color}>
-                                        <ProgressBar
-                                          className="progress-sm"
-                                          now={tokenBalance * 100 / totalBalance}
-                                          min={0}
-                                          max={100}
-                                        />
-                                    </ProgressbarColorWrapper>
-                                  </div>
-                                </div>
-                              </td>
+                                    <div className="row align-items-center g-0">
+                                        <div className="col-auto me-3">
+                                            <Percentage
+                                            value={(tokenBalance * 100 / totalBalance) / 100}
+                                            className="mb-2"
+                                            />
+                                        </div>
+                                        <div className="col">
+                                            <ProgressbarColorWrapper color={strategy.color}>
+                                                <ProgressBar
+                                                    className="progress-sm"
+                                                    now={tokenBalance * 100 / totalBalance}
+                                                    min={0}
+                                                    max={100}
+                                                />
+                                            </ProgressbarColorWrapper>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                <Percentage value={interest / 100} />
-                              </td>
+                                    <Percentage value={interest / 100} />
+                                </td>
                                 <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius  border-left-0 pt-0 pb-0`}>
-                                <Money value={tokenBalance} />
-                              </td>
+                                    <Money value={tokenBalance} />
+                                </td>
                             </tr>
                             )
                             }) : (
