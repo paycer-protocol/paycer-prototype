@@ -62,50 +62,49 @@ export default function SwapForm() {
                 return (
                     <div className="d-lg-flex animated-wrapper">
 
-                            <div className="col-md-5">
-                                <div className="p-4 p-md-5 pe-md-0">
-                                    <div className="d-flex flex-column flex-md-row mb-3">
-                                        <div className="d-flex flex-column">
-                                            <TokenInputPanel
-                                                tokenInputSibling={<Token0Select/>}
-                                                tokenInput={<Token0Input/>}
-                                            />
-                                            <div className="d-flex justify-content-center position-relative"
-                                                 style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
-                                                <FlipSwap/>
-                                            </div>
-                                            <TokenInputPanel
-                                                tokenInputSibling={<Token1Select/>}
-                                                tokenInput={<Token1Input/>}
-                                            />
+                        <div className="col-md-5">
+                            <div className="p-4 p-md-5 pe-md-0">
+                                <div className="d-flex flex-column flex-md-row mb-3">
+                                    <div className="d-flex flex-column">
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token0Select/>}
+                                            tokenInput={<Token0Input/>}
+                                        />
+                                        <div className="d-flex justify-content-center position-relative"
+                                             style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                                            <FlipSwap/>
                                         </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-10">
-                                            <SummaryDropdown/>
-                                        </div>
-                                        <div className="col-2 ps-0">
-                                            <SettingsDropdown/>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
-                                        <SubmitButton/>
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token1Select/>}
+                                            tokenInput={<Token1Input/>}
+                                        />
                                     </div>
                                 </div>
-                            </div>
+                                <div className="row">
+                                    <div className="col-10">
+                                        <SummaryDropdown/>
+                                    </div>
+                                    <div className="col-2 ps-0">
+                                        <SettingsDropdown/>
+                                    </div>
+                                </div>
 
-                            <div className="col-md-7">
-                                <div className="p-4 p-md-5">
-                                    <PriceChart
-                                        token0={values.token0}
-                                        token1={values.token1}
-                                        token1Price={values.token1Price}
-                                    />
+                                <div
+                                    className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
+                                    <SubmitButton/>
                                 </div>
                             </div>
+                        </div>
 
+                        <div className="col-md-7">
+                            <div className="p-4 p-md-5">
+                                <PriceChart
+                                    token0={values.token0}
+                                    token1={values.token1}
+                                    token1Price={values.token1Price}
+                                />
+                            </div>
+                        </div>
                     </div>
                 )
             }}
