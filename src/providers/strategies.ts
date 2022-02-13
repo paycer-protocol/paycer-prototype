@@ -26,7 +26,8 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '09309932',
+      [ChainId.Kovan]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
   DAIStable: {

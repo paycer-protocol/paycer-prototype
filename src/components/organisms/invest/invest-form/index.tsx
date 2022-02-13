@@ -1,27 +1,53 @@
 import React, {memo} from 'react'
 import * as Yup from 'yup'
+import { t } from '@lingui/macro'
 import useToken from '@hooks/use-token'
+import useInvest from '@hooks/use-invest'
 import Form from '@components/atoms/form/form'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import InvestRangeSlider from './fields/invest-range-slider'
 import InvestInput from './fields/invest-input'
 import SubmitButton from './fields/submit-button'
-import {InvestFormFields} from '../types'
-import { t } from '@lingui/macro'
-import {useInvestList} from '@context/invest-list-context'
+import { InvestFormFields } from '../types'
+import { useInvestList } from '@context/invest-list-context'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import TokenInputPanel from "@components/organisms/token-input-panel";
 import InfoTooltip from "@components/atoms/info-tooltip";
+import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
+import RewardFee from "@components/organisms/staking-rewards/staking-form/reward-fee";
+import {FormikValues} from "formik";
 
 const InvestForm = () => {
 
     const {
-        strategy
+        strategy,
+        setShowFormModal
     } = useInvestList()
 
-    const handleSubmit = (values: InvestFormFields) => {
-        alert(values.investAmount)
+    const {
+        balanceOf,
+        deposit,
+        depositError,
+        depositTx,
+        approveTx,
+        setShowFormApproveModal,
+        showFormApproveModal,
+        resetStatus,
+        isLoading
+    } = useInvest(strategy)
+
+    const handleSubmit = () => {
+        setShowFormModal(false)
+        setShowFormApproveModal(true)
     }
+
+    const handleDeposit = async (values: FormikValues) => {
+        const depositAmount = values.investAmount - values.fee
+        await deposit(depositAmount)
+    }
+
+    console.log(balanceOf)
+
 
     const baseToken = useToken(strategy.input.symbol)
 
@@ -146,6 +172,51 @@ const InvestForm = () => {
                             </div>
                         </div>
                     </div>
+
+                    <TransactionApproveModal
+                        show={showFormApproveModal}
+                        onHide={() => {
+                            resetStatus()
+                            setShowFormModal(true)
+                            setShowFormApproveModal(false)
+                        }}
+                        title={t`Confirm Transaction`}
+                        onClick={() => handleDeposit(values)}
+                        successMessage={t`Transaction was successfully executed`}
+                        error={
+                            depositTx.status === 'Fail' ||
+                            depositTx.status === 'Exception' ||
+                            approveTx.status === 'Fail' ||
+                            approveTx.status === 'Exception' ||
+                            depositError
+                        }
+                        success={
+                            depositTx.status === 'Success'
+                        }
+                        loading={
+                            depositTx.status === 'Mining' ||
+                            approveTx.status === 'Mining' ||
+                            isLoading
+                        }
+                    >
+                        <>
+                            <div className="card blur-background">
+                                <div className="card-body">
+                                    <div className="row mb-4">
+                                        <div className="col-6">
+                                            {t`You will invest:`}
+                                        </div>
+                                        <div className="col-6 fw-bold">
+                                            <DashNumber
+                                                value={values.investAmount}
+                                                symbol={values.baseSymbol}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    </TransactionApproveModal>
 
                     <div className="text-center">
                         <SubmitButton/>

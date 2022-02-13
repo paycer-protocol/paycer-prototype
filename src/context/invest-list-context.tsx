@@ -6,6 +6,8 @@ import {riskLabels} from "../locales";
 
 export type InvestListContextTypes = {
     setStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
+    setShowFormModal: React.Dispatch<React.SetStateAction<boolean>>,
+    showFormModal: boolean,
     strategy: StrategyType,
     toggleListView: (isListView: boolean) => void,
     isListView: boolean,
@@ -14,12 +16,14 @@ export type InvestListContextTypes = {
 }
 
 const contextDefaultValues: InvestListContextTypes = {
+    setShowFormModal: null,
     setStrategy: null,
     strategy: null,
     toggleListView: null,
     isListView: false,
     strategies: null,
-    handleSearch: null
+    handleSearch: null,
+    showFormModal: true
 }
 
 const InvestListContext = createContext<InvestListContextTypes>(
@@ -30,6 +34,7 @@ export const useInvestList = () => useContext(InvestListContext)
 
 const InvestListContextProvider = ({ children }) => {
     const [strategy, setStrategy] = useState<StrategyType | null>(null)
+    const [showFormModal, setShowFormModal] = useState(true)
     const [isListView, setIsListView] = useState<boolean>(false)
     const [strategies, setStrategies] = useState<StrategyType[] | null>(investmentStrategies)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
@@ -76,7 +81,9 @@ const InvestListContextProvider = ({ children }) => {
                 isListView,
                 toggleListView,
                 strategies,
-                handleSearch
+                handleSearch,
+                showFormModal,
+                setShowFormModal
             }}
         >
             {children}

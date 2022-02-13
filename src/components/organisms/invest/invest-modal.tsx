@@ -8,7 +8,8 @@ const InvestModal = () => {
 
     const {
         setStrategy,
-        strategy
+        strategy,
+        showFormModal
     } = useInvestList()
 
     if (!strategy) {
@@ -16,8 +17,8 @@ const InvestModal = () => {
     }
 
     return (
-        <Modal show onHide={() => setStrategy(null)}>
-          <div className="bg-card-blue">
+        <Modal centered show onHide={() => setStrategy(null)}>
+          <div className={`${!showFormModal ? 'd-none' : ''} bg-card-blue`}>
             <Modal.Header closeButton onHide={() => setStrategy(null)}>
                 <Modal.Title><Trans>Invest</Trans></Modal.Title>
             </Modal.Header>
