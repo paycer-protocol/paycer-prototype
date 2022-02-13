@@ -29,7 +29,7 @@ interface UseVestingProps {
 export default function useInvest(strategy: StrategyType):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
-    const strategyAddress =  strategy.chainAddresses[chainId] ||  strategy.chainAddresses[ChainId.Polygon]
+    const strategyAddress = strategy.chainAddresses[chainId] || strategy.chainAddresses[ChainId.Polygon]
     const strategyContract = new Contract(strategyAddress, InvestAbi)
     const tokenContract = new Contract(strategy.input.chainAddresses[chainId], ERC20Abi)
 

@@ -52,7 +52,7 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
   USDTStable: {
@@ -77,7 +77,7 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
   WBTCPool: {
@@ -102,7 +102,7 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
   WETHPool: {
@@ -127,7 +127,7 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
   BUSDstable: {
@@ -152,7 +152,7 @@ export const strategyProvider: IStrategyProvider = {
     },
     chainAddresses: {
       [ChainId.Mainnet]: '09309932',
-      [ChainId.Polygon]: '09309932'
+      [ChainId.Polygon]: '0xAaD7328bCC81AC7D8ae9187d7F10B503E3d38Eb8'
     }
   },
 }

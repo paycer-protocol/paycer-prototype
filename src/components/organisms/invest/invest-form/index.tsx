@@ -213,6 +213,39 @@ const InvestForm = () => {
                                             />
                                         </div>
                                     </div>
+                                    <div className="row mb-4">
+                                        <div className="col-6">
+                                            {t`Daily rewards:`}
+                                        </div>
+                                        <div className="col-6 fw-bold">
+                                            <DashNumber
+                                                value={values.dailyRewards}
+                                                symbol={values.rewardSymbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row mb-4">
+                                        <div className="col-6">
+                                            {t`Daily interest:`}
+                                        </div>
+                                        <div className="col-6 fw-bold">
+                                            <DashNumber
+                                                value={values.dailyInterest}
+                                                symbol={values.interestSymbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            {t`Fee:`}
+                                        </div>
+                                        <div className="col-6 fw-bold">
+                                            <DashNumber
+                                                value={values.fee}
+                                                symbol={values.feeSymbol}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </>
