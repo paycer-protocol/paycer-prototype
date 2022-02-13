@@ -2,6 +2,31 @@
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "symbol",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_weth",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_addressListFactory",
+        "type": "address"
+      },
+      {
         "internalType": "address",
         "name": "_controller",
         "type": "address"
@@ -279,7 +304,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_value",
+        "name": "amount",
         "type": "uint256"
       }
     ],
@@ -298,7 +323,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_value",
+        "name": "amount",
         "type": "uint256"
       }
     ],

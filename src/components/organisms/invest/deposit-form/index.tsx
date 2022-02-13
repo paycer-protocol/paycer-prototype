@@ -14,10 +14,9 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 import TokenInputPanel from "@components/organisms/token-input-panel";
 import InfoTooltip from "@components/atoms/info-tooltip";
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
-import RewardFee from "@components/organisms/staking-rewards/staking-form/reward-fee";
 import {FormikValues} from "formik";
 
-const InvestForm = () => {
+const DepositForm = () => {
 
     const {
         strategy,
@@ -25,7 +24,7 @@ const InvestForm = () => {
     } = useInvestList()
 
     const {
-        balanceOf,
+        currentInvest,
         deposit,
         depositError,
         depositTx,
@@ -45,9 +44,6 @@ const InvestForm = () => {
         const depositAmount = values.investAmount - values.fee
         await deposit(depositAmount)
     }
-
-    console.log(balanceOf)
-
 
     const baseToken = useToken(strategy.input.symbol)
 
@@ -260,4 +256,4 @@ const InvestForm = () => {
     )
 }
 
-export default memo(InvestForm)
+export default memo(DepositForm)

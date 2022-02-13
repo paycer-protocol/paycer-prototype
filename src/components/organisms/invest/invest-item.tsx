@@ -7,6 +7,7 @@ import { riskLabels } from '../../../locales'
 
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {useInvestList} from "@context/invest-list-context";
+import useInvest from "@hooks/use-invest";
 
 interface InvestItemProps {
   strategy: StrategyType,
@@ -16,8 +17,13 @@ export default function InvestItem(props: InvestItemProps) {
   const { strategy } = props
 
   const {
-    setStrategy
+    setStrategy,
+    setInvestType
   } = useInvestList()
+
+  const {
+    currentInvest
+  } = useInvest(strategy)
 
   const tdClass = 'bg-dark border border-purple-dark'
 
@@ -49,13 +55,17 @@ export default function InvestItem(props: InvestItemProps) {
           <Money value={0} />
         </td>
         <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0 pt-0 pb-0`}>
-          <GradientButton className="me-5" onClick={() => setStrategy(strategy)}>
+          <GradientButton className="me-4" onClick={() => {
+            setInvestType('deposit')
+            setStrategy(strategy)
+          }}>
             <span>{t`Invest`}</span>
           </GradientButton>
-          <GradientButton isInverted onClick={() => setStrategy(strategy)}>
-            <span className="bg-dark">
-              {t`Withdraw`}
-            </span>
+          <GradientButton disabled={currentInvest === 0} isInverted onClick={() => {
+            setInvestType('withdraw')
+            setStrategy(strategy)
+          }}>
+            <span className="bg-dark">{t`Withdraw`}</span>
           </GradientButton>
         </td>
       </tr>

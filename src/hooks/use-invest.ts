@@ -7,14 +7,13 @@ import { Contract } from '@ethersproject/contracts'
 import InvestAbi from '../deployments/Invest.json'
 import ERC20Abi from '../deployments/ERC20.json'
 import useWallet from '@hooks/use-wallet'
-import { Interface } from '@ethersproject/abi'
 import { StrategyType } from '../types/investment'
 
 interface UseVestingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     resetStatus: () => void
-    balanceOf: number
+    currentInvest: number
     depositTx: any
     withdrawTx: any
     approveTx: any
@@ -30,6 +29,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
     const strategyAddress = strategy.chainAddresses[chainId] || strategy.chainAddresses[ChainId.Polygon]
+
     const strategyContract = new Contract(strategyAddress, InvestAbi)
     const tokenContract = new Contract(strategy.input.chainAddresses[chainId], ERC20Abi)
 
@@ -46,18 +46,8 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     //let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
     //const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
-    const balanceOfArgs:any = wallet.isConnected ? {
-        abi: new Interface(InvestAbi),
-        address: strategyAddress,
-        method: 'balanceOf',
-        args: [wallet.address],
-    } : false
-
-    let balanceOf = useContractCall(balanceOfArgs) ?? 0
-
-    balanceOf = BigNumber.isBigNumber(balanceOf) ? Number(formatUnits(balanceOf, 18)) : 0
-
-    console.log(balanceOf)
+    // TODO GET CURENT INVEST FROM CHAIN
+    let currentInvest = 100
 
     const deposit = async (amount: number) => {
         setLoading(true)
@@ -80,10 +70,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const withdraw = async (amount: number) => {
         setLoading(true)
         try {
-            if (amount > formattedAllowance) {
-                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
-            }
-
+            await approve(strategyAddress, parseUnits(String(amount * 2), 18))
             await sendWithdraw(parseUnits(String(amount), 18), wallet.address)
 
             if (withdrawTx.status === 'Success') {
@@ -108,7 +95,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         withdraw,
         resetStatus,
         // @ts-ignore
-        balanceOf: BigNumber.isBigNumber(balanceOf) ? Number(formatUnits(balanceOf, 18)) : 0,
+        currentInvest,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         // @ts-ignore

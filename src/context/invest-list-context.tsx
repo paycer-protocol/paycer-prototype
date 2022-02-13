@@ -7,12 +7,14 @@ import {riskLabels} from "../locales";
 export type InvestListContextTypes = {
     setStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
     setShowFormModal: React.Dispatch<React.SetStateAction<boolean>>,
+    setInvestType: React.Dispatch<React.SetStateAction<'deposit' | 'withdraw'>>,
     showFormModal: boolean,
     strategy: StrategyType,
     toggleListView: (isListView: boolean) => void,
     isListView: boolean,
     strategies: StrategyType[],
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void
+    investType: 'deposit' | 'withdraw'
 }
 
 const contextDefaultValues: InvestListContextTypes = {
@@ -23,7 +25,9 @@ const contextDefaultValues: InvestListContextTypes = {
     isListView: false,
     strategies: null,
     handleSearch: null,
-    showFormModal: true
+    showFormModal: true,
+    setInvestType: null,
+    investType: 'deposit'
 }
 
 const InvestListContext = createContext<InvestListContextTypes>(
@@ -34,6 +38,7 @@ export const useInvestList = () => useContext(InvestListContext)
 
 const InvestListContextProvider = ({ children }) => {
     const [strategy, setStrategy] = useState<StrategyType | null>(null)
+    const [investType, setInvestType] = useState<'deposit' | 'withdraw'>('deposit')
     const [showFormModal, setShowFormModal] = useState(true)
     const [isListView, setIsListView] = useState<boolean>(false)
     const [strategies, setStrategies] = useState<StrategyType[] | null>(investmentStrategies)
@@ -83,7 +88,9 @@ const InvestListContextProvider = ({ children }) => {
                 strategies,
                 handleSearch,
                 showFormModal,
-                setShowFormModal
+                setShowFormModal,
+                setInvestType,
+                investType
             }}
         >
             {children}
