@@ -22,8 +22,8 @@ export default function InvestRangeSlider() {
                 step={0.01}
                 value={values.investRange}
                 onChange={(value) => {
-                    const investAmount = values.balance * value / 100
-                    setFieldValues(setFieldValue, values, investAmount)
+                    const depositAmount = values.balance * value / 100
+                    setFieldValues(setFieldValue, values, depositAmount)
                     setFieldValue('investRange', value)
                 }}
             />

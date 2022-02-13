@@ -11,21 +11,19 @@ export default function InvestInput() {
     } = useFormikContext<InvestFormFields>()
 
     const handleChange = (value: number) => {
-        const investAmount = value > values.balance ? values.balance : value
-        setFieldValues(setFieldValue, values, investAmount)
-        setFieldValue('investRange', investAmount * 100 / values.balance)
+        const withdrawAmount = value > values.balance ? values.balance : value
+        setFieldValues(setFieldValue, values, withdrawAmount)
+        setFieldValue('investRange', withdrawAmount * 100 / values.balance)
     }
 
     return (
         <TokenInput
-            name="investAmount"
+            name="withdrawAmount"
             required
             currency={values.baseSymbol}
             handleChange={handleChange}
-            raiseMax
-            balance={values.balance}
             decimals={4}
-            value={values.investAmount}
+            value={values.withdrawAmount}
         />
     )
 }

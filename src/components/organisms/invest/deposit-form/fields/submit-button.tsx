@@ -6,7 +6,7 @@ import { InvestFormFields } from '../../types'
 
 export default function SubmitButton() {
     const { dirty, isValid, isValidating, values } = useFormikContext<InvestFormFields>()
-    const isDisabled = !dirty || !isValid || isValidating || values.investAmount === 0
+    const isDisabled = !dirty || !isValid || isValidating || values.depositAmount === 0
 
     return (
         <GradientButton type="submit" className="px-6 px-md-8 mb-2" disabled={isDisabled}>
