@@ -147,7 +147,7 @@ msgstr "Bonus Percentage"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/organisms/layout/layout.tsx:34
+#: src/components/organisms/layout/layout.tsx:33
 msgid "Change network"
 msgstr "Change network"
 
@@ -668,7 +668,7 @@ msgstr "Monthly rewards:"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/layout/layout.tsx:32
+#: src/components/organisms/layout/layout.tsx:31
 msgid "Network not supported"
 msgstr "Network not supported"
 

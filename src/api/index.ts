@@ -22,8 +22,8 @@ export default {
   fetchReferralRewards: (walletAddress: string): Promise<any> => (
     axios.get(`https://api.paycer.io/v1/referrals/${walletAddress}/rewards`)
   ),
-  fetchPriceChart: async(token0Symbol: string, token1Symbol: string, range: string): Promise<[number, number][]> => (
-    axios.get(`https://api.paycer.io/v1/pair_prices?symbol=${token0Symbol}&base=${token1Symbol}&order[time]=desc`).
+  fetchPriceChart: async(token0Symbol: string, token1Symbol: string, interval: string): Promise<[number, number][]> => (
+    axios.get(`https://api.paycer.io/v1/prices/pair_prices?symbol=${token0Symbol}&base=${token1Symbol}&order=asc&interval=${interval}`).
       then(res => (res.data as PricePair[]).map(pp => [moment(pp.time).valueOf(), Number(pp.quote)]))
   )
 }
