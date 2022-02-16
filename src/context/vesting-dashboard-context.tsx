@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price'
 
 interface DashboardProps {
   kycStatus?: boolean
@@ -45,36 +44,6 @@ const VestingDashboardContext = React.createContext<VestingProps>({
 })
 
 export const useVestingDashboard = () => useContext(VestingDashboardContext)
-
-const calculateTotalInvested = (transactions, type = 'public') => {
-
-  let totalInvest = 0
-  let totalReceived = 0
-
-  let tokenSalePriceUSD = publicSalePriceUSD
-  if (type === 'private' || type === 'private_v2') {
-    tokenSalePriceUSD = privateSalePriceUSD
-  } else if (type === 'pre') {
-    tokenSalePriceUSD = preSalePriceUSD
-  }
-
-  Object.keys(transactions).map((key) => {
-    if (transactions[key].historicalUSDPrice) {
-      const USDAmount = transactions[key].value * transactions[key].historicalUSDPrice
-      totalReceived+= USDAmount / tokenSalePriceUSD
-      totalInvest+= USDAmount
-    } else {
-      const USDAmount = transactions[key].value
-      totalReceived+= USDAmount / tokenSalePriceUSD
-      totalInvest+= USDAmount
-    }
-  })
-
-  return {
-    totalInvest,
-    totalReceived
-  }
-}
 
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
   return (
