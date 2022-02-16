@@ -7,7 +7,7 @@ import { riskLabels } from '../../../locales'
 
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {useInvestList} from "@context/invest-list-context";
-import useInvest from "@hooks/use-invest";
+import useInvestIsWithdrawable from "@hooks/use-invest-is-withdrawable";
 
 interface InvestItemProps {
   strategy: StrategyType,
@@ -22,8 +22,8 @@ export default function InvestItem(props: InvestItemProps) {
   } = useInvestList()
 
   const {
-    currentInvest
-  } = useInvest(strategy)
+    isWithdrawAble
+  } = useInvestIsWithdrawable(strategy)
 
   const tdClass = 'bg-dark border border-purple-dark'
 
@@ -61,9 +61,11 @@ export default function InvestItem(props: InvestItemProps) {
           }}>
             <span>{t`Invest`}</span>
           </GradientButton>
-          <GradientButton disabled={currentInvest === 0} isInverted onClick={() => {
-            setInvestType('withdraw')
-            setStrategy(strategy)
+          <GradientButton disabled={!isWithdrawAble} isInverted onClick={() => {
+            if (isWithdrawAble) {
+              setInvestType('withdraw')
+              setStrategy(strategy)
+            }
           }}>
             <span className="bg-dark">{t`Withdraw`}</span>
           </GradientButton>

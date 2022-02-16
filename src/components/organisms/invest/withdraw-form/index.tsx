@@ -24,10 +24,10 @@ const WithdrawForm = () => {
     } = useInvestList()
 
     const {
-        currentInvest,
-        deposit,
-        depositError,
-        depositTx,
+        withdrawAbleAmount,
+        withdraw,
+        withdrawError,
+        withdrawTx,
         approveTx,
         setShowFormApproveModal,
         showFormApproveModal,
@@ -40,9 +40,9 @@ const WithdrawForm = () => {
         setShowFormApproveModal(true)
     }
 
-    const handleDeposit = async (values: FormikValues) => {
-        const withdrawAmount = values.withdrawAmount - values.fee
-        await deposit(withdrawAmount)
+    const handleWithdraw = async (values: FormikValues) => {
+        const amount = values.amount - values.fee
+        await withdraw(amount)
     }
 
     const baseToken = useToken(strategy.input.symbol)
@@ -50,7 +50,7 @@ const WithdrawForm = () => {
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: strategy.input.symbol,
-        withdrawAmount: currentInvest,
+        amount: withdrawAbleAmount,
         balance: baseToken.tokenBalance(),
         investSymbol: strategy.output.symbol,
 
@@ -69,11 +69,11 @@ const WithdrawForm = () => {
         investFee: strategy.fees.investFee,
         fee: 0,
 
-        investRange: currentInvest * 100
+        investRange: withdrawAbleAmount * 100
     }
 
     const validationSchema = Yup.object().shape({
-        withdrawAmount: Yup.number().min(0).required()
+        amount: Yup.number().min(0).required()
     })
 
     return (
@@ -177,20 +177,20 @@ const WithdrawForm = () => {
                             setShowFormApproveModal(false)
                         }}
                         title={t`Confirm Transaction`}
-                        onClick={() => handleDeposit(values)}
+                        onClick={() => handleWithdraw(values)}
                         successMessage={t`Transaction was successfully executed`}
                         error={
-                            depositTx.status === 'Fail' ||
-                            depositTx.status === 'Exception' ||
+                            withdrawTx.status === 'Fail' ||
+                            withdrawTx.status === 'Exception' ||
                             approveTx.status === 'Fail' ||
                             approveTx.status === 'Exception' ||
-                            depositError
+                            withdrawError
                         }
                         success={
-                            depositTx.status === 'Success'
+                            withdrawTx.status === 'Success'
                         }
                         loading={
-                            depositTx.status === 'Mining' ||
+                            withdrawTx.status === 'Mining' ||
                             approveTx.status === 'Mining' ||
                             isLoading
                         }
@@ -200,11 +200,22 @@ const WithdrawForm = () => {
                                 <div className="card-body">
                                     <div className="row mb-4">
                                         <div className="col-6">
-                                            {t`You will invest:`}
+                                            {t`You will withdraw:`}
                                         </div>
                                         <div className="col-6 fw-bold">
                                             <DashNumber
-                                                value={values.withdrawAmount}
+                                                value={values.amount}
+                                                symbol={values.baseSymbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row mb-4">
+                                        <div className="col-6">
+                                            {t`You invest after:`}
+                                        </div>
+                                        <div className="col-6 fw-bold">
+                                            <DashNumber
+                                                value={initialValues.amount - values.amount}
                                                 symbol={values.baseSymbol}
                                             />
                                         </div>

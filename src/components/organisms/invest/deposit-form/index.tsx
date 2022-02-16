@@ -41,8 +41,8 @@ const DepositForm = () => {
     }
 
     const handleDeposit = async (values: FormikValues) => {
-        const depositAmount = values.depositAmount - values.fee
-        await deposit(depositAmount)
+        const amount = values.amount - values.fee
+        await deposit(amount)
     }
 
     const baseToken = useToken(strategy.input.symbol)
@@ -50,7 +50,7 @@ const DepositForm = () => {
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: strategy.input.symbol,
-        depositAmount: null,
+        amount: null,
         balance: baseToken.tokenBalance(),
         investSymbol: strategy.output.symbol,
 
@@ -73,7 +73,7 @@ const DepositForm = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        depositAmount: Yup.number().min(0).required()
+        amount: Yup.number().min(0).required()
     })
 
     return (
@@ -204,7 +204,7 @@ const DepositForm = () => {
                                         </div>
                                         <div className="col-6 fw-bold">
                                             <DashNumber
-                                                value={values.depositAmount}
+                                                value={values.amount}
                                                 symbol={values.baseSymbol}
                                             />
                                         </div>

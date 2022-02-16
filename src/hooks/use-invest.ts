@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useContractCall, useContractFunction } from '@usedapp/core'
+import {useContractCall, useContractFunction, useTokenAllowance} from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits, parseUnits } from '@ethersproject/units'
@@ -8,12 +8,13 @@ import InvestAbi from '../deployments/Invest.json'
 import ERC20Abi from '../deployments/ERC20.json'
 import useWallet from '@hooks/use-wallet'
 import { StrategyType } from '../types/investment'
+import {Interface} from "@ethersproject/abi";
 
 interface UseVestingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     resetStatus: () => void
-    currentInvest: number
+    withdrawAbleAmount: number
     depositTx: any
     withdrawTx: any
     approveTx: any
@@ -37,24 +38,35 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const [isLoading, setLoading] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
     const [depositError, setDepositError] = useState(false)
-    const [claimError, setClaimError] = useState(false)
 
     let { send: sendDeposit, state: depositTx } = useContractFunction(strategyContract, 'deposit')
     let { send: sendWithdraw, state: withdrawTx } = useContractFunction(strategyContract, 'withdraw')
     let { send: approve, state: approveTx } = useContractFunction(tokenContract, 'approve')
 
-    //let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
-    //const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
+    const getContractValue = (method: string) => {
+        const balanceOfArgs:any = wallet.isConnected ? {
+            abi: new Interface(InvestAbi),
+            address: strategyAddress,
+            method: method,
+            args: [wallet.address],
+        } : false
+        let [data] = useContractCall(balanceOfArgs) ?? []
+        return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
+    }
 
-    // TODO GET CURENT INVEST FROM CHAIN
-    let currentInvest = 100
+    const withdrawAbleAmount = getContractValue('balanceOf')
+
+    let allowance = useTokenAllowance(tokenContract.address, wallet.address, strategyAddress)
+    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
     const deposit = async (amount: number) => {
         setLoading(true)
         try {
-            await approve(strategyAddress, parseUnits(String(amount * 2), 18))
 
-            await sendDeposit(parseUnits(String(amount), 18), wallet.address)
+            if (amount > formattedAllowance) {
+                await approve(strategyAddress, parseUnits(String(amount * 2), 18))
+            }
+            await sendDeposit(parseUnits(String(amount), 18))
 
             if (depositTx.status === 'Success') {
                 setTimeout(() =>{
@@ -62,6 +74,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
                 }, 3000);
             }
         } catch(e) {
+            console.log(e)
             setDepositError(true)
         }
         setLoading(false)
@@ -71,7 +84,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setLoading(true)
         try {
             await approve(strategyAddress, parseUnits(String(amount * 2), 18))
-            await sendWithdraw(parseUnits(String(amount), 18), wallet.address)
+            await sendWithdraw(parseUnits(String(amount), 18))
 
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
@@ -93,9 +106,8 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     return {
         deposit,
         withdraw,
+        withdrawAbleAmount,
         resetStatus,
-        // @ts-ignore
-        currentInvest,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         // @ts-ignore
@@ -106,7 +118,6 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setShowFormApproveModal,
         withdrawError,
         depositError,
-        claimError,
         isLoading
     }
 }

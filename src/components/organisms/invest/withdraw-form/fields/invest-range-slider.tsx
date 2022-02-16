@@ -5,7 +5,7 @@ import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
 
 export default function InvestRangeSlider() {
-    const { values, setFieldValue, dirty } = useFormikContext<InvestFormFields>()
+    const { values, setFieldValue, dirty, initialValues } = useFormikContext<InvestFormFields>()
 
     return (
         <div>
@@ -22,8 +22,8 @@ export default function InvestRangeSlider() {
                 step={0.01}
                 value={values.investRange}
                 onChange={(value) => {
-                    const withdrawAmount = values.withdrawAmount * value / 100
-                    setFieldValues(setFieldValue, values, withdrawAmount)
+                    const amount = initialValues.amount * value / 100
+                    setFieldValues(setFieldValue, values, amount)
                     setFieldValue('investRange', value)
                 }}
             />

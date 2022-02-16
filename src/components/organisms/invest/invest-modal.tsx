@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { t } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import DepositForm  from '@components/organisms/invest/deposit-form'
