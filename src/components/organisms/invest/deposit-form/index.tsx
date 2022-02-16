@@ -24,7 +24,6 @@ const DepositForm = () => {
     } = useInvestList()
 
     const {
-        currentInvest,
         deposit,
         depositError,
         depositTx,
