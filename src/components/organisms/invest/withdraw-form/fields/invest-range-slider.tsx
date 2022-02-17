@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from '@components/atoms/form/range'
-import setFieldValues from '../../helper/set-field-values'
+import calculateFieldValues from '../../helper/set-field-values'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
 
@@ -23,7 +23,7 @@ export default function InvestRangeSlider() {
                 value={values.investRange}
                 onChange={(value) => {
                     const amount = initialValues.amount * value / 100
-                    setFieldValues(setFieldValue, values, amount)
+                    calculateFieldValues(setFieldValue, values, amount)
                     setFieldValue('investRange', value)
                 }}
             />

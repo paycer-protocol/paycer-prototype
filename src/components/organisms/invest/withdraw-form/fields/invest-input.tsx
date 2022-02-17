@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { InvestFormFields } from '../../types'
 import TokenInput from "@components/molecules/token-input";
-import setFieldValues from '../../helper/set-field-values'
+import calculateFieldValues from '../../helper/set-field-values'
 
 export default function InvestInput() {
     const {
@@ -12,7 +12,7 @@ export default function InvestInput() {
 
     const handleChange = (value: number) => {
         const amount = value > values.balance ? values.balance : value
-        setFieldValues(setFieldValue, values, amount)
+        calculateFieldValues(setFieldValue, values, amount)
         setFieldValue('investRange', amount * 100 / values.balance)
     }
 

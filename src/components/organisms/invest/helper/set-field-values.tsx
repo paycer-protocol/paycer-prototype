@@ -1,4 +1,4 @@
-const setFieldValues = (setFieldValue, values, amount) => {
+const calculateFieldValues = (setFieldValue, values, amount) => {
     setFieldValue('amount', amount)
     const dailyRewards = amount * values.rewardRate / 100 / 365
     setFieldValue('dailyRewards', dailyRewards)
@@ -8,4 +8,4 @@ const setFieldValues = (setFieldValue, values, amount) => {
     setFieldValue('fee', fee)
 }
 
-export default setFieldValues
+export default calculateFieldValues
