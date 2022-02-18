@@ -35,5 +35,11 @@ export const routes = [
     path: '/swap',
     supportedChains,
     auth: false
-  }
+  },
+  {
+    label: t`Info`,
+    path: '/info',
+    supportedChains,
+    auth: false
+  },
 ]
