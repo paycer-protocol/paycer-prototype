@@ -1,9 +1,11 @@
-import React from 'react'
-import {tokenProvider} from '@providers/tokens'
-import {swapTokens} from '@config/market-pairs'
+import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
+import { tokenProvider } from '@providers/tokens'
+import { swapTokens } from '@config/market-pairs'
+import useToken from '@hooks/use-token'
+import useNetwork from '@hooks/use-network'
+import useWallet from '@hooks/use-wallet'
 import Form from '@components/atoms/form/form'
-import {SwapProps} from './types'
 import TokenInputPanel from '@components/organisms/token-input-panel'
 import Token0Select from './fields/token0-select'
 import Token0Input from './fields/token0-input'
@@ -11,34 +13,69 @@ import Token1Select from './fields/token1-select'
 import SubmitButton from './fields/submit-button'
 import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
-import PriceChart from './price-chart'
 import SummaryDropdown from './summary-dropdown'
 import SettingsDropdown from './settings-dropdown'
-import useToken from "@hooks/use-token";
+import PriceChart from './price-chart'
+import { SwapProps } from './types'
+import { Trade, TradeContext, UniswapProvider } from '../../../../lib/trade'
+
 
 export default function SwapForm() {
+    const network = useNetwork()
+    const wallet = useWallet()
+    const token0 = useToken(tokenProvider.USDT.symbol)
+    const token1 = useToken(tokenProvider.USDC.symbol)
+    const [tradeContext, setTradeContext] = useState<TradeContext|any>({})
 
-    const getToken0Balance = useToken(tokenProvider.USDC.symbol)
-    const getToken1Balance = useToken(tokenProvider.PCR.symbol)
+    const provider = new UniswapProvider()
+    const trade = new Trade(provider)
+
+    useEffect(() => {
+        (async () => {
+            if (wallet.isConnected) {
+                const nextTradeContext = await trade.init(
+                  initialValues.tradePair,
+                  initialValues.tradeSettings,
+                  initialValues.networkSettings
+                )
+
+                setTradeContext(nextTradeContext)
+                console.log(nextTradeContext)
+            }
+        })()
+    }, [wallet.isConnected, wallet.address])
+
 
     const initialValues: SwapProps = {
-        token1: tokenProvider.PCR,
-        token1Value: null,
-        token1Markets: swapTokens,
-        token1Price: 1,
-        token0Balance: getToken0Balance.tokenBalance(),
-
-        token0: tokenProvider.USDC,
+        token0,
         token0Value: null,
         token0Markets: swapTokens,
-        token0Price: 1,
-        token1Balance: getToken1Balance.tokenBalance(),
 
-        minimumToReceive: 0,
-        slippageTolerance: 0.5,
-        priceImpact: 0.01,
-        feeFactor: 0.01,
-        fee: 0
+        token1,
+        token1Value: null,
+        token1Markets: swapTokens,
+
+        tradePair: {
+            fromTokenAddress: token0.tokenAddress,
+            toTokenAddress: token1.tokenAddress,
+            amount: "1",
+        },
+        tradeSettings: {
+            slippage: 3,
+            deadlineMinutes: 20,
+            disableMultihops: false,
+        },
+        networkSettings: {
+            providerUrl: network.rpcUrls[0],
+            walletAddress: wallet.address,
+            networkProvider: network.provider,
+            chainId: network.chainId,
+            nameNetwork: network.chainName,
+            multicallContractAddress: network.multicallAddress,
+            nativeCurrency: network.nativeCurrency,
+            nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+        },
+        tradeContext
     }
 
     const validationSchema = Yup.object().shape({
@@ -46,7 +83,7 @@ export default function SwapForm() {
         token1Value: Yup.number().min(0).required(),
     })
 
-    const handleSubmit = (values: SwapProps) => {
+    const handleSubmit = async (values: SwapProps) => {
         console.log(values)
     }
 
@@ -58,10 +95,8 @@ export default function SwapForm() {
             enableReinitialize
         >
             {({values}) => {
-
                 return (
                     <div className="d-lg-flex animated-wrapper">
-
                         <div className="col-md-5">
                             <div className="p-4 p-md-5 pe-md-0">
                                 <div className="d-flex flex-column flex-md-row mb-3">
@@ -82,7 +117,7 @@ export default function SwapForm() {
                                 </div>
                                 <div className="d-flex">
                                     <div className="col-10">
-                                        <SummaryDropdown/>
+                                        <SummaryDropdown />
                                     </div>
                                     <div className="col-2 ps-0">
                                         <SettingsDropdown/>

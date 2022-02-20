@@ -17,11 +17,11 @@ msgstr ""
 msgid "404"
 msgstr "404"
 
-#: src/components/organisms/vesting/overview/index.tsx:76
+#: src/components/organisms/vesting/overview/index.tsx:72
 msgid "% Bonus included"
 msgstr "% Bonus included"
 
-#: src/components/organisms/vesting/overview/index.tsx:35
+#: src/components/organisms/vesting/overview/index.tsx:32
 msgid "12 months"
 msgstr "12 months"
 
@@ -29,11 +29,11 @@ msgstr "12 months"
 #~ msgid "12 months after TGE"
 #~ msgstr "12 months after TGE"
 
-#: src/components/organisms/vesting/overview/index.tsx:33
+#: src/components/organisms/vesting/overview/index.tsx:30
 msgid "36 months"
 msgstr "36 months"
 
-#: src/components/organisms/vesting/overview/index.tsx:31
+#: src/components/organisms/vesting/overview/index.tsx:28
 msgid "6 months"
 msgstr "6 months"
 
@@ -73,8 +73,8 @@ msgstr "Adding Network to Wallet ..."
 #~ msgstr "Address not found"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:28
-msgid "Advisor distribution"
-msgstr "Advisor distribution"
+#~ msgid "Advisor distribution"
+#~ msgstr "Advisor distribution"
 
 #: src/pages/referral/components/Referrals.tsx:34
 msgid "An error has occurred. Please refresh the page"
@@ -427,7 +427,7 @@ msgstr "Explorer"
 #~ msgstr "Failed, please try again or contact the Support"
 
 #: src/components/organisms/invest/invest-form/index.tsx:141
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:80
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:70
 msgid "Fee"
 msgstr "Fee"
 
@@ -513,7 +513,7 @@ msgstr "Invest"
 msgid "Invest now"
 msgstr "Invest now"
 
-#: src/components/organisms/vesting/overview/index.tsx:49
+#: src/components/organisms/vesting/overview/index.tsx:45
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:79
 msgid "Invested"
 msgstr "Invested"
@@ -643,7 +643,7 @@ msgstr "Medium"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:53
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:51
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -734,7 +734,7 @@ msgstr "Partner"
 #~ msgid "Paycer Private is Live"
 #~ msgstr "Paycer Private is Live"
 
-#: src/components/organisms/off-canvas/index.tsx:76
+#: src/components/organisms/off-canvas/index.tsx:87
 msgid "Paycer Token"
 msgstr "Paycer Token"
 
@@ -785,8 +785,8 @@ msgstr "Portfolio"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:15
 #: src/components/organisms/vesting/dashboard/index.tsx:22
-msgid "Pre Sale distribution"
-msgstr "Pre Sale distribution"
+#~ msgid "Pre Sale distribution"
+#~ msgstr "Pre Sale distribution"
 
 #: src/pages/pre-sale-wallet.tsx:18
 #~ msgid "PreSale"
@@ -797,8 +797,8 @@ msgid "Previously added network Pending, please open your Wallet"
 msgstr "Previously added network Pending, please open your Wallet"
 
 #: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:72
-msgid "Price impact"
-msgstr "Price impact"
+#~ msgid "Price impact"
+#~ msgstr "Price impact"
 
 #: src/components/organisms/footer/footer.tsx:190
 msgid "Privacy"
@@ -810,16 +810,16 @@ msgstr "Privacy"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:17
 #: src/components/organisms/vesting/dashboard/index.tsx:24
-msgid "Private Sale distribution"
-msgstr "Private Sale distribution"
+#~ msgid "Private Sale distribution"
+#~ msgstr "Private Sale distribution"
 
 #: src/components/organisms/token-sale/dashboard/index.tsx:42
 #~ msgid "Public Sale"
 #~ msgstr "Public Sale"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:20
-msgid "Public Sale distribution"
-msgstr "Public Sale distribution"
+#~ msgid "Public Sale distribution"
+#~ msgstr "Public Sale distribution"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:68
 #~ msgid "Received"
@@ -921,7 +921,7 @@ msgstr "Show"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:34
+#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:32
 msgid "Slippage tolerance"
 msgstr "Slippage tolerance"
 
@@ -1034,8 +1034,8 @@ msgstr "Switch wallet"
 #~ msgstr "Switches to another wallet provider"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:26
-msgid "Team distribution"
-msgstr "Team distribution"
+#~ msgid "Team distribution"
+#~ msgstr "Team distribution"
 
 #: src/components/organisms/footer/footer.tsx:42
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
@@ -1081,8 +1081,8 @@ msgstr "The secure app to store crypto yourself"
 #~ msgstr "Token balance"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:30
-msgid "Token distribution"
-msgstr "Token distribution"
+#~ msgid "Token distribution"
+#~ msgstr "Token distribution"
 
 #: src/pages/portfolio/components/dash-cards.tsx:59
 #~ msgid "Total Balance"
@@ -1105,12 +1105,12 @@ msgstr "Total Pool Supply"
 msgid "Total Volume"
 msgstr "Total Volume"
 
-#: src/components/organisms/vesting/overview/index.tsx:69
+#: src/components/organisms/vesting/overview/index.tsx:65
 msgid "Total amount"
 msgstr "Total amount"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:92
-#: src/components/organisms/vesting/overview/index.tsx:93
+#: src/components/organisms/vesting/overview/index.tsx:89
 msgid "Total claimed"
 msgstr "Total claimed"
 
@@ -1180,7 +1180,7 @@ msgstr "Transfer to:"
 #~ msgid "Type"
 #~ msgstr "Type"
 
-#: src/components/organisms/vesting/overview/index.tsx:53
+#: src/components/organisms/vesting/overview/index.tsx:49
 msgid "USD"
 msgstr "USD"
 
@@ -1198,7 +1198,7 @@ msgstr "USD"
 msgid "Vesting"
 msgstr "Vesting"
 
-#: src/components/organisms/vesting/overview/index.tsx:113
+#: src/components/organisms/vesting/overview/index.tsx:109
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 

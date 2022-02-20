@@ -13,7 +13,15 @@ export interface INetworkProvider {
         }
         rpcUrls: string[]
         blockExplorerUrls: string[],
-        getExplorerAddressLink: any
+        getExplorerAddressLink: any,
+        nativeWrappedTokenInfo: {
+            chainId: ChainId
+            contractAddress: string
+            decimals: number
+            symbol: string
+            name: string
+        },
+        multicallAddress?: string
     }
 }
 
@@ -28,7 +36,15 @@ export const testNetNetworks: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Kovan]],
         blockExplorerUrls: [explorers[ChainId.Kovan]],
-        getExplorerAddressLink: Kovan.getExplorerAddressLink
+        getExplorerAddressLink: Kovan.getExplorerAddressLink,
+        nativeWrappedTokenInfo: {
+            chainId: ChainId.Kovan,
+            contractAddress: "0xf3a6679b266899042276804930b3bfbaf807f15b",
+            decimals: 18,
+            symbol: 'WETH',
+            name: 'Wrapped ETH'
+        },
+        multicallAddress: '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696'
     },
     [ChainId.Mumbai]: {
         chainId: '0x13881',
@@ -40,7 +56,15 @@ export const testNetNetworks: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Mumbai]],
         blockExplorerUrls: [explorers[ChainId.Mumbai]],
-        getExplorerAddressLink: Mumbai.getExplorerAddressLink
+        getExplorerAddressLink: Mumbai.getExplorerAddressLink,
+        nativeWrappedTokenInfo: {
+            chainId: ChainId.Mumbai,
+            contractAddress: "##todo##",
+            decimals: 18,
+            symbol: 'WMATIC',
+            name: 'Wrapped Matic'
+        },
+        multicallAddress: '0xe9939e7Ea7D7fb619Ac57f648Da7B1D425832631'
     },
 }
 
@@ -55,19 +79,16 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: ['https://mainnet.infura.io/v3'],
         blockExplorerUrls: [explorers[ChainId.Mainnet]],
-        getExplorerAddressLink: Mainnet.getExplorerAddressLink
+        getExplorerAddressLink: Mainnet.getExplorerAddressLink,
+        nativeWrappedTokenInfo: {
+            chainId: ChainId.Mainnet,
+            contractAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            decimals: 18,
+            symbol: 'WETH',
+            name: 'Wrapped ETH'
+        },
+        multicallAddress: '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696'
     },
-    // [ChainId.BSC]: {
-    //     chainId: '0x38',
-    //     chainName: 'BSC',
-    //     nativeCurrency: {
-    //         name: 'Binance Coin',
-    //         symbol: 'BNB',
-    //         decimals: 18,
-    //     },
-    //     rpcUrls: [rpcUrls[ChainId.BSC]],
-    //     blockExplorerUrls: [explorers[ChainId.BSC]],
-    // },
     [ChainId.Polygon]: {
         chainId: '0x89',
         chainName: 'Polygon',
@@ -78,7 +99,15 @@ export const mainNetProviders: INetworkProvider = {
         },
         rpcUrls: [rpcUrls[ChainId.Polygon]],
         blockExplorerUrls: [explorers[ChainId.Polygon]],
-        getExplorerAddressLink: Polygon.getExplorerAddressLink
+        getExplorerAddressLink: Polygon.getExplorerAddressLink,
+        nativeWrappedTokenInfo: {
+            chainId: ChainId.Polygon,
+            contractAddress: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+            decimals: 18,
+            symbol: 'WMATIC',
+            name: 'Wrapped Matic'
+        },
+        multicallAddress: '0x275617327c958bD06b5D6b871E7f491D76113dd8'
     },
 }
 

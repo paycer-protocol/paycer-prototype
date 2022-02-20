@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import DropdownComponent from "@components/atoms/dropdown/dropdown";
 import {useFormikContext} from 'formik'
 import {t} from '@lingui/macro'
 import {SwapProps} from '../types'
 import Icon from '@components/atoms/icon'
 import {ArrowDropDown, ArrowDropUp} from '@styled-icons/material'
-import CurrencyIcon from "@components/atoms/currency-icon";
-import {FormattedNumber} from "../../../../atoms/number/formatted-number";
+import CurrencyIcon from "@components/atoms/currency-icon"
+import { FormattedNumber} from "../../../../atoms/number/formatted-number"
 
 const Content = styled.div`
     z-index: 2; 
@@ -24,8 +23,8 @@ const Content = styled.div`
 `
 
 const SummaryDropdown = () => {
-    const {values} = useFormikContext<SwapProps>()
-    const [open, setOpen] = useState(false)
+    const { values } = useFormikContext<SwapProps>()
+    const [ open, setOpen ] = useState(false)
 
     return (
         <div className="position-relative">
@@ -34,8 +33,7 @@ const SummaryDropdown = () => {
                 <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
                         <div className="me-2">
-                            1 {values.token0.symbol} = {values.token1Price} {values.token1.symbol}
-                            <span className="ps-2 text-muted">($1,034)</span>
+                            1 {values.token1.symbol} = {1 / Number(values.tradeContext?.expectedConvertQuote || 0)} {values.token0.symbol}
                         </div>
                         <Icon
                             component={open ? ArrowDropUp : ArrowDropDown}
@@ -54,7 +52,7 @@ const SummaryDropdown = () => {
                         </span>
                         <span className="d-flex align-items-center">
                             <FormattedNumber
-                                value={values.minimumToReceive}
+                                value={Number(values.tradeContext?.minAmountConvertQuote) * Number(values.tradePair.amount)}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
@@ -67,21 +65,13 @@ const SummaryDropdown = () => {
                             />
                         </span>
                     </div>
-                    <div className="d-flex justify-content-between mb-3">
-                        <span className="text-muted">
-                            {t`Price impact`}
-                        </span>
-                        <span>
-                            {values.priceImpact}&nbsp;%
-                        </span>
-                    </div>
                     <div className="d-flex justify-content-between">
                         <span className="text-muted">
                             {t`Fee`}
                         </span>
                         <span className="d-flex align-items-center">
                             <FormattedNumber
-                                value={values.token0Value * values.feeFactor}
+                                value={values.tradeContext?.liquidityProviderFee}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
-import { SwapProps } from '../types'
-import TokenSelectModal from '@components/molecules/token-select-modal'
-import TokenToggle from './token-toggle'
 import { t } from '@lingui/macro'
 import { marketPairs, swapTokens } from '@config/market-pairs'
+import TokenSelectModal from '@components/molecules/token-select-modal'
+import TokenToggle from './token-toggle'
+import { SwapProps } from '../types'
 
 export default function Token0Select() {
     const { values, setFieldValue } = useFormikContext<SwapProps>()

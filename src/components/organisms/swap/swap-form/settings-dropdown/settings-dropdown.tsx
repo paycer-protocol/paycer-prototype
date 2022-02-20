@@ -1,13 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import * as Styles from './Styles'
 import { useFormikContext } from 'formik'
 import { t } from '@lingui/macro'
 import { SwapProps } from '../types'
 import Input from '@components/atoms/form/input'
-import calculateMinimumToReceive from '../../helper/minimum-to-receive'
 import Icon from '@components/atoms/icon'
-import DropdownComponent from "@components/atoms/dropdown/dropdown";
+import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import { Settings } from '@styled-icons/fluentui-system-regular'
 
 const SettingsDropdown = () => {
@@ -35,21 +33,20 @@ const SettingsDropdown = () => {
                     <div className="w-50 d-flex justify-content-between ">
                         <div className="w-100 d-flex align-items-center">
                             <Input
-                                name="slippageTolerance"
+                                name="tradeSettings.slippage"
                                 style={{ padding: '4px 10px'}}
                                 type="number"
-                                value={values.slippageTolerance}
+                                value={values.tradeSettings.slippage}
                                 onChange={(e) => {
                                     let slippageTolerance = e.target.value
-                                    // limit to 100 force 100
-                                    if (slippageTolerance > 100) {
-                                        slippageTolerance = 100
+                                    if (slippageTolerance > 25) {
+                                        slippageTolerance = 25
                                     }
-                                    if (slippageTolerance === 0) {
-                                        return
+                                    if (slippageTolerance < 0) {
+                                      slippageTolerance = 0
                                     }
-                                    setFieldValue('slippageTolerance', slippageTolerance)
-                                    calculateMinimumToReceive(values.token0Value, values.token1Value, slippageTolerance, values.feeFactor, setFieldValue)
+
+                                    setFieldValue('tradeSettings.slippage', slippageTolerance)
                                 }}
                             />
                             &nbsp;&nbsp;%
