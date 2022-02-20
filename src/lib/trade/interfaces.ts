@@ -4,7 +4,7 @@ import { TradeContext as BaseTradeContext } from './sdk/uniswap'
 
 
 export interface TradeProviderInterface {
-  init: (pair: TradePairInterface, tradeSettings: TradeSettingsInterface, networkSettings: NetworkSettingsInterface) => any
+  init: (pair: TradePairInterface, tradeSettings: TradeSettingsInterface, networkSettings: NetworkSettingsInterface) => TradeContext
   approve: () => any
   trade: () => any
 }

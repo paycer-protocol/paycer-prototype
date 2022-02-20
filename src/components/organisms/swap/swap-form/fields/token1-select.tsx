@@ -7,15 +7,22 @@ import {t} from '@lingui/macro'
 import {marketPairs, swapTokens} from '@config/market-pairs'
 
 export default function Token1Select() {
-    const { values, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setValues } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
 
     const handleChange = (token) => {
-        setFieldValue('minimumToReceive', 0)
         const token1Markets = marketPairs.find(m => m.base.symbol === values.token0.symbol).markets
-        setFieldValue('token1Markets', token1Markets)
-        setFieldValue('token0Markets', swapTokens)
-        setFieldValue('token1', token)
+
+        setValues({
+          ...values,
+          ...{
+            minimumToReceive: 0,
+            token1Markets: token1Markets,
+            token0Markets: swapTokens,
+            token1: token,
+          }
+        })
+
         setShowModal(false)
     }
 

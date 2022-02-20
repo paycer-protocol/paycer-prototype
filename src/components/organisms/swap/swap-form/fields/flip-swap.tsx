@@ -1,9 +1,9 @@
 import React from 'react'
-import { SwapVert } from '@styled-icons/material'
+import {useFormikContext} from 'formik'
+import {SwapVert} from '@styled-icons/material/SwapVert'
 import styled from 'styled-components'
 import Icon from '@components/atoms/icon'
-import {FormikValues, useFormikContext} from "formik";
-import {SwapProps} from "@components/organisms/swap/swap-form/types";
+import {SwapProps} from '@components/organisms/swap/swap-form/types'
 
 export const Circle = styled.div`
 height: 34px;
@@ -14,40 +14,45 @@ width: 34px;  border: 1px solid #324b68!important;
 `
 
 export default function FlipSwap() {
-    const { values, setFieldValue } = useFormikContext<SwapProps>()
+  const { values, setValues } = useFormikContext<SwapProps>()
 
-    const handleFlip = () => {
-        const {
-            token0,
-            token0Value,
-            token1,
-            token1Value,
-            token0Price,
-            token1Price,
-            token0Markets,
-            token1Markets,
-            token1Balance,
-            token0Balance
-        } = values
-        setFieldValue('token0', token1)
-        setFieldValue('token1', token0)
-        setFieldValue('token0Value', token1Value)
-        setFieldValue('token1Value', token0Value)
-        setFieldValue('token0Price', token1Price)
-        setFieldValue('token1Price', token0Price)
-        setFieldValue('token1Markets', token0Markets)
-        setFieldValue('token0Markets', token1Markets)
-        setFieldValue('token1Balance', token0Balance)
-        setFieldValue('token0Balance', token1Balance)
-    }
+  const handleFlip = () => {
+    const {
+      token0,
+      token0Value,
+      token1,
+      token1Value,
+      token0Markets,
+      token1Markets,
+      tradePair,
+    } = values
+
+    setValues({
+      ...values,
+      ...{
+        token0: token1,
+        token1: token0,
+        token0Value: token1Value,
+        token1Value: token0Value,
+        token1Markets: token0Markets,
+        token0Markets: token1Markets,
+        tradePair: {
+          fromTokenAddress: token1.tokenAddress,
+          toTokenAddress: token0.tokenAddress,
+          amount: tradePair.amount,
+        },
+      }
+    })
+  }
 
   return (
-    <Circle onClick={() => handleFlip()} className="cursor-pointer d-flex rounded-circle justify-content-center bg-dark align-items-center">
-        <Icon
-            component={SwapVert}
-            size={20}
-            color="#FFF"
-        />
+    <Circle onClick={() => handleFlip()}
+            className="cursor-pointer d-flex rounded-circle justify-content-center bg-dark align-items-center">
+      <Icon
+        component={SwapVert}
+        size={20}
+        color="#FFF"
+      />
     </Circle>
   )
 }

@@ -6,16 +6,10 @@ import {
 } from './../interfaces'
 
 import {
-  ETH,
-  getAddress,
-  TokensFactoryPublic,
   TradeContext,
-  TradeDirection,
-  Transaction,
   UniswapPair,
   UniswapPairFactory,
   UniswapPairSettings,
-  UniswapSubscription,
   UniswapVersion,
 } from '../sdk/uniswap'
 
@@ -35,7 +29,8 @@ export class UniswapProvider implements TradeProviderInterface {
   public async init(
     pair: TradePairInterface,
     tradeSettings: TradeSettingsInterface,
-    networkSettings: NetworkSettingsInterface): Promise<any> {
+    networkSettings: NetworkSettingsInterface
+  ): Promise<any> {
     const uniswapPair = new UniswapPair({
       fromTokenContractAddress: pair.fromTokenAddress,
       toTokenContractAddress: pair.toTokenAddress,
@@ -44,19 +39,27 @@ export class UniswapProvider implements TradeProviderInterface {
       ethereumProvider: networkSettings.networkProvider,
       chainId: networkSettings.chainId,
       settings: new UniswapPairSettings({
-        // if not supplied it will use `0.005` which is 0.5%
-        // please pass it in as a full number decimal so 0.7%
-        // would be 0.007
+        /**
+         * if not supplied it will use `0.005` which is 0.5%
+         * please pass it in as a full number decimal so 0.7%
+         * would be 0.007
+         */
         slippage: tradeSettings.slippage / 100,
-        // if not supplied it will use 20 a deadline minutes
+        /**
+         * if not supplied it will use 20 a deadline minutes
+         */
         deadlineMinutes: tradeSettings.deadlineMinutes,
-        // if not supplied it will try to use multihops
-        // if this is true it will require swaps to direct
-        // pairs
+        /**
+         * if not supplied it will try to use multihops
+         * if this is true it will require swaps to direct
+         * pairs
+         */
         disableMultihops: tradeSettings.disableMultihops,
-        // for example if you only wanted to turn on quotes for v3 and not v3
-        // you can only support the v3 enum same works if you only want v2 quotes
-        // if you do not supply anything it query both v2 and v3
+        /**
+         * for example if you only wanted to turn on quotes for v3 and not v3
+         * you can only support the v3 enum same works if you only want v2 quotes
+         * if you do not supply anything it query both v2 and v3
+         */
         uniswapVersions: [UniswapVersion.v3],
         cloneUniswapContractDetails: {
           v3Override: {
@@ -76,12 +79,15 @@ export class UniswapProvider implements TradeProviderInterface {
 
     this.factory = await uniswapPair.createFactory()
 
+    this.tradeContext?.destroy()
     this.tradeContext = await this.factory.trade(pair.amount)
 
     return this.tradeContext
   }
 
-  approve(): any {
+
+
+  public approve(): any {
     if (this.tradeContext.approvalTransaction) {
       // const approved = await wallet.sendTransaction(this.tradeContext.approvalTransaction);
       // console.log('approved txHash', approved.hash);
@@ -90,7 +96,7 @@ export class UniswapProvider implements TradeProviderInterface {
     }
   }
 
-  trade(): any {
+  public trade(): any {
     if (this.tradeContext.transaction) {
       // const tradeTransaction = await wallet.sendTransaction(this.tradeContext.transaction);
       // console.log('trade txHash', tradeTransaction.hash);

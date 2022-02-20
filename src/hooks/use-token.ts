@@ -9,13 +9,14 @@ export default function useToken(symbol: string) {
   const { account, chainId } = useEthers()
   const token = tokenProvider[symbol]
   const tokenAddress = token.chainAddresses[chainId || ChainId.Polygon]
-  const tokenInfo = useDappToken(tokenAddress)
+  // const tokenInfo = useDappToken(tokenAddress)
 
   return {
     tokenAddress,
     decimals: token.decimals,
     symbol,
-    totalSupply: BigNumber.isBigNumber(tokenInfo?.totalSupply) ? Number(formatUnits(tokenInfo?.totalSupply, tokenInfo?.decimals)) : 0,
+    totalSupply: 0,
+    // totalSupply: BigNumber.isBigNumber(tokenInfo?.totalSupply) ? Number(formatUnits(tokenInfo?.totalSupply, tokenInfo?.decimals)) : 0,
     tokenBalance: (): number => {
       const result = useTokenBalance(tokenAddress, account)
       return BigNumber.isBigNumber(result) ? Number(formatUnits(result, token.decimals)) : 0

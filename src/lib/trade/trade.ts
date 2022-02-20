@@ -3,7 +3,8 @@ import {
   TradePairInterface,
   TradeProviderInterface,
   TradeSettingsInterface,
-  NetworkSettingsInterface
+  NetworkSettingsInterface,
+  TradeContext
 } from './interfaces'
 
 export class Trade implements TradeInterface  {
@@ -19,12 +20,8 @@ export class Trade implements TradeInterface  {
   public async init(
     pair: TradePairInterface,
     tradeSettings: TradeSettingsInterface,
-    networkSettings: NetworkSettingsInterface): Promise<any> {
-    return this.tradeProvider.init(
-      pair,
-      tradeSettings,
-      networkSettings
-    )
+    networkSettings: NetworkSettingsInterface): Promise<TradeContext> {
+    return this.tradeProvider.init(pair, tradeSettings, networkSettings)
   }
 
   public async approve(): Promise<any> {
@@ -34,6 +31,4 @@ export class Trade implements TradeInterface  {
   public async trade(): Promise<any> {
     return this.tradeProvider.trade()
   }
-
-
 }

@@ -25,26 +25,11 @@ export default function SwapForm() {
     const wallet = useWallet()
     const token0 = useToken(tokenProvider.USDT.symbol)
     const token1 = useToken(tokenProvider.USDC.symbol)
-    const [tradeContext, setTradeContext] = useState<TradeContext|any>({})
+    const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
+    const [isLoading, setLoading] = useState<boolean>(true)
 
     const provider = new UniswapProvider()
-    const trade = new Trade(provider)
-
-    useEffect(() => {
-        (async () => {
-            if (wallet.isConnected) {
-                const nextTradeContext = await trade.init(
-                  initialValues.tradePair,
-                  initialValues.tradeSettings,
-                  initialValues.networkSettings
-                )
-
-                setTradeContext(nextTradeContext)
-                console.log(nextTradeContext)
-            }
-        })()
-    }, [wallet.isConnected, wallet.address])
-
+    const tradeFactory = new Trade(provider)
 
     const initialValues: SwapProps = {
         token0,
@@ -75,7 +60,7 @@ export default function SwapForm() {
             nativeCurrency: network.nativeCurrency,
             nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
         },
-        tradeContext
+        tradeContext,
     }
 
     const validationSchema = Yup.object().shape({
@@ -87,62 +72,94 @@ export default function SwapForm() {
         console.log(values)
     }
 
+    const handleChange = async (values: SwapProps) => {
+        // const tradeContext = await tradeFactory.init(
+        //   values.tradePair,
+        //   values.tradeSettings,
+        //   values.networkSettings
+        // )
+        //
+        // setTradeContext(tradeContext)
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
+    }, [isLoading])
+
+    useEffect(() => {
+        (async () => {
+            if (!isLoading && wallet.isConnected && wallet.address) {
+                const tradeContext = await tradeFactory.init(
+                  initialValues.tradePair,
+                  initialValues.tradeSettings,
+                  initialValues.networkSettings
+                )
+
+                setTradeContext(tradeContext)
+
+                console.log('init', tradeContext)
+            }
+        })()
+    }, [wallet.isConnected, wallet.address, isLoading])
+
     return (
         <Form
             initialValues={initialValues}
             validationSchema={validationSchema}
+            validate={handleChange}
+            validateOnChange={true}
+            validateOnBlur={false}
             onSubmit={handleSubmit}
             enableReinitialize
         >
-            {({values}) => {
-                return (
-                    <div className="d-lg-flex animated-wrapper">
-                        <div className="col-md-5">
-                            <div className="p-4 p-md-5 pe-md-0">
-                                <div className="d-flex flex-column flex-md-row mb-3">
-                                    <div className="d-flex flex-column">
-                                        <TokenInputPanel
-                                            tokenInputSibling={<Token0Select/>}
-                                            tokenInput={<Token0Input/>}
-                                        />
-                                        <div className="d-flex justify-content-center position-relative"
-                                             style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
-                                            <FlipSwap/>
-                                        </div>
-                                        <TokenInputPanel
-                                            tokenInputSibling={<Token1Select/>}
-                                            tokenInput={<Token1Input/>}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="d-flex">
-                                    <div className="col-10">
-                                        <SummaryDropdown />
-                                    </div>
-                                    <div className="col-2 ps-0">
-                                        <SettingsDropdown/>
-                                    </div>
-                                </div>
+            {() => (
+              <div className="d-lg-flex animated-wrapper">
+                  <div className="col-md-5">
+                      <div className="p-4 p-md-5 pe-md-0">
+                          <div className="d-flex flex-column flex-md-row mb-3">
+                              <div className="d-flex flex-column">
+                                  <TokenInputPanel
+                                    tokenInputSibling={<Token0Select/>}
+                                    tokenInput={<Token0Input/>}
+                                  />
+                                  <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                                      <FlipSwap/>
+                                  </div>
+                                  <TokenInputPanel
+                                    tokenInputSibling={<Token1Select/>}
+                                    tokenInput={<Token1Input/>}
+                                  />
+                              </div>
+                          </div>
+                          <div className="d-flex">
+                              <div className="col-10">
+                                  <SummaryDropdown />
+                              </div>
+                              <div className="col-2 ps-0">
+                                  <SettingsDropdown/>
+                              </div>
+                          </div>
 
-                                <div
-                                    className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
-                                    <SubmitButton/>
-                                </div>
-                            </div>
-                        </div>
+                          <div
+                            className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
+                              <SubmitButton/>
+                          </div>
+                      </div>
+                  </div>
 
-                        <div className="col-md-7">
-                            <div className="p-4 p-md-5">
-                                <PriceChart
-                                    token0={values.token0}
-                                    token1={values.token1}
-                                    token1Price={values.token1Price}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                )
-            }}
+                  {/*<div className="col-md-7">*/}
+                  {/*    <div className="p-4 p-md-5">*/}
+                  {/*        <PriceChart*/}
+                  {/*            token0={values.token0}*/}
+                  {/*            token1={values.token1}*/}
+                  {/*            token1Price={values.token1Price}*/}
+                  {/*        />*/}
+                  {/*    </div>*/}
+                  {/*</div>*/}
+              </div>
+            )}
         </Form>
     )
 }

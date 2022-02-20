@@ -1,9 +1,9 @@
 import React  from 'react'
 import styled from 'styled-components'
+import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { CurrencyFieldProps } from '@components/atoms/form/currency'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import { t } from '@lingui/macro'
 
 interface TokenInputProps extends CurrencyFieldProps{
   balance?: number
@@ -27,7 +27,6 @@ export const MaxButton = styled.small`
 `
 
 export default function TokenInput(props: TokenInputProps) {
-
   const {
     currency,
     name,
@@ -36,7 +35,6 @@ export default function TokenInput(props: TokenInputProps) {
     raiseMax,
     handleChange,
     value,
-    autoFocus
   } = props
 
   return (
@@ -49,6 +47,7 @@ export default function TokenInput(props: TokenInputProps) {
             showCurrencyPrefix={false}
             decimals={4}
             autoFocus
+            autoComplete="off"
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
             onChange={(e) => {
               const tokenValue = Number(e.target.rawValue)

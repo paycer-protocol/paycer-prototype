@@ -17,7 +17,7 @@ export default function Token1Input() {
             required
             currency={values.token1.symbol}
             handleChange={handleChange}
-            balance={Number(values.tradeContext.toBalance || 0)}
+            balance={Number(values.tradeContext?.toBalance || 0)}
             decimals={4}
         />
     )

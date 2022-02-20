@@ -33,7 +33,13 @@ const SummaryDropdown = () => {
                 <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
                         <div className="me-2">
-                            1 {values.token1.symbol} = {1 / Number(values.tradeContext?.expectedConvertQuote || 0)} {values.token0.symbol}
+                            1 {values.token1.symbol} =&nbsp;
+                            <FormattedNumber
+                              value={1 / Number(values.tradeContext?.expectedConvertQuote || 0)}
+                              minimumFractionDigits={2}
+                              maximumFractionDigits={4}
+                            />
+                            &nbsp; {values.token0.symbol}
                         </div>
                         <Icon
                             component={open ? ArrowDropUp : ArrowDropDown}
