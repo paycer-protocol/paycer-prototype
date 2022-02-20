@@ -80,7 +80,7 @@ export default function useStaking():UseStakingProps {
     let [pendingReward] = useContractCall(pendingRewardArgs) ?? []
 
     rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
-    rewardRate = rewardRate ? rewardRate : 10
+    rewardRate = rewardRate ? rewardRate : 12
     pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
 
     function formatLastRewardtime():any {
