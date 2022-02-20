@@ -26,12 +26,11 @@ export default function SwapForm() {
     const token0 = useToken(tokenProvider.USDT.symbol)
     const token1 = useToken(tokenProvider.USDC.symbol)
     const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
-    const [isLoading, setLoading] = useState<boolean>(true)
 
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
 
-    const initialValues: SwapProps = {
+    let initialValues: SwapProps = {
         token0,
         token0Value: null,
         token0Markets: swapTokens,
@@ -61,6 +60,17 @@ export default function SwapForm() {
             nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
         },
         tradeContext,
+        initFactory: async (values: SwapProps) => {
+            const tradeContext = await tradeFactory.init(
+              values.tradePair,
+              values.tradeSettings,
+              values.networkSettings
+            )
+
+            setTradeContext(tradeContext)
+
+            return tradeContext
+        }
     }
 
     const validationSchema = Yup.object().shape({
@@ -72,47 +82,21 @@ export default function SwapForm() {
         console.log(values)
     }
 
-    const handleChange = async (values: SwapProps) => {
-        // const tradeContext = await tradeFactory.init(
-        //   values.tradePair,
-        //   values.tradeSettings,
-        //   values.networkSettings
-        // )
-        //
-        // setTradeContext(tradeContext)
+    useEffect(() => {
+        if (wallet.isConnected && wallet.address && !tradeContext) {
+            initialValues.initFactory(initialValues)
+        }
+    }, [wallet.isConnected, wallet.address])
+
+    if (!tradeContext) {
+        return null;
     }
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 3000)
-    }, [isLoading])
-
-    useEffect(() => {
-        (async () => {
-            if (!isLoading && wallet.isConnected && wallet.address) {
-                const tradeContext = await tradeFactory.init(
-                  initialValues.tradePair,
-                  initialValues.tradeSettings,
-                  initialValues.networkSettings
-                )
-
-                setTradeContext(tradeContext)
-
-                console.log('init', tradeContext)
-            }
-        })()
-    }, [wallet.isConnected, wallet.address, isLoading])
 
     return (
         <Form
             initialValues={initialValues}
             validationSchema={validationSchema}
-            validate={handleChange}
-            validateOnChange={true}
-            validateOnBlur={false}
             onSubmit={handleSubmit}
-            enableReinitialize
         >
             {() => (
               <div className="d-lg-flex animated-wrapper">

@@ -7,23 +7,30 @@ import TokenToggle from './token-toggle'
 import { SwapProps } from '../types'
 
 export default function Token0Select() {
-    const { values, setValues } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
 
-    const handleChange = (token) => {
+    const handleChange = async (token) => {
         const token1Markets = marketPairs.find(m => m.base.symbol === token.symbol).markets
 
-        setValues({
+        const nextValues = {
             ...values,
             ...{
-                minimumToReceive: 0,
-                token1Markets: token1Markets,
+                token0: token,
                 token0Markets: swapTokens,
                 token1: token1Markets[0],
-                token0: token,
+                token1Markets: token1Markets,
+                tradePair: {
+                    fromTokenAddress: token.tokenAddress,
+                    toTokenAddress: token1Markets[0][values.networkSettings.chainId].tokenAddress,
+                    amount: values.tradePair.amount,
+                },
             }
-        })
+        }
 
+        const nextTradeContext = await values.initFactory(nextValues)
+        setValues(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
         setShowModal(false)
     }
 

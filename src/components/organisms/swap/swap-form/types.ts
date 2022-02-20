@@ -1,5 +1,10 @@
 import { TokenType } from '../../../../types/investment'
-import {NetworkSettingsInterface, TradeContext, TradePairInterface, TradeSettingsInterface} from '../../../../lib/trade'
+import {
+  TradeContext,
+  TradePairInterface,
+  TradeSettingsInterface,
+  NetworkSettingsInterface
+} from '../../../../lib/trade'
 
 export interface SwapProps {
   token0: any
@@ -14,6 +19,7 @@ export interface SwapProps {
   tradeSettings: TradeSettingsInterface
   networkSettings: NetworkSettingsInterface
   tradeContext: TradeContext
+  initFactory: (values: SwapProps) => any
 }
 
 

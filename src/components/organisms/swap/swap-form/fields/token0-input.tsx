@@ -4,23 +4,27 @@ import { SwapProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 
 export default function Token0Input() {
-    const { values, setValues } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
-        setValues({
+        const nextValues = {
             ...values,
             ... {
                 token0Value: value,
                 token1Value: Number(value) * Number(values.tradeContext?.expectedConvertQuote || 0),
             }
-        })
+        }
+
+        const nextTradeContext = await values.initFactory(nextValues)
+        setValues(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
     }
 
     return (
         <TokenInput
             name="token0Value"
             required
-            currency={values.token0.symbol}
+            currency={values?.token0?.symbol}
             handleChange={handleChange}
             raiseMax
             balance={Number(values.tradeContext?.fromBalance?.balance || 0)}

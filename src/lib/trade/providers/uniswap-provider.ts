@@ -2,11 +2,11 @@ import {
   TradeProviderInterface,
   TradePairInterface,
   TradeSettingsInterface,
-  NetworkSettingsInterface
+  NetworkSettingsInterface,
+  TradeContext
 } from './../interfaces'
 
 import {
-  TradeContext,
   UniswapPair,
   UniswapPairFactory,
   UniswapPairSettings,
@@ -17,20 +17,15 @@ import {
 // multicall https://github.com/joshstevens19/ethereum-multicall
 
 export class UniswapProvider implements TradeProviderInterface {
-
   factory: UniswapPairFactory
 
   tradeContext: TradeContext
 
-  public constructor() {
-
-  }
-
-  public async init(
+  public async init (
     pair: TradePairInterface,
     tradeSettings: TradeSettingsInterface,
     networkSettings: NetworkSettingsInterface
-  ): Promise<any> {
+  ): Promise<TradeContext> {
     const uniswapPair = new UniswapPair({
       fromTokenContractAddress: pair.fromTokenAddress,
       toTokenContractAddress: pair.toTokenAddress,
@@ -84,6 +79,7 @@ export class UniswapProvider implements TradeProviderInterface {
 
     return this.tradeContext
   }
+
 
 
 
