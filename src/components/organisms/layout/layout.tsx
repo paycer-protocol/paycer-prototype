@@ -3,7 +3,6 @@ import Header from '@components/organisms/header'
 import Network from '@components/organisms/web3/network'
 import useNetwork from '@hooks/use-network'
 import { Trans } from '@lingui/macro'
-import styled from 'styled-components'
 
 export interface LayoutProps {
   children: any
