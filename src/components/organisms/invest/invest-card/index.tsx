@@ -10,17 +10,9 @@ import GradientButton from "@components/atoms/button/gradient-button";
 import {useInvestList} from "@context/invest-list-context";
 import useInvestIsWithdrawable from "@hooks/use-invest-is-withdrawable";
 
-<<<<<<< HEAD
-
 const InvestCard = (strategy: StrategyType) => {
     const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate
     const investedToken = useToken(strategy.input.symbol)
-=======
-const InvestCard = (props: StrategyType) => {
-    const [showInvestModal, setShowInvestModal] = useState(false)
-    const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
-    const investedToken = useToken(props.input.symbol)
->>>>>>> master
     const investedBalance = investedToken.tokenBalance()
 
     const {
@@ -74,19 +66,19 @@ const InvestCard = (props: StrategyType) => {
                         <span>{t`Holdings`}</span>
                         {
                             investedBalance > 0
-                              ? (
-                                <>
-                                    <FormattedNumber
-                                      value={investedBalance}
-                                      minimumFractionDigits={2}
-                                      maximumFractionDigits={4}
-                                    />
-                                    &nbsp;{investedToken.symbol}
-                                </>
-                              )
-                              : (
-                                <span>-</span>
-                              )
+                                ? (
+                                    <>
+                                        <FormattedNumber
+                                            value={investedBalance}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                        />
+                                        &nbsp;{investedToken.symbol}
+                                    </>
+                                )
+                                : (
+                                    <span>-</span>
+                                )
                         }
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
