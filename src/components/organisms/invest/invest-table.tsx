@@ -48,7 +48,7 @@ export default function   InvestList() {
                 {strategies.map((strategy, key) => (
                     <InvestItem
                         key={`invest${key}`}
-                        strategy={strategy}
+                        {...strategy}
                     />
                 ))}
                 </tbody>
