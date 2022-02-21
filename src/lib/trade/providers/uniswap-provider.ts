@@ -84,12 +84,7 @@ export class UniswapProvider implements TradeProviderInterface {
 
 
   public approve(): any {
-    if (this.tradeContext.approvalTransaction) {
-      // const approved = await wallet.sendTransaction(this.tradeContext.approvalTransaction);
-      // console.log('approved txHash', approved.hash);
-      // const approvedReceipt = await approved.wait();
-      // console.log('approved receipt', approvedReceipt);
-    }
+
   }
 
   public trade(): any {

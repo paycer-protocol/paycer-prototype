@@ -21,7 +21,7 @@ export default function Token1Select() {
             token1: token,
             tradePair: {
               fromTokenAddress: values.tradePair.fromTokenAddress,
-              toTokenAddress: token.tokenAddress,
+              toTokenAddress: token.chainAddresses[values.networkSettings.chainId],
               amount: values.tradePair.amount,
             },
           }

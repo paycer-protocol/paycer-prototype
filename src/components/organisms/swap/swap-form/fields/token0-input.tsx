@@ -15,8 +15,9 @@ export default function Token0Input() {
             }
         }
 
-        const nextTradeContext = await values.initFactory(nextValues)
         setValues(nextValues)
+
+        const nextTradeContext = await values.initFactory(nextValues)
         setFieldValue('tradeContext', nextTradeContext)
     }
 

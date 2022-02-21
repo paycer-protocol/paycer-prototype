@@ -6,7 +6,14 @@ import { SwapProps } from '../types'
 
 export default function SubmitButton() {
     const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SwapProps>()
-    const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value || !values.token1Value
+    const isDisabled =
+      isSubmitting
+      || !dirty
+      || !isValid
+      || isValidating
+      || !values.token0Value
+      || !values.token1Value
+      || !values.tradeContext.fromBalance.hasEnough
 
     return (
         <GradientButton type="submit" disabled={isDisabled} className="w-75">

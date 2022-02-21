@@ -127,7 +127,7 @@ msgstr "Balance"
 msgid "Balance after:"
 msgstr "Balance after:"
 
-#: src/components/molecules/token-input/token-input.tsx:60
+#: src/components/molecules/token-input/token-input.tsx:59
 msgid "Balance:"
 msgstr "Balance:"
 
@@ -427,7 +427,7 @@ msgstr "Explorer"
 #~ msgstr "Failed, please try again or contact the Support"
 
 #: src/components/organisms/invest/invest-form/index.tsx:141
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:70
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:76
 msgid "Fee"
 msgstr "Fee"
 
@@ -643,7 +643,7 @@ msgstr "Medium"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:51
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:57
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -921,7 +921,7 @@ msgstr "Show"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:32
+#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:57
 msgid "Slippage tolerance"
 msgstr "Slippage tolerance"
 
@@ -1009,11 +1009,11 @@ msgstr "Supply"
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:28
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:42
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:27
+#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:41
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -1278,7 +1278,7 @@ msgstr "Your APR:"
 #~ msgid "by"
 #~ msgstr "by"
 
-#: src/components/molecules/token-input/token-input.tsx:69
+#: src/components/molecules/token-input/token-input.tsx:68
 msgid "max"
 msgstr "max"
 

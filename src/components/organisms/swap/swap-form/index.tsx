@@ -18,7 +18,27 @@ import SettingsDropdown from './settings-dropdown'
 import PriceChart from './price-chart'
 import { SwapProps } from './types'
 import { Trade, TradeContext, UniswapProvider } from '../../../../lib/trade'
+import { useSendTransaction } from '@usedapp/core'
 
+
+// todo
+// 1. initial state with empty from token
+// 2. token select modal refactoring and bug fixing
+// 3. Error handling modal select
+// 4. Error handling change input
+// 5. Error handling change slippage
+// 6. Show balances in modal select (multichain call)
+// 7. check all addresses
+// 8. Price chart
+// 9. Show loading spinner (eg for uniswap call)
+// 10. Transaction Modal
+// 11. Show pending transactions
+// 12. Save transaction in api
+// 13. Configure market pairs
+// 14. Add deadlineMinutes config
+// 15. Add disableMultihops config
+// 16. Add uniswap v2 config
+// 17. ensure price update and show confirm when price
 
 export default function SwapForm() {
     const network = useNetwork()
@@ -26,6 +46,8 @@ export default function SwapForm() {
     const token0 = useToken(tokenProvider.USDT.symbol)
     const token1 = useToken(tokenProvider.USDC.symbol)
     const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
+    const { sendTransaction: sendApproveTransaction , state: approveState } = useSendTransaction({ transactionName: 'approve' })
+    const { sendTransaction: sendSwapTransaction , state: swapState } = useSendTransaction({ transactionName: 'swap' })
 
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
@@ -69,6 +91,7 @@ export default function SwapForm() {
 
             setTradeContext(tradeContext)
 
+            console.log(tradeContext)
             return tradeContext
         }
     }
@@ -79,7 +102,17 @@ export default function SwapForm() {
     })
 
     const handleSubmit = async (values: SwapProps) => {
-        console.log(values)
+        if (!values.tradeContext.hasEnoughAllowance && values.tradeContext.approvalTransaction) {
+            const approved = await sendApproveTransaction(values.tradeContext.approvalTransaction)
+            console.log(approved)
+            console.log(approveState)
+        }
+
+        if (values.tradeContext.transaction) {
+            const approved = await sendSwapTransaction(values.tradeContext.transaction)
+            console.log(approved)
+            console.log(swapState)
+        }
     }
 
     useEffect(() => {
