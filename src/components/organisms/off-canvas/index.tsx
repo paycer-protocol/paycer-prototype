@@ -69,6 +69,17 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
                   </Link>
                 </li>
               ))}
+              <li className="nav-item" key="navpcr">
+                <a
+                  href="https://app.dodoex.io/exchange/USDC-PCR?network=polygon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link"
+                  title="Buy PCR"
+                >
+                  Buy PCR
+                </a>
+              </li>
             </ul>
           </div>
           <div className="mb-5">

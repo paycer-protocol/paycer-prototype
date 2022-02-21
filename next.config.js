@@ -1,9 +1,8 @@
 const withPlugins = require('next-compose-plugins')
-const withSass = require('@zeit/next-sass')
 const withFonts = require('nextjs-fonts')
-const withCSS = require('@zeit/next-css')
 const langConfig = require('./lingui.config.js')
 const { locales, sourceLocale } = langConfig
+const path = require('path')
 
 
 const nextConfig = {
@@ -13,6 +12,9 @@ const nextConfig = {
     locale: 'en',
     locales,
     defaultLocale: sourceLocale,
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'assets')],
   },
   webpack(config) {
     config.module.rules.push(
@@ -32,9 +34,7 @@ const nextConfig = {
 }
 
 module.exports = withPlugins([
-  [withSass],
   [withFonts],
-  [withCSS]
 ], nextConfig)
 
 

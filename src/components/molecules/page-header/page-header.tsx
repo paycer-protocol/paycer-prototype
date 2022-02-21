@@ -1,5 +1,4 @@
 import React from 'react'
-import './page-header.styles.scss'
 
 export interface PageHeaderProps {
     children?: any

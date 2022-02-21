@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { FormattedNumber } from 'react-intl'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
@@ -12,9 +11,7 @@ const Overview = () => {
     totalReceived
   } = useVestingDashboard()
 
-  const {
-    bonusPercentage
-  } = dashboardData
+  const { bonusPercentage } = dashboardData
 
   const {
     startTime,
@@ -39,7 +36,6 @@ const Overview = () => {
   return (
       <div className="card shadow-none blur-background mb-0 p-4">
         <div className="card-body p-0 ">
-
           <div className="list-group list-group-flush list-group-activity animated-wrapper">
             <div className="card bg-dark shadow-none mb-md-4">
               <div className="card-body">
