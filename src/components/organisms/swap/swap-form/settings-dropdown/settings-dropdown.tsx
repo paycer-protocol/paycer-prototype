@@ -14,7 +14,7 @@ const SettingsDropdown = () => {
     const { values, setFieldValue } = useFormikContext<SwapProps>()
 
     return (
-        <DropdownComponent className="">
+        <DropdownComponent>
             <Styles.StyledDropdownToggle>
                 <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
                     <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">

@@ -60,8 +60,9 @@ export interface StrategyType {
   fees: FeesType
   color: string
   chainAddresses: {
-    [ChainId.Mainnet]: string
+    [ChainId.Mainnet]?: string
     [ChainId.Polygon]?: string
+    [ChainId.Kovan]?: string
   }
 }
 
