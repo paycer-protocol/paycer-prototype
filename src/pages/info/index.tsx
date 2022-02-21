@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
+import PriceChart from '@components/organisms/info/price-chart'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 
 export default function Info() {
@@ -21,8 +22,20 @@ export default function Info() {
                    </div>
                 </div>
              </PageHeader>
-             <div className="position-relative blur-background">
-             Charts here
+             <div className="position-relative">
+
+                <div className="row">
+
+                   <div className="col-9">
+                      <div className="card border-purple-dark">
+                         <div className="card-body">
+                              <PriceChart />
+                         </div>
+                      </div>
+                   </div>
+                </div>
+
+
              </div>
           </div>
           <PortalBlockNumber />
