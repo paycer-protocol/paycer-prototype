@@ -12,7 +12,7 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 const InvestCard = (props: StrategyType) => {
     const [showInvestModal, setShowInvestModal] = useState(false)
     const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
-    const investedToken = useToken(props.output.symbol)
+    const investedToken = useToken(props.input.symbol)
     const investedBalance = investedToken.tokenBalance()
 
     const onHide = () => {
