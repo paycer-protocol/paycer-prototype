@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import PriceChart from '@components/organisms/info/price-chart'
+import Staking from '@components/organisms/info/staking'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 
 export default function Info() {
@@ -27,11 +27,7 @@ export default function Info() {
                 <div className="row">
 
                    <div className="col-9">
-                      <div className="card border-purple-dark">
-                         <div className="card-body">
-                              <PriceChart />
-                         </div>
-                      </div>
+                      <Staking />
                    </div>
                 </div>
 
