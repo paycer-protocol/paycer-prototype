@@ -1,6 +1,6 @@
 import React from 'react'
 import InvestCard from '@components/organisms/invest/invest-card'
-import {useInvestList} from "@context/invest-list-context";
+import { useInvestList } from "@context/invest-list-context"
 
 export default function InvestCards() {
   const {
