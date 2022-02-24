@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
+import { mainNetProviders } from '@providers/networks'
 import { t } from '@lingui/macro'
 import * as Styles from './Styles'
 import fetchSeries from './mock'
@@ -6,7 +7,8 @@ import BarChart from '@components/organisms/chart/bar-chart'
 import { SeriesType } from '@components/organisms/chart/bar-chart/bar-chart'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import {useInfoDashboard} from "@context/info-dashboard-context";
+import { useFormikContext } from 'formik'
+import {InfoDashboardFormType} from '@components/organisms/info-dashboard/info-dashboard'
 
 const Staking = () => {
 
@@ -15,17 +17,28 @@ const Staking = () => {
     const [series, setSeries] = useState<SeriesType>([])
     const [showDropdown, setShowDropdown] = useState<boolean>(false)
     const [dataLabel, setDataLabel] = useState<string>(t`1M`)
-    const { updateFilters, activeFilters } = useInfoDashboard()
+    const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
-        const payload = fetchSeries(activeFilters, 'all')
+        const payload = fetchSeries(values.activeFilters, dataLabel.toLocaleLowerCase())
         setSeries(payload)
-    }, [])
 
-    useEffect(() => {
-        const payload = fetchSeries(activeFilters, dataLabel.toLocaleLowerCase())
-        setSeries(payload)
-    }, [updateFilters])
+        console.log(payload)
+        console.log(values.activeFilters)
+
+    }, [values.activeFilters])
+
+    const getSeriesColors = ():string[] => {
+        const colors = []
+        if (values.activeFilters.includes(0)) {
+            colors.push('#FFFFFF')
+        } else {
+            values.activeFilters.map(a => {
+                colors.push(mainNetProviders[a].color)
+            })
+        }
+        return colors
+    }
 
     const onMouseEnter = useCallback((MouseEvent, chartContext, config) => {
 
@@ -112,6 +125,7 @@ const Staking = () => {
                     height={400}
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
+                    colors={getSeriesColors()}
                 />
 
             </div>

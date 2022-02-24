@@ -1,4 +1,5 @@
 export default {
+    colors: [],
     chart: {
         stacked: true,
         events: {},

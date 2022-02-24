@@ -23,30 +23,32 @@ const allMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
 
 const fetchSeries = (chainIds, time) => {
 
+    console.log(time)
+
     if (time === 'y') {
 
         if (chainIds.includes(137) && chainIds.includes(1)) {
             return [
                 {
-                    name: 'Polygon',
+                    chainId: 137,
                     data: polygonYearSeries
                 },
                 {
-                    name: 'Etherum',
+                    chainId: 1,
                     data: mainnetYearSeries
                 },
             ]
         } else if (chainIds.includes(137)) {
             return [
                 {
-                    name: 'Polygon',
+                    chainId: 137,
                     data: polygonYearSeries
                 }
             ]
-        } else {
+        } else if (chainIds.includes(1)) {
             return [
                 {
-                    name: 'Etherum',
+                    chainId: 1,
                     data: mainnetYearSeries
                 },
             ]
@@ -58,35 +60,35 @@ const fetchSeries = (chainIds, time) => {
         if (chainIds.includes(137) && chainIds.includes(1)) {
             return [
                 {
-                    name: 'Polygon',
+                    chainId: 137,
                     data: polygonMonthSeries
                 },
                 {
-                    name: 'Etherum',
+                    chainId: 1,
                     data: mainnetMonthSeries
                 },
             ]
         } else if (chainIds.includes(137)) {
             return [
                 {
-                    name: 'Polygon',
+                    chainId: 137,
                     data: polygonMonthSeries
                 }
             ]
-        } else {
+        } else if (chainIds.includes(1)) {
             return [
                 {
-                    name: 'Etherum',
+                    chainId: 1,
                     data: mainnetMonthSeries
                 },
             ]
         }
     }
 
-    if (time === 'all' && !chainIds.length) {
+    if (chainIds.includes(0)) {
         return [
             {
-                name: 'All',
+                chainId: 0,
                 data: allMonthSeries
             },
         ]

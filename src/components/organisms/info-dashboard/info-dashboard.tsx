@@ -1,24 +1,50 @@
 import React from 'react'
-import Staking from './staking'
-import FilterBar from './filter-bar'
-import {t} from '@lingui/macro'
+import * as Yup from 'yup'
+import Form from '@components/atoms/form/form'
+import FilterBar from "@components/organisms/info-dashboard/filter-bar";
+import Staking from "@components/organisms/info-dashboard/staking";
+import {ChainId} from "@usedapp/core";
 
-const InfoDashboard = () => {
+export type InfoDashboardFormType = {
+    activeFilters: Array<number>
+}
 
+export default function SwapForm() {
 
+    const initialValues: InfoDashboardFormType = {
+        activeFilters: [0]
+    }
+
+    const validationSchema = Yup.object().shape({
+
+    })
+
+    const handleSubmit = (values: InfoDashboardFormType) => {
+        console.log(values)
+    }
 
     return (
+        <Form
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+            enableReinitialize
+        >
+            {({values}) => {
 
-        <>
-            <FilterBar />
-            <div className="row">
-                <div className="col-9">
-                    <Staking />
-                </div>
-            </div>
-        </>
-
+                return (
+                   <>
+                       <FilterBar />
+                       <div className="row">
+                           <div className="col-9">
+                               <Staking />
+                           </div>
+                       </div>
+                   </>
+                )
+            }}
+        </Form>
     )
 }
 
-export default InfoDashboard
+

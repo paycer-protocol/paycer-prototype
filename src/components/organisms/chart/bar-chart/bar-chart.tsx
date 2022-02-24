@@ -3,7 +3,6 @@ import options from './options'
 import dynamic from 'next/dynamic'
 
 export type SeriesType = Array<{
-    name: string
     data: Array<number>
 }>
 
@@ -13,12 +12,22 @@ export interface BarChartProps {
     height?: number
     onMouseEnter?: (event: MouseEvent, chartContext, config) => void
     onMouseLeave?: () => void
+    colors?: Array<string>
 }
 
 const BarChart = (props: BarChartProps) => {
-    const { categories, series, height, onMouseEnter, onMouseLeave } = props
+    const {
+        categories,
+        series,
+        height,
+        onMouseEnter,
+        onMouseLeave,
+        colors
+    } = props
+
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     options.xaxis.categories = categories
+    options.colors = colors
 
     if (onMouseEnter) {
         // @ts-ignore
