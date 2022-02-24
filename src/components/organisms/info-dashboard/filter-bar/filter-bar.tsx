@@ -11,6 +11,11 @@ const FilterBar = () => {
     const handleChange = (e) => {
         const chainId = Number(e.currentTarget.value)
         const checked = e.currentTarget.checked
+
+        if (chainId === 0 && !checked) {
+            return false
+        }
+
         let filters
         if (checked) {
             if (chainId !== 0) {

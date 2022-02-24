@@ -12,8 +12,7 @@ import {InfoDashboardFormType} from '@components/organisms/info-dashboard/info-d
 
 const Staking = () => {
 
-    const stakedTotal = 4300000
-    const [stakedValue, setStakedValue] = useState(stakedTotal)
+    const [totalStaked, setTotalStaked] = useState(0)
     const [series, setSeries] = useState<SeriesType>([])
     const [showDropdown, setShowDropdown] = useState<boolean>(false)
     const [dataLabel, setDataLabel] = useState<string>(t`1M`)
@@ -22,10 +21,16 @@ const Staking = () => {
     useEffect(() => {
         const payload = fetchSeries(values.activeFilters, dataLabel.toLocaleLowerCase())
         setSeries(payload)
-
-        console.log(payload)
-        console.log(values.activeFilters)
-
+        let stakedValue = 0
+        payload.map(p => {
+            let initialValue = 0
+            const sumWithInitial = p.data.reduce(
+                (previousValue, currentValue) => previousValue + currentValue,
+                initialValue
+            )
+            stakedValue+=sumWithInitial
+        })
+        setTotalStaked(stakedValue)
     }, [values.activeFilters])
 
     const getSeriesColors = ():string[] => {
@@ -77,7 +82,7 @@ const Staking = () => {
                         <div className="d-flex align-items-baseline">
                             <h2 className="display-4 fw-normal d-flex mb-2">
                                 <FormattedNumber
-                                    value={stakedValue}
+                                    value={totalStaked}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
@@ -94,7 +99,7 @@ const Staking = () => {
                         <h5 className="text-uppercase text-muted mb-3 mb-md-4">
                             $
                             <FormattedNumber
-                                value={stakedValue * 0.025}
+                                value={totalStaked * 0.025}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={2}
                             />
