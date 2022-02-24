@@ -1,12 +1,13 @@
 export default {
     chart: {
+        stacked: true,
         events: {},
         toolbar: {
             show: false
         },
     },
     tooltip: {
-
+        enabled: false
     },
     xaxis: {
         categories: [],
@@ -37,29 +38,7 @@ export default {
             show: false,
         }
     },
-    fill: {
-        type: "gradient",
-        gradient: {
-            type: "vertical",
-            shadeIntensity: 0.5,
-            opacityFrom: 0.7,
-            opacityTo: 0.9,
-            stops: [0, 90],
-            colorStops: [
-                {
-                    offset: 0,
-                    color: "rgba(133, 12, 167, 1)",
-                    opacity: 0.8
-                },
-                {
-                    offset: 90,
-                    color: "rgba(66, 1, 220, 1)",
-                    opacity: 0.8
-                },
 
-            ]
-        }
-    },
     grid: {
         borderColor: 'transparent'
     },
@@ -79,11 +58,10 @@ export default {
     },
     plotOptions: {
         bar: {
-
             dataLabels: {
                 position: "bottom",
             },
-            columnWidth: '60%'
+            columnWidth: '90%',
         }
     },
 }

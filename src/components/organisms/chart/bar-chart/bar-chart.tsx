@@ -2,23 +2,35 @@ import React, { memo } from 'react'
 import options from './options'
 import dynamic from 'next/dynamic'
 
+export type SeriesType = Array<{
+    name: string
+    data: Array<number>
+}>
+
 export interface BarChartProps {
     categories: Array<string>
-    series: Array<number>
+    series: SeriesType
     height?: number
     onMouseEnter?: (event: MouseEvent, chartContext, config) => void
+    onMouseLeave?: () => void
 }
 
 const BarChart = (props: BarChartProps) => {
-    const { categories, series, height, onMouseEnter } = props
+    const { categories, series, height, onMouseEnter, onMouseLeave } = props
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     options.xaxis.categories = categories
 
     if (onMouseEnter) {
-        options.chart.events = {
-            dataPointMouseEnter: function(event, chartContext, config) {
-                onMouseEnter(event, chartContext, config)
-            }
+        // @ts-ignore
+        options.chart.events.dataPointMouseEnter = function(event, chartContext, config) {
+            onMouseEnter(event, chartContext, config)
+        }
+    }
+
+    if (onMouseLeave) {
+        // @ts-ignore
+        options.chart.events.dataPointMouseLeave = function(event, chartContext, config) {
+            onMouseLeave()
         }
     }
 
@@ -26,7 +38,7 @@ const BarChart = (props: BarChartProps) => {
         <div style={{height: height}}>
             <Chart
                 options={options}
-                series={[{data: series}]}
+                series={series}
                 type="bar"
                 height={height}
             />

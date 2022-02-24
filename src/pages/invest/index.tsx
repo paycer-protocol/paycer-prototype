@@ -5,7 +5,7 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import InvestList from '@components/organisms/invest/invest-list'
-import InvestListContextProvider from "@context/invest-list-context";
+import InvestListContextProvider from '@context/invest-list-context'
 
 export default function Invest() {
   const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)

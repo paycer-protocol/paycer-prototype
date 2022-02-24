@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import Staking from '@components/organisms/info/staking'
+import InfoDashboard from '@components/organisms/info-dashboard'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
+import InfoDashboardContextProvider from '@context/info-dashboard-context'
 
 export default function Info() {
 
@@ -23,15 +24,9 @@ export default function Info() {
                 </div>
              </PageHeader>
              <div className="position-relative">
-
-                <div className="row">
-
-                   <div className="col-9">
-                      <Staking />
-                   </div>
-                </div>
-
-
+                <InfoDashboardContextProvider>
+                  <InfoDashboard />
+                </InfoDashboardContextProvider>
              </div>
           </div>
           <PortalBlockNumber />
