@@ -1,7 +1,5 @@
-import { ChainId } from '@usedapp/core'
-
 export interface Token {
-  chainId: ChainId;
+  chainId: number;
   contractAddress: string;
   decimals: number;
   symbol: string;

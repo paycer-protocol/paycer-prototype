@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { providers } from 'ethers';
 import { ChainId, ErrorCodes, UniswapError } from '../..';
 import { ETH } from '../../common/tokens';
