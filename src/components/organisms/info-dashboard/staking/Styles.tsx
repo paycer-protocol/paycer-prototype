@@ -15,7 +15,6 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
 `
 
 export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
-    font-size: 12px;
     inset: initial!important;
     top: 0!important;
     padding: 14px;
@@ -23,11 +22,17 @@ export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
     right: 0!important;
     width: 57px!important;
     min-width: auto;
-    > div { 
-       &:hover { color: #FFF!important; }
-       cursor: pointer;
+    > div {
+        &:hover { 
+            color: #FFF!important; 
+        }
+        &:last-child {
+            margin-bottom: 0!important;
+        }
+        cursor: pointer;
     }
 `
 export const StyledDropdownComponent = styled(DropdownComponent)`
 
 `
+

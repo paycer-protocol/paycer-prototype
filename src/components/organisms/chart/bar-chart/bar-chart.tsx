@@ -13,6 +13,7 @@ export interface BarChartProps {
     onMouseEnter?: (event: MouseEvent, chartContext, config) => void
     onMouseLeave?: () => void
     colors?: Array<string>
+    borderRadius?: number
 }
 
 const BarChart = (props: BarChartProps) => {
@@ -22,12 +23,14 @@ const BarChart = (props: BarChartProps) => {
         height,
         onMouseEnter,
         onMouseLeave,
-        colors
+        colors,
+        borderRadius = 8
     } = props
 
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
     options.xaxis.categories = categories
     options.colors = colors
+    options.plotOptions.bar.borderRadius = borderRadius
 
     if (onMouseEnter) {
         // @ts-ignore

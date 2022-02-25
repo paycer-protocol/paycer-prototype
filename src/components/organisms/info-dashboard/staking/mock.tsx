@@ -1,13 +1,5 @@
 import { ChainId } from '@usedapp/core'
 
-const polygonYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
-    return Math.floor(Math.random() * 10000000)
-})
-
-const mainnetYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
-    return Math.floor(Math.random() * 10000000)
-})
-
 const polygonMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
     return Math.floor(Math.random() * 10000000)
 })
@@ -20,13 +12,35 @@ const allMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
     return Math.floor(Math.random() * 10000000 * 2)
 })
 
+const polygonThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000)
+})
 
-const fetchSeries = (chainIds, time) => {
+const mainnetThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000)
+})
 
-    console.log(time)
+const allThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000 * 2)
+})
 
-    if (time === 'y') {
 
+const polygonYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000)
+})
+
+const mainnetYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000)
+})
+
+const allYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
+    return Math.floor(Math.random() * 10000000 * 2)
+})
+
+
+const fetchSeries = (chainIds, timeSection) => {
+
+    if (timeSection === '1y') {
         if (chainIds.includes(137) && chainIds.includes(1)) {
             return [
                 {
@@ -52,10 +66,17 @@ const fetchSeries = (chainIds, time) => {
                     data: mainnetYearSeries
                 },
             ]
+        } else if (chainIds.includes(0)) {
+            return [
+                {
+                    chainId: 0,
+                    data: allYearSeries
+                },
+            ]
         }
     }
 
-    if (time === '1m') {
+    if (timeSection === '1m') {
 
         if (chainIds.includes(137) && chainIds.includes(1)) {
             return [
@@ -82,17 +103,55 @@ const fetchSeries = (chainIds, time) => {
                     data: mainnetMonthSeries
                 },
             ]
+        } else if (chainIds.includes(0)) {
+            return [
+                {
+                    chainId: 0,
+                    data: allMonthSeries
+                },
+            ]
         }
     }
 
-    if (chainIds.includes(0)) {
-        return [
-            {
-                chainId: 0,
-                data: allMonthSeries
-            },
-        ]
+    if (timeSection === '3m') {
+
+        if (chainIds.includes(137) && chainIds.includes(1)) {
+            return [
+                {
+                    chainId: 137,
+                    data: polygonThreeMonthSeries
+                },
+                {
+                    chainId: 1,
+                    data: mainnetThreeMonthSeries
+                },
+            ]
+        } else if (chainIds.includes(137)) {
+            return [
+                {
+                    chainId: 137,
+                    data: polygonThreeMonthSeries
+                }
+            ]
+        } else if (chainIds.includes(1)) {
+            return [
+                {
+                    chainId: 1,
+                    data: mainnetThreeMonthSeries
+                },
+            ]
+        } else if (chainIds.includes(0)) {
+            return [
+                {
+                    chainId: 0,
+                    data: allThreeMonthSeries
+                },
+            ]
+        }
     }
+
+
+
 }
 
 export default fetchSeries

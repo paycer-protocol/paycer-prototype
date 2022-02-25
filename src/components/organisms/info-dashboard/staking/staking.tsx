@@ -10,16 +10,17 @@ import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import { useFormikContext } from 'formik'
 import {InfoDashboardFormType} from '@components/organisms/info-dashboard/info-dashboard'
 
-const Staking = () => {
+type TimeSectionState = '1M' | '3M' | '1Y'
 
+const Staking = () => {
     const [totalStaked, setTotalStaked] = useState(0)
+    const [showMenu, setShowMenu] = useState(false)
     const [series, setSeries] = useState<SeriesType>([])
-    const [showDropdown, setShowDropdown] = useState<boolean>(false)
-    const [dataLabel, setDataLabel] = useState<string>(t`1M`)
-    const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>()
+    const [timeSection, setTimeSection] = useState<TimeSectionState>('1M')
+    const { values } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
-        const payload = fetchSeries(values.activeFilters, dataLabel.toLocaleLowerCase())
+        const payload = fetchSeries(values.activeFilters, timeSection.toLocaleLowerCase())
         setSeries(payload)
         let stakedValue = 0
         payload.map(p => {
@@ -31,7 +32,7 @@ const Staking = () => {
             stakedValue+=sumWithInitial
         })
         setTotalStaked(stakedValue)
-    }, [values.activeFilters])
+    }, [values.activeFilters, timeSection])
 
     const getSeriesColors = ():string[] => {
         const colors = []
@@ -52,26 +53,6 @@ const Staking = () => {
     const onMouseLeave = useCallback(() => {
 
     }, []) // No dependencies
-
-    const setByDays = () => {
-
-        setDataLabel(t`ALL`)
-    }
-
-    const setByWeek = () => {
-
-        setDataLabel(t`W`)
-    }
-
-    const setByMonth = () => {
-
-        setDataLabel(t`1M`)
-    }
-
-    const setByYear = () => {
-
-        setDataLabel(t`Y`)
-    }
 
     return (
         <div className="card">
@@ -108,17 +89,16 @@ const Staking = () => {
                     <div className="d-flex">
                         <Styles.StyledDropdownComponent>
                             <Styles.StyledDropdownToggle>
-                                <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
+                                <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex">
                                     <div className="card-body d-flex justify-content-center align-items-center bg-transparent d-flex justify-content-center">
-                                        {dataLabel}
+                                        {timeSection}
                                     </div>
                                 </div>
                             </Styles.StyledDropdownToggle>
-                            <Styles.StyledDropdownMenu show={showDropdown} className="bg-dark border">
-                                {dataLabel !== t`1M` && <div onClick={() => setByMonth()} className="mb-3 text-muted">1M</div>}
-                                {dataLabel !== t`W` && <div onClick={() => setByWeek()} className="mb-3 text-muted">W</div>}
-                                {dataLabel !== t`Y` && <div onClick={() => setByYear()} className="mb-3 text-muted">Y</div>}
-                                {dataLabel !== t`ALL` && <div onClick={() => setByDays()} className="mb-3 text-muted">ALL</div>}
+                            <Styles.StyledDropdownMenu show={showMenu} className="bg-dark border">
+                                {timeSection !== '1M' && <div onClick={() => setTimeSection('1M')} className="mb-3 text-muted">1M</div>}
+                                {timeSection !== '3M' && <div onClick={() => setTimeSection('3M')} className="mb-3 text-muted">3M</div>}
+                                {timeSection !== '1Y' && <div onClick={() => setTimeSection('1Y')} className="mb-3 text-muted">Y</div>}
                             </Styles.StyledDropdownMenu>
                         </Styles.StyledDropdownComponent>
                     </div>
@@ -131,6 +111,7 @@ const Staking = () => {
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
                     colors={getSeriesColors()}
+                    borderRadius={timeSection === '3M' ? 2 : 8}
                 />
 
             </div>

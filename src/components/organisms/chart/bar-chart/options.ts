@@ -13,19 +13,7 @@ export default {
     xaxis: {
         categories: [],
         labels: {
-            show: true,
-            rotate: -45,
-            rotateAlways: false,
-            hideOverlappingLabels: true,
-            showDuplicates: false,
-            trim: false,
-            minHeight: undefined,
-            maxHeight: 120,
-            style: {
-                fontSize: '10px',
-                cssClass: 'apexcharts-xaxis-label',
-            },
-
+            show: false
         },
         axisBorder: {
             show: false,
@@ -59,10 +47,14 @@ export default {
     },
     plotOptions: {
         bar: {
+            borderRadius: 2,
             dataLabels: {
                 position: "bottom",
             },
-            columnWidth: '90%',
+            columnWidth: '50%',
         }
     },
+    legend: {
+        show: false,
+    }
 }

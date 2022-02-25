@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChainId } from '@usedapp/core'
+import { mainNetProviders } from '@providers/networks'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { InfoDashboardFormType } from '@components/organisms/info-dashboard/info-dashboard'
@@ -34,22 +34,19 @@ const FilterBar = () => {
     }
 
     return (
-        <div className="d-flex mb-4">
-            <label className="custom-checkbox me-3">
-                <span className="custom-checkbox-label">{t`All Chain`}</span>
+        <div className="d-flex">
+            <label className="custom-checkbox me-4">
+                <span className="custom-checkbox-label">{t`All`}</span>
                 <input onChange={handleChange} value={0} checked={values.activeFilters.includes(0)} type="checkbox" />
                 <span className="checkmark card mb-0" />
             </label>
-            <label className="custom-checkbox me-3">
-                <span className="custom-checkbox-label">{t`Polygon`}</span>
-                <input onChange={handleChange} checked={values.activeFilters.includes(ChainId.Polygon)} value={ChainId.Polygon} type="checkbox" />
-                <span className="checkmark card mb-0" />
-            </label>
-            <label className="custom-checkbox">
-                <span className="custom-checkbox-label">{t`Etherum`}</span>
-                <input onChange={handleChange} checked={values.activeFilters.includes(ChainId.Mainnet)} value={ChainId.Mainnet} type="checkbox" />
-                <span className="checkmark card mb-0" />
-            </label>
+            {Object.keys(mainNetProviders).map((key) => (
+                <label className="custom-checkbox me-4">
+                    <span className="custom-checkbox-label">{mainNetProviders[key].chainName}</span>
+                    <input onChange={handleChange} checked={values.activeFilters.includes(parseInt(mainNetProviders[key].chainId, 16))} value={parseInt(mainNetProviders[key].chainId, 16)} type="checkbox" />
+                    <span className="checkmark card mb-0" />
+                </label>
+            ))}
         </div>
     )
 }

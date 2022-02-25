@@ -34,7 +34,9 @@ export default function SwapForm() {
 
                 return (
                    <>
-                       <FilterBar />
+                       <div className="mb-5">
+                           <FilterBar />
+                       </div>
                        <div className="row">
                            <div className="col-9">
                                <Staking />
