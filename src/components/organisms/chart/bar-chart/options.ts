@@ -8,7 +8,7 @@ export default {
         },
     },
     tooltip: {
-        enabled: false
+        enabled: true
     },
     xaxis: {
         categories: [],

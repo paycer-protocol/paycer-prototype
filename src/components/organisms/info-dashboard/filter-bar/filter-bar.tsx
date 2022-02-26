@@ -41,7 +41,7 @@ const FilterBar = () => {
                 <span className="checkmark card mb-0" />
             </label>
             {Object.keys(mainNetProviders).map((key) => (
-                <label className="custom-checkbox me-4">
+                <label key={key} className="custom-checkbox me-4">
                     <span className="custom-checkbox-label">{mainNetProviders[key].chainName}</span>
                     <input onChange={handleChange} checked={values.activeFilters.includes(parseInt(mainNetProviders[key].chainId, 16))} value={parseInt(mainNetProviders[key].chainId, 16)} type="checkbox" />
                     <span className="checkmark card mb-0" />

@@ -39,10 +39,6 @@ main {
   min-height: 100vh;
 }
 
-.apexcharts-tooltip {
-  color: $gray-600-dark;
-}
-
 a {
   text-decoration: none;
 }
@@ -215,8 +211,4 @@ a:focus, button:focus {
     0% { opacity:0; }
     100% { opacity:1; }
   }
-}
-
-.apexcharts-xaxis-label {
-  fill: #a6a6a6;
 }

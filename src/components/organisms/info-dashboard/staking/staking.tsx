@@ -13,6 +13,7 @@ import {InfoDashboardFormType} from '@components/organisms/info-dashboard/info-d
 type TimeSectionState = '1M' | '3M' | '1Y'
 
 const Staking = () => {
+    const PcrUsdPrice = 0.025
     const [totalStaked, setTotalStaked] = useState(0)
     const [showMenu, setShowMenu] = useState(false)
     const [series, setSeries] = useState<SeriesType>([])
@@ -25,6 +26,13 @@ const Staking = () => {
         let stakedValue = 0
         payload.map(p => {
             let initialValue = 0
+            if (p.chainId === 0) {
+                //@ts-ignore
+                p.name = t`All Chains`
+            } else {
+                //@ts-ignore
+                p.name = mainNetProviders[p.chainId].chainName
+            }
             const sumWithInitial = p.data.reduce(
                 (previousValue, currentValue) => previousValue + currentValue,
                 initialValue
@@ -32,6 +40,7 @@ const Staking = () => {
             stakedValue+=sumWithInitial
         })
         setTotalStaked(stakedValue)
+
     }, [values.activeFilters, timeSection])
 
     const getSeriesColors = ():string[] => {
@@ -45,14 +54,6 @@ const Staking = () => {
         }
         return colors
     }
-
-    const onMouseEnter = useCallback((MouseEvent, chartContext, config) => {
-
-    }, []) // No dependencies
-
-    const onMouseLeave = useCallback(() => {
-
-    }, []) // No dependencies
 
     return (
         <div className="card">
@@ -80,7 +81,7 @@ const Staking = () => {
                         <h5 className="text-uppercase text-muted mb-3 mb-md-4">
                             $
                             <FormattedNumber
-                                value={totalStaked * 0.025}
+                                value={totalStaked * PcrUsdPrice}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={2}
                             />
@@ -95,25 +96,21 @@ const Staking = () => {
                                     </div>
                                 </div>
                             </Styles.StyledDropdownToggle>
-                            <Styles.StyledDropdownMenu show={showMenu} className="bg-dark border">
+                            <Styles.StyledDropdownMenu className="bg-dark border">
                                 {timeSection !== '1M' && <div onClick={() => setTimeSection('1M')} className="mb-3 text-muted">1M</div>}
                                 {timeSection !== '3M' && <div onClick={() => setTimeSection('3M')} className="mb-3 text-muted">3M</div>}
-                                {timeSection !== '1Y' && <div onClick={() => setTimeSection('1Y')} className="mb-3 text-muted">Y</div>}
+                                {timeSection !== '1Y' && <div onClick={() => setTimeSection('1Y')} className="mb-3 text-muted">1Y</div>}
                             </Styles.StyledDropdownMenu>
                         </Styles.StyledDropdownComponent>
                     </div>
                 </div>
 
                 <BarChart
-                    categories={[]}
                     series={series}
-                    height={400}
-                    onMouseEnter={onMouseEnter}
-                    onMouseLeave={onMouseLeave}
+                    height={320}
                     colors={getSeriesColors()}
                     borderRadius={timeSection === '3M' ? 2 : 8}
                 />
-
             </div>
         </div>
     )
