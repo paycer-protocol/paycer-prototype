@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { useMemo } from 'react'
 import options from './options'
 import dynamic from 'next/dynamic'
 
@@ -10,6 +10,7 @@ export interface BarChartProps {
     categories?: Array<string>
     series: SeriesType
     height?: number
+    onMouseEnter?: (event: MouseEvent, chartContext, config) => void
     colors?: Array<string>
     borderRadius?: number
 }
@@ -19,6 +20,7 @@ const BarChart = (props: BarChartProps) => {
         categories = [],
         series,
         height,
+        onMouseEnter,
         colors,
         borderRadius = 8
     } = props
@@ -29,16 +31,25 @@ const BarChart = (props: BarChartProps) => {
     options.colors = colors
     options.plotOptions.bar.borderRadius = borderRadius
 
-    return (
-        <div style={{height: height}}>
-            <Chart
-                options={options}
-                series={series}
-                type="bar"
-                height={height}
-            />
-        </div>
-    )
+    if (onMouseEnter) {
+        // @ts-ignore
+        options.chart.events.mouseMove = function(event, chartContext, config) {
+            onMouseEnter(event, chartContext, config)
+        }
+    }
+
+    return useMemo(() => {
+        return (
+            <div style={{height: height}}>
+                <Chart
+                    options={options}
+                    series={series}
+                    type="bar"
+                    height={height}
+                />
+            </div>
+        )
+    }, [series])
 }
 
-export default memo(BarChart)
+export default BarChart

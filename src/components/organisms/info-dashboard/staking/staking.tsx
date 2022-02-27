@@ -14,18 +14,19 @@ type TimeSectionState = '1M' | '3M' | '1Y'
 
 const Staking = () => {
     const PcrUsdPrice = 0.025
-    const [totalStaked, setTotalStaked] = useState(0)
+    const [totalStaked, setTotalStaked] = useState<number>(0)
+    const [totalStakedHovered, setTotalStakedHovered] = useState<any>(null)
     const [showMenu, setShowMenu] = useState(false)
     const [series, setSeries] = useState<SeriesType>([])
     const [timeSection, setTimeSection] = useState<TimeSectionState>('1M')
     const { values } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
+        console.log('useEffect')
         const payload = fetchSeries(values.activeFilters, timeSection.toLocaleLowerCase())
         setSeries(payload)
         let stakedValue = 0
         payload.map(p => {
-            let initialValue = 0
             if (p.chainId === 0) {
                 //@ts-ignore
                 p.name = t`All Chains`
@@ -33,17 +34,18 @@ const Staking = () => {
                 //@ts-ignore
                 p.name = mainNetProviders[p.chainId].chainName
             }
-            const sumWithInitial = p.data.reduce(
+            const staked = p.data.reduce(
                 (previousValue, currentValue) => previousValue + currentValue,
-                initialValue
+                0
             )
-            stakedValue+=sumWithInitial
+            stakedValue+=staked
         })
         setTotalStaked(stakedValue)
 
     }, [values.activeFilters, timeSection])
 
     const getSeriesColors = ():string[] => {
+        console.log('colors')
         const colors = []
         if (values.activeFilters.includes(0)) {
             colors.push('#FFFFFF')
@@ -55,6 +57,21 @@ const Staking = () => {
         return colors
     }
 
+    const onMouseEnter = useCallback((MouseEvent, chartContext, config) => {
+        const dataPointIndex = config.dataPointIndex
+        const seriesIndex = config.seriesIndex
+        if (dataPointIndex === -1 || seriesIndex === -1) {
+            setTotalStakedHovered(null)
+            return
+        }
+        const hoveredSeries = series[seriesIndex]
+        if (!hoveredSeries) {
+            return
+        }
+        const staked = hoveredSeries.data[dataPointIndex]
+        setTotalStakedHovered(staked)
+    }, [setSeries, series]) 
+
     return (
         <div className="card">
             <div className="card-body">
@@ -64,7 +81,7 @@ const Staking = () => {
                         <div className="d-flex align-items-baseline">
                             <h2 className="display-4 fw-normal d-flex mb-2">
                                 <FormattedNumber
-                                    value={totalStaked}
+                                    value={totalStakedHovered ? totalStakedHovered : totalStaked}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
@@ -81,7 +98,7 @@ const Staking = () => {
                         <h5 className="text-uppercase text-muted mb-3 mb-md-4">
                             $
                             <FormattedNumber
-                                value={totalStaked * PcrUsdPrice}
+                                value={(totalStakedHovered || totalStaked) * PcrUsdPrice}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={2}
                             />
@@ -109,6 +126,7 @@ const Staking = () => {
                     series={series}
                     height={320}
                     colors={getSeriesColors()}
+                    onMouseEnter={onMouseEnter}
                     borderRadius={timeSection === '3M' ? 2 : 8}
                 />
             </div>
