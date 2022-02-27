@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic'
 
 export type SeriesType = Array<{
     data: Array<number>
+    chainId: number
+    name?: string
 }>
 
 export interface BarChartProps {
