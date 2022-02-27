@@ -22,7 +22,6 @@ const Staking = () => {
     const { values } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
-        console.log('useEffect')
         const payload = fetchSeries(values.activeFilters, timeSection.toLocaleLowerCase())
         setSeries(payload)
         let stakedValue = 0
@@ -45,7 +44,6 @@ const Staking = () => {
     }, [values.activeFilters, timeSection])
 
     const getSeriesColors = ():string[] => {
-        console.log('colors')
         const colors = []
         if (values.activeFilters.includes(0)) {
             colors.push('#FFFFFF')
@@ -70,7 +68,7 @@ const Staking = () => {
         }
         const staked = hoveredSeries.data[dataPointIndex]
         setTotalStakedHovered(staked)
-    }, [setSeries, series]) 
+    }, [setSeries, series])
 
     return (
         <div className="card">
