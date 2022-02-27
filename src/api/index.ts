@@ -1,5 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
+import fetchStakingSeries from './info-dashboard-staking-mock'
+import fetchVestingSeries from './info-dashboard-vesting-mock'
 
 interface PricePair {
   time: string;
@@ -25,5 +27,7 @@ export default {
   fetchPriceChart: async(token0Symbol: string, token1Symbol: string, interval: string): Promise<[number, number][]> => (
     axios.get(`https://api.paycer.io/v1/prices/pair_prices?symbol=${token0Symbol}&base=${token1Symbol}&order=asc&interval=${interval}`).
       then(res => (res.data as PricePair[]).map(pp => [moment(pp.time).valueOf(), Number(pp.quote)]))
-  )
+  ),
+  fetchStakingSeries,
+  fetchVestingSeries
 }

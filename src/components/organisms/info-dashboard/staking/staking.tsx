@@ -2,29 +2,39 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { mainNetProviders } from '@providers/networks'
 import { t } from '@lingui/macro'
 import * as Styles from './Styles'
-import fetchSeries from './mock'
 import BarChart from '@components/organisms/chart/bar-chart'
 import { SeriesType } from '@components/organisms/chart/bar-chart/bar-chart'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import ChainLegend from '@components/organisms/info-dashboard/chain-legend'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import { useFormikContext } from 'formik'
-import {InfoDashboardFormType} from '@components/organisms/info-dashboard/info-dashboard'
+import { FormikValues, useFormikContext } from 'formik'
+import { InfoDashboardFormType } from '@components/organisms/info-dashboard/info-dashboard'
 
 type TimeSectionState = '1M' | '3M' | '1Y'
 
-const Staking = () => {
+export interface StackedBarChartProps {
+    headline?: string
+    isSmall?: boolean
+    fetchSeries: (activeFilters: FormikValues, timeSection: string) => any[]
+}
+
+const StackedBarChart = (props: StackedBarChartProps) => {
+    const {
+        isSmall,
+        headline,
+        fetchSeries
+    } = props
+
     const PcrUsdPrice = 0.025
-    const [totalStaked, setTotalStaked] = useState<number>(0)
-    const [totalStakedHovered, setTotalStakedHovered] = useState<any>(null)
+    const [totalValue, setTotalValue] = useState<number>(0)
+    const [totalHovered, setTotalHovered] = useState<any>(null)
     const [series, setSeries] = useState<SeriesType>([])
-    const [colors, setColors] = useState<Array<string>>([])
     const [timeSection, setTimeSection] = useState<TimeSectionState>('1M')
     const { values } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
         const payload = fetchSeries(values.activeFilters, timeSection.toLocaleLowerCase())
-        let stakedValue = 0
+        let total = 0
         payload.map(p => {
             if (p.chainId === 0) {
                 //@ts-ignore
@@ -33,38 +43,21 @@ const Staking = () => {
                 //@ts-ignore
                 p.name = mainNetProviders[p.chainId].chainName
             }
-            const staked = p.data.reduce(
+            const reduced = p.data.reduce(
                 (previousValue, currentValue) => previousValue + currentValue,
                 0
             )
-            stakedValue+=staked
+            total+=reduced
         })
-
-        console.log(payload)
-
-        setTotalStaked(stakedValue)
+        setTotalValue(total)
         setSeries(payload)
-        setColors(getSeriesColors())
-
     }, [values.activeFilters, timeSection])
 
-    const getSeriesColors = ():string[] => {
-        const colors = []
-        if (values.activeFilters.includes(0)) {
-            colors.push('#FFFFFF')
-        } else {
-            values.activeFilters.map(a => {
-                colors.push(mainNetProviders[a].color)
-            })
-        }
-        return colors
-    }
-
-    const onMouseEnter = useCallback((MouseEvent, chartContext, config) => {
+    const onMouseEnter = (MouseEvent, chartContext, config) => {
         const dataPointIndex = config.dataPointIndex
         const seriesIndex = config.seriesIndex
         if (dataPointIndex === -1 || seriesIndex === -1) {
-            setTotalStakedHovered(null)
+            setTotalHovered(null)
             return
         }
         const hoveredSeries = series[seriesIndex]
@@ -72,40 +65,43 @@ const Staking = () => {
             return
         }
         const staked = hoveredSeries.data[dataPointIndex]
-        setTotalStakedHovered(staked)
-    }, [setSeries, series])
+        setTotalHovered(staked)
+    }
 
     return (
         <div className="card">
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <div>
-                        <h5 className="text-uppercase text-muted mb-3 mb-md-4">{t`Staking TVL`}</h5>
+                        <h5 className={`text-uppercase text-muted ${isSmall ? 'mb-2' : 'mb-3 mb-md-4'}`}>{headline}</h5>
                         <div className="d-flex align-items-baseline">
-                            <h2 className="display-4 fw-normal d-flex mb-2">
+                            <h2 className="display-4 fw-normal d-flex mb-2" style={isSmall ? {fontSize: '12px'} : null}>
                                 <FormattedNumber
-                                    value={totalStakedHovered ? totalStakedHovered : totalStaked}
+                                    value={totalHovered || totalValue}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
                                 <CurrencyIcon
                                     symbol="PCR"
                                     className="position-relative"
-                                    width={28}
-                                    height={28}
+                                    width={isSmall ? 12 : 28}
+                                    height={isSmall ? 12 : 28}
                                     style={{left: '8px', top: '2px'}}
                                 />
                             </h2>
                         </div>
 
-                        <h5 className="text-uppercase text-muted mb-3 mb-md-4">
-                            $
-                            <FormattedNumber
-                                value={(totalStakedHovered || totalStaked) * PcrUsdPrice}
+                        {!isSmall &&
+                            <h5 className="text-uppercase text-muted mb-3 mb-md-4">
+                              $
+                              <FormattedNumber
+                                value={(totalHovered || totalValue) * PcrUsdPrice}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={2}
-                            />
-                        </h5>
+                              />
+                            </h5>
+                        }
+
                     </div>
                     <div>
                         <div className="d-flex justify-content-end">
@@ -124,26 +120,30 @@ const Staking = () => {
                                 </Styles.StyledDropdownMenu>
                             </Styles.StyledDropdownComponent>
                         </div>
-                        <div className="mt-3">
-                            <ChainLegend
-                                series={series}
-                                colors={colors}
-                            />
-                        </div>
 
+                        {!isSmall &&
+                            <div className="mt-3">
+                              <ChainLegend
+                                series={series}
+                                colors={values.colors}
+                              />
+                            </div>
+                        }
                     </div>
                 </div>
 
                 <BarChart
                     series={series}
-                    height={320}
-                    colors={colors}
+                    height={isSmall ? 128 : 320}
+                    colors={values.colors}
                     onMouseEnter={onMouseEnter}
-                    borderRadius={timeSection === '3M' ? 2 : 8}
+                    borderRadius={isSmall ? 0 : timeSection === '3M' ? 2 : 8}
                 />
+
             </div>
         </div>
     )
 }
 
-export default Staking
+
+export default StackedBarChart

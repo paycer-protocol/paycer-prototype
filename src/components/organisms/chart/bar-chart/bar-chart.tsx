@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import options from './options'
 import dynamic from 'next/dynamic'
+import options from "@components/organisms/chart/bar-chart/options";
 
 export type SeriesType = Array<{
     data: Array<number>
@@ -28,14 +28,13 @@ const BarChart = (props: BarChartProps) => {
     } = props
 
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
-
-    options.xaxis.categories = categories
-    options.colors = colors
-    options.plotOptions.bar.borderRadius = borderRadius
-
+    const newOptions = JSON.parse(JSON.stringify(options))
+    newOptions.xaxis.categories = categories
+    newOptions.colors = colors
+    newOptions.plotOptions.bar.borderRadius = borderRadius
     if (onMouseEnter) {
         // @ts-ignore
-        options.chart.events.mouseMove = function(event, chartContext, config) {
+        newOptions.chart.events.mouseMove = function(event, chartContext, config) {
             onMouseEnter(event, chartContext, config)
         }
     }
@@ -44,7 +43,7 @@ const BarChart = (props: BarChartProps) => {
         return (
             <div style={{height: height}}>
                 <Chart
-                    options={options}
+                    options={newOptions}
                     series={series}
                     type="bar"
                     height={height}

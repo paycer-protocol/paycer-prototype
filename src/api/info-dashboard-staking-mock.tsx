@@ -1,5 +1,3 @@
-import { ChainId } from '@usedapp/core'
-
 const polygonMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
     return Math.floor(Math.random() * 10000000)
 })
@@ -38,7 +36,7 @@ const allYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
 })
 
 
-const fetchSeries = (chainIds, timeSection) => {
+const fetchStakingSeries = (chainIds, timeSection) => {
 
     if (timeSection === '1y') {
         if (chainIds.includes(137) && chainIds.includes(1)) {
@@ -149,10 +147,7 @@ const fetchSeries = (chainIds, timeSection) => {
             ]
         }
     }
-
-
-
 }
 
-export default fetchSeries
+export default fetchStakingSeries
 

@@ -7,7 +7,6 @@ import useCopyClipboard from '@hooks/use-copy-clipboard'
 import useWallet from '@hooks/use-wallet'
 import api from '../../../api'
 
-
 export default function ReferralUrl () {
   const [isCopied, setCopied] = useCopyClipboard()
   const [code, setCode] = useState()

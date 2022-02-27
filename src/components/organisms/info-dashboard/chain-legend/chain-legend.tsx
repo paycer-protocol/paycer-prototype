@@ -19,9 +19,6 @@ export const ChainLegendItem = styled.div`
     `}
 `
 
-
-
-
 const ChainLegend = (props: ChainLegendProps) => {
 
     const { series, colors } = props
