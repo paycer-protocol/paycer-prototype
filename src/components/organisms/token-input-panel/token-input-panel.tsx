@@ -4,14 +4,10 @@ interface TokenInputPanelProps {
     tokenInput: React.ReactNode
     tokenInputSibling: React.ReactNode
 }
+
 export default function TokenInputPanel(props: TokenInputPanelProps) {
-
     const panelInputRef = useRef(null);
-
-    const {
-        tokenInput,
-        tokenInputSibling
-    } = props
+    const { tokenInput, tokenInputSibling } = props
 
     const focusInput = () => {
         const input = panelInputRef.current.querySelector('input');

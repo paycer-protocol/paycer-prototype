@@ -1,21 +1,23 @@
-import { useEthers } from '@usedapp/core'
-import { INetworkProvider } from '../providers'
+import { useEthers, useNetwork as useBaseNetwork } from '@usedapp/core'
+import { mainNetProviders, INetworkProvider } from '../providers'
 import { supportedChains, supportedStakingChains } from '@config/network'
 
 export default function useNetwork() {
+    const { network } = useBaseNetwork()
     const { account, library, chainId } = useEthers()
+    const currentNetwork = mainNetProviders[chainId]
 
-    const addNetwork = async (provider: INetworkProvider) => {
+    const addNetwork = async (networkProvider: INetworkProvider) => {
         await library?.send('wallet_addEthereumChain', [
-            provider,
+            networkProvider,
             account,
         ])
     }
 
-    const switchNetwork = async (provider: INetworkProvider) => {
+    const switchNetwork = async (networkProvider: INetworkProvider) => {
         await library?.send('wallet_switchEthereumChain', [{
             // @ts-ignore
-            chainId: provider?.chainId
+            chainId: networkProvider?.chainId
         }])
     }
 
@@ -23,10 +25,14 @@ export default function useNetwork() {
     const supportedStakingChain = supportedStakingChains.includes(chainId)
 
     return {
-        switchNetwork,
-        addNetwork,
-        supportedChain,
-        supportedStakingChain,
-        chainId
+        ...currentNetwork,
+        ...{
+            switchNetwork,
+            addNetwork,
+            supportedChain,
+            supportedStakingChain,
+            chainId,
+            provider: network.provider
+        }
     }
 }
