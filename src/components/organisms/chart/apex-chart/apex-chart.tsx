@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import options from "@components/organisms/chart/bar-chart/options";
+import options from '@components/organisms/chart/apex-chart/options'
 
 export type SeriesType = Array<{
     data: Array<number>
@@ -8,26 +8,31 @@ export type SeriesType = Array<{
     name?: string
 }>
 
-export interface BarChartProps {
+export interface ApexChartProps {
     categories?: Array<string>
     series: SeriesType
     height?: number
     onMouseEnter?: (event: MouseEvent, chartContext, config) => void
     colors?: Array<string>
     borderRadius?: number
+    isSmall?: boolean
+    type: 'line' | 'area' | 'bar'
 }
 
-const BarChart = (props: BarChartProps) => {
+const ApexChart = (props: ApexChartProps) => {
     const {
         categories = [],
         series,
         height,
         onMouseEnter,
         colors,
-        borderRadius = 8
+        borderRadius = 8,
+        type,
+        isSmall
     } = props
 
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
+
     const newOptions = JSON.parse(JSON.stringify(options))
     newOptions.xaxis.categories = categories
     newOptions.colors = colors
@@ -39,18 +44,28 @@ const BarChart = (props: BarChartProps) => {
         }
     }
 
+    let chartHeight:string = '105%'
+    if (isSmall) {
+        if (type === 'area') {
+            chartHeight = '130%'
+        }
+        if (type === 'bar') {
+            chartHeight = '120%'
+        }
+    }
+
     return useMemo(() => {
         return (
             <div style={{height: height}}>
                 <Chart
                     options={newOptions}
                     series={series}
-                    type="bar"
-                    height={height}
+                    type={type}
+                    height={chartHeight}
                 />
             </div>
         )
     }, [series])
 }
 
-export default BarChart
+export default ApexChart

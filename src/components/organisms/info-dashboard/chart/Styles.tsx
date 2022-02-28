@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import DropdownComponent from "@components/atoms/dropdown/dropdown"
 
-export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
+export const StyledDropdownToggle = styled.div`
     background: transparent!important;
     border: 0 none;
     padding: 0;
@@ -11,17 +10,15 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
       box-shadow: none!important;
     }
     &:hover { opacity: 0.7 }
-    .card-body { width: 54px; padding: 12px 0 10px}
+    .card-body { width: 48px; padding: 12px 0 10px; font-size: 12px;}
 `
 
-export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
-    inset: initial!important;
-    top: 0!important;
+export const StyledDropdownMenu = styled.div`
+    position: absolute; z-index: 1;
     padding: 14px;
     border-width: 1px;
-    right: 0!important;
-    width: 57px!important;
-    min-width: auto;
+    width: 50px!important;
+    min-width: auto; font-size: 12px;
     > div {
         &:hover { 
             color: #FFF!important; 
@@ -31,8 +28,5 @@ export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
         }
         cursor: pointer;
     }
-`
-export const StyledDropdownComponent = styled(DropdownComponent)`
-
 `
 

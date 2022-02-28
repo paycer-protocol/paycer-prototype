@@ -2,8 +2,7 @@ import React from 'react'
 import Form from '@components/atoms/form/form'
 import api from '../../../api'
 import FilterBar from '@components/organisms/info-dashboard/filter-bar'
-import Staking from '@components/organisms/info-dashboard/staking'
-import options from '@components/organisms/chart/bar-chart/options'
+import Chart from '@components/organisms/info-dashboard/chart'
 
 import { t } from '@lingui/macro'
 
@@ -32,26 +31,35 @@ export default function SwapForm() {
                            <FilterBar />
                        </div>
                        <div className="row">
-                           <div className="col-9">
-                               <Staking
+                           <div className="col-md-8">
+                               <Chart
                                     fetchSeries={api.fetchStakingSeries}
                                     headline={t`Staking TVL`}
+                                    type="bar"
                                />
                            </div>
-                           <div className="col-3">
-                               <Staking
+                           <div className="col-md-4">
+                               <Chart
                                    fetchSeries={api.fetchVestingSeries}
                                    headline={t`Vesting`}
+                                   type="bar"
+                                   isSmall
+                               />
+                               <Chart
+                                   fetchSeries={api.fetchVestingSeries}
+                                   headline={t`Vesting`}
+                                   type="area"
                                    isSmall
                                />
                            </div>
                        </div>
                        <div className="row">
-                           <div className="col-9">
-
-                           </div>
-                           <div className="col-3">
-
+                           <div className="col-12">
+                               <Chart
+                                   fetchSeries={api.fetchStakingSeries}
+                                   headline={t`Staking TVL`}
+                                   type="area"
+                               />
                            </div>
                        </div>
                    </>
