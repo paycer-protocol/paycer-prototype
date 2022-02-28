@@ -53,7 +53,7 @@ export const mainNetProviders: INetworkProvider = {
             symbol: 'ETH',
             decimals: 18,
         },
-        rpcUrls: ['https://mainnet.infura.io/v3'],
+        rpcUrls: [rpcUrls[ChainId.Mainnet]],
         blockExplorerUrls: [explorers[ChainId.Mainnet]],
         getExplorerAddressLink: Mainnet.getExplorerAddressLink
     },

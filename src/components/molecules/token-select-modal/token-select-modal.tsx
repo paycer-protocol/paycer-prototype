@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Trans } from '@lingui/macro'
 import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { TokenType } from '../../../types/investment'
-import useToken from '@hooks/use-token'
-import {FormattedNumber} from '@components/atoms/number/formatted-number'
+import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token'
+import { FormattedNumber } from '@components/atoms/number/formatted-number'
 
 interface TokenSelectModalProps {
   show: boolean
@@ -17,7 +17,8 @@ interface TokenSelectModalProps {
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
   const { show, onHide, onClick, tokens, activeToken } = props
-  const [ filteredTokens, setFilteredTokens ] = useState<TokenType[]>(tokens)
+  const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens)
+  const suportedTokens = useSupportedTokens()
 
   useEffect(() => {
     setFilteredTokens(tokens)
@@ -31,8 +32,8 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
       keywords = keywords.filter(f => f !== '')
 
       const nextTokens = tokens.filter(f =>
-          keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
-          || keywords.some(k => f.symbol.toLowerCase().includes(k.toLowerCase()))
+        keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
+        || keywords.some(k => f.symbol.toLowerCase().includes(k.toLowerCase()))
       )
 
       setFilteredTokens(nextTokens)
@@ -52,10 +53,10 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
         </Modal.Header>
         <Modal.Body className="pt-0">
           <input
-              className="form-control bg-darkest border-primary mb-3 fw-light"
-              type="search"
-              placeholder="Search ..."
-              onChange={handleSearch}
+            className="form-control bg-darkest border-primary mb-3 fw-light"
+            type="search"
+            placeholder="Search ..."
+            onChange={handleSearch}
           />
           <div className="card bg-darkest shadow-none mb-2">
             <div className="card-body p-0">
@@ -63,7 +64,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
                 {filteredTokens.map((token, i) => (
                   <li onClick={token.symbol !== activeToken.symbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken.symbol ? 'disabled opacity-20' : ''}`}>
                     <ListItem
-                        token={token}
+                      token={suportedTokens[token.symbol]}
                     />
                   </li>
                 ))}
@@ -81,40 +82,33 @@ font-size: 18px; font-weight: 300;
 `
 
 interface ListItemProps {
-  token: TokenType
+  token: ITokenDataProvider
 }
 
 const ListItem = (props: ListItemProps) => {
-  const {
-    token
-  } = props
-
-  const tokenData = useToken(token.symbol)
-  const { tokenBalance, totalSupply } = tokenData
-  const balance = tokenBalance()
-
+  const { token } = props;
   return (
-      <a className="d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center">
-          <CurrencyIcon
-              symbol={token.symbol}
-              className="me-3"
-              width={33}
-              height={33}
-          />
-          <div className="d-flex flex-column">
-            <small className="text-muted fw-lighter">{token.name}</small>
-            <h3 className="mb-0 text-white">{token.symbol}</h3>
-          </div>
+    <a className="d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+        <CurrencyIcon
+          symbol={token.symbol}
+          className="me-3"
+          width={33}
+          height={33}
+        />
+        <div className="d-flex flex-column">
+          <small className="text-muted fw-lighter">{token.name}</small>
+          <h3 className="mb-0 text-white">{token.symbol}</h3>
         </div>
-        <TokenBalanceLabel>
-          <FormattedNumber
-              value={balance}
-              minimumFractionDigits={2}
-              maximumFractionDigits={4}
-          />
-        </TokenBalanceLabel>
-      </a>
+      </div>
+      <TokenBalanceLabel>
+        <FormattedNumber
+          value={token.tokenBalance}
+          minimumFractionDigits={2}
+          maximumFractionDigits={4}
+        />
+      </TokenBalanceLabel>
+    </a>
   )
 
 }
