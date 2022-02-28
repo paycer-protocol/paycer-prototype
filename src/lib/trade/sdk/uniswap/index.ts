@@ -1,3 +1,4 @@
+//@ts-nocheck
 export {
   Observable as UniswapStream,
   Subscription as UniswapSubscription,
