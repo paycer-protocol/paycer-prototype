@@ -56,12 +56,13 @@ const ApexChart = (props: ApexChartProps) => {
 
     return useMemo(() => {
         return (
-            <div style={{height: height}}>
+            <div style={{height: height, marginLeft: '-1.9%'}}>
                 <Chart
                     options={newOptions}
                     series={series}
                     type={type}
                     height={chartHeight}
+                    width="101%"
                 />
             </div>
         )
