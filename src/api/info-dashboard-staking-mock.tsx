@@ -1,5 +1,5 @@
 const polygonMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
-    return Math.floor(Math.random() * 10000000)
+    return Math.floor(Math.random() * 100000000)
 })
 
 const mainnetMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
@@ -11,7 +11,7 @@ const allMonthSeries =  Array.apply(null, Array(30)).map(function(item, index){
 })
 
 const polygonThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, index){
-    return Math.floor(Math.random() * 10000000)
+    return Math.floor(Math.random() * 100000000)
 })
 
 const mainnetThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, index){
@@ -24,7 +24,7 @@ const allThreeMonthSeries =  Array.apply(null, Array(90)).map(function(item, ind
 
 
 const polygonYearSeries =  Array.apply(null, Array(12)).map(function(item, index){
-    return Math.floor(Math.random() * 10000000)
+    return Math.floor(Math.random() * 100000000)
 })
 
 const mainnetYearSeries =  Array.apply(null, Array(12)).map(function(item, index){

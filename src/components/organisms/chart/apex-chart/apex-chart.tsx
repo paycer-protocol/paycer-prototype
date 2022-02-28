@@ -13,7 +13,7 @@ export interface ApexChartProps {
     series: SeriesType
     height?: number
     onMouseEnter?: (event: MouseEvent, chartContext, config) => void
-    colors?: Array<string>
+    seriesColors?: Array<string>
     borderRadius?: number
     isSmall?: boolean
     type: 'line' | 'area' | 'bar'
@@ -25,7 +25,7 @@ const ApexChart = (props: ApexChartProps) => {
         series,
         height,
         onMouseEnter,
-        colors,
+        seriesColors,
         borderRadius = 8,
         type,
         isSmall
@@ -35,7 +35,7 @@ const ApexChart = (props: ApexChartProps) => {
 
     const newOptions = JSON.parse(JSON.stringify(options))
     newOptions.xaxis.categories = categories
-    newOptions.colors = colors
+    newOptions.colors = seriesColors
     newOptions.plotOptions.bar.borderRadius = borderRadius
     if (onMouseEnter) {
         // @ts-ignore

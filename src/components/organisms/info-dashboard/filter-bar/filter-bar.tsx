@@ -8,18 +8,6 @@ const FilterBar = () => {
 
     const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>()
 
-    const setColors = (filters: number[]):void => {
-        const colors = []
-        if (filters.includes(0)) {
-            colors.push('#FFFFFF')
-        } else {
-            filters.map(a => {
-                colors.push(mainNetProviders[a].color)
-            })
-        }
-        setFieldValue('colors', colors)
-    }
-
     const handleChange = (e):any => {
         const chainId = Number(e.currentTarget.value)
         const checked = e.currentTarget.checked
@@ -43,7 +31,6 @@ const FilterBar = () => {
             filters.push(0)
         }
         setFieldValue('activeFilters', [...filters])
-        setColors(filters)
     }
 
     return (

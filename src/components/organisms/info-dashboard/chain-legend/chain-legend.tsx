@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { SeriesType } from '@components/organisms/chart/bar-chart/bar-chart'
+import { SeriesType } from '@components/organisms/chart/apex-chart/apex-chart'
 
 export interface ChainLegendProps {
-    colors: Array<string>
+    seriesColors: Array<string>
     series: SeriesType
 }
 
@@ -21,12 +21,12 @@ export const ChainLegendItem = styled.div`
 
 const ChainLegend = (props: ChainLegendProps) => {
 
-    const { series, colors } = props
+    const { series, seriesColors } = props
 
     return (
         <div className="d-flex align-items-center">
             {series.map((s, key) => (
-                <ChainLegendItem className="d-flex align-items-center ms-4" color={colors[key]}>
+                <ChainLegendItem className="d-flex align-items-center ms-4" color={seriesColors[key]}>
                     <span>{s.name}</span>
                 </ChainLegendItem>
             ))}
