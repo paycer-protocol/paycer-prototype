@@ -1,14 +1,17 @@
-import React from 'react'
-import { Trans } from '@lingui/macro'
+import React, { memo } from 'react'
+import { t } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
-import InvestForm  from '@components/organisms/invest/invest-form'
+import DepositForm  from '@components/organisms/invest/deposit-form'
+import WithdrawForm  from '@components/organisms/invest/withdraw-form'
 import {useInvestList} from "@context/invest-list-context";
 
 const InvestModal = () => {
 
     const {
         setStrategy,
-        strategy
+        strategy,
+        showFormModal,
+        investType
     } = useInvestList()
 
     if (!strategy) {
@@ -16,13 +19,15 @@ const InvestModal = () => {
     }
 
     return (
-        <Modal show onHide={() => setStrategy(null)}>
-          <div className="bg-card-blue">
+        <Modal centered show onHide={() => setStrategy(null)}>
+          <div className={`${!showFormModal ? 'd-none' : ''} bg-card-blue`}>
             <Modal.Header closeButton onHide={() => setStrategy(null)}>
-                <Modal.Title><Trans>Invest</Trans></Modal.Title>
+                <Modal.Title>
+                    {investType === 'deposit' ? t`Deposit:` : t`Withdraw:`}
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body className="pt-0">
-                <InvestForm />
+                {investType === 'deposit' ? <DepositForm /> : <WithdrawForm />}
             </Modal.Body>
           </div>
         </Modal>

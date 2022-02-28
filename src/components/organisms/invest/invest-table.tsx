@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro'
 import InvestItem from './invest-item'
 import { useInvestList } from "@context/invest-list-context";
 
-export default function InvestList() {
+export default function   InvestList() {
     const {
         strategies
     } = useInvestList()
@@ -48,7 +48,7 @@ export default function InvestList() {
                 {strategies.map((strategy, key) => (
                     <InvestItem
                         key={`invest${key}`}
-                        strategy={strategy}
+                        {...strategy}
                     />
                 ))}
                 </tbody>
