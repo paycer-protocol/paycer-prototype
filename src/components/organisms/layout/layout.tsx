@@ -28,8 +28,8 @@ const Layout = (props: LayoutProps) => {
       <Header />
       <main role="main">
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-          <h1><Trans>Network not supported</Trans></h1>
           <Network>
+            <h1><Trans>Network not supported</Trans></h1>
             <Trans>Change network</Trans>
           </Network>
         </div>
