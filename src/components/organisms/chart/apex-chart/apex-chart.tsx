@@ -16,7 +16,7 @@ export interface ApexChartProps {
     seriesColors?: Array<string>
     borderRadius?: number
     isSmall?: boolean
-    type: 'line' | 'area' | 'bar'
+    type: 'area' | 'bar'
 }
 
 const ApexChart = (props: ApexChartProps) => {
@@ -37,10 +37,31 @@ const ApexChart = (props: ApexChartProps) => {
     newOptions.xaxis.categories = categories
     newOptions.colors = seriesColors
     newOptions.plotOptions.bar.borderRadius = borderRadius
+
     if (onMouseEnter) {
         // @ts-ignore
         newOptions.chart.events.mouseMove = function(event, chartContext, config) {
             onMouseEnter(event, chartContext, config)
+        }
+    }
+
+    if (type === 'area') {
+        newOptions.fill = {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 0.3,
+                opacityFrom: 0.5,
+                opacityTo: 0.1,
+                stops: [0, 100]
+            }
+        }
+        newOptions.stroke = {
+            show: true,
+            curve: 'smooth',
+            lineCap: 'butt',
+            colors: undefined,
+            width: 2,
+            dashArray: 0,
         }
     }
 

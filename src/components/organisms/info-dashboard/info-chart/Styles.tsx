@@ -13,7 +13,7 @@ export const StyledDropdownToggle = styled.div`
     .card-body {
         width: 48px;
         padding: 11px 8px 10px;
-        font-size: 11px; font-weight: 600;
+        font-size: 14px; font-weight: 600;
     }
 `
 
@@ -22,7 +22,7 @@ export const StyledDropdownMenu = styled.div`
     padding: 14px;
     border-width: 1px;
     width: 50px!important;
-    min-width: auto; font-size: 11px;
+    min-width: auto; font-size: 14px;
     > div {
         &:hover { 
             color: #FFF!important; 

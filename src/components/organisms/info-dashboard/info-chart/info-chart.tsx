@@ -18,7 +18,7 @@ export interface InfoChartProps {
     headline?: string
     isSmall?: boolean
     fetchSeries?: (activeFilters: FormikValues, timeSection: string) => any[]
-    type: 'line' | 'area' | 'bar'
+    type: 'area' | 'bar'
     isModal?: boolean
     handleShowModal?: (InfoChartProps) => void
     handleHideModal?: () => void
@@ -136,7 +136,7 @@ const InfoChart = (props: InfoChartProps) => {
                                     <div className="card-body d-flex justify-content-center align-items-center bg-transparent d-flex justify-content-center">
                                         <Icon
                                             component={isModal ? CloseFullscreen : ZoomOutMap}
-                                            size={20}
+                                            size={21}
                                         />
                                     </div>
                                 </div>
@@ -150,10 +150,6 @@ const InfoChart = (props: InfoChartProps) => {
                                         <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex">
                                             <div className="card-body d-flex justify-content-center align-items-center bg-transparent d-flex justify-content-center">
                                                 {timeSection}
-                                                <Icon
-                                                    component={ArrowDropDown}
-                                                    size={20}
-                                                />
                                             </div>
                                         </div>
                                     </Styles.StyledDropdownToggle>
@@ -182,7 +178,7 @@ const InfoChart = (props: InfoChartProps) => {
                     height={isSmall ? 123 : 320}
                     seriesColors={seriesColors}
                     onMouseEnter={onMouseEnter}
-                    borderRadius={isSmall ? 0 : timeSection === '3M' ? 2 : 8}
+                    borderRadius={isSmall ? 0 : timeSection === '3M' ? 2 : 5}
                     type={type}
                     isSmall={isSmall}
                 />

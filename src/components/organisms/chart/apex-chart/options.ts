@@ -27,7 +27,6 @@ export default {
             show: false,
         }
     },
-
     grid: {
         borderColor: 'transparent'
     },
@@ -47,11 +46,7 @@ export default {
     },
     plotOptions: {
         bar: {
-            borderRadius: 2,
-            dataLabels: {
-                position: "bottom",
-            },
-            columnWidth: '50%',
+            columnWidth: '40%',
         }
     },
     legend: {
