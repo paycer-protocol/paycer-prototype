@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useContractCall, useContractFunction, useTokenAllowance} from '@usedapp/core'
-import { BigNumber } from '@ethersproject/bignumber'
+import { BigNumber, FixedFormat } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
@@ -44,7 +44,8 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     let { send: approve, state: approveTx } = useContractFunction(tokenContract, 'approve')
     
     let decimalsArray = useContractCall({abi: new Interface(ERC20Abi), address: tokenContract.address, method: 'decimals', args: []});
-    let decimals = decimalsArray && decimalsArray[0] || 18;
+
+    let decimals = decimalsArray && decimalsArray[0] || 18
 
     const getContractValue = (method: string) => {
         const balanceOfArgs:any = wallet.isConnected ? {
@@ -65,11 +66,11 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const deposit = async (amount: number) => {
         setLoading(true)
         try {
-
             if (amount > formattedAllowance) {
                 await approve(strategyAddress, parseUnits(String(amount * 2), decimals))
             }
-            await sendDeposit(parseUnits(String(amount), decimals))
+
+            await sendDeposit(parseUnits(String(amount.toFixed(decimals)), decimals))
 
             if (depositTx.status === 'Success') {
                 setTimeout(() =>{
@@ -87,7 +88,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setLoading(true)
         try {
             await approve(strategyAddress, parseUnits(String(amount * 2), decimals))
-            await sendWithdraw(parseUnits(String(amount), decimals))
+            await sendWithdraw(parseUnits(String(amount.toFixed(decimals)), decimals))
 
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
