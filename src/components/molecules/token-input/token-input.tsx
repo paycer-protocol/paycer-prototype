@@ -55,7 +55,6 @@ export default function TokenInput(props: TokenInputProps) {
             }}
         />
         <div className="d-flex justify-content-end">
-            {balance &&
             <TokenBalanceLabel className="text-muted">
                 <span>{t`Balance:`}</span>&nbsp;
                 <FormattedNumber
@@ -64,7 +63,6 @@ export default function TokenInput(props: TokenInputProps) {
                     maximumFractionDigits={4}
                 />
             </TokenBalanceLabel>
-            }
 
             {(raiseMax && balance > 0) &&
             <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">

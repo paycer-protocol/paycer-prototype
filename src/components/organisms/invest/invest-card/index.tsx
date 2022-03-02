@@ -98,7 +98,7 @@ const InvestCard = (strategy: StrategyType) => {
                     </div>
                     <div className="col-6">
 
-                        <GradientButton disabled={!isWithdrawAble} isInverted onClick={() => {
+                        <GradientButton disabled={!isWithdrawAble} onClick={() => {
                             if (isWithdrawAble) {
                                 setInvestType('withdraw')
                                 setStrategy(strategy)

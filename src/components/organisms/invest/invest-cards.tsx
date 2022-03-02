@@ -7,9 +7,6 @@ export default function InvestCards() {
     strategies
   } = useInvestList()
 
-
-  console.log(strategies)
-
   return (
     <div className="row mt-4">
       {strategies.map((strategy, key) => (
