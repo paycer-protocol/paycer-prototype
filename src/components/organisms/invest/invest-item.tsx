@@ -4,17 +4,11 @@ import { Money, Percentage } from '@components/atoms/number'
 import GradientButton from '@components/atoms/button/gradient-button'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
-
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {useInvestList} from "@context/invest-list-context";
 import useInvestIsWithdrawable from "@hooks/use-invest-is-withdrawable";
 
-interface InvestItemProps {
-  strategy: StrategyType,
-}
-
-export default function InvestItem(props: InvestItemProps) {
-  const { strategy } = props
+export default function InvestItem(strategy: StrategyType) {
 
   const {
     setStrategy,

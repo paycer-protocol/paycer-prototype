@@ -1,29 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { t, Trans } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { FormattedNumber } from '@components/atoms/number'
-import Button from '@components/atoms/button'
-import InvestModal from '@components/organisms/invest/invest-modal'
 import useToken from '@hooks/use-token'
 import { StrategyType } from '../../../../types/investment'
 import { riskLabels } from '../../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
+import GradientButton from "@components/atoms/button/gradient-button";
+import {useInvestList} from "@context/invest-list-context";
+import useInvestIsWithdrawable from "@hooks/use-invest-is-withdrawable";
 
-const InvestCard = (props: StrategyType) => {
-    const [showInvestModal, setShowInvestModal] = useState(false)
-    const totalInterestRate = props.interest.interestRate + props.rewards.rewardRate
-    const investedToken = useToken(props.input.symbol)
+const InvestCard = (strategy: StrategyType) => {
+    const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate
+    const investedToken = useToken(strategy.input.symbol)
     const investedBalance = investedToken.tokenBalance()
 
-    const onHide = () => {
-        setShowInvestModal(false)
-    }
+    const {
+        setStrategy,
+        setInvestType
+    } = useInvestList()
+
+    const {
+        isWithdrawAble
+    } = useInvestIsWithdrawable(strategy)
+
     return (
         <Card className="box-shadow overflow-hidden">
             <Card.Body>
                 <div className="mb-3">
                     <h6 className="text-uppercase text-center my-4 font-size-lg">
-                        { props.name }
+                        { strategy.name }
                     </h6>
                     <div className="row g-0 align-items-center justify-content-center">
                         <div className="col-auto">
@@ -44,7 +50,7 @@ const InvestCard = (props: StrategyType) => {
                         <span className="">Assets</span>
                         <div className="d-flex justify-content-center">
                             <CurrencyIcon
-                                symbol={props.input.symbol}
+                                symbol={strategy.input.symbol}
                                 className="ms-2 position-relative"
                                 style={{top: '-1px'}}
                                 width={30}
@@ -60,30 +66,48 @@ const InvestCard = (props: StrategyType) => {
                         <span>{t`Holdings`}</span>
                         {
                             investedBalance > 0
-                              ? (
-                                <>
-                                    <FormattedNumber
-                                      value={investedBalance}
-                                      minimumFractionDigits={2}
-                                      maximumFractionDigits={4}
-                                    />
-                                    &nbsp;{investedToken.symbol}
-                                </>
-                              )
-                              : (
-                                <span>-</span>
-                              )
+                                ? (
+                                    <>
+                                        <FormattedNumber
+                                            value={investedBalance}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                        />
+                                        &nbsp;{investedToken.symbol}
+                                    </>
+                                )
+                                : (
+                                    <span>-</span>
+                                )
                         }
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span>{t`Risk`}</span>
-                        <Trans id={riskLabels[props.riskLevel].id} />
+                        <Trans id={riskLabels[strategy.riskLevel].id} />
                     </li>
                 </ul>
+                <div className="row mt-4">
+                    <div className="col-6">
+                        <GradientButton className="me-4 w-100" onClick={() => {
+                            setInvestType('deposit')
+                            setStrategy(strategy)
+                        }}>
+                            <span>{t`Invest`}</span>
+                        </GradientButton>
 
-                <Button onClick={() => setShowInvestModal(true)} variant="primary" className='w-100 mt-4'>
-                    {investedBalance ? t`Edit invest` : t`Start invest`}
-                </Button>
+                    </div>
+                    <div className="col-6">
+
+                        <GradientButton disabled={!isWithdrawAble} onClick={() => {
+                            if (isWithdrawAble) {
+                                setInvestType('withdraw')
+                                setStrategy(strategy)
+                            }
+                        }}>
+                            <span className="bg-card-blue">{t`Withdraw`}</span>
+                        </GradientButton>
+                    </div>
+                </div>
             </Card.Body>
         </Card>
     )

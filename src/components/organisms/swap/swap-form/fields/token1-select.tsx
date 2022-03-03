@@ -7,15 +7,29 @@ import {t} from '@lingui/macro'
 import {marketPairs, swapTokens} from '@config/market-pairs'
 
 export default function Token1Select() {
-    const { values, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
 
-    const handleChange = (token) => {
-        setFieldValue('minimumToReceive', 0)
+    const handleChange = async (token) => {
         const token1Markets = marketPairs.find(m => m.base.symbol === values.token0.symbol).markets
-        setFieldValue('token1Markets', token1Markets)
-        setFieldValue('token0Markets', swapTokens)
-        setFieldValue('token1', token)
+
+        const nextValues = {
+          ...values,
+          ...{
+            token1Markets: token1Markets,
+            token0Markets: swapTokens,
+            token1: token,
+            tradePair: {
+              fromTokenAddress: values.tradePair.fromTokenAddress,
+              toTokenAddress: token.chainAddresses[values.networkSettings.chainId],
+              amount: values.tradePair.amount,
+            },
+          }
+        }
+
+        const nextTradeContext = await values.initFactory(nextValues)
+        setValues(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
         setShowModal(false)
     }
 

@@ -52,7 +52,7 @@ export const tokenProvider: ITokenProvider = {
       name: 'Tether USD',
       decimals: 6,
       chainAddresses: {
-        [ChainId.Polygon]: '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+        [ChainId.Polygon]: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
         [ChainId.Mainnet]: '0xdac17f958d2ee523a2206206994597c13d831ec7',
         [ChainId.Kovan]: '0xf3e0d7bf58c5d455d31ef1c2d5375904df525105',
       }

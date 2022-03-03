@@ -1,23 +1,25 @@
 import { TokenType } from '../../../../types/investment'
+import {
+  TradeContext,
+  TradePairInterface,
+  TradeSettingsInterface,
+  NetworkSettingsInterface
+} from '../../../../lib/trade'
 
 export interface SwapProps {
-  token0: TokenType
+  token0: any
   token0Value: number
   token0Markets: TokenType[]
-  token0Balance: number,
-  token0Price: number
 
-  token1: TokenType
+  token1: any
   token1Value: number
   token1Markets: TokenType[]
-  token1Balance: number,
-  token1Price: number
 
-  minimumToReceive: number
-  slippageTolerance: number
-  priceImpact: number
-  feeFactor: number
-  fee: number
+  tradePair: TradePairInterface
+  tradeSettings: TradeSettingsInterface
+  networkSettings: NetworkSettingsInterface
+  tradeContext: TradeContext
+  initFactory: (values: SwapProps) => any
 }
 
 

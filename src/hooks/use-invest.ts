@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useContractCall, useContractFunction, useTokenAllowance} from '@usedapp/core'
-import { BigNumber } from '@ethersproject/bignumber'
+import { BigNumber, FixedFormat } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
@@ -42,6 +42,10 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     let { send: sendDeposit, state: depositTx } = useContractFunction(strategyContract, 'deposit')
     let { send: sendWithdraw, state: withdrawTx } = useContractFunction(strategyContract, 'withdraw')
     let { send: approve, state: approveTx } = useContractFunction(tokenContract, 'approve')
+    
+    let decimalsArray = useContractCall({abi: new Interface(ERC20Abi), address: tokenContract.address, method: 'decimals', args: []});
+
+    let decimals = decimalsArray && decimalsArray[0] || 18
 
     const getContractValue = (method: string) => {
         const balanceOfArgs:any = wallet.isConnected ? {
@@ -51,22 +55,22 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
             args: [wallet.address],
         } : false
         let [data] = useContractCall(balanceOfArgs) ?? []
-        return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
+        return BigNumber.isBigNumber(data) ? Number(formatUnits(data, decimals)) : 0
     }
 
     const withdrawAbleAmount = getContractValue('balanceOf')
 
     let allowance = useTokenAllowance(tokenContract.address, wallet.address, strategyAddress)
-    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
+    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, decimals)) : 0
 
     const deposit = async (amount: number) => {
         setLoading(true)
         try {
-
             if (amount > formattedAllowance) {
-                await approve(strategyAddress, parseUnits(String(amount * 2), 18))
+                await approve(strategyAddress, parseUnits(String(amount * 2), decimals))
             }
-            await sendDeposit(parseUnits(String(amount), 18))
+
+            await sendDeposit(parseUnits(String(amount.toFixed(decimals)), decimals))
 
             if (depositTx.status === 'Success') {
                 setTimeout(() =>{
@@ -83,8 +87,8 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const withdraw = async (amount: number) => {
         setLoading(true)
         try {
-            await approve(strategyAddress, parseUnits(String(amount * 2), 18))
-            await sendWithdraw(parseUnits(String(amount), 18))
+            await approve(strategyAddress, parseUnits(String(amount * 2), decimals))
+            await sendWithdraw(parseUnits(String(amount.toFixed(decimals)), decimals))
 
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
