@@ -42,7 +42,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     let { send: sendDeposit, state: depositTx } = useContractFunction(strategyContract, 'deposit')
     let { send: sendWithdraw, state: withdrawTx } = useContractFunction(strategyContract, 'withdraw')
     let { send: approve, state: approveTx } = useContractFunction(tokenContract, 'approve')
-    
+
     let decimalsArray = useContractCall({abi: new Interface(ERC20Abi), address: tokenContract.address, method: 'decimals', args: []});
 
     let decimals = decimalsArray && decimalsArray[0] || 18
@@ -67,7 +67,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setLoading(true)
         try {
             if (amount > formattedAllowance) {
-                await approve(strategyAddress, parseUnits(String(amount * 2), decimals))
+                await approve(strategyAddress, parseUnits(String((amount * 2).toFixed(decimals)), decimals))
             }
 
             await sendDeposit(parseUnits(String(amount.toFixed(decimals)), decimals))
