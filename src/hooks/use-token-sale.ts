@@ -26,14 +26,14 @@ export default function UseTokenSale():TokenSaleProps {
     }
 
     useEffect(() => {
-        if (wallet.isConnected) {
+        if (wallet.isConnected && wallet.address) {
             // @ts-ignore
             async function fetch() {
                 await fetchTokenSaleData()
             }
             fetch()
         }
-    }, [wallet.isConnected])
+    }, [wallet.isConnected, wallet.address])
 
     return {
         tokenSaleData,

@@ -43,8 +43,6 @@ import { useSendTransaction } from '@usedapp/core'
 export default function SwapForm() {
     const network = useNetwork()
     const wallet = useWallet()
-    const token0 = useToken(tokenProvider.USDT.symbol)
-    const token1 = useToken(tokenProvider.USDC.symbol)
     const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
     const { sendTransaction: sendApproveTransaction , state: approveState } = useSendTransaction({ transactionName: 'approve' })
     const { sendTransaction: sendSwapTransaction , state: swapState } = useSendTransaction({ transactionName: 'swap' })
@@ -53,17 +51,17 @@ export default function SwapForm() {
     const tradeFactory = new Trade(provider)
 
     let initialValues: SwapProps = {
-        token0,
+        token0: null,
         token0Value: null,
         token0Markets: swapTokens,
 
-        token1,
+        token1: null,
         token1Value: null,
         token1Markets: swapTokens,
 
         tradePair: {
-            fromTokenAddress: token0.tokenAddress,
-            toTokenAddress: token1.tokenAddress,
+            fromTokenAddress: null,
+            toTokenAddress: null,
             amount: "1",
         },
         tradeSettings: {
@@ -113,16 +111,6 @@ export default function SwapForm() {
             console.log(approved)
             console.log(swapState)
         }
-    }
-
-    useEffect(() => {
-        if (wallet.isConnected && wallet.address && !tradeContext) {
-            initialValues.initFactory(initialValues)
-        }
-    }, [wallet.isConnected, wallet.address])
-
-    if (!tradeContext) {
-        return null;
     }
 
     return (
