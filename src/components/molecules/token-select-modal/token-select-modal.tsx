@@ -18,7 +18,7 @@ interface TokenSelectModalProps {
 export default function TokenSelectModal(props: TokenSelectModalProps) {
   const { show, onHide, onClick, tokens, activeToken } = props
   const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens)
-  const suportedTokens = useSupportedTokens()
+  const supportedTokens = useSupportedTokens()
 
   useEffect(() => {
     setFilteredTokens(tokens)
@@ -64,7 +64,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
                 {filteredTokens.map((token, i) => (
                   <li onClick={token.symbol !== activeToken?.symbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken?.symbol ? 'disabled opacity-20' : ''}`}>
                     <ListItem
-                      token={suportedTokens[token.symbol]}
+                      token={supportedTokens[token.symbol]}
                     />
                   </li>
                 ))}
