@@ -1,38 +1,61 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
-import { t } from '@lingui/macro'
-import { marketPairs, swapTokens } from '@config/market-pairs'
+import {t} from '@lingui/macro'
+import { connectors } from '@providers/connectors'
+import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 import TokenSelectModal from '@components/molecules/token-select-modal'
-import TokenToggle from './token-toggle'
+import WalletProvider from '@components/organisms/web3/wallet-provider'
+import { swapTokens } from '@config/market-pairs'
 import { SwapProps } from '../types'
+import TokenToggle from './token-toggle'
 
 export default function Token0Select() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const wallet = useWallet()
+    const network = useNetwork()
 
     const handleChange = async (token) => {
-        const token1Markets = marketPairs.find(m => m.base.symbol === token.symbol).markets
+        setErrorMessage('')
 
-        const nextValues = {
-            ...values,
-            ...{
-                token0: token,
-                token0Markets: swapTokens,
-                token1: token1Markets[0],
-                token1Markets: token1Markets,
-                tradePair: {
-                    fromTokenAddress: token.chainAddresses[values.networkSettings.chainId],
-                    toTokenAddress: token1Markets[0].chainAddresses[values.networkSettings.chainId],
-                    amount: values.tradePair.amount || '1',
-                },
+        try {
+            const nextValues = {
+                ...values,
+                ...{
+                    token0: token,
+                    token0Markets: swapTokens,
+                    tradePair: {
+                        fromTokenAddress: token.chainAddresses[values.networkSettings.chainId],
+                        toTokenAddress: values.tradePair.toTokenAddress,
+                        amount: values.tradePair.amount || '1',
+                    },
+                    networkSettings: {
+                        providerUrl: network.rpcUrls[0],
+                        walletAddress: wallet.address,
+                        networkProvider: network.provider,
+                        chainId: network.chainId,
+                        nameNetwork: network.chainName,
+                        multicallContractAddress: network.multicallAddress,
+                        nativeCurrency: network.nativeCurrency,
+                        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+                    }
+                }
             }
+
+            if (nextValues.token0 && nextValues.token1) {
+                const nextTradeContext = await values.initFactory(nextValues)
+                setValues(nextValues)
+                setFieldValue('tradeContext', nextTradeContext)
+                setShowModal(false)
+            } else {
+                setValues(nextValues)
+                setShowModal(false)
+            }
+        } catch (e) {
+            setErrorMessage(e.message)
         }
-
-        setValues(nextValues)
-
-        const nextTradeContext = await values.initFactory(nextValues)
-        setFieldValue('tradeContext', nextTradeContext)
-        setShowModal(false)
     }
 
     return (
@@ -42,13 +65,22 @@ export default function Token0Select() {
           onClick={() => setShowModal(true)}
           label={t`Swap from`}
         />
-        <TokenSelectModal
-          show={showModal}
-          tokens={values.token0Markets}
-          activeToken={values.token0}
-          onHide={() => setShowModal(false)}
-          onClick={handleChange}
-        />
+          {wallet.isConnected && (
+            <TokenSelectModal
+              show={showModal}
+              tokens={values.token0Markets}
+              activeToken={values.token0}
+              onHide={() => setShowModal(false)}
+              onClick={handleChange}
+              errorMessage={errorMessage}
+            />
+          )}
+          {!wallet.isConnected && showModal && (
+            <WalletProvider
+              providers={connectors}
+              onHide={() => setShowModal(false)}
+            />
+          )}
       </>
     )
 }

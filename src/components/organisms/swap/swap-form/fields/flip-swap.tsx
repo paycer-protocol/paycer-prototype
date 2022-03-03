@@ -3,6 +3,8 @@ import { useFormikContext } from 'formik'
 import { SwapVert } from '@styled-icons/material/SwapVert'
 import styled from 'styled-components'
 import Icon from '@components/atoms/icon'
+import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 import { SwapProps } from '@components/organisms/swap/swap-form/types'
 
 export const Circle = styled.div`
@@ -15,6 +17,8 @@ export const Circle = styled.div`
 
 export default function FlipSwap() {
   const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+  const wallet = useWallet()
+  const network = useNetwork()
 
   const handleFlip = async () => {
     const {
@@ -27,6 +31,10 @@ export default function FlipSwap() {
       tradePair,
     } = values
 
+    if (!token0 && !token1) {
+      return
+    }
+
     const nextValues = {
       ...values,
       ...{
@@ -37,17 +45,34 @@ export default function FlipSwap() {
         token1Markets: token0Markets,
         token0Markets: token1Markets,
         tradePair: {
-          fromTokenAddress: token1.tokenAddress,
-          toTokenAddress: token0.tokenAddress,
+          fromTokenAddress: token1.chainAddresses[network.chainId],
+          toTokenAddress: token0.chainAddresses[network.chainId],
           amount: tradePair.amount,
         },
+        networkSettings: {
+          providerUrl: network.rpcUrls[0],
+          walletAddress: wallet.address,
+          networkProvider: network.provider,
+          chainId: network.chainId,
+          nameNetwork: network.chainName,
+          multicallContractAddress: network.multicallAddress,
+          nativeCurrency: network.nativeCurrency,
+          nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+        }
       }
     }
 
-
-    const nextTradeContext = await values.initFactory(nextValues)
-    setValues(nextValues)
-    setFieldValue('tradeContext', nextTradeContext)
+    try {
+      if (token0 && token1) {
+        setValues(nextValues)
+        const nextTradeContext = await values.initFactory(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
+      } else {
+        setValues(nextValues)
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (

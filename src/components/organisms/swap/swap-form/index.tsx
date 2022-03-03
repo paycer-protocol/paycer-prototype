@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
-import { tokenProvider } from '@providers/tokens'
 import { swapTokens } from '@config/market-pairs'
-import useToken from '@hooks/use-token'
 import useNetwork from '@hooks/use-network'
 import useWallet from '@hooks/use-wallet'
 import Form from '@components/atoms/form/form'
@@ -19,26 +17,6 @@ import PriceChart from './price-chart'
 import { SwapProps } from './types'
 import { Trade, TradeContext, UniswapProvider } from '../../../../lib/trade'
 import { useSendTransaction } from '@usedapp/core'
-
-
-// todo
-// 1. initial state with empty from token
-// 2. token select modal refactoring and bug fixing
-// 3. Error handling modal select
-// 4. Error handling change input
-// 5. Error handling change slippage
-// 6. Show balances in modal select (multichain call)
-// 7. check all addresses
-// 8. Price chart
-// 9. Show loading spinner (eg for uniswap call)
-// 10. Transaction Modal
-// 11. Show pending transactions
-// 12. Save transaction in api
-// 13. Configure market pairs
-// 14. Add deadlineMinutes config
-// 15. Add disableMultihops config
-// 16. Add uniswap v2 config
-// 17. ensure price update and show confirm when price
 
 export default function SwapForm() {
     const network = useNetwork()
