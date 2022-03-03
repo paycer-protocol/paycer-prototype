@@ -11,6 +11,7 @@ export const strategyProvider: IStrategyProvider = {
     input: tokenProvider.USDC,
     output: paycerProvider.pUSDC,
     color: '#2775CA',
+    decimals: 18,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -35,6 +36,7 @@ export const strategyProvider: IStrategyProvider = {
     input: tokenProvider.DAI,
     output: paycerProvider.pDAI,
     color: '#B47208',
+    decimals: 18,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -59,6 +61,7 @@ export const strategyProvider: IStrategyProvider = {
     input: tokenProvider.USDT,
     output: paycerProvider.pUSDT,
     color: '#0ecc8d',
+    decimals: 18,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -83,6 +86,7 @@ export const strategyProvider: IStrategyProvider = {
     input: tokenProvider.wBTC,
     output: paycerProvider.pwBTC,
     color: '#f2a900',
+    decimals: 18,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -107,6 +111,7 @@ export const strategyProvider: IStrategyProvider = {
     input: tokenProvider.wETH,
     output: paycerProvider.pwETH,
     color: '#ecf0f1',
+    decimals: 18,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
