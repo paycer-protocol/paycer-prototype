@@ -127,7 +127,7 @@ msgstr "Balance"
 msgid "Balance after:"
 msgstr "Balance after:"
 
-#: src/components/molecules/token-input/token-input.tsx:60
+#: src/components/molecules/token-input/token-input.tsx:59
 msgid "Balance:"
 msgstr "Balance:"
 
@@ -686,7 +686,7 @@ msgstr "Monthly rewards:"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/layout/layout.tsx:31
+#: src/components/organisms/layout/layout.tsx:32
 msgid "Network not supported"
 msgstr "Network not supported"
 
@@ -908,6 +908,7 @@ msgstr "Safe hardware wallet for your coins."
 #~ msgstr "Select a market pair"
 
 #: src/components/molecules/token-select-modal/token-select-modal.tsx:51
+#: src/components/organisms/swap/swap-form/fields/token-toggle.tsx:32
 msgid "Select a token"
 msgstr "Select a token"
 
@@ -1318,7 +1319,7 @@ msgstr "Your APR:"
 #~ msgid "by"
 #~ msgstr "by"
 
-#: src/components/molecules/token-input/token-input.tsx:71
+#: src/components/molecules/token-input/token-input.tsx:69
 msgid "max"
 msgstr "max"
 
