@@ -26,6 +26,7 @@ export default function Token0Select() {
                 ...{
                     token0: token,
                     token0Markets: swapTokens,
+                    token1Value: 0,
                     tradePair: {
                         fromTokenAddress: token.chainAddresses[values.networkSettings.chainId],
                         toTokenAddress: values.tradePair.toTokenAddress,

@@ -4,9 +4,9 @@ import { SwapProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 
 export default function Token1Input() {
-    const { values, setValues } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
-    const handleChange = (value: number) => {
+    const handleChange = async (value: number) => {
         const nextValues = {
             ...values,
             ... {
@@ -16,7 +16,11 @@ export default function Token1Input() {
         }
 
         setValues(nextValues)
-        values.initFactory(nextValues)
+
+        if (values.token0 && values.token1) {
+            const nextTradeContext = await values.initFactory(nextValues)
+            setFieldValue('tradeContext', nextTradeContext)
+        }
     }
 
     return (
