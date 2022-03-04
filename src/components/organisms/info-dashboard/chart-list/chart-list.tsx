@@ -25,12 +25,33 @@ const ChartList = () => {
                     />
                 </div>
                 <div className="col-md-4">
-
+                    <InfoChart
+                        dataType="vesting"
+                        headline={t`Vesting`}
+                        chartType="bar"
+                        isSmall
+                        handleShowModal={handleShowModal}
+                        handleHideModal={() => setModalChartProps(null)}
+                    />
+                    <InfoChart
+                        dataType="vesting"
+                        headline={t`Vesting`}
+                        chartType="area"
+                        isSmall
+                        handleShowModal={handleShowModal}
+                        handleHideModal={() => setModalChartProps(null)}
+                    />
                 </div>
             </div>
             <div className="row">
                 <div className="col-12">
-
+                    <InfoChart
+                        dataType="vesting"
+                        headline={t`Staking TVL`}
+                        chartType="area"
+                        handleShowModal={handleShowModal}
+                        handleHideModal={() => setModalChartProps(null)}
+                    />
                 </div>
             </div>
             {modalChartProps &&

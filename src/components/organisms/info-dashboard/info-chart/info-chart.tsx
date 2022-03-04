@@ -19,7 +19,7 @@ type TimeSectionState = '1M' | '3M' | '1Y'
 export interface InfoChartProps {
     headline?: string
     isSmall?: boolean
-    isTransactionData?: boolean
+    isTransactionChart?: boolean
     dataType: 'staking' | 'vesting' | 'holders' | 'dailyStaked' | 'dailyWithdrawn' | 'dailyHolders' | 'dailyVestingWithdrawn' | 'dailyTransactions'
     chartType: 'area' | 'bar'
     isModal?: boolean
@@ -35,7 +35,7 @@ const InfoChart = (props: InfoChartProps) => {
         chartType,
         isModal,
         handleShowModal,
-        isTransactionData = false,
+        isTransactionChart = false,
         handleHideModal
     } = props
 
@@ -63,7 +63,7 @@ const InfoChart = (props: InfoChartProps) => {
                 transformedChartSeries.push({
                     chainId: 0,
                     data: allChartValues,
-                    name: mainNetProviders[t`All Chains`]
+                    name: t`All Chains`
                 })
                 colors.push('#FFFFFF')
             } else {
@@ -81,7 +81,7 @@ const InfoChart = (props: InfoChartProps) => {
                 })
             }
 
-            if (isTransactionData) {
+            if (isTransactionChart) {
                 transformedChartSeries.map(series => {
                     initialValue += series.data.reduce(
                         (previousValue, currentValue) => previousValue + currentValue,
@@ -90,12 +90,15 @@ const InfoChart = (props: InfoChartProps) => {
                 })
             } else {
                 transformedChartSeries.map(series => {
-                    initialValue+= series.data[series.data.length - 1]
+                    if (series.data.length) {
+                        initialValue+= series.data[series.data.length - 1]
+                    }
+
                 })
             }
 
-            setSeries(transformedChartSeries)
             setSeriesColors(colors)
+            setSeries(transformedChartSeries)
             setInitialValueShown(initialValue)
         }
         fetch()
