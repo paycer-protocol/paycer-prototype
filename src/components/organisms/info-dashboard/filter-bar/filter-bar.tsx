@@ -1,5 +1,5 @@
 import React from 'react'
-import { mainNetProviders } from '@providers/networks'
+import { infoChartProviders } from '@providers/networks'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { InfoDashboardFormType } from '@components/organisms/info-dashboard/info-dashboard'
@@ -40,10 +40,10 @@ const FilterBar = () => {
                 <input onChange={handleChange} value={0} checked={values.selectedChains.includes(0)} type="checkbox" />
                 <span className="checkmark card mb-0" />
             </label>
-            {Object.keys(mainNetProviders).map((key) => (
+            {Object.keys(infoChartProviders).map((key) => (
                 <label key={key} className="custom-checkbox me-4">
-                    <span className="custom-checkbox-label">{mainNetProviders[key].chainName}</span>
-                    <input onChange={handleChange} checked={values.selectedChains.includes(parseInt(mainNetProviders[key].chainId, 16))} value={parseInt(mainNetProviders[key].chainId, 16)} type="checkbox" />
+                    <span className="custom-checkbox-label">{infoChartProviders[key].chainName}</span>
+                    <input onChange={handleChange} checked={values.selectedChains.includes(parseInt(infoChartProviders[key].chainId, 16))} value={parseInt(infoChartProviders[key].chainId, 16)} type="checkbox" />
                     <span className="checkmark card mb-0" />
                 </label>
             ))}

@@ -114,6 +114,10 @@ export const mainNetProviders: INetworkProvider = {
     },
 }
 
+export const infoChartProviders: INetworkProvider = {
+    [ChainId.Polygon]: mainNetProviders[ChainId.Polygon]
+}
+
 export const chainedNetworkProvider = {
     ...testNetNetworks,
     ...mainNetProviders,

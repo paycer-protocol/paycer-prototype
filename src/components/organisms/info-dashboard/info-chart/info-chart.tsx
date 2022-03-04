@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { mainNetProviders } from '@providers/networks'
-import { FixedNumber, BigNumber } from '@ethersproject/bignumber'
+import { infoChartProviders } from '@providers/networks'
 import * as Styles from './Styles'
 import api from '../../../../api'
 import ApexChart from '@components/organisms/chart/apex-chart'
@@ -65,7 +64,8 @@ const InfoChart = (props: InfoChartProps) => {
                     data: allChartValues,
                     name: t`All Chains`
                 })
-                colors.push('#FFFFFF')
+                //colors.push('#FFFFFF')
+                colors.push(infoChartProviders[137].color)
             } else {
                 values.selectedChains.map(chainId => {
                     const filteredByChainId = chartData.filter(f => f.chainId === chainId)
@@ -74,9 +74,9 @@ const InfoChart = (props: InfoChartProps) => {
                         transformedChartSeries.push({
                             chainId: chainId,
                             data: valuesByChainId,
-                            name: mainNetProviders[chainId].chainName
+                            name: infoChartProviders[chainId].chainName
                         })
-                        colors.push(mainNetProviders[chainId].color)
+                        colors.push(infoChartProviders[chainId].color)
                     }
                 })
             }
