@@ -4,13 +4,13 @@ import FilterBar from '@components/organisms/info-dashboard/filter-bar'
 import ChartList from '@components/organisms/info-dashboard/chart-list'
 
 export type InfoDashboardFormType = {
-    activeFilters: Array<number>
+    selectedChains: Array<number>
 }
 
 const InfoDashboard = () => {
 
     const initialValues: InfoDashboardFormType = {
-        activeFilters: [0]
+        selectedChains: [0]
     }
 
     return (

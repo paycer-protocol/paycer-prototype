@@ -28,6 +28,23 @@ export default {
     axios.get(`https://api.paycer.io/v1/prices/pair_prices?symbol=${token0Symbol}&base=${token1Symbol}&order=asc&interval=${interval}`).
       then(res => (res.data as PricePair[]).map(pp => [moment(pp.time).valueOf(), Number(pp.quote)]))
   ),
-  fetchStakingSeries,
-  fetchVestingSeries
+  fetchChartData: async(selectedChains: number[], dataType: string): Promise<any> => {
+    let url = 'https://api.paycer.io/v1/analytics'
+    // filter all
+    if (selectedChains.includes(0)) {
+      url+= `?type=${dataType}&page=1`
+    } else {
+      selectedChains.map((chainId, key) => {
+        let paramUrlChar = '&'
+        if (!key) {
+          paramUrlChar = '?'
+        }
+        url+= `${paramUrlChar}chainId[]=${chainId}`
+      })
+      url+= `&type=${dataType}&page=1`
+    }
+    return axios.get(url)
+  },
 }
+
+

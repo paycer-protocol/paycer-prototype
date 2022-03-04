@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { t } from '@lingui/macro'
 import InfoChart from '@components/organisms/info-dashboard/info-chart'
-import api from '../../../../api'
 import Modal from '@components/molecules/modal'
-import {InfoChartProps} from "@components/organisms/info-dashboard/info-chart/info-chart";
+import { InfoChartProps } from "@components/organisms/info-dashboard/info-chart/info-chart";
 
 const ChartList = () => {
 
@@ -18,41 +17,20 @@ const ChartList = () => {
             <div className="row">
                 <div className="col-md-8">
                     <InfoChart
-                        fetchSeries={api.fetchStakingSeries}
+                        dataType="staking"
                         headline={t`Staking TVL`}
-                        type="bar"
+                        chartType="bar"
                         handleShowModal={handleShowModal}
                         handleHideModal={() => setModalChartProps(null)}
                     />
                 </div>
                 <div className="col-md-4">
-                    <InfoChart
-                        fetchSeries={api.fetchVestingSeries}
-                        headline={t`Vesting`}
-                        type="bar"
-                        isSmall
-                        handleShowModal={handleShowModal}
-                        handleHideModal={() => setModalChartProps(null)}
-                    />
-                    <InfoChart
-                        fetchSeries={api.fetchVestingSeries}
-                        headline={t`Vesting`}
-                        type="area"
-                        isSmall
-                        handleShowModal={handleShowModal}
-                        handleHideModal={() => setModalChartProps(null)}
-                    />
+
                 </div>
             </div>
             <div className="row">
                 <div className="col-12">
-                    <InfoChart
-                        fetchSeries={api.fetchStakingSeries}
-                        headline={t`Staking TVL`}
-                        type="area"
-                        handleShowModal={handleShowModal}
-                        handleHideModal={() => setModalChartProps(null)}
-                    />
+
                 </div>
             </div>
             {modalChartProps &&

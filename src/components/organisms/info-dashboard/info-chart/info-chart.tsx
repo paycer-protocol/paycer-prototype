@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { mainNetProviders } from '@providers/networks'
-import { t } from '@lingui/macro'
+import { FixedNumber, BigNumber } from '@ethersproject/bignumber'
 import * as Styles from './Styles'
+import api from '../../../../api'
 import ApexChart from '@components/organisms/chart/apex-chart'
 import { SeriesType } from '@components/organisms/chart/apex-chart/apex-chart'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import ChainLegend from '@components/organisms/info-dashboard/chain-legend'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
-import { FormikValues, useFormikContext } from 'formik'
+import { useFormikContext } from 'formik'
 import { InfoDashboardFormType } from '@components/organisms/info-dashboard/info-dashboard'
 import Icon from '@components/atoms/icon'
-import { ArrowDropDown, ZoomOutMap, CloseFullscreen } from '@styled-icons/material-outlined'
+import { ZoomOutMap, CloseFullscreen } from '@styled-icons/material-outlined'
+import {t} from "@lingui/macro";
 
 type TimeSectionState = '1M' | '3M' | '1Y'
 
 export interface InfoChartProps {
     headline?: string
     isSmall?: boolean
-    fetchSeries?: (activeFilters: FormikValues, timeSection: string) => any[]
-    type: 'area' | 'bar'
+    isTransactionData?: boolean
+    dataType: 'staking' | 'vesting' | 'holders' | 'dailyStaked' | 'dailyWithdrawn' | 'dailyHolders' | 'dailyVestingWithdrawn' | 'dailyTransactions'
+    chartType: 'area' | 'bar'
     isModal?: boolean
     handleShowModal?: (InfoChartProps) => void
     handleHideModal?: () => void
@@ -28,16 +31,17 @@ const InfoChart = (props: InfoChartProps) => {
     const {
         isSmall,
         headline,
-        fetchSeries,
-        type,
+        dataType,
+        chartType,
         isModal,
         handleShowModal,
+        isTransactionData = false,
         handleHideModal
     } = props
 
     const PcrUsdPrice = 0.025 // TODO FETCH REAL PRICE
-    const [totalValue, setTotalValue] = useState<number>(0)
-    const [totalHovered, setTotalHovered] = useState<any>(null)
+    const [initialValueShown, setInitialValueShown] = useState<number>(0)
+    const [initialValueShownHovered, setInitialValueShownHovered] = useState<any>(null)
     const [showTimeSectionDropdown, setShowTimeSectionDropdown] = useState<boolean>(false)
     const [series, setSeries] = useState<SeriesType>([])
     const [seriesColors, setSeriesColors] = useState<string[]>(['#FFFFFF'])
@@ -45,28 +49,57 @@ const InfoChart = (props: InfoChartProps) => {
     const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>()
 
     useEffect(() => {
-        const payload = fetchSeries(values.activeFilters, timeSection.toLocaleLowerCase())
-        let total = 0
-        const colors = []
-        payload.map(p => {
-            if (p.chainId === 0) {
-                //@ts-ignore
-                p.name = t`All Chains`
+        async function fetch() {
+
+            const response = await api.fetchChartData(values.selectedChains, dataType)
+            const payload = response?.data || null
+            const chartData = payload['hydra:member']
+            const transformedChartSeries: SeriesType = []
+            let colors = []
+            let initialValue = 0
+
+            if (values.selectedChains.includes(0)) {
+                const allChartValues = chartData.map(a => Number(a.data.substring(0, a.data.length - 18)))
+                transformedChartSeries.push({
+                    chainId: 0,
+                    data: allChartValues,
+                    name: mainNetProviders[t`All Chains`]
+                })
                 colors.push('#FFFFFF')
             } else {
-                colors.push(mainNetProviders[p.chainId].color)
-                p.name = mainNetProviders[p.chainId].chainName
+                values.selectedChains.map(chainId => {
+                    const filteredByChainId = chartData.filter(f => f.chainId === chainId)
+                    if (filteredByChainId) {
+                        const valuesByChainId = filteredByChainId.map(a => Number(a.data.substring(0, a.data.length - 18)))
+                        transformedChartSeries.push({
+                            chainId: chainId,
+                            data: valuesByChainId,
+                            name: mainNetProviders[chainId].chainName
+                        })
+                        colors.push(mainNetProviders[chainId].color)
+                    }
+                })
             }
-            const reduced = p.data.reduce(
-                (previousValue, currentValue) => previousValue + currentValue,
-                0
-            )
-            total+=reduced
-        })
-        setSeriesColors(colors)
-        setSeries(payload)
-        setTotalValue(total)
-    }, [values.activeFilters, timeSection])
+
+            if (isTransactionData) {
+                transformedChartSeries.map(series => {
+                    initialValue += series.data.reduce(
+                        (previousValue, currentValue) => previousValue + currentValue,
+                        0
+                    )
+                })
+            } else {
+                transformedChartSeries.map(series => {
+                    initialValue+= series.data[series.data.length - 1]
+                })
+            }
+
+            setSeries(transformedChartSeries)
+            setSeriesColors(colors)
+            setInitialValueShown(initialValue)
+        }
+        fetch()
+    }, [values.selectedChains, timeSection])
 
     useEffect(() => {
         document.addEventListener('click', function() {
@@ -75,11 +108,10 @@ const InfoChart = (props: InfoChartProps) => {
     }, [])
 
     const onMouseEnter = (MouseEvent, chartContext, config) => {
-        console.log(MouseEvent, chartContext, config)
         const dataPointIndex = config.dataPointIndex
         const seriesIndex = config.seriesIndex
         if (dataPointIndex === -1 || seriesIndex === -1) {
-            setTotalHovered(null)
+            setInitialValueShownHovered(null)
             return
         }
         const hoveredSeries = series[seriesIndex]
@@ -87,7 +119,7 @@ const InfoChart = (props: InfoChartProps) => {
             return
         }
         const staked = hoveredSeries.data[dataPointIndex]
-        setTotalHovered(staked)
+        setInitialValueShownHovered(staked)
     }
 
     return (
@@ -99,7 +131,7 @@ const InfoChart = (props: InfoChartProps) => {
                         <div className="d-flex align-items-baseline">
                             <h2 className="display-4 fw-normal d-flex mb-2" style={isSmall ? {fontSize: '18px'} : null}>
                                 <FormattedNumber
-                                    value={totalHovered || totalValue}
+                                    value={initialValueShownHovered || initialValueShown}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
@@ -116,7 +148,7 @@ const InfoChart = (props: InfoChartProps) => {
                             <h5 className="text-uppercase text-muted mb-3 mb-md-4">
                               $
                               <FormattedNumber
-                                value={(totalHovered || totalValue) * PcrUsdPrice}
+                                value={(initialValueShownHovered || initialValueShown) * PcrUsdPrice}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={2}
                               />
@@ -179,7 +211,7 @@ const InfoChart = (props: InfoChartProps) => {
                     seriesColors={seriesColors}
                     onMouseEnter={onMouseEnter}
                     borderRadius={isSmall ? 0 : timeSection === '3M' ? 2 : 5}
-                    type={type}
+                    type={chartType}
                     isSmall={isSmall}
                 />
             </div>
