@@ -49,57 +49,16 @@ const InfoChart = (props: InfoChartProps) => {
 
     useEffect(() => {
         async function fetch() {
+            try {
+                const response = await api.fetchChartData(values.selectedChains, dataType)
+                const payload = response?.data || null
+                const chartData = payload['hydra:member']
 
-            const response = await api.fetchChartData(values.selectedChains, dataType)
-            const payload = response?.data || null
-            const chartData = payload['hydra:member']
-            const transformedChartSeries: SeriesType = []
-            let colors = []
-            let initialValue = 0
-
-            if (values.selectedChains.includes(0)) {
-                const allChartValues = chartData.map(a => Number(a.data.substring(0, a.data.length - 18)))
-                transformedChartSeries.push({
-                    chainId: 0,
-                    data: allChartValues,
-                    name: t`All Chains`
-                })
-                //colors.push('#FFFFFF')
-                colors.push(infoChartProviders[137].color)
-            } else {
-                values.selectedChains.map(chainId => {
-                    const filteredByChainId = chartData.filter(f => f.chainId === chainId)
-                    if (filteredByChainId) {
-                        const valuesByChainId = filteredByChainId.map(a => Number(a.data.substring(0, a.data.length - 18)))
-                        transformedChartSeries.push({
-                            chainId: chainId,
-                            data: valuesByChainId,
-                            name: infoChartProviders[chainId].chainName
-                        })
-                        colors.push(infoChartProviders[chainId].color)
-                    }
-                })
+                if (chartData) {
+                    transformChartSeries(chartData)
+                }
+            } catch {
             }
-
-            if (isTransactionChart) {
-                transformedChartSeries.map(series => {
-                    initialValue += series.data.reduce(
-                        (previousValue, currentValue) => previousValue + currentValue,
-                        0
-                    )
-                })
-            } else {
-                transformedChartSeries.map(series => {
-                    if (series.data.length) {
-                        initialValue+= series.data[series.data.length - 1]
-                    }
-
-                })
-            }
-
-            setSeriesColors(colors)
-            setSeries(transformedChartSeries)
-            setInitialValueShown(initialValue)
         }
         fetch()
     }, [values.selectedChains, timeSection])
@@ -109,6 +68,59 @@ const InfoChart = (props: InfoChartProps) => {
             setShowTimeSectionDropdown(false)
         })
     }, [])
+
+    // transforms data from paycer api for apex charts series needs
+    const transformChartSeries = (chartData) => {
+
+        let initialValue = 0
+        const transformedChartSeries: SeriesType = []
+        let colors = []
+
+        // if chainId filter selection contains 0 it must be all
+        if (values.selectedChains.includes(0)) {
+            const allChartValues = chartData.map(a => Number(a.data.substring(0, a.data.length - 18)))
+            transformedChartSeries.push({
+                chainId: 0,
+                data: allChartValues,
+                name: t`All Chains`
+            })
+            //colors.push('#FFFFFF')
+            colors.push(infoChartProviders[137].color)
+        } else {
+            values.selectedChains.map(chainId => {
+                const filteredByChainId = chartData.filter(f => f.chainId === chainId)
+                if (filteredByChainId) {
+                    const valuesByChainId = filteredByChainId.map(a => Number(a.data.substring(0, a.data.length - 18)))
+                    transformedChartSeries.push({
+                        chainId: chainId,
+                        data: valuesByChainId,
+                        name: infoChartProviders[chainId].chainName
+                    })
+                    colors.push(infoChartProviders[chainId].color)
+                }
+            })
+        }
+        if (isTransactionChart) {
+            transformedChartSeries.map(series => {
+                initialValue += series.data.reduce(
+                    (previousValue, currentValue) => previousValue + currentValue,
+                    0
+                )
+            })
+        } else {
+            transformedChartSeries.map(series => {
+                if (series.data.length) {
+                    initialValue+= series.data[series.data.length - 1]
+                }
+
+            })
+        }
+
+        setSeries(transformedChartSeries)
+        setInitialValueShown(initialValue)
+        setSeriesColors(colors)
+
+    }
 
     const onMouseEnter = (MouseEvent, chartContext, config) => {
         const dataPointIndex = config.dataPointIndex
