@@ -46,16 +46,19 @@ export default function Token0Select() {
             }
 
             if (nextValues.token0 && nextValues.token1) {
+                setFieldValue('isLoading', true)
                 const nextTradeContext = await values.initFactory(nextValues)
                 setValues(nextValues)
                 setFieldValue('tradeContext', nextTradeContext)
                 setShowModal(false)
+                setFieldValue('isLoading', false)
             } else {
                 setValues(nextValues)
                 setShowModal(false)
             }
         } catch (e) {
             setErrorMessage(e.message)
+            setFieldValue('isLoading', false)
         }
     }
 

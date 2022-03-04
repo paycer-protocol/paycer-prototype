@@ -64,14 +64,17 @@ export default function FlipSwap() {
 
     try {
       if (token0 && token1) {
+        setFieldValue('isLoading', true)
         setValues(nextValues)
         const nextTradeContext = await values.initFactory(nextValues)
         setFieldValue('tradeContext', nextTradeContext)
+        setFieldValue('isLoading', false)
       } else {
         setValues(nextValues)
       }
     } catch (e) {
       console.log(e)
+      setFieldValue('isLoading', false)
     }
   }
 

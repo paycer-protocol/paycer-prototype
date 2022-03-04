@@ -32,9 +32,11 @@ const SettingsDropdown = () => {
     }
 
     if (values.token0 && values.token1) {
+      setFieldValue('isLoading', true)
       const nextTradeContext = await values.initFactory(nextValues)
       setValues(nextValues)
       setFieldValue('tradeContext', nextTradeContext)
+      setFieldValue('isLoading', false)
     } else {
       setValues(nextValues)
     }

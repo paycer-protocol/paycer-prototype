@@ -18,8 +18,10 @@ export default function Token1Input() {
         setValues(nextValues)
 
         if (values.token0 && values.token1) {
+            setFieldValue('isLoading', true)
             const nextTradeContext = await values.initFactory(nextValues)
             setFieldValue('tradeContext', nextTradeContext)
+            setFieldValue('isLoading', false)
         }
     }
 

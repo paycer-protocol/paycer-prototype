@@ -29,6 +29,7 @@ export default function SwapForm() {
     const tradeFactory = new Trade(provider)
 
     let initialValues: SwapProps = {
+        isLoading: false,
         token0: null,
         token0Value: null,
         token0Markets: swapTokens,
@@ -67,7 +68,6 @@ export default function SwapForm() {
 
             setTradeContext(tradeContext)
 
-            console.log(tradeContext)
             return tradeContext
         }
     }
@@ -124,7 +124,6 @@ export default function SwapForm() {
                                   <SettingsDropdown/>
                               </div>
                           </div>
-
                           <div
                             className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                               <SubmitButton/>
