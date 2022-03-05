@@ -3,6 +3,7 @@ import { Trans } from '@lingui/macro'
 import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
+import Alert from '@components/atoms/alert'
 import { TokenType } from '../../../types/investment'
 import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
@@ -13,12 +14,13 @@ interface TokenSelectModalProps {
   activeToken: TokenType
   onClick: (token: TokenType) => void
   tokens: TokenType[]
+  errorMessage?: string
 }
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
-  const { show, onHide, onClick, tokens, activeToken } = props
+  const { show, onHide, onClick, tokens, activeToken, errorMessage } = props
   const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens)
-  const suportedTokens = useSupportedTokens()
+  const supportedTokens = useSupportedTokens()
 
   useEffect(() => {
     setFilteredTokens(tokens)
@@ -52,6 +54,9 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">
+          <Alert show={!!errorMessage} variant="danger">
+            {errorMessage}
+          </Alert>
           <input
             className="form-control bg-darkest border-primary mb-3 fw-light"
             type="search"
@@ -64,7 +69,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
                 {filteredTokens.map((token, i) => (
                   <li onClick={token.symbol !== activeToken?.symbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken?.symbol ? 'disabled opacity-20' : ''}`}>
                     <ListItem
-                      token={suportedTokens[token.symbol]}
+                      token={supportedTokens[token.symbol]}
                     />
                   </li>
                 ))}
@@ -78,7 +83,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
 }
 
 export const TokenBalanceLabel = styled.div`
-font-size: 18px; font-weight: 300;
+  font-size: 18px; font-weight: 300;
 `
 
 interface ListItemProps {

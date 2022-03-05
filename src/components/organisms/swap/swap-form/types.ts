@@ -7,6 +7,7 @@ import {
 } from '../../../../lib/trade'
 
 export interface SwapProps {
+  isLoading: boolean
   token0: any
   token0Value: number
   token0Markets: TokenType[]

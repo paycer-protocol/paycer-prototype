@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { t, Trans} from '@lingui/macro'
-import { NoEthereumProviderError, InjectedConnector } from '@web3-react/injected-connector'
+import { NoEthereumProviderError } from '@web3-react/injected-connector'
 import useWallet from '@hooks/use-wallet'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
@@ -8,8 +8,8 @@ import Spinner from '@components/atoms/spinner'
 import ListGroup from '@components/molecules/list-group'
 import Modal from '@components/molecules/modal'
 import { IConnectorProvider } from '@providers/connectors'
-import {WalletConnectConnector} from "@web3-react/walletconnect-connector";
-import {LedgerConnector} from "@web3-react/ledger-connector";
+import {WalletConnectConnector} from '@web3-react/walletconnect-connector'
+import {LedgerConnector} from '@web3-react/ledger-connector'
 
 export interface WalletProviderProps {
   providers: IConnectorProvider[]

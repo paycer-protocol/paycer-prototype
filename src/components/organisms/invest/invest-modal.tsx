@@ -6,12 +6,11 @@ import WithdrawForm  from '@components/organisms/invest/withdraw-form'
 import {useInvestList} from "@context/invest-list-context";
 
 const InvestModal = () => {
-
     const {
-        setStrategy,
-        strategy,
-        showFormModal,
-        investType
+      setStrategy,
+      strategy,
+      showFormModal,
+      investType
     } = useInvestList()
 
     if (!strategy) {

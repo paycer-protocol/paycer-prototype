@@ -8,13 +8,8 @@ import InvestCards from './invest-cards'
 import { useInvestList } from '@context/invest-list-context'
 
 export default function InvestList() {
+  const { isListView, toggleListView } = useInvestList()
 
-  const {
-      isListView,
-      toggleListView
-  } = useInvestList()
-
-  // @ts-ignore
   return (
       <div>
           <div className="d-flex justify-content-md-end justify-content-between mb-5">

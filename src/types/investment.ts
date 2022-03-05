@@ -59,6 +59,7 @@ export interface StrategyType {
   interest: InterestType
   fees: FeesType
   color: string
+  decimals: number
   chainAddresses: {
     [ChainId.Mainnet]?: string
     [ChainId.Polygon]?: string
