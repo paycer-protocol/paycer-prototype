@@ -95,14 +95,18 @@ export default function SwapForm() {
                                         />
                                     </div>
                                 </div>
-                                <div className="d-flex">
-                                    <div className="col-10">
+                                {values.token1 && values.token0 &&
+                                  <>
+                                    <div className="d-flex">
+                                      <div className="col-10">
                                         <SummaryDropdown />
-                                    </div>
-                                    <div className="col-2 ps-0">
+                                      </div>
+                                      <div className="col-2 ps-0">
                                         <SettingsDropdown/>
+                                      </div>
                                     </div>
-                                </div>
+                                  </>
+                                }
                                 <div
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>
@@ -146,11 +150,11 @@ export default function SwapForm() {
                         }
                     >
                         <>
-                            <div className="card blur-background">
+                            <div className="card blur-background mb-0">
                                 <div className="card-body">
-                                    <div className="row mb-4">
+                                    <div className="d-flex mb-4">
                                         <div className="col-6">
-                                            {t`From:`}
+                                            {t`From`}:
                                         </div>
                                         <div className="col-6 fw-bold d-flex">
                                             <CurrencyIcon
@@ -165,9 +169,9 @@ export default function SwapForm() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="row mb-4">
+                                    <div className="d-flex mb-4 border-bottom pb-4">
                                         <div className="col-6">
-                                            {t`To:`}
+                                            {t`To`}:
                                         </div>
                                         <div className="col-6 fw-bold d-flex">
                                             <CurrencyIcon
@@ -182,7 +186,15 @@ export default function SwapForm() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="row">
+                                    <div className="d-flex mb-4">
+                                        <div className="col-6">
+                                            {t`Slippage:`}
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            {values.tradeSettings.slippage} %
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4 border-bottom pb-4">
                                         <div className="col-6">
                                             {t`Fee:`}
                                         </div>
@@ -196,6 +208,40 @@ export default function SwapForm() {
                                             <DashNumber
                                                 value={values.tradeContext?.liquidityProviderFee}
                                                 symbol={values?.token0?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4">
+                                        <div className="col-6">
+                                            {values?.token0?.symbol} {t`after`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token0?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={Number(values.tradeContext?.fromBalance?.balance) - values.token0Value}
+                                                symbol={values?.token0?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex">
+                                        <div className="col-6">
+                                            {values?.token1?.symbol} {t`after`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token1?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={values.token1Value + Number(values?.tradeContext?.toBalance)}
+                                                symbol={values?.token1?.symbol}
                                             />
                                         </div>
                                     </div>
