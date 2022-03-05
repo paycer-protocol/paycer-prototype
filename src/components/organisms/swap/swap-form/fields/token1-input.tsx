@@ -7,6 +7,12 @@ export default function Token1Input() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
+
+        if (value > Number(values?.tradeContext?.toBalance)) {
+            setFieldValue('token1value', Number(values?.tradeContext?.toBalance))
+            value = Number(values?.tradeContext?.toBalance)
+        }
+
         const nextValues = {
             ...values,
             ... {
@@ -28,7 +34,7 @@ export default function Token1Input() {
     return (
         <TokenInput
             name="token1Value"
-            disabled={!values.token0 && !values.token1}
+            disabled={!values.token0 || !values.token1}
             required
             currency={values?.tradeContext?.toToken?.symbol}
             handleChange={handleChange}
