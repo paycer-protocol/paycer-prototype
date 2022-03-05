@@ -12,7 +12,8 @@ export interface ApexChartProps {
     categories?: Array<string>
     series: SeriesType
     height?: number
-    onMouseEnter?: (event: MouseEvent, chartContext, config) => void
+    onMouseMove?: (event: MouseEvent, chartContext, config) => void
+    onMouseLeave?: () => void
     seriesColors?: Array<string>
     borderRadius?: number
     isSmall?: boolean
@@ -24,7 +25,8 @@ const ApexChart = (props: ApexChartProps) => {
         categories = [],
         series,
         height,
-        onMouseEnter,
+        onMouseMove,
+        onMouseLeave,
         seriesColors,
         borderRadius = 8,
         type,
@@ -38,10 +40,17 @@ const ApexChart = (props: ApexChartProps) => {
     newOptions.colors = seriesColors
     newOptions.plotOptions.bar.borderRadius = borderRadius
 
-    if (onMouseEnter) {
+    if (onMouseMove) {
         // @ts-ignore
         newOptions.chart.events.mouseMove = function(event, chartContext, config) {
-            onMouseEnter(event, chartContext, config)
+            onMouseMove(event, chartContext, config)
+        }
+    }
+
+    if (onMouseMove && onMouseLeave) {
+        // @ts-ignore
+        newOptions.chart.events.mouseLeave = function(event, chartContext, config) {
+            onMouseLeave()
         }
     }
 

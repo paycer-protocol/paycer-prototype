@@ -115,14 +115,12 @@ const InfoChart = (props: InfoChartProps) => {
 
             })
         }
-
+        setSeriesColors(colors)
         setSeries(transformedChartSeries)
         setInitialValueShown(initialValue)
-        setSeriesColors(colors)
-
     }
 
-    const onMouseEnter = (MouseEvent, chartContext, config) => {
+    const onMouseMove = (MouseEvent, chartContext, config) => {
         const dataPointIndex = config.dataPointIndex
         const seriesIndex = config.seriesIndex
         if (dataPointIndex === -1 || seriesIndex === -1) {
@@ -135,6 +133,10 @@ const InfoChart = (props: InfoChartProps) => {
         }
         const staked = hoveredSeries.data[dataPointIndex]
         setInitialValueShownHovered(staked)
+    }
+
+    const onMouseLeave = () => {
+        setInitialValueShownHovered(null)
     }
 
     return (
@@ -224,7 +226,8 @@ const InfoChart = (props: InfoChartProps) => {
                     series={series}
                     height={isSmall ? 123 : 320}
                     seriesColors={seriesColors}
-                    onMouseEnter={onMouseEnter}
+                    onMouseMove={onMouseMove}
+                    onMouseLeave={onMouseLeave}
                     borderRadius={isSmall ? 0 : timeSection === '3M' ? 2 : 5}
                     type={chartType}
                     isSmall={isSmall}
