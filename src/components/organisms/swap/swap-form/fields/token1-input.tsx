@@ -28,6 +28,7 @@ export default function Token1Input() {
     return (
         <TokenInput
             name="token1Value"
+            disabled={!values.token0 && !values.token1}
             required
             currency={values?.tradeContext?.toToken?.symbol}
             handleChange={handleChange}

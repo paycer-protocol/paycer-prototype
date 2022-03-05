@@ -35,6 +35,7 @@ export default function TokenInput(props: TokenInputProps) {
     raiseMax,
     handleChange,
     value,
+    disabled
   } = props
 
   return (
@@ -47,6 +48,7 @@ export default function TokenInput(props: TokenInputProps) {
             showCurrencyPrefix={false}
             decimals={4}
             autoFocus
+            disabled={disabled}
             autoComplete="off"
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
             onChange={(e) => {

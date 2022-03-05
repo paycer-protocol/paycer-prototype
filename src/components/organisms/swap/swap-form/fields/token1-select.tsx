@@ -3,19 +3,21 @@ import { useFormikContext } from 'formik'
 import { t } from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import useWallet from '@hooks/use-wallet'
-import useNetwork from '@hooks/use-network'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { swapTokens } from '@config/market-pairs'
 import { SwapProps } from '../types'
 import TokenToggle from './token-toggle'
+import useSwap from "@hooks/use-swap";
 
 export default function Token1Select() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const wallet = useWallet()
-    const network = useNetwork()
+    const {
+        networkSettings,
+    } = useSwap()
 
     const handleChange = async (token) => {
       setErrorMessage('')
@@ -31,16 +33,7 @@ export default function Token1Select() {
               toTokenAddress: token.chainAddresses[values.networkSettings.chainId],
               amount: values.tradePair.amount,
             },
-            networkSettings: {
-              providerUrl: network.rpcUrls[0],
-              walletAddress: wallet.address,
-              networkProvider: network.provider,
-              chainId: network.chainId,
-              nameNetwork: network.chainName,
-              multicallContractAddress: network.multicallAddress,
-              nativeCurrency: network.nativeCurrency,
-              nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-            }
+              networkSettings
           }
         }
 

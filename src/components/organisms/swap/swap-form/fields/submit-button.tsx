@@ -8,8 +8,7 @@ import { SwapProps } from '../types'
 export default function SubmitButton() {
     const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SwapProps>()
     const isDisabled =
-      isSubmitting
-      || !dirty
+      !dirty
       || !isValid
       || isValidating
       || !values.token0Value

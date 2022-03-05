@@ -6,6 +6,8 @@ import TokenInput from '@components/molecules/token-input'
 export default function Token0Input() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
+    console.log(!values.token0 && !values.token1)
+
     const handleChange = async (value: number) => {
         const nextValues = {
             ...values,
@@ -29,6 +31,7 @@ export default function Token0Input() {
     return (
         <TokenInput
             name="token0Value"
+            disabled={!values.token0 && !values.token1}
             required
             currency={values?.token0?.symbol}
             handleChange={handleChange}
