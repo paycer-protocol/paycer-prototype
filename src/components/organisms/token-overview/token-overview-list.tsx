@@ -100,7 +100,7 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
                             return (
                                 <tr key={key}>
                                     <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                                        <img width="140" src={`/assets/token-overview/${item.platform_img}`} />
+                                        <img style={{height:"25px"}} src={`/assets/token-overview/${item.platform_img}`} />
                                     </td>
                                     <td className={`${tdClass} border-left-0 border-right-0`}>
                                         {item.desc}
