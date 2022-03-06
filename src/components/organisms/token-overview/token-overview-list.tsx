@@ -109,14 +109,14 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
                                         {item.type}
                                     </td>
                                     <td className={`${tdClass} border-left-0 border-right-0`}>
-                                        <img width="80" src={`/assets/token-overview/${item.platform_img}`} />
+                                        <img width="80" src={`/assets/token-overview/${item.chain_img}`} />
                                     </td>
                                     <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0 pt-0 pb-0`}>
                                         <div className="d-flex justify-content-end">
-                                            <a className="btn btn-light px-5 me-4" href={item.infoLink}>
+                                            <a className="btn btn-light px-5 me-4" target="_blank" href={item.infoLink}>
                                                 {t`Info`}
                                             </a>
-                                            <GradientButton href={item.link} className="me-4">
+                                            <GradientButton target="_blank" href={item.link} className="me-4">
                                                 {t`Visit`}
                                             </GradientButton>
                                         </div>
