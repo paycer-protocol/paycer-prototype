@@ -13,25 +13,24 @@ const StyledInput = styled.input`
     }
 `
 
-export type TokenOverviewListType = Array<{
-    platform: string
-    platform_img: string
-    desc: string
-    type: string
-    chain: string
-    infoLink: string
-    link: string
-}>
-
 export interface TokenOverviewListProps {
-    items?: TokenOverviewListType
+    items: Array<{
+        platform: string
+        platform_img: string
+        desc: string
+        type: string
+        chain_img: string
+        chain: string
+        infoLink: string
+        link: string
+    }>
 }
 
 export default function TokenOverviewList(props: TokenOverviewListProps) {
     const { items } = props
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
-    const [tokenOverviewListItems, setTokenOverviewListItems] = useState<TokenOverviewListType | null>(items)
+    const [tokenOverviewListItems, setTokenOverviewListItems] = useState<any>(items)
 
     const handleSearch = (e) => {
         let keywords = e.target.value
