@@ -1,0 +1,38 @@
+export const TokenOverviewListItems = [
+    {
+        platform: 'Avalanche',
+        platform_img: 'avalanche.svg',
+        desc: 'PCR Token Contract',
+        type: 'Contract',
+        chain_img: 'avalanche.svg',
+        infoLink: 'https://www.google.de',
+        link: 'https://www.google.de',
+    },
+    {
+        platform: 'Snopp Dogg',
+        platform_img: 'avalanche.svg',
+        desc: 'Snopp Dogg',
+        type: 'Contract',
+        chain: 'Avalanche',
+        infoLink: 'https://www.google.de',
+        link: 'https://www.google.de',
+    },
+    {
+        platform: 'Hi Tek',
+        platform_img: 'avalanche.svg',
+        desc: 'Hi Tek',
+        type: 'Contract',
+        chain: 'Avalanche',
+        infoLink: 'https://www.google.de',
+        link: 'https://www.google.de',
+    },
+    {
+        platform: 'Dj Premier',
+        platform_img: 'avalanche.svg',
+        desc: 'Gang Starr',
+        type: 'Contract',
+        chain: 'Avalanche',
+        infoLink: 'https://www.google.de',
+        link: 'https://www.google.de',
+    },
+]
