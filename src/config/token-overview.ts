@@ -37,7 +37,7 @@ export const TokenOverviewListItems = [
         chain_img: 'polygon_chain.svg',
         chain: 'Polygon Matic',
         infoLink: 'https://paycerprotocol.medium.com/paycer-update-migration-of-pcr-pools-from-uniswap-to-dodo-8a879a4f6f1d',
-        link: 'https://app.dodoex.io/liquidity?network=polygon&poolAddress=0xfe9ff05a9fdf1f3e42fee39ee5a9e2205d8e7521',
+        link: 'https://app.dodoex.io/earn/add-liquidity?network=polygon&poolAddress=0xfe9ff05a9fdf1f3e42fee39ee5a9e2205d8e7521&forced=true',
     },
     {
         platform: 'DODO',
@@ -47,7 +47,7 @@ export const TokenOverviewListItems = [
         chain_img: 'polygon_chain.svg',
         chain: 'Polygon Matic',
         infoLink: 'https://paycerprotocol.medium.com/paycer-update-migration-of-pcr-pools-from-uniswap-to-dodo-8a879a4f6f1d',
-        link: 'https://app.dodoex.io/liquidity?network=polygon&poolAddress=0x0dd9b3a37548bc90e7231918547b8da55572f37f',
+        link: 'https://app.dodoex.io/earn/add-liquidity?network=polygon&poolAddress=0x0dd9b3a37548bc90e7231918547b8da55572f37f&forced=true',
     },
     {
         platform: 'Paycer Finance',
