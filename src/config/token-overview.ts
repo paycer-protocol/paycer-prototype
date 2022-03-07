@@ -43,7 +43,7 @@ export const TokenOverviewListItems = [
         platform: 'DODO',
         platform_img: 'dodo.svg',
         desc: 'Liquidity Mining PCR/USDC',
-        type: 'DEX',
+        type: 'Rewards',
         chain_img: 'polygon_chain.svg',
         chain: 'Polygon Matic',
         infoLink: 'https://paycerprotocol.medium.com/paycer-update-migration-of-pcr-pools-from-uniswap-to-dodo-8a879a4f6f1d',
