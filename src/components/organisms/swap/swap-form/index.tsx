@@ -32,7 +32,6 @@ export default function SwapForm() {
         approveTx,
         isLoading,
         resetStatus,
-
     } = useSwap()
 
     let initialValues: SwapProps = {
@@ -95,7 +94,6 @@ export default function SwapForm() {
                                         />
                                     </div>
                                 </div>
-                                {values.token1 && values.token0 &&
                                   <>
                                     <div className="d-flex">
                                       <div className="col-10">
@@ -106,7 +104,6 @@ export default function SwapForm() {
                                       </div>
                                     </div>
                                   </>
-                                }
                                 <div
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>

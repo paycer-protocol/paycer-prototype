@@ -1,6 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import DropdownComponent from "@components/atoms/dropdown/dropdown";
-
 
 export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     background: transparent!important;
@@ -12,9 +11,9 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
       box-shadow: none!important;
     }
     &:hover { opacity: 0.7 }
-    &[aria-expanded="true"] {
- 
-    }
+    ${props => props.isDisabled && css`
+      opacity: 0.5; pointer-events: none;
+   `}
 `
 
 export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
