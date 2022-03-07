@@ -73,22 +73,22 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
                     <thead className="position-relative" style={{top: '-10px'}}>
                         <tr>
                             <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                                <span className="text-muted">
+                                <span className="text-white">
                                     <Trans>Platform</Trans>
                                 </span>
                             </th>
                             <th className={`${thClass} border-left-0 border-right-0`}>
-                                <span className="text-muted">
+                                <span className="text-white">
                                     <Trans>Description</Trans>
                                 </span>
                             </th>
                             <th className={`${thClass} border-left-0 border-right-0`}>
-                                <span className="text-muted">
+                                <span className="text-white">
                                     <Trans>Type</Trans>
                                 </span>
                             </th>
                             <th className={`${thClass} border-left-0 border-right-0`}>
-                                <span className="text-muted">
+                                <span className="text-white">
                                     <Trans>Chain</Trans>
                                 </span>
                             </th>
@@ -100,7 +100,7 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
                             return (
                                 <tr key={key}>
                                     <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                                        <img style={{height:"25px"}} src={`/assets/token-overview/${item.platform_img}`} />
+                                        <img width="80" src={`/assets/token-overview/${item.platform_img}`} />
                                     </td>
                                     <td className={`${tdClass} border-left-0 border-right-0`}>
                                         {item.desc}
@@ -109,7 +109,7 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
                                         {item.type}
                                     </td>
                                     <td className={`${tdClass} border-left-0 border-right-0`}>
-                                        <img width="80" src={`/assets/token-overview/${item.chain_img}`} />
+                                        <img width="25" src={`/assets/token-overview/${item.chain_img}`} />
                                     </td>
                                     <td className={`${tdClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0 pt-0 pb-0`}>
                                         <div className="d-flex justify-content-end">
