@@ -102,11 +102,6 @@ const Header = () => {
                                 </Link>
                             </li>
                           ))}
-                          <li className="nav-item me-3">
-                              <a className="nav-link text-nowrap" title="Buy PCR" href="https://app.dodoex.io/exchange/USDC-PCR?network=polygon" target="_blank" rel="noopener noreferrer">
-                                 Buy PCR
-                              </a>
-                          </li>
                       </ul>
                       <ul className="navbar-nav flex-row d-flex d-lg-none">
                           <li className="me-3">
