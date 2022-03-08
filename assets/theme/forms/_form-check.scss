@@ -26,6 +26,15 @@
   height: $form-check-size;
   margin-top: calc((#{$line-height-base} * 1em - 1rem) / 2);
   cursor: $form-check-label-cursor;
+
+  &:checked {
+    &[type=checkbox] {
+      background-image: none;
+      background: linear-gradient(138deg, #850ca7 0%, #4201dc 100%);
+    }
+  }
+
+
 }
 
 .form-check-input:focus:not(:checked) {
@@ -33,7 +42,7 @@
 }
 
 .form-check:not(.form-switch):not(.form-check-circle) .form-check-input:checked {
-  background-size: $form-check-input-checked-bg-size;
+  background-size: auto;
 }
 
 
@@ -71,14 +80,13 @@
   height: $form-check-circle-indicator-size;
   margin-left: -$form-check-circle-padding-start;
   border-radius: $form-check-circle-indicator-border-radius;
-  background-image: escape-svg($form-check-circle-indicator-icon-checked);
   background-size: $form-check-circle-indicator-bg-size;
 }
 
 .form-check-circle > .form-check-input:checked {
-  background-image: escape-svg($form-check-circle-indicator-icon-checked);
 }
 
 .form-check-circle > .form-check-label {
   margin-top: calc((#{$form-check-circle-indicator-size} - 1em) / 2);
 }
+

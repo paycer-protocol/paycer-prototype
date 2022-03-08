@@ -41,8 +41,8 @@ msgstr "6 months"
 #~ msgid "6 months after TGE"
 #~ msgstr "6 months after TGE"
 
-#: src/components/organisms/invest/invest-card/index.tsx:45
-#: src/components/organisms/invest/invest-table.tsx:32
+#: src/components/organisms/invest/invest-card/index.tsx:39
+#: src/components/organisms/invest/invest-table.tsx:35
 #: src/components/organisms/portfolio/portfolio-list.tsx:58
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 #~ msgid "APR"
@@ -76,6 +76,14 @@ msgstr "6 months"
 #~ msgid "Advisor distribution"
 #~ msgstr "Advisor distribution"
 
+#: src/components/organisms/analytics-dashboard/filter-bar/filter-bar.tsx:39
+msgid "All"
+msgstr "All"
+
+#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:79
+msgid "All Chains"
+msgstr "All Chains"
+
 #: src/pages/referral/components/Referrals.tsx:34
 #~ msgid "An error has occurred. Please refresh the page"
 #~ msgstr "An error has occurred. Please refresh the page"
@@ -83,6 +91,10 @@ msgstr "6 months"
 #: src/components/organisms/web3/wallet-provider.tsx:45
 #~ msgid "An unknown error occurred. Please try again."
 #~ msgstr "An unknown error occurred. Please try again."
+
+#: src/config/routes.ts:40
+msgid "Analytics"
+msgstr "Analytics"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:23
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
@@ -300,6 +312,22 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #~ msgid "Current rewards"
 #~ msgstr "Current rewards"
 
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:33
+msgid "Daily Staking"
+msgstr "Daily Staking"
+
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:41
+msgid "Daily Staking Withdrawn"
+msgstr "Daily Staking Withdrawn"
+
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:71
+msgid "Daily Transactions"
+msgstr "Daily Transactions"
+
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:63
+msgid "Daily Vesting Withdrawn"
+msgstr "Daily Vesting Withdrawn"
+
 #: src/components/organisms/invest/deposit-form/index.tsx:151
 #: src/components/organisms/invest/withdraw-form/index.tsx:156
 msgid "Daily interest"
@@ -490,7 +518,7 @@ msgstr "Fee:"
 msgid "High"
 msgstr "High"
 
-#: src/components/organisms/invest/invest-card/index.tsx:66
+#: src/components/organisms/invest/invest-card/index.tsx:60
 #~ msgid "Holdings"
 #~ msgstr "Holdings"
 
@@ -505,6 +533,10 @@ msgstr "Immediate Availability Percentage"
 #: src/components/organisms/footer/footer.tsx:185
 #~ msgid "Imprint"
 #~ msgstr "Imprint"
+
+#: src/config/routes.ts:40
+#~ msgid "Info"
+#~ msgstr "Info"
 
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -673,7 +705,7 @@ msgstr "Minimum received"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/layout/layout.tsx:32
+#: src/components/organisms/layout/layout.tsx:31
 #~ msgid "Network not supported"
 #~ msgstr "Network not supported"
 
@@ -719,7 +751,7 @@ msgstr "Minimum received"
 msgid "PCR"
 msgstr "PCR"
 
-#: src/config/routes.ts:40
+#: src/config/routes.ts:46
 msgid "PCR Token"
 msgstr "PCR Token"
 
@@ -727,7 +759,7 @@ msgstr "PCR Token"
 #~ msgid "PCR Token amount"
 #~ msgstr "PCR Token amount"
 
-#: src/components/organisms/invest/invest-table.tsx:17
+#: src/components/organisms/invest/invest-table.tsx:20
 #~ msgid "POOL"
 #~ msgstr "POOL"
 
@@ -743,7 +775,7 @@ msgstr "Partner"
 #~ msgid "Paycer Private is Live"
 #~ msgstr "Paycer Private is Live"
 
-#: src/components/organisms/off-canvas/index.tsx:87
+#: src/components/organisms/off-canvas/index.tsx:76
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
@@ -842,15 +874,19 @@ msgstr "Portfolio"
 #~ msgid "Referral Program"
 #~ msgstr "Referral Program"
 
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:53
+msgid "Released Vesting Tokens"
+msgstr "Released Vesting Tokens"
+
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
 #~ msgid "Request Submitted"
 #~ msgstr "Request Submitted"
 
-#: src/components/organisms/invest/invest-table.tsx:27
+#: src/components/organisms/invest/invest-table.tsx:30
 #~ msgid "Rewards"
 #~ msgstr "Rewards"
 
-#: src/components/organisms/invest/invest-card/index.tsx:85
+#: src/components/organisms/invest/invest-card/index.tsx:79
 #: src/components/organisms/portfolio/portfolio-header.tsx:85
 #~ msgid "Risk"
 #~ msgstr "Risk"
@@ -859,7 +895,7 @@ msgstr "Portfolio"
 #~ msgid "Risk Disclaimer"
 #~ msgstr "Risk Disclaimer"
 
-#: src/components/organisms/invest/invest-table.tsx:22
+#: src/components/organisms/invest/invest-table.tsx:25
 #: src/components/organisms/portfolio/portfolio-list.tsx:48
 #~ msgid "Risk Level"
 #~ msgstr "Risk Level"
@@ -972,6 +1008,10 @@ msgstr "Staking"
 #: src/pages/staking/index.tsx:20
 #~ msgid "Staking Rewards"
 #~ msgstr "Staking Rewards"
+
+#: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:23
+msgid "Staking TVL"
+msgstr "Staking TVL"
 
 #: src/components/organisms/header/header.tsx:95
 #~ msgid "Staking rewards"
@@ -1106,8 +1146,8 @@ msgstr "The secure app to store crypto yourself"
 msgid "Total Pool Supply"
 msgstr "Total Pool Supply"
 
-#: src/components/organisms/invest/invest-card/index.tsx:62
-#: src/components/organisms/invest/invest-table.tsx:37
+#: src/components/organisms/invest/invest-card/index.tsx:56
+#: src/components/organisms/invest/invest-table.tsx:40
 #~ msgid "Total Volume"
 #~ msgstr "Total Volume"
 

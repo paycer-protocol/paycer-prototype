@@ -37,6 +37,12 @@ export const routes = [
     auth: false
   },
   {
+    label: t`Analytics`,
+    path: '/analytics',
+    supportedChains,
+    auth: false
+  },
+  {
     label: t`PCR Token`,
     path: '/token-overview',
     supportedChains,

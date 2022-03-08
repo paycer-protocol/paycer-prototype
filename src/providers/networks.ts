@@ -6,6 +6,7 @@ export interface INetworkProvider {
     [chainId: number]: {
         chainId: string
         chainName: string
+        color?: string,
         nativeCurrency: {
             name: string
             symbol: string
@@ -72,6 +73,7 @@ export const mainNetProviders: INetworkProvider = {
     [ChainId.Mainnet]: {
         chainId: '0x1',
         chainName: 'Ethereum',
+        color: '#7886CB',
         nativeCurrency: {
             name: 'Ethereum',
             symbol: 'ETH',
@@ -92,6 +94,7 @@ export const mainNetProviders: INetworkProvider = {
     [ChainId.Polygon]: {
         chainId: '0x89',
         chainName: 'Polygon',
+        color: '#8247E5',
         nativeCurrency: {
             name: 'Matic',
             symbol: 'MATIC',
@@ -108,7 +111,11 @@ export const mainNetProviders: INetworkProvider = {
             name: 'Wrapped Matic'
         },
         multicallAddress: '0x275617327c958bD06b5D6b871E7f491D76113dd8'
-    },
+    }
+}
+
+export const infoChartProviders: INetworkProvider = {
+    [ChainId.Polygon]: mainNetProviders[ChainId.Polygon]
 }
 
 export const chainedNetworkProvider = {

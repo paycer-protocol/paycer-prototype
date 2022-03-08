@@ -1,0 +1,18 @@
+.apexcharts-tooltip {
+  color: $gray-600-dark;
+  border-color: $border-color!important;
+  box-shadow: none!important;
+  .apexcharts-tooltip-title {
+    display: none;
+  }
+}
+
+.apexcharts-xaxis-label {
+  fill: #a6a6a6;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 10px 15px!important;
+  background: $black-dark!important;
+  color: #FFF;
+}

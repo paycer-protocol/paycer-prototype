@@ -186,8 +186,8 @@ $h1-font-size: 1.625rem !default;
 $h2-font-size: 1.25rem !default;
 $h3-font-size: 1.0625rem !default;
 $h4-font-size: 0.9375rem !default;
-$h5-font-size: 0.8125rem !default;
-$h6-font-size: 0.625rem !default;
+$h5-font-size: 0.875rem !default;
+$h6-font-size: 0.75rem !default;
 
 $headings-margin-bottom: $spacer * .75 !default;
 $headings-font-weight: 500 !default;
@@ -325,7 +325,7 @@ $form-check-label-cursor: pointer !default;
 
 $form-check-input-bg: $gray-300;
 $form-check-input-border: transparent !default;
-$form-check-input-border-radius: $border-radius !default;
+$form-check-input-border-radius: 0;
 $form-check-input-focus-border: $form-check-input-border !default;
 $form-check-input-focus-box-shadow: none !default;
 
@@ -614,7 +614,7 @@ $btn-font-weight: $font-weight-bold;
 
 $form-text-margin-bottom: .5rem !default;
 
-$form-check-size: 1rem !default; // using this instead of $form-check-input-width because of the units incompatibility bug
+$form-check-size: 24px !default; // using this instead of $form-check-input-width because of the units incompatibility bug
 $form-check-input-focus-bg: lighten($primary, 35%) !default;
 $form-check-input-checked-bg-size: 75% 75% !default;
 
