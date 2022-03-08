@@ -42,4 +42,10 @@ export const routes = [
     supportedChains,
     auth: false
   },
+  {
+    label: t`PCR Token`,
+    path: '/token-overview',
+    supportedChains,
+    auth: false
+  }
 ]

@@ -239,7 +239,7 @@ msgstr "Cancel"
 #~ msgid "Confirm Claim"
 #~ msgstr "Confirm Claim"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:178
+#: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:179
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
@@ -328,23 +328,23 @@ msgstr "Daily Transactions"
 msgid "Daily Vesting Withdrawn"
 msgstr "Daily Vesting Withdrawn"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:155
+#: src/components/organisms/invest/deposit-form/index.tsx:151
 #: src/components/organisms/invest/withdraw-form/index.tsx:156
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:224
+#: src/components/organisms/invest/deposit-form/index.tsx:220
 #: src/components/organisms/invest/withdraw-form/index.tsx:236
 msgid "Daily interest:"
 msgstr "Daily interest:"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:148
+#: src/components/organisms/invest/deposit-form/index.tsx:144
 #: src/components/organisms/invest/withdraw-form/index.tsx:149
 #: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:213
+#: src/components/organisms/invest/deposit-form/index.tsx:209
 #: src/components/organisms/invest/withdraw-form/index.tsx:225
 msgid "Daily rewards:"
 msgstr "Daily rewards:"
@@ -374,7 +374,7 @@ msgstr "Deposit"
 #~ msgid "Deposit Wallet Address"
 #~ msgstr "Deposit Wallet Address"
 
-#: src/components/organisms/invest/invest-modal.tsx:26
+#: src/components/organisms/invest/invest-modal.tsx:25
 msgid "Deposit:"
 msgstr "Deposit:"
 
@@ -463,13 +463,13 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:162
+#: src/components/organisms/invest/deposit-form/index.tsx:158
 #: src/components/organisms/invest/withdraw-form/index.tsx:163
 #: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:76
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:235
+#: src/components/organisms/invest/deposit-form/index.tsx:231
 #: src/components/organisms/invest/withdraw-form/index.tsx:247
 msgid "Fee:"
 msgstr "Fee:"
@@ -746,10 +746,14 @@ msgstr "Minimum received"
 #~ msgid "Overview"
 #~ msgstr "Overview"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:112
+#: src/components/organisms/invest/deposit-form/index.tsx:108
 #: src/components/organisms/invest/withdraw-form/index.tsx:113
 msgid "PCR"
 msgstr "PCR"
+
+#: src/config/routes.ts:46
+msgid "PCR Token"
+msgstr "PCR Token"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:92
 #~ msgid "PCR Token amount"
@@ -960,7 +964,7 @@ msgstr "Senior"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:57
+#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:63
 msgid "Slippage tolerance"
 msgstr "Slippage tolerance"
 
@@ -1045,17 +1049,17 @@ msgstr "Supply"
 #~ msgid "Supply Liquidity"
 #~ msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:20
+#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:32
 #: src/config/routes.ts:34
 #: src/pages/swap/index.tsx:25
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:48
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:70
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:41
+#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:69
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -1196,7 +1200,7 @@ msgstr "Transaction is processing..."
 #~ msgid "Transaction submitted"
 #~ msgstr "Transaction submitted"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:180
+#: src/components/organisms/invest/deposit-form/index.tsx:176
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
@@ -1267,7 +1271,7 @@ msgstr "Vesting Phase"
 msgid "Withdraw"
 msgstr "Withdraw"
 
-#: src/components/organisms/invest/invest-modal.tsx:26
+#: src/components/organisms/invest/invest-modal.tsx:25
 msgid "Withdraw:"
 msgstr "Withdraw:"
 
@@ -1295,7 +1299,7 @@ msgstr "Withdraw:"
 msgid "You invest after:"
 msgstr "You invest after:"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:202
+#: src/components/organisms/invest/deposit-form/index.tsx:198
 msgid "You will invest:"
 msgstr "You will invest:"
 
@@ -1315,7 +1319,7 @@ msgstr "You will withdraw:"
 #~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 #~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
-#: src/components/organisms/invest/deposit-form/index.tsx:89
+#: src/components/organisms/invest/deposit-form/index.tsx:85
 #: src/components/organisms/invest/withdraw-form/index.tsx:90
 msgid "Your APR:"
 msgstr "Your APR:"

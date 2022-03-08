@@ -2,6 +2,7 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import GradientButton from '@components/atoms/button/gradient-button'
+import Spinner from '@components/atoms/spinner'
 import { SwapProps } from '../types'
 
 export default function SubmitButton() {
@@ -16,8 +17,20 @@ export default function SubmitButton() {
       || !values.tradeContext.fromBalance.hasEnough
 
     return (
-        <GradientButton type="submit" disabled={isDisabled} className="w-75">
-            {t`Swap`}
+        <GradientButton type="submit" disabled={isDisabled} className="d-flex align-items-center justify-content-center w-75">
+          {values.isLoading && (
+            <div className="me-2">
+              <Spinner
+                animation="border"
+                size="sm"
+                show
+                className="mr-2"
+              />
+            </div>
+          )}
+          <div>
+              {t`Swap`}
+          </div>
         </GradientButton>
     )
 }

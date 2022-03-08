@@ -4,10 +4,7 @@ import InvestItem from './invest-item'
 import { useInvestList } from "@context/invest-list-context";
 
 export default function   InvestList() {
-    const {
-        strategies
-    } = useInvestList()
-
+    const { strategies } = useInvestList()
     const thClass = 'bg-card-blue border border-secondary-dark'
 
     return (

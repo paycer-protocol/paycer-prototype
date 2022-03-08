@@ -57,6 +57,11 @@ export class UniswapProvider implements TradeProviderInterface {
          */
         uniswapVersions: [UniswapVersion.v3],
         cloneUniswapContractDetails: {
+          v2Override: {
+            routerAddress: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+            factoryAddress: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+            pairAddress: "",
+          },
           v3Override: {
             routerAddress: "0xE592427A0AEce92De3Edee1F18E0157C05861564",
             factoryAddress: "0x1F98431c8aD98523631AE4a59f267346ea31F984",

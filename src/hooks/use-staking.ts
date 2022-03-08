@@ -46,9 +46,13 @@ export default function useStaking():UseStakingProps {
     const paycerToken = paycerTokenConfig.contract
     const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
 
+    // @ts-ignore
     let { send: sendDeposit, state: depositTx } = useContractFunction(stakingContract, 'deposit')
+    // @ts-ignore
     let { send: sendWithdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
+    // @ts-ignore
     let { send: sendClaim, state: claimTx } = useContractFunction(stakingContract, 'claim')
+    // @ts-ignore
     let { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
 
     let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)

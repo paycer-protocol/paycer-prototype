@@ -17,11 +17,7 @@ import TransactionApproveModal from "@components/organisms/transaction-approve-m
 import {FormikValues} from "formik";
 
 const DepositForm = () => {
-
-    const {
-        strategy,
-        setShowFormModal
-    } = useInvestList()
+    const { strategy, setShowFormModal } = useInvestList()
 
     const {
         deposit,
