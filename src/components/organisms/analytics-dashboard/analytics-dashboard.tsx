@@ -1,13 +1,10 @@
 import React from 'react'
 import Form from '@components/atoms/form/form'
-import FilterBar from '@components/organisms/info-dashboard/filter-bar'
-import ChartList from '@components/organisms/info-dashboard/chart-list'
+import FilterBar from '@components/organisms/analytics-dashboard/filter-bar'
+import ChartList from '@components/organisms/analytics-dashboard/chart-list'
+import { InfoDashboardFormType } from './types'
 
-export type InfoDashboardFormType = {
-    selectedChains: Array<number>
-}
-
-const InfoDashboard = () => {
+const AnalyticsDashboard = () => {
 
     const initialValues: InfoDashboardFormType = {
         selectedChains: [0]
@@ -33,5 +30,4 @@ const InfoDashboard = () => {
     )
 }
 
-
-export default InfoDashboard
+export default AnalyticsDashboard

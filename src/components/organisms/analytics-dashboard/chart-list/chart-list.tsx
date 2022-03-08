@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { t } from '@lingui/macro'
-import InfoChart from '@components/organisms/info-dashboard/info-chart'
+import InfoChart from '@components/organisms/analytics-dashboard/info-chart'
 import Modal from '@components/molecules/modal'
-import { InfoChartProps } from "@components/organisms/info-dashboard/info-chart/info-chart";
+import { InfoChartProps } from '../types'
+import { useMediaQuery } from 'react-responsive'
 
 const ChartList = () => {
 
     const [modalChartProps, setModalChartProps] = useState<InfoChartProps>(null)
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
     const handleShowModal = (modalProps: InfoChartProps) => {
         setModalChartProps({...modalProps, isSmall: false, isModal: true})
@@ -19,38 +21,58 @@ const ChartList = () => {
                     <InfoChart
                         dataType="staking"
                         headline={t`Staking TVL`}
-                        chartType="bar"
+                        chartType="area"
                         handleShowModal={handleShowModal}
                         handleHideModal={() => setModalChartProps(null)}
+                        isSmall={isTabletOrMobile}
                     />
                 </div>
                 <div className="col-md-4">
                     <InfoChart
-                        dataType="vesting"
-                        headline={t`Vesting`}
-                        chartType="bar"
-                        isSmall
+                        dataType="dailyStaked"
+                        headline={t`Daily Staking`}
+                        chartType="area"
                         handleShowModal={handleShowModal}
                         handleHideModal={() => setModalChartProps(null)}
+                        isSmall
                     />
                     <InfoChart
-                        dataType="vesting"
-                        headline={t`Vesting`}
-                        chartType="area"
-                        isSmall
+                        dataType="dailyWithdrawn"
+                        headline={t`Daily Staking Withdrawn`}
+                        chartType="bar"
                         handleShowModal={handleShowModal}
                         handleHideModal={() => setModalChartProps(null)}
+                        isSmall
                     />
                 </div>
             </div>
             <div className="row">
-                <div className="col-12">
+                <div className="col-md-8">
                     <InfoChart
                         dataType="vesting"
-                        headline={t`Staking TVL`}
+                        headline={t`Released Vesting Tokens`}
+                        chartType="bar"
+                        handleShowModal={handleShowModal}
+                        handleHideModal={() => setModalChartProps(null)}
+                        isSmall={isTabletOrMobile}
+                    />
+                </div>
+                <div className="col-md-4">
+                    <InfoChart
+                        dataType="dailyVestingWithdrawn"
+                        headline={t`Daily Vesting Withdrawn`}
                         chartType="area"
                         handleShowModal={handleShowModal}
                         handleHideModal={() => setModalChartProps(null)}
+                        isSmall
+                    />
+                    <InfoChart
+                        dataType="dailyHolders"
+                        headline={t`Daily Transactions`}
+                        chartType="bar"
+                        handleShowModal={handleShowModal}
+                        handleHideModal={() => setModalChartProps(null)}
+                        isSmall
                     />
                 </div>
             </div>

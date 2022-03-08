@@ -37,8 +37,8 @@ export const routes = [
     auth: false
   },
   {
-    label: t`Info`,
-    path: '/info',
+    label: t`Analytics`,
+    path: '/analytics',
     supportedChains,
     auth: false
   },

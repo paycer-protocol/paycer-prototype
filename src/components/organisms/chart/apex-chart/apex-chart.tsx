@@ -1,24 +1,8 @@
 import React, { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import options from '@components/organisms/chart/apex-chart/options'
+import { ApexChartProps } from './types'
 
-export type SeriesType = Array<{
-    data: Array<number>
-    chainId: number
-    name?: string
-}>
-
-export interface ApexChartProps {
-    categories?: Array<string>
-    series: SeriesType
-    height?: number
-    onMouseMove?: (event: MouseEvent, chartContext, config) => void
-    onMouseLeave?: () => void
-    seriesColors?: Array<string>
-    borderRadius?: number
-    isSmall?: boolean
-    type: 'area' | 'bar'
-}
 
 const ApexChart = (props: ApexChartProps) => {
     const {
@@ -29,16 +13,23 @@ const ApexChart = (props: ApexChartProps) => {
         onMouseLeave,
         seriesColors,
         borderRadius = 8,
+        renderToolTip,
         type,
         isSmall
     } = props
 
     const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
-
     const newOptions = JSON.parse(JSON.stringify(options))
+
     newOptions.xaxis.categories = categories
     newOptions.colors = seriesColors
     newOptions.plotOptions.bar.borderRadius = borderRadius
+
+    if (renderToolTip) {
+        newOptions.tooltip.custom = function ({series, seriesIndex, dataPointIndex, w}) {
+            return renderToolTip(series, seriesIndex, dataPointIndex, w)
+        }
+    }
 
     if (onMouseMove) {
         // @ts-ignore

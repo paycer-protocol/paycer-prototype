@@ -1,10 +1,10 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import InfoDashboard from '@components/organisms/info-dashboard'
+import AnalyticsDashboard from '@components/organisms/analytics-dashboard'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 
-export default function Info() {
+export default function Analytics () {
 
    return (
        <>
@@ -13,17 +13,16 @@ export default function Info() {
                 <div className="row align-items-center">
                    <div className="col">
                       <PageHeader.Subtitle>
-                         <Trans>Info</Trans>
+                         <Trans>Analytics</Trans>
                       </PageHeader.Subtitle>
                       <PageHeader.Title>
-                         <Trans>Paycer Overview</Trans>
+                         <Trans>Paycer Financial Stats</Trans>
                       </PageHeader.Title>
-                      <span className="badge bg-danger-soft mt-3 text-white py-2 px-3">This page is a demo</span>
                    </div>
                 </div>
              </PageHeader>
              <div className="position-relative">
-                 <InfoDashboard />
+                 <AnalyticsDashboard />
              </div>
           </div>
           <PortalBlockNumber />

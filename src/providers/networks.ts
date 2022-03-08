@@ -111,7 +111,7 @@ export const mainNetProviders: INetworkProvider = {
             name: 'Wrapped Matic'
         },
         multicallAddress: '0x275617327c958bD06b5D6b871E7f491D76113dd8'
-    },
+    }
 }
 
 export const infoChartProviders: INetworkProvider = {

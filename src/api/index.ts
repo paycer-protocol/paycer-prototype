@@ -1,7 +1,5 @@
 import axios from 'axios'
 import moment from 'moment'
-import fetchStakingSeries from './info-dashboard-staking-mock'
-import fetchVestingSeries from './info-dashboard-vesting-mock'
 
 interface PricePair {
   time: string;

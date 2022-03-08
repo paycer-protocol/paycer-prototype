@@ -2,7 +2,7 @@ import React from 'react'
 import { infoChartProviders } from '@providers/networks'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
-import { InfoDashboardFormType } from '@components/organisms/info-dashboard/info-dashboard'
+import { InfoDashboardFormType } from '../types'
 
 const FilterBar = () => {
 
@@ -47,6 +47,16 @@ const FilterBar = () => {
                     <span className="checkmark card mb-0" />
                 </label>
             ))}
+            <label style={{pointerEvents: 'none', opacity: 0.3}} className="custom-checkbox me-4 d-none d-md-block">
+                <span className="custom-checkbox-label">Binance Smart Chain</span>
+                <input onChange={handleChange} type="checkbox" />
+                <span className="checkmark card mb-0" />
+            </label>
+            <label style={{pointerEvents: 'none', opacity: 0.3}} className="custom-checkbox me-4 d-none d-md-block">
+                <span className="custom-checkbox-label">Avalanche</span>
+                <input onChange={handleChange} type="checkbox" />
+                <span className="checkmark card mb-0" />
+            </label>
         </div>
     )
 }
