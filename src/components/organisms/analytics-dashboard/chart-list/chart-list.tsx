@@ -15,7 +15,7 @@ const ChartList = () => {
     }
 
     return (
-        <>
+        <div style={{background: 'rgba(14, 22, 40, 0.3)'}}>
             <div className="row">
                 <div className="col-md-8">
                     <InfoChart
@@ -85,7 +85,7 @@ const ChartList = () => {
                   </Modal.Body>
                 </Modal>
             }
-        </>
+        </div>
     )
 }
 

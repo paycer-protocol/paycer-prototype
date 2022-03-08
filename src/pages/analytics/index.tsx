@@ -21,7 +21,7 @@ export default function Analytics () {
                    </div>
                 </div>
              </PageHeader>
-             <div className="position-relative">
+             <div className="position-relative blur-background">
                  <AnalyticsDashboard />
              </div>
           </div>
