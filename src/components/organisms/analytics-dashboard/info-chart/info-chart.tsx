@@ -164,7 +164,7 @@ const InfoChart = (props: InfoChartProps) => {
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <div>
-                        <h5 className="text-uppercase text-muted mb-4">{headline}</h5>
+                        <h5 className="text-uppercase text-muted mb-3">{headline}</h5>
                         <div className="d-flex align-items-baseline">
                             <h2 className="display-4 fw-normal d-flex mb-2" >
                                 <FormattedNumber
@@ -241,7 +241,7 @@ const InfoChart = (props: InfoChartProps) => {
 
                 <ApexChart
                     series={series}
-                    height={isSmall ? 100 : 374}
+                    height={isSmall ? 100 : 363}
                     seriesColors={seriesColors}
                     onMouseMove={onMouseMove}
                     onMouseLeave={onMouseLeave}
