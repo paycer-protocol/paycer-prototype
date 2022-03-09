@@ -72,7 +72,7 @@ const InfoChart = (props: InfoChartProps) => {
         // if chainId filter selection contains 0 it must be all
         if (values.selectedChains.includes(0)) {
             const allChartValues = chartData.map(a => Number(a.data.substring(0, a.data.length - 18)))
-            const allChartValuesDates = chartData.map(a => moment(a.timestamp * 1000).format('MM/DD/YYYY'))
+            const allChartValuesDates = chartData.map(a => moment(a.timestamp * 1000).format('LL'))
             transformedChartSeries.push({
                 chainId: 0,
                 data: allChartValues,
@@ -86,7 +86,7 @@ const InfoChart = (props: InfoChartProps) => {
                 const filteredByChainId = chartData.filter(f => f.chainId === chainId)
                 if (filteredByChainId) {
                     const valuesByChainId = filteredByChainId.map(a => Number(a.data.substring(0, a.data.length - 18)))
-                    const datesByChainId = filteredByChainId.map(a => moment(a.timestamp * 1000).format('MM/DD/YYYY'))
+                    const datesByChainId = filteredByChainId.map(a => moment(a.timestamp * 1000).format('LL'))
                     transformedChartSeries.push({
                         chainId: chainId,
                         data: valuesByChainId,
@@ -164,9 +164,9 @@ const InfoChart = (props: InfoChartProps) => {
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <div>
-                        <h5 className={`text-uppercase text-muted mb-3`}>{headline}</h5>
+                        <h5 className="text-uppercase text-muted mb-4">{headline}</h5>
                         <div className="d-flex align-items-baseline">
-                            <h2 className="display-4 fw-normal d-flex mb-2" style={isSmall ? {fontSize: '18px'} : null}>
+                            <h2 className="display-4 fw-normal d-flex mb-2" >
                                 <FormattedNumber
                                     value={initialValueShownHovered || initialValueShown}
                                     minimumFractionDigits={2}
@@ -181,9 +181,9 @@ const InfoChart = (props: InfoChartProps) => {
                                 />
                             </h2>
                         </div>
-                        <h6 style={isSmall ? {fontSize: '12px'} : null} className="text-uppercase text-muted mb-0">
+                        <small style={{fontSize: '10px'}} className="text-uppercase text-muted mb-0">
                             {initialDateShownHovered || initialDateShown}
-                        </h6>
+                        </small>
                     </div>
                     <div>
                         <div className="d-flex justify-content-end">
@@ -241,7 +241,7 @@ const InfoChart = (props: InfoChartProps) => {
 
                 <ApexChart
                     series={series}
-                    height={isSmall ? 123 : 367}
+                    height={isSmall ? 100 : 374}
                     seriesColors={seriesColors}
                     onMouseMove={onMouseMove}
                     onMouseLeave={onMouseLeave}
