@@ -35,5 +35,17 @@ export const routes = [
     path: '/swap',
     supportedChains,
     auth: false
+  },
+  {
+    label: t`Analytics`,
+    path: '/analytics',
+    supportedChains,
+    auth: false
+  },
+  {
+    label: t`PCR Token`,
+    path: '/token-overview',
+    supportedChains,
+    auth: false
   }
 ]

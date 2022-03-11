@@ -35,6 +35,7 @@ export default function useVesting(type):UseVestingProps {
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
+    // @ts-ignore
     const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
 
     let [withdrawAble] = useContractCall({

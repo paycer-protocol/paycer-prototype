@@ -46,6 +46,7 @@ const VestingDashboardContext = React.createContext<VestingProps>({
 export const useVestingDashboard = () => useContext(VestingDashboardContext)
 
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
+
   return (
     <VestingDashboardContext.Provider
       value={{

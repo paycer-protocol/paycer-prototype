@@ -39,27 +39,27 @@ export default function PortfolioList(props: PortfolioProps) {
                 <thead className="position-relative" style={{top: '-10px'}}>
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                            <span className="text-muted">
+                            <span className="text-white">
                                 <Trans>Pool</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-muted">
+                            <span className="text-white">
                                 <Trans>Risk Level</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-muted">
+                            <span className="text-white">
                                 <Trans>Investment ratio </Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-muted">
+                            <span className="text-white">
                                 <Trans>APR</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-muted">
+                            <span className="text-white">
                                 <Trans>Investment</Trans>
                             </span>
                         </th>
