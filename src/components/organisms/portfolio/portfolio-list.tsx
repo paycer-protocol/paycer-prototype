@@ -17,7 +17,7 @@ interface PortfolioStrategy extends StrategyType {
 
 interface PortfolioProps {
   strategies: PortfolioStrategy[]
-  totalBalance: number
+  totalInvest: number
 }
 
 const ProgressbarColorWrapper = styled.div`
@@ -29,7 +29,7 @@ const ProgressbarColorWrapper = styled.div`
 `
 
 export default function PortfolioList(props: PortfolioProps) {
-    const { strategies, totalBalance } = props
+    const { strategies, totalInvest } = props
 
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
@@ -91,7 +91,7 @@ export default function PortfolioList(props: PortfolioProps) {
                                     <div className="row align-items-center g-0">
                                         <div className="col-auto me-3">
                                             <Percentage
-                                            value={(tokenBalance * 100 / totalBalance) / 100}
+                                            value={(tokenBalance * 100 / totalInvest) / 100}
                                             className="mb-2"
                                             />
                                         </div>
@@ -99,7 +99,7 @@ export default function PortfolioList(props: PortfolioProps) {
                                             <ProgressbarColorWrapper color={strategy.color}>
                                                 <ProgressBar
                                                     className="progress-sm"
-                                                    now={tokenBalance * 100 / totalBalance}
+                                                    now={tokenBalance * 100 / totalInvest}
                                                     min={0}
                                                     max={100}
                                                 />
