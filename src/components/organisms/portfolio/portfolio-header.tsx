@@ -29,11 +29,11 @@ interface PortfolioStrategy extends StrategyType {
 }
 
 interface DashCardsProps {
-  totalBalance: number,
+  totalInvest: number,
   strategies: PortfolioStrategy[]
 }
 
-export default function PortfolioHeader ({ totalBalance, strategies }: DashCardsProps) {
+export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsProps) {
     const renderPieChart = () => {
         if (!strategies.length) {
             return ''
@@ -42,7 +42,7 @@ export default function PortfolioHeader ({ totalBalance, strategies }: DashCards
         const pieChartData = []
         strategies.map((strategy) => {
             pieChartData.push({
-              value: (strategy.balance * 100 / totalBalance) / 100,
+              value: (strategy.balance * 100 / totalInvest) / 100,
               color: strategy.color
             })
         })
@@ -64,27 +64,23 @@ export default function PortfolioHeader ({ totalBalance, strategies }: DashCards
      return (
         <DashContainer className="row justify-content-between">
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
-                <DashCard title={t`Available Balance`} className="mb-0">
-                    <div className="d-flex justify-content-between fw-normal">
-                        <Money value={totalBalance * 13.3 / 100} currency="USD" />
-                    </div>
+                <DashCard  className="mb-0">
                 </DashCard>
             </div>
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex position-relative">
                 {renderPieChart()}
                 <DashCard title={t`Total Investment`} className="mb-0">
-                    <div className="d-flex justify-content-between">
-
+                    <div className="d-flex justify-content-center w-100">
                         <div className="fw-normal">
-                            <Money value={totalBalance} />
+                            <Money value={totalInvest} />
                         </div>
                     </div>
                 </DashCard>
             </div>
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex me-auto">
-                <DashCard title={t`Risk`} className="mb-0">
+                <DashCard className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
-                        <Trans id={riskLabels[portfolioRiskLevel].id} />
+
                     </div>
                 </DashCard>
             </div>
