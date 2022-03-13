@@ -31,7 +31,7 @@ export default function useWallet() {
 
     useEffect(() => {
         const reconnect = async () => {
-            const isConnectedProviderName = window.localStorage.getItem('walletConnectedProvider')
+            const isConnectedProviderName = window.localStorage.getItem('walletConnectedProviderName')
             if (!account && isConnectedProviderName) {
                 const isConnectedProvider = connectors.find(f => f.name === isConnectedProviderName)
                 await handleConnect(isConnectedProvider)

@@ -24,7 +24,7 @@ const WalletProvider = (props: WalletProviderProps) => {
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
       await wallet.connect(provider)
-      window.localStorage.setItem('walletConnectedProvider', provider.name)
+      window.localStorage.setItem('walletConnectedProviderName', provider.name)
       onHide()
     } catch (e) {
       let message
