@@ -614,7 +614,7 @@ $btn-font-weight: $font-weight-bold;
 
 $form-text-margin-bottom: .5rem !default;
 
-$form-check-size: 24px !default; // using this instead of $form-check-input-width because of the units incompatibility bug
+$form-check-size: 1rem !default; // using this instead of $form-check-input-width because of the units incompatibility bug
 $form-check-input-focus-bg: lighten($primary, 35%) !default;
 $form-check-input-checked-bg-size: 75% 75% !default;
 

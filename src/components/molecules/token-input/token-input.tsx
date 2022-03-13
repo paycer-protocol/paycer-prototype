@@ -35,6 +35,7 @@ export default function TokenInput(props: TokenInputProps) {
     raiseMax,
     handleChange,
     value,
+    disabled
   } = props
 
   return (
@@ -47,6 +48,7 @@ export default function TokenInput(props: TokenInputProps) {
             showCurrencyPrefix={false}
             decimals={4}
             autoFocus
+            disabled={disabled}
             autoComplete="off"
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
             onChange={(e) => {
@@ -54,22 +56,23 @@ export default function TokenInput(props: TokenInputProps) {
               handleChange(tokenValue)
             }}
         />
-        <div className="d-flex justify-content-end">
+        {!disabled &&
+          <div className="d-flex justify-content-end">
             <TokenBalanceLabel className="text-muted">
-                <span>{t`Balance:`}</span>&nbsp;
-                <FormattedNumber
-                    value={balance}
-                    minimumFractionDigits={2}
-                    maximumFractionDigits={4}
-                />
+              <span>{t`Balance:`}</span>&nbsp;
+              <FormattedNumber
+                value={balance}
+                minimumFractionDigits={2}
+                maximumFractionDigits={4}
+              />
             </TokenBalanceLabel>
-
-            {(raiseMax && balance > 0) &&
-            <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
-                {t`max`}
-            </MaxButton>
-            }
-        </div>
+              {(raiseMax && balance > 0) &&
+              <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
+                  {t`max`}
+              </MaxButton>
+              }
+          </div>
+        }
       </div>
   )
 

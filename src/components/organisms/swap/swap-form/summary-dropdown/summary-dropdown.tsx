@@ -29,18 +29,26 @@ const SummaryDropdown = () => {
     return (
         <div className="position-relative">
             <div
-                onClick={() => setOpen(!open)} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
+                onClick={() => {
+                    if (values.token1 && values.token0) {
+                        setOpen(!open)
+                    }
+                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`} style={!values.token1 || !values.token0 ? {opacity: '0.5'} : null}>
                 <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
-                        <div className="me-2">
-                            1 {values.token1?.symbol} =&nbsp;
-                            <FormattedNumber
-                              value={1 / Number(values.tradeContext?.expectedConvertQuote || 0)}
-                              minimumFractionDigits={2}
-                              maximumFractionDigits={4}
-                            />
-                            &nbsp; {values?.token0?.symbol}
-                        </div>
+                        {!values.token1 || !values.token0 ?
+                        <>-</>
+                        :
+                            <div className="me-2">
+                                1 {values.token1?.symbol} =&nbsp;
+                                <FormattedNumber
+                                    value={1 / Number(values.tradeContext?.expectedConvertQuote || 0)}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={4}
+                                />
+                                &nbsp; {values?.token0?.symbol}
+                            </div>
+                        }
                         <Icon
                             component={open ? ArrowDropUp : ArrowDropDown}
                             size={24}

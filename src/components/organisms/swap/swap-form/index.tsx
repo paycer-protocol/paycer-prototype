@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as Yup from 'yup'
 import { swapTokens } from '@config/market-pairs'
-import useNetwork from '@hooks/use-network'
-import useWallet from '@hooks/use-wallet'
+import useSwap from '@hooks/use-swap'
 import Form from '@components/atoms/form/form'
 import TokenInputPanel from '@components/organisms/token-input-panel'
 import Token0Select from './fields/token0-select'
@@ -13,20 +12,27 @@ import Token1Input from './fields/token1-input'
 import FlipSwap from './fields/flip-swap'
 import SummaryDropdown from './summary-dropdown'
 import SettingsDropdown from './settings-dropdown'
-import PriceChart from './price-chart'
 import { SwapProps } from './types'
-import { Trade, TradeContext, UniswapProvider } from '../../../../lib/trade'
-import { useSendTransaction } from '@usedapp/core'
+import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
+import {t} from "@lingui/macro";
+import DashNumber from "@components/organisms/dashboard/dash-number";
+import CurrencyIcon from "@components/atoms/currency-icon";
 
 export default function SwapForm() {
-    const network = useNetwork()
-    const wallet = useWallet()
-    const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
-    const { sendTransaction: sendApproveTransaction , state: approveState } = useSendTransaction({ transactionName: 'approve' })
-    const { sendTransaction: sendSwapTransaction , state: swapState } = useSendTransaction({ transactionName: 'swap' })
 
-    const provider = new UniswapProvider()
-    const tradeFactory = new Trade(provider)
+    const {
+        networkSettings,
+        tradeContext,
+        initFactory,
+        handleSwap,
+        showFormApproveModal,
+        setShowFormApproveModal,
+        swapError,
+        swapTx,
+        approveTx,
+        isLoading,
+        resetStatus,
+    } = useSwap()
 
     let initialValues: SwapProps = {
         isLoading: false,
@@ -48,28 +54,9 @@ export default function SwapForm() {
             deadlineMinutes: 20,
             disableMultihops: false,
         },
-        networkSettings: {
-            providerUrl: network.rpcUrls[0],
-            walletAddress: wallet.address,
-            networkProvider: network.provider,
-            chainId: network.chainId,
-            nameNetwork: network.chainName,
-            multicallContractAddress: network.multicallAddress,
-            nativeCurrency: network.nativeCurrency,
-            nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-        },
+        networkSettings,
         tradeContext,
-        initFactory: async (values: SwapProps) => {
-            const tradeContext = await tradeFactory.init(
-              values.tradePair,
-              values.tradeSettings,
-              values.networkSettings
-            )
-
-            setTradeContext(tradeContext)
-
-            return tradeContext
-        }
+        initFactory
     }
 
     const validationSchema = Yup.object().shape({
@@ -77,18 +64,8 @@ export default function SwapForm() {
         token1Value: Yup.number().min(0).required(),
     })
 
-    const handleSubmit = async (values: SwapProps) => {
-        if (!values.tradeContext.hasEnoughAllowance && values.tradeContext.approvalTransaction) {
-            const approved = await sendApproveTransaction(values.tradeContext.approvalTransaction)
-            console.log(approved)
-            console.log(approveState)
-        }
-
-        if (values.tradeContext.transaction) {
-            const approved = await sendSwapTransaction(values.tradeContext.transaction)
-            console.log(approved)
-            console.log(swapState)
-        }
+    const handleSubmit = () => {
+        setShowFormApproveModal(true)
     }
 
     return (
@@ -97,51 +74,181 @@ export default function SwapForm() {
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
-            {() => (
-              <div className="d-lg-flex animated-wrapper">
-                  <div className="col-md-5">
-                      <div className="p-4 p-md-5 pe-md-0">
-                          <div className="d-flex flex-column flex-md-row mb-3">
-                              <div className="d-flex flex-column">
-                                  <TokenInputPanel
-                                    tokenInputSibling={<Token0Select/>}
-                                    tokenInput={<Token0Input/>}
-                                  />
-                                  <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
-                                      <FlipSwap/>
-                                  </div>
-                                  <TokenInputPanel
-                                    tokenInputSibling={<Token1Select/>}
-                                    tokenInput={<Token1Input/>}
-                                  />
-                              </div>
-                          </div>
-                          <div className="d-flex">
-                              <div className="col-10">
-                                  <SummaryDropdown />
-                              </div>
-                              <div className="col-2 ps-0">
-                                  <SettingsDropdown/>
-                              </div>
-                          </div>
-                          <div
-                            className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
-                              <SubmitButton/>
-                          </div>
-                      </div>
-                  </div>
+            {({values}) => (
+                <>
+                    <div className="d-lg-flex animated-wrapper">
+                        <div className="col-md-5">
+                            <div className="p-4 p-md-5 pe-md-0">
+                                <div className="d-flex flex-column flex-md-row mb-3">
+                                    <div className="d-flex flex-column">
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token0Select/>}
+                                            tokenInput={<Token0Input/>}
+                                        />
+                                        <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                                            <FlipSwap/>
+                                        </div>
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token1Select/>}
+                                            tokenInput={<Token1Input/>}
+                                        />
+                                    </div>
+                                </div>
+                                  <>
+                                    <div className="d-flex">
+                                      <div className="col-10">
+                                        <SummaryDropdown />
+                                      </div>
+                                      <div className="col-2 ps-0">
+                                        <SettingsDropdown/>
+                                      </div>
+                                    </div>
+                                  </>
+                                <div
+                                    className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
+                                    <SubmitButton/>
+                                </div>
+                            </div>
+                        </div>
 
-                  {/*<div className="col-md-7">*/}
-                  {/*    <div className="p-4 p-md-5">*/}
-                  {/*        <PriceChart*/}
-                  {/*            token0={values.token0}*/}
-                  {/*            token1={values.token1}*/}
-                  {/*            token1Price={values.token1Price}*/}
-                  {/*        />*/}
-                  {/*    </div>*/}
-                  {/*</div>*/}
-              </div>
+                        {/*<div className="col-md-7">*/}
+                        {/*    <div className="p-4 p-md-5">*/}
+                        {/*        <PriceChart*/}
+                        {/*            token0={values.token0}*/}
+                        {/*            token1={values.token1}*/}
+                        {/*            token1Price={values.token1Price}*/}
+                        {/*        />*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+                    </div>
+                    <TransactionApproveModal
+                        show={showFormApproveModal}
+                        onHide={() => {
+                            resetStatus()
+                            setShowFormApproveModal(false)
+                        }}
+                        title={t`Confirm Transaction`}
+                        onClick={() => handleSwap(values)}
+                        successMessage={t`Transaction was successfully executed`}
+                        error={
+                            swapTx.status === 'Fail' ||
+                            swapTx.status === 'Exception' ||
+                            approveTx.status === 'Fail' ||
+                            approveTx.status === 'Exception' ||
+                            swapError
+                        }
+                        success={
+                            swapTx.status === 'Success'
+                        }
+                        loading={
+                            swapTx.status === 'Mining' ||
+                            approveTx.status === 'Mining' ||
+                            isLoading
+                        }
+                    >
+                        <>
+                            <div className="card blur-background mb-0">
+                                <div className="card-body">
+                                    <div className="d-flex mb-4">
+                                        <div className="col-6">
+                                            {t`From`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token0?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={values.token0Value}
+                                                symbol={values?.token0?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4 border-bottom pb-4">
+                                        <div className="col-6">
+                                            {t`To`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token1?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={values.token1Value}
+                                                symbol={values?.token1?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4">
+                                        <div className="col-6">
+                                            {t`Slippage:`}
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            {values.tradeSettings.slippage} %
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4 border-bottom pb-4">
+                                        <div className="col-6">
+                                            {t`Fee:`}
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token0?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={values.tradeContext?.liquidityProviderFee}
+                                                symbol={values?.token0?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex mb-4">
+                                        <div className="col-6">
+                                            {values?.token0?.symbol} {t`after`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token0?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={Number(values.tradeContext?.fromBalance?.balance) - values.token0Value}
+                                                symbol={values?.token0?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="d-flex">
+                                        <div className="col-6">
+                                            {values?.token1?.symbol} {t`after`}:
+                                        </div>
+                                        <div className="col-6 fw-bold d-flex">
+                                            <CurrencyIcon
+                                                symbol={values?.token1?.symbol}
+                                                className="me-3"
+                                                width={20}
+                                                height={20}
+                                            />
+                                            <DashNumber
+                                                value={values.token1Value + Number(values?.tradeContext?.toBalance)}
+                                                symbol={values?.token1?.symbol}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    </TransactionApproveModal>
+                </>
             )}
+
         </Form>
     )
 }
