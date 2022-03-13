@@ -50,7 +50,8 @@ export default function usePortfolio():UsePortfolioProps {
     let totalInvest = 0
 
     investmentStrategies.map((strategy, key) => {
-        const tokenBalance =   BigNumber.isBigNumber(balanceOfAll[key]) ? Number(formatUnits(balanceOfAll[key], strategy.decimals)) : 0
+        // decimals right here should actually be strategy.decimals but somehow the numbers formatted incorrectly in the frontend
+        const tokenBalance =   BigNumber.isBigNumber(balanceOfAll[key]) ? Number(formatUnits(balanceOfAll[key], 18)) : 0
         totalInvest += tokenBalance
         if (tokenBalance > 0) {
             qualifiedStrategies.push({
