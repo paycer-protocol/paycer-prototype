@@ -3652,10 +3652,10 @@
   dependencies:
     "@usedapp/core" "^0.7.0"
 
-"@usedapp/core@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@usedapp/core/-/core-0.10.0.tgz#054f88cdcb40bbd7a0969964a8e98569fba106bb"
-  integrity sha512-Ep2hnh4AL/Ygv7Hx77a7BvoFySIl+2ocmfUiiR+E+HhCuMHvr7+CiyXLWWRe6jhSFnMtqQJpNjRsvLWrSepRpw==
+"@usedapp/core@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@usedapp/core/-/core-0.11.0.tgz#0df080d253468b421c6b712f1b0bbcc7bfec15e9"
+  integrity sha512-59M4FToZLdXLPf9R4eME7aOBHcwrqmf8+038Mq9Zcd3Ep+YvrN0vnIdNyzjAAJXXBa3bX139ueli0lKwrGYbUQ==
   dependencies:
     "@metamask/detect-provider" "^1.2.0"
     "@uniswap/token-lists" "^1.0.0-beta.27"
