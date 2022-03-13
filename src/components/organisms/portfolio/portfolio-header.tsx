@@ -64,7 +64,7 @@ export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsP
      return (
         <DashContainer className="row justify-content-between">
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex ms-auto">
-                <DashCard  className="mb-0">
+                <DashCard title="" className="mb-0">
                 </DashCard>
             </div>
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex position-relative">
@@ -78,7 +78,7 @@ export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsP
                 </DashCard>
             </div>
             <div className="col-12 col-md-4 col-lg-3 justify-content-center d-flex me-auto">
-                <DashCard className="mb-0">
+                <DashCard title="" className="mb-0">
                     <div className="d-flex justify-content-between fw-normal">
 
                     </div>
