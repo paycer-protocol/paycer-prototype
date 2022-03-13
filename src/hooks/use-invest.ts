@@ -54,7 +54,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
             args: [wallet.address],
         } : false
         let [data] = useContractCall(balanceOfArgs) ?? []
-        // decials should be strategy.decimals but somehow the numbers formatted incorrectly in the frontend
+        // decimals right here should actually be strategy.decimals but somehow the numbers formatted incorrectly in the frontend
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
     }
 
