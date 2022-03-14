@@ -21,6 +21,12 @@ export default function usePortfolio():UsePortfolioProps {
 
     const wallet = useWallet()
     const { chainId } = wallet
+    
+    const strategyAdressesOfUsersChainId = []
+
+    investmentStrategies.map((strategy) => {
+        strategyAdressesOfUsersChainId.push(strategy.chainAddresses[chainId])
+    })
 
     function getBalanceOfAll(tokenAddresses: string[] | undefined): (BigNumber | undefined)[] {
         const calls = tokenAddresses?.map(address => ({
@@ -38,13 +44,7 @@ export default function usePortfolio():UsePortfolioProps {
         return results.map(result => result?.value?.[0])
     }
 
-    const strategyAdresses = []
-
-    investmentStrategies.map((strategy) => {
-        strategyAdresses.push(strategy.chainAddresses[chainId])
-    })
-
-    const balanceOfAll = getBalanceOfAll(strategyAdresses)
+    const balanceOfAll = getBalanceOfAll(strategyAdressesOfUsersChainId)
 
     const qualifiedStrategies = []
     let totalInvest = 0
