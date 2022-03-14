@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { Trans } from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -11,6 +11,7 @@ import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import useWallet from "@hooks/use-wallet";
 import LoginCard from "@components/organisms/login-card";
+import GradientButton from "@components/atoms/button/gradient-button";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -127,9 +128,12 @@ export default function PortfolioList(props: PortfolioProps) {
                                                 <Trans>You have no investments in your portfolio</Trans>
                                             </h4>
                                             <Link href="/invest">
-                                                <Button variant="primary">
-                                                    <Trans>Invest now</Trans>
-                                                </Button>
+                                                <GradientButton
+                                                    title={t`Connect to a Wallet`}
+                                                    className="px-6"
+                                                >
+                                                    <Trans>Invest</Trans>
+                                                </GradientButton>
                                             </Link>
                                         </div>
                                     </td>
