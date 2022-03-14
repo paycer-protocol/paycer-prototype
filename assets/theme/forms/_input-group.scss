@@ -7,6 +7,11 @@
 // Theme ===================================
 //
 
+.input-group {
+  flex-wrap: nowrap;
+  position: static;
+}
+
 .input-group-merge > .form-control {
   border-right-width: 0;
 }

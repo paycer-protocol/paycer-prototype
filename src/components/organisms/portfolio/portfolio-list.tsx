@@ -34,9 +34,9 @@ const ProgressbarColorWrapper = styled.div`
 export default function PortfolioList(props: PortfolioProps) {
     const { strategies, totalInvest } = props
     const wallet = useWallet()
-
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
+
     return (
         <div className="table-responsive mb-0 border-0">
             <table className="table table-sm table-nowrap card-table" style={{background: 'rgb(14 22 40 / 50%)'}}>

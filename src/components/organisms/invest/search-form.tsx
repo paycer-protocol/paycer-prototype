@@ -19,7 +19,7 @@ export default function SearchForm() {
     } = useInvestList()
 
   return (
-    <div className="input-group input-group-flush input-group-merge">
+    <div className="input-group input-group-flush input-group-merge justify-content-end justify-content-md-start flex-wr">
         <span className="bg-transparent border form-control-rounded border-right-0 ps-3 ps-md-4 pe-md-3 py-3 cursor-pointer">
             <Icon component={Search} size={18} />
         </span>
@@ -28,6 +28,7 @@ export default function SearchForm() {
             type="search"
             placeholder="Search"
             onChange={handleSearch}
+            style={{width: '90%'}}
         />
     </div>
   )
