@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import {t, Trans} from '@lingui/macro'
+import React from 'react'
+import {t} from '@lingui/macro'
 import { VestingDashboardProvider } from '@context/vesting-dashboard-context'
 import useTokenSale from '@hooks/use-token-sale'
 import useWallet from '@hooks/use-wallet'
 import Spinner from '@components/atoms/spinner'
-import GradientButton from '@components/atoms/button/gradient-button'
-import WalletProvider from '@components/organisms/web3/wallet-provider'
-import { connectors } from '@providers/connectors'
 import Dashboard from './dashboard'
+import LoginCard from '@components/organisms/login-card'
 
 const Vesting = () => {
     const wallet = useWallet()
     const { tokenSaleData, loading, } = useTokenSale()
-    const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
 
     if (loading) {
         return (
@@ -53,29 +50,7 @@ const Vesting = () => {
     }
 
     return (
-        <div className="card blur-background">
-            <div className="card-body">
-                <h2 className="mb-0 text-center">
-                    {t`Please connect to your wallet.`}
-                </h2>
-                <div className="d-flex justify-content-center align-items-center mt-4">
-                    <GradientButton
-                      type="submit"
-                      title={t`Connect to a Wallet`}
-                      className="px-5"
-                      onClick={() => setShowWalletProviderModal(true)}
-                    >
-                        <Trans>Connect to a Wallet</Trans>
-                    </GradientButton>
-                    {(showWalletProviderModal &&
-                      <WalletProvider
-                        providers={connectors}
-                        onHide={() => setShowWalletProviderModal(false)}
-                      />
-                    )}
-                </div>
-            </div>
-        </div>
+        <LoginCard />
     )
 }
 

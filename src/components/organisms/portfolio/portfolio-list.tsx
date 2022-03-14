@@ -9,6 +9,8 @@ import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
+import useWallet from "@hooks/use-wallet";
+import LoginCard from "@components/organisms/login-card";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -30,6 +32,7 @@ const ProgressbarColorWrapper = styled.div`
 
 export default function PortfolioList(props: PortfolioProps) {
     const { strategies, totalInvest } = props
+    const wallet = useWallet()
 
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
@@ -117,18 +120,24 @@ export default function PortfolioList(props: PortfolioProps) {
                             )
                             }) : (
                             <tr>
-                                <td colSpan={4}>
-                                    <div className="text-center">
-                                        <h4 className="text-muted mb-4">
-                                            <Trans>You have no investments in your portfolio</Trans>
-                                        </h4>
-                                        <Link href="/invest">
-                                            <Button variant="primary">
-                                                <Trans>Invest now</Trans>
-                                            </Button>
-                                        </Link>
-                                    </div>
-                                </td>
+                                {wallet.isConnected ?
+                                    <td colSpan={5}>
+                                        <div className="text-center">
+                                            <h4 className="text-muted mb-4">
+                                                <Trans>You have no investments in your portfolio</Trans>
+                                            </h4>
+                                            <Link href="/invest">
+                                                <Button variant="primary">
+                                                    <Trans>Invest now</Trans>
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </td>
+                                    :
+                                    <td colSpan={5} className="bg-transparent p-0">
+                                        <LoginCard />
+                                    </td>
+                                }
                             </tr>
                         )}
                 </tbody>

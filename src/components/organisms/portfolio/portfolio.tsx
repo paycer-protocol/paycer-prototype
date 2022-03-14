@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '@components/organisms/portfolio/portfolio-header'
 import PortfolioList from '@components/organisms/portfolio/portfolio-list'
 import usePortfolio from '@hooks/use-portfolio'
+import useWallet from "@hooks/use-wallet";
 
 export default function Portfolio() {
     const { qualifiedStrategies, totalInvest } = usePortfolio()
