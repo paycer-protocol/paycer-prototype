@@ -2,37 +2,9 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
-import Header from '@components/organisms/portfolio/portfolio-header'
-import PortfolioList from '@components/organisms/portfolio/portfolio-list'
-import { StrategyType } from '../../types/investment'
-import { investmentStrategies } from '@config/investment/strategies'
-
-interface PortfolioStrategy extends StrategyType {
-  balance?: number
-  tvl?: number
-}
+import Portfolio from '@components/organisms/portfolio'
 
 export default function Home() {
-  const qualifiedStrategies = []
-  let totalBalance = 0
-
-  investmentStrategies.map((strategy) => {
-    const tokenBalance = Math.random() * 10000
-
-    totalBalance += tokenBalance
-
-    if (tokenBalance > 0) {
-      qualifiedStrategies.push({
-        ...strategy,
-        ...{
-          balance: tokenBalance,
-          color: strategy.color
-
-        }
-      } as PortfolioStrategy)
-    }
-  })
-
   return (
     <>
       <div className="container mt-3 mb-8">
@@ -45,28 +17,12 @@ export default function Home() {
               <PageHeader.Title>
                   <Trans>Portfolio</Trans>
               </PageHeader.Title>
-              <span className="badge bg-danger-soft mt-3 text-white py-2 px-3">This page is a demo</span>
             </div>
           </div>
         </PageHeader>
-        <div>
-            <div className="mb-7 mb-md-3">
-              <Header
-                  totalBalance={totalBalance}
-                  strategies={qualifiedStrategies}
-              />
-            </div>
-            <div className="row position-relatives blur-background">
-              <div className="col-12">
-                <PortfolioList
-                  strategies={qualifiedStrategies}
-                  totalBalance={totalBalance}
-                />
-              </div>
-            </div>
-        </div>
-      </div>
+        <Portfolio />
       <PortalBlockNumber />
+      </div>
     </>
   )
 }

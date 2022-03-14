@@ -36,7 +36,7 @@ const DashCard = (props: DashCardProps) => {
             <Card.Body>
                 <div className="row align-items-center gx-0">
                     <div className="col">
-                        <h5 className="text-uppercase mb-2 text-center fw-light text-gray-500 fw-light">
+                        <h5 className="text-uppercase mb-3 text-center fw-light text-gray-500 fw-light">
                             {title}
                         </h5>
                         <span className="h2 mb-0 d-flex display-4">

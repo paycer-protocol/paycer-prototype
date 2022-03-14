@@ -12,11 +12,11 @@ export default function InvestList() {
 
   return (
       <div>
-          <div className="d-flex justify-content-md-end justify-content-between mb-5">
-              <div className="me-4">
+          <div className="d-flex flex-column flex-md-row flex-column-reverse justify-content-md-end justify-content-between mb-4 mb-md-5">
+              <div className="me-md-4">
                   <SearchForm />
               </div>
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center mb-3 mb-md-0  justify-content-end justify-content-md-start">
                   <a className={isListView ? 'text-primary me-3' : 'text-light me-3'}
                      onClick={() => toggleListView(false)}>
                       <Icon component={Grid} size={20} />

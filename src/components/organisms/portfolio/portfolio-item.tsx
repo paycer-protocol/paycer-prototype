@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import {t, Trans} from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -9,9 +9,6 @@ import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
-import useWallet from "@hooks/use-wallet";
-import LoginCard from "@components/organisms/login-card";
-import GradientButton from "@components/atoms/button/gradient-button";
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -33,10 +30,9 @@ const ProgressbarColorWrapper = styled.div`
 
 export default function PortfolioList(props: PortfolioProps) {
     const { strategies, totalInvest } = props
-    const wallet = useWallet()
+
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
-
     return (
         <div className="table-responsive mb-0 border-0">
             <table className="table table-sm table-nowrap card-table" style={{background: 'rgb(14 22 40 / 50%)'}}>
@@ -121,27 +117,18 @@ export default function PortfolioList(props: PortfolioProps) {
                             )
                             }) : (
                             <tr>
-                                {wallet.isConnected ?
-                                    <td colSpan={5}>
-                                        <div className="text-center">
-                                            <h4 className="text-muted mb-4">
-                                                <Trans>You have no investments in your portfolio</Trans>
-                                            </h4>
-                                            <Link href="/invest">
-                                                <GradientButton
-                                                    title={t`Connect to a Wallet`}
-                                                    className="px-6"
-                                                >
-                                                    <Trans>Invest</Trans>
-                                                </GradientButton>
-                                            </Link>
-                                        </div>
-                                    </td>
-                                    :
-                                    <td colSpan={5} className="bg-transparent p-0">
-                                        <LoginCard />
-                                    </td>
-                                }
+                                <td colSpan={4}>
+                                    <div className="text-center">
+                                        <h4 className="text-muted mb-4">
+                                            <Trans>You have no investments in your portfolio</Trans>
+                                        </h4>
+                                        <Link href="/invest">
+                                            <Button variant="primary">
+                                                <Trans>Invest now</Trans>
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </td>
                             </tr>
                         )}
                 </tbody>

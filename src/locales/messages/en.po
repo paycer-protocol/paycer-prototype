@@ -137,7 +137,7 @@ msgstr "Associate"
 #~ msgid "Balance after:"
 #~ msgstr "Balance after:"
 
-#: src/components/molecules/token-input/token-input.tsx:59
+#: src/components/molecules/token-input/token-input.tsx:62
 msgid "Balance:"
 msgstr "Balance:"
 
@@ -241,6 +241,7 @@ msgstr "Cancel"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:179
+#: src/components/organisms/swap/swap-form/index.tsx:130
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -362,6 +363,10 @@ msgstr "Daily rewards:"
 #~ msgid "Date"
 #~ msgstr "Date"
 
+#: src/components/organisms/swap/swap-form/fields/deadline-minutes.tsx:36
+msgid "Deadline minutes"
+msgstr "Deadline minutes"
+
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 msgid "Deposit"
 msgstr "Deposit"
@@ -381,6 +386,10 @@ msgstr "Deposit:"
 #: src/components/organisms/invest/invest-card/index.tsx:110
 #~ msgid "Deposited"
 #~ msgstr "Deposited"
+
+#: src/components/organisms/swap/swap-form/fields/disable-multihops.tsx:34
+msgid "Disable Multihops"
+msgstr "Disable Multihops"
 
 #: src/components/organisms/web3/wallet-detail.tsx:131
 #~ msgid "Disconnect"
@@ -465,12 +474,13 @@ msgstr "Easy-to-use browser extension."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:158
 #: src/components/organisms/invest/withdraw-form/index.tsx:163
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:76
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:84
 msgid "Fee"
 msgstr "Fee"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:231
 #: src/components/organisms/invest/withdraw-form/index.tsx:247
+#: src/components/organisms/swap/swap-form/index.tsx:196
 msgid "Fee:"
 msgstr "Fee:"
 
@@ -481,6 +491,10 @@ msgstr "Fee:"
 #: src/pages/referral/components/Referrals.tsx:13
 #~ msgid "Friend`s User ID"
 #~ msgstr "Friend`s User ID"
+
+#: src/components/organisms/swap/swap-form/index.tsx:154
+msgid "From"
+msgstr "From"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:105
 #~ msgid "From Wallet Address"
@@ -680,7 +694,7 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:57
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:65
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -965,8 +979,16 @@ msgstr "Senior"
 #~ msgstr "Show Details"
 
 #: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:63
-msgid "Slippage tolerance"
-msgstr "Slippage tolerance"
+#~ msgid "Slippage tolerance"
+#~ msgstr "Slippage tolerance"
+
+#: src/components/organisms/swap/swap-form/fields/slippage-tollerance.tsx:43
+msgid "Slippage tollerance"
+msgstr "Slippage tollerance"
+
+#: src/components/organisms/swap/swap-form/index.tsx:188
+msgid "Slippage:"
+msgstr "Slippage:"
 
 #: src/components/organisms/web3/add-paycer-token.tsx:56
 #: src/components/organisms/web3/add-paycer-token.tsx:61
@@ -1049,17 +1071,17 @@ msgstr "Supply"
 #~ msgid "Supply Liquidity"
 #~ msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:32
+#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:31
 #: src/config/routes.ts:34
 #: src/pages/swap/index.tsx:25
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:70
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:65
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:69
+#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:62
 msgid "Swap to"
 msgstr "Swap to"
 
@@ -1109,6 +1131,10 @@ msgstr "The secure app to store crypto yourself"
 #~ msgid "Theme"
 #~ msgstr "Theme"
 
+#: src/components/organisms/swap/swap-form/index.tsx:171
+msgid "To"
+msgstr "To"
+
 #: src/components/organisms/swap/supply-form_/supply-info/token-balance.tsx:18
 #~ msgid "Token Balance"
 #~ msgstr "Token Balance"
@@ -1138,9 +1164,9 @@ msgstr "The secure app to store crypto yourself"
 #~ msgid "Total Daily rewards"
 #~ msgstr "Total Daily rewards"
 
-#: src/components/organisms/portfolio/portfolio-header.tsx:75
-#~ msgid "Total Investment"
-#~ msgstr "Total Investment"
+#: src/components/organisms/portfolio/portfolio-header.tsx:72
+msgid "Total Investment"
+msgstr "Total Investment"
 
 #: src/components/organisms/swap/supply-form/supply-info/total-supply.tsx:18
 msgid "Total Pool Supply"
@@ -1202,6 +1228,7 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:176
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
+#: src/components/organisms/swap/swap-form/index.tsx:132
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 
@@ -1328,6 +1355,11 @@ msgstr "Your APR:"
 #~ msgid "Your supply"
 #~ msgstr "Your supply"
 
+#: src/components/organisms/swap/swap-form/index.tsx:213
+#: src/components/organisms/swap/swap-form/index.tsx:230
+msgid "after"
+msgstr "after"
+
 #: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:14
 #~ msgid "apy"
 #~ msgstr "apy"
@@ -1337,7 +1369,7 @@ msgstr "Your APR:"
 #~ msgid "by"
 #~ msgstr "by"
 
-#: src/components/molecules/token-input/token-input.tsx:69
+#: src/components/molecules/token-input/token-input.tsx:71
 msgid "max"
 msgstr "max"
 
