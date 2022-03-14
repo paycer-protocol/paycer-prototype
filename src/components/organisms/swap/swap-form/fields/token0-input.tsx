@@ -8,6 +8,9 @@ export default function Token0Input() {
 
     const handleChange = async (value: number) => {
 
+
+        console.log(values.tradeContext)
+
         if (value > Number(values.tradeContext?.fromBalance?.balance)) {
             setFieldValue('token0value', Number(values.tradeContext?.fromBalance?.balance))
             value = Number(values.tradeContext?.fromBalance?.balance)

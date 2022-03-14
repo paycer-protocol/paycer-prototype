@@ -59,11 +59,6 @@ export default function SwapForm() {
         initFactory
     }
 
-    const validationSchema = Yup.object().shape({
-        token0Value: Yup.number().min(0).required(),
-        token1Value: Yup.number().min(0).required(),
-    })
-
     const handleSubmit = () => {
         setShowFormApproveModal(true)
     }
@@ -71,7 +66,6 @@ export default function SwapForm() {
     return (
         <Form
             initialValues={initialValues}
-            validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
             {({values}) => (

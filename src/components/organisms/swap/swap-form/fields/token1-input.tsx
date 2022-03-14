@@ -1,16 +1,24 @@
 import React from 'react'
+import {t} from "@lingui/macro";
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 
 export default function Token1Input() {
-    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
+
+        console.log(values.tradeContext)
 
         if (value > Number(values?.tradeContext?.toBalance)) {
             setFieldValue('token1value', Number(values?.tradeContext?.toBalance))
             value = Number(values?.tradeContext?.toBalance)
+        }
+
+        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values.tradeContext?.fromBalance?.balance)) {
+            setFieldError('token1value', t`Insufficient ${values.token1} liquidity`)
+            return
         }
 
         const nextValues = {
