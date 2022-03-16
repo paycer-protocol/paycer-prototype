@@ -3,6 +3,7 @@ import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import HeroSection from '@components/organisms/collect/hero-section'
 import NftArtworkList from '@components/organisms/collect/nft-artwork/list'
+import LegendSection from '@components/organisms/collect/legend-section'
 
 export default function Collect() {
   return (
@@ -22,6 +23,7 @@ export default function Collect() {
         </PageHeader>
         <HeroSection />
         <NftArtworkList />
+        <LegendSection />
       </div>
     </>
   )
