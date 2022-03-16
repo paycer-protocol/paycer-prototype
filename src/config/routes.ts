@@ -47,5 +47,11 @@ export const routes = [
     path: '/token-overview',
     supportedChains,
     auth: false
+  },
+  {
+    label: t`Collect`,
+    path: '/collect',
+    supportedChains,
+    auth: false
   }
 ]
