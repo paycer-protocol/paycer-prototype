@@ -186,7 +186,7 @@ const InfoChart = (props: InfoChartProps) => {
                         </small>
                     </div>
                     <div>
-                        <div className="d-flex justify-content-end">
+                        <div className="d-flex justify-content-end mt-n1 me-n1">
                             <Styles.StyledDropdownToggle onClick={() => {
                                 if (isModal) {
                                     handleHideModal()
