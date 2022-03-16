@@ -4,6 +4,7 @@ import PageHeader from '@components/molecules/page-header'
 import HeroSection from '@components/organisms/collect/hero-section'
 import NftArtworkList from '@components/organisms/collect/nft-artwork/list'
 import LegendSection from '@components/organisms/collect/legend-section'
+import ExplanationSection from '@components/organisms/collect/explanatory-section'
 
 export default function Collect() {
   return (
@@ -24,6 +25,7 @@ export default function Collect() {
         <HeroSection />
         <NftArtworkList />
         <LegendSection />
+        <ExplanationSection />
       </div>
     </>
   )
