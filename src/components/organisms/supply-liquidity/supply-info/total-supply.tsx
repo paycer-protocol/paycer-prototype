@@ -2,9 +2,9 @@ import React from 'react'
 import useToken from "@hooks/use-token";
 import { useFormikContext } from 'formik'
 import { SupplyProps } from '../types'
-import {t} from "@lingui/macro";
-import CurrencyIcon from "@components/atoms/currency-icon";
-import {FormattedNumber} from "../../../../atoms/number/formatted-number";
+import {t} from '@lingui/macro'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import {FormattedNumber} from '../../../atoms/number/formatted-number'
 
 const TotalSupply = () => {
     const { values } = useFormikContext<SupplyProps>()

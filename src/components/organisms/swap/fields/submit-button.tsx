@@ -6,7 +6,7 @@ import Spinner from '@components/atoms/spinner'
 import { SwapProps } from '../types'
 
 export default function SubmitButton() {
-    const { values, isSubmitting, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
+    const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
 
     const isDisabled =
       !dirty
@@ -15,18 +15,23 @@ export default function SubmitButton() {
       || !values.token0Value
       || !values.token1Value
       || !values.tradeContext.fromBalance.hasEnough
+        // @ts-ignore
       || errors.token1value
-
 
     let buttonLabel = t`Swap`
 
     if (errors) {
+        // @ts-ignore
         if (errors?.token1value) {
+            // @ts-ignore
             buttonLabel = errors?.token1value
         }
-
+        // @ts-ignore
+        if (errors?.token0value) {
+            // @ts-ignore
+            buttonLabel = errors?.token0value
+        }
     }
-
 
     return (
         <GradientButton type="submit" disabled={isDisabled} className="d-flex align-items-center justify-content-center w-75">

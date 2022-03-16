@@ -1,10 +1,9 @@
-import { TokenType } from '../../../../types/investment'
+import { TokenType } from '../../../types/investment'
 import {
   TradeContext,
   TradePairInterface,
-  TradeSettingsInterface,
-  NetworkSettingsInterface
-} from '../../../../lib/trade'
+  TradeSettingsInterface
+} from '../../../lib/trade'
 
 export interface SwapProps {
   isLoading: boolean
@@ -18,9 +17,8 @@ export interface SwapProps {
 
   tradePair: TradePairInterface
   tradeSettings: TradeSettingsInterface
-  networkSettings: NetworkSettingsInterface
   tradeContext: TradeContext
-  initFactory: (values: SwapProps) => any
+  quoteChangedStatus: null | 'up' | 'down'
 }
 
 

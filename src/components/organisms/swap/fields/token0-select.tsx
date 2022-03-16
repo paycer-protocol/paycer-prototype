@@ -19,6 +19,7 @@ export default function Token0Select() {
 
     const {
         networkSettings,
+        initFactory
     } = useSwap()
 
     const handleChange = async (token) => {
@@ -32,7 +33,7 @@ export default function Token0Select() {
                     token0Markets: swapTokens,
                     token1Value: null,
                     tradePair: {
-                        fromTokenAddress: token.chainAddresses[values.networkSettings.chainId],
+                        fromTokenAddress: token.chainAddresses[networkSettings.chainId],
                         toTokenAddress: values.tradePair.toTokenAddress,
                         amount: values.tradePair.amount || '1',
                     },
@@ -42,7 +43,7 @@ export default function Token0Select() {
 
             if (nextValues.token0 && nextValues.token1) {
                 setFieldValue('isLoading', true)
-                const nextTradeContext = await values.initFactory(nextValues)
+                const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
                 setValues(nextValues)
                 setFieldValue('tradeContext', nextTradeContext)
                 setShowModal(false)

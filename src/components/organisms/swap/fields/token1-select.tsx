@@ -15,8 +15,10 @@ export default function Token1Select() {
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const wallet = useWallet()
+
     const {
         networkSettings,
+        initFactory
     } = useSwap()
 
     const handleChange = async (token) => {
@@ -30,7 +32,7 @@ export default function Token1Select() {
             token1: token,
             tradePair: {
               fromTokenAddress: values.tradePair.fromTokenAddress,
-              toTokenAddress: token.chainAddresses[values.networkSettings.chainId],
+              toTokenAddress: token.chainAddresses[networkSettings.chainId],
               amount: values.tradePair.amount,
             },
               networkSettings
@@ -39,7 +41,7 @@ export default function Token1Select() {
 
         if (nextValues.token0 && nextValues.token1) {
           setFieldValue('isLoading', true)
-          const nextTradeContext = await values.initFactory(nextValues)
+          const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
           setValues(nextValues)
           setFieldValue('tradeContext', nextTradeContext)
           setShowModal(false)

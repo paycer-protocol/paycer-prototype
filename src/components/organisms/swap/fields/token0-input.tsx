@@ -2,18 +2,26 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
+import {t} from "@lingui/macro";
+import useSwap from "@hooks/use-swap";
 
 export default function Token0Input() {
-    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
+
+    const {
+        initFactory
+    } = useSwap()
 
     const handleChange = async (value: number) => {
 
-
-        console.log(values.tradeContext)
-
         if (value > Number(values.tradeContext?.fromBalance?.balance)) {
-            setFieldValue('token0value', Number(values.tradeContext?.fromBalance?.balance))
-            value = Number(values.tradeContext?.fromBalance?.balance)
+            setFieldError('token0value', t`Insufficient ${values.token0.name} balance`)
+            return
+        }
+
+        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
+            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
+            return
         }
 
         const nextValues = {
@@ -28,11 +36,10 @@ export default function Token0Input() {
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await values.initFactory(nextValues)
-            setFieldValue('tradeContext', nextTradeContext)
+            const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
             setFieldValue('isLoading', false)
+            setFieldValue('tradeContext', nextTradeContext)
         }
-
     }
 
     return (

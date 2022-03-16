@@ -12,7 +12,7 @@ const Spinner: React.FC<SpinnerProps> | any = (props) => {
     }
 
     return (
-        <BaseSpinner {...props} />
+        <BaseSpinner size={props.size} animation={props.animation} />
     )
 
 }

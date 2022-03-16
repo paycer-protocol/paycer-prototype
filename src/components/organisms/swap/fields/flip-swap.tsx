@@ -3,9 +3,8 @@ import { useFormikContext } from 'formik'
 import { SwapVert } from '@styled-icons/material/SwapVert'
 import styled from 'styled-components'
 import Icon from '@components/atoms/icon'
-import useWallet from '@hooks/use-wallet'
-import useNetwork from '@hooks/use-network'
-import { SwapProps } from '@components/organisms/swap/swap-form/types'
+import { SwapProps } from '@components/organisms/swap/types'
+import useSwap from "@hooks/use-swap";
 
 export const Circle = styled.div`
   height: 34px;
@@ -17,8 +16,11 @@ export const Circle = styled.div`
 
 export default function FlipSwap() {
   const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
-  const wallet = useWallet()
-  const network = useNetwork()
+
+  const {
+    networkSettings,
+    initFactory
+  } = useSwap()
 
   const handleFlip = async () => {
     const {
@@ -45,20 +47,11 @@ export default function FlipSwap() {
         token1Markets: token0Markets,
         token0Markets: token1Markets,
         tradePair: {
-          fromTokenAddress: token1.chainAddresses[network.chainId],
-          toTokenAddress: token0.chainAddresses[network.chainId],
+          fromTokenAddress: token1.chainAddresses[networkSettings.chainId],
+          toTokenAddress: token0.chainAddresses[networkSettings.chainId],
           amount: tradePair.amount,
         },
-        networkSettings: {
-          providerUrl: network.rpcUrls[0],
-          walletAddress: wallet.address,
-          networkProvider: network.provider,
-          chainId: network.chainId,
-          nameNetwork: network.chainName,
-          multicallContractAddress: network.multicallAddress,
-          nativeCurrency: network.nativeCurrency,
-          nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-        }
+        networkSettings
       }
     }
 
@@ -66,7 +59,7 @@ export default function FlipSwap() {
       if (token0 && token1) {
         setFieldValue('isLoading', true)
         setValues(nextValues)
-        const nextTradeContext = await values.initFactory(nextValues)
+        const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
         setFieldValue('tradeContext', nextTradeContext)
         setFieldValue('isLoading', false)
       } else {

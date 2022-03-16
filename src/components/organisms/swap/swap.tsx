@@ -1,37 +1,34 @@
 import React from 'react'
-import * as Yup from 'yup'
 import { swapTokens } from '@config/market-pairs'
-import useSwap from '@hooks/use-swap'
-import Form from '@components/atoms/form/form'
-import TokenInputPanel from '@components/organisms/token-input-panel'
-import Token0Select from './fields/token0-select'
-import Token0Input from './fields/token0-input'
-import Token1Select from './fields/token1-select'
-import SubmitButton from './fields/submit-button'
-import Token1Input from './fields/token1-input'
-import FlipSwap from './fields/flip-swap'
-import SummaryDropdown from './summary-dropdown'
-import SettingsDropdown from './settings-dropdown'
+import useSwap, { QuoteChangedStatus } from '@hooks/use-swap'
 import { SwapProps } from './types'
+import Form from '@components/atoms/form/form'
+import TokenInputPanel from "@components/organisms/token-input-panel";
+import Token0Select from "@components/organisms/swap/fields/token0-select";
+import Token0Input from "@components/organisms/swap/fields/token0-input";
+import FlipSwap from "@components/organisms/swap/fields/flip-swap";
+import Token1Select from "@components/organisms/swap/fields/token1-select";
+import Token1Input from "@components/organisms/swap/fields/token1-input";
+import SummaryDropdown from "@components/organisms/swap/summary-dropdown";
+import SettingsDropdown from "@components/organisms/swap/settings-dropdown";
+import SubmitButton from "@components/organisms/swap/fields/submit-button";
+import QuoteChangedModal from "@components/organisms/swap/quote-changed-modal";
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
 import {t} from "@lingui/macro";
-import DashNumber from "@components/organisms/dashboard/dash-number";
 import CurrencyIcon from "@components/atoms/currency-icon";
+import DashNumber from "@components/organisms/dashboard/dash-number";
 
-export default function SwapForm() {
+export default function Swap() {
 
     const {
-        networkSettings,
-        tradeContext,
-        initFactory,
-        handleSwap,
-        showFormApproveModal,
         setShowFormApproveModal,
-        swapError,
+        showFormApproveModal,
         swapTx,
-        approveTx,
+        swapError,
+        handleSwap,
         isLoading,
         resetStatus,
+        approveTx
     } = useSwap()
 
     let initialValues: SwapProps = {
@@ -54,9 +51,8 @@ export default function SwapForm() {
             deadlineMinutes: 20,
             disableMultihops: false,
         },
-        networkSettings,
-        tradeContext,
-        initFactory
+        tradeContext: null,
+        quoteChangedStatus: null
     }
 
     const handleSubmit = () => {
@@ -68,7 +64,7 @@ export default function SwapForm() {
             initialValues={initialValues}
             onSubmit={handleSubmit}
         >
-            {({values}) => (
+            {({values, setFieldValue}) => (
                 <>
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-5">
@@ -88,19 +84,19 @@ export default function SwapForm() {
                                         />
                                     </div>
                                 </div>
-                                  <>
+                                <>
                                     <div className="d-flex">
-                                      <div className="col-10">
-                                        <SummaryDropdown />
-                                      </div>
-                                      <div className="col-2 ps-0">
-                                        <SettingsDropdown/>
-                                      </div>
+                                        <div className="col-10">
+                                            <SummaryDropdown />
+                                        </div>
+                                        <div className="col-2 ps-0">
+                                            <SettingsDropdown/>
+                                        </div>
                                     </div>
-                                  </>
+                                </>
                                 <div
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
-                                    <SubmitButton/>
+                                    <SubmitButton />
                                 </div>
                             </div>
                         </div>
@@ -115,14 +111,30 @@ export default function SwapForm() {
                         {/*    </div>*/}
                         {/*</div>*/}
                     </div>
+
+                    <QuoteChangedModal
+                        show={values.quoteChangedStatus}
+                        onClick={() => setShowFormApproveModal(true)}
+                        onHide={() => {
+                            handleSwap(values)
+                            setFieldValue('quoteChangedStatus', null)
+                        }}
+                    />
+
                     <TransactionApproveModal
                         show={showFormApproveModal}
+                        onClick={() => {
+                            if (values.quoteChangedStatus) {
+                                //handleSwap(values)
+                            }
+
+
+                        }}
                         onHide={() => {
                             resetStatus()
-                            setShowFormApproveModal(false)
+                            setFieldValue('quoteChangedStatus', null)
                         }}
                         title={t`Confirm Transaction`}
-                        onClick={() => handleSwap(values)}
                         successMessage={t`Transaction was successfully executed`}
                         error={
                             swapTx.status === 'Fail' ||
@@ -242,7 +254,6 @@ export default function SwapForm() {
                     </TransactionApproveModal>
                 </>
             )}
-
         </Form>
     )
 }

@@ -5,8 +5,8 @@ import {t} from '@lingui/macro'
 import {SwapProps} from '../types'
 import Icon from '@components/atoms/icon'
 import {ArrowDropDown, ArrowDropUp} from '@styled-icons/material'
-import CurrencyIcon from "@components/atoms/currency-icon"
-import { FormattedNumber} from "../../../../atoms/number/formatted-number"
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber} from '../../../atoms/number/formatted-number'
 
 const Content = styled.div`
     z-index: 2; 

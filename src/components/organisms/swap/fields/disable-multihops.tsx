@@ -2,9 +2,14 @@ import React from 'react'
 import {t} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
+import useSwap from "@hooks/use-swap";
 
 export default function DisableMultihops() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+
+    const {
+        initFactory
+    } = useSwap()
 
     const handleChange = async (e) => {
         let disableMultihops = e.target.value
@@ -20,7 +25,7 @@ export default function DisableMultihops() {
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await values.initFactory(nextValues)
+            const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
             setValues(nextValues)
             setFieldValue('tradeContext', nextTradeContext)
             setFieldValue('isLoading', false)

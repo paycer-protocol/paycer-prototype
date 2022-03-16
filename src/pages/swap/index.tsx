@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import SwapForm from '@components/organisms/swap/swap-form'
-import SupplyForm from '@components/organisms/swap/supply-form'
+import Swap from '@components/organisms/swap'
+import SupplyLiquidity from '@components/organisms/supply-liquidity'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 
 export default function Trade () {
@@ -29,7 +29,7 @@ export default function Trade () {
             <div className="card-body p-0">
               <div className="d-flex flex-column flex-md-row">
                 <div className="w-100">
-                  {supplyTabActive ? <SupplyForm /> : <SwapForm />}
+                  {supplyTabActive ? <SupplyLiquidity /> : <Swap />}
                 </div>
               </div>
             </div>

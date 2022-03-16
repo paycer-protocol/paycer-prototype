@@ -3,13 +3,18 @@ import useWallet from '@hooks/use-wallet'
 import { useState } from 'react'
 import useNetwork from "@hooks/use-network";
 import {NetworkSettingsInterface, Trade, TradeContext, UniswapProvider} from '../lib/trade'
-import { SwapProps } from '@components/organisms/swap/swap-form/types'
+import { SwapProps } from '@components/organisms/swap/types'
+import {FormikValues} from "formik";
+
+export enum QuoteChangedStatus {
+    UP = "up",
+    DOWN = "down",
+}
 
 interface UseSwapProps {
     networkSettings: NetworkSettingsInterface
-    tradeContext: TradeContext
-    initFactory: (SwapProps) => Promise<TradeContext>
-    handleSwap: (SwapProps) => void
+    initFactory: (values: SwapProps, setFieldValue, setValues) => Promise<TradeContext>
+    handleSwap: (values: FormikValues) => void
     resetStatus: () => void
     swapTx: any
     approveTx: any
@@ -28,9 +33,10 @@ export default function useSwap():UseSwapProps {
     const { sendTransaction: sendApproveTransaction , state: approveTx } = useSendTransaction({ transactionName: 'approve' })
     const { sendTransaction: sendSwapTransaction , state: swapTx } = useSendTransaction({ transactionName: 'swap' })
 
-    const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+    const [showQuoteChangedModal, setShowQuoteChangedModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
+    const [quoteChangedStatus, setQuoteChangedStatus] = useState<QuoteChangedStatus | null>(null)
     const [swapError, setSwapError] = useState(false)
 
     const networkSettings = {
@@ -44,16 +50,50 @@ export default function useSwap():UseSwapProps {
         nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
     }
 
-    const initFactory = async (values: SwapProps) => {
+    const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
         const tradeContext = await tradeFactory.init(
             values.tradePair,
             values.tradeSettings,
-            values.networkSettings
+            networkSettings
         )
+        console.log(tradeContext)
 
-        setTradeContext(tradeContext)
+        tradeContext.quoteChanged$.subscribe((nextTradeContext: TradeContext) => {
+            console.log('YO')
+            onQuoteChanged(tradeContext, nextTradeContext, values, setValues, setFieldValue)
+        })
 
         return tradeContext
+    }
+
+    const onQuoteChanged = (tradeContext, nextTradeContext, values, setValues, setFieldValue) => {
+        console.log(nextTradeContext.expectedConvertQuote, tradeContext.expectedConvertQuote)
+
+        if (nextTradeContext.expectedConvertQuote === tradeContext.expectedConvertQuote) {
+            console.log('none')
+            setFieldValue('quoteChangedStatus', null)
+            return
+        }
+
+        if (nextTradeContext.expectedConvertQuote > tradeContext.expectedConvertQuote) {
+            setFieldValue('quoteChangedStatus', QuoteChangedStatus.UP)
+            console.log('up')
+        } else if (nextTradeContext.expectedConvertQuote < tradeContext.expectedConvertQuote) {
+            setFieldValue('quoteChangedStatus', QuoteChangedStatus.DOWN)
+            console.log('down')
+        }
+
+        const nextValues = {
+            ...values,
+            ... {
+                token0Value: values.token0Value,
+                token1Value: Number(values.token0Value) * Number(nextTradeContext?.expectedConvertQuote),
+            }
+        }
+
+        setValues(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
+        console.log('setField')
     }
 
     const handleSwap = async (values: SwapProps) => {
@@ -82,7 +122,6 @@ export default function useSwap():UseSwapProps {
 
     return {
         networkSettings,
-        tradeContext,
         initFactory,
         swapTx,
         approveTx,
@@ -91,6 +130,6 @@ export default function useSwap():UseSwapProps {
         handleSwap,
         showFormApproveModal,
         setShowFormApproveModal,
-        isLoading,
+        isLoading
     }
 }
