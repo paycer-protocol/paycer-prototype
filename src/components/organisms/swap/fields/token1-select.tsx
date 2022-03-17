@@ -8,12 +8,17 @@ import { swapTokens } from '@config/market-pairs'
 import { SwapProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import {t} from "@lingui/macro";
+import useSwap from "@hooks/use-swap";
 
 export default function Token1Select() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const wallet = useWallet()
+
+    const {
+        networkSettings
+    } = useSwap()
 
     const handleChange = async (token) => {
       setErrorMessage('')
@@ -24,10 +29,10 @@ export default function Token1Select() {
           ...{
             token1Markets: swapTokens,
             token1: token,
-            networkSettings: values.networkSettings,
+            networkSettings,
             tradePair: {
               fromTokenAddress: values.tradePair.fromTokenAddress,
-              toTokenAddress: token.chainAddresses[values.networkSettings.chainId],
+              toTokenAddress: token.chainAddresses[networkSettings.chainId],
               amount: values.tradePair.amount,
             },
           }

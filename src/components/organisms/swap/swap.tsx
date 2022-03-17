@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { swapTokens } from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
 import { SwapProps } from './types'
@@ -21,21 +21,20 @@ import useWallet from "@hooks/use-wallet";
 import {Trade, TradeContext, UniswapProvider} from "../../../lib/trade";
 
 export default function Swap() {
-    const network = useNetwork()
-    const wallet = useWallet()
+
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
-
-    const networkSettings = {
-        providerUrl: network.rpcUrls[0],
-        walletAddress: wallet.address,
-        networkProvider: network.provider,
-        chainId: network.chainId,
-        nameNetwork: network.chainName,
-        multicallContractAddress: network.multicallAddress,
-        nativeCurrency: network.nativeCurrency,
-        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-    }
+    const {
+        setShowFormApproveModal,
+        showFormApproveModal,
+        swapTx,
+        swapError,
+        handleSwap,
+        isLoading,
+        resetStatus,
+        approveTx,
+        networkSettings
+    } = useSwap()
 
     const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
 
@@ -78,7 +77,8 @@ export default function Swap() {
         console.log(values.token0Value)
         console.log(prevQuote)
         console.log(nextQuote)
-
+        console.log(nextTradeContext, 'next')
+        console.log(prevTradeContext, 'prev')
 
         const nextValues = {
             ...values,
@@ -92,17 +92,6 @@ export default function Swap() {
         setFieldValue('tradeContext', nextTradeContext)
         setFieldValue('isLoading', false)
     }
-
-    const {
-        setShowFormApproveModal,
-        showFormApproveModal,
-        swapTx,
-        swapError,
-        handleSwap,
-        isLoading,
-        resetStatus,
-        approveTx
-    } = useSwap()
 
     let initialValues: SwapProps = {
         isLoading: false,
@@ -126,8 +115,7 @@ export default function Swap() {
         },
         tradeContext: null,
         quoteChangedStatus: null,
-        initFactory,
-        networkSettings
+        initFactory
     }
 
     const handleSubmit = () => {

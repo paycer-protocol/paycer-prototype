@@ -10,7 +10,17 @@ export default function Token0Input() {
 
     const handleChange = async (value: number) => {
 
+        let validate = true
 
+        if (value > Number(values.tradeContext?.fromBalance?.balance)) {
+            setFieldError('token0value', t`Insufficient ${values.token0.name} balance`)
+            validate = false
+        }
+
+        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
+            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
+            validate = false
+        }
 
         const nextValues = {
             ...values,
@@ -20,27 +30,14 @@ export default function Token0Input() {
             }
         }
 
-        setValues(nextValues)
+        setValues(nextValues, validate)
 
         if (values.token0 && values.token1) {
-            setFieldValue('isLoading', true)
+            setFieldValue('isLoading', true, validate)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
-            console.log(nextTradeContext)
-            setFieldValue('isLoading', false)
-            setFieldValue('tradeContext', nextTradeContext)
+            setFieldValue('isLoading', false, validate)
+            setFieldValue('tradeContext', nextTradeContext, validate)
         }
-
-        if (value > Number(values.tradeContext?.fromBalance?.balance)) {
-            setFieldError('token0value', t`Insufficient ${values.token0.name} balance`)
-alert("HI")
-        }
-
-        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
-            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
-            alert("HI2")
-
-        }
-
     }
    
     return (

@@ -28,6 +28,10 @@ export default function FlipSwap() {
       tradePair,
     } = values
 
+    const {
+      networkSettings
+    } = useSwap()
+
     if (!token0 && !token1) {
       return
     }
@@ -41,10 +45,10 @@ export default function FlipSwap() {
         token1Value: token0Value,
         token1Markets: token0Markets,
         token0Markets: token1Markets,
-        networkSettings: values.networkSettings,
+        networkSettings,
         tradePair: {
-          fromTokenAddress: token1.chainAddresses[values.networkSettings.chainId],
-          toTokenAddress: token0.chainAddresses[values.networkSettings.chainId],
+          fromTokenAddress: token1.chainAddresses[networkSettings.chainId],
+          toTokenAddress: token0.chainAddresses[networkSettings.chainId],
           amount: tradePair.amount,
         }
       }
