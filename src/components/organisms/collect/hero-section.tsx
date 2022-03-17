@@ -10,13 +10,13 @@ const HeroSection = () => {
                 <h1 className="display-1">
                     Collect your Paycer Utility NFT
                 </h1>
-                <div className="mt-4">
+                <div className="mt-5">
                     <span className="me-4">
                         <GradientButton>MINT YOUR NFT NOW</GradientButton>
                     </span>
                     <Button>MORE INFO</Button>
                 </div>
-                <p className="mt-4">
+                <p className="mt-5">
                     Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits.
                 </p>
             </div>

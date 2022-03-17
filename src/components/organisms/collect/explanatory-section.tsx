@@ -10,7 +10,7 @@ const ExplanationCard = (props: ExplanationCardProps) => {
         <div className="col-xl-4">
             <Card>
                 <h1 className="text-center mt-4 mb-2">{props.title}</h1>
-                <Card.Body className="text-center">{props.description}</Card.Body>
+                <Card.Body className="text-center"><p className="mb-0">{props.description}</p></Card.Body>
             </Card>
         </div>
     );

@@ -13,7 +13,7 @@ const Separator = styled.div`
 const DetailsRow = ({ left, right }: { left: React.ReactNode, right: React.ReactNode }) => {
     return (
         <div className="d-flex justify-content-between">
-            <div className="pr-2 pb-2">{left}</div>
+            <div className="pr-3 pb-3">{left}</div>
             <div className="">{right}</div>
         </div>
     );
@@ -43,8 +43,9 @@ const NftArtworkTile = (props: NftArtworkTileProps) => {
                 <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<>3</>} />
                 <DetailsRow left={<>Features</>} right={<>1</>} />
                 <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<>3</>} />
-                <div className="mt-3" />
-                <GradientButton>MINT YOUR NFT</GradientButton>
+                <div className="mt-3">
+                    <GradientButton>MINT YOUR NFT</GradientButton>
+                </div>
             </Card.Body>
             <Rank>OWNER</Rank>
         </Card>
