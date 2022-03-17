@@ -20,17 +20,14 @@ export default function SubmitButton() {
 
     let buttonLabel = t`Swap`
 
-    if (errors) {
+    if (errors?.token1value) {
         // @ts-ignore
-        if (errors?.token1value) {
-            // @ts-ignore
-            buttonLabel = errors?.token1value
-        }
+        buttonLabel = errors?.token1value
+    }
+    // @ts-ignore
+    if (errors?.token0value) {
         // @ts-ignore
-        if (errors?.token0value) {
-            // @ts-ignore
-            buttonLabel = errors?.token0value
-        }
+        buttonLabel = errors?.token0value
     }
 
     return (

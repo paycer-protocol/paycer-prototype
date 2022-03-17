@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useFormikContext } from 'formik'
-import { t } from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import useWallet from '@hooks/use-wallet'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { swapTokens } from '@config/market-pairs'
 import { SwapProps } from '../types'
-import TokenToggle from './token-toggle'
+import TokenToggle from '@components/molecules/token-toggler'
+import {t} from "@lingui/macro";
 
 export default function Token1Select() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
@@ -55,6 +55,7 @@ export default function Token1Select() {
         <TokenToggle
             token={values.token1}
             onClick={() => setShowModal(true)}
+            placeholder={t`Select a token`}
             label={t`Swap to`}
         />
         {wallet.isConnected && (

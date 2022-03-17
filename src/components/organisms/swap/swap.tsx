@@ -39,14 +39,8 @@ export default function Swap() {
 
     const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
 
-        const tradePair = {
-            fromTokenAddress: values.tradePair.fromTokenAddress,
-            toTokenAddress: values.tradePair.toTokenAddress,
-            amount: values.token0Value ? String(Number(values.token0Value)) : values.tradePair.amount
-        }
-
         const tradeContext = await tradeFactory.init(
-            values.token0Value ? tradePair : values.tradePair,
+            values.tradePair,
             values.tradeSettings,
             networkSettings
         )
@@ -80,6 +74,11 @@ export default function Swap() {
         } else if (nextQuote < prevQuote) {
             console.log('down')
         }
+
+        console.log(values.token0Value)
+        console.log(prevQuote)
+        console.log(nextQuote)
+
 
         const nextValues = {
             ...values,

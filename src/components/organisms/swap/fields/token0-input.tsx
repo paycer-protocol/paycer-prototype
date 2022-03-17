@@ -10,15 +10,7 @@ export default function Token0Input() {
 
     const handleChange = async (value: number) => {
 
-        if (value > Number(values.tradeContext?.fromBalance?.balance)) {
-            setFieldError('token0value', t`Insufficient ${values.token0.name} balance`)
-            return
-        }
 
-        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
-            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
-            return
-        }
 
         const nextValues = {
             ...values,
@@ -37,8 +29,20 @@ export default function Token0Input() {
             setFieldValue('isLoading', false)
             setFieldValue('tradeContext', nextTradeContext)
         }
-    }
 
+        if (value > Number(values.tradeContext?.fromBalance?.balance)) {
+            setFieldError('token0value', t`Insufficient ${values.token0.name} balance`)
+alert("HI")
+        }
+
+        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
+            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
+            alert("HI2")
+
+        }
+
+    }
+   
     return (
         <TokenInput
             name="token0Value"
