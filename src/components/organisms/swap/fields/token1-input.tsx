@@ -17,20 +17,18 @@ export default function Token1Input() {
             validate = false
         }
 
-        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values.tradeContext?.fromBalance?.balance)) {
-            setFieldError('token1value', t`Insufficient ${values.token0.name} balance`)
-            validate = false
-        }
-
         const nextValues = {
             ...values,
             ... {
                 token0Value: value / Number(values.tradeContext?.expectedConvertQuote || 0),
                 token1Value: value,
+                tradePair: {
+                    fromTokenAddress: values.tradePair.fromTokenAddress,
+                    toTokenAddress: values.tradePair.toTokenAddress,
+                    amount: values.token0Value ? String(values.token0Value) : '1',
+                },
             }
         }
-
-        setValues(nextValues, validate)
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
@@ -38,6 +36,8 @@ export default function Token1Input() {
             setFieldValue('tradeContext', nextTradeContext, validate)
             setFieldValue('isLoading', false, validate)
         }
+
+        setValues(nextValues, validate)
     }
 
     return (
@@ -49,6 +49,7 @@ export default function Token1Input() {
             handleChange={handleChange}
             balance={Number(values?.tradeContext?.toBalance || 0)}
             decimals={5}
+            readOnly={values.isLoading}
         />
     )
 }

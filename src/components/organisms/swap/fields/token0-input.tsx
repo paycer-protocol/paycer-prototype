@@ -3,7 +3,6 @@ import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 import {t} from "@lingui/macro";
-import useSwap from "@hooks/use-swap";
 
 export default function Token0Input() {
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
@@ -17,20 +16,18 @@ export default function Token0Input() {
             validate = false
         }
 
-        if (value / Number(values?.tradeContext?.expectedConvertQuote) > Number(values?.tradeContext?.toBalance)) {
-            setFieldError('token0value', t`Insufficient ${values.token1.name} balance`)
-            validate = false
-        }
-
         const nextValues = {
             ...values,
             ... {
                 token0Value: value,
                 token1Value: Number(value) * Number(values.tradeContext?.expectedConvertQuote || 0),
+                tradePair: {
+                    fromTokenAddress: values.tradePair.fromTokenAddress,
+                    toTokenAddress: values.tradePair.toTokenAddress,
+                    amount: values.token0Value ? String(values.token0Value) : '1',
+                },
             }
         }
-
-        setValues(nextValues, validate)
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
@@ -38,6 +35,8 @@ export default function Token0Input() {
             setFieldValue('isLoading', false, validate)
             setFieldValue('tradeContext', nextTradeContext, validate)
         }
+
+        setValues(nextValues, validate)
     }
    
     return (
@@ -50,6 +49,7 @@ export default function Token0Input() {
             raiseMax
             balance={Number(values.tradeContext?.fromBalance?.balance || 0)}
             decimals={5}
+            readOnly={values.isLoading}
         />
     )
 }

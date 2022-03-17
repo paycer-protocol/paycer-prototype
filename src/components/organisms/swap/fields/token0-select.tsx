@@ -9,16 +9,25 @@ import { swapTokens } from '@config/market-pairs'
 import { SwapProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import useSwap from "@hooks/use-swap";
+import useNetwork from "@hooks/use-network";
 
 export default function Token0Select() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
+    const network = useNetwork()
     const wallet = useWallet()
 
-    const {
-        networkSettings
-    } = useSwap()
+    const networkSettings = {
+        providerUrl: network.rpcUrls[0],
+        walletAddress: wallet.address,
+        networkProvider: network.provider,
+        chainId: network.chainId,
+        nameNetwork: network.chainName,
+        multicallContractAddress: network.multicallAddress,
+        nativeCurrency: network.nativeCurrency,
+        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+    }
 
     const handleChange = async (token) => {
         setErrorMessage('')
@@ -27,17 +36,19 @@ export default function Token0Select() {
             const nextValues = {
                 ...values,
                 ...{
-                    token0: token,
                     token0Markets: swapTokens,
+                    token0: token,
                     token1Value: null,
                     tradePair: {
                         fromTokenAddress: token.chainAddresses[networkSettings.chainId],
                         toTokenAddress: values.tradePair.toTokenAddress,
-                        amount: values.tradePair.amount || '1',
+                        amount: values.token0Value ? String(values.token0Value) : '1',
                     },
                     networkSettings
                 }
             }
+
+            console.log(nextValues, 'FROM')
 
             if (nextValues.token0 && nextValues.token1) {
                 setFieldValue('isLoading', true)

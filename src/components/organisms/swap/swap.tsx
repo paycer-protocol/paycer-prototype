@@ -1,7 +1,7 @@
 import React from 'react'
-import { swapTokens } from '@config/market-pairs'
+import {swapTokens} from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
-import { SwapProps } from './types'
+import {SwapProps} from './types'
 import Form from '@components/atoms/form/form'
 import TokenInputPanel from "@components/organisms/token-input-panel";
 import Token0Select from "@components/organisms/swap/fields/token0-select";
@@ -14,14 +14,15 @@ import SettingsDropdown from "@components/organisms/swap/settings-dropdown";
 import SubmitButton from "@components/organisms/swap/fields/submit-button";
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
 import {t} from "@lingui/macro";
-import CurrencyIcon from "@components/atoms/currency-icon";
 import DashNumber from "@components/organisms/dashboard/dash-number";
 import useNetwork from "@hooks/use-network";
 import useWallet from "@hooks/use-wallet";
-import {Trade, TradeContext, UniswapProvider} from "../../../lib/trade";
+import {Trade, UniswapProvider} from "../../../lib/trade";
+import {FormattedNumber} from "../../atoms/number/formatted-number";
 
 export default function Swap() {
-
+    const network = useNetwork()
+    const wallet = useWallet()
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
     const {
@@ -32,9 +33,19 @@ export default function Swap() {
         handleSwap,
         isLoading,
         resetStatus,
-        approveTx,
-        networkSettings
+        approveTx
     } = useSwap()
+
+    const networkSettings = {
+        providerUrl: network.rpcUrls[0],
+        walletAddress: wallet.address,
+        networkProvider: network.provider,
+        chainId: network.chainId,
+        nameNetwork: network.chainName,
+        multicallContractAddress: network.multicallAddress,
+        nativeCurrency: network.nativeCurrency,
+        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+    }
 
     const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
 
@@ -44,9 +55,11 @@ export default function Swap() {
             networkSettings
         )
 
+        /*
         tradeContext.quoteChanged$.subscribe((nextTradeContext: TradeContext) => {
             onQuoteChanged(nextTradeContext, values, setValues, setFieldValue)
         })
+         */
 
         return tradeContext
     }
@@ -82,7 +95,7 @@ export default function Swap() {
 
         const nextValues = {
             ...values,
-            ... {
+            ...{
                 token0Value: values.token0Value,
                 token1Value: Number(values.token0Value) * nextQuote,
             }
@@ -108,11 +121,13 @@ export default function Swap() {
             toTokenAddress: null,
             amount: "1",
         },
+
         tradeSettings: {
             slippage: 0,
             deadlineMinutes: 20,
             disableMultihops: false,
         },
+
         tradeContext: null,
         quoteChangedStatus: null,
         initFactory
@@ -138,7 +153,8 @@ export default function Swap() {
                                             tokenInputSibling={<Token0Select/>}
                                             tokenInput={<Token0Input/>}
                                         />
-                                        <div className="d-flex justify-content-center position-relative" style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                                        <div className="d-flex justify-content-center position-relative"
+                                             style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
                                             <FlipSwap/>
                                         </div>
                                         <TokenInputPanel
@@ -150,7 +166,7 @@ export default function Swap() {
                                 <>
                                     <div className="d-flex">
                                         <div className="col-10">
-                                            <SummaryDropdown />
+                                            <SummaryDropdown/>
                                         </div>
                                         <div className="col-2 ps-0">
                                             <SettingsDropdown/>
@@ -159,7 +175,7 @@ export default function Swap() {
                                 </>
                                 <div
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
-                                    <SubmitButton />
+                                    <SubmitButton/>
                                 </div>
                             </div>
                         </div>
@@ -201,99 +217,65 @@ export default function Swap() {
                         }
                     >
                         <>
-                            <div className="card blur-background mb-0">
+                            <div className="card mb-0">
                                 <div className="card-body">
-                                    <div className="d-flex mb-4">
-                                        <div className="col-6">
-                                            {t`From`}:
+                                    <div className="d-flex flex-column">
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token0Select/>}
+                                            tokenInput={<Token0Input/>}
+                                        />
+                                        <div className="d-flex justify-content-center position-relative"
+                                             style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
+                                            <FlipSwap/>
                                         </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            <CurrencyIcon
-                                                symbol={values?.token0?.symbol}
-                                                className="me-3"
-                                                width={20}
-                                                height={20}
-                                            />
-                                            <DashNumber
-                                                value={values.token0Value}
-                                                symbol={values?.token0?.symbol}
-                                            />
-                                        </div>
+                                        <TokenInputPanel
+                                            tokenInputSibling={<Token1Select/>}
+                                            tokenInput={<Token1Input/>}
+                                        />
                                     </div>
-                                    <div className="d-flex mb-4 border-bottom pb-4">
-                                        <div className="col-6">
-                                            {t`To`}:
-                                        </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            <CurrencyIcon
-                                                symbol={values?.token1?.symbol}
-                                                className="me-3"
-                                                width={20}
-                                                height={20}
-                                            />
-                                            <DashNumber
-                                                value={values.token1Value}
-                                                symbol={values?.token1?.symbol}
-                                            />
-                                        </div>
+
+                                    <div className="ps-4 py-3">
+                                        1 {values.token1?.symbol} =&nbsp;
+                                        <FormattedNumber
+                                            value={1 / Number(values.tradeContext?.expectedConvertQuote || 0)}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                        />
+                                        &nbsp; {values?.token0?.symbol}
                                     </div>
-                                    <div className="d-flex mb-4">
-                                        <div className="col-6">
-                                            {t`Slippage:`}
-                                        </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            {values.tradeSettings.slippage} %
-                                        </div>
-                                    </div>
-                                    <div className="d-flex mb-4 border-bottom pb-4">
-                                        <div className="col-6">
-                                            {t`Fee:`}
-                                        </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            <CurrencyIcon
-                                                symbol={values?.token0?.symbol}
-                                                className="me-3"
-                                                width={20}
-                                                height={20}
-                                            />
-                                            <DashNumber
-                                                value={values.tradeContext?.liquidityProviderFee}
-                                                symbol={values?.token0?.symbol}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="d-flex mb-4">
-                                        <div className="col-6">
-                                            {values?.token0?.symbol} {t`after`}:
-                                        </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            <CurrencyIcon
-                                                symbol={values?.token0?.symbol}
-                                                className="me-3"
-                                                width={20}
-                                                height={20}
-                                            />
-                                            <DashNumber
-                                                value={Number(values.tradeContext?.fromBalance?.balance) - values.token0Value}
-                                                symbol={values?.token0?.symbol}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="d-flex">
-                                        <div className="col-6">
-                                            {values?.token1?.symbol} {t`after`}:
-                                        </div>
-                                        <div className="col-6 fw-bold d-flex">
-                                            <CurrencyIcon
-                                                symbol={values?.token1?.symbol}
-                                                className="me-3"
-                                                width={20}
-                                                height={20}
-                                            />
-                                            <DashNumber
-                                                value={values.token1Value + Number(values?.tradeContext?.toBalance)}
-                                                symbol={values?.token1?.symbol}
-                                            />
+
+                                    <div className="card bg-dark shadow-none mb-0">
+                                        <div className="card-body">
+                                            <div className="d-flex border-bottom pb-4 mb-4">
+                                                <div className="col-6">
+                                                    {t`Estimated output:`}
+                                                </div>
+                                                <div className="col-6 fw-bold d-flex">
+                                                    <DashNumber
+                                                        value={values.token1Value}
+                                                        symbol={values?.token1?.symbol}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="d-flex mb-3">
+                                                <div className="col-6">
+                                                    {t`Slippage:`}
+                                                </div>
+                                                <div className="col-6 fw-bold d-flex">
+                                                    {values.tradeSettings.slippage} %
+                                                </div>
+                                            </div>
+                                            <div className="d-flex">
+                                                <div className="col-6">
+                                                    {t`Fee:`}
+                                                </div>
+                                                <div className="col-6 fw-bold d-flex">
+                                                    <DashNumber
+                                                        value={values.tradeContext?.liquidityProviderFee}
+                                                        symbol={values?.token0?.symbol}
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

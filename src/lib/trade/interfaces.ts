@@ -2,7 +2,6 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import { ChainId } from '@usedapp/core'
 import { TradeContext as BaseTradeContext } from './sdk/uniswap'
 
-
 export interface TradeProviderInterface {
   init: (pair: TradePairInterface, tradeSettings: TradeSettingsInterface, networkSettings: NetworkSettingsInterface) => any
   approve: () => any

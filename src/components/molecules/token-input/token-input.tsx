@@ -37,6 +37,7 @@ export default function TokenInput(props: TokenInputProps) {
     value,
     disabled,
     decimals,
+    readOnly
   } = props
 
   return (
@@ -52,6 +53,7 @@ export default function TokenInput(props: TokenInputProps) {
             disabled={disabled}
             autoComplete="off"
             className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
+            readOnly={readOnly}
             onChange={(e) => {
               const tokenValue = Number(e.target.rawValue)
               handleChange(tokenValue)

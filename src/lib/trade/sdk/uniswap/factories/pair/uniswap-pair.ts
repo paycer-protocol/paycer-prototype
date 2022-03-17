@@ -62,6 +62,8 @@ export class UniswapPair {
       true
     );
 
+    console.log(this._uniswapPairContext)
+
     if (!this._uniswapPairContext.ethereumAddress) {
       throw new UniswapError(
         'Must have a `ethereumAddress` on the context',
