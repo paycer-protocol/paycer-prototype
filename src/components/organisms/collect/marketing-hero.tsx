@@ -1,5 +1,6 @@
 import Button from "@components/atoms/button";
 import GradientButton from "@components/atoms/button/gradient-button";
+import Link from "next/link";
 
 const MarketingHero = () => {
     return (
@@ -14,9 +15,9 @@ const MarketingHero = () => {
 
                 <Button.Group>
                     <span className="me-3">
-                        <GradientButton>CONNECT YOUR METAMASK</GradientButton>
+                        <GradientButton>Connect your MetaMask</GradientButton>
                     </span>
-                    <Button>BUY PCR TOKEN</Button>
+                    <Link href="/swap"><Button>Buy PCR Token</Button></Link>
                 </Button.Group>
             </div>
         </div>

@@ -4,6 +4,8 @@ import Card from "@components/molecules/card";
 import { Shuffle } from "@styled-icons/material";
 import React from "react";
 import styled from 'styled-components'
+import QualityCircle from "../quality/quality-circle";
+import { FEATURE_QUALITIES_FOR_TIER, NFT_QUALITIES_FOR_TIER, NUM_FEATURES_FOR_TIER, Tier, TIER_STAKING_REQUIREMENTS } from "./tier";
 
 const Separator = styled.div`
     height: 1px;
@@ -29,27 +31,27 @@ const Rank = styled.div`
     font-weight: 600;
 `;
 
-export interface NftArtworkTileProps {
-
+export interface TierTileProps {
+   tier: Tier,
 }
 
-const NftArtworkTile = (props: NftArtworkTileProps) => {
+const TierTile = ({ tier }: TierTileProps) => {
     return (
         <Card className="position-relative">
             <Card.Img src="/img/nft/nft.png" className="p-5" />
             <Separator />
             <Card.Body css={{ textAlign: 'center' }}>
-                <DetailsRow left={<>Staked</>} right={<>&gt; 5,000 PCR</>} />
-                <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<>3</>} />
-                <DetailsRow left={<>Features</>} right={<>1</>} />
-                <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<>3</>} />
+                <DetailsRow left={<>Staked</>} right={<>&gt; {TIER_STAKING_REQUIREMENTS[tier].minimum} PCR</>} />
+                <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<><QualityCircle.Group qualities={NFT_QUALITIES_FOR_TIER[tier]} /></>} />
+                <DetailsRow left={<>Features</>} right={<>{NUM_FEATURES_FOR_TIER[tier]}</>} />
+                <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<><QualityCircle.Group qualities={FEATURE_QUALITIES_FOR_TIER[tier]} /></>} />
                 <div className="mt-3">
-                    <GradientButton>MINT YOUR NFT</GradientButton>
+                    <GradientButton>Mint your NFT</GradientButton>
                 </div>
             </Card.Body>
-            <Rank>OWNER</Rank>
+            <Rank>{tier}</Rank>
         </Card>
     );
 };
 
-export default NftArtworkTile;
+export default TierTile;

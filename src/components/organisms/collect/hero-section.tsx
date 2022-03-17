@@ -3,7 +3,12 @@ import Image from '@components/atoms/image'
 import GradientButton from '@components/atoms/button/gradient-button';
 import React from 'react';
 
-const HeroSection = () => {
+export interface HeroSectionProps {
+    onMintClicked: () => void;
+    onMoreInfoClicked: () => void;
+}
+
+const HeroSection = (props: HeroSectionProps) => {
     return (
         <div className="row">
             <div className="col-xl-6">
@@ -12,9 +17,9 @@ const HeroSection = () => {
                 </h1>
                 <div className="mt-5">
                     <span className="me-4">
-                        <GradientButton>MINT YOUR NFT NOW</GradientButton>
+                        <GradientButton onClick={props.onMintClicked}>Mint your NFT now</GradientButton>
                     </span>
-                    <Button>MORE INFO</Button>
+                    <Button onClick={props.onMoreInfoClicked}>More Info</Button>
                 </div>
                 <p className="mt-5">
                     Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits.

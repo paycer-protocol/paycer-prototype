@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import HeroSection from '@components/organisms/collect/hero-section'
-import NftArtworkList from '@components/organisms/collect/nft-artwork/list'
+import TierList from '@components/organisms/collect/tier/tier-list'
 import LegendSection from '@components/organisms/collect/legend-section'
 import MarketingHero from '@components/organisms/collect/marketing-hero'
 import ExplanationSection from '@components/organisms/collect/explanatory-section'
 
 export default function Collect() {
+
+  const tierListRef = useRef<HTMLDivElement>();
+  const explanationSectionRef = useRef<HTMLDivElement>();
+
   return (
     <>
       <div className="container mt-3">
@@ -23,11 +27,16 @@ export default function Collect() {
             </div>
           </div>
         </PageHeader>
-        <div className="mb-6"><HeroSection /></div>
-        <div className="mb-6"><NftArtworkList /></div>
-        <div className="mb-6"><LegendSection /></div>
-        <div className="mb-6"><MarketingHero /></div>
-        <div className="mb-6"><ExplanationSection /></div>
+        <div>
+          <HeroSection
+            onMintClicked={() => tierListRef.current.scrollIntoView({ behavior: 'smooth' })}
+            onMoreInfoClicked={() => explanationSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+          />
+        </div>
+        <div className="pt-6" ref={tierListRef}><TierList /></div>
+        <div className="pt-6"><LegendSection /></div>
+        <div className="pt-6"><MarketingHero /></div>
+        <div className="pt-6" ref={explanationSectionRef}><ExplanationSection /></div>
       </div>
     </>
   )
