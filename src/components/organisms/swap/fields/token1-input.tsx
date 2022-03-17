@@ -8,10 +8,6 @@ import useSwap from "@hooks/use-swap";
 export default function Token1Input() {
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
-    const {
-        initFactory
-    } = useSwap()
-
     const handleChange = async (value: number) => {
 
         if (value > Number(values?.tradeContext?.toBalance)) {
@@ -36,7 +32,7 @@ export default function Token1Input() {
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
+            const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setFieldValue('tradeContext', nextTradeContext)
             setFieldValue('isLoading', false)
         }
@@ -50,7 +46,7 @@ export default function Token1Input() {
             currency={values?.tradeContext?.toToken?.symbol}
             handleChange={handleChange}
             balance={Number(values?.tradeContext?.toBalance || 0)}
-            decimals={4}
+            decimals={5}
         />
     )
 }

@@ -17,11 +17,6 @@ export default function Token0Select() {
     const [errorMessage, setErrorMessage] = useState('')
     const wallet = useWallet()
 
-    const {
-        networkSettings,
-        initFactory
-    } = useSwap()
-
     const handleChange = async (token) => {
         setErrorMessage('')
 
@@ -32,18 +27,18 @@ export default function Token0Select() {
                     token0: token,
                     token0Markets: swapTokens,
                     token1Value: null,
+                    networkSettings: values.networkSettings,
                     tradePair: {
-                        fromTokenAddress: token.chainAddresses[networkSettings.chainId],
+                        fromTokenAddress: token.chainAddresses[values.networkSettings.chainId],
                         toTokenAddress: values.tradePair.toTokenAddress,
                         amount: values.tradePair.amount || '1',
                     },
-                    networkSettings
                 }
             }
 
             if (nextValues.token0 && nextValues.token1) {
                 setFieldValue('isLoading', true)
-                const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
+                const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
                 setValues(nextValues)
                 setFieldValue('tradeContext', nextTradeContext)
                 setShowModal(false)

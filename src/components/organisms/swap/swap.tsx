@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { swapTokens } from '@config/market-pairs'
-import useSwap, { QuoteChangedStatus } from '@hooks/use-swap'
+import useSwap from '@hooks/use-swap'
 import { SwapProps } from './types'
 import Form from '@components/atoms/form/form'
 import TokenInputPanel from "@components/organisms/token-input-panel";
@@ -12,13 +12,87 @@ import Token1Input from "@components/organisms/swap/fields/token1-input";
 import SummaryDropdown from "@components/organisms/swap/summary-dropdown";
 import SettingsDropdown from "@components/organisms/swap/settings-dropdown";
 import SubmitButton from "@components/organisms/swap/fields/submit-button";
-import QuoteChangedModal from "@components/organisms/swap/quote-changed-modal";
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
 import {t} from "@lingui/macro";
 import CurrencyIcon from "@components/atoms/currency-icon";
 import DashNumber from "@components/organisms/dashboard/dash-number";
+import useNetwork from "@hooks/use-network";
+import useWallet from "@hooks/use-wallet";
+import {Trade, TradeContext, UniswapProvider} from "../../../lib/trade";
 
 export default function Swap() {
+    const network = useNetwork()
+    const wallet = useWallet()
+    const provider = new UniswapProvider()
+    const tradeFactory = new Trade(provider)
+
+    const networkSettings = {
+        providerUrl: network.rpcUrls[0],
+        walletAddress: wallet.address,
+        networkProvider: network.provider,
+        chainId: network.chainId,
+        nameNetwork: network.chainName,
+        multicallContractAddress: network.multicallAddress,
+        nativeCurrency: network.nativeCurrency,
+        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
+    }
+
+    const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
+
+        const tradePair = {
+            fromTokenAddress: values.tradePair.fromTokenAddress,
+            toTokenAddress: values.tradePair.toTokenAddress,
+            amount: values.token0Value ? String(Number(values.token0Value)) : values.tradePair.amount
+        }
+
+        const tradeContext = await tradeFactory.init(
+            values.token0Value ? tradePair : values.tradePair,
+            values.tradeSettings,
+            networkSettings
+        )
+
+        tradeContext.quoteChanged$.subscribe((nextTradeContext: TradeContext) => {
+            onQuoteChanged(nextTradeContext, values, setValues, setFieldValue)
+        })
+
+        return tradeContext
+    }
+
+    const onQuoteChanged = (nextTradeContext, values, setValues, setFieldValue) => {
+
+        if (!values.token0Value || !values.token1Value) {
+            return false
+        }
+
+        const prevTradeContext = values.tradeContext
+
+        const prevQuote = Number(prevTradeContext.expectedConvertQuote)
+        const nextQuote = Number(nextTradeContext.expectedConvertQuote)
+
+        if (nextQuote === prevQuote) {
+            return false
+        }
+
+        setFieldValue('isLoading', true)
+
+        if (nextQuote > prevQuote) {
+            console.log('up')
+        } else if (nextQuote < prevQuote) {
+            console.log('down')
+        }
+
+        const nextValues = {
+            ...values,
+            ... {
+                token0Value: values.token0Value,
+                token1Value: Number(values.token0Value) * nextQuote,
+            }
+        }
+
+        setValues(nextValues)
+        setFieldValue('tradeContext', nextTradeContext)
+        setFieldValue('isLoading', false)
+    }
 
     const {
         setShowFormApproveModal,
@@ -47,12 +121,14 @@ export default function Swap() {
             amount: "1",
         },
         tradeSettings: {
-            slippage: 3,
+            slippage: 0,
             deadlineMinutes: 20,
             disableMultihops: false,
         },
         tradeContext: null,
-        quoteChangedStatus: null
+        quoteChangedStatus: null,
+        initFactory,
+        networkSettings
     }
 
     const handleSubmit = () => {
@@ -64,7 +140,7 @@ export default function Swap() {
             initialValues={initialValues}
             onSubmit={handleSubmit}
         >
-            {({values, setFieldValue}) => (
+            {({values}) => (
                 <>
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-5">
@@ -112,27 +188,12 @@ export default function Swap() {
                         {/*</div>*/}
                     </div>
 
-                    <QuoteChangedModal
-                        show={values.quoteChangedStatus}
-                        onClick={() => setShowFormApproveModal(true)}
-                        onHide={() => {
-                            handleSwap(values)
-                            setFieldValue('quoteChangedStatus', null)
-                        }}
-                    />
-
                     <TransactionApproveModal
                         show={showFormApproveModal}
-                        onClick={() => {
-                            if (values.quoteChangedStatus) {
-                                //handleSwap(values)
-                            }
-
-
-                        }}
+                        onClick={() => handleSwap(values)}
                         onHide={() => {
                             resetStatus()
-                            setFieldValue('quoteChangedStatus', null)
+                            setShowFormApproveModal(false)
                         }}
                         title={t`Confirm Transaction`}
                         successMessage={t`Transaction was successfully executed`}

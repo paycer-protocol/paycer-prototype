@@ -1,5 +1,6 @@
 import { TokenType } from '../../../types/investment'
 import {
+  NetworkSettingsInterface,
   TradeContext,
   TradePairInterface,
   TradeSettingsInterface
@@ -19,6 +20,8 @@ export interface SwapProps {
   tradeSettings: TradeSettingsInterface
   tradeContext: TradeContext
   quoteChangedStatus: null | 'up' | 'down'
+  networkSettings: NetworkSettingsInterface
+  initFactory: (values: SwapProps, setFieldValue, setValues) => any
 }
 
 

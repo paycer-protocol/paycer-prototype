@@ -8,10 +8,6 @@ import useSwap from "@hooks/use-swap";
 export default function DeadlineMinutes() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
-    const {
-        initFactory
-    } = useSwap()
-
     const handleChange = async (e) => {
         let deadlineMinutes = e.target.value
 
@@ -27,7 +23,7 @@ export default function DeadlineMinutes() {
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
+            const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setValues(nextValues)
             setFieldValue('tradeContext', nextTradeContext)
             setFieldValue('isLoading', false)

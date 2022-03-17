@@ -35,7 +35,8 @@ export default function TokenInput(props: TokenInputProps) {
     raiseMax,
     handleChange,
     value,
-    disabled
+    disabled,
+    decimals,
   } = props
 
   return (
@@ -46,7 +47,7 @@ export default function TokenInput(props: TokenInputProps) {
             max={10}
             currency={currency}
             showCurrencyPrefix={false}
-            decimals={4}
+            decimals={decimals}
             autoFocus
             disabled={disabled}
             autoComplete="off"

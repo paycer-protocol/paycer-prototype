@@ -3,14 +3,9 @@ import {t} from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import { SwapProps } from '../types'
 import Input from '@components/atoms/form/input'
-import useSwap from "@hooks/use-swap";
 
 export default function SlippageTollerance() {
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
-
-    const {
-        initFactory
-    } = useSwap()
 
     const handleChange = async (e) => {
         let slippage = e.target.value
@@ -34,7 +29,7 @@ export default function SlippageTollerance() {
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await initFactory(nextValues, setFieldValue, setValues)
+            const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setValues(nextValues)
             setFieldValue('tradeContext', nextTradeContext)
             setFieldValue('isLoading', false)
