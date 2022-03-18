@@ -19,9 +19,9 @@ const AnalyticsDashboard = () => {
             {() => {
                 return (
                    <>
-                       <div className="mb-5">
-                           <FilterBar />
-                       </div>
+                       {/*<div className="mb-5">*/}
+                       {/*    <FilterBar />*/}
+                       {/*</div>*/}
                        <ChartList />
                    </>
                 )

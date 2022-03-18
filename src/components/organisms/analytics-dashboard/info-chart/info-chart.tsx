@@ -172,13 +172,6 @@ const InfoChart = (props: InfoChartProps) => {
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
-                                <CurrencyIcon
-                                    symbol="PCR"
-                                    className="position-relative"
-                                    width={isSmall ? 16 : 30}
-                                    height={isSmall ? 16 : 30}
-                                    style={{left: '8px', top: '2px'}}
-                                />
                             </h2>
                         </div>
                         <small style={{fontSize: '10px'}} className="text-uppercase text-muted mb-0">
