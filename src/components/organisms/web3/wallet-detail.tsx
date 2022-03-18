@@ -125,7 +125,6 @@ const WalletDetail = (props: AccountDetailProps) => {
                                 className="d-flex justify-content-center mt-3 text-center text-danger"
                                 onClick={async () => {
                                     await onHide()
-                                    window.localStorage.setItem('walletConnectedProviderName', '')
                                     await wallet.disconnect()
                                 }}
                               >

@@ -18,19 +18,7 @@ export const Circle = styled.div`
 
 export default function FlipSwap() {
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
-    const network = useNetwork()
-    const wallet = useWallet()
 
-    const networkSettings = {
-        providerUrl: network.rpcUrls[0],
-        walletAddress: wallet.address,
-        networkProvider: network.provider,
-        chainId: network.chainId,
-        nameNetwork: network.chainName,
-        multicallContractAddress: network.multicallAddress,
-        nativeCurrency: network.nativeCurrency,
-        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-    }
     const handleFlip = async () => {
         const {
             token0,
@@ -55,10 +43,10 @@ export default function FlipSwap() {
                 token1Value: token0Value,
                 token1Markets: token0Markets,
                 token0Markets: token1Markets,
-                networkSettings,
+                networkSettings: values.networkSettings,
                 tradePair: {
-                    fromTokenAddress: token1.chainAddresses[networkSettings.chainId],
-                    toTokenAddress: token0.chainAddresses[networkSettings.chainId],
+                    fromTokenAddress: token1.chainAddresses[values.networkSettings.chainId],
+                    toTokenAddress: token0.chainAddresses[values.networkSettings.chainId],
                     amount: tradePair.amount,
                 }
             }
@@ -75,7 +63,6 @@ export default function FlipSwap() {
                 setValues(nextValues)
             }
         } catch (e) {
-            console.log(e)
             setFieldValue('isLoading', false)
         }
     }

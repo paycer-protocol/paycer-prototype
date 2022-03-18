@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {swapTokens} from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
 import {SwapProps} from './types'
@@ -17,14 +17,15 @@ import {t} from "@lingui/macro";
 import DashNumber from "@components/organisms/dashboard/dash-number";
 import useNetwork from "@hooks/use-network";
 import useWallet from "@hooks/use-wallet";
-import {Trade, UniswapProvider} from "../../../lib/trade";
-import {FormattedNumber} from "../../atoms/number/formatted-number";
+import { Trade, UniswapProvider } from "../../../lib/trade";
+import { FormattedNumber } from "../../atoms/number/formatted-number";
 
 export default function Swap() {
-    const network = useNetwork()
-    const wallet = useWallet()
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
+    const network = useNetwork()
+    const wallet = useWallet()
+
     const {
         setShowFormApproveModal,
         showFormApproveModal,
@@ -130,7 +131,8 @@ export default function Swap() {
 
         tradeContext: null,
         quoteChangedStatus: null,
-        initFactory
+        initFactory,
+        networkSettings
     }
 
     const handleSubmit = () => {

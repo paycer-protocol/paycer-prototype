@@ -21,6 +21,7 @@ export interface SwapProps {
     tradeContext: TradeContext
     quoteChangedStatus: null | 'up' | 'down'
     initFactory: (values: SwapProps, setFieldValue, setValues) => any
+    networkSettings: NetworkSettingsInterface
 }
 
 

@@ -25,14 +25,18 @@ export default function useSwap():UseSwapProps {
 
     const handleSwap = async (values: SwapProps) => {
         setIsLoading(true)
+
         try {
             if (!values.tradeContext.hasEnoughAllowance && values.tradeContext.approvalTransaction) {
                 const approved = await sendApproveTransaction(values.tradeContext.approvalTransaction)
                 console.log(approved)
                 console.log(approveTx)
+                console.log('approved')
             }
             if (values.tradeContext.transaction) {
-                const approved = await sendSwapTransaction(values.tradeContext.transaction)
+                const transaction = values.tradeContext.transaction
+                //transaction.value = '0x05'
+                const approved = await sendSwapTransaction(transaction)
                 console.log(approved)
                 console.log(swapTx)
             }

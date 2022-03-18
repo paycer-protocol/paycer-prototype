@@ -4,7 +4,6 @@ import { formatEther } from '@ethersproject/units'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
 import { mainNetProviders } from '@providers/networks'
-import { connectors } from '@providers/connectors'
 
 export default function useWallet() {
     const { connector, active, activate, account, deactivate, chainId } = useEthers()
@@ -28,17 +27,6 @@ export default function useWallet() {
             throw e
         }
     }
-
-    useEffect(() => {
-        const reconnect = async () => {
-            const isConnectedProviderName = window.localStorage.getItem('walletConnectedProviderName')
-            if (!account && isConnectedProviderName) {
-                const isConnectedProvider = connectors.find(f => f.name === isConnectedProviderName)
-                await handleConnect(isConnectedProvider)
-            }
-        }
-        reconnect()
-    }, [account])
 
     const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Mainnet]
 

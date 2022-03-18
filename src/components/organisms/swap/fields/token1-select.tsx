@@ -1,35 +1,25 @@
 import React, {useState} from 'react'
 import {useFormikContext} from 'formik'
 import {connectors} from '@providers/connectors'
-import useWallet from '@hooks/use-wallet'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import {swapTokens} from '@config/market-pairs'
 import {SwapProps} from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import {t} from "@lingui/macro";
-import useNetwork from "@hooks/use-network";
+import useWallet from "@hooks/use-wallet";
 
 export default function Token1Select() {
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const network = useNetwork()
     const wallet = useWallet()
-
-    const networkSettings = {
-        providerUrl: network.rpcUrls[0],
-        walletAddress: wallet.address,
-        networkProvider: network.provider,
-        chainId: network.chainId,
-        nameNetwork: network.chainName,
-        multicallContractAddress: network.multicallAddress,
-        nativeCurrency: network.nativeCurrency,
-        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-    }
 
     const handleChange = async (token) => {
         setErrorMessage('')
+
+        const networkSettings = values.networkSettings
+        networkSettings.walletAddress = wallet.address
 
         try {
             const nextValues = {
