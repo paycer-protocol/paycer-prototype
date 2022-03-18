@@ -5,10 +5,11 @@ import { formatUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
 import useWallet from '@hooks/use-wallet'
 import { StrategyType } from '../types/investment'
-import {Interface} from "@ethersproject/abi";
+import {Interface} from '@ethersproject/abi'
 
 interface UseVestingProps {
     isWithdrawAble: boolean
+    withdrawAble: number
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseVestingProps {
@@ -30,6 +31,7 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseVesti
     const withdrawAble = getContractValue('balanceOf')
 
     return {
-        isWithdrawAble: withdrawAble > 0
+        isWithdrawAble: withdrawAble > 0,
+        withdrawAble
     }
 }
