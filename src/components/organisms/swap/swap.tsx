@@ -56,11 +56,9 @@ export default function Swap() {
             networkSettings
         )
 
-        /*
         tradeContext.quoteChanged$.subscribe((nextTradeContext: TradeContext) => {
             onQuoteChanged(nextTradeContext, values, setValues, setFieldValue)
         })
-         */
 
         return tradeContext
     }
