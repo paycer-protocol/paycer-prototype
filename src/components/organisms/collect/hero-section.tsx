@@ -3,14 +3,16 @@ import Image from '@components/atoms/image'
 import GradientButton from '@components/atoms/button/gradient-button';
 import React from 'react';
 import useWallet from '@hooks/use-wallet';
+import Icon from '@components/atoms/icon';
+import { Shuffle } from '@styled-icons/material';
 
 const Stats = () => {
     return (
         <div className="row">
-            <div className="col-3 d-flex flex-column"><h1 className="display-4 mb-1">6</h1><span>different Qualities</span></div>
-            <div className="col-3 d-flex flex-column"><h1 className="display-4 mb-1">5</h1><span>different NFT Tiers</span></div>
-            <div className="col-3 d-flex flex-column"><h1 className="display-4 mb-1">20,000</h1><span>possible combinations</span></div>
-            <div className="col-3 d-flex flex-column"><h1 className="display-4 mb-1">40%</h1><span>possible rewards</span></div>
+            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">6 <Icon component={Shuffle} size={20} /></h1><span>different Qualities</span></div>
+            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">5 <Icon component={Shuffle} size={20} /></h1><span>different NFT Tiers</span></div>
+            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">20,000</h1><span>possible combinations</span></div>
+            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">40%</h1><span>possible rewards</span></div>
         </div>
     );
 };

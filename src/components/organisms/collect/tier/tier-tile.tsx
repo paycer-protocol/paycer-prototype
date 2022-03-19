@@ -1,11 +1,14 @@
+import Button from "@components/atoms/button";
 import GradientButton from "@components/atoms/button/gradient-button";
 import Icon from "@components/atoms/icon";
 import Card from "@components/molecules/card";
+import { LoyaltyTier, loyaltyTierLabels, stakingRequirements } from "@config/loyalty-tiers";
+import { loyaltyTierFeatureQualities, loyaltyTierFeatures, loyaltyTierNftQualities } from "@config/nft-qualities";
 import { Shuffle } from "@styled-icons/material";
+import Link from "next/link";
 import React from "react";
 import styled from 'styled-components'
 import QualityCircle from "../quality/quality-circle";
-import { FEATURE_QUALITIES_FOR_TIER, NFT_QUALITIES_FOR_TIER, NUM_FEATURES_FOR_TIER, Tier, TIER_STAKING_REQUIREMENTS } from "./tier";
 
 const Separator = styled.div`
     height: 1px;
@@ -32,24 +35,37 @@ const Rank = styled.div`
 `;
 
 export interface TierTileProps {
-   tier: Tier,
+    isConnected: boolean;
+    loyaltyTier: LoyaltyTier;
+    stakedBalance: number;
 }
 
-const TierTile = ({ tier }: TierTileProps) => {
+const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) => {
+    let button = <Button disabled>Wallet required</Button>;
+    if (isConnected) {
+        if (stakedBalance < stakingRequirements[loyaltyTier].minimum) {
+            button = <Link href="/swap"><Button>Buy PCR Token</Button></Link>;
+        } else if (stakedBalance > stakingRequirements[loyaltyTier].maximum) {
+            button = <Button disabled>Below your tier</Button>;
+        } else {
+            button = <GradientButton>Mint your NFT</GradientButton>;
+        }
+    }
+
     return (
         <Card className="position-relative">
             <Card.Img src="/img/nft/nft.png" className="p-5" />
             <Separator />
             <Card.Body css={{ textAlign: 'center' }}>
-                <DetailsRow left={<>Staked</>} right={<>&gt; {TIER_STAKING_REQUIREMENTS[tier].minimum} PCR</>} />
-                <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<><QualityCircle.Group qualities={NFT_QUALITIES_FOR_TIER[tier]} /></>} />
-                <DetailsRow left={<>Features</>} right={<>{NUM_FEATURES_FOR_TIER[tier]}</>} />
-                <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<><QualityCircle.Group qualities={FEATURE_QUALITIES_FOR_TIER[tier]} /></>} />
+                <DetailsRow left={<>Staked</>} right={<>&gt; {stakingRequirements[loyaltyTier].minimum} PCR</>} />
+                <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<><QualityCircle.Group qualities={loyaltyTierNftQualities[loyaltyTier]} /></>} />
+                <DetailsRow left={<>Features</>} right={<>{loyaltyTierFeatures[loyaltyTier]}</>} />
+                <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<><QualityCircle.Group qualities={loyaltyTierFeatureQualities[loyaltyTier]} /></>} />
                 <div className="mt-3">
-                    <GradientButton>Mint your NFT</GradientButton>
+                    { button }
                 </div>
             </Card.Body>
-            <Rank>{tier}</Rank>
+            <Rank>{loyaltyTierLabels[loyaltyTier]}</Rank>
         </Card>
     );
 };

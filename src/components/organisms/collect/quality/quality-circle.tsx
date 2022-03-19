@@ -1,4 +1,4 @@
-import Quality, { QUALITIES, QUALITY_COLORS } from "./quality";
+import { Quality, qualityColors } from "@config/nft-qualities";
 
 export interface QualityCircleProps {
     quality: Quality,
@@ -12,7 +12,7 @@ const QualityCircle = (props: QualityCircleProps) => {
                 height: '1rem',
                 borderRadius: '100%',
                 boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25)',
-                backgroundColor: QUALITY_COLORS[props.quality],
+                backgroundColor: qualityColors[props.quality],
             }}
         />
     );

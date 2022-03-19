@@ -1,18 +1,24 @@
+import loyaltyTiers from "@config/loyalty-tiers";
+import useStaking from "@hooks/use-staking";
 import useWallet from "@hooks/use-wallet";
 import TierTile from "./tier-tile";
 
-const TierList = () => {
-    const wallet = useWallet();
 
-    console.log(wallet);
+const TierList = () => {
+    const { isConnected } = useWallet();
+    const { stakedBalance } = useStaking()
 
     return (
         <div className="row">
-            <div className="col-xl-4"><TierTile tier="basic" /></div>
-            <div className="col-xl-4"><TierTile tier="associate" /></div>
-            <div className="col-xl-4"><TierTile tier="senior" /></div>
-            <div className="col-xl-4"><TierTile tier="manager" /></div>
-            <div className="col-xl-4"><TierTile tier="partner" /></div>
+            {
+                loyaltyTiers.map((loyaltyTier) => {
+                    return (
+                        <div className="col-xl-4">
+                            <TierTile isConnected={isConnected} loyaltyTier={loyaltyTier} stakedBalance={stakedBalance} />
+                        </div>
+                    );
+                })
+            }
         </div>
     );
 };

@@ -1,11 +1,8 @@
-import LoyaltyTiers from '@config/loyalty-tiers'
+import loyaltyTiers, { LoyaltyTier, stakingRequirements } from '@config/loyalty-tiers'
 import useStaking from '@hooks/use-staking'
 
 interface LoyaltyTierProps {
-  tierLevel: {
-    label: string
-    value: number
-  }
+  tierLevel: LoyaltyTier;
 }
 
 export default function useLoyaltyTier():LoyaltyTierProps {
@@ -15,12 +12,12 @@ export default function useLoyaltyTier():LoyaltyTierProps {
 
   const getTierLevel = () => {
     let tierLevel = 0;
-    LoyaltyTiers.forEach((v, i) => {
-      if (balance >= v.value) {
+    loyaltyTiers.forEach((v, i) => {
+      if (balance >= stakingRequirements[v].maximum) {
         tierLevel = i
       }
     })
-    return LoyaltyTiers[tierLevel]
+    return loyaltyTiers[tierLevel]
   }
 
   const tierLevel = getTierLevel()

@@ -1,4 +1,4 @@
-import Quality from "./quality";
+import { Quality } from "@config/nft-qualities";
 
 export interface QualityBarProps {
     qualities: Quality[];
