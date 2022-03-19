@@ -80,7 +80,13 @@ export class UniswapProvider implements TradeProviderInterface {
     this.factory = await uniswapPair.createFactory()
 
     this.tradeContext?.destroy()
-    this.tradeContext = await this.factory.trade(pair.amount)
+
+    console.log(typeof pair.amount)
+
+    this.tradeContext = await this.factory.trade(String(pair.amount))
+
+    console.log(this.tradeContext, 'tradeContext')
+    console.log(pair.amount, 'YOYOYOYOYO')
 
     return this.tradeContext
   }

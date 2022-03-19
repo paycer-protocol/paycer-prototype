@@ -80,27 +80,14 @@ export default function Swap() {
 
         setFieldValue('isLoading', true)
 
-        if (nextQuote > prevQuote) {
-            console.log('up')
-        } else if (nextQuote < prevQuote) {
-            console.log('down')
+        if (((prevQuote * nextQuote / 100) - 100) > 5) {
+            setFieldValue('quoteChangedStatus', 'achtugn der wechselkurs höher')
         }
 
-        console.log(values.token0Value)
-        console.log(prevQuote)
-        console.log(nextQuote)
-        console.log(nextTradeContext, 'next')
-        console.log(prevTradeContext, 'prev')
-
-        const nextValues = {
-            ...values,
-            ...{
-                token0Value: values.token0Value,
-                token1Value: Number(values.token0Value) * nextQuote,
-            }
+        if (((prevQuote * nextQuote / 100) - 100) < 5) {
+            setFieldValue('quoteChangedStatus', 'achtugn der wechselkurs höher')
         }
 
-        setValues(nextValues)
         setFieldValue('tradeContext', nextTradeContext)
         setFieldValue('isLoading', false)
     }
@@ -133,7 +120,9 @@ export default function Swap() {
         networkSettings
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (values) => {
+        console.log(values)
+
         setShowFormApproveModal(true)
     }
 

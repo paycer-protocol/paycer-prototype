@@ -30,14 +30,14 @@ export default function Token1Input() {
             }
         }
 
+        setValues(nextValues, validate)
+
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setFieldValue('tradeContext', nextTradeContext, validate)
             setFieldValue('isLoading', false, validate)
         }
-
-        setValues(nextValues, validate)
     }
 
     return (

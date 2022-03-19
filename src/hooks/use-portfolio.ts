@@ -1,4 +1,4 @@
-import { useCalls } from '@usedapp/core'
+import { useContractCalls } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import InvestAbi from '../deployments/Invest.json'
 import { Contract } from '@ethersproject/contracts'
@@ -35,9 +35,9 @@ export default function usePortfolio():UsePortfolioProps {
             args: [wallet.address]
         })) ?? []
         // @ts-ignore
-        const results = useCalls(calls) ?? []
+        const results = useContractCalls(calls) ?? []
         results.forEach((result, idx) => {
-            if(result && result.error) {
+            if(result && result?.error) {
                 console.error(`Error encountered calling 'totalSupply' on ${calls[idx]?.contract.address}: ${result.error.message}`)
             }
         })

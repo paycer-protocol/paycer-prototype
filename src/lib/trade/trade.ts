@@ -20,7 +20,9 @@ export class Trade implements TradeInterface  {
   public async init(
     pair: TradePairInterface,
     tradeSettings: TradeSettingsInterface,
-    networkSettings: NetworkSettingsInterface): Promise<TradeContext> {
+    networkSettings: NetworkSettingsInterface): Promise<TradeContext>
+  {
+    console.log(pair, 'init, pair')
     return this.tradeProvider.init(pair, tradeSettings, networkSettings)
   }
 

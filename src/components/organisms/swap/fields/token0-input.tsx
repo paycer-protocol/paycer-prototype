@@ -24,10 +24,12 @@ export default function Token0Input() {
                 tradePair: {
                     fromTokenAddress: values.tradePair.fromTokenAddress,
                     toTokenAddress: values.tradePair.toTokenAddress,
-                    amount: values.token0Value ? String(values.token0Value) : '1',
+                    amount: value ? String(value) : '1',
                 },
             }
         }
+
+        setValues(nextValues, validate)
 
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
@@ -36,7 +38,7 @@ export default function Token0Input() {
             setFieldValue('tradeContext', nextTradeContext, validate)
         }
 
-        setValues(nextValues, validate)
+
     }
    
     return (
