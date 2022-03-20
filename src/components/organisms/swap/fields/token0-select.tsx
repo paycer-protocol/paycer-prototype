@@ -5,11 +5,12 @@ import { connectors } from '@providers/connectors'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { swapTokens } from '@config/market-pairs'
-import { SwapProps } from '../types'
+import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import useWallet from "@hooks/use-wallet";
 
-export default function Token0Select() {
+export default function Token0Select(props: SwapTokenInputProps) {
+    const { readOnly } = props
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -20,6 +21,7 @@ export default function Token0Select() {
 
         const networkSettings = values.networkSettings
         networkSettings.walletAddress = wallet.address
+        setFieldValue('quoteChangedState', null)
 
         try {
             const nextValues = {
@@ -43,6 +45,9 @@ export default function Token0Select() {
                 setValues(nextValues)
                 setFieldValue('tradeContext', nextTradeContext)
                 setShowModal(false)
+                if (values.token1Value) {
+                    setFieldValue('token1Value', nextTradeContext.expectedConvertQuote)
+                }
                 setFieldValue('isLoading', false)
             } else {
                 setValues(nextValues)
@@ -61,6 +66,7 @@ export default function Token0Select() {
           onClick={() => setShowModal(true)}
           placeholder={t`Select a token`}
           label={t`Swap from`}
+          readOnly={readOnly}
         />
           {wallet.isConnected && (
             <TokenSelectModal

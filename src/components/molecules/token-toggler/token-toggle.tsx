@@ -15,12 +15,13 @@ interface TokenToggleProps {
   onClick: () => void
   placeholder: string
   label?: string
+  readOnly?: boolean
 }
 
 export default function TokenToggle(props: TokenToggleProps) {
-  const { token, onClick, placeholder, label } = props
+  const { token, onClick, placeholder, label, readOnly } = props
   return (
-    <div className="d-flex align-items-center cursor-pointer" onClick={onClick}>
+    <div className="d-flex align-items-center cursor-pointer" onClick={!readOnly ? onClick : null}>
         {token &&
             <CurrencyIcon
               symbol={token.symbol}
@@ -29,22 +30,27 @@ export default function TokenToggle(props: TokenToggleProps) {
               height={32}
             />
         }
+
         <div>
-            {label &&
+            {(label && !readOnly) &&
                 <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{label}</small>
             }
             <div className="d-flex align-items-center">
                 {token ?
-                    <h3 className="mb-0 text-white">{token.symbol}</h3>
-                :
-                    <Placeholder>{placeholder}</Placeholder>
+                  <h3 className="mb-0 text-white">{token.symbol}</h3>
+                  :
+                  <Placeholder>{placeholder}</Placeholder>
                 }
-                <Icon
-                    component={ArrowDropDown}
-                    size={20}
-                />
+                {!readOnly &&
+                    <Icon
+                        component={ArrowDropDown}
+                        size={20}
+                    />
+                }
+
             </div>
         </div>
+
     </div>
   )
 }

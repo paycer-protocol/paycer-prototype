@@ -35,7 +35,6 @@ export default function useSwap():UseSwapProps {
             }
             if (values.tradeContext.transaction) {
                 const transaction = values.tradeContext.transaction
-                //transaction.value = '0x05'
                 const approved = await sendSwapTransaction(transaction)
                 console.log(approved)
                 console.log(swapTx)

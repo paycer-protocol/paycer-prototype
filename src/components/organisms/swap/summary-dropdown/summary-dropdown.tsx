@@ -70,13 +70,7 @@ const SummaryDropdown = () => {
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
-                            <CurrencyIcon
-                                symbol={values?.token1?.symbol}
-                                className="ms-2 position-relative"
-                                style={{top: '-1px'}}
-                                width={13}
-                                height={13}
-                            />
+                            &nbsp; { values?.token1?.symbol }
                         </span>
                     </div>
                     <div className="d-flex justify-content-between">
@@ -89,13 +83,7 @@ const SummaryDropdown = () => {
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
-                            <CurrencyIcon
-                                symbol={values?.token0?.symbol}
-                                className="ms-2 position-relative"
-                                style={{top: '-1px'}}
-                                width={13}
-                                height={13}
-                            />
+                            &nbsp; { values?.token0?.symbol }
                         </span>
                     </div>
                 </div>

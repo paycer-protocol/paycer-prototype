@@ -5,7 +5,6 @@ import {
     TradePairInterface,
     TradeSettingsInterface
 } from '../../../lib/trade'
-
 export interface SwapProps {
     isLoading: boolean
     token0: any
@@ -19,9 +18,12 @@ export interface SwapProps {
     tradePair: TradePairInterface
     tradeSettings: TradeSettingsInterface
     tradeContext: TradeContext
-    quoteChangedStatus: null | 'up' | 'down'
+    quoteChangedStatus: number
+    quoteChangedDiff: null
     initFactory: (values: SwapProps, setFieldValue, setValues) => any
     networkSettings: NetworkSettingsInterface
 }
 
-
+export interface SwapTokenInputProps {
+    readOnly?: boolean
+}

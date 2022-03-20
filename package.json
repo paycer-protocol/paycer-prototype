@@ -25,7 +25,7 @@
     "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.34.0",
     "@usedapp/coingecko": "^0.3.24",
-    "@usedapp/core": "0.10.0",
+    "@usedapp/core": "0.11.0",
     "apexcharts": "^3.28.3",
     "axios": "^0.23.0",
     "bootstrap": "^5.0.0-beta2",

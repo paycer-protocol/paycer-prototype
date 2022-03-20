@@ -69,7 +69,7 @@ export default function TokenInput(props: TokenInputProps) {
                 maximumFractionDigits={4}
               />
             </TokenBalanceLabel>
-              {(raiseMax && balance > 0) &&
+              {(raiseMax && balance > 0 && !readOnly) &&
               <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
                   {t`max`}
               </MaxButton>

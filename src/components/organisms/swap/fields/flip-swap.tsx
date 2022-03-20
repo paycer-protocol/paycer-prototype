@@ -20,6 +20,9 @@ export default function FlipSwap() {
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
 
     const handleFlip = async () => {
+
+        setFieldValue('quoteChangedState', null)
+
         const {
             token0,
             token0Value,
@@ -47,7 +50,7 @@ export default function FlipSwap() {
                 tradePair: {
                     fromTokenAddress: token1.chainAddresses[values.networkSettings.chainId],
                     toTokenAddress: token0.chainAddresses[values.networkSettings.chainId],
-                    amount: tradePair.amount,
+                    amount: String(token0Value),
                 }
             }
         }

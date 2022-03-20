@@ -1,14 +1,15 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
-import { SwapProps } from '../types'
+import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
-import {t} from "@lingui/macro";
+import {t} from '@lingui/macro'
 
-export default function Token0Input() {
+export default function Token0Input(props: SwapTokenInputProps) {
+    const { readOnly } = props
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
-
+        setFieldValue('quoteChangedState', null)
         let validate = true
 
         if (value > Number(values.tradeContext?.fromBalance?.balance)) {
@@ -20,7 +21,7 @@ export default function Token0Input() {
             ...values,
             ... {
                 token0Value: value,
-                token1Value: Number(value) * Number(values.tradeContext?.expectedConvertQuote || 0),
+                token1Value: 0,
                 tradePair: {
                     fromTokenAddress: values.tradePair.fromTokenAddress,
                     toTokenAddress: values.tradePair.toTokenAddress,
@@ -34,6 +35,7 @@ export default function Token0Input() {
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
+            setFieldValue('token1Value', value ? nextTradeContext.expectedConvertQuote : 0)
             setFieldValue('isLoading', false, validate)
             setFieldValue('tradeContext', nextTradeContext, validate)
         }
@@ -51,7 +53,7 @@ export default function Token0Input() {
             raiseMax
             balance={Number(values.tradeContext?.fromBalance?.balance || 0)}
             decimals={5}
-            readOnly={values.isLoading}
+            readOnly={values.isLoading || readOnly}
         />
     )
 }

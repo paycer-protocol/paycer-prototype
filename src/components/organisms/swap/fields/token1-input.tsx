@@ -1,15 +1,15 @@
 import React from 'react'
 import {t} from "@lingui/macro";
 import { useFormikContext } from 'formik'
-import { SwapProps } from '../types'
+import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
-import useSwap from "@hooks/use-swap";
 
-export default function Token1Input() {
+export default function Token1Input(props: SwapTokenInputProps) {
+    const { readOnly } = props
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
-
+        setFieldValue('quoteChangedState', null)
         let validate = true
 
         if (value > Number(values?.tradeContext?.toBalance)) {
@@ -49,7 +49,7 @@ export default function Token1Input() {
             handleChange={handleChange}
             balance={Number(values?.tradeContext?.toBalance || 0)}
             decimals={5}
-            readOnly={values.isLoading}
+            readOnly={values.isLoading || readOnly}
         />
     )
 }

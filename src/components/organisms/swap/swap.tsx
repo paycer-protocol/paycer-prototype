@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {swapTokens} from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
 import {SwapProps} from './types'
@@ -19,6 +19,7 @@ import useNetwork from "@hooks/use-network";
 import useWallet from "@hooks/use-wallet";
 import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
+import {TradeContext} from "simple-uniswap-sdk";
 
 export default function Swap() {
     const provider = new UniswapProvider()
@@ -71,23 +72,22 @@ export default function Swap() {
 
         const prevTradeContext = values.tradeContext
 
-        const prevQuote = Number(prevTradeContext.expectedConvertQuote)
-        const nextQuote = Number(nextTradeContext.expectedConvertQuote)
+        const prevToken1Value = Number(prevTradeContext.expectedConvertQuote)
+        const nextToken1Value = Number(nextTradeContext.expectedConvertQuote)
 
-        if (nextQuote === prevQuote) {
+        if (prevToken1Value === nextToken1Value) {
             return false
         }
 
         setFieldValue('isLoading', true)
 
-        if (((prevQuote * nextQuote / 100) - 100) > 5) {
-            setFieldValue('quoteChangedStatus', 'achtugn der wechselkurs höher')
+        if (prevToken1Value > nextToken1Value) {
+            setFieldValue('quoteChangedStatus', 0)
+        } else {
+            setFieldValue('quoteChangedStatus', 1)
         }
 
-        if (((prevQuote * nextQuote / 100) - 100) < 5) {
-            setFieldValue('quoteChangedStatus', 'achtugn der wechselkurs höher')
-        }
-
+        setFieldValue('token1Value', nextToken1Value)
         setFieldValue('tradeContext', nextTradeContext)
         setFieldValue('isLoading', false)
     }
@@ -116,6 +116,7 @@ export default function Swap() {
 
         tradeContext: null,
         quoteChangedStatus: null,
+        quoteChangedDiff: null,
         initFactory,
         networkSettings
     }
@@ -133,6 +134,7 @@ export default function Swap() {
         >
             {({values}) => (
                 <>
+                    {values.quoteChangedStatus}
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-5">
                             <div className="p-4 p-md-5 pe-md-0">
@@ -208,18 +210,18 @@ export default function Swap() {
                         <>
                             <div className="card mb-0">
                                 <div className="card-body">
-                                    <div className="d-flex flex-column">
+                                    <div className="d-flex flex-column" style={{pointerEvents: 'none'}}>
                                         <TokenInputPanel
-                                            tokenInputSibling={<Token0Select/>}
-                                            tokenInput={<Token0Input/>}
+                                            tokenInputSibling={<Token0Select readOnly />}
+                                            tokenInput={<Token0Input readOnly />}
                                         />
                                         <div className="d-flex justify-content-center position-relative"
                                              style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
                                             <FlipSwap/>
                                         </div>
                                         <TokenInputPanel
-                                            tokenInputSibling={<Token1Select/>}
-                                            tokenInput={<Token1Input/>}
+                                            tokenInputSibling={<Token1Select readOnly/>}
+                                            tokenInput={<Token1Input readOnly/>}
                                         />
                                     </div>
 
