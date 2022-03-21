@@ -78,18 +78,19 @@ export default function Swap() {
         if (prevToken1Value === nextToken1Value) {
             return false
         }
-
         setFieldValue('isLoading', true)
 
-        if (prevToken1Value > nextToken1Value) {
-            setFieldValue('quoteChangedStatus', 0)
-        } else {
-            setFieldValue('quoteChangedStatus', 1)
-        }
+        setTimeout(() => {
+            if (prevToken1Value > nextToken1Value) {
+                setFieldValue('quoteChangedStatus', 0)
+            } else {
+                setFieldValue('quoteChangedStatus', 1)
+            }
 
-        setFieldValue('token1Value', nextToken1Value)
-        setFieldValue('tradeContext', nextTradeContext)
-        setFieldValue('isLoading', false)
+            setFieldValue('token1Value', nextToken1Value)
+            setFieldValue('tradeContext', nextTradeContext)
+            setFieldValue('isLoading', false)
+        }, 1200)
     }
 
     let initialValues: SwapProps = {
@@ -122,8 +123,6 @@ export default function Swap() {
     }
 
     const handleSubmit = (values) => {
-        console.log(values)
-
         setShowFormApproveModal(true)
     }
 
@@ -134,7 +133,6 @@ export default function Swap() {
         >
             {({values}) => (
                 <>
-                    {values.quoteChangedStatus}
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-5">
                             <div className="p-4 p-md-5 pe-md-0">
@@ -170,16 +168,6 @@ export default function Swap() {
                                 </div>
                             </div>
                         </div>
-
-                        {/*<div className="col-md-7">*/}
-                        {/*    <div className="p-4 p-md-5">*/}
-                        {/*        <PriceChart*/}
-                        {/*            token0={values.token0}*/}
-                        {/*            token1={values.token1}*/}
-                        {/*            token1Price={values.token1Price}*/}
-                        {/*        />*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
 
                     <TransactionApproveModal

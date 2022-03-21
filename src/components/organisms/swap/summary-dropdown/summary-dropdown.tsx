@@ -33,16 +33,16 @@ const SummaryDropdown = () => {
                     if (values.token1 && values.token0) {
                         setOpen(!open)
                     }
-                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`} style={!values.token1 || !values.token0 ? {opacity: '0.5'} : null}>
+                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`} style={!values.token1 || !values.token0 || !values.token0Value ? {opacity: '0.5'} : null}>
                 <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
-                        {!values.token1 || !values.token0 ?
+                        {!values.token1 || !values.token0 || !values.token0Value ?
                         <>-</>
                         :
                             <div className="me-2">
                                 1 {values.token1?.symbol} =&nbsp;
                                 <FormattedNumber
-                                    value={1 / Number(values.tradeContext?.expectedConvertQuote || 0)}
+                                    value={values.token0Value / values.token1Value}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={4}
                                 />

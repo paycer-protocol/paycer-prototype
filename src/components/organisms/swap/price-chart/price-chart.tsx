@@ -1,10 +1,10 @@
 import React, {useEffect, useState, memo} from 'react'
 import classnames from 'classnames'
 import dynamic from 'next/dynamic'
-import { TokenType } from '../../../../../types/investment'
+import { TokenType } from '../../../../types/investment'
 import * as Styles from './Styles'
 import { ApexOptions } from 'apexcharts'
-import api from "../../../../../api";
+import api from "../../../../api"
 
 interface PriceChartProps {
     token0: TokenType

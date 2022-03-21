@@ -21,7 +21,8 @@ export default function Token0Input(props: SwapTokenInputProps) {
             ...values,
             ... {
                 token0Value: value,
-                token1Value: 0,
+                // this makes no sense but without meta mask error, check another comment at bottom
+                token1Value: Number(value) * Number(values.tradeContext?.expectedConvertQuote || 0),
                 tradePair: {
                     fromTokenAddress: values.tradePair.fromTokenAddress,
                     toTokenAddress: values.tradePair.toTokenAddress,
@@ -35,12 +36,11 @@ export default function Token0Input(props: SwapTokenInputProps) {
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true, validate)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
+            //... this makes sense
             setFieldValue('token1Value', value ? nextTradeContext.expectedConvertQuote : 0)
             setFieldValue('isLoading', false, validate)
             setFieldValue('tradeContext', nextTradeContext, validate)
         }
-
-
     }
    
     return (

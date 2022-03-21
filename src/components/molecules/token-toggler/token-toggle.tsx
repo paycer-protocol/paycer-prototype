@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ArrowDropDown } from '@styled-icons/material-outlined'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import Icon from '@components/atoms/icon'
-import { TokenType } from '../../../../../types/investment'
+import { TokenType } from '../../../types/investment'
 import { t } from '@lingui/macro'
 
 export const Placeholder = styled.span`

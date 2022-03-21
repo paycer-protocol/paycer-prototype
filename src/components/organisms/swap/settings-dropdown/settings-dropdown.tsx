@@ -13,7 +13,7 @@ const SettingsDropdown = () => {
   const { values } = useFormikContext<SwapProps>()
   return (
     <DropdownComponent>
-      <Styles.StyledDropdownToggle style={!values.token1 || !values.token0 ? {opacity: '.5', pointerEvents: 'none'} : null}>
+      <Styles.StyledDropdownToggle style={!values.token1 || !values.token0  || !values.token0Value ? {opacity: '.5', pointerEvents: 'none'} : null}>
         <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
           <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
             <Icon component={Settings} size={23} style={{ width: '32px' }} />
