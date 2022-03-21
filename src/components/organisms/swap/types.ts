@@ -19,7 +19,6 @@ export interface SwapProps {
     tradePair: TradePairInterface
     tradeSettings: TradeSettingsInterface
     tradeContext: TradeContext
-    quoteChangedStatus: number
     quoteChangedSignificantly: boolean
     quoteChangedSignificantlyTresholdPercentage: number
     initFactory: (values: SwapProps, setFieldValue, setValues) => any

@@ -88,7 +88,7 @@ export default function Swap() {
             const diff = ((nextToken1Value * 100) / token1ValueByUserInput) - 100
 
             if (Math.abs(diff) >= 5) {
-
+                setFieldValue('quoteChangedSignificantly', true)
             }
 
             setFieldValue('token1Value', nextToken1Value)
