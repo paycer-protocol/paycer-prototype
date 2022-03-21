@@ -20,6 +20,7 @@ import useWallet from "@hooks/use-wallet";
 import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
 import {TradeContext} from "simple-uniswap-sdk";
+import Alert from "@components/atoms/alert";
 
 export default function Swap() {
     const provider = new UniswapProvider()
@@ -84,8 +85,9 @@ export default function Swap() {
 
         setTimeout(() => {
 
+            const diff = ((nextToken1Value * 100) / token1ValueByUserInput) - 100
 
-            if(((nextToken1Value * 100) / prevToken1Value) - 100) {
+            if (Math.abs(diff) >= 5) {
 
             }
 
@@ -119,13 +121,13 @@ export default function Swap() {
         },
 
         tradeContext: null,
-        quoteChangedStatus: null,
-        quoteChangedDiff: null,
+        quoteChangedSignificantly: false,
+        quoteChangedSignificantlyTresholdPercentage: 5,
         initFactory,
         networkSettings
     }
 
-    const handleSubmit = (values) => {
+    const handleSubmit = () => {
         setShowFormApproveModal(true)
     }
 
@@ -169,6 +171,9 @@ export default function Swap() {
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>
                                 </div>
+                                <Alert className="mb-0 mt-5" show={values.quoteChangedSignificantly} variant="danger">
+                                    {t`Attention! The exchange rate has changed significantly.`}
+                                </Alert>
                             </div>
                         </div>
                     </div>

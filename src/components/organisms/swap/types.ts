@@ -20,9 +20,11 @@ export interface SwapProps {
     tradeSettings: TradeSettingsInterface
     tradeContext: TradeContext
     quoteChangedStatus: number
-    quoteChangedDiff: null
+    quoteChangedSignificantly: boolean
+    quoteChangedSignificantlyTresholdPercentage: number
     initFactory: (values: SwapProps, setFieldValue, setValues) => any
     networkSettings: NetworkSettingsInterface
+
 }
 
 export interface SwapTokenInputProps {
