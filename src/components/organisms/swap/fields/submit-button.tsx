@@ -18,18 +18,6 @@ export default function SubmitButton() {
         // @ts-ignore
       || errors.token1value
 
-    let buttonLabel = t`Swap`
-    // @ts-ignore
-    if (errors?.token1value) {
-        // @ts-ignore
-        buttonLabel = errors?.token1value
-    }
-    // @ts-ignore
-    if (errors?.token0value) {
-        // @ts-ignore
-        buttonLabel = errors?.token0value
-    }
-
     return (
         <GradientButton type="submit" disabled={isDisabled} className="d-flex align-items-center justify-content-center w-75">
           {values.isLoading && (
@@ -43,7 +31,7 @@ export default function SubmitButton() {
             </div>
           )}
           <div>
-              {buttonLabel}
+              {values.token0Value > Number(values.tradeContext?.fromBalance?.balance) ? t`insufficient balance`:  t`Swap` }
           </div>
         </GradientButton>
     )
