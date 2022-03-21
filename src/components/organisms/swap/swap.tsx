@@ -110,7 +110,7 @@ export default function Swap() {
         },
 
         tradeSettings: {
-            slippage: 0,
+            slippage: 3,
             deadlineMinutes: 20,
             disableMultihops: false,
         },
