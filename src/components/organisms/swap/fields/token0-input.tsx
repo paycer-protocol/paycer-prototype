@@ -38,6 +38,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             //... this makes sense
             setFieldValue('token1Value', value ? nextTradeContext.expectedConvertQuote : 0)
+            setFieldValue('token1ValueByUserInput', value ? nextTradeContext.expectedConvertQuote : 0)
             setFieldValue('isLoading', false, validate)
             setFieldValue('tradeContext', nextTradeContext, validate)
         }

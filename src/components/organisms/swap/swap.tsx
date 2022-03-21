@@ -74,17 +74,19 @@ export default function Swap() {
 
         const prevToken1Value = Number(prevTradeContext.expectedConvertQuote)
         const nextToken1Value = Number(nextTradeContext.expectedConvertQuote)
+        const token1ValueByUserInput = values.token1ValueByUserInput
 
         if (prevToken1Value === nextToken1Value) {
             return false
         }
+        
         setFieldValue('isLoading', true)
 
         setTimeout(() => {
-            if (prevToken1Value > nextToken1Value) {
-                setFieldValue('quoteChangedStatus', 0)
-            } else {
-                setFieldValue('quoteChangedStatus', 1)
+
+
+            if(((nextToken1Value * 100) / prevToken1Value) - 100) {
+
             }
 
             setFieldValue('token1Value', nextToken1Value)
@@ -101,6 +103,7 @@ export default function Swap() {
 
         token1: null,
         token1Value: null,
+        token1ValueByUserInput: null,
         token1Markets: swapTokens,
 
         tradePair: {

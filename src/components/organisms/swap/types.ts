@@ -13,6 +13,7 @@ export interface SwapProps {
 
     token1: any
     token1Value: number
+    token1ValueByUserInput: number
     token1Markets: TokenType[]
 
     tradePair: TradePairInterface
