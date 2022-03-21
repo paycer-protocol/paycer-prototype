@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {swapTokens} from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
 import {SwapProps} from './types'
@@ -21,12 +21,14 @@ import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
 import {TradeContext} from "simple-uniswap-sdk";
 import Alert from "@components/atoms/alert";
+import {FormikProps} from "formik";
 
 export default function Swap() {
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
     const network = useNetwork()
     const wallet = useWallet()
+    const formRef = useRef<FormikProps<SwapProps>>(null)
 
     const {
         setShowFormApproveModal,
@@ -131,10 +133,19 @@ export default function Swap() {
         setShowFormApproveModal(true)
     }
 
+    const resetForm = () => {
+        formRef.current?.resetForm()
+    }
+
+    useEffect(() => {
+        formRef.current?.resetForm()
+    }, [network.chainId, wallet.address])
+
     return (
         <Form
             initialValues={initialValues}
             onSubmit={handleSubmit}
+            innerRef={formRef}
         >
             {({values}) => (
                 <>
