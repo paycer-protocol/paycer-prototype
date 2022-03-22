@@ -1,8 +1,10 @@
 import Button from "@components/atoms/button";
-import GradientButton from "@components/atoms/button/gradient-button";
+import useWallet from "@hooks/use-wallet";
 import Link from "next/link";
+import ConnectWalletButton from "./connect-wallet-button";
 
 const MarketingHero = () => {
+    const { isConnected } = useWallet();
     return (
         <div className="row">
             <div className="col-md-6">
@@ -14,9 +16,12 @@ const MarketingHero = () => {
                 </p>
 
                 <Button.Group>
-                    <span className="me-3">
-                        <GradientButton>Connect your MetaMask</GradientButton>
-                    </span>
+                    {
+                        !isConnected &&
+                            <span className="me-3">
+                                <ConnectWalletButton />
+                            </span>
+                    }
                     <Link href="/swap"><Button>Buy PCR Token</Button></Link>
                 </Button.Group>
             </div>

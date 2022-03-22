@@ -5,6 +5,7 @@ import React from 'react';
 import useWallet from '@hooks/use-wallet';
 import Icon from '@components/atoms/icon';
 import { Shuffle } from '@styled-icons/material';
+import ConnectWalletButton from './connect-wallet-button';
 
 const Stats = () => {
     return (
@@ -40,7 +41,7 @@ const HeroSection = (props: HeroSectionProps) => {
                         {
                             isConnected
                                 ? <GradientButton onClick={props.onMintClicked}>Mint your NFT now</GradientButton>
-                                : <GradientButton>Connect your MetaMask to start</GradientButton>
+                                : <ConnectWalletButton />
                         }
                     </span>
                     <Button onClick={props.onMoreInfoClicked}>More Info</Button>

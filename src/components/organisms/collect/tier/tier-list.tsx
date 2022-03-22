@@ -6,7 +6,7 @@ import TierTile from "./tier-tile";
 
 const TierList = () => {
     const { isConnected } = useWallet();
-    const { stakedBalance } = useStaking()
+    const { stakedBalance } = useStaking();
 
     return (
         <div className="row">
