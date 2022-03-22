@@ -8,8 +8,6 @@ export default function Token0Input(props: SwapTokenInputProps) {
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
-        setFieldValue('quoteChangedState', null)
-        let validate = true
 
         const nextValues = {
             ...values,
@@ -25,16 +23,15 @@ export default function Token0Input(props: SwapTokenInputProps) {
             }
         }
 
-        setValues(nextValues, validate)
+        setValues(nextValues)
 
         if (values.token0 && values.token1) {
-            setFieldValue('isLoading', true, validate)
+            setFieldValue('isLoading', true)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             //... this makes sense
             setFieldValue('token1Value', value ? nextTradeContext.expectedConvertQuote : 0)
-            setFieldValue('token1ValueByUserInput', value ? nextTradeContext.expectedConvertQuote : 0)
-            setFieldValue('isLoading', false, validate)
-            setFieldValue('tradeContext', nextTradeContext, validate)
+            setFieldValue('isLoading', false)
+            setFieldValue('tradeContext', nextTradeContext)
         }
     }
    

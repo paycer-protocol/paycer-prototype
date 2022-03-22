@@ -54,6 +54,8 @@ export default function Swap() {
 
     const initFactory = async (values: SwapProps, setFieldValue, setValues) => {
 
+        setFieldValue('quoteChangedSignificantly', false)
+
         const tradeContext = await tradeFactory.init(
             values.tradePair,
             values.tradeSettings,
@@ -61,34 +63,25 @@ export default function Swap() {
         )
 
         tradeContext.quoteChanged$.subscribe((nextTradeContext: TradeContext) => {
-            onQuoteChanged(nextTradeContext, values, setValues, setFieldValue)
+            onQuoteChanged(nextTradeContext, values, setValues, setFieldValue, tradeContext.expectedConvertQuote)
         })
 
         return tradeContext
     }
 
-    const onQuoteChanged = (nextTradeContext, values, setValues, setFieldValue) => {
+    const onQuoteChanged = (nextTradeContext, values, setValues, setFieldValue, token1ValueByUserInput) => {
 
         if (!values.token0Value || !values.token1Value) {
             return false
         }
 
-        const prevTradeContext = values.tradeContext
-
-        const prevToken1Value = Number(prevTradeContext.expectedConvertQuote)
         const nextToken1Value = Number(nextTradeContext.expectedConvertQuote)
-        const token1ValueByUserInput = values.token1ValueByUserInput
 
-        if (prevToken1Value === nextToken1Value) {
-            return false
-        }
-        
         setFieldValue('isLoading', true)
 
         setTimeout(() => {
 
-            const diff = ((nextToken1Value * 100) / token1ValueByUserInput) - 100
-
+            const diff = ((nextToken1Value * 100) / Number(token1ValueByUserInput)) - 100
             if (Math.abs(diff) >= 5) {
                 setFieldValue('quoteChangedSignificantly', true)
             }
@@ -107,7 +100,6 @@ export default function Swap() {
 
         token1: null,
         token1Value: null,
-        token1ValueByUserInput: null,
         token1Markets: swapTokens,
 
         tradePair: {
@@ -131,10 +123,6 @@ export default function Swap() {
 
     const handleSubmit = () => {
         setShowFormApproveModal(true)
-    }
-
-    const resetForm = () => {
-        formRef.current?.resetForm()
     }
 
     useEffect(() => {
@@ -182,9 +170,11 @@ export default function Swap() {
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>
                                 </div>
-                                <Alert className="mb-0 mt-5" show={values.quoteChangedSignificantly} variant="danger">
+                                {values.quoteChangedSignificantly &&
+                                <p className="mb-0 mt-5 fw-bold">
                                     {t`Attention! The exchange rate has changed significantly.`}
-                                </Alert>
+                                </p>
+                                }
                             </div>
                         </div>
                     </div>
