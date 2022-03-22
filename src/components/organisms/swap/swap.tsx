@@ -20,7 +20,6 @@ import useWallet from "@hooks/use-wallet";
 import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
 import {TradeContext} from "simple-uniswap-sdk";
-import Alert from "@components/atoms/alert";
 import {FormikProps} from "formik";
 
 export default function Swap() {
