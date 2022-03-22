@@ -1,4 +1,4 @@
-import { TokenType } from '../../../../types/investment'
+import { TokenType } from '../../../types/investment'
 
 export interface SupplyProps {
   token0: TokenType

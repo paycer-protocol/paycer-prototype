@@ -1,31 +1,31 @@
 import React from 'react'
 import { useFormikContext } from 'formik'
-import { SwapProps } from '../types'
+import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 
-export default function Token1Input() {
-    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+export default function Token1Input(props: SwapTokenInputProps) {
+    const { readOnly } = props
+    const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
 
     const handleChange = async (value: number) => {
-
-        if (value > Number(values?.tradeContext?.toBalance)) {
-            setFieldValue('token1value', Number(values?.tradeContext?.toBalance))
-            value = Number(values?.tradeContext?.toBalance)
-        }
 
         const nextValues = {
             ...values,
             ... {
                 token0Value: value / Number(values.tradeContext?.expectedConvertQuote || 0),
                 token1Value: value,
+                token1ValueByUserInput: value,
+                tradePair: {
+                    fromTokenAddress: values.tradePair.fromTokenAddress,
+                    toTokenAddress: values.tradePair.toTokenAddress,
+                    amount: values.token0Value ? String(values.token0Value) : '1',
+                },
             }
         }
 
-        setValues(nextValues)
-
         if (values.token0 && values.token1) {
             setFieldValue('isLoading', true)
-            const nextTradeContext = await values.initFactory(nextValues)
+            const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setFieldValue('tradeContext', nextTradeContext)
             setFieldValue('isLoading', false)
         }
@@ -39,7 +39,8 @@ export default function Token1Input() {
             currency={values?.tradeContext?.toToken?.symbol}
             handleChange={handleChange}
             balance={Number(values?.tradeContext?.toBalance || 0)}
-            decimals={4}
+            decimals={6}
+            readOnly={values.isLoading || readOnly}
         />
     )
 }

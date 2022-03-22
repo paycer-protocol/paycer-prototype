@@ -11,9 +11,6 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
       box-shadow: none!important;
     }
     &:hover { opacity: 0.7 }
-    ${props => props.isDisabled && css`
-      opacity: 0.5; pointer-events: none;
-   `}
 `
 
 export const StyledDropdownMenu = styled(DropdownComponent.Menu)`

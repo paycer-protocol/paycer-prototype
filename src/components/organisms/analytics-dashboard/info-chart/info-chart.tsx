@@ -15,7 +15,6 @@ import { t } from '@lingui/macro'
 import moment from 'moment'
 import { useIntl } from 'react-intl'
 
-
 const InfoChart = (props: InfoChartProps) => {
     const {
         isSmall,

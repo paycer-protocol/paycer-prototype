@@ -7,13 +7,13 @@ import Icon from '@components/atoms/icon'
 import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import { Settings } from '@styled-icons/fluentui-system-regular'
 import {useFormikContext} from "formik";
-import {SwapProps} from "@components/organisms/swap/swap-form/types";
+import {SwapProps} from '@components/organisms/swap/types'
 
 const SettingsDropdown = () => {
   const { values } = useFormikContext<SwapProps>()
   return (
     <DropdownComponent>
-      <Styles.StyledDropdownToggle isDisabled={!values.token1 || !values.token0}>
+      <Styles.StyledDropdownToggle style={!values.token1 || !values.token0  || !values.token0Value ? {opacity: '.5', pointerEvents: 'none'} : null}>
         <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
           <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
             <Icon component={Settings} size={23} style={{ width: '32px' }} />

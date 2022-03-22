@@ -5,7 +5,6 @@ import { useCoingeckoTokenPrice } from '@usedapp/coingecko'
 import { ChainId } from '@usedapp/core'
 import TokenInput from "@components/molecules/token-input";
 
-
 export default function Token1Input() {
     const { values, setFieldValue } = useFormikContext<SupplyProps>()
     let token0Price = Number(useCoingeckoTokenPrice(values.token0.chainAddresses[ChainId.Polygon], 'usd', 'polygon-pos'))

@@ -13,7 +13,7 @@ import Token1Input from './fields/token1-input'
 import SupplyInfo from './supply-info'
 import {SupplyProps} from './types'
 
-export default function SupplyForm() {
+export default function SupplyLiquidity() {
     const pcrToken = useToken(tokenProvider.PCR.symbol)
     const usdcToken = useToken(tokenProvider.USDC.symbol)
 

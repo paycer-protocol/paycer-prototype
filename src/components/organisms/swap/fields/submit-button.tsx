@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import GradientButton from '@components/atoms/button/gradient-button'
@@ -6,7 +6,8 @@ import Spinner from '@components/atoms/spinner'
 import { SwapProps } from '../types'
 
 export default function SubmitButton() {
-    const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SwapProps>()
+    const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
+
     const isDisabled =
       !dirty
       || !isValid
@@ -14,6 +15,8 @@ export default function SubmitButton() {
       || !values.token0Value
       || !values.token1Value
       || !values.tradeContext.fromBalance.hasEnough
+        // @ts-ignore
+      || errors.token1value
 
     return (
         <GradientButton type="submit" disabled={isDisabled} className="d-flex align-items-center justify-content-center w-75">
@@ -28,7 +31,7 @@ export default function SubmitButton() {
             </div>
           )}
           <div>
-              {t`Swap`}
+              {values.token0Value > Number(values.tradeContext?.fromBalance?.balance) ? t`insufficient balance`:  t`Swap` }
           </div>
         </GradientButton>
     )
