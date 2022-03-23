@@ -22,6 +22,7 @@ export default function InvestInput() {
             required
             currency={values.baseSymbol}
             handleChange={handleChange}
+            balance={values.balance}
             decimals={4}
             value={values.amount}
         />
