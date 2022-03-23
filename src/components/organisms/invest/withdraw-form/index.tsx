@@ -47,6 +47,8 @@ const WithdrawForm = () => {
 
     const baseToken = useToken(strategy.input.symbol)
 
+    console.log(withdrawAbleAmount)
+
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: strategy.input.symbol,
@@ -69,7 +71,7 @@ const WithdrawForm = () => {
         investFee: strategy.fees.investFee,
         fee: 0,
 
-        investRange: withdrawAbleAmount * 100
+        investRange: withdrawAbleAmount
     }
 
     const validationSchema = Yup.object().shape({
