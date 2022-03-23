@@ -19,6 +19,7 @@
   "dependencies": {
     "@sentry/nextjs": "^6.18.2",
     "@styled-icons/boxicons-regular": "^10.38.0",
+    "@styled-icons/entypo": "^10.34.0",
     "@styled-icons/feather": "^10.34.0",
     "@styled-icons/fluentui-system-filled": "^10.35.0",
     "@styled-icons/fluentui-system-regular": "^10.35.0",
@@ -26,6 +27,7 @@
     "@styled-icons/ionicons-sharp": "^10.34.0",
     "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.34.0",
+    "@styled-icons/material-sharp": "^10.34.0",
     "@usedapp/coingecko": "^0.3.24",
     "@usedapp/core": "0.11.0",
     "apexcharts": "^3.28.3",
