@@ -26,7 +26,7 @@ const Dropdown = (props: DropdownProps) => {
     return (
         <div>
             <Styles.DropdownOpener className="card mb-0 bg-dark" isOpen={open} onClick={() => setOpen(!open)}>
-                <Icon component={icon} size={23}/>
+                <Icon component={icon} size={22}/>
             </Styles.DropdownOpener>
             {open &&
                 <Styles.DropdownContent style={!isTabletOrMobile && desktopWidth ? {'width': desktopWidth } : null} className="card mb-0">

@@ -57,14 +57,14 @@ const WalletMenu = (props: WalletConnectProps) => {
 
             <Dropdown desktopWidth={300} openBy="click" icon={Wallet}>
                 <>
-                    <div onClick={() => setCopiedWalletAdress(wallet.address)} className="border-bottom pb-4 mb-4 d-flex justify-content-between align-items-center cursor-pointer">
+                    <div onClick={() => setCopiedWalletAdress(wallet.address)} className="border-bottom light-border pb-4 mb-4 d-flex justify-content-between align-items-center cursor-pointer">
                         {wallet.shortenAddress}
                         <div className="d-flex align-items-center">
                             <Icon component={Copy} size={20} />
                             {copiedWalletAdress && <Icon className="ms-2 ps-2" component={CheckCircle} size={20} />}
                         </div>
                     </div>
-                    <div className="mb-4 border-bottom pb-4 mb-4">
+                    <div className="mb-4 border-bottom light-border pb-4 mb-4">
                         <div className="mb-3 d-flex align-items-center">
                             <CurrencyIcon
                                 className="me-2"
@@ -103,7 +103,7 @@ const WalletMenu = (props: WalletConnectProps) => {
                                 {t`View your Wallet in Blockchain-Explorer`}
                             </small>
                         </div>
-                        <Icon component={Wpexplorer} size={20} />
+                        <Icon component={GlobeSearch} size={20} />
 
                     </div>
 
