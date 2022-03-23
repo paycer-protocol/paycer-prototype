@@ -8,7 +8,7 @@ import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import Navbar from '@components/molecules/navbar'
-import WalletConnect from '../web3/wallet-connect'
+import WalletMenu from './wallet-menu'
 import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
@@ -83,13 +83,10 @@ const Header = () => {
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex">
                           <li className="nav-item me-3 d-flex align-items-center">
-                              <Network />
-                          </li>
-                          <li className="nav-item me-3 d-flex align-items-center">
-                              <AddPaycerToken />
+
                           </li>
                           <li className="nav-item d-flex align-items-center">
-                              <WalletConnect />
+                              <WalletMenu />
                           </li>
                       </ul>
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3 ms-5 ps-3">
