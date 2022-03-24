@@ -48,7 +48,7 @@ const Dropdown = (props: DropdownProps) => {
                 </Styles.DropdownContent>
                 }
                 {label &&
-                <Styles.DropdownLabel>{label}</Styles.DropdownLabel>
+                    <Styles.DropdownLabel>{label}</Styles.DropdownLabel>
                 }
             </Styles.DropdownOpener>
         </div>
