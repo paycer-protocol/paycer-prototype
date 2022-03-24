@@ -47,8 +47,6 @@ const WithdrawForm = () => {
 
     const baseToken = useToken(strategy.input.symbol)
 
-    console.log(withdrawAbleAmount)
-
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: strategy.input.symbol,
