@@ -45,10 +45,10 @@ const Dropdown = (props: DropdownProps) => {
                   </div>
                 </Styles.DropdownContent>
                 }
+                {label &&
+                <Styles.DropdownLabel>{label}</Styles.DropdownLabel>
+                }
             </Styles.DropdownOpener>
-            {label &&
-            <span className="ps-3">{label}</span>
-            }
         </div>
     )
 }

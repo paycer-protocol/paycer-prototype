@@ -8,10 +8,13 @@ export const DropdownOpener = styled.div`
    ${props => props.isOpen && css`
     background: linear-gradient(86deg,rgba(133,12,167,1) 0%,rgba(66,1,220,1) 100%)!important;
   `}
-   cursor: pointer; 
-   border-radius: 25px;
+    border-radius: 25px;
+    flex-direction: row; padding: 0 20px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .opener-svg {
-        margin: 13px;
         color: #FFFFFF;
         &:hover {
             color: #a6a6a6;
@@ -41,4 +44,8 @@ export const DropdownContentChevron = styled.div`
     top: -10px;
     left: 1px;
   }
+`
+
+export const DropdownLabel = styled.div`
+margin-left: 15px;
 `
