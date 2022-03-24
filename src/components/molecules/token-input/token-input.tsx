@@ -59,7 +59,7 @@ export default function TokenInput(props: TokenInputProps) {
               handleChange(tokenValue)
             }}
         />
-        {!disabled &&
+        {(!disabled && balance !== undefined) &&
           <div className="d-flex justify-content-end">
             <TokenBalanceLabel className="text-muted">
               <span>{t`Balance:`}</span>&nbsp;

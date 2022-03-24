@@ -69,7 +69,7 @@ const WithdrawForm = () => {
         investFee: strategy.fees.investFee,
         fee: 0,
 
-        investRange: withdrawAbleAmount * 100
+        investRange: 100
     }
 
     const validationSchema = Yup.object().shape({
