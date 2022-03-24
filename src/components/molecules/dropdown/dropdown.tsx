@@ -4,6 +4,7 @@ import Icon from "@components/atoms/icon";
 import { useMediaQuery } from 'react-responsive'
 
 export interface DropdownProps {
+    // TODO: implement mouseover
     openBy?: 'mouseover' | 'click'
     children: React.ReactNode
     icon: any
@@ -27,6 +28,7 @@ const Dropdown = (props: DropdownProps) => {
 
     useEffect(() => {
         document.addEventListener('click', function(e) {
+            // @ts-ignore
             if (!e?.path.includes(dropdownRef.current)) {
                 setOpen(false)
             }

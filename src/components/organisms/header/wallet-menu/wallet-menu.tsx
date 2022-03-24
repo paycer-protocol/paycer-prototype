@@ -14,6 +14,8 @@ import { PlugDisconnected } from '@styled-icons/fluentui-system-regular'
 import useToken from "@hooks/use-token";
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../../atoms/number/formatted-number";
+import AddPaycerToken from '@components/organisms/web3/add-paycer-token'
+import { AddCircle } from '@styled-icons/fluentui-system-regular'
 
 const WalletMenu = () => {
 
@@ -59,14 +61,15 @@ const WalletMenu = () => {
                         </div>
                     </a>
                     <div className="mb-4 border-bottom light-border pb-4 mb-4">
-                        <div className="mb-3 d-flex align-items-center">
+
+                        <div className="mb-3 d-flex align-items-center me-2">
                             <CurrencyIcon
                                 className="me-3"
                                 width={21}
                                 height={21}
                                 symbol={symbol}
                             />
-                            <div className="ps-1">
+                            <div className="ps-1 me-3">
                                 <FormattedNumber
                                     value={balance}
                                     minimumFractionDigits={2}
@@ -74,6 +77,7 @@ const WalletMenu = () => {
                                 />
                             </div>
                         </div>
+
                         <div className="d-flex align-items-center">
                             <CurrencyIcon
                                 className="me-3"
@@ -121,7 +125,7 @@ const WalletMenu = () => {
                     <a onClick={async () => {
                         window.localStorage.setItem('walletConnectedProviderName', '')
                         await wallet.disconnect()
-                    }} className="d-flex">
+                    }} className="d-flex mb-4 ">
                         <div className="d-flex me-3 pe-1">
                             <Icon component={PlugDisconnected} size={21} />
                         </div>
@@ -131,11 +135,22 @@ const WalletMenu = () => {
                                 {t`Disconnect from your Wallet Extension`}
                             </small>
                         </div>
-
                     </a>
+                    <AddPaycerToken>
+                        <a className="d-flex">
+                            <div className="d-flex me-3 pe-1">
+                                <Icon component={AddCircle} size={21} />
+                            </div>
+                            <div>
+                                <h3 className="mb-0">{t`Add PCR Token`}</h3>
+                                <small className="text-muted" style={{fontSize: 10}}>
+                                    {t`Add our PCR Token to your Wallet`}
+                                </small>
+                            </div>
+                        </a>
+                    </AddPaycerToken>
                 </>
             </Dropdown>
-
             {(showWalletProviderModal &&
               <WalletProvider
                 providers={connectors}

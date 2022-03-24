@@ -7,9 +7,7 @@ import { Network } from '@styled-icons/entypo'
 import useNetwork from "@hooks/use-network";
 import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
-import Button from "@components/atoms/button";
 import { Check2 } from '@styled-icons/bootstrap'
-import { Copy, LogOut, RefreshCw, CheckCircle, Compass } from '@styled-icons/feather'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 function isDebug() {
