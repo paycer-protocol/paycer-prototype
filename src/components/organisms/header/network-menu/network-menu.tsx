@@ -62,8 +62,10 @@ const NetworkMenu = () => {
                         const isLast = Object.keys(providers).length === index +1
 
                         return (
-                            <a title={provider.chainName} className={`${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
-                                await handleSwitchNetwork(provider)
+                            <div title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
+                                if (!isActive) {
+                                    await handleSwitchNetwork(provider)
+                                }
                             }}>
                                 <div className="d-flex align-items-center">
                                     <CurrencyIcon
@@ -80,7 +82,7 @@ const NetworkMenu = () => {
                                 </div>
                                 }
 
-                            </a>
+                            </div>
                         )
                     })}
                 </>
