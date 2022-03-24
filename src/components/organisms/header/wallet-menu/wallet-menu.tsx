@@ -8,7 +8,9 @@ import { Wallet } from '@styled-icons/ionicons-sharp'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
 import useCopyClipboard from "@hooks/use-copy-clipboard";
-import { Copy, LogOut, RefreshCw, CheckCircle, Compass } from '@styled-icons/feather'
+import { Copy, CheckCircle, Compass } from '@styled-icons/feather'
+import { SwitchCamera } from '@styled-icons/material'
+import { PlugDisconnected } from '@styled-icons/fluentui-system-regular'
 import useToken from "@hooks/use-token";
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../../atoms/number/formatted-number";
@@ -44,82 +46,92 @@ const WalletMenu = () => {
         <>
             <Dropdown label={wallet.shortenAddress} desktopWidth={300} openBy="click" icon={Wallet}>
                 <>
-                    <a onClick={() => setCopiedWalletAdress(wallet.address)} className="mb-4 d-flex justify-content-between">
+                    <a onClick={() => setCopiedWalletAdress(wallet.address)} className="mb-4 d-flex">
+                        <div className="d-flex me-3 pe-1">
+                            <Icon component={Copy} size={21} />
+                            {copiedWalletAdress && <Icon className="ms-2 ps-2" component={CheckCircle} size={23} />}
+                        </div>
                         <div>
                             <h3 className="mb-0">{wallet.shortenAddress}</h3>
                             <small className="text-muted" style={{fontSize: 10}}>
                                 {t`Copy Wallet Address`}
                             </small>
                         </div>
-
-                        <div className="d-flex">
-                            <Icon component={Copy} size={23} />
-                            {copiedWalletAdress && <Icon className="ms-2 ps-2" component={CheckCircle} size={23} />}
-                        </div>
                     </a>
                     <div className="mb-4 border-bottom light-border pb-4 mb-4">
                         <div className="mb-3 d-flex align-items-center">
                             <CurrencyIcon
                                 className="me-3"
-                                width={23}
-                                height={23}
+                                width={21}
+                                height={21}
                                 symbol={symbol}
-                                style={{position: 'relative', left: '-3px'}}
                             />
-                            <FormattedNumber
-                                value={balance}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
+                            <div className="ps-1">
+                                <FormattedNumber
+                                    value={balance}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={4}
+                                />
+                            </div>
                         </div>
                         <div className="d-flex align-items-center">
                             <CurrencyIcon
                                 className="me-3"
-                                width={22}
-                                height={22}
+                                width={21}
+                                height={21}
                                 symbol={wallet.etherSymbol}
-                                style={{position: 'relative', left: '-3px'}}
                             />
-                            <FormattedNumber
-                                value={wallet.etherBalance}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
+                            <div className="ps-1">
+                                <FormattedNumber
+                                    value={wallet.etherBalance}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={4}
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    <a href={wallet.explorerUrl} target="_blank" className="mb-4 d-flex justify-content-between d-block">
+                    <a href={wallet.explorerUrl} target="_blank" className="mb-4 d-flex">
+                        <div className="d-flex me-3 pe-1">
+                            <Icon component={Compass} size={21} />
+                        </div>
                         <div>
                             <h3 className="mb-0">{t`Explorer`}</h3>
                             <small className="text-muted" style={{fontSize: 10}}>
                                 {t`View your Wallet in Blockchain-Explorer`}
                             </small>
                         </div>
-                        <Icon component={Compass} size={23} />
+
                     </a>
 
                     <a onClick={() => {
                         setShowWalletProviderModal(true)
-                    }} className="mb-4 d-flex justify-content-between">
+                    }} className="mb-4 d-flex">
+                        <div className="d-flex me-3 pe-1">
+                            <Icon component={SwitchCamera} size={21} />
+                        </div>
                         <div>
                             <h3 className="mb-0">{t`Switch Wallet`}</h3>
                             <small className="text-muted" style={{fontSize: 10}}>
                                 {t`Switch your Wallet Provider`}
                             </small>
                         </div>
-                        <Icon component={RefreshCw} size={23} />
+
                     </a>
                     <a onClick={async () => {
                         window.localStorage.setItem('walletConnectedProviderName', '')
                         await wallet.disconnect()
-                    }} className="d-flex justify-content-between">
+                    }} className="d-flex">
+                        <div className="d-flex me-3 pe-1">
+                            <Icon component={PlugDisconnected} size={21} />
+                        </div>
                         <div>
                             <h3 className="mb-0">{t`Disconnect Wallet`}</h3>
                             <small className="text-muted" style={{fontSize: 10}}>
                                 {t`Disconnect from your Wallet Extension`}
                             </small>
                         </div>
-                        <Icon component={LogOut} size={23} />
+
                     </a>
                 </>
             </Dropdown>

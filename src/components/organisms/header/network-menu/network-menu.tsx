@@ -8,6 +8,7 @@ import useNetwork from "@hooks/use-network";
 import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import Button from "@components/atoms/button";
+import { Check2 } from '@styled-icons/bootstrap'
 import { Copy, LogOut, RefreshCw, CheckCircle, Compass } from '@styled-icons/feather'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
@@ -41,42 +42,46 @@ const NetworkMenu = () => {
         }
     }
 
-
     if (!wallet.isConnected) {
         return null
     }
 
-
-
-
-
     return (
         <>
-            <Dropdown label={t`Network`} desktopWidth={300} openBy="click" icon={Network}>
+            <Dropdown label={network.chainName} desktopWidth={250} openBy="click" icon={Network}>
                 <>
+                    <div>
+                        <div className="mb-4">
+                            <h3 className="mb-0">{t`Network`}</h3>
+                            <small className="text-muted" style={{fontSize: 10}}>
+                                {t`Switch the Blockchain Network`}
+                            </small>
+                        </div>
+                    </div>
                     {Object.keys(providers).map((chainId, index) => {
                         const provider = providers[chainId]
                         const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
                         const isLast = Object.keys(providers).length === index +1
 
                         return (
-                            <a title={provider.chainName} className={`${!isLast ? 'mb-4' : ''} d-flex justify-content-between align-items-center`} onClick={async () => {
+                            <a title={provider.chainName} className={`${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
                                 await handleSwitchNetwork(provider)
                             }}>
                                 <div className="d-flex align-items-center">
                                     <CurrencyIcon
                                         className="me-3"
-                                        width={23}
-                                        height={23}
+                                        width={21}
+                                        height={21}
                                         symbol={provider.nativeCurrency.symbol}
-                                        style={{position: 'relative', left: '-3px'}}
                                     />
-                                    <h3 className="mb-0">{provider.chainName}</h3>
+                                    <div className="mb-0">{provider.chainName}</div>
                                 </div>
+                                {isActive &&
+                                <div className="d-flex ms-3">
+                                  <Icon color={'#00FF00'} component={Check2} size={23} />
+                                </div>
+                                }
 
-                                <div className="d-flex">
-                                    <Icon color={isActive ? '#00FF00' : '#FFFFFF'} component={isActive ? CheckCircle : RefreshCw} size={23} />
-                                </div>
                             </a>
                         )
                     })}

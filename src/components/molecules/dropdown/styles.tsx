@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const DropdownContent = styled.div`
-position: absolute; right: 0;  margin-top: 20px; border-radius: 10px; z-index: 44; top: 100%;
+position: absolute; right: 28%;  margin-top: 20px; border-radius: 10px; z-index: 44; top: 100%;
 `
 
 export const DropdownOpener = styled.div`
@@ -9,11 +9,12 @@ export const DropdownOpener = styled.div`
     background: linear-gradient(86deg,rgba(133,12,167,1) 0%,rgba(66,1,220,1) 100%)!important;
   `}
     border-radius: 25px;
-    flex-direction: row; padding: 0 20px;
-    height: 48px;
+    flex-direction: row; padding: 0 15px; padding-top: 1px;
+    height: 47px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     .opener-svg {
         color: #FFFFFF;
         &:hover {
@@ -21,7 +22,6 @@ export const DropdownOpener = styled.div`
         }
     }
 `
-
 export const DropdownContentChevron = styled.div`
   width: 0;
   height: 0;
