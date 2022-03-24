@@ -11,7 +11,6 @@ import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
-import {Wallet} from "@styled-icons/ionicons-sharp";
 
 function isDebug() {
     return window.location.hostname === 'localhost'
@@ -52,7 +51,7 @@ const NetworkMenu = () => {
 
     return (
         <>
-            <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Wallet} label={network.chainName} />}>
+            <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Network} label={network.chainName} />}>
                 <>
                     <div>
                         <div className="mb-4">
