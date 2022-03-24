@@ -48,42 +48,6 @@ const WalletMenu = () => {
         <>
             <Dropdown label={wallet.shortenAddress} desktopWidth={300} openBy="click" icon={Wallet}>
                 <>
-
-                    <div className="mb-4 border-bottom light-border pb-4">
-                        <div className="mb-3 d-flex align-items-center me-2">
-                            <CurrencyIcon
-                                className="me-3"
-                                width={21}
-                                height={21}
-                                symbol={symbol}
-                            />
-                            <div className="ps-1 mb-0">
-                                <FormattedNumber
-                                    value={balance}
-                                    minimumFractionDigits={2}
-                                    maximumFractionDigits={4}
-                                />
-                            </div>
-                            &nbsp; PCR
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <CurrencyIcon
-                                className="me-3"
-                                width={21}
-                                height={21}
-                                symbol={wallet.etherSymbol}
-                            />
-                            <div className="ps-1 mb-0">
-                                <FormattedNumber
-                                    value={wallet.etherBalance}
-                                    minimumFractionDigits={2}
-                                    maximumFractionDigits={4}
-                                />
-                            </div>
-                            &nbsp; {wallet.etherSymbol}
-                        </div>
-                    </div>
                     <a onClick={() => setCopiedWalletAdress(wallet.address)} className="mb-4 d-flex">
                         <div className="d-flex me-3 pe-1">
                             <Icon component={Copy} size={21} />
@@ -150,6 +114,49 @@ const WalletMenu = () => {
                             </small>
                         </div>
                     </a>
+                    <div className="mt-4 border-top light-border pt-4">
+
+                        <div className="mb-4">
+                            <h3 className="mb-0">Balance</h3>
+                            <small className="text-muted" style={{fontSize: 10}}>
+                                {t`Balances in connected wallet`}
+                            </small>
+                        </div>
+
+                        <div className="mb-3 d-flex align-items-center me-2">
+                            <CurrencyIcon
+                                className="me-3"
+                                width={21}
+                                height={21}
+                                symbol={symbol}
+                            />
+                            <div className="ps-1 mb-0">
+                                <FormattedNumber
+                                    value={balance}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={4}
+                                />
+                            </div>
+                            &nbsp; PCR
+                        </div>
+
+                        <div className="d-flex align-items-center">
+                            <CurrencyIcon
+                                className="me-3"
+                                width={21}
+                                height={21}
+                                symbol={wallet.etherSymbol}
+                            />
+                            <div className="ps-1 mb-0">
+                                <FormattedNumber
+                                    value={wallet.etherBalance}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={4}
+                                />
+                            </div>
+                            &nbsp; {wallet.etherSymbol}
+                        </div>
+                    </div>
                 </>
             </Dropdown>
             {(showWalletProviderModal &&
