@@ -122,7 +122,7 @@ msgstr "Approve"
 msgid "Associate"
 msgstr "Associate"
 
-#: src/components/organisms/swap/swap.tsx:174
+#: src/components/organisms/swap/swap.tsx:176
 msgid "Attention! The exchange rate has changed significantly."
 msgstr "Attention! The exchange rate has changed significantly."
 
@@ -250,7 +250,7 @@ msgstr "Cancel"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:179
-#: src/components/organisms/swap/swap.tsx:188
+#: src/components/organisms/swap/swap.tsx:190
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -474,7 +474,7 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Estimated fee"
 #~ msgstr "Estimated fee"
 
-#: src/components/organisms/swap/swap.tsx:238
+#: src/components/organisms/swap/swap.tsx:240
 msgid "Estimated output:"
 msgstr "Estimated output:"
 
@@ -498,7 +498,7 @@ msgstr "Fee"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:231
 #: src/components/organisms/invest/withdraw-form/index.tsx:247
-#: src/components/organisms/swap/swap.tsx:257
+#: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
 msgstr "Fee:"
 
@@ -1022,7 +1022,7 @@ msgstr "Senior"
 msgid "Slippage tollerance"
 msgstr "Slippage tollerance"
 
-#: src/components/organisms/swap/swap.tsx:249
+#: src/components/organisms/swap/swap.tsx:251
 msgid "Slippage:"
 msgstr "Slippage:"
 
@@ -1264,7 +1264,7 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:176
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
-#: src/components/organisms/swap/swap.tsx:189
+#: src/components/organisms/swap/swap.tsx:191
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 

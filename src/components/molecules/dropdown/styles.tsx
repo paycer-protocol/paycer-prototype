@@ -14,9 +14,8 @@ export const DropdownOpener = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    .opener-svg {
-        color: #FFFFFF;
+    .opener-svg { 
+        color: #FFFFFF; cursor: pointer;
         &:hover {
             color: #a6a6a6;
         }
@@ -47,5 +46,5 @@ export const DropdownContentChevron = styled.div`
 `
 
 export const DropdownLabel = styled.div`
-margin-left: 15px;
+margin-left: 15px; cursor: pointer;
 `
