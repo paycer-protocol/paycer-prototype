@@ -122,6 +122,10 @@ msgstr "Approve"
 msgid "Associate"
 msgstr "Associate"
 
+#: src/components/organisms/swap/swap.tsx:176
+msgid "Attention! The exchange rate has changed significantly."
+msgstr "Attention! The exchange rate has changed significantly."
+
 #: src/components/organisms/portfolio/portfolio-header.tsx:67
 #~ msgid "Available Balance"
 #~ msgstr "Available Balance"
@@ -246,7 +250,7 @@ msgstr "Cancel"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:179
-#: src/components/organisms/swap/swap.tsx:180
+#: src/components/organisms/swap/swap.tsx:190
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -470,7 +474,7 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Estimated fee"
 #~ msgstr "Estimated fee"
 
-#: src/components/organisms/swap/swap.tsx:230
+#: src/components/organisms/swap/swap.tsx:240
 msgid "Estimated output:"
 msgstr "Estimated output:"
 
@@ -494,7 +498,7 @@ msgstr "Fee"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:231
 #: src/components/organisms/invest/withdraw-form/index.tsx:247
-#: src/components/organisms/swap/swap.tsx:249
+#: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
 msgstr "Fee:"
 
@@ -568,8 +572,8 @@ msgstr "Immediate Availability Percentage"
 
 #: src/components/organisms/swap/fields/token0-input.tsx:16
 #: src/components/organisms/swap/fields/token1-input.tsx:16
-msgid "Insufficient {0} balance"
-msgstr "Insufficient {0} balance"
+#~ msgid "Insufficient {0} balance"
+#~ msgstr "Insufficient {0} balance"
 
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
@@ -1018,12 +1022,12 @@ msgstr "Senior"
 msgid "Slippage tollerance"
 msgstr "Slippage tollerance"
 
-#: src/components/organisms/swap/swap.tsx:241
+#: src/components/organisms/swap/swap.tsx:251
 msgid "Slippage:"
 msgstr "Slippage:"
 
-#: src/components/organisms/web3/add-paycer-token.tsx:56
-#: src/components/organisms/web3/add-paycer-token.tsx:61
+#: src/components/organisms/web3/add-paycer-token.tsx:48
+#: src/components/organisms/web3/add-paycer-token.tsx:53
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
@@ -1103,7 +1107,7 @@ msgstr "Supply"
 #~ msgid "Supply Liquidity"
 #~ msgstr "Supply Liquidity"
 
-#: src/components/organisms/swap/fields/submit-button.tsx:21
+#: src/components/organisms/swap/fields/submit-button.tsx:34
 #: src/config/routes.ts:34
 #: src/pages/swap/index.tsx:26
 msgid "Swap"
@@ -1260,7 +1264,7 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:176
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
-#: src/components/organisms/swap/swap.tsx:181
+#: src/components/organisms/swap/swap.tsx:191
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 
@@ -1405,6 +1409,10 @@ msgstr "Your APR:"
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
 #~ msgid "by"
 #~ msgstr "by"
+
+#: src/components/organisms/swap/fields/submit-button.tsx:34
+msgid "insufficient balance"
+msgstr "insufficient balance"
 
 #: src/components/molecules/token-input/token-input.tsx:74
 msgid "max"

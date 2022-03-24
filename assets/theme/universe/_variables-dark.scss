@@ -24,6 +24,7 @@ $black: #0B1120;
 
 // #1B2E44
 
+$gray-300-dark: #25364d;
 $gray-400-dark: #365172;
 $gray-500-dark: #192434;
 $gray-600-dark: #213752;
@@ -59,6 +60,7 @@ $danger: $red;
 $light: $gray-200;
 $lighter: $gray-100;
 $dark: $black !default;
+$lighter-border: #25364d;
 
 /* beautify ignore:start */
 $theme-colors: () !default;

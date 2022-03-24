@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Trans } from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import classnames from 'classnames'
 import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
@@ -12,6 +12,8 @@ import useWallet from '@hooks/use-wallet'
 import WalletConnect from '@components/organisms/web3/wallet-connect'
 import Network from '@components/organisms/web3/network'
 import { supportedChains } from "@config/network";
+import Icon from "@components/atoms/icon";
+import {AddCircle} from "@styled-icons/fluentui-system-regular";
 
 interface OffCanvasProps {
   show: boolean
@@ -86,7 +88,19 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
             <h4 className="mb-3 text-muted">
               <Trans>Paycer Token</Trans>
             </h4>
-            <AddPaycerToken />
+            <AddPaycerToken>
+                <div className="d-flex mt-4">
+                  <div className="d-flex me-3 pe-1">
+                    <Icon component={AddCircle} size={21} />
+                  </div>
+                  <div>
+                    <h3 className="mb-0">{t`Add PCR Token`}</h3>
+                    <small className="text-muted" style={{fontSize: 10}}>
+                      {t`Add our PCR Token to your Wallet`}
+                    </small>
+                  </div>
+                </div>
+            </AddPaycerToken>
           </div>
         </Modal.Body>
       </>

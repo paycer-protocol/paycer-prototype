@@ -58,6 +58,7 @@ export default function Swap() {
         const tradeContext = await tradeFactory.init(
             values.tradePair,
             values.tradeSettings,
+            // @ts-ignore
             networkSettings
         )
 
@@ -117,6 +118,7 @@ export default function Swap() {
         quoteChangedSignificantly: false,
         quoteChangedSignificantlyTresholdPercentage: 5,
         initFactory,
+        // @ts-ignore
         networkSettings
     }
 
