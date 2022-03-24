@@ -16,6 +16,7 @@ import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../../atoms/number/formatted-number";
 import AddPaycerToken from '@components/organisms/web3/add-paycer-token'
 import { AddCircle } from '@styled-icons/fluentui-system-regular'
+import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
 
 const WalletMenu = () => {
 
@@ -46,7 +47,7 @@ const WalletMenu = () => {
 
     return (
         <>
-            <Dropdown label={wallet.shortenAddress} desktopWidth={300} openBy="click" icon={Wallet}>
+            <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Wallet} label={wallet.shortenAddress} />}>
                 <>
                     <a onClick={() => setCopiedWalletAdress(wallet.address)} className="mb-4 d-flex">
                         <div className="d-flex me-3 pe-1">

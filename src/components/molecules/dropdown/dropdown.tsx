@@ -7,9 +7,8 @@ export interface DropdownProps {
     // TODO: implement mouseover
     openBy?: 'mouseover' | 'click'
     children: React.ReactNode
-    icon: any
+    opener: React.ReactNode
     desktopWidth?: number
-    label?: string
 }
 
 const Dropdown = (props: DropdownProps) => {
@@ -19,9 +18,8 @@ const Dropdown = (props: DropdownProps) => {
     const {
         openBy,
         children,
-        icon,
         desktopWidth,
-        label,
+        opener
     } = props
 
     const [open, setOpen] = useState(false)
@@ -37,20 +35,15 @@ const Dropdown = (props: DropdownProps) => {
 
     return (
         <div ref={dropdownRef} className="d-flex justify-content-between align-items-center" onClick={() => setOpen(!open)}>
-            <Styles.DropdownOpener className="card mb-0 bg-dark" isOpen={open}>
-                <Icon component={icon} size={20} className="opener-svg" />
-                {open &&
-                <Styles.DropdownContent onClick={(e) => e.stopPropagation()} style={!isTabletOrMobile && desktopWidth ? {'width': desktopWidth } : null} className="card mb-0">
-                  <div className="card-body">
-                    <Styles.DropdownContentChevron />
-                      {children}
-                  </div>
-                </Styles.DropdownContent>
-                }
-                {label &&
-                    <Styles.DropdownLabel>{label}</Styles.DropdownLabel>
-                }
-            </Styles.DropdownOpener>
+            {opener}
+            {open &&
+            <Styles.DropdownContent onClick={(e) => e.stopPropagation()} style={!isTabletOrMobile && desktopWidth ? {'width': desktopWidth } : null} className="card mb-0">
+              <div className="card-body">
+                <Styles.DropdownContentChevron />
+                  {children}
+              </div>
+            </Styles.DropdownContent>
+            }
         </div>
     )
 }

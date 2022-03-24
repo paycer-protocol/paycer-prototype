@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 import {t, Trans} from '@lingui/macro'
 import useWallet from '@hooks/use-wallet'
 import Icon from "@components/atoms/icon";
@@ -9,11 +10,16 @@ import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from "@components/atoms/currency-icon";
+import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
+import {Wallet} from "@styled-icons/ionicons-sharp";
 
 function isDebug() {
     return window.location.hostname === 'localhost'
         || window.location.search === '?debug=1'
 }
+
+export const NetworkItem = styled.a`
+`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
@@ -46,7 +52,7 @@ const NetworkMenu = () => {
 
     return (
         <>
-            <Dropdown label={network.chainName} desktopWidth={250} openBy="click" icon={Network}>
+            <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Wallet} label={network.chainName} />}>
                 <>
                     <div>
                         <div className="mb-4">
@@ -62,7 +68,7 @@ const NetworkMenu = () => {
                         const isLast = Object.keys(providers).length === index +1
 
                         return (
-                            <div title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
+                            <NetworkItem as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
                                 if (!isActive) {
                                     await handleSwitchNetwork(provider)
                                 }
@@ -82,7 +88,7 @@ const NetworkMenu = () => {
                                 </div>
                                 }
 
-                            </div>
+                            </NetworkItem>
                         )
                     })}
                 </>
