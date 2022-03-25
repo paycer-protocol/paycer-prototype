@@ -35,31 +35,6 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
     return (
       <div className="table-responsive mb-0 border-0">
           <table className="table table-sm table-nowrap card-table" style={{background: 'rgb(14 22 40 / 50%)'}}>
-              <thead className="position-relative" style={{top: '-10px'}}>
-              <tr>
-                  <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                    <span className="text-white">
-                        <Trans>Platform</Trans>
-                    </span>
-                  </th>
-                  <th className={`${thClass} border-left-0 border-right-0`}>
-                    <span className="text-white">
-                        <Trans>Description</Trans>
-                    </span>
-                  </th>
-                  <th className={`${thClass} border-left-0 border-right-0`}>
-                    <span className="text-white">
-                        <Trans>Type</Trans>
-                    </span>
-                  </th>
-                  <th className={`${thClass} border-left-0 border-right-0`}>
-                    <span className="text-white">
-                        <Trans>Chain</Trans>
-                    </span>
-                  </th>
-                  <th className={`${thClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0`} />
-              </tr>
-              </thead>
               <tbody className="list position-relative" style={{top: '-10px'}}>
               {tokenOverviewListItems.length && tokenOverviewListItems.map((item, key) => {
                   return (
