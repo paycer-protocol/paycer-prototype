@@ -265,14 +265,14 @@
     &:before {
       content: '';
       position: absolute;
-      bottom: -0.25rem;
-      right: 0.5rem;
-      height: 80%;
+      bottom: -4px;
+      left: 2px;
+      right: 8px;
       top: 4px;
+      height: 80%;
       width: 4px;
       background: linear-gradient(270deg,#3c01e3,#6808c0,#8d0ea2);
       border: 0;
-      left: 2px;
     }
   }
 }
