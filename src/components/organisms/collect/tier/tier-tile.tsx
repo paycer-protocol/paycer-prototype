@@ -6,8 +6,9 @@ import { LoyaltyTier, loyaltyTierLabels, stakingRequirements } from "@config/loy
 import { loyaltyTierFeatureQualities, loyaltyTierFeatures, loyaltyTierNftQualities } from "@config/nft-qualities";
 import { Shuffle } from "@styled-icons/material";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
+import MintingApproveModal from "../minting/minting-approve-modal";
 import QualityCircle from "../quality/quality-circle";
 
 const Separator = styled.div`
@@ -41,6 +42,8 @@ export interface TierTileProps {
 }
 
 const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) => {
+    const [mintingApproveModal, setMintingApproveModal] = useState(false);
+
     let button = <Button disabled>Wallet required</Button>;
     if (isConnected) {
         if (stakedBalance < stakingRequirements[loyaltyTier].minimum) {
@@ -48,9 +51,14 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
         } else if (stakedBalance > stakingRequirements[loyaltyTier].maximum) {
             button = <Button disabled>Below your tier</Button>;
         } else {
-            button = <GradientButton>Mint your NFT</GradientButton>;
+            button = (
+                <span onClick={() => setMintingApproveModal(true)}>
+                    <GradientButton>Mint your NFT</GradientButton>
+                </span>
+            );
         }
     }
+
 
     return (
         <Card className="position-relative">
@@ -66,6 +74,8 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
                 </div>
             </Card.Body>
             <Rank>{loyaltyTierLabels[loyaltyTier]}</Rank>
+
+            <MintingApproveModal show={mintingApproveModal} onHide={() => setMintingApproveModal(false)} />
         </Card>
     );
 };

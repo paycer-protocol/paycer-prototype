@@ -6,6 +6,7 @@ import TierList from '@components/organisms/collect/tier/tier-list'
 import LegendSection from '@components/organisms/collect/legend-section'
 import MarketingHero from '@components/organisms/collect/marketing-hero'
 import ExplanationSection from '@components/organisms/collect/explanatory-section'
+import NftList from '@components/organisms/collect/owned/nft-list'
 
 export default function Collect() {
 
@@ -35,6 +36,7 @@ export default function Collect() {
         </div>
         <div className="pt-6" ref={tierListRef}><TierList /></div>
         <div className="pt-6"><LegendSection /></div>
+        <div className="pt-6"><NftList /></div>
         <div className="pt-6"><MarketingHero /></div>
         <div className="pt-6" ref={explanationSectionRef}><ExplanationSection /></div>
       </div>
