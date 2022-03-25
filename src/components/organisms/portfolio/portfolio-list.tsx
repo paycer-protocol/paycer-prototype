@@ -43,27 +43,27 @@ export default function PortfolioList(props: PortfolioProps) {
                 <thead className="position-relative" style={{top: '-10px'}}>
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Pool</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Risk Level</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Investment ratio </Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>APR</Trans>
                             </span>
                         </th>
-                        <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                        <th className={`${thClass} bg-card-blue border border-secondary-dark card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0`}>
+                            <span className="text-muted">
                                 <Trans>Investment</Trans>
                             </span>
                         </th>

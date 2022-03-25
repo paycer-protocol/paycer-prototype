@@ -13,27 +13,27 @@ export default function   InvestList() {
                 <thead className="position-relative" style={{top: '-10px'}}>
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>POOL</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Risk Level</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Rewards</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>APR</Trans>
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
-                            <span className="text-white">
+                            <span className="text-muted">
                                 <Trans>Total Volume</Trans>
                             </span>
                         </th>
