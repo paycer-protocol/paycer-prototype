@@ -11,6 +11,8 @@ import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
+import {Wallet} from "@styled-icons/ionicons-sharp";
+import {useMediaQuery} from "react-responsive";
 
 function isDebug() {
     return window.location.hostname === 'localhost'
@@ -24,6 +26,7 @@ const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
     const network = useNetwork()
     const wallet = useWallet()
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
     const handleSwitchNetwork = async provider => {
         try {
@@ -49,49 +52,58 @@ const NetworkMenu = () => {
         return null
     }
 
+    const renderMenu = () => {
+        return (
+            <>
+                <div>
+                    <div className="mb-4">
+                        <h3 className="mb-0">{t`Network`}</h3>
+                        <small className="text-muted" style={{fontSize: 10}}>
+                            {t`Switch the Blockchain Network`}
+                        </small>
+                    </div>
+                </div>
+                {Object.keys(providers).map((chainId, index) => {
+                    const provider = providers[chainId]
+                    const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
+                    const isLast = Object.keys(providers).length === index +1
+
+                    return (
+                        <NetworkItem as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
+                            if (!isActive) {
+                                await handleSwitchNetwork(provider)
+                            }
+                        }}>
+                            <div className="d-flex align-items-center">
+                                <CurrencyIcon
+                                    className="me-3"
+                                    width={21}
+                                    height={21}
+                                    symbol={provider.nativeCurrency.symbol}
+                                />
+                                <div className="mb-0">{provider.chainName}</div>
+                            </div>
+                            {isActive &&
+                            <div className="d-flex ms-3">
+                              <Icon color={'#00FF00'} component={Check2} size={23} />
+                            </div>
+                            }
+
+                        </NetworkItem>
+                    )
+                })}
+            </>
+        )
+    }
+
     return (
         <>
-            <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Network} label={network.chainName} />}>
-                <>
-                    <div>
-                        <div className="mb-4">
-                            <h3 className="mb-0">{t`Network`}</h3>
-                            <small className="text-muted" style={{fontSize: 10}}>
-                                {t`Switch the Blockchain Network`}
-                            </small>
-                        </div>
-                    </div>
-                    {Object.keys(providers).map((chainId, index) => {
-                        const provider = providers[chainId]
-                        const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
-                        const isLast = Object.keys(providers).length === index +1
-
-                        return (
-                            <NetworkItem as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
-                                if (!isActive) {
-                                    await handleSwitchNetwork(provider)
-                                }
-                            }}>
-                                <div className="d-flex align-items-center">
-                                    <CurrencyIcon
-                                        className="me-3"
-                                        width={21}
-                                        height={21}
-                                        symbol={provider.nativeCurrency.symbol}
-                                    />
-                                    <div className="mb-0">{provider.chainName}</div>
-                                </div>
-                                {isActive &&
-                                <div className="d-flex ms-3">
-                                  <Icon color={'#00FF00'} component={Check2} size={23} />
-                                </div>
-                                }
-
-                            </NetworkItem>
-                        )
-                    })}
-                </>
-            </Dropdown>
+            {isTabletOrMobile ?
+                renderMenu()
+                : <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Network} label={network.chainName} />}>
+                    {renderMenu()}
+                </Dropdown>
+            }
         </>
     )
 }
