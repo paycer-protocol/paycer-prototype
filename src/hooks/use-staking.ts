@@ -145,7 +145,7 @@ export default function useStaking():UseStakingProps {
         } catch(e) {
             setClaimError(true)
         }
-        setLoading(true)
+        setLoading(false)
     }
 
     const resetStatus = () => {
