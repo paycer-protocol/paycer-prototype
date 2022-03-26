@@ -1,16 +1,19 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import HeroSection from '@components/organisms/collect/hero-section'
+import Button from '@components/atoms/button'
+import Link from 'next/link'
 
 export default function Collect() {
   return (
     <>
       <div className="container mt-3">
         <PageHeader>
-          <div className="row align-items-center">
-            <Trans>Back</Trans>
-          </div>
+          <Link href="/collect">
+            <Button>
+              <Trans>Back</Trans>
+            </Button>
+          </Link>
         </PageHeader>
         <div>
           

@@ -1,6 +1,6 @@
 import Button from "@components/atoms/button";
 import Card from "@components/molecules/card";
-import { Nft } from "@hooks/nft/use-owned-nfts";
+import Nft from "@hooks/nft/nft";
 import { Trans } from "@lingui/macro";
 import Link from "next/link";
 

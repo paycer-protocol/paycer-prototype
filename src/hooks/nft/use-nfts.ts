@@ -1,8 +1,8 @@
 import useWallet from '@hooks/use-wallet';
 import nftProvider from '@providers/nft';
+import Nft from './nft';
 import { ChainId, useContractCalls } from '@usedapp/core';
 import axios from "axios";
-import { BigNumber } from "ethers";
 import { Interface } from 'ethers/lib/utils';
 import { useEffect, useMemo, useState } from "react";
 
@@ -14,13 +14,6 @@ interface NftData {
         trait_type: string;
         value: string | boolean | number;
     }
-}
-
-export interface Nft {
-    id: BigNumber;
-    name: string;
-    description: string;
-    image: string;
 }
 
 function withIpfsGateway(url: string) {

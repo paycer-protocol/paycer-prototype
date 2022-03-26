@@ -2,7 +2,7 @@ import GradientButton from "@components/atoms/button/gradient-button"
 import { Trans } from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import { useState } from "react"
-import WalletProvider from "../web3/wallet-provider"
+import WalletProvider from "../../web3/wallet-provider"
 
 const ConnectWalletButton = () => {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)

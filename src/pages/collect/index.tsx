@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { Trans } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import HeroSection from '@components/organisms/collect/hero-section'
-import TierList from '@components/organisms/collect/tier/tier-list'
-import LegendSection from '@components/organisms/collect/legend-section'
-import MarketingHero from '@components/organisms/collect/marketing-hero'
-import ExplanationSection from '@components/organisms/collect/explanatory-section'
-import NftList from '@components/organisms/collect/owned/nft-list'
+import HeroSection from '@components/organisms/collect/overview/hero-section'
+import TierList from '@components/organisms/collect/overview/tier/tier-list'
+import LegendSection from '@components/organisms/collect/overview/legend-section'
+import MarketingHero from '@components/organisms/collect/overview/marketing-hero'
+import ExplanationSection from '@components/organisms/collect/overview/explanatory-section'
+import NftList from '@components/organisms/collect/overview/owned/nft-list'
 
 export default function Collect() {
 
