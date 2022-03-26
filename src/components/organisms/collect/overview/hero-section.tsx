@@ -55,10 +55,12 @@ const HeroSection = (props: HeroSectionProps) => {
                 </p>
             </div>
             <div className="col-xl-6 px-5">
-                <Image src="/img/nft/cheering_octane_monkey_1.webp" alt="NFT" className="w-100" />
+              <video width="100%" height="100%" controls={false} loop autoPlay>
+                <source src="/img/nft/animated_medium20220126-24456-1gd6r9n.mp4" type="video/mp4" />
+              </video>
             </div>
         </div>
     );
-};
+}
 
 export default HeroSection;
