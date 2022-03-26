@@ -29,7 +29,16 @@ function withIpfsGateway(url: string) {
     }
 }
 
-export default function useOwnedNfts(): Nft[] | undefined {
+export type UseOwnedNftsProps = {
+    status: 'loading';
+} | {
+    status: 'success';
+    nfts: Nft[] | undefined;
+} | {
+    status: 'error';
+};
+
+export default function useOwnedNfts(): UseOwnedNftsProps {
     const { address: owner, isConnected, chainId } = useWallet();
 
     const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).contract;
@@ -60,19 +69,22 @@ export default function useOwnedNfts(): Nft[] | undefined {
 
     const jsonUrls = properties.map((arr) => withIpfsGateway(arr[1]));
 
-    const [result, setResult] = useState<Nft[] | undefined>(undefined);
+    const [result, setResult] = useState<UseOwnedNftsProps>({ status: 'loading' });
 
     useEffect(() => {
         async function fetch() {
             try {
                 const results = await Promise.all(jsonUrls.map((url) => axios.get<NftData>(url)));
-                setResult(results.map((result) => ({
-                    name: result.data.name,
-                    description: result.data.description,
-                    image: withIpfsGateway(result.data.image),
-                })));
+                setResult({
+                    status: 'success',
+                    nfts: results.map((result) => ({
+                        name: result.data.name,
+                        description: result.data.description,
+                        image: withIpfsGateway(result.data.image),
+                    })),
+                });
             } catch (err) {
-                // TODO: Handle error
+                setResult({ status: 'error' })
             }
         }
         fetch();
