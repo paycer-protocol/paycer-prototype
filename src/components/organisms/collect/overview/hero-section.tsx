@@ -55,7 +55,7 @@ const HeroSection = (props: HeroSectionProps) => {
                 </p>
             </div>
             <div className="col-xl-6 px-5">
-                <Image src="/img/nft/nft.png" alt="NFT" />
+                <Image src="/img/nft/cheering_octane_monkey_1.webp" alt="NFT" className="w-100" />
             </div>
         </div>
     );

@@ -62,7 +62,7 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
 
     return (
         <Card className="position-relative">
-            <Card.Img src="/img/nft/nft.png" className="p-5" />
+            <Card.Img src="/img/nft/cheering_octane_monkey_1.webp" />
             <Separator />
             <Card.Body css={{ textAlign: 'center' }}>
                 <DetailsRow left={<>Staked</>} right={<>&gt; {stakingRequirements[loyaltyTier].minimum} PCR</>} />
