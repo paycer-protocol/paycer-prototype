@@ -25,7 +25,7 @@ const Layout = () => {
                     <Card.Img src={nft.image} className="p-5" />
                 </Card>
                 <div className="row">
-                    <div className="col-4">Owner</div>
+                    <div className="col-4">Owner {nft.owner}</div>
                 </div>
             </div>
             <div className="col-6">

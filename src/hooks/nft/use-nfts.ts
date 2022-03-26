@@ -34,7 +34,7 @@ export type UseNftsProps = {
 };
 
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
-    const { address: owner, isConnected, chainId } = useWallet();
+    const { chainId } = useWallet();
 
     const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).contract;
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
@@ -45,6 +45,13 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
         method: 'properties',
         args: [tokenId],
     })));
+
+    const owners = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
+        abi: abiInterface,
+        address: contractAddress,
+        method: 'ownerOf',
+        args: [tokenId],
+    }))).map((result) => result ? result[0] : undefined);
 
     const jsonUrls = properties.map((prop) => prop ? withIpfsGateway(prop[1]) : undefined);
 
@@ -60,6 +67,7 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
                         id: tokenIds[i],
                         name: result.data.name,
                         description: result.data.description,
+                        owner: owners[i],
                         image: withIpfsGateway(result.data.image),
                     })),
                 });
