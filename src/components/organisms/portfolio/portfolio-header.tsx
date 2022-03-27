@@ -11,7 +11,6 @@ import useWallet from "@hooks/use-wallet";
 const DashContainer = styled.div`
   height: 260px;
 `
-
 const ChartWrapper = styled.div`
   position: absolute;
   border-radius: 50%;
@@ -19,8 +18,8 @@ const ChartWrapper = styled.div`
   top: -38%;
 
   @media (max-width: 767.98px) {
-      width: 350px;
-        top: -140%;
+      width: 95%;
+      top: -90%;
   }
 `
 

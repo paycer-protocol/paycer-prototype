@@ -1,19 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import {t, Trans} from '@lingui/macro'
 import classnames from 'classnames'
 import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
-import Image from '@components/atoms/image'
-import Navbar from '@components/molecules/navbar'
-import AddPaycerToken from '../web3/add-paycer-token'
 import useWallet from '@hooks/use-wallet'
-import WalletConnect from '@components/organisms/web3/wallet-connect'
-import Network from '@components/organisms/web3/network'
-import { supportedChains } from "@config/network";
-import Icon from "@components/atoms/icon";
-import {AddCircle} from "@styled-icons/fluentui-system-regular";
+import Navbar from '@components/molecules/navbar'
+import Image from '@components/atoms/image'
+import WalletMenu from "@components/organisms/header/wallet-menu";
+import NetworkMenu from "@components/organisms/header/network-menu";
 
 interface OffCanvasProps {
   show: boolean
@@ -40,68 +35,43 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="mb-5">
-            <h4 className="text-muted mb-3">
-              <Trans>Wallet</Trans>
-            </h4>
-            <div className="d-flex flex-column">
-              <div className="mb-3">
-                <WalletConnect className="w-100" />
-              </div>
-              {wallet.isConnected && (
-                <Network />
-              )}
-            </div>
-          </div>
-          <div className="mb-5">
-            <h4 className="text-muted mb-2">
-              <Trans>Menu</Trans>
-            </h4>
+          <div className="mb-5 border-bottom light-border pb-4">
             <ul className="navbar-nav">
               {qualifiedRoutes.map((route, key) => (
-                <li className="nav-item" key={`nav${key}`}>
-                  <Link href={route.path}>
-                    <a
-                      className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')}
-                      title={route.label}
-                      onClick={onHide}
-                    >
-                      {route.label}
-                    </a>
-                  </Link>
-                </li>
+                  <li className="nav-item h3" key={`nav${key}`}>
+                    <Link href={route.path}>
+                      <a
+                          className={classnames({active: pathname == route.path || (route.subroutes ? route?.subroutes.find(r => r.path === pathname) : false)}, 'nav-link')}
+                          title={route.label}
+                          onClick={onHide}
+                      >
+                        {route.label}
+                      </a>
+                    </Link>
+                  </li>
               ))}
               <li className="nav-item" key="navpcr">
                 <a
-                  href="https://app.dodoex.io/exchange/USDC-PCR?network=polygon"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="nav-link"
-                  title="Buy PCR"
+                    href="https://app.dodoex.io/exchange/USDC-PCR?network=polygon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-link"
+                    title="Buy PCR"
                 >
                   Buy PCR
                 </a>
               </li>
             </ul>
           </div>
+          {wallet.isConnected &&
+            <div className="mb-5 border-bottom light-border pb-5">
+              <NetworkMenu />
+            </div>
+          }
           <div className="mb-5">
-            <h4 className="mb-3 text-muted">
-              <Trans>Paycer Token</Trans>
-            </h4>
-            <AddPaycerToken>
-                <div className="d-flex mt-4">
-                  <div className="d-flex me-3 pe-1">
-                    <Icon component={AddCircle} size={21} />
-                  </div>
-                  <div>
-                    <h3 className="mb-0">{t`Add PCR Token`}</h3>
-                    <small className="text-muted" style={{fontSize: 10}}>
-                      {t`Add our PCR Token to your Wallet`}
-                    </small>
-                  </div>
-                </div>
-            </AddPaycerToken>
+            <WalletMenu />
           </div>
+
         </Modal.Body>
       </>
     </Modal>
