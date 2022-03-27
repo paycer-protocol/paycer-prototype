@@ -33,7 +33,7 @@ export default function FlipSwap() {
             tradePair,
         } = values
 
-        if (!token0 && !token1) {
+        if ((!token0 && !token1) || !token0.chainAddresses || !token1.chainAddresses) {
             return
         }
 

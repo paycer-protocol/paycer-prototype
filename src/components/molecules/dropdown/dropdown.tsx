@@ -27,7 +27,7 @@ const Dropdown = (props: DropdownProps) => {
     useEffect(() => {
         document.addEventListener('click', function(e) {
             // @ts-ignore
-            if (!e?.path.includes(dropdownRef.current)) {
+            if (e.path !== undefined && !e.path.includes(dropdownRef.current)) {
                 setOpen(false)
             }
         })
