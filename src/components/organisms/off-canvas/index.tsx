@@ -63,9 +63,11 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
               </li>
             </ul>
           </div>
-          <div className="mb-5 border-bottom light-border pb-5">
-            <NetworkMenu />
-          </div>
+          {wallet.isConnected &&
+            <div className="mb-5 border-bottom light-border pb-5">
+              <NetworkMenu />
+            </div>
+          }
           <div className="mb-5">
             <WalletMenu />
           </div>

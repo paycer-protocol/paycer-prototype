@@ -10,8 +10,10 @@ import useWallet from "@hooks/use-wallet";
 
 const DashContainer = styled.div`
   height: 260px;
+  @media (max-width: 767.98px) {
+     margin-top: 100px;
+  }
 `
-
 const ChartWrapper = styled.div`
   position: absolute;
   border-radius: 50%;
