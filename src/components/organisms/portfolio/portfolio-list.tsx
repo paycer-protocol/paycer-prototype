@@ -10,7 +10,6 @@ import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import useWallet from "@hooks/use-wallet";
-import LoginCard from "@components/organisms/login-card";
 import GradientButton from "@components/atoms/button/gradient-button";
 
 interface PortfolioStrategy extends StrategyType {
@@ -33,7 +32,6 @@ const ProgressbarColorWrapper = styled.div`
 
 export default function PortfolioList(props: PortfolioProps) {
     const { strategies, totalInvest } = props
-    const wallet = useWallet()
     const thClass = 'bg-card-blue border border-secondary-dark'
     const tdClass = 'bg-dark border border-purple-dark'
 
@@ -121,27 +119,21 @@ export default function PortfolioList(props: PortfolioProps) {
                             )
                             }) : (
                             <tr>
-                                {wallet.isConnected ?
-                                    <td colSpan={5}>
-                                        <div className="text-center">
-                                            <h4 className="text-muted mb-4">
-                                                <Trans>You have no investments in your portfolio</Trans>
-                                            </h4>
-                                            <Link href="/invest">
-                                                <GradientButton
-                                                    title={t`Connect to a Wallet`}
-                                                    className="px-6"
-                                                >
-                                                    <Trans>Invest</Trans>
-                                                </GradientButton>
-                                            </Link>
-                                        </div>
-                                    </td>
-                                    :
-                                    <td colSpan={5} className="bg-transparent p-0">
-                                        <LoginCard />
-                                    </td>
-                                }
+                                <td colSpan={5}>
+                                    <div className="text-center">
+                                        <h4 className="text-muted mb-4">
+                                            <Trans>You have no investments in your portfolio</Trans>
+                                        </h4>
+                                        <Link href="/invest">
+                                            <GradientButton
+                                                title={t`Connect to a Wallet`}
+                                                className="px-6"
+                                            >
+                                                <Trans>Invest</Trans>
+                                            </GradientButton>
+                                        </Link>
+                                    </div>
+                                </td>
                             </tr>
                         )}
                 </tbody>
