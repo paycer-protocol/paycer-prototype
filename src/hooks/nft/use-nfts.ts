@@ -5,6 +5,7 @@ import { ChainId, useContractCalls } from '@usedapp/core';
 import axios from "axios";
 import { Interface } from 'ethers/lib/utils';
 import { useEffect, useMemo, useState } from "react";
+import loyaltyTiers from '@config/loyalty-tiers';
 
 interface OpenseaMetadata {
     name: string;
@@ -54,6 +55,13 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
         args: [tokenId],
     }))).map((result) => result ? result[0] : undefined);
 
+    const tiers = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
+        abi: abiInterface,
+        address: contractAddress,
+        method: 'startLevel',
+        args: [tokenId],
+    }))).map((result) => result ? result[0] : undefined);
+
     const jsonUrls = properties.map((prop) => prop ? withIpfsGateway(prop[1]) : undefined);
 
     const [result, setResult] = useState<UseNftsProps>({ status: 'loading' });
@@ -70,6 +78,7 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
                         description: result.data.description,
                         owner: owners[i],
                         image: withIpfsGateway(result.data.image),
+                        tier: loyaltyTiers[tiers[i] - 1],
                         attributes: result.data.attributes.map((attribute) => ({
                             displayType: attribute.display_type,
                             traitType: attribute.trait_type,

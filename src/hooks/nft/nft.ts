@@ -1,3 +1,4 @@
+import { LoyaltyTier } from "@config/loyalty-tiers";
 import { BigNumber } from "ethers";
 
 export default interface Nft {
@@ -6,6 +7,7 @@ export default interface Nft {
     description: string;
     owner: string;
     image: string;
+    tier: LoyaltyTier;
     attributes: {
         displayType?: string;
         traitType: string;

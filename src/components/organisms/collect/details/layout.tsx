@@ -1,6 +1,7 @@
 import GradientButton from "@components/atoms/button/gradient-button";
 import { FormattedNumber } from "@components/atoms/number";
 import Card from "@components/molecules/card";
+import { loyaltyTierLabels } from "@config/loyalty-tiers";
 import useNfts from "@hooks/nft/use-nfts";
 import { Trans } from "@lingui/macro";
 import { BigNumber } from "ethers";
@@ -45,6 +46,9 @@ const Layout = () => {
             <div className="col-6">
                 <div className="ps-2">
                     <div className="mb-4">
+                        <span className="me-3">
+                            <Pill>{loyaltyTierLabels[nft.tier]}</Pill>
+                        </span>
                         <span className="me-3">
                             <Pill>#<FormattedNumber value={nft.id.toString()} /></Pill>
                         </span>
