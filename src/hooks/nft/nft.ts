@@ -6,4 +6,9 @@ export default interface Nft {
     description: string;
     owner: string;
     image: string;
+    attributes: {
+        displayType?: string;
+        traitType: string;
+        value: string | number | boolean;
+    }[];
 }

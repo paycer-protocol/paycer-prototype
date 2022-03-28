@@ -6,14 +6,15 @@ import axios from "axios";
 import { Interface } from 'ethers/lib/utils';
 import { useEffect, useMemo, useState } from "react";
 
-interface NftData {
+interface OpenseaMetadata {
     name: string;
     description: string;
     image: string;
     attributes: {
+        display_type?: string;
         trait_type: string;
         value: string | boolean | number;
-    }
+    }[];
 }
 
 function withIpfsGateway(url: string) {
@@ -60,7 +61,7 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
     useEffect(() => {
         async function fetch() {
             try {
-                const results = await Promise.all(jsonUrls.map((url) => axios.get<NftData>(url)));
+                const results = await Promise.all(jsonUrls.map((url) => axios.get<OpenseaMetadata>(url)));
                 setResult({
                     status: 'success',
                     nfts: results.map((result, i) => ({
@@ -69,6 +70,11 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
                         description: result.data.description,
                         owner: owners[i],
                         image: withIpfsGateway(result.data.image),
+                        attributes: result.data.attributes.map((attribute) => ({
+                            displayType: attribute.display_type,
+                            traitType: attribute.trait_type,
+                            value: attribute.value,
+                        })),
                     })),
                 });
             } catch (err) {
