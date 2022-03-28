@@ -9,6 +9,7 @@ import { BigNumber } from "ethers";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Attributes from "./attributes";
 import GetStarted from "./get-started";
 import Pill from "./pill";
 
@@ -63,6 +64,8 @@ const Layout = () => {
                     <p>{nft.description}</p>
 
                     <div><FormattedNumber value={tierMintCount} /> <Trans>minted</Trans></div>
+
+                    <Attributes attributes={nft.attributes} />
 
                     <GetStarted /> 
                 </div>
