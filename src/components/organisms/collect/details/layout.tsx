@@ -2,6 +2,7 @@ import GradientButton from "@components/atoms/button/gradient-button";
 import { FormattedNumber } from "@components/atoms/number";
 import Card from "@components/molecules/card";
 import { loyaltyTierLabels } from "@config/loyalty-tiers";
+import useMintCount from "@hooks/nft/use-mint-count";
 import useNfts from "@hooks/nft/use-nfts";
 import { Trans } from "@lingui/macro";
 import { BigNumber } from "ethers";
@@ -15,6 +16,8 @@ const Layout = () => {
     const tokenId = BigNumber.from(useRouter().query.tokenId);
     const nftResult = useNfts([tokenId]);
 
+    const tierMintCount = useMintCount(nftResult.status === 'success' ? nftResult.nfts[0].tier : undefined);
+
     // TODO
     if (nftResult.status === 'loading') {
         return (<div>Loading</div>)
@@ -24,6 +27,7 @@ const Layout = () => {
     }
 
     const nft = nftResult.nfts[0];
+    const features = nft.attributes.length - 1;
 
     return (
         <div className="row">
@@ -53,10 +57,13 @@ const Layout = () => {
                             <Pill>#<FormattedNumber value={nft.id.toString()} /></Pill>
                         </span>
                         {/* TODO: Plural */}
-                        <Pill><FormattedNumber value={nft.attributes.length - 1} /> <Trans>Features</Trans></Pill>
+                        <Pill><FormattedNumber value={features} /> <Trans>Features</Trans></Pill>
                     </div>
                     <h1 className="display-3">{nft.name}</h1>
                     <p>{nft.description}</p>
+
+                    <div><FormattedNumber value={tierMintCount} /> <Trans>minted</Trans></div>
+
                     <GetStarted /> 
                 </div>
             </div>
