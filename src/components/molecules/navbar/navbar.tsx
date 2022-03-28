@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import BaseNavbar, { NavbarProps as BaseNavbarProps } from 'react-bootstrap/Navbar'
 import BaseNavbarBrand from 'react-bootstrap/NavbarBrand'
 import BaseNavbarCollapse from 'react-bootstrap/NavbarCollapse'
