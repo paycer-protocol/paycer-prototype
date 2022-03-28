@@ -37,6 +37,12 @@ export const routes = [
     auth: false
   },
   {
+    label: t`Crosschain Bridge`,
+    path: '/crosschain-bridge',
+    supportedChains,
+    auth: false
+  },
+  {
     label: t`Analytics`,
     path: '/analytics',
     supportedChains,
