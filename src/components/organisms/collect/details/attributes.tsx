@@ -14,13 +14,13 @@ const Attributes = ({ attributes }: AttributesProps) => {
                 {
                     attributes.map((attribute) => (
                         <div className="col-6">
-                            <Card>
-                                <Card.Header>
+                            <Card className="p-4">
+                                <h5 className="header-pretitle text-center">
                                     {attribute.traitType}
-                                </Card.Header>
-                                <Card.Body>
-                                {attribute.value.toString()}
-                                </Card.Body>
+                                </h5>
+                                <span className="text-center text-capitalize">
+                                    {attribute.value.toString()}
+                                </span>
                             </Card>
                         </div>
                     ))
