@@ -27,6 +27,7 @@ const NetworkMenu = () => {
     const network = useNetwork()
     const wallet = useWallet()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
+    const activeNetworkLabel = providers[network.chainId].chainName
 
     const handleSwitchNetwork = async provider => {
         try {
@@ -88,7 +89,6 @@ const NetworkMenu = () => {
                               <Icon color={'#00FF00'} component={Check2} size={23} />
                             </div>
                             }
-
                         </NetworkItem>
                     )
                 })}
@@ -100,7 +100,7 @@ const NetworkMenu = () => {
         <>
             {isTabletOrMobile ?
                 renderMenu()
-                : <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Network} label={network.chainName} />}>
+                : <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Network} label={activeNetworkLabel} />}>
                     {renderMenu()}
                 </Dropdown>
             }
