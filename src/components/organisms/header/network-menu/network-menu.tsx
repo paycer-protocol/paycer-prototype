@@ -27,7 +27,6 @@ const NetworkMenu = () => {
     const network = useNetwork()
     const wallet = useWallet()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const activeNetworkLabel = providers[network.chainId].chainName
 
     const handleSwitchNetwork = async provider => {
         try {
@@ -52,6 +51,8 @@ const NetworkMenu = () => {
     if (!wallet.isConnected) {
         return null
     }
+
+    const activeNetworkLabel = providers[network.chainId]?.chainName
 
     const renderMenu = () => {
         return (
