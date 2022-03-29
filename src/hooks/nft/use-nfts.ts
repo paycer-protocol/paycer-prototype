@@ -69,6 +69,10 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
     useEffect(() => {
         async function fetch() {
             try {
+                if (jsonUrls.includes(undefined)) {
+                    setResult({ status: 'loading' });
+                    return;
+                }
                 const results = await Promise.all(jsonUrls.map((url) => axios.get<OpenseaMetadata>(url)));
                 setResult({
                     status: 'success',

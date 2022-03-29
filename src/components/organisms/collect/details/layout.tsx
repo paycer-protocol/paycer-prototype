@@ -4,6 +4,7 @@ import Card from "@components/molecules/card";
 import { loyaltyTierLabels } from "@config/loyalty-tiers";
 import useMintCount from "@hooks/nft/use-mint-count";
 import useNfts from "@hooks/nft/use-nfts";
+import useWallet from "@hooks/use-wallet";
 import { Trans } from "@lingui/macro";
 import { BigNumber } from "ethers";
 import Image from "next/image";
@@ -14,6 +15,7 @@ import GetStarted from "./get-started";
 import Pill from "./pill";
 
 const Layout = () => {
+    const wallet = useWallet();
     const tokenId = BigNumber.from(useRouter().query.tokenId);
     const nftResult = useNfts([tokenId]);
 
@@ -41,7 +43,7 @@ const Layout = () => {
                         <div className="col-4">
                             <h5 className="header-pretitle"><Trans>Owner</Trans></h5>
                             <p className="text-truncate text-nowrap">{nft.owner}</p>
-                            <Pill>You</Pill>
+                            {nft.owner === wallet.address && <Pill>You</Pill>}
                         </div>
                         <div className="col-4 text-truncate">Owner {nft.owner}</div>
                         <div className="col-4 text-truncate">Owner {nft.owner}</div>
