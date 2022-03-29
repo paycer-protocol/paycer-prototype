@@ -1,0 +1,77 @@
+$ribbon-color: #2b2a44;
+
+.ribbon {
+  line-height: 18px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFF;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  position: relative;
+  padding: 5px 0;
+  left: -4px;
+  top: 26px;
+  width: 150px;
+  background-color: #6daaab;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  letter-spacing: 0.5px;
+  box-shadow: -3px 5px 6px -5px rgb(0 0 0 / 50%);
+  outline: 1px dotted #161541;
+  outline-offset: -4px;
+  background-image: radial-gradient(circle farthest-side, #2c3f5b, #191828);
+  text-shadow: 2px 1px 0px rgb(0 0 0 / 20%);
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    z-index: -1;
+    border-left: 4px solid $ribbon-color;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid $ribbon-color;
+  }
+  &:before, &:after {
+    content: "";
+    border-top: 4px solid $ribbon-color;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    bottom: -4px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 7px;
+    top: 100%;
+    z-index: -1;
+    border-left: 4px solid transparent;
+    border-right: 4px solid $ribbon-color;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid $ribbon-color;
+  }
+  &:before, &:after {
+    content: "";
+    border-top: 4px solid $ribbon-color;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    bottom: -4px;
+  }
+
+}
+
+.ribbon-wrapper {
+  width: 108px;
+  height: 108px;
+  overflow: hidden;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+}

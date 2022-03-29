@@ -14,6 +14,11 @@ h1, .h1 {
   @include media-breakpoint-up(md) {
     font-size: $h1-font-size;
   }
+
+  &.display-4 {
+    letter-spacing: 1px;
+    line-height: 78px;
+  }
 }
 
 h2, .h2 {

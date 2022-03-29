@@ -7,12 +7,14 @@ import TierTile from "./tier-tile";
 
 
 const TierList = () => {
-    const { isConnected } = useWallet();
-    const { stakedBalance } = useStaking();
+    const { isConnected } = useWallet()
+    const { stakedBalance } = useStaking()
 
     return (
         <div>
-            <h2 className="display-4"><Trans>Minting Tiers</Trans></h2>
+            <h2 className="display-4 mb-5">
+                <Trans>Minting Tiers</Trans>
+            </h2>
             <div className="row">
                 {
                     loyaltyTiers.map((loyaltyTier) => {
@@ -28,7 +30,7 @@ const TierList = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default TierList;
+export default TierList

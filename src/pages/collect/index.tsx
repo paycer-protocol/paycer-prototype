@@ -28,17 +28,23 @@ export default function Collect() {
             </div>
           </div>
         </PageHeader>
-        <div>
-          <HeroSection
+
+        <HeroSection
             onMintClicked={() => tierListRef.current.scrollIntoView({ behavior: 'smooth' })}
             onMoreInfoClicked={() => explanationSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
-          />
+        />
+
+        <div className="mt-6">
+          <LegendSection />
         </div>
-        <div className="pt-6" ref={tierListRef}><TierList /></div>
-        <div className="pt-6"><LegendSection /></div>
-        <div className="pt-6"><NftList /></div>
-        <div className="pt-6"><MarketingHero /></div>
-        <div className="pt-6" ref={explanationSectionRef}><ExplanationSection /></div>
+
+        <div className="mt-6" ref={tierListRef}>
+          <TierList />
+        </div>
+
+        <div className="mt-6"><NftList /></div>
+        <div className="mt-6"><MarketingHero /></div>
+        <div className="mt-6" ref={explanationSectionRef}><ExplanationSection /></div>
       </div>
     </>
   )

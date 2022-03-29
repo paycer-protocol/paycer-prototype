@@ -10,7 +10,7 @@ const CreditCardTeaser = () => {
                 <Button><Trans>Learn more</Trans></Button>
             </Card.Body>
         </Card>
-    );
-};
+    )
+}
 
-export default CreditCardTeaser;
+export default CreditCardTeaser
