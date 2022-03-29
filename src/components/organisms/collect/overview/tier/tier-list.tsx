@@ -2,6 +2,7 @@ import loyaltyTiers from "@config/loyalty-tiers";
 import useStaking from "@hooks/use-staking";
 import useWallet from "@hooks/use-wallet";
 import { Trans } from "@lingui/macro";
+import CreditCardTeaser from "./credit-card-teaser";
 import TierTile from "./tier-tile";
 
 
@@ -22,6 +23,9 @@ const TierList = () => {
                         );
                     })
                 }
+                <div className="col-xl-4">
+                    <CreditCardTeaser />
+                </div>
             </div>
         </div>
     );
