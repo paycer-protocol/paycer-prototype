@@ -5,7 +5,6 @@ import * as Styles from './Styles'
 import api from '../../../../api'
 import ApexChart from '@components/organisms/chart/apex-chart'
 import { SeriesType } from '@components/organisms/chart/apex-chart/types'
-import CurrencyIcon from '@components/atoms/currency-icon'
 import ChainLegend from '@components/organisms/analytics-dashboard/chain-legend'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import { InfoDashboardFormType, InfoChartProps, TimeSectionStateType } from '../types'
@@ -14,7 +13,6 @@ import { ZoomOutMap, CloseFullscreen } from '@styled-icons/material-outlined'
 import { t } from '@lingui/macro'
 import moment from 'moment'
 import { useIntl } from 'react-intl'
-
 
 const InfoChart = (props: InfoChartProps) => {
     const {
@@ -172,21 +170,14 @@ const InfoChart = (props: InfoChartProps) => {
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={2}
                                 />
-                                <CurrencyIcon
-                                    symbol="PCR"
-                                    className="position-relative"
-                                    width={isSmall ? 16 : 30}
-                                    height={isSmall ? 16 : 30}
-                                    style={{left: '8px', top: '2px'}}
-                                />
                             </h2>
                         </div>
-                        <small style={{fontSize: '10px'}} className="text-uppercase text-muted mb-0">
+                        <span style={{fontSize: '10px'}} className="text-uppercase text-muted mb-0">
                             {initialDateShownHovered || initialDateShown}
-                        </small>
+                        </span>
                     </div>
                     <div>
-                        <div className="d-flex justify-content-end">
+                        <div className="d-flex justify-content-end mt-n1 me-n1">
                             <Styles.StyledDropdownToggle onClick={() => {
                                 if (isModal) {
                                     handleHideModal()

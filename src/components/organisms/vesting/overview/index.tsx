@@ -65,7 +65,7 @@ const Overview = () => {
                       {t`Total amount`}
                     </h6>
                     <span className="h2 mb-0">
-                        <FormattedNumber value={totalReceived || totalAmount || 0} />
+                        <FormattedNumber value={totalReceived || 0} />
                       &nbsp;PCR
                       {(Number(bonusPercentage) > 0 &&
                         <span className="text-muted">

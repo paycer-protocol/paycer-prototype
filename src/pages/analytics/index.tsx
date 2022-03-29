@@ -16,7 +16,7 @@ export default function Analytics () {
                          <Trans>Analytics</Trans>
                       </PageHeader.Subtitle>
                       <PageHeader.Title>
-                         <Trans>Paycer Financial Stats</Trans>
+                         <Trans>Financial Stats</Trans>
                       </PageHeader.Title>
                    </div>
                 </div>

@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-03-28 19:36+0200\n"
+"POT-Creation-Date: 2021-07-13 17:22+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: en\n"
+"Language: en_US\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: \n"
@@ -25,6 +25,10 @@ msgstr "% Bonus included"
 msgid "12 months"
 msgstr "12 months"
 
+#: src/components/organisms/token-sale/overview/index.tsx:110
+#~ msgid "12 months after TGE"
+#~ msgstr "12 months after TGE"
+
 #: src/components/organisms/vesting/overview/index.tsx:30
 msgid "36 months"
 msgstr "36 months"
@@ -32,6 +36,10 @@ msgstr "36 months"
 #: src/components/organisms/vesting/overview/index.tsx:28
 msgid "6 months"
 msgstr "6 months"
+
+#: src/components/organisms/token-sale/overview/index.tsx:110
+#~ msgid "6 months after TGE"
+#~ msgstr "6 months after TGE"
 
 #: src/components/organisms/invest/invest-card/index.tsx:45
 #: src/components/organisms/invest/invest-table.tsx:32
@@ -41,19 +49,39 @@ msgstr "6 months"
 #~ msgid "APR"
 #~ msgstr "APR"
 
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:82
+#~ msgid "APY"
+#~ msgstr "APY"
+
 #: src/components/organisms/web3/wallet-detail.tsx:95
 #~ msgid "Account"
 #~ msgstr "Account"
+
+#: src/components/organisms/kyc-process/info/index.tsx:20
+#~ msgid "Action"
+#~ msgstr "Action"
+
+#: src/components/organisms/off-canvas/index.tsx:80
+#~ msgid "Add Token"
+#~ msgstr "Add Token"
 
 #: src/components/organisms/web3/network-provider.tsx:31
 #~ msgid "Adding Network to Wallet ..."
 #~ msgstr "Adding Network to Wallet ..."
 
+#: src/context/token-sale-context.tsx:115
+#~ msgid "Address not found"
+#~ msgstr "Address not found"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:28
+#~ msgid "Advisor distribution"
+#~ msgstr "Advisor distribution"
+
 #: src/components/organisms/analytics-dashboard/filter-bar/filter-bar.tsx:39
 msgid "All"
 msgstr "All"
 
-#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:79
+#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:78
 msgid "All Chains"
 msgstr "All Chains"
 
@@ -78,37 +106,45 @@ msgstr "Apply"
 msgid "Approve"
 msgstr "Approve"
 
-#: src/components/organisms/collect/overview/minting/minting-approve-modal.tsx:26
-#~ msgid "Are you sure you want to mint this NFT?"
-#~ msgstr "Are you sure you want to mint this NFT?"
+#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:42
+#~ msgid "Apy"
+#~ msgstr "Apy"
 
-#: src/config/loyalty-tiers.ts:15
+#: src/pages/portfolio/components/portfolio.tsx:185
+#~ msgid "Asset"
+#~ msgstr "Asset"
+
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:16
+#~ msgid "Assets"
+#~ msgstr "Assets"
+
+#: src/config/loyalty-tiers.ts:9
 msgid "Associate"
 msgstr "Associate"
 
-#: src/components/organisms/collect/details/attributes.tsx:12
-#~ msgid "Attributes"
-#~ msgstr "Attributes"
+#: src/components/organisms/swap/swap.tsx:176
+msgid "Attention! The exchange rate has changed significantly."
+msgstr "Attention! The exchange rate has changed significantly."
 
-#: src/pages/collect/[tokenId].tsx:18
-#~ msgid "Back"
-#~ msgstr "Back"
+#: src/components/organisms/portfolio/portfolio-header.tsx:67
+#~ msgid "Available Balance"
+#~ msgstr "Available Balance"
 
 #: src/components/organisms/web3/wallet-detail.tsx:62
 #~ msgid "Balance"
 #~ msgstr "Balance"
 
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:176
+#~ msgid "Balance after"
+#~ msgstr "Balance after"
+
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:207
 #~ msgid "Balance after:"
 #~ msgstr "Balance after:"
 
-#: src/components/molecules/token-input/token-input.tsx:62
+#: src/components/molecules/token-input/token-input.tsx:65
 msgid "Balance:"
 msgstr "Balance:"
-
-#: src/config/loyalty-tiers.ts:14
-msgid "Basic"
-msgstr "Basic"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -118,7 +154,7 @@ msgstr "Bonus & Availability"
 msgid "Bonus Percentage"
 msgstr "Bonus Percentage"
 
-#: src/components/organisms/collect/details/get-started.tsx:20
+#: src/pages/staking/index.tsx:34
 #~ msgid "Buy PCR Token"
 #~ msgstr "Buy PCR Token"
 
@@ -126,7 +162,7 @@ msgstr "Bonus Percentage"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:92
+#: src/components/organisms/token-overview/token-overview-list.tsx:57
 #~ msgid "Chain"
 #~ msgstr "Chain"
 
@@ -138,6 +174,22 @@ msgstr "Cancel"
 #~ msgid "Change your wallet provider"
 #~ msgstr "Change your wallet provider"
 
+#: src/components/organisms/token-sale/info/index.tsx:51
+#~ msgid "Check Status"
+#~ msgstr "Check Status"
+
+#: src/components/organisms/token-sale/info/index.tsx:40
+#~ msgid "Check your Private Sale Status"
+#~ msgstr "Check your Private Sale Status"
+
+#: src/components/organisms/token-sale/info/index.tsx:31
+#~ msgid "Check your investment status"
+#~ msgstr "Check your investment status"
+
+#: src/components/organisms/kyc-process/info/index.tsx:59
+#~ msgid "Check your wallet address to check your status."
+#~ msgstr "Check your wallet address to check your status."
+
 #: src/components/organisms/vesting/claim/index.tsx:69
 #~ msgid "Claim"
 #~ msgstr "Claim"
@@ -145,6 +197,18 @@ msgstr "Cancel"
 #: src/components/organisms/vesting/claim/index.tsx:107
 #~ msgid "Claim PCR"
 #~ msgstr "Claim PCR"
+
+#: src/components/organisms/token-sale/vesting/index.tsx:79
+#~ msgid "Claim PCR Tokens"
+#~ msgstr "Claim PCR Tokens"
+
+#: src/components/organisms/token-sale/vesting/index.tsx:59
+#~ msgid "Claim PCR Tokens?"
+#~ msgstr "Claim PCR Tokens?"
+
+#: src/pages/dashboard/components/rewards/index.tsx:86
+#~ msgid "Claim Rewards"
+#~ msgstr "Claim Rewards"
 
 #: src/components/organisms/vesting/claim/index.tsx:90
 #~ msgid "Claim confirmation"
@@ -167,37 +231,37 @@ msgstr "Cancel"
 #~ msgid "Claim your rewards"
 #~ msgstr "Claim your rewards"
 
-#: src/components/organisms/collect/details/get-started.tsx:17
-#~ msgid "Claim your special NFT utlity token simply by owning and staking Paycer PCR Tokens. There more you stake the more rare your Paycer NFT Tier and the higher your change for exclusiv utilites connected with your nft like higher staking rewards"
-#~ msgstr "Claim your special NFT utlity token simply by owning and staking Paycer PCR Tokens. There more you stake the more rare your Paycer NFT Tier and the higher your change for exclusiv utilites connected with your nft like higher staking rewards"
-
 #: src/components/organisms/vesting/claim/index.tsx:54
 #~ msgid "Claimable PCR Tokens"
 #~ msgstr "Claimable PCR Tokens"
 
-#: src/config/routes.ts:52
-msgid "Collect"
-msgstr "Collect"
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:54
+#~ msgid "Claimable rewards"
+#~ msgstr "Claimable rewards"
+
+#: src/components/organisms/header/settings-modal.tsx:32
+#: src/components/organisms/off-canvas/index.tsx:81
+#~ msgid "Color Scheme"
+#~ msgstr "Color Scheme"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:113
 #~ msgid "Confirm Claim"
 #~ msgstr "Confirm Claim"
 
-#: src/components/organisms/collect/overview/minting/minting-approve-modal.tsx:19
-#~ msgid "Confirm Mint"
-#~ msgstr "Confirm Mint"
-
 #: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:179
-#: src/components/organisms/swap/swap-form/index.tsx:130
+#: src/components/organisms/swap/swap.tsx:190
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:24
+#~ msgid "Confirmed"
+#~ msgstr "Confirmed"
 
 #: src/providers/connectors.ts:79
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/collect/overview/connect-wallet-button.tsx:15
 #: src/components/organisms/login-card/login-card.tsx:25
 #: src/components/organisms/login-card/login-card.tsx:29
 #: src/components/organisms/portfolio/portfolio-list.tsx:132
@@ -211,6 +275,18 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #~ msgid "Connect to a wallet"
 #~ msgstr "Connect to a wallet"
 
+#: src/components/organisms/web3/account-detail.tsx:85
+#~ msgid "Connect to wallet"
+#~ msgstr "Connect to wallet"
+
+#: src/components/organisms/web3/account-detail.tsx:92
+#~ msgid "Connected to wallet"
+#~ msgstr "Connected to wallet"
+
+#: src/components/organisms/web3/account-detail.tsx:89
+#~ msgid "Connected with MetaMask"
+#~ msgstr "Connected with MetaMask"
+
 #: src/components/organisms/web3/wallet-detail.tsx:110
 #~ msgid "Copy address"
 #~ msgstr "Copy address"
@@ -219,6 +295,22 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #~ msgid "Copy your wallet address to clipboard"
 #~ msgstr "Copy your wallet address to clipboard"
 
+#: src/pages/token-sale/components/alert.tsx:11
+#~ msgid "Could not load data"
+#~ msgstr "Could not load data"
+
+#: src/pages/token-sale/components/status-info.tsx:20
+#~ msgid "Could not load data from API."
+#~ msgstr "Could not load data from API."
+
+#: src/pages/invest/create/index.tsx:70
+#~ msgid "Create investment"
+#~ msgstr "Create investment"
+
+#: src/components/organisms/invest/invest-form/fields/__invest-input.tsx:17
+#~ msgid "Current Invest"
+#~ msgstr "Current Invest"
+
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
 #~ msgid "Current Staked"
 #~ msgstr "Current Staked"
@@ -226,6 +318,10 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:42
 #~ msgid "Current Token Balance"
 #~ msgstr "Current Token Balance"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:29
+#~ msgid "Current rewards"
+#~ msgstr "Current rewards"
 
 #: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:33
 msgid "Daily Staking"
@@ -255,7 +351,7 @@ msgstr "Daily interest:"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:144
 #: src/components/organisms/invest/withdraw-form/index.tsx:149
-#: src/components/organisms/swap/supply-form/supply-info/daily-rewards.tsx:14
+#: src/components/organisms/supply-liquidity/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
@@ -268,12 +364,16 @@ msgstr "Daily rewards:"
 #~ msgid "Dark Mode"
 #~ msgstr "Dark Mode"
 
+#: src/pages/vesting/index.tsx:18
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:75
 #: src/pages/referral/components/Referrals.tsx:52
 #~ msgid "Date"
 #~ msgstr "Date"
 
-#: src/components/organisms/swap/swap-form/fields/deadline-minutes.tsx:36
+#: src/components/organisms/swap/fields/deadline-minutes.tsx:37
 msgid "Deadline minutes"
 msgstr "Deadline minutes"
 
@@ -281,15 +381,27 @@ msgstr "Deadline minutes"
 msgid "Deposit"
 msgstr "Deposit"
 
+#: src/pages/swap/index.tsx:26
+#~ msgid "Deposit Liquidity"
+#~ msgstr "Deposit Liquidity"
+
+#: src/pages/pre-sale-wallet.tsx:21
+#~ msgid "Deposit Wallet Address"
+#~ msgstr "Deposit Wallet Address"
+
 #: src/components/organisms/invest/invest-modal.tsx:25
 msgid "Deposit:"
 msgstr "Deposit:"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:82
+#: src/components/organisms/invest/invest-card/index.tsx:110
+#~ msgid "Deposited"
+#~ msgstr "Deposited"
+
+#: src/components/organisms/token-overview/token-overview-list.tsx:47
 #~ msgid "Description"
 #~ msgstr "Description"
 
-#: src/components/organisms/swap/swap-form/fields/disable-multihops.tsx:34
+#: src/components/organisms/swap/fields/disable-multihops.tsx:35
 msgid "Disable Multihops"
 msgstr "Disable Multihops"
 
@@ -301,54 +413,118 @@ msgstr "Disable Multihops"
 #~ msgid "Disconnected"
 #~ msgstr "Disconnected"
 
+#: src/pages/invest/create/index.tsx:98
+#~ msgid "Distribution"
+#~ msgstr "Distribution"
+
 #: src/components/organisms/footer/footer.tsx:165
 #~ msgid "Docs"
 #~ msgstr "Docs"
+
+#: src/components/organisms/header/header.tsx:102
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
+
+#: src/pages/invest/create/index.tsx:67
+#~ msgid "Earn interest"
+#~ msgstr "Earn interest"
 
 #: src/pages/referral/components/ReferralUrl.tsx:35
 #~ msgid "Earn up to 2.5% rewards for you and your friend on every transaction."
 #~ msgstr "Earn up to 2.5% rewards for you and your friend on every transaction."
 
+#: src/pages/referral/components/ReferralUrl.tsx:36
+#~ msgid "Earn up to 5% commission on every transaction."
+#~ msgstr "Earn up to 5% commission on every transaction."
+
+#: src/components/organisms/invest/invest-card/index.tsx:114
+#~ msgid "Earned"
+#~ msgstr "Earned"
+
 #: src/providers/connectors.ts:71
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:124
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#: src/components/organisms/invest/invest-card/index.tsx:85
+#~ msgid "Edit invest"
+#~ msgstr "Edit invest"
+
 #: src/components/molecules/languages/language-choice.tsx:9
 #~ msgid "English"
 #~ msgstr "English"
+
+#: src/providers/connectors.ts:110
+#~ msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
+#~ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
+
+#: src/pages/invest/create/fields/invest-input.tsx:15
+#~ msgid "Enter your invest amount"
+#~ msgstr "Enter your invest amount"
+
+#: src/pages/token-sale/components/status-info.tsx:17
+#~ msgid "Error"
+#~ msgstr "Error"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:144
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:155
 #~ msgid "Estimated fee"
 #~ msgstr "Estimated fee"
 
+#: src/components/organisms/swap/swap.tsx:240
+msgid "Estimated output:"
+msgstr "Estimated output:"
+
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:22
+#~ msgid "Exchangerate"
+#~ msgstr "Exchangerate"
+
 #: src/components/organisms/web3/wallet-detail.tsx:104
 #~ msgid "Explorer"
 #~ msgstr "Explorer"
 
-#: src/components/organisms/collect/details/layout.tsx:63
-#~ msgid "Features"
-#~ msgstr "Features"
+#: src/components/organisms/transaction-status/transaction-status.tsx:27
+#~ msgid "Failed, please try again or contact the Support"
+#~ msgstr "Failed, please try again or contact the Support"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:158
 #: src/components/organisms/invest/withdraw-form/index.tsx:163
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:84
+#: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:78
 msgid "Fee"
 msgstr "Fee"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:231
 #: src/components/organisms/invest/withdraw-form/index.tsx:247
-#: src/components/organisms/swap/swap-form/index.tsx:196
+#: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
 msgstr "Fee:"
 
+#: src/pages/token-sale/components/alert.tsx:12
+#~ msgid "Fetching data from API failed."
+#~ msgstr "Fetching data from API failed."
+
+#: src/pages/referral/components/Referrals.tsx:13
+#~ msgid "Friend`s User ID"
+#~ msgstr "Friend`s User ID"
+
 #: src/components/organisms/swap/swap-form/index.tsx:154
-msgid "From"
-msgstr "From"
+#~ msgid "From"
+#~ msgstr "From"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:105
 #~ msgid "From Wallet Address"
 #~ msgstr "From Wallet Address"
+
+#: src/components/organisms/vesting/overview/index.tsx:104
+#~ msgid "Future Loyalty Tier"
+#~ msgstr "Future Loyalty Tier"
+
+#: src/components/organisms/vesting/overview/index.tsx:101
+#~ msgid "Future Loyalty Tier Level"
+#~ msgstr "Future Loyalty Tier Level"
 
 #: src/components/organisms/footer/footer.tsx:200
 #~ msgid "General Terms and Conditions"
@@ -358,17 +534,17 @@ msgstr "From"
 #~ msgid "German"
 #~ msgstr "German"
 
-#: src/components/organisms/collect/details/get-started.tsx:10
-#~ msgid "Get started now"
-#~ msgstr "Get started now"
-
-#: src/components/organisms/collect/details/get-started.tsx:13
-#~ msgid "Get your own NFT"
-#~ msgstr "Get your own NFT"
+#: src/pages/invest/create/index.tsx:21
+#~ msgid "Height"
+#~ msgstr "Height"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:67
 #~ msgid "Hide"
 #~ msgstr "Hide"
+
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:42
+#~ msgid "Hide Details"
+#~ msgstr "Hide Details"
 
 #: src/locales/index.ts:7
 msgid "High"
@@ -378,6 +554,10 @@ msgstr "High"
 #~ msgid "Holdings"
 #~ msgstr "Holdings"
 
+#: src/components/organisms/kyc-process/info/index.tsx:62
+#~ msgid "If you have not yet invested in Paycer you should have a look at our token sale."
+#~ msgstr "If you have not yet invested in Paycer you should have a look at our token sale."
+
 #: src/components/organisms/vesting/info/index.tsx:37
 msgid "Immediate Availability Percentage"
 msgstr "Immediate Availability Percentage"
@@ -386,15 +566,24 @@ msgstr "Immediate Availability Percentage"
 #~ msgid "Imprint"
 #~ msgstr "Imprint"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:117
+#: src/components/organisms/token-overview/token-overview-list.tsx:82
 #~ msgid "Info"
 #~ msgstr "Info"
+
+#: src/components/organisms/swap/fields/token0-input.tsx:16
+#: src/components/organisms/swap/fields/token1-input.tsx:16
+#~ msgid "Insufficient {0} balance"
+#~ msgstr "Insufficient {0} balance"
 
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:23
 msgid "Invest"
 msgstr "Invest"
+
+#: src/pages/invest/create/index.tsx:86
+#~ msgid "Invest amount"
+#~ msgstr "Invest amount"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:127
 #~ msgid "Invest now"
@@ -409,10 +598,30 @@ msgstr "Invested"
 #~ msgid "Investment"
 #~ msgstr "Investment"
 
+#: src/pages/invest/create/index.tsx:80
+#~ msgid "Investment amount"
+#~ msgstr "Investment amount"
+
+#: src/pages/invest/create/index.tsx:91
+#~ msgid "Investment distribution"
+#~ msgstr "Investment distribution"
+
 #: src/components/organisms/portfolio/portfolio-item.tsx:53
 #: src/components/organisms/portfolio/portfolio-list.tsx:57
 #~ msgid "Investment ratio"
 #~ msgstr "Investment ratio"
+
+#: src/components/organisms/kyc-process/timeline/data.tsx:23
+#~ msgid "Investment receivd"
+#~ msgstr "Investment receivd"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:61
+#~ msgid "Investment received"
+#~ msgstr "Investment received"
+
+#: src/pages/token-sale/index.tsx:18
+#~ msgid "Investor Dashboard"
+#~ msgstr "Investor Dashboard"
 
 #: src/components/organisms/footer/footer.tsx:146
 #~ msgid "Jobs"
@@ -422,9 +631,29 @@ msgstr "Invested"
 #~ msgid "Join us on"
 #~ msgstr "Join us on"
 
+#: src/components/organisms/token-sale/timeline/index.tsx:45
+#~ msgid "KYC Status"
+#~ msgstr "KYC Status"
+
 #: src/components/organisms/header/settings-modal.tsx:33
 #~ msgid "Language"
 #~ msgstr "Language"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:77
+#~ msgid "Last Deposited at"
+#~ msgstr "Last Deposited at"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:82
+#~ msgid "Last Rewarded at"
+#~ msgstr "Last Rewarded at"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:91
+#~ msgid "Last Rewardet at"
+#~ msgstr "Last Rewardet at"
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:68
+#~ msgid "Last claimed"
+#~ msgstr "Last claimed"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:80
 #~ msgid "Last rewarded"
@@ -438,25 +667,45 @@ msgstr "Invested"
 #~ msgid "Lightpaper"
 #~ msgstr "Lightpaper"
 
-#: src/pages/swap/index.tsx:26
+#: src/pages/swap/index.tsx:28
 msgid "Liquidity"
 msgstr "Liquidity"
 
-#: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:16
+#: src/components/organisms/supply-liquidity/supply-info/supply-info.tsx:16
 msgid "Liquidity Pool"
 msgstr "Liquidity Pool"
+
+#: src/pages/token-sale/components/status-info.tsx:29
+#~ msgid "Loading"
+#~ msgstr "Loading"
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
 msgid "Loading ..."
 msgstr "Loading ..."
 
+#: src/components/organisms/transaction-status/transaction-status.tsx:21
+#~ msgid "Loading..."
+#~ msgstr "Loading..."
+
 #: src/components/organisms/portal-block-number/index.tsx:37
 #~ msgid "Login to your wallet to see block details"
 #~ msgstr "Login to your wallet to see block details"
 
+#: src/components/organisms/kyc-process/info/index.tsx:12
+#~ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
+#~ msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
+
 #: src/locales/index.ts:5
 msgid "Low"
 msgstr "Low"
+
+#: src/components/organisms/vesting/overview/index.tsx:101
+#~ msgid "Loyalty Tier Level"
+#~ msgstr "Loyalty Tier Level"
+
+#: src/pages/staking/index.tsx:52
+#~ msgid "Loyalty Tier:"
+#~ msgstr "Loyalty Tier:"
 
 #: src/config/loyalty-tiers.ts:17
 msgid "Manager"
@@ -470,17 +719,17 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
-#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:65
+#: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:65
 msgid "Minimum received"
 msgstr "Minimum received"
 
-#: src/components/organisms/collect/overview/minting/minting-approve-modal.tsx:20
-#~ msgid "Mint now"
-#~ msgstr "Mint now"
+#: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:15
+#~ msgid "Minimum to receive"
+#~ msgstr "Minimum to receive"
 
-#: src/components/organisms/collect/overview/tier/tier-list.tsx:14
-#~ msgid "Minting Tiers"
-#~ msgstr "Minting Tiers"
+#: src/pages/portfolio/components/dash-cards.tsx:24
+#~ msgid "Moderat"
+#~ msgstr "Moderat"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:136
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
@@ -491,9 +740,9 @@ msgstr "Minimum received"
 #~ msgid "Monthly rewards:"
 #~ msgstr "Monthly rewards:"
 
-#: src/components/organisms/collect/overview/minting/minting-approve-modal.tsx:24
-#~ msgid "NFT was minted successfully"
-#~ msgstr "NFT was minted successfully"
+#: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
+#~ msgid "Name"
+#~ msgstr "Name"
 
 #: src/components/organisms/layout/layout.tsx:32
 #~ msgid "Network not supported"
@@ -515,15 +764,27 @@ msgstr "Minimum received"
 #~ msgid "No available transactions"
 #~ msgstr "No available transactions"
 
+#: src/components/organisms/token-sale/index.tsx:47
+#~ msgid "No investment found for this wallet. Please connect another wallet address."
+#~ msgstr "No investment found for this wallet. Please connect another wallet address."
+
+#: src/components/organisms/swap/supply-form_/fields/token0-input.tsx:26
+#~ msgid "Not enough"
+#~ msgstr "Not enough"
+
+#: src/pages/token-sale/components/alert.tsx:16
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#: src/components/organisms/token-sale/timeline/index.tsx:21
+#~ msgid "Open"
+#~ msgstr "Open"
+
 #: src/pages/invest/index.tsx:15
 #: src/pages/portfolio/index.tsx:15
 #: src/pages/token-overview/index.tsx:19
 #~ msgid "Overview"
 #~ msgstr "Overview"
-
-#: src/components/organisms/collect/details/layout.tsx:44
-#~ msgid "Owner"
-#~ msgstr "Owner"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:108
 #: src/components/organisms/invest/withdraw-form/index.tsx:113
@@ -546,7 +807,7 @@ msgstr "PCR Token"
 #~ msgid "Page not found"
 #~ msgstr "Page not found"
 
-#: src/config/loyalty-tiers.ts:18
+#: src/config/loyalty-tiers.ts:21
 msgid "Partner"
 msgstr "Partner"
 
@@ -554,15 +815,19 @@ msgstr "Partner"
 #~ msgid "Paycer Financial Stats"
 #~ msgstr "Paycer Financial Stats"
 
+#: src/components/organisms/kyc-process/info/index.tsx:27
+#~ msgid "Paycer Private is Live"
+#~ msgstr "Paycer Private is Live"
+
 #: src/components/organisms/off-canvas/index.tsx:87
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/pages/collect/index.tsx:26
-#~ msgid "Paycer Utility NFT"
-#~ msgstr "Paycer Utility NFT"
+#: src/components/organisms/token-sale/timeline/index.tsx:24
+#~ msgid "Pending"
+#~ msgstr "Pending"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:77
+#: src/components/organisms/token-overview/token-overview-list.tsx:42
 #~ msgid "Platform"
 #~ msgstr "Platform"
 
@@ -574,9 +839,21 @@ msgstr "Partner"
 #~ msgid "Please connect to your wallet."
 #~ msgstr "Please connect to your wallet."
 
+#: src/pages/token-sale/components/wallet-not-connected.tsx:7
+#~ msgid "Please connect your wallet to see this area."
+#~ msgstr "Please connect your wallet to see this area."
+
+#: src/components/organisms/token-sale/vesting/index.tsx:49
+#~ msgid "Please find your claimable PCR tokens below, you can claim your PCR daily."
+#~ msgstr "Please find your claimable PCR tokens below, you can claim your PCR daily."
+
 #: src/components/organisms/web3/wallet-provider.tsx:42
 #~ msgid "Please open your wallet and connect your account."
 #~ msgstr "Please open your wallet and connect your account."
+
+#: src/pages/token-sale/components/status-info.tsx:32
+#~ msgid "Please wait, retrieving data from API ..."
+#~ msgstr "Please wait, retrieving data from API ..."
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:43
 #: src/components/organisms/portfolio/portfolio-list.tsx:47
@@ -587,13 +864,55 @@ msgstr "Partner"
 msgid "Portfolio"
 msgstr "Portfolio"
 
+#: src/pages/portfolio/components/dash-cards.tsx:59
+#~ msgid "Portfolio Balance"
+#~ msgstr "Portfolio Balance"
+
+#: src/components/organisms/token-sale/dashboard/index.tsx:38
+#~ msgid "Pre Sale"
+#~ msgstr "Pre Sale"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:15
+#: src/components/organisms/vesting/dashboard/index.tsx:22
+#~ msgid "Pre Sale distribution"
+#~ msgstr "Pre Sale distribution"
+
+#: src/pages/pre-sale-wallet.tsx:18
+#~ msgid "PreSale"
+#~ msgstr "PreSale"
+
 #: src/components/organisms/web3/network-provider.tsx:36
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
 
+#: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:72
+#~ msgid "Price impact"
+#~ msgstr "Price impact"
+
 #: src/components/organisms/footer/footer.tsx:190
 #~ msgid "Privacy"
 #~ msgstr "Privacy"
+
+#: src/components/organisms/token-sale/dashboard/index.tsx:40
+#~ msgid "Private Sale"
+#~ msgstr "Private Sale"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:17
+#: src/components/organisms/vesting/dashboard/index.tsx:24
+#~ msgid "Private Sale distribution"
+#~ msgstr "Private Sale distribution"
+
+#: src/components/organisms/token-sale/dashboard/index.tsx:42
+#~ msgid "Public Sale"
+#~ msgstr "Public Sale"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:20
+#~ msgid "Public Sale distribution"
+#~ msgstr "Public Sale distribution"
+
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:68
+#~ msgid "Received"
+#~ msgstr "Received"
 
 #: src/pages/referral/components/Referrals.tsx:57
 #~ msgid "Referral Bonus"
@@ -607,6 +926,10 @@ msgstr "Portfolio"
 #: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:53
 msgid "Released Vesting Tokens"
 msgstr "Released Vesting Tokens"
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
+#~ msgid "Request Submitted"
+#~ msgstr "Request Submitted"
 
 #: src/components/organisms/invest/invest-table.tsx:27
 #~ msgid "Rewards"
@@ -630,17 +953,50 @@ msgstr "Released Vesting Tokens"
 #~ msgid "Roadmap"
 #~ msgstr "Roadmap"
 
+#: src/components/organisms/token-sale/timeline/index.tsx:53
+#~ msgid "SAFT Status"
+#~ msgstr "SAFT Status"
+
 #: src/providers/connectors.ts:95
 msgid "Safe hardware wallet for your coins."
 msgstr "Safe hardware wallet for your coins."
 
-#: src/components/organisms/swap/swap-form/fields/token-toggle.tsx:32
+#: src/pages/portfolio/components/dash-cards.tsx:83
+#~ msgid "Savings"
+#~ msgstr "Savings"
+
+#: src/components/organisms/invest/invest-list/invest-list-search.tsx:21
+#~ msgid "Search by: Strategy, APR, Asset, Risk Level, Address..."
+#~ msgstr "Search by: Strategy, APR, Asset, Risk Level, Address..."
+
+#: src/components/organisms/invest/invest-list/invest-list-search.tsx:15
+#~ msgid "Search by: Strategy, APR, Asset, Risk Level..."
+#~ msgstr "Search by: Strategy, APR, Asset, Risk Level..."
+
+#: src/components/organisms/web3/network-provider.tsx:25
+#~ msgid "Select a Network"
+#~ msgstr "Select a Network"
+
+#: src/components/organisms/swap/supply-form/market-pair-select-modal.tsx:105
+#~ msgid "Select a market pair"
+#~ msgstr "Select a market pair"
+
+#: src/components/organisms/swap/fields/token0-select.tsx:67
+#: src/components/organisms/swap/fields/token1-select.tsx:66
 msgid "Select a token"
 msgstr "Select a token"
 
-#: src/config/loyalty-tiers.ts:16
+#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:37
+#~ msgid "Select token"
+#~ msgstr "Select token"
+
+#: src/config/loyalty-tiers.ts:13
 msgid "Senior"
 msgstr "Senior"
+
+#: src/components/organisms/kyc-process/timeline/data.tsx:29
+#~ msgid "Sent and in Progress"
+#~ msgstr "Sent and in Progress"
 
 #: src/components/organisms/footer/footer.tsx:160
 #~ msgid "Service"
@@ -654,16 +1010,24 @@ msgstr "Senior"
 #~ msgid "Show"
 #~ msgstr "Show"
 
-#: src/components/organisms/swap/swap-form/fields/slippage-tollerance.tsx:43
+#: src/components/organisms/token-sale/transactions/data-table/index.tsx:42
+#~ msgid "Show Details"
+#~ msgstr "Show Details"
+
+#: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:63
+#~ msgid "Slippage tolerance"
+#~ msgstr "Slippage tolerance"
+
+#: src/components/organisms/swap/fields/slippage-tollerance.tsx:43
 msgid "Slippage tollerance"
 msgstr "Slippage tollerance"
 
-#: src/components/organisms/swap/swap-form/index.tsx:188
+#: src/components/organisms/swap/swap.tsx:251
 msgid "Slippage:"
 msgstr "Slippage:"
 
-#: src/components/organisms/web3/add-paycer-token.tsx:56
-#: src/components/organisms/web3/add-paycer-token.tsx:61
+#: src/components/organisms/web3/add-paycer-token.tsx:48
+#: src/components/organisms/web3/add-paycer-token.tsx:53
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
@@ -675,39 +1039,91 @@ msgstr "Something went wrong!"
 #~ msgid "Stake"
 #~ msgstr "Stake"
 
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:148
+#~ msgid "Stake the current Selection?"
+#~ msgstr "Stake the current Selection?"
+
 #: src/components/organisms/vesting/claim/index.tsx:100
 #~ msgid "Stake your tokens"
 #~ msgstr "Stake your tokens"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:169
+#~ msgid "Staked"
+#~ msgstr "Staked"
+
+#: src/components/organisms/staking-rewards/staking-form/fields/staked-input.tsx:18
+#~ msgid "Staked after"
+#~ msgstr "Staked after"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:178
+#~ msgid "Staked:"
+#~ msgstr "Staked:"
 
 #: src/config/routes.ts:6
 msgid "Staking"
 msgstr "Staking"
 
+#: src/pages/staking/index.tsx:20
+#~ msgid "Staking Rewards"
+#~ msgstr "Staking Rewards"
+
 #: src/components/organisms/analytics-dashboard/chart-list/chart-list.tsx:23
 msgid "Staking TVL"
 msgstr "Staking TVL"
 
-#: src/components/organisms/swap/supply-form/fields/token-toggle.tsx:42
+#: src/components/organisms/header/header.tsx:95
+#~ msgid "Staking rewards"
+#~ msgstr "Staking rewards"
+
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:124
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#: src/components/organisms/invest/invest-card/index.tsx:85
+#~ msgid "Start invest"
+#~ msgstr "Start invest"
+
+#: src/pages/token-sale/index.tsx:42
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#: src/components/organisms/invest/invest-table.tsx:17
+#~ msgid "Strategy"
+#~ msgstr "Strategy"
+
+#: src/components/organisms/transaction-status/transaction-status.tsx:24
+#~ msgid "Successful"
+#~ msgstr "Successful"
+
+#: src/components/organisms/supply-liquidity/fields/token-toggle.tsx:42
 msgid "Supplied:"
 msgstr "Supplied:"
 
-#: src/components/organisms/swap/supply-form/fields/submit-button.tsx:16
+#: src/components/organisms/supply-liquidity/fields/submit-button.tsx:16
 msgid "Supply"
 msgstr "Supply"
 
-#: src/components/organisms/swap/swap-form/fields/submit-button.tsx:31
+#: src/pages/swap/index.tsx:26
+#~ msgid "Supply Liquidity"
+#~ msgstr "Supply Liquidity"
+
+#: src/components/organisms/swap/fields/submit-button.tsx:34
 #: src/config/routes.ts:34
-#: src/pages/swap/index.tsx:25
+#: src/pages/swap/index.tsx:26
 msgid "Swap"
 msgstr "Swap"
 
-#: src/components/organisms/swap/swap-form/fields/token0-select.tsx:65
+#: src/components/organisms/swap/fields/token0-select.tsx:68
 msgid "Swap from"
 msgstr "Swap from"
 
-#: src/components/organisms/swap/swap-form/fields/token1-select.tsx:62
+#: src/components/organisms/swap/fields/token1-select.tsx:67
 msgid "Swap to"
 msgstr "Swap to"
+
+#: src/components/organisms/header/settings-modal.tsx:27
+#~ msgid "Switch Language"
+#~ msgstr "Switch Language"
 
 #: src/components/organisms/web3/network-provider.tsx:47
 #~ msgid "Switch network"
@@ -717,6 +1133,14 @@ msgstr "Swap to"
 #~ msgid "Switch wallet"
 #~ msgstr "Switch wallet"
 
+#: src/components/organisms/web3/account-detail.tsx:124
+#~ msgid "Switches to another wallet provider"
+#~ msgstr "Switches to another wallet provider"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:26
+#~ msgid "Team distribution"
+#~ msgstr "Team distribution"
+
 #: src/components/organisms/footer/footer.tsx:42
 #~ msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 #~ msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
@@ -725,15 +1149,62 @@ msgstr "Swap to"
 msgid "The secure app to store crypto yourself"
 msgstr "The secure app to store crypto yourself"
 
+#: src/components/organisms/vesting/claim/index.tsx:91
+#~ msgid "The tokens will be transferred to your wallet."
+#~ msgstr "The tokens will be transferred to your wallet."
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:154
+#~ msgid "The transfer is on the way."
+#~ msgstr "The transfer is on the way."
+
+#: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
+#: src/components/organisms/vesting/claim/index.tsx:91
+#~ msgid "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
+#~ msgstr "The transfer is on the way. Tokens will be transferred to you in 1-2 minutes."
+
+#: src/components/organisms/header/settings-modal.tsx:39
+#: src/components/organisms/off-canvas/index.tsx:81
+#~ msgid "Theme"
+#~ msgstr "Theme"
+
 #: src/components/organisms/swap/swap-form/index.tsx:171
-msgid "To"
-msgstr "To"
+#~ msgid "To"
+#~ msgstr "To"
+
+#: src/components/organisms/swap/supply-form_/supply-info/token-balance.tsx:18
+#~ msgid "Token Balance"
+#~ msgstr "Token Balance"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:107
+#~ msgid "Token Balance after"
+#~ msgstr "Token Balance after"
+
+#: src/config/routes.ts:35
+#: src/pages/token-sale/index.tsx:15
+#~ msgid "Token Sale"
+#~ msgstr "Token Sale"
+
+#: src/components/organisms/staking-rewards/staking-form/fields/token-input.tsx:17
+#~ msgid "Token balance"
+#~ msgstr "Token balance"
+
+#: src/components/organisms/vesting/dashboard/index.tsx:30
+#~ msgid "Token distribution"
+#~ msgstr "Token distribution"
+
+#: src/pages/portfolio/components/dash-cards.tsx:59
+#~ msgid "Total Balance"
+#~ msgstr "Total Balance"
+
+#: src/components/organisms/swap/supply-form_/supply-info/total-daily-rewards.tsx:19
+#~ msgid "Total Daily rewards"
+#~ msgstr "Total Daily rewards"
 
 #: src/components/organisms/portfolio/portfolio-header.tsx:80
 msgid "Total Investment"
 msgstr "Total Investment"
 
-#: src/components/organisms/swap/supply-form/supply-info/total-supply.tsx:18
+#: src/components/organisms/supply-liquidity/supply-info/total-supply.tsx:18
 msgid "Total Pool Supply"
 msgstr "Total Pool Supply"
 
@@ -750,25 +1221,50 @@ msgstr "Total amount"
 msgid "Total claimed"
 msgstr "Total claimed"
 
+#: src/components/organisms/swap/supply-form_/supply-info/total-supply.tsx:18
+#~ msgid "Total supply"
+#~ msgstr "Total supply"
+
+#: src/config/routes.ts:26
+#: src/pages/trade/index.tsx:67
+#~ msgid "Trade"
+#~ msgstr "Trade"
+
 #: src/pages/referral/components/Referrals.tsx:62
 #~ msgid "Transaction"
 #~ msgstr "Transaction"
+
+#: src/pages/referral/components/Referrals.tsx:23
+#~ msgid "Transaction Typ"
+#~ msgstr "Transaction Typ"
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:29
 msgid "Transaction confirmed"
 msgstr "Transaction confirmed"
 
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:78
+#~ msgid "Transaction failed, please try again or contact the Support"
+#~ msgstr "Transaction failed, please try again or contact the Support"
+
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:76
 msgid "Transaction failed, please try again."
 msgstr "Transaction failed, please try again."
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:90
+#~ msgid "Transaction is proccessing..."
+#~ msgstr "Transaction is proccessing..."
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:87
 msgid "Transaction is processing..."
 msgstr "Transaction is processing..."
 
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
+#~ msgid "Transaction submitted"
+#~ msgstr "Transaction submitted"
+
 #: src/components/organisms/invest/deposit-form/index.tsx:176
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
-#: src/components/organisms/swap/swap-form/index.tsx:132
+#: src/components/organisms/swap/swap.tsx:191
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 
@@ -776,17 +1272,34 @@ msgstr "Transaction was successfully executed"
 #~ msgid "Transaction was successfully executed."
 #~ msgstr "Transaction was successfully executed."
 
+#: src/components/organisms/token-sale/dashboard/index.tsx:58
+#~ msgid "Transactions"
+#~ msgstr "Transactions"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:223
+#~ msgid "Transfer from:"
+#~ msgstr "Transfer from:"
+
 #: src/components/organisms/vesting/claim/index.tsx:127
 #~ msgid "Transfer to:"
 #~ msgstr "Transfer to:"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:87
+#: src/components/organisms/token-overview/token-overview-list.tsx:52
 #~ msgid "Type"
 #~ msgstr "Type"
 
 #: src/components/organisms/vesting/overview/index.tsx:49
 msgid "USD"
 msgstr "USD"
+
+#: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
+#: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
+#~ msgid "Unsakted Tokens"
+#~ msgstr "Unsakted Tokens"
+
+#: src/pages/dashboard/components/staking-rewards/index.tsx:43
+#~ msgid "Unstaked"
+#~ msgstr "Unstaked"
 
 #: src/config/routes.ts:12
 msgid "Vesting"
@@ -796,10 +1309,6 @@ msgstr "Vesting"
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
-#: src/components/organisms/collect/overview/owned/nft-tile.tsx:21
-#~ msgid "View Details"
-#~ msgstr "View Details"
-
 #: src/components/organisms/portal-block-number/index.tsx:31
 #~ msgid "View block details"
 #~ msgstr "View block details"
@@ -808,9 +1317,13 @@ msgstr "Vesting Phase"
 #~ msgid "View your wallet in Blockchain Explorer"
 #~ msgstr "View your wallet in Blockchain Explorer"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:120
+#: src/components/organisms/token-overview/token-overview-list.tsx:85
 #~ msgid "Visit"
 #~ msgstr "Visit"
+
+#: src/components/organisms/vesting/claim/index.tsx:96
+#~ msgid "Visit Staking"
+#~ msgstr "Visit Staking"
 
 #: src/components/organisms/off-canvas/index.tsx:43
 #~ msgid "Wallet"
@@ -829,10 +1342,18 @@ msgstr "Withdraw"
 msgid "Withdraw:"
 msgstr "Withdraw:"
 
+#: src/components/organisms/token-sale/vesting/index.tsx:71
+#~ msgid "Withdrawable"
+#~ msgstr "Withdrawable"
+
 #: src/components/organisms/portfolio/portfolio-item.tsx:123
 #: src/components/organisms/portfolio/portfolio-list.tsx:128
 #~ msgid "You have no investments in your portfolio"
 #~ msgstr "You have no investments in your portfolio"
+
+#: src/pages/referral/components/Referrals.tsx:38
+#~ msgid "You have no referrals"
+#~ msgstr "You have no referrals"
 
 #: src/pages/referral/components/Referrals.tsx:93
 #~ msgid "You have no rewards"
@@ -858,6 +1379,10 @@ msgstr "You will invest:"
 msgid "You will withdraw:"
 msgstr "You will withdraw:"
 
+#: src/components/organisms/web3/wallet-provider.tsx:32
+#~ msgid "You're connected to an unsupported network."
+#~ msgstr "You're connected to an unsupported network."
+
 #: src/components/organisms/web3/wallet-provider.tsx:34
 #~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 #~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
@@ -867,19 +1392,60 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/collect/overview/owned/nft-list.tsx:38
-#~ msgid "Your NFTs"
-#~ msgstr "Your NFTs"
+#: src/components/organisms/swap/supply-form_/supply-info/your-supply.tsx:14
+#~ msgid "Your supply"
+#~ msgstr "Your supply"
 
 #: src/components/organisms/swap/swap-form/index.tsx:213
 #: src/components/organisms/swap/swap-form/index.tsx:230
-msgid "after"
-msgstr "after"
+#~ msgid "after"
+#~ msgstr "after"
 
-#: src/components/molecules/token-input/token-input.tsx:71
+#: src/components/organisms/swap/supply-form/fields/market-pair-select.tsx:14
+#~ msgid "apy"
+#~ msgstr "apy"
+
+#: src/components/organisms/invest/invest-card/index.tsx:75
+#: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
+#~ msgid "by"
+#~ msgstr "by"
+
+#: src/components/organisms/swap/fields/submit-button.tsx:34
+msgid "insufficient balance"
+msgstr "insufficient balance"
+
+#: src/components/molecules/token-input/token-input.tsx:74
 msgid "max"
 msgstr "max"
 
-#: src/components/organisms/collect/details/layout.tsx:68
-#~ msgid "minted"
-#~ msgstr "minted"
+#: src/components/organisms/staking-rewards/staking-form/fields/stake-range-slider.tsx:52
+#~ msgid "min"
+#~ msgstr "min"
+
+#: src/config/loyalty-tiers.ts:5
+msgid "none"
+msgstr "none"
+
+#: src/components/organisms/web3/network-provider.tsx:29
+#: src/components/organisms/web3/network-provider.tsx:46
+#: src/components/organisms/web3/wallet-provider.tsx:28
+#: src/components/organisms/web3/wallet-provider.tsx:46
+#: src/components/organisms/web3/wallet-provider.tsx:48
+#~ msgid "{0}"
+#~ msgstr "{0}"
+
+#: src/components/organisms/web3/account-detail.tsx:52
+#~ msgid "{description}"
+#~ msgstr "{description}"
+
+#: src/components/organisms/web3/account-detail.tsx:50
+#~ msgid "{name}"
+#~ msgstr "{name}"
+
+#: src/pages/token-sale/components/message.tsx:13
+#~ msgid "{text}"
+#~ msgstr "{text}"
+
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:27
+#~ msgid "{title}"
+#~ msgstr "{title}"

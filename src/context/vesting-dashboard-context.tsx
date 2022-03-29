@@ -47,12 +47,18 @@ export const useVestingDashboard = () => useContext(VestingDashboardContext)
 
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
 
+  let totalReceived = dashboardData.baseAmountPCR
+
+  if (dashboardData.bonusPercentage) {
+    totalReceived = (dashboardData.baseAmountPCR * dashboardData.bonusPercentage  / 100) + dashboardData.baseAmountPCR
+  }
+
   return (
     <VestingDashboardContext.Provider
       value={{
         dashboardData,
         totalInvest: dashboardData.amountUSD,
-        totalReceived: dashboardData.amountPCR
+        totalReceived
       }}
     >
       {children}

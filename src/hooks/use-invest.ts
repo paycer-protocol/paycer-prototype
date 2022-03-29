@@ -87,7 +87,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const withdraw = async (amount: number) => {
         setLoading(true)
         try {
-            await approve(strategyAddress, parseUnits(String(amount * 2), strategy.decimals))
+            await approve(strategyAddress, parseUnits(String((amount * 2).toFixed(strategy.decimals)), strategy.decimals))
             await sendWithdraw(parseUnits(String(amount.toFixed(strategy.decimals)), strategy.decimals))
 
             if (withdrawTx.status === 'Success') {

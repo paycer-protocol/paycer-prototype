@@ -1,4 +1,5 @@
 import React, { useRef }  from 'react'
+import * as Styles from './Styles'
 
 interface TokenInputPanelProps {
     tokenInput: React.ReactNode
@@ -16,7 +17,7 @@ export default function TokenInputPanel(props: TokenInputPanelProps) {
 
     return (
       <div className="card bg-dark shadow-none mb-1 input-card">
-          <div className="card-body">
+          <Styles.Card className="card-body d-flex">
               <div className="row" onClick={focusInput}>
                   <div className="col-5 d-flex">
                       {tokenInputSibling}
@@ -25,7 +26,7 @@ export default function TokenInputPanel(props: TokenInputPanelProps) {
                       {tokenInput}
                   </div>
               </div>
-          </div>
+          </Styles.Card>
       </div>
     )
 }

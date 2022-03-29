@@ -1,15 +1,10 @@
 import { useSendTransaction } from '@usedapp/core'
-import useWallet from '@hooks/use-wallet'
 import { useState } from 'react'
-import useNetwork from "@hooks/use-network";
-import {NetworkSettingsInterface, Trade, TradeContext, UniswapProvider} from '../lib/trade'
-import { SwapProps } from '@components/organisms/swap/swap-form/types'
+import { SwapProps } from '@components/organisms/swap/types'
+import {FormikValues} from "formik";
 
 interface UseSwapProps {
-    networkSettings: NetworkSettingsInterface
-    tradeContext: TradeContext
-    initFactory: (SwapProps) => Promise<TradeContext>
-    handleSwap: (SwapProps) => void
+    handleSwap: (values: FormikValues) => void
     resetStatus: () => void
     swapTx: any
     approveTx: any
@@ -20,59 +15,29 @@ interface UseSwapProps {
 }
 
 export default function useSwap():UseSwapProps {
-    const network = useNetwork()
-    const wallet = useWallet()
-    const provider = new UniswapProvider()
-    const tradeFactory = new Trade(provider)
 
     const { sendTransaction: sendApproveTransaction , state: approveTx } = useSendTransaction({ transactionName: 'approve' })
     const { sendTransaction: sendSwapTransaction , state: swapTx } = useSendTransaction({ transactionName: 'swap' })
 
-    const [tradeContext, setTradeContext] = useState<TradeContext|undefined>(undefined)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [swapError, setSwapError] = useState(false)
 
-    const networkSettings = {
-        providerUrl: network.rpcUrls[0],
-        walletAddress: wallet.address,
-        networkProvider: network.provider,
-        chainId: network.chainId,
-        nameNetwork: network.chainName,
-        multicallContractAddress: network.multicallAddress,
-        nativeCurrency: network.nativeCurrency,
-        nativeWrappedTokenInfo: network.nativeWrappedTokenInfo
-    }
-
-    const initFactory = async (values: SwapProps) => {
-        const tradeContext = await tradeFactory.init(
-            values.tradePair,
-            values.tradeSettings,
-            values.networkSettings
-        )
-
-        setTradeContext(tradeContext)
-
-        return tradeContext
-    }
-
     const handleSwap = async (values: SwapProps) => {
-        setLoading(true)
+        setIsLoading(true)
+
         try {
             if (!values.tradeContext.hasEnoughAllowance && values.tradeContext.approvalTransaction) {
                 const approved = await sendApproveTransaction(values.tradeContext.approvalTransaction)
-                console.log(approved)
-                console.log(approveTx)
             }
             if (values.tradeContext.transaction) {
-                const approved = await sendSwapTransaction(values.tradeContext.transaction)
-                console.log(approved)
-                console.log(swapTx)
+                const transaction = values.tradeContext.transaction
+                const approved = await sendSwapTransaction(transaction)
             }
         } catch {
             setSwapError(true)
         }
-        setLoading(false)
+        setIsLoading(false)
     }
 
     const resetStatus = () => {
@@ -81,9 +46,6 @@ export default function useSwap():UseSwapProps {
     }
 
     return {
-        networkSettings,
-        tradeContext,
-        initFactory,
         swapTx,
         approveTx,
         swapError,
@@ -91,6 +53,6 @@ export default function useSwap():UseSwapProps {
         handleSwap,
         showFormApproveModal,
         setShowFormApproveModal,
-        isLoading,
+        isLoading
     }
 }
