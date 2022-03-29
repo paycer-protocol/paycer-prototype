@@ -122,14 +122,16 @@ const Claim = () => {
                                  />
                               </span>
                           </div>
+                          {wallet.isConnected &&
                           <div className="w-75 m-auto">
-                              <h3 className=" text-muted">
-                                  {t`Transfer to:`}
-                              </h3>
-                              <span className="text-center fw-bold text-wrap">
+                            <h3 className=" text-muted">
+                                {t`Transfer to:`}
+                            </h3>
+                            <span className="text-center fw-bold text-wrap">
                                 {!isTabletOrMobile ? wallet.address : truncateText(wallet.address, wallet.address.length / 2 )}
                               </span>
                           </div>
+                          }
                       </div>
                   </TransactionApproveModal>
               </div>

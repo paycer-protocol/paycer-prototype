@@ -69,7 +69,7 @@ const NetworkMenu = () => {
                     const isLast = Object.keys(providers).length === index +1
 
                     return (
-                        <NetworkItem as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
+                        <NetworkItem key={index} as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
                             if (!isActive) {
                                 await handleSwitchNetwork(provider)
                             }
