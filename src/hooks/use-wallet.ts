@@ -42,7 +42,7 @@ export default function useWallet() {
         reconnect()
     }, [account])
 
-    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Mainnet]
+    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Polygon]
 
     return {
         connector,

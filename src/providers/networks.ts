@@ -70,6 +70,7 @@ export const testNetNetworks: INetworkProvider = {
 }
 
 export const mainNetProviders: INetworkProvider = {
+    /*
     [ChainId.Mainnet]: {
         chainId: '0x1',
         chainName: 'Ethereum',
@@ -91,6 +92,7 @@ export const mainNetProviders: INetworkProvider = {
         },
         multicallAddress: '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696'
     },
+     */
     [ChainId.Polygon]: {
         chainId: '0x89',
         chainName: 'Polygon',
