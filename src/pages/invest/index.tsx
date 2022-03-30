@@ -17,6 +17,7 @@ export default function Invest() {
               <PageHeader.Title>
                 <Trans>Invest</Trans>
               </PageHeader.Title>
+              <span className="badge bg-danger-soft mt-3 text-white py-2 px-3">This page is a demo</span>
             </div>
           </div>
         </PageHeader>
