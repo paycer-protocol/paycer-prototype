@@ -30,8 +30,10 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseVesti
 
     const withdrawAble = getContractValue('balanceOf')
 
+    console.log(withdrawAble)
+
     return {
-        isWithdrawAble: withdrawAble > 0,
+        isWithdrawAble: withdrawAble > strategy.minWithdraw,
         withdrawAble
     }
 }

@@ -12,6 +12,7 @@ export const strategyProvider: IStrategyProvider = {
     output: paycerProvider.pUSDC,
     color: '#2775CA',
     decimals: 6,
+    minWithdraw: 0.01,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -37,6 +38,7 @@ export const strategyProvider: IStrategyProvider = {
     output: paycerProvider.pDAI,
     color: '#B47208',
     decimals: 18,
+    minWithdraw: 0.01,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -62,6 +64,7 @@ export const strategyProvider: IStrategyProvider = {
     output: paycerProvider.pUSDT,
     color: '#0ecc8d',
     decimals: 6,
+    minWithdraw: 0.01,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -87,6 +90,7 @@ export const strategyProvider: IStrategyProvider = {
     output: paycerProvider.pwBTC,
     color: '#f2a900',
     decimals: 8,
+    minWithdraw: 0,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,
@@ -112,6 +116,7 @@ export const strategyProvider: IStrategyProvider = {
     output: paycerProvider.pwETH,
     color: '#ecf0f1',
     decimals: 18,
+    minWithdraw: 0,
     rewards: {
       rewardRate: 5,
       rewardSymbol: tokenProvider.PCR.symbol,

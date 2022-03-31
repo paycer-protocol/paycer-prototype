@@ -81,7 +81,7 @@ msgstr "6 months"
 msgid "All"
 msgstr "All"
 
-#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:78
+#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:77
 msgid "All Chains"
 msgstr "All Chains"
 
@@ -566,9 +566,9 @@ msgstr "Immediate Availability Percentage"
 #~ msgid "Imprint"
 #~ msgstr "Imprint"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:82
-#~ msgid "Info"
-#~ msgstr "Info"
+#: src/components/organisms/token-overview/token-overview-list.tsx:57
+msgid "Info"
+msgstr "Info"
 
 #: src/components/organisms/swap/fields/token0-input.tsx:16
 #: src/components/organisms/swap/fields/token1-input.tsx:16
@@ -1200,7 +1200,7 @@ msgstr "The secure app to store crypto yourself"
 #~ msgid "Total Daily rewards"
 #~ msgstr "Total Daily rewards"
 
-#: src/components/organisms/portfolio/portfolio-header.tsx:80
+#: src/components/organisms/portfolio/portfolio-header.tsx:79
 msgid "Total Investment"
 msgstr "Total Investment"
 
@@ -1317,9 +1317,9 @@ msgstr "Vesting Phase"
 #~ msgid "View your wallet in Blockchain Explorer"
 #~ msgstr "View your wallet in Blockchain Explorer"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:85
-#~ msgid "Visit"
-#~ msgstr "Visit"
+#: src/components/organisms/token-overview/token-overview-list.tsx:60
+msgid "Visit"
+msgstr "Visit"
 
 #: src/components/organisms/vesting/claim/index.tsx:96
 #~ msgid "Visit Staking"
@@ -1359,7 +1359,7 @@ msgstr "Withdraw:"
 #~ msgid "You have no rewards"
 #~ msgstr "You have no rewards"
 
-#: src/components/organisms/vesting/index.tsx:44
+#: src/components/organisms/vesting/index.tsx:36
 msgid "You have not participated in the paycer token sale."
 msgstr "You have not participated in the paycer token sale."
 
