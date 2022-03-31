@@ -7,8 +7,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer USDC Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
   pDAI: {
@@ -16,8 +15,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer DAI Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
   pUSDT: {
@@ -25,8 +23,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer USDT Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
   pwBTC: {
@@ -34,8 +31,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer WBTC Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
   pwETH: {
@@ -43,8 +39,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer wETH Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
   pBUSD: {
@@ -52,8 +47,7 @@ export const paycerProvider: ITokenProvider = {
     name: 'Paycer pBUSD Pool',
     decimals: 18,
     chainAddresses: {
-      [ChainId.Mainnet]: '',
-      [ChainId.Kovan]: '',
+      [ChainId.Mainnet]: ''
     }
   },
 }

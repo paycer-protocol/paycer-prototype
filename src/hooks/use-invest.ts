@@ -87,6 +87,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const withdraw = async (amount: number) => {
         setLoading(true)
         try {
+            // we use 18 because the vPoolShareToken has always 18 decimals
             await sendWithdraw(parseUnits(String(amount.toFixed(18)), 18))
 
             if (withdrawTx.status === 'Success') {
