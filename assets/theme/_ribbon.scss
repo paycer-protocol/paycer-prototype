@@ -1,4 +1,4 @@
-$ribbon-color: #2b2a44;
+$ribbon-color: #183632;
 
 .ribbon {
   line-height: 18px;
@@ -21,7 +21,8 @@ $ribbon-color: #2b2a44;
   box-shadow: -3px 5px 6px -5px rgb(0 0 0 / 50%);
   outline: 1px dotted #161541;
   outline-offset: -4px;
-  background-image: radial-gradient(circle farthest-side, #2c3f5b, #191828);
+  background-image: radial-gradient(circle farthest-side, #166375, #191828);
+  background-image: radial-gradient(circle farthest-side, #0f6073, #0d0c1c);
   text-shadow: 2px 1px 0px rgb(0 0 0 / 20%);
 
   &:before {

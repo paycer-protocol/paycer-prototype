@@ -22,7 +22,7 @@ const TierList = () => {
                             <div className="col-xl-4">
                                 <TierTile isConnected={isConnected} loyaltyTier={loyaltyTier} stakedBalance={stakedBalance} />
                             </div>
-                        );
+                        )
                     })
                 }
                 <div className="col-xl-4">

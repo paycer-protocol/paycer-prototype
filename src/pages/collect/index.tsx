@@ -42,7 +42,9 @@ export default function Collect() {
           <TierList />
         </div>
 
-        <div className="mt-6"><NftList /></div>
+        <div className="mt-5 pt-3">
+          <NftList />
+        </div>
         <div className="mt-6"><MarketingHero /></div>
         <div className="mt-6" ref={explanationSectionRef}><ExplanationSection /></div>
       </div>

@@ -12,33 +12,33 @@ const NftList = () => {
             <div>
                 Error
             </div>
-        );
+        )
     } else if (ownedNfts.status === 'loading') {
         children = ( // TODO:
             <div>
                 Loading
             </div>
-        );
+        )
     } else {
         children = (
             <div className="row">
                 {
                     ownedNfts.nfts.map((nft) => (
-                        <div className="col-xl-4">
+                        <div className="col-xl-6">
                             <NftTile nft={nft} />
                         </div>
                     ))
                 }
             </div>
-        );
+        )
     }
 
     return (
         <div>
-            <h2 className="display-4"><Trans>Your NFTs</Trans></h2>
+            <h2 className="display-4 mb-5"><Trans>Your NFTs</Trans></h2>
             { children }
         </div>
-    );
-};
+    )
+}
 
 export default NftList;

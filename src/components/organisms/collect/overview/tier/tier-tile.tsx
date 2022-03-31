@@ -18,8 +18,8 @@ const Separator = styled.div`
 
 const DetailsRow = ({ left, right }: { left: React.ReactNode, right: React.ReactNode }) => {
     return (
-        <div className="d-flex justify-content-between">
-            <div className="pr-3 pb-3">{left}</div>
+        <div className="d-flex justify-content-between mb-3 align-items-center" style={{lineHeight: '25px'}}>
+            <div>{left}</div>
             <div className="">{right}</div>
         </div>
     )
