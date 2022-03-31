@@ -37,7 +37,6 @@ export interface TokenType {
   decimals: number
   chainAddresses: {
     [ChainId.Mainnet]: string
-    [ChainId.Kovan]: string
     [ChainId.Ropsten]?: string
     [ChainId.Rinkeby]?: string
     [ChainId.Goerli]?: string
@@ -60,10 +59,10 @@ export interface StrategyType {
   fees: FeesType
   color: string
   decimals: number
+  minWithdraw: number
   chainAddresses: {
     [ChainId.Mainnet]?: string
     [ChainId.Polygon]?: string
-    [ChainId.Kovan]?: string
   }
 }
 

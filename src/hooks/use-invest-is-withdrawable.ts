@@ -28,10 +28,15 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseVesti
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
     }
 
+
+
+
     const withdrawAble = getContractValue('balanceOf')
 
+    console.log(withdrawAble)
+
     return {
-        isWithdrawAble: withdrawAble > 0,
+        isWithdrawAble: withdrawAble > strategy.minWithdraw,
         withdrawAble
     }
 }
