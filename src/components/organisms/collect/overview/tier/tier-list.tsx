@@ -25,9 +25,6 @@ const TierList = () => {
                         )
                     })
                 }
-                <div className="col-xl-4">
-                    <CreditCardTeaser />
-                </div>
             </div>
         </div>
     )

@@ -49,7 +49,7 @@ const LegendEntry = (props: LegendEntryProps) => {
     )
 }
 
-const LegendSection = () => {
+const QualityLegend = () => {
     return (
         <div>
             <h2 className="display-4 mb-5">
@@ -66,4 +66,4 @@ const LegendSection = () => {
     )
 }
 
-export default LegendSection
+export default QualityLegend

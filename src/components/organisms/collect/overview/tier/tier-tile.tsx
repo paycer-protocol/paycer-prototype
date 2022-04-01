@@ -62,7 +62,7 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
 
 
     return (
-        <Card className="position-relative">
+        <Card className={`${!(stakedBalance < stakingRequirements[loyaltyTier].minimum) && !(stakedBalance > stakingRequirements[loyaltyTier].maximum) ? 'card-highlight' : ''}`}>
             <Card.Img src="/img/nft/cheering_octane_monkey_1.webp" />
             <Separator />
             <Card.Body css={{ textAlign: 'center' }}>
@@ -75,7 +75,10 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
                 </div>
             </Card.Body>
             <div className="ribbon-wrapper">
-                <div className="ribbon"> {loyaltyTierLabels[loyaltyTier]}</div>
+                <div className="ribbon">&nbsp;</div>
+                <div className="ribbon-label">
+                    {loyaltyTierLabels[loyaltyTier]}
+                </div>
             </div>
 
             <MintingApproveModal show={mintingApproveModal} onHide={() => setMintingApproveModal(false)} />
