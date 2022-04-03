@@ -67,22 +67,16 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
             <Separator />
             <Card.Body css={{ textAlign: 'center' }}>
                 <DetailsRow left={<>Staked</>} right={<>&gt; {stakingRequirements[loyaltyTier].minimum} PCR</>} />
-                <DetailsRow left={<>NFT Qualities <Icon component={Shuffle} size={20} /></>} right={<><QualityCircle.Group qualities={loyaltyTierNftQualities[loyaltyTier]} /></>} />
+                <DetailsRow left={<>NFT Qualities</>} right={<><QualityCircle.Group qualities={loyaltyTierNftQualities[loyaltyTier]} /></>} />
                 <DetailsRow left={<>Features</>} right={<>{loyaltyTierFeatures[loyaltyTier]}</>} />
-                <DetailsRow left={<><Icon component={Shuffle} size={20} /> Feature Qualities</>} right={<><QualityCircle.Group qualities={loyaltyTierFeatureQualities[loyaltyTier]} /></>} />
+                <DetailsRow left={<>Feature Qualities</>} right={<><QualityCircle.Group qualities={loyaltyTierFeatureQualities[loyaltyTier]} /></>} />
                 <div className="mt-4">
                     { button }
                 </div>
             </Card.Body>
-
-
-            <div className="ribbon">
-                <div className="wrap">
-                    <span className="ribbon6">{loyaltyTierLabels[loyaltyTier]}</span>
-                </div>
+            <div className="ribbon-wrap">
+                <span className="ribbon">{loyaltyTierLabels[loyaltyTier]}</span>
             </div>
-
-
             <MintingApproveModal show={mintingApproveModal} onHide={() => setMintingApproveModal(false)} />
         </Card>
     )
