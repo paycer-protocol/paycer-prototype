@@ -4,14 +4,31 @@ import useWallet from '@hooks/use-wallet'
 import Icon from '@components/atoms/icon'
 import { Shuffle } from '@styled-icons/material'
 import ConnectWalletButton from '@components/atoms/connect-wallet-button'
+import {t} from "@lingui/macro";
 
 const Stats = () => {
     return (
         <div className="row">
-            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">6 <Icon component={Shuffle} size={20} /></h1><span>different Qualities</span></div>
-            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">5 <Icon component={Shuffle} size={20} /></h1><span>different NFT Tiers</span></div>
-            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">20,000</h1><span>possible combinations</span></div>
-            <div className="col-3 d-flex flex-column pe-3"><h1 className="display-4 mb-1">40%</h1><span>possible rewards</span></div>
+            <div className="col-3 d-flex flex-column pe-3">
+                <h1 className="display-4 mb-1">
+                    6<Icon component={Shuffle} size={20} />
+                </h1>
+                <span>{t`different Qualities`}</span>
+            </div>
+            <div className="col-3 d-flex flex-column pe-3">
+                <h1 className="display-4 mb-1">
+                    5 <Icon component={Shuffle} size={20} />
+                </h1>
+                <span>{t`different NFT Tiers`}</span>
+            </div>
+            <div className="col-3 d-flex flex-column pe-3">
+                <h1 className="display-4 mb-1">20,000</h1>
+                <span>{t`possible combinations`}</span>
+            </div>
+            <div className="col-3 d-flex flex-column pe-3">
+                <h1 className="display-4 mb-1">40%</h1>
+                <span>{t`possible rewards`}</span>
+            </div>
         </div>
     )
 }
@@ -31,25 +48,28 @@ const Stage = (props: StageProps) => {
                     <h1 className="display-1 mb-4">
                         {
                             isConnected
-                                ? 'Collect your Paycer Utility NFT'
-                                : 'Earn even more Paycer'
+                                ? t`Collect your Paycer Utility NFT`
+                                : t`Earn even more Paycer`
                         }
                     </h1>
-
                     <div className="mt-5 mb-5">
-                <span className="me-4">
-                    {
-                        isConnected
-                            ? <GradientButton onClick={props.onMintClicked}>Mint your NFT now</GradientButton>
-                            : <ConnectWalletButton />
-                    }
-                </span>
-                        <GradientButton isInverted onClick={props.onMoreInfoClicked}><span className="bg-dark">More Info</span></GradientButton>
+                        <span className="me-4">
+                            {
+                                isConnected
+                                    ? <GradientButton onClick={props.onMintClicked}>
+                                        {t`Mint your NFT now`}
+                                    </GradientButton>
+                                    : <ConnectWalletButton />
+                            }
+                        </span>
+                        <GradientButton isInverted onClick={props.onMoreInfoClicked}>
+                            <span className="bg-dark">Learn more</span>
+                        </GradientButton>
                     </div>
                     <p className="m-0 text-muted">
                         {
                             isConnected
-                                ? 'Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits.'
+                                ? t`Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits.`
                                 : <Stats />
                         }
                     </p>
@@ -65,7 +85,6 @@ const Stage = (props: StageProps) => {
                 </div>
             </div>
         </div>
-
     )
 }
 

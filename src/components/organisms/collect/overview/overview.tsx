@@ -33,6 +33,7 @@ export default function Overview() {
             <div className="mt-6">
                 <MarketingHero />
             </div>
+
             <div className="mt-6" ref={explanationSectionRef}>
                 <Explanatory />
             </div>
