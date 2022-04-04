@@ -70,6 +70,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     }
 
     const pricePerShare = getPricePerShare()
+    console.log(pricePerShare)
 
     const getWithdrawableAmount = () => {
         const withdrawAbleAmount = getBalanceOf()
