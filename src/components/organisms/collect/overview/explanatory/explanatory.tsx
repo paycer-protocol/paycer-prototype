@@ -18,7 +18,7 @@ const ExplanatoryCard = (props: ExplanationCardProps) => {
             <Card>
                 <Card.Body className="text-center">
                     <Icon component={props.icon} className="m-auto" size={45} />
-                    <h1 className="text-center mb-3 mt-4">{props.title}</h1>
+                    <h1 className="text-center mb-4 mt-4">{props.title}</h1>
                     <p className="mb-0 text-muted">{props.description}</p>
                 </Card.Body>
             </Card>
