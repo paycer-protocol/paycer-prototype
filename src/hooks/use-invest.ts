@@ -58,7 +58,24 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
     }
 
-    const withdrawAbleAmount = getBalanceOf()
+    const getPricePerShare = () => {
+        const balanceOfArgs:any = wallet.isConnected ? {
+            abi: new Interface(InvestAbi),
+            address: strategyAddress,
+            method: 'pricePerShare',
+            args: [],
+        } : false
+        let [data] = useContractCall(balanceOfArgs) ?? []
+        return BigNumber.isBigNumber(data) ? Number(formatUnits(data, strategy.decimals)) : 0
+    }
+
+    const pricePerShare = getPricePerShare()
+
+    const getWithdrawableAmount = () => {
+        const withdrawAbleAmount = getBalanceOf()
+        return pricePerShare * withdrawAbleAmount
+    }
+
     let allowance = useTokenAllowance(tokenContract.address, wallet.address, strategyAddress)
     const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, strategy.decimals)) : 0
 
@@ -88,7 +105,10 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setLoading(true)
         try {
             // we use 18 because the vPoolShareToken has always 18 decimals
-            await sendWithdraw(parseUnits(String(amount.toFixed(18)), 18))
+
+            const realAmount = amount / pricePerShare
+
+            await sendWithdraw(parseUnits(String(realAmount.toFixed(18)), 18))
 
             if (withdrawTx.status === 'Success') {
                 setTimeout(() =>{
@@ -110,7 +130,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     return {
         deposit,
         withdraw,
-        withdrawAbleAmount,
+        withdrawAbleAmount: getWithdrawableAmount(),
         resetStatus,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */

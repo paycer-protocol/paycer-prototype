@@ -9,7 +9,6 @@ import {Interface} from '@ethersproject/abi'
 
 interface UseVestingProps {
     isWithdrawAble: boolean
-    withdrawAble: number
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseVestingProps {
@@ -17,23 +16,20 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseVesti
     const { chainId } = wallet
     const strategyAddress = strategy.chainAddresses[chainId] || strategy.chainAddresses[ChainId.Polygon]
 
-    const getContractValue = (method: string) => {
+    const getBalanceOf = () => {
         const balanceOfArgs:any = wallet.isConnected ? {
             abi: new Interface(InvestAbi),
             address: strategyAddress,
-            method: method,
+            method: 'balanceOf',
             args: [wallet.address],
         } : false
         let [data] = useContractCall(balanceOfArgs) ?? []
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
     }
 
-    const withdrawAble = getContractValue('balanceOf')
-
-    console.log(withdrawAble)
+    const withdrawAble = getBalanceOf()
 
     return {
-        isWithdrawAble: withdrawAble > strategy.minWithdraw,
-        withdrawAble
+        isWithdrawAble: withdrawAble > strategy.minWithdraw
     }
 }
