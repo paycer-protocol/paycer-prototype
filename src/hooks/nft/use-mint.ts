@@ -15,7 +15,8 @@ export default function useMint(): UseMintProps {
 
     const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).contract;
     const contract = useMemo(() => new Contract(contractAddress, abi), [abi]);
-    
+
+    // @ts-ignore
     const { send: sendMint, state: mintTx, resetState } = useContractFunction(contract, 'mintByUsers');
 
     return {

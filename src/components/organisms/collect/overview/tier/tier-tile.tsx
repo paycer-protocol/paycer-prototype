@@ -74,8 +74,11 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
                     { button }
                 </div>
             </Card.Body>
-            <div className="ribbon-wrap">
-                <span className="ribbon">{loyaltyTierLabels[loyaltyTier]}</span>
+            <div className="ribbon-wrapper">
+                <div className="ribbon">&nbsp;</div>
+                <div className="ribbon-label">
+                    {loyaltyTierLabels[loyaltyTier]}
+                </div>
             </div>
             <MintingApproveModal show={mintingApproveModal} onHide={() => setMintingApproveModal(false)} />
         </Card>
