@@ -1,10 +1,8 @@
-import loyaltyTiers from "@config/loyalty-tiers";
-import useStaking from "@hooks/use-staking";
-import useWallet from "@hooks/use-wallet";
-import { Trans } from "@lingui/macro";
-import CreditCardTeaser from "./credit-card-teaser";
-import TierTile from "./tier-tile";
-
+import loyaltyTiers from "@config/loyalty-tiers"
+import useStaking from "@hooks/use-staking"
+import useWallet from "@hooks/use-wallet"
+import { Trans } from "@lingui/macro"
+import TierTile from "./tier-tile"
 
 const TierList = () => {
     const { isConnected } = useWallet()

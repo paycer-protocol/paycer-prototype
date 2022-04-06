@@ -81,7 +81,7 @@ msgstr "6 months"
 msgid "All"
 msgstr "All"
 
-#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:78
+#: src/components/organisms/analytics-dashboard/info-chart/info-chart.tsx:77
 msgid "All Chains"
 msgstr "All Chains"
 
@@ -118,7 +118,7 @@ msgstr "Approve"
 #~ msgid "Assets"
 #~ msgstr "Assets"
 
-#: src/config/loyalty-tiers.ts:9
+#: src/config/loyalty-tiers.ts:15
 msgid "Associate"
 msgstr "Associate"
 
@@ -145,6 +145,10 @@ msgstr "Attention! The exchange rate has changed significantly."
 #: src/components/molecules/token-input/token-input.tsx:65
 msgid "Balance:"
 msgstr "Balance:"
+
+#: src/config/loyalty-tiers.ts:14
+msgid "Basic"
+msgstr "Basic"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -238,6 +242,14 @@ msgstr "Cancel"
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:54
 #~ msgid "Claimable rewards"
 #~ msgstr "Claimable rewards"
+
+#: src/config/routes.ts:52
+msgid "Collect"
+msgstr "Collect"
+
+#: src/components/organisms/collect/overview/stage/stage.tsx:51
+msgid "Collect your Paycer Utility NFT"
+msgstr "Collect your Paycer Utility NFT"
 
 #: src/components/organisms/header/settings-modal.tsx:32
 #: src/components/organisms/off-canvas/index.tsx:81
@@ -425,6 +437,10 @@ msgstr "Disable Multihops"
 #~ msgid "Documentation"
 #~ msgstr "Documentation"
 
+#: src/components/organisms/collect/overview/stage/stage.tsx:52
+msgid "Earn even more Paycer"
+msgstr "Earn even more Paycer"
+
 #: src/pages/invest/create/index.tsx:67
 #~ msgid "Earn interest"
 #~ msgstr "Earn interest"
@@ -566,9 +582,9 @@ msgstr "Immediate Availability Percentage"
 #~ msgid "Imprint"
 #~ msgstr "Imprint"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:82
-#~ msgid "Info"
-#~ msgstr "Info"
+#: src/components/organisms/token-overview/token-overview-list.tsx:57
+msgid "Info"
+msgstr "Info"
 
 #: src/components/organisms/swap/fields/token0-input.tsx:16
 #: src/components/organisms/swap/fields/token1-input.tsx:16
@@ -727,6 +743,10 @@ msgstr "Minimum received"
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
 
+#: src/components/organisms/collect/overview/stage/stage.tsx:60
+msgid "Mint your NFT now"
+msgstr "Mint your NFT now"
+
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
@@ -807,7 +827,7 @@ msgstr "PCR Token"
 #~ msgid "Page not found"
 #~ msgstr "Page not found"
 
-#: src/config/loyalty-tiers.ts:21
+#: src/config/loyalty-tiers.ts:18
 msgid "Partner"
 msgstr "Partner"
 
@@ -990,7 +1010,7 @@ msgstr "Select a token"
 #~ msgid "Select token"
 #~ msgstr "Select token"
 
-#: src/config/loyalty-tiers.ts:13
+#: src/config/loyalty-tiers.ts:16
 msgid "Senior"
 msgstr "Senior"
 
@@ -1013,6 +1033,10 @@ msgstr "Senior"
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:42
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
+
+#: src/components/organisms/collect/overview/stage/stage.tsx:72
+msgid "Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits."
+msgstr "Simply collect your limited super rare NFT. Your staked PCR Token will be locked for 6 months. Click on Mint your NFT now to start gaining extra profits."
 
 #: src/components/organisms/swap/swap-form/settings-dropdown/settings-dropdown.tsx:63
 #~ msgid "Slippage tolerance"
@@ -1200,7 +1224,7 @@ msgstr "The secure app to store crypto yourself"
 #~ msgid "Total Daily rewards"
 #~ msgstr "Total Daily rewards"
 
-#: src/components/organisms/portfolio/portfolio-header.tsx:80
+#: src/components/organisms/portfolio/portfolio-header.tsx:79
 msgid "Total Investment"
 msgstr "Total Investment"
 
@@ -1317,9 +1341,9 @@ msgstr "Vesting Phase"
 #~ msgid "View your wallet in Blockchain Explorer"
 #~ msgstr "View your wallet in Blockchain Explorer"
 
-#: src/components/organisms/token-overview/token-overview-list.tsx:85
-#~ msgid "Visit"
-#~ msgstr "Visit"
+#: src/components/organisms/token-overview/token-overview-list.tsx:60
+msgid "Visit"
+msgstr "Visit"
 
 #: src/components/organisms/vesting/claim/index.tsx:96
 #~ msgid "Visit Staking"
@@ -1410,6 +1434,14 @@ msgstr "Your APR:"
 #~ msgid "by"
 #~ msgstr "by"
 
+#: src/components/organisms/collect/overview/stage/stage.tsx:22
+msgid "different NFT Tiers"
+msgstr "different NFT Tiers"
+
+#: src/components/organisms/collect/overview/stage/stage.tsx:16
+msgid "different Qualities"
+msgstr "different Qualities"
+
 #: src/components/organisms/swap/fields/submit-button.tsx:34
 msgid "insufficient balance"
 msgstr "insufficient balance"
@@ -1423,8 +1455,16 @@ msgstr "max"
 #~ msgstr "min"
 
 #: src/config/loyalty-tiers.ts:5
-msgid "none"
-msgstr "none"
+#~ msgid "none"
+#~ msgstr "none"
+
+#: src/components/organisms/collect/overview/stage/stage.tsx:26
+msgid "possible combinations"
+msgstr "possible combinations"
+
+#: src/components/organisms/collect/overview/stage/stage.tsx:30
+msgid "possible rewards"
+msgstr "possible rewards"
 
 #: src/components/organisms/web3/network-provider.tsx:29
 #: src/components/organisms/web3/network-provider.tsx:46
