@@ -59,8 +59,7 @@ const TierTile = ({ isConnected, loyaltyTier, stakedBalance }: TierTileProps) =>
             )
         }
     }
-
-
+    
     return (
         <Card className={`${!(stakedBalance < stakingRequirements[loyaltyTier].minimum) && !(stakedBalance > stakingRequirements[loyaltyTier].maximum) ? '' : ''}`}>
             <Card.Img src="/img/nft/cheering_octane_monkey_1.webp" />
