@@ -11,6 +11,12 @@ const Vesting = () => {
     const wallet = useWallet()
     const { tokenSaleData, loading, } = useTokenSale()
 
+    if (!wallet.isConnected) {
+        return (
+            <LoginCard />
+        )
+    }
+
     if (loading) {
         return (
             <div className="card bg-transparent border-0 blur-background">
@@ -21,21 +27,7 @@ const Vesting = () => {
         )
     }
 
-    if (tokenSaleData && tokenSaleData.length) {
-        return (
-            <>
-                {tokenSaleData.map((dashboardData, index) => (
-                    <VestingDashboardProvider key={index} dashboardData={dashboardData}>
-                        <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
-                            <Dashboard />
-                        </div>
-                    </VestingDashboardProvider>
-                ))}
-            </>
-        )
-    }
-
-    if (wallet.isConnected && tokenSaleData && tokenSaleData.length === 0) {
+    if (!tokenSaleData) {
         return (
           <div className="card bg-transparent border-0 blur-background">
               <div className="bg-transparent d-flex justify-content-center align-items-center">
@@ -50,8 +42,17 @@ const Vesting = () => {
     }
 
     return (
-        <LoginCard />
+        <>
+            {tokenSaleData.map((dashboardData, index) => (
+                <VestingDashboardProvider key={index} dashboardData={dashboardData}>
+                    <div className={index +1 !== tokenSaleData.length ? 'mb-6' : ''}>
+                        <Dashboard />
+                    </div>
+                </VestingDashboardProvider>
+            ))}
+        </>
     )
+
 }
 
 export default Vesting

@@ -27,9 +27,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
           <Modal.Title>
             <Link href="/">
               <a>
-                <Navbar.Brand>
-                  <Image src="/assets/logo.svg" alt="Paycer" />
-                </Navbar.Brand>
+                <img width="150" src="/assets/logo.svg" alt="Paycer" />
               </a>
             </Link>
           </Modal.Title>

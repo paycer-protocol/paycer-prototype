@@ -22,7 +22,9 @@ export default function useWallet() {
             const nextConnector = provider.beforeConnect(provider)
             setActivatingConnector(nextConnector)
             // @ts-ignore
-            await activate(nextConnector, undefined, true)
+            if (nextConnector) {
+                await activate(nextConnector)
+            }
         } catch (e) {
             setActivatingConnector(undefined)
             throw e
@@ -40,7 +42,7 @@ export default function useWallet() {
         reconnect()
     }, [account])
 
-    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Mainnet]
+    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Polygon]
 
     return {
         connector,

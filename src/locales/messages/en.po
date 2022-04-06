@@ -1383,7 +1383,7 @@ msgstr "Withdraw:"
 #~ msgid "You have no rewards"
 #~ msgstr "You have no rewards"
 
-#: src/components/organisms/vesting/index.tsx:44
+#: src/components/organisms/vesting/index.tsx:36
 msgid "You have not participated in the paycer token sale."
 msgstr "You have not participated in the paycer token sale."
 
