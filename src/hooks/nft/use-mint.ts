@@ -1,7 +1,7 @@
 import useWallet from "@hooks/use-wallet";
 import nftProvider from '@providers/nft';
 import { ChainId, useContractFunction } from "@usedapp/core";
-import { Contract } from "ethers";
+import { Contract } from "@ethersproject/contracts";
 import { useMemo, useState } from "react";
 
 export interface UseMintProps {

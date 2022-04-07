@@ -3,7 +3,7 @@ import nftProvider from '@providers/nft';
 import Nft from './nft';
 import { ChainId, useContractCalls } from '@usedapp/core';
 import axios from "axios";
-import { Interface } from 'ethers/lib/utils';
+import { Interface } from "@ethersproject/abi";
 import { useEffect, useMemo, useState } from "react";
 import loyaltyTiers from '@config/loyalty-tiers';
 

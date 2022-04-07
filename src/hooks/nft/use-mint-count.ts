@@ -2,7 +2,7 @@ import loyaltyTiers, { LoyaltyTier } from "@config/loyalty-tiers";
 import useWallet from "@hooks/use-wallet";
 import nftProvider from '@providers/nft';
 import { ChainId, useContractCall } from "@usedapp/core";
-import { Interface } from "ethers/lib/utils";
+import { Interface } from "@ethersproject/abi";
 import { useMemo } from "react";
 
 /**
