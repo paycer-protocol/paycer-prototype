@@ -6,7 +6,7 @@ import useMintCount from "@hooks/nft/use-mint-count";
 import useNfts from "@hooks/nft/use-nfts";
 import useWallet from "@hooks/use-wallet";
 import { Trans } from "@lingui/macro";
-import { BigNumber } from "ethers";
+import { BigNumber } from "@ethersproject/bignumber";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
