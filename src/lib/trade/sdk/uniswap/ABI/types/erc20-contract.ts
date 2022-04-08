@@ -1,6 +1,6 @@
 import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
-import { BigNumberish, ContractTransaction } from 'ethers';
-import { BigNumber } from '@ethersproject/bignumber'
+import { ContractTransaction } from 'ethers';
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
 
 export type ContractContext = EthersContractContextV5<
   Erc20Contract,
