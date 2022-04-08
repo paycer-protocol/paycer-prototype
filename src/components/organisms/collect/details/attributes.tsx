@@ -1,6 +1,6 @@
 import Card from "@components/molecules/card";
 import Nft from "@hooks/nft/nft";
-import { Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 
 export interface AttributesProps {
     attributes: Nft['attributes'];
@@ -9,7 +9,7 @@ export interface AttributesProps {
 const Attributes = ({ attributes }: AttributesProps) => {
     return (
         <div>
-            <h2 className="display-5"><Trans>Attributes</Trans></h2>
+            <h2 className="display-5">{t`Attributes`}</h2>
             <div className="row">
                 {
                     attributes.map((attribute) => (

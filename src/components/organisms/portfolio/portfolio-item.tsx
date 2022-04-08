@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -40,27 +40,27 @@ export default function PortfolioList(props: PortfolioProps) {
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                             <span className="text-white">
-                                <Trans>Pool</Trans>
+                                {t`Pool`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-white">
-                                <Trans>Risk Level</Trans>
+                                {t`Risk Level`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-white">
-                                <Trans>Investment ratio </Trans>
+                                {t`Investment ratio `}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-white">
-                                <Trans>APR</Trans>
+                                {t`APR`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-white">
-                                <Trans>Investment</Trans>
+                                {t`Investment`}
                             </span>
                         </th>
                     </tr>
@@ -120,11 +120,11 @@ export default function PortfolioList(props: PortfolioProps) {
                                 <td colSpan={4}>
                                     <div className="text-center">
                                         <h4 className="text-muted mb-4">
-                                            <Trans>You have no investments in your portfolio</Trans>
+                                            {t`You have no investments in your portfolio`}
                                         </h4>
                                         <Link href="/invest">
                                             <Button variant="primary">
-                                                <Trans>Invest now</Trans>
+                                                {t`Invest now`}
                                             </Button>
                                         </Link>
                                     </div>

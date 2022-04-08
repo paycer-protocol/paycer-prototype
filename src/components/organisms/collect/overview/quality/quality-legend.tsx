@@ -53,7 +53,7 @@ const QualityLegend = () => {
     return (
         <div>
             <h2 className="display-4 mb-5">
-                <Trans>NFT Qualities</Trans>
+                {t`NFT Qualities`}
             </h2>
             <div className="d-flex p-2 pt-4 position-relative">
                 {Object.keys(qualityColors).map((key) => (

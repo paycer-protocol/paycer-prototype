@@ -1,6 +1,6 @@
 import React from 'react'
 import PageHeader from '@components/molecules/page-header'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import Button from '@components/atoms/button'
 import ReferralUrl from './components/ReferralUrl'
@@ -32,7 +32,7 @@ export default function Referral () {
           {!wallet.isConnected && (
             <div className="d-flex justify-content-center">
               <Button variant="primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
-                <Trans>Connect to a Wallet</Trans>
+                {t`Connect to a Wallet`}
               </Button>
             </div>
           )}

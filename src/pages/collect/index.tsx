@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Overview from '@components/organisms/collect/overview'
 
@@ -12,10 +12,10 @@ export default function Collect() {
           <div className="row align-items-center">
             <div className="col">
               <PageHeader.Subtitle>
-                <Trans>Collect</Trans>
+                {t`Collect`}
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                <Trans>Paycer Utility NFT</Trans>
+                {t`Paycer Utility NFT`}
               </PageHeader.Title>
             </div>
           </div>

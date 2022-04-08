@@ -1,5 +1,5 @@
 import useOwnedNfts from "@hooks/nft/use-owned-nfts";
-import { Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import { Loading } from "react-loading-dot";
 import NftTile from "./nft-tile";
 
@@ -39,7 +39,7 @@ const NftList = () => {
 
     return (
         <div className="mt-6 pt-3">
-            <h2 className="display-4 mb-5"><Trans>Your NFTs</Trans></h2>
+            <h2 className="display-4 mb-5">{t`Your NFTs`}</h2>
             { children }
         </div>
     )

@@ -35,7 +35,7 @@ export default function PortalBlockNumber() {
         </IndicatorItem>
       ) : (
         <IndicatorItem state="danger" title={t`Login to your wallet to see block details`}>
-          <Trans>Disconnected</Trans>
+          {t`Disconnected`}
         </IndicatorItem>
       )}
     </PortalOverlay>

@@ -10,7 +10,7 @@ const CreditCardTeaser = () => {
     return (
         <div className="blur-background blur--weak">
             <h2 className="display-4 mb-5">
-                <Trans>Paycer Credit Card</Trans>
+                {t`Paycer Credit Card`}
             </h2>
             <Styles.StyledCard className="bg-dark border border-purple-dark mb-0">
                 <Card.Body className="p-5">
@@ -20,7 +20,7 @@ const CreditCardTeaser = () => {
                         </p>
                         <span onClick={() => setMintingApproveModal(true)}>
                             <GradientButton>
-                                <Trans>Apply</Trans>
+                                {t`Apply`}
                             </GradientButton>
                         </span>
                     </div>

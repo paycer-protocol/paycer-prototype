@@ -23,7 +23,7 @@ const MintingApproveModal = ({ show, onHide }: MintingApproveModalProps) => {
             success={status === 'success'}
             successMessage={t`NFT was minted successfully`}
         >
-            <p className="text-center"><Trans>Are you sure you want to mint this NFT?</Trans></p>
+            <p className="text-center">{t`Are you sure you want to mint this NFT?`}</p>
         </TransactionApproveModal>
     );
 }

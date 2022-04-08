@@ -59,7 +59,7 @@ const AccountBalance = () => {
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
             <div className="text-start">
-                <strong><Trans>Balance</Trans></strong>
+                <strong>{t`Balance`}</strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
                         <FormattedNumber
@@ -92,7 +92,7 @@ const WalletDetail = (props: AccountDetailProps) => {
             <>
                 <Modal.Header closeButton onHide={onHide}>
                     <Modal.Title>
-                        <Trans>Account</Trans>
+                        {t`Account`}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -129,7 +129,7 @@ const WalletDetail = (props: AccountDetailProps) => {
                                     await wallet.disconnect()
                                 }}
                               >
-                                  <small><Trans>Disconnect</Trans></small>
+                                  <small>{t`Disconnect`}</small>
                               </a>
                           </ListGroup>
                       </>
@@ -137,7 +137,7 @@ const WalletDetail = (props: AccountDetailProps) => {
                     {!wallet.isConnected && (
                       <div className="d-flex justify-content-center">
                           <Button variant="outline-primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
-                              <Trans>Connect to a Wallet</Trans>
+                              {t`Connect to a Wallet`}
                           </Button>
                       </div>
                     )}

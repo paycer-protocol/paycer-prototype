@@ -30,7 +30,7 @@ const Explanatory = () => {
     return (
         <div>
             <h2 className="display-4 mb-5">
-                <Trans>Learn more</Trans>
+                {t`Learn more`}
             </h2>
             <div className="row">
                 <ExplanatoryCard

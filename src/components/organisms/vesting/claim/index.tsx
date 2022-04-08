@@ -51,7 +51,7 @@ const Claim = () => {
                   </div>
 
                   <h3 className="mb-3 text-center text-center text-muted">
-                      <Trans>Claimable PCR Tokens</Trans>
+                      {t`Claimable PCR Tokens`}
                   </h3>
 
                   <div className="d-flex flex-column mb-4 text-center">
@@ -104,7 +104,7 @@ const Claim = () => {
                   >
                       <div className="my-5">
                           <h3 className="mb-0 pb-0 text-center text-center text-muted">
-                              <Trans>Claim PCR</Trans>
+                              {t`Claim PCR`}
                           </h3>
                           <div className="d-flex flex-column mb-5 text-center">
                               <span className="display-2 my-3">

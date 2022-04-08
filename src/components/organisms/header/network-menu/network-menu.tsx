@@ -33,15 +33,15 @@ const NetworkMenu = () => {
             await network.switchNetwork(provider)
         } catch (error) {
             if (error.code === -32002) {
-                toast(<Trans>Network-Switch Pending, please open your Wallet</Trans>)
+                toast({t`Network-Switch Pending, please open your Wallet`})
             }
             if (error.code === 4902) {
-                toast(<Trans>Adding Network to Wallet ...</Trans>)
+                toast({t`Adding Network to Wallet ...`})
                 try {
                     await network.addNetwork(provider)
                 } catch (error) {
                     if (error.code === -32002) {
-                        toast(<Trans>Previously added network Pending, please open your Wallet</Trans>)
+                        toast({t`Previously added network Pending, please open your Wallet`})
                     }
                 }
             }

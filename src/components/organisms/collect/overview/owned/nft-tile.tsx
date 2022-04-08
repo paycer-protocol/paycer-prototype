@@ -1,7 +1,7 @@
 import Button from "@components/atoms/button";
 import Card from "@components/molecules/card";
 import Nft from "@hooks/nft/nft";
-import { Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import Link from "next/link";
 
 export interface NftTileProps {
@@ -18,7 +18,7 @@ const NftTile = ({ nft }: NftTileProps) => {
                 {nft.description}
                 <div className="mt-4">
                     <Link href={`/collect/${nft.id}`}>
-                        <Button><Trans>View Details</Trans></Button>
+                        <Button>{t`View Details`}</Button>
                     </Link>
                 </div>
             </Card.Body>

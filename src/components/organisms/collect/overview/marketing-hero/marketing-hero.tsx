@@ -27,7 +27,7 @@ const MarketingHero = () => {
                     }
                     <Link href="/swap">
                         <GradientButton>
-                            <Trans>Buy PCR</Trans>
+                            {t`Buy PCR`}
                         </GradientButton>
                     </Link>
                 </Button.Group>

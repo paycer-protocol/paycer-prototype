@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import Button from '@components/atoms/button'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ export default function Collect() {
           <Link href="/collect">
             <Button>
               <span className="me-2"><Icon component={ChevronLeft} size={20} /></span>
-              <Trans>Back</Trans>
+              {t`Back`}
             </Button>
           </Link>
         </PageHeader>

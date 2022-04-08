@@ -1,7 +1,7 @@
 import loyaltyTiers from "@config/loyalty-tiers"
 import useStaking from "@hooks/use-staking"
 import useWallet from "@hooks/use-wallet"
-import { Trans } from "@lingui/macro"
+import { t } from "@lingui/macro"
 import TierTile from "./tier-tile"
 
 const TierList = () => {
@@ -11,7 +11,7 @@ const TierList = () => {
     return (
         <div>
             <h2 className="display-4 mb-5">
-                <Trans>Minting Tiers</Trans>
+                {t`Minting Tiers`}
             </h2>
             <div className="row">
                 {

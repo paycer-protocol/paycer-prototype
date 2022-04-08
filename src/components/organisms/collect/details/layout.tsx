@@ -5,7 +5,7 @@ import { loyaltyTierLabels } from "@config/loyalty-tiers";
 import useMintCount from "@hooks/nft/use-mint-count";
 import useNfts from "@hooks/nft/use-nfts";
 import useWallet from "@hooks/use-wallet";
-import { Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import { BigNumber } from "@ethersproject/bignumber";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +41,7 @@ const Layout = () => {
                     </Card>
                     <div className="row">
                         <div className="col-4">
-                            <h5 className="header-pretitle"><Trans>Owner</Trans></h5>
+                            <h5 className="header-pretitle">{t`Owner`}</h5>
                             <p className="text-truncate text-nowrap">{nft.owner}</p>
                             {nft.owner === wallet.address && <Pill>You</Pill>}
                         </div>
@@ -60,12 +60,12 @@ const Layout = () => {
                             <Pill>#<FormattedNumber value={nft.id.toString()} /></Pill>
                         </span>
                         {/* TODO: Plural */}
-                        <Pill><FormattedNumber value={features} /> <Trans>Features</Trans></Pill>
+                        <Pill><FormattedNumber value={features} /> {t`Features`}</Pill>
                     </div>
                     <h1 className="display-3">{nft.name}</h1>
                     <p>{nft.description}</p>
 
-                    <div><FormattedNumber value={tierMintCount} /> <Trans>minted</Trans></div>
+                    <div><FormattedNumber value={tierMintCount} /> {t`minted`}</div>
 
                     <Attributes attributes={nft.attributes} />
 
