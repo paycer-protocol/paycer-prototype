@@ -1,7 +1,6 @@
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
 import useMint from "@hooks/nft/use-mint";
 import { t, Trans } from "@lingui/macro";
-import { useCallback } from "react";
 
 export interface MintingApproveModalProps {
     show: boolean;

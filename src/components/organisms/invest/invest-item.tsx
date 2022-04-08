@@ -28,6 +28,7 @@ export default function InvestItem(strategy: StrategyType) {
         </div>
       </td>
       <td className={`${tdClass} border-left-0 border-right-0`}>
+          {/*@ts-ignore  */}
         <Trans id={riskLabels[strategy.riskLevel].id}/>
       </td>
       <td className={`${tdClass} border-left-0 border-right-0`}>
