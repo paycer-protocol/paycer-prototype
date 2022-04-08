@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Trans} from "@lingui/macro";
+import {t} from "@lingui/macro"
 import { qualityColors } from '@config/nft-qualities'
 import React from "react";
 import {infoChartProviders} from "@providers/networks";

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import Portfolio from '@components/organisms/portfolio'

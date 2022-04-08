@@ -25,15 +25,15 @@ const NetworkProvider = (props: NetworkProviderProps) => {
       await network.switchNetwork(provider)
     } catch (error) {
       if (error.code === -32002) {
-        toast({t`Network-Switch Pending, please open your Wallet`})
+        toast(t`Network-Switch Pending, please open your Wallet`)
       }
       if (error.code === 4902) {
-        toast({t`Adding Network to Wallet ...`})
+        toast(t`Adding Network to Wallet ...`)
         try {
           await network.addNetwork(provider)
         } catch (error) {
           if (error.code === -32002) {
-            toast({t`Previously added network Pending, please open your Wallet`})
+            toast(t`Previously added network Pending, please open your Wallet`)
           }
         }
       }

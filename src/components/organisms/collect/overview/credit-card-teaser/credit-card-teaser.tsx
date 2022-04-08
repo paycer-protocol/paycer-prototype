@@ -1,5 +1,5 @@
 import Card from '@components/molecules/card'
-import {Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import React, {useState} from 'react'
 import * as Styles from './styles'
 import GradientButton from "@components/atoms/button/gradient-button";

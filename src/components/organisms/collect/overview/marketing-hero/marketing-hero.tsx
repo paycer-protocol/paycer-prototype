@@ -3,7 +3,7 @@ import useWallet from '@hooks/use-wallet'
 import Link from 'next/link'
 import ConnectWalletButton from '@components/atoms/connect-wallet-button'
 import GradientButton from "@components/atoms/button/gradient-button";
-import {Trans} from "@lingui/macro";
+import {t} from "@lingui/macro";
 import React from "react";
 
 const MarketingHero = () => {
