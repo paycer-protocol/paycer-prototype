@@ -5,6 +5,7 @@ export default function RangeSlider(props: SliderProps) {
 
     return (
         <div style={{ width: '96.5%', position: 'relative', 'left': '1%' }}>
+            {/*@ts-ignore  */}
             <Slider
                 {... props}
                 trackStyle={{
