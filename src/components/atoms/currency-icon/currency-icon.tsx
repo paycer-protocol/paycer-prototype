@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export interface CurrencyIconProps {
   symbol: string;
   width?: number;
