@@ -33,7 +33,13 @@ const nextConfig = {
           }
         }
       },
-      )
+    )
+
+    // Prevent Analytics page from being blocked by uBlock Origin.
+    if (config.output.filename === 'static/chunks/[name]-[contenthash].js') {
+      config.output.filename = 'static/chunks/[name].bundle.[contenthash].js'
+    }
+
     return config
   },
 }
