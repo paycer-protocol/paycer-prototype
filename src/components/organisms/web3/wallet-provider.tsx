@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { t, Trans} from '@lingui/macro'
-import { NoEthereumProviderError } from '@web3-react/injected-connector'
+import { Trans } from '@lingui/macro'
 import useWallet from '@hooks/use-wallet'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
@@ -8,8 +7,6 @@ import Spinner from '@components/atoms/spinner'
 import ListGroup from '@components/molecules/list-group'
 import Modal from '@components/molecules/modal'
 import { IConnectorProvider } from '@providers/connectors'
-import {WalletConnectConnector} from '@web3-react/walletconnect-connector'
-import {LedgerConnector} from '@web3-react/ledger-connector'
 
 export interface WalletProviderProps {
   providers: IConnectorProvider[]
@@ -19,33 +16,14 @@ export interface WalletProviderProps {
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
-  const wallet = useWallet()
+  const { connect, isConnecting, activeWallet } = useWallet()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
-      await wallet.connect(provider)
-      window.localStorage.setItem('walletConnectedProviderName', provider.name)
+      await connect(provider)
       onHide()
     } catch (e) {
-      let message
-      if (e instanceof NoEthereumProviderError) {
-        message = t`No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.`
-      } else if (e.message.includes('Unsupported chain')) {
-        message = t`You're connected to an unsupported network. Please open your browser extension and change the network.`
-      } else if (provider.rejectedError && e instanceof provider.rejectedError || e.message.includes('authorization') || e.message.includes('rejected')) {
-        // if the connector is walletconnect manually reset the connector
-        if (provider.connector instanceof WalletConnectConnector) {
-          provider.connector.walletConnectProvider = undefined
-        }
-        message = t`Please authorize this website to access your Ethereum account.`
-      } else if (e.message.includes('already pending')) {
-        message = t`Please open your wallet and connect your account.`
-      } else if (provider.connector instanceof LedgerConnector) {
-        message = e.message
-      } else {
-        message = t`An unknown error occurred. Please try again.`
-      }
-      setErrorMessage(message)
+      setErrorMessage(e.message)
     }
   }
 
@@ -53,7 +31,9 @@ const WalletProvider = (props: WalletProviderProps) => {
     <Modal show onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
-          <Modal.Title><Trans>Connect to a wallet</Trans></Modal.Title>
+          <Modal.Title>
+            <Trans>Connect to a wallet</Trans>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="danger" show={!!errorMessage}>
@@ -61,17 +41,14 @@ const WalletProvider = (props: WalletProviderProps) => {
           </Alert>
           <ListGroup>
             {providers.map(item => {
-              const isActivating = wallet.activatingConnector && wallet.activatingConnector === item.connector
-              const isDisabled = wallet.activatingConnector && wallet.activatingConnector !== item.connector
-
               return (
                 <Button
                   style={{ borderRadius: '10px' }}
                   key={item.name}
                   variant="outline-primary"
                   className="mb-2"
-                  active={isActivating}
-                  disabled={isDisabled}
+                  active={item.providerId === activeWallet}
+                  disabled={isConnecting}
                   onClick={() => handleConnect(item)}
                 >
                   <div className="d-flex align-items-center justify-content-between py-3 px-2">
@@ -82,7 +59,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                       </p>
                     </div>
                     {
-                      isActivating
+                      isConnecting
                         ? <Spinner animation="border" />
                         : <img src={item.icon} alt={item.name} width="28" />
                     }

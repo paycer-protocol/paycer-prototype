@@ -1,62 +1,56 @@
-import { useEffect, useState } from 'react'
-import { ChainId, shortenIfAddress, useEtherBalance, useEthers } from '@usedapp/core'
+import { useEffect } from 'react'
+import ChainId from '@providers/chain-id'
 import { formatEther } from '@ethersproject/units'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
+import { useMoralis, useChain } from 'react-moralis'
 import { mainNetProviders } from '@providers/networks'
-import { connectors } from '@providers/connectors'
 
 export default function useWallet() {
-    const { connector, active, activate, account, deactivate, chainId } = useEthers()
-    const etherBalance = useEtherBalance(account)
-    const [activatingConnector, setActivatingConnector] = useState(undefined)
+
+    const {
+        authenticate,
+        isAuthenticated,
+        connector,
+        logout,
+        chainId,
+        account,
+        isAuthenticating,
+        enableWeb3,
+        web3
+    } = useMoralis()
 
     useEffect(() => {
-        if (activatingConnector && activatingConnector === connector) {
-            setActivatingConnector(undefined)
+        const stayLoggedIn = async () => {
+            await enableWeb3()
         }
-    }, [activatingConnector, connector, etherBalance])
+        stayLoggedIn()
+    }, [])
 
     const handleConnect = async (provider: IConnectorProvider) => {
-        try {
-            const nextConnector = provider.beforeConnect(provider)
-            setActivatingConnector(nextConnector)
-            // @ts-ignore
-            if (nextConnector) {
-                await activate(nextConnector)
-            }
-        } catch (e) {
-            setActivatingConnector(undefined)
-            throw e
-        }
+        await authenticate({ provider: provider.providerId})
     }
 
-    useEffect(() => {
-        const reconnect = async () => {
-            const isConnectedProviderName = window.localStorage.getItem('walletConnectedProviderName')
-            if (!account && isConnectedProviderName) {
-                const isConnectedProvider = connectors.find(f => f.name === isConnectedProviderName)
-                await handleConnect(isConnectedProvider)
-            }
-        }
-        reconnect()
-    }, [account])
+    const disconnect = async () => {
+        await logout()
+    }
 
-    const chainProvider = mainNetProviders[chainId] || mainNetProviders[ChainId.Polygon]
+    const chainProvider = mainNetProviders[parseInt(chainId)] || mainNetProviders[ChainId.Polygon]
 
     return {
         connector,
-        address: account,
-        shortenAddress: shortenIfAddress(account),
-        isActive: active,
-        isConnected: !!account,
+        address: account || '',
+        shortenAddress: account ? account.substring(0, 10) + '...' : '',
+        isActive: true,
+        isConnected: isAuthenticated,
+        isConnecting: isAuthenticating,
         connect: handleConnect,
-        disconnect: () => deactivate(),
-        etherBalance: formatEther(etherBalance || 0),
-        etherSymbol: Symbols[chainId] || Symbols[ChainId.Mainnet],
+        disconnect: () => disconnect(),
+        etherBalance: formatEther(111 || 0),
+        etherSymbol: Symbols[parseInt(chainId)] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
-        explorerUrl: chainProvider.getExplorerAddressLink(account),
-        activatingConnector,
-        chainId
+        explorerUrl: null,
+        chainId: parseInt(chainId),
+        activeWallet: web3?.connection ? web3?.connection?.url : ''
     }
 }

@@ -41,7 +41,7 @@ export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsP
         if (!strategies.length || !wallet.isConnected) {
            return (
                <ChartWrapper>
-                <PieChart data={[{value: 100, color: '#999999'}]} lineWidth={2} paddingAngle={2} />
+                    <PieChart data={[{value: 100, color: '#999999'}]} lineWidth={2} paddingAngle={2} />
                </ChartWrapper>
            )
         }
