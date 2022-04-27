@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core'
+import ChainId from './chain-id'
 
 interface ExplorerUrlsType {
     [index: number]: string

@@ -1,4 +1,4 @@
-import {ChainId} from '@usedapp/core'
+import ChainId from '@providers/chain-id'
 
 
 export interface IContractProvider {

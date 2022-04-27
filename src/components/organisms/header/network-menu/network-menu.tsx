@@ -11,8 +11,8 @@ import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
-import {Wallet} from "@styled-icons/ionicons-sharp";
-import {useMediaQuery} from "react-responsive";
+import { Wallet } from "@styled-icons/ionicons-sharp";
+import { useMediaQuery } from "react-responsive";
 
 function isDebug() {
     return window.location.hostname === 'localhost'
@@ -24,35 +24,15 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const network = useNetwork()
+    const { handleSwitchNetwork, networkId } = useNetwork()
     const wallet = useWallet()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-
-    const handleSwitchNetwork = async provider => {
-        try {
-            await network.switchNetwork(provider)
-        } catch (error) {
-            if (error.code === -32002) {
-                toast(<Trans>Network-Switch Pending, please open your Wallet</Trans>)
-            }
-            if (error.code === 4902) {
-                toast(<Trans>Adding Network to Wallet ...</Trans>)
-                try {
-                    await network.addNetwork(provider)
-                } catch (error) {
-                    if (error.code === -32002) {
-                        toast(<Trans>Previously added network Pending, please open your Wallet</Trans>)
-                    }
-                }
-            }
-        }
-    }
 
     if (!wallet.isConnected) {
         return null
     }
 
-    const activeNetworkLabel = providers[network.chainId]?.chainName
+    const activeNetworkLabel = providers[networkId]?.chainName
 
     const renderMenu = () => {
         return (
@@ -73,7 +53,7 @@ const NetworkMenu = () => {
                     return (
                         <NetworkItem key={index} as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
                             if (!isActive) {
-                                await handleSwitchNetwork(provider)
+                                await handleSwitchNetwork(provider.chainId)
                             }
                         }}>
                             <div className="d-flex align-items-center">

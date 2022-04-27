@@ -1,38 +1,25 @@
-import { useEthers, useNetwork as useBaseNetwork } from '@usedapp/core'
 import { mainNetProviders, INetworkProvider } from '../providers'
 import { supportedChains, supportedStakingChains } from '@config/network'
+import { useChain } from 'react-moralis'
 
 export default function useNetwork() {
-    const { network } = useBaseNetwork()
-    const { account, library, chainId } = useEthers()
-    const currentNetwork = mainNetProviders[chainId]
+    const { chain, switchNetwork } = useChain()
 
-    const addNetwork = async (networkProvider: INetworkProvider) => {
-        await library?.send('wallet_addEthereumChain', [
-            networkProvider,
-            account,
-        ])
+    const currentNetwork = mainNetProviders[chain?.networkId]
+    const supportedChain = supportedChains.includes(chain?.networkId)
+    const supportedStakingChain = supportedStakingChains.includes(chain?.networkId)
+
+    const handleSwitchNetwork = async (chainId: string) => {
+        await switchNetwork(chainId)
     }
-
-    const switchNetwork = async (networkProvider: INetworkProvider) => {
-        await library?.send('wallet_switchEthereumChain', [{
-            // @ts-ignore
-            chainId: networkProvider?.chainId
-        }])
-    }
-
-    const supportedChain = supportedChains.includes(chainId)
-    const supportedStakingChain = supportedStakingChains.includes(chainId)
 
     return {
         ...currentNetwork,
         ...{
-            switchNetwork,
-            addNetwork,
+            handleSwitchNetwork,
             supportedChain,
             supportedStakingChain,
-            chainId,
-            provider: network.provider
+            networkId: chain?.networkId,
         }
     }
 }

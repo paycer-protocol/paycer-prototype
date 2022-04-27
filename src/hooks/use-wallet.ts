@@ -8,12 +8,13 @@ import { mainNetProviders } from '@providers/networks'
 
 export default function useWallet() {
 
+    const { chain } = useChain()
+
     const {
         authenticate,
         isAuthenticated,
         connector,
         logout,
-        chainId,
         account,
         isAuthenticating,
         enableWeb3,
@@ -35,7 +36,7 @@ export default function useWallet() {
         await logout()
     }
 
-    const chainProvider = mainNetProviders[parseInt(chainId)] || mainNetProviders[ChainId.Polygon]
+    const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
 
     return {
         connector,
@@ -47,10 +48,10 @@ export default function useWallet() {
         connect: handleConnect,
         disconnect: () => disconnect(),
         etherBalance: formatEther(111 || 0),
-        etherSymbol: Symbols[parseInt(chainId)] || Symbols[ChainId.Mainnet],
+        etherSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
-        explorerUrl: null,
-        chainId: parseInt(chainId),
+        explorerUrl: chain?.blockExplorerUrl,
+        chainId: chain?.networkId,
         activeWallet: web3?.connection ? web3?.connection?.url : ''
     }
 }

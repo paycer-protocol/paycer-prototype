@@ -8,22 +8,21 @@ import useNetwork from '@hooks/use-network'
 import useWallet from '@hooks/use-wallet'
 import { getExplorerBlockUrl } from '@providers/explorers'
 
+// TODO REFACTOR https://docs.moralis.io/moralis-dapp/web3-api/native#getdatetoblock
 export default function PortalBlockNumber() {
-  const network = useNetwork()
+  const { chainId, } = useNetwork()
   const blockNumber: number | undefined = useBlockNumber()
-  const wallet = useWallet()
+  const { isConnected, address } = useWallet()
   const [href, setHref] = useState(null)
 
   useEffect(() => {
-    if (!wallet.isConnected || !blockNumber) {
+    if (!isConnected || !blockNumber) {
       return
     }
-
-    const explorerBlockUrl = getExplorerBlockUrl(network.chainId, blockNumber)
+    const explorerBlockUrl = getExplorerBlockUrl(chainId, blockNumber)
     setHref(explorerBlockUrl)
-
     return () => setHref(null)
-  }, [blockNumber, network.chainId, wallet.isConnected, wallet.address])
+  }, [blockNumber, chainId, isConnected, address])
 
   return (
     <PortalOverlay>
