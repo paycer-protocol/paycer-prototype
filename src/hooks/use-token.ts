@@ -24,7 +24,7 @@ export default function useToken(symbol: string): UseTokenInterface {
     const token = tokenBalances.data.find(t => t.symbol === symbol)
     tokenAddress = token.token_address
     tokenSymbol = token.symbol
-    tokenBalance =
+    tokenBalance = token.balance
     tokenBalanceFormatted = Number(formatUnits(token.balance, Number(token.decimals)))
     tokenDecimals = Number(token.decimals)
   }
