@@ -25,8 +25,8 @@ const WalletMenu = () => {
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const wallet = useWallet()
     const token = useToken('PCR')
-    const { symbol, tokenBalance } = token
-    const balance = tokenBalance()
+    const { tokenSymbol, tokenBalance } = token
+    const balance = tokenBalance
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
     if (!wallet.isConnected) {
@@ -130,7 +130,7 @@ const WalletMenu = () => {
                             className="me-3"
                             width={21}
                             height={21}
-                            symbol={symbol}
+                            symbol={tokenSymbol}
                         />
                         <div className="ps-1 mb-0">
                             <FormattedNumber

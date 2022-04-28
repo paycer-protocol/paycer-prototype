@@ -13,7 +13,7 @@ import useInvestIsWithdrawable from "@hooks/use-invest-is-withdrawable";
 const InvestCard = (strategy: StrategyType) => {
     const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate
     const investedToken = useToken(strategy.input.symbol)
-    const investedBalance = investedToken.tokenBalance()
+    const investedBalance = investedToken.tokenBalance
 
     const {
         setStrategy,

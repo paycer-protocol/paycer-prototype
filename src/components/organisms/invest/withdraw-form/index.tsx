@@ -51,7 +51,7 @@ const WithdrawForm = () => {
         // invest pairs
         baseSymbol: strategy.input.symbol,
         amount: withdrawAbleAmount,
-        balance: baseToken.tokenBalance(),
+        balance: baseToken.tokenBalance,
         investSymbol: strategy.output.symbol,
 
         // interest

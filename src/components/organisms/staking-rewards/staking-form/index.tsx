@@ -35,7 +35,7 @@ export default function StakingForm() {
     } = useStaking()
 
     const token = useToken(rewardSymbol)
-    const tokenBalance = token.tokenBalance()
+    const tokenBalance = token.tokenBalance
 
     const initialValues: StakingProps = {
         rewardSymbol,

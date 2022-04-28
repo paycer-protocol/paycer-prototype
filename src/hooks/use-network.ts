@@ -1,4 +1,4 @@
-import { mainNetProviders, INetworkProvider } from '../providers'
+import { mainNetProviders } from '../providers'
 import { supportedChains, supportedStakingChains } from '@config/network'
 import { useChain } from 'react-moralis'
 

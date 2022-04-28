@@ -1,35 +1,41 @@
-import { ChainId, useContractCall, useEthers, useTokenBalance, useToken as useDappToken } from '@usedapp/core'
-import { BigNumber } from '@ethersproject/bignumber'
 import { formatUnits } from '@ethersproject/units'
-import { tokenProvider } from '@providers/tokens'
-import { Interface } from '@ethersproject/abi'
-import tokenAbi from '../deployments/matic/PaycerToken.json'
+import { useERC20Balances } from 'react-moralis'
 
-export default function useToken(symbol: string) {
-  const { account, chainId } = useEthers()
-  const token = tokenProvider[symbol]
-  const tokenAddress = token.chainAddresses[chainId || ChainId.Polygon]
-  // const tokenInfo = useDappToken(tokenAddress)
+export interface UseTokenInterface {
+  tokenAddress: string
+  tokenDecimals: number
+  tokenBalance: number
+  tokenBalanceFormatted: number
+  tokenSymbol: string
+  totalSupply: number
+  allowance: number
+}
+
+export default function useToken(symbol: string): UseTokenInterface {
+  const tokenBalances = useERC20Balances()
+
+  let tokenAddress = ''
+  let tokenBalance = 0
+  let tokenDecimals = 0
+  let tokenBalanceFormatted = 0
+  let tokenSymbol = ''
+
+  if (tokenBalances && tokenBalances?.data) {
+    const token = tokenBalances.data.find(t => t.symbol === symbol)
+    tokenAddress = token.token_address
+    tokenSymbol = token.symbol
+    tokenBalance =
+    tokenBalanceFormatted = Number(formatUnits(token.balance, Number(token.decimals)))
+    tokenDecimals = Number(token.decimals)
+  }
 
   return {
     tokenAddress,
-    decimals: token.decimals,
-    symbol,
+    tokenDecimals,
+    tokenSymbol,
+    tokenBalanceFormatted,
     totalSupply: 0,
-    // totalSupply: BigNumber.isBigNumber(tokenInfo?.totalSupply) ? Number(formatUnits(tokenInfo?.totalSupply, tokenInfo?.decimals)) : 0,
-    tokenBalance: (): number => {
-      const result = useTokenBalance(tokenAddress, account)
-      return BigNumber.isBigNumber(result) ? Number(formatUnits(result, token.decimals)) : 0
-    },
-    allowance: (): number => {
-      const [result] = useContractCall({
-        abi: new Interface(tokenAbi.abi),
-        address: tokenAddress,
-        method: 'allowance',
-        args: [tokenAddress, account],
-      }) ?? []
-
-      return BigNumber.isBigNumber(result) ? result.toNumber() : 0
-    }
+    tokenBalance,
+    allowance: 0
   }
 }

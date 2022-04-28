@@ -3,10 +3,9 @@ import { t } from '@lingui/macro'
 import { useFormikContext } from 'formik'
 import GradientButton from '@components/atoms/button/gradient-button'
 import { SupplyProps } from '../types'
-import useToken from "@hooks/use-token";
 
 export default function SubmitButton() {
-    const { values, initialValues, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SupplyProps>()
+    const { values, isSubmitting, dirty, isValid, isValidating } = useFormikContext<SupplyProps>()
     const isDisabled = isSubmitting || !dirty || !isValid || isValidating || !values.token0Value || !values.token1Value
 
     const outOfBalance = values.token0Value > values.token0Balance

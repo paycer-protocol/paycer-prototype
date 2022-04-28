@@ -46,7 +46,7 @@ const DepositForm = () => {
         // invest pairs
         baseSymbol: strategy.input.symbol,
         amount: null,
-        balance: baseToken.tokenBalance(),
+        balance: baseToken.tokenBalance,
         investSymbol: strategy.output.symbol,
 
         // interest

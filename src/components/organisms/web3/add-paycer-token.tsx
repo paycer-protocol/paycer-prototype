@@ -15,7 +15,7 @@ const AddPaycerToken = (props: AddPaycerTokenProps) => {
     const { library, chainId } = useEthers()
     const wallet = useWallet()
     const token = useToken('PCR')
-    const { tokenAddress, symbol, decimals, tokenBalance } = token
+    const { tokenAddress, tokenSymbol, tokenDecimals, tokenBalance } = token
 
     const addToken = async () => {
 
@@ -29,8 +29,8 @@ const AddPaycerToken = (props: AddPaycerTokenProps) => {
               type: 'ERC20',
               options: {
                   address: tokenAddress,
-                  symbol: symbol,
-                  decimals: decimals,
+                  symbol: tokenSymbol,
+                  decimals: tokenDecimals,
                   image: 'https://paycer-prototype.vercel.app/assets/icons/pcr.svg',
               },
           }
