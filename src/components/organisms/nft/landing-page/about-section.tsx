@@ -50,7 +50,7 @@ function Animation() {
 
 export default function AboutSection() {
   return (
-    <div className="container">
+    <div className="my-5 container">
       <TechnologyList />
       <div className="row">
         <AboutText />
