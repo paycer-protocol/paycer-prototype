@@ -85,11 +85,11 @@ export default function MintSection() {
                 </div>
               </div>
             </NftCountBox>
-            <Button className="bg-white text-primary border-0 d-flex align-items-center px-5 py-3 mt-4">
+            <Button className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
               <Trans>CONNECT TO WALLET</Trans>
               <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
             </Button>
-            <div className="mt-4">
+            <div className="mt-4 text-end">
               <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
             </div>
           </div>
