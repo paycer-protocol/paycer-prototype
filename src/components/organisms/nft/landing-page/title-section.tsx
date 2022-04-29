@@ -1,15 +1,15 @@
-import GradientButton from "@components/atoms/button/gradient-button";
-import Icon from "@components/atoms/icon";
-import PageHeader from "@components/molecules/page-header";
-import { Trans } from "@lingui/macro";
-import styled from "styled-components";
+import GradientButton from "@components/atoms/button/gradient-button"
+import Icon from "@components/atoms/icon"
+import PageHeader from "@components/molecules/page-header"
+import { Trans } from "@lingui/macro"
+import styled from "styled-components"
 import { ArrowDownward } from "@styled-icons/material"
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
   border: 2px solid white;
   border-radius: 99999px;
-  padding: 0.5rem;
+  padding: 0.75rem;
   margin-bottom: 3rem;
 
   cursor: pointer;
@@ -55,7 +55,7 @@ export default function TitleSection() {
         </div>
       </div>
       <DownArrowButtonBorder>
-        <Icon size={32} component={ArrowDownward} />
+        <Icon size={24} component={ArrowDownward} />
       </DownArrowButtonBorder>
     </div>
   )

@@ -174,6 +174,10 @@ msgstr "Bonus Percentage"
 #~ msgid "Buy PCR Token"
 #~ msgstr "Buy PCR Token"
 
+#: src/components/organisms/nft/landing-page/title-section.tsx:50
+msgid "COLLECT"
+msgstr "COLLECT"
+
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr "Cancel"
@@ -740,6 +744,10 @@ msgstr "Login to your wallet to see block details"
 #~ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
 #~ msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
 
+#: src/components/organisms/nft/landing-page/about-section.tsx:31
+msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+msgstr "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+
 #: src/locales/index.ts:5
 msgid "Low"
 msgstr "Low"
@@ -751,6 +759,10 @@ msgstr "Low"
 #: src/pages/staking/index.tsx:52
 #~ msgid "Loyalty Tier:"
 #~ msgstr "Loyalty Tier:"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:53
+msgid "MINT NFT NOW"
+msgstr "MINT NFT NOW"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:92
 #: src/config/loyalty-tiers.ts:17
@@ -772,6 +784,10 @@ msgstr "Minimum received"
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:15
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:52
+msgid "Mint your unique Paycer Utility NFT"
+msgstr "Mint your unique Paycer Utility NFT"
 
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
@@ -875,6 +891,10 @@ msgstr "Partner"
 #: src/components/organisms/off-canvas/index.tsx:87
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:51
+msgid "Paycer Utility NFT"
+msgstr "Paycer Utility NFT"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:24
 #~ msgid "Pending"
