@@ -60,7 +60,7 @@ const NftCountBox = styled.div`
 export default function MintSection() {
   return (
     <Background >
-      <div className="mx-auto p-5" style={{ maxWidth: '55rem' }}>
+      <div className="position-relative mx-auto p-5" style={{ maxWidth: '55rem' }}>
         <h1 className="display-1 my-5"><Trans>Mint your Paycer NFT.</Trans></h1>
         <div className="row my-5">
           <div className="col-lg">
@@ -93,6 +93,16 @@ export default function MintSection() {
               <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
             </div>
           </div>
+        </div>
+        <div className="position-absolute" style={{
+          width: '35rem',
+          height: '100%',
+          top: '0',
+          left: '-35rem',
+          transform: 'scaleX(-1)',
+          opacity: 0.7,
+        }}>
+          <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
         </div>
       </div>
     </Background>
