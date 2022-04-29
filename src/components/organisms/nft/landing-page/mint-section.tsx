@@ -1,4 +1,10 @@
+import Button from "@components/atoms/button";
+import Icon from "@components/atoms/icon";
 import { Trans } from "@lingui/macro";
+import { ArrowToRight } from "@styled-icons/boxicons-regular";
+import { ArrowForward, ArrowRight } from "@styled-icons/material";
+import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 const Background = styled.div`
@@ -43,10 +49,18 @@ const TransparentText = styled.p`
   font-weight: bold;
 `
 
+const NftCountBox = styled.div`
+  background-color: black;
+  border-radius: 5px;
+  border: 1px solid #3C506F;
+  font-size: 16px;
+  padding: 1.5rem;
+`
+
 export default function MintSection() {
   return (
     <Background >
-      <div className="mx-auto p-5" style={{ maxWidth: '50rem' }}>
+      <div className="mx-auto p-5" style={{ maxWidth: '55rem' }}>
         <h1 className="display-1 my-5"><Trans>Mint your Paycer NFT.</Trans></h1>
         <div className="row my-5">
           <div className="col-lg">
@@ -58,6 +72,26 @@ export default function MintSection() {
             <TransparentText>Presale ends: 30.10.2022</TransparentText>
           </div>
           <div className="col-lg">
+            <NftCountBox>
+              <div className="d-flex align-items-center">
+                <Image src="/img/nft/logo.png" width="32" height="32" /> 
+                <div className="mx-3 flex-grow-1">
+                  <Trans>PCR NFT</Trans>
+                </div>
+                <div className="d-flex align-items-center">
+                  <Button>−</Button>
+                  <div className="mx-3">2</div>
+                  <Button>+</Button>
+                </div>
+              </div>
+            </NftCountBox>
+            <Button className="bg-white text-primary border-0 d-flex align-items-center px-5 py-3 mt-4">
+              <Trans>CONNECT TO WALLET</Trans>
+              <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+            </Button>
+            <div className="mt-4">
+              <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
+            </div>
           </div>
         </div>
       </div>
