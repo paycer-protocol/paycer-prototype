@@ -16,6 +16,7 @@ const StageCircleBackground = styled.div`
   width: 7rem;
   height: 7rem;
   z-index: 1;
+  box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
 `
 
 function StageCircle({ label, progress }: { label: string, progress: string }) {
@@ -34,6 +35,7 @@ const RoadmapCardBackground = styled.div`
   padding: 2rem;
   border-radius: 5px;
   z-index: 2;
+  box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
 `
 
 function RoadmapCard({ title, entries }: { title: string, entries: string[] }) {
