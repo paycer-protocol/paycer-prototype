@@ -42,7 +42,7 @@ function AboutText() {
 
 function Animation() {
   return (
-    <div className="col-md">
+    <div className="col-md text-center">
       (Animation)
     </div>
   );
@@ -50,7 +50,7 @@ function Animation() {
 
 export default function AboutSection() {
   return (
-    <div className="my-5 container">
+    <div className="my-5 py-5 container">
       <TechnologyList />
       <div className="row">
         <AboutText />

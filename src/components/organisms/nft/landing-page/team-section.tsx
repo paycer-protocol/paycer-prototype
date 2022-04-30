@@ -38,7 +38,7 @@ function TeamMember({ name, jobTitle }: { name: string, jobTitle: string }) {
 
 export default function TeamSection() {
   return (
-    <div className="container">
+    <div className="my-5 py-5 container">
       <PageHeader.Subtitle><Trans>PAYCER TEAM</Trans></PageHeader.Subtitle>
       <PageHeader.Title><Trans>Professionals working on Paycer NFT</Trans></PageHeader.Title>
 
