@@ -42,7 +42,7 @@ export default function TeamSection() {
       <PageHeader.Subtitle><Trans>PAYCER TEAM</Trans></PageHeader.Subtitle>
       <PageHeader.Title><Trans>Professionals working on Paycer NFT</Trans></PageHeader.Title>
 
-      <div className="mt-5 d-flex flex-wrap justify-content-center">
+      <div className="mt-5 pt-5 d-flex flex-wrap justify-content-center">
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
