@@ -13,8 +13,9 @@ const StageCircleBackground = styled.div`
   background-color: #16212E;
   border: 1px solid #1B2E44;
   border-radius: 99999999px;
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
+  z-index: 1;
 `
 
 function StageCircle({ label, progress }: { label: string, progress: string }) {
@@ -32,6 +33,7 @@ const RoadmapCardBackground = styled.div`
   width: 20rem;
   padding: 2rem;
   border-radius: 5px;
+  z-index: 2;
 `
 
 function RoadmapCard({ title, entries }: { title: string, entries: string[] }) {
@@ -55,17 +57,93 @@ export default function RoadmapSection() {
         <PageHeader.Subtitle><Trans>NFT ROADMAP</Trans></PageHeader.Subtitle>
         <PageHeader.Title><Trans>What is coming up next?</Trans></PageHeader.Title>
 
-        <div className="w-100 my-5 py-5" style={{ height: '80rem' }}>
-          <div className="position-relative h-100 my-5">
-            <Image src="/img/nft/timeline.svg" layout="fill" objectFit="contain" objectPosition="top center" />
-            <StageCircle label="Stage 1" progress="30%" />
-            <RoadmapCard
-              title="Vision and Value"
-              entries={[
-                'Launch Landingpage',
-                'Launch Whitepaper',
-              ]}
-            />
+        <div className="d-flex align-items-center justify-content-center w-100 my-5 py-5" style={{ height: '80rem' }}>
+          <div className="position-relative">
+            <Image src="/img/nft/timeline.svg" width="254px" height="977px" />
+            <div style={{ position: 'absolute', top: '-15px', left: '25px', transform: 'translate(-50%, -50%)' }}>
+              <StageCircle label="Stage 1" progress="30%" />
+            </div>
+            <div style={{ position: 'absolute', top: '260px', left: '235px', transform: 'translate(-50%, -50%)' }}>
+              <StageCircle label="Stage 2" progress="60%" />
+            </div>
+            <div style={{ position: 'absolute', top: '730px', left: '120px', transform: 'translate(-50%, -50%)' }}>
+              <StageCircle label="Stage 3" progress="100%" />
+            </div>
+
+            <div style={{ position: 'absolute', top: '-15px', left: '280px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Vision and Value"
+                entries={[
+                  'Launch Landingpage',
+                  'Launch Whitepaper',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '200px', left: '-180px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Launching NFT Collections"
+                entries={[
+                  'Presale',
+                  'Public Sale',
+                  'Reveal Date',
+                  'Upgrade Event',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '230px', left: '500px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Ready for Metaverse"
+                entries={[
+                  '3D NFT',
+                  'Metaverse Partnerships',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Upgrade Event"
+                entries={[
+                  'Level Up NFT function',
+                  'Stacking rewards on Paycer',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Expand NFT Partnerships"
+                entries={[
+                  'Partnership quests',
+                  'Breeding (Breed NFTs using PCR tokens)',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '750px', left: '470px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Cashback in PCR Tokens"
+                entries={[
+                  'Cashback Partnerships',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Credit Cards (Metaverse & Real)"
+                entries={[
+                  'Launch NFT Credit Cards',
+                  'Send NFT Credit Cards',
+                ]}
+              />
+            </div>
+            <div style={{ position: 'absolute', bottom: '-400px', left: '250px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title="Marketing Events & Community Boost"
+                entries={[
+                  'Special Items & Marketing Partnerships',
+                  'Exclusive airdrops & Voting Systems',
+                  'Use NFT Credit Card in Metaverse',
+                ]}
+              />
+            </div>
           </div>
         </div>
       </div>

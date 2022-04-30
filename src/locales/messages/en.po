@@ -41,6 +41,18 @@ msgstr "6 months"
 #~ msgid "6 months after TGE"
 #~ msgstr "6 months after TGE"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:68
+msgid "<0>Connect MetaMask wallet for minting</0>"
+msgstr "<0>Connect MetaMask wallet for minting</0>"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:70
+msgid "<0>Limits:</0> 3 NFT per transaction"
+msgstr "<0>Limits:</0> 3 NFT per transaction"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:69
+msgid "<0>Price:</0> 5000 PCR per NFT + Gas fee"
+msgstr "<0>Price:</0> 5000 PCR per NFT + Gas fee"
+
 #: src/components/organisms/invest/invest-card/index.tsx:45
 #: src/components/organisms/invest/invest-table.tsx:32
 #: src/components/organisms/portfolio/portfolio-item.tsx:58
@@ -177,6 +189,10 @@ msgstr "Bonus Percentage"
 #: src/components/organisms/nft/landing-page/title-section.tsx:50
 msgid "COLLECT"
 msgstr "COLLECT"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:89
+msgid "CONNECT TO WALLET"
+msgstr "CONNECT TO WALLET"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
@@ -744,7 +760,7 @@ msgstr "Login to your wallet to see block details"
 #~ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
 #~ msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:31
+#: src/components/organisms/nft/landing-page/about-section.tsx:35
 msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
 msgstr "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
 
@@ -785,6 +801,10 @@ msgstr "Minimum received"
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:64
+msgid "Mint your Paycer NFT."
+msgstr "Mint your Paycer NFT."
+
 #: src/components/organisms/nft/landing-page/title-section.tsx:52
 msgid "Mint your unique Paycer Utility NFT"
 msgstr "Mint your unique Paycer Utility NFT"
@@ -802,9 +822,17 @@ msgstr "Monthly rewards"
 msgid "Monthly rewards:"
 msgstr "Monthly rewards:"
 
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:55
+msgid "NFT ROADMAP"
+msgstr "NFT ROADMAP"
+
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
 #~ msgid "Name"
 #~ msgstr "Name"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:93
+msgid "Need help?"
+msgstr "Need help?"
 
 #: src/components/organisms/header/network-menu/network-menu.tsx:62
 msgid "Network"
@@ -857,6 +885,10 @@ msgstr "Overview"
 #: src/components/organisms/invest/withdraw-form/index.tsx:113
 msgid "PCR"
 msgstr "PCR"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:79
+msgid "PCR NFT"
+msgstr "PCR NFT"
 
 #: src/config/routes.ts:46
 #: src/pages/token-overview/index.tsx:16
@@ -1426,6 +1458,10 @@ msgstr "Visit"
 #: src/components/organisms/off-canvas/index.tsx:43
 #~ msgid "Wallet"
 #~ msgstr "Wallet"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:56
+msgid "What is coming up next?"
+msgstr "What is coming up next?"
 
 #: src/components/organisms/footer/footer.tsx:170
 msgid "Whitepaper"
