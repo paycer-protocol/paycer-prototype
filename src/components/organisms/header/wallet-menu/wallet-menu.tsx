@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {t, Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import Button from '@components/atoms/button'
 import useWallet from '@hooks/use-wallet'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
@@ -35,7 +35,7 @@ const WalletMenu = () => {
                 <Button
                     className="px-4 text-nowrap p-2 pt-3 pb-3 text-light"
                     onClick={() => setShowWalletProviderModal(true)}>
-                    <Trans>Connect to a Wallet</Trans>
+                    {t`Connect to a Wallet`}
                 </Button>
                 {(showWalletProviderModal &&
                   <WalletProvider
@@ -137,9 +137,8 @@ const WalletMenu = () => {
                                 value={balance}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
-                            />
+                            /> PCR
                         </div>
-                        &nbsp; PCR
                     </div>
 
                     <div className="d-flex align-items-center">
@@ -147,16 +146,11 @@ const WalletMenu = () => {
                             className="me-3"
                             width={21}
                             height={21}
-                            symbol={wallet.etherSymbol}
+                            symbol={wallet.nativeSymbol}
                         />
                         <div className="ps-1 mb-0">
-                            <FormattedNumber
-                                value={wallet.etherBalance}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
+                            {wallet.nativeBalanceFormatted}
                         </div>
-                        &nbsp; {wallet.etherSymbol}
                     </div>
                 </div>
             </>

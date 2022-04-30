@@ -3,11 +3,28 @@ import ChainId from '@providers/chain-id'
 import { formatEther } from '@ethersproject/units'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
-import { useMoralis, useChain } from 'react-moralis'
+import { useMoralis, useChain, useNativeBalance } from 'react-moralis'
 import { mainNetProviders } from '@providers/networks'
 
-export default function useWallet() {
+export interface UseWalletInterface {
+    connector: unknown | null
+    address: string
+    shortenAddress: string
+    isActive: boolean
+    isConnected: boolean
+    isConnecting: boolean
+    connect: (provider: IConnectorProvider) => Promise<void>
+    disconnect: () => Promise<void>
+    nativeBalance: number
+    nativeBalanceFormatted: string
+    nativeSymbol: string
+    chainName: string
+    explorerUrl: string
+    chainId: number
+    activeWallet: string
+}
 
+export default function useWallet():UseWalletInterface {
     const { chain } = useChain()
 
     const {
@@ -18,15 +35,28 @@ export default function useWallet() {
         account,
         isAuthenticating,
         enableWeb3,
-        web3
+        web3,
+        isWeb3Enabled
     } = useMoralis()
+
+
+    const {
+        getBalances,
+        data: balance,
+        nativeToken,
+        error,
+        isLoading
+        // @ts-ignore
+    } = useNativeBalance({ chain: chain?.chainId });
 
     useEffect(() => {
         const stayLoggedIn = async () => {
-            await enableWeb3()
+            if (!isWeb3Enabled) {
+                await enableWeb3()
+            }
         }
         stayLoggedIn()
-    }, [])
+    }, [web3])
 
     const handleConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -47,8 +77,9 @@ export default function useWallet() {
         isConnecting: isAuthenticating,
         connect: handleConnect,
         disconnect: () => disconnect(),
-        etherBalance: formatEther(111 || 0),
-        etherSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
+        nativeBalance: Number(balance),
+        nativeBalanceFormatted: balance.formatted,
+        nativeSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
         explorerUrl: chain?.blockExplorerUrl,
         chainId: chain?.networkId,

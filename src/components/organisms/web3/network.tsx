@@ -41,11 +41,11 @@ const Network = (props) => {
                   <CurrencyIcon
                       style={{ marginTop: '1px' }}
                       className="me-3"
-                      symbol={wallet.etherSymbol}
+                      symbol={wallet.nativeSymbol}
                       width={20}
                   />
                   <FormattedNumber
-                      value={wallet.etherBalance}
+                      value={wallet.nativeBalance}
                       minimumFractionDigits={2}
                       maximumFractionDigits={4}
                   />

@@ -63,17 +63,17 @@ const AccountBalance = () => {
                 <p className="text-muted mb-0">
                     <span className="h1">
                         <FormattedNumber
-                          value={wallet.etherBalance}
+                          value={wallet.nativeBalance}
                           minimumFractionDigits={2}
                           maximumFractionDigits={4}
                         />
                         &nbsp;
-                        {wallet.etherSymbol}
+                        {wallet.nativeSymbol}
                     </span>
                 </p>
             </div>
             <CurrencyIcon
-              symbol={wallet.etherSymbol}
+              symbol={wallet.nativeSymbol}
               className="ms-2 mt-3"
               width={40}
               height={40}

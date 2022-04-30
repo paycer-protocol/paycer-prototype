@@ -1,9 +1,9 @@
 import { ChainId } from '@usedapp/core'
-import VestingAbi from '../deployments/mumbai/VestingAbi.json'
+import VestingAbi from '../deployments/VestingAbi.json'
 
 export default {
     [ChainId.Polygon]: {
-        abi: VestingAbi.abi,
+        abi: VestingAbi,
         private: {
             address: '0x7Fd3DA382bcF1C1d66813E3a8d1b12eE56368618'
         },
@@ -33,7 +33,7 @@ export default {
         },
     },
     [ChainId.Mumbai]: {
-        abi: VestingAbi.abi,
+        abi: VestingAbi,
         private: {
             address: '0x111d13fBc49A5aB91a721be88008F3090ab727E0'
         },
