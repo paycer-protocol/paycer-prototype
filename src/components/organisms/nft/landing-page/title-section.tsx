@@ -55,7 +55,9 @@ export default function TitleSection() {
         </div>
       </div>
       <DownArrowButtonBorder>
-        <Icon size={24} component={ArrowDownward} />
+        <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
+          <Icon size={24} component={ArrowDownward} />
+        </div>
       </DownArrowButtonBorder>
     </div>
   )
