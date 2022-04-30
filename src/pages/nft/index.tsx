@@ -1,5 +1,6 @@
 import AboutSection from "@components/organisms/nft/landing-page/about-section";
 import FaqSection from "@components/organisms/nft/landing-page/faq-section";
+import IconSection from "@components/organisms/nft/landing-page/icon-section";
 import MintSection from "@components/organisms/nft/landing-page/mint-section";
 import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section";
 import TeamSection from "@components/organisms/nft/landing-page/team-section";
@@ -11,6 +12,7 @@ export default function NftLandingPage() {
       <TitleSection />
       <AboutSection />
       <MintSection />
+      <IconSection />
       <RoadmapSection />
       <TeamSection />
       <FaqSection />
