@@ -54,7 +54,7 @@ function RoadmapCard({ title, entries }: { title: string, entries: string[] }) {
 
 export default function RoadmapSection() {
   return (
-    <div className="my-5 py-5">
+    <div className="mt-5 py-5" style={{ marginBottom: '10rem' }}>
       <div className="container my-5">
         <PageHeader.Subtitle><Trans>NFT ROADMAP</Trans></PageHeader.Subtitle>
         <PageHeader.Title><Trans>What is coming up next?</Trans></PageHeader.Title>
