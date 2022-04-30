@@ -1,21 +1,18 @@
-import { useContractCall, useContractFunction } from '@usedapp/core'
+import { useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
-import { Interface } from '@ethersproject/abi'
-import {useEffect, useState} from 'react'
-import moment from 'moment'
+import { useEffect, useState } from 'react'
 import {
     calculateEndTime,
     calculateNextDistribution,
     calculateStartTime
 } from '../helpers/vesting-helper'
-import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis'
 import Moralis from 'moralis'
-import ExecuteFunctionResult = Moralis.ExecuteFunctionResult;
+import { useWeb3ExecuteFunction } from "react-moralis";
 
 interface UseVestingProps {
     withdraw: () => Promise<void>
@@ -33,19 +30,25 @@ interface UseVestingProps {
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+
+type RecipientsResponse = {
+    totalAmount: BigNumber
+    amountWithdrawn: BigNumber
+}
+
 export default function useVesting(type):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
     const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
+
     const vestingContract = new Contract(vestingAddress, vestingConfig.abi)
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
-
-
     const [startTime, setStartTime] = useState<number>(0)
     const [releaseInterval, setReleaseInterval] = useState<number>(0)
-
-    const [recipients, setRecipients] = useState<any>(null)
+    const [totalAmount, setTotalAmount] = useState<number>(0)
+    const [amountWithdrawn, setAmountWithdrawn] = useState<any>(null)
+    const { data, error, fetch: withdraw, isFetching, isLoading } = useWeb3ExecuteFunction()
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [withdrawError, setWithdrawError] = useState(false)
 
@@ -56,17 +59,16 @@ export default function useVesting(type):UseVestingProps {
                 functionName: 'startTime',
                 abi: vestingConfig.abi
             }
-            const response = await Moralis.executeFunction(options)
-            if (response && BigNumber.isBigNumber(response)) {
-                setStartTime(response.toNumber())
+            try {
+                const response = await Moralis.executeFunction(options)
+                if (response && BigNumber.isBigNumber(response)) {
+                    setStartTime(response.toNumber())
+                }
+            } catch(e) {
+                console.log(e)
             }
         }
-        try {
-            fetch()
-        } catch(e) {
-            console.log(e)
-        }
-
+        fetch()
     }, [])
 
     useEffect(() => {
@@ -76,17 +78,16 @@ export default function useVesting(type):UseVestingProps {
                 functionName: 'releaseInterval',
                 abi: vestingConfig.abi
             }
-            const response = await Moralis.executeFunction(options)
-            if (response && BigNumber.isBigNumber(response)) {
-                setReleaseInterval(response.toNumber())
+            try {
+                const response = await Moralis.executeFunction(options)
+                if (response && BigNumber.isBigNumber(response)) {
+                    setReleaseInterval(response.toNumber())
+                }
+            } catch(e) {
+                console.log(e)
             }
         }
-        try {
-            fetch()
-        } catch(e) {
-            console.log(e)
-        }
-
+        fetch()
     }, [])
 
     useEffect(() => {
@@ -97,42 +98,46 @@ export default function useVesting(type):UseVestingProps {
                 abi: vestingConfig.abi,
                 params: { beneficiary: wallet.address },
             }
-            const response = await Moralis.executeFunction(options)
-            if (response && BigNumber.isBigNumber(response)) {
-                setWithdrawAble(Number(formatUnits(response, 18)))
+
+            try {
+                const response = await Moralis.executeFunction(options)
+                if (response && BigNumber.isBigNumber(response)) {
+                    setWithdrawAble(Number(formatUnits(response, 18)))
+                }
+            } catch(e) {
+                console.log(e)
             }
         }
-        try {
-            fetch()
-        } catch(e) {
-            console.log(e)
-        }
-
+        fetch()
     }, [])
 
-    const fetchRecipients = async() => {
-        const options = {
-            contractAddress: vestingAddress,
-            functionName: 'recipients',
-            abi: vestingConfig.abi,
-            params: { beneficiary: wallet.address },
-        }
-        try {
-            const recipients = await Moralis.executeFunction(options)
-            if (recipients) {
 
-                console.log(recipients, 's')
-
+    useEffect(() => {
+        const fetch = async () => {
+            const options = {
+                contractAddress: vestingAddress,
+                functionName: 'recipients',
+                abi: vestingConfig.abi,
+                params: { beneficiary: wallet.address },
             }
-        } catch(e) {
-            console.log(e, 'hi')
+            try {
+                // @ts-ignore
+                const response:RecipientsResponse = await Moralis.executeFunction(options)
+                if (response) {
+                    setTotalAmount(Number(formatUnits(response?.totalAmount, 18)))
+                    setAmountWithdrawn(Number(formatUnits(response?.amountWithdrawn, 18)))
+                }
+            } catch(e) {
+                console.log(e)
+            }
         }
-    }
+        fetch()
 
-    const { send: withdraw, state: withdrawTx } = useContractFunction(vestingContract, 'withdraw')
+    }, [wallet.address])
+
 
     const resetStatus = () => {
-        withdrawTx.status = 'None'
+
     }
 
     // @ts-ignore
@@ -147,8 +152,8 @@ export default function useVesting(type):UseVestingProps {
 
     return {
         withdrawAble,
-        totalAmount: 0,
-        amountWithdrawn: 0,
+        totalAmount,
+        amountWithdrawn,
         withdrawTx,
         withdrawError,
         resetStatus,
@@ -161,5 +166,3 @@ export default function useVesting(type):UseVestingProps {
         nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a')
     }
 }
-
-//.format('MM/DD/YYYY, h:mm:ss a')
