@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import PageHeader from "@components/molecules/page-header";
-import { Trans } from "@lingui/macro";
+import { t, Trans } from "@lingui/macro";
 import styled from "styled-components";
 import { Plus } from '@styled-icons/feather';
 import Icon from '@components/atoms/icon';
@@ -63,86 +63,86 @@ export default function RoadmapSection() {
           <div className="position-relative">
             <Image src="/img/nft/timeline.svg" width="254px" height="977px" />
             <div style={{ position: 'absolute', top: '-15px', left: '25px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label="Stage 1" progress="30%" />
+              <StageCircle label={t`Stage 1`} progress={t`30%`} />
             </div>
             <div style={{ position: 'absolute', top: '260px', left: '235px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label="Stage 2" progress="60%" />
+              <StageCircle label={t`Stage 2`} progress={t`60%`} />
             </div>
             <div style={{ position: 'absolute', top: '730px', left: '120px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label="Stage 3" progress="100%" />
+              <StageCircle label={t`Stage 3`} progress={t`100%`} />
             </div>
 
             <div style={{ position: 'absolute', top: '-15px', left: '280px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Vision and Value"
+                title={t`Vision and Value`}
                 entries={[
-                  'Launch Landingpage',
-                  'Launch Whitepaper',
+                  t`Launch Landingpage`,
+                  t`Launch Whitepaper`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '200px', left: '-180px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Launching NFT Collections"
+                title={t`Launching NFT Collections`}
                 entries={[
-                  'Presale',
-                  'Public Sale',
-                  'Reveal Date',
-                  'Upgrade Event',
+                  t`Presale`,
+                  t`Public Sale`,
+                  t`Reveal Date`,
+                  t`Upgrade Event`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '230px', left: '500px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Ready for Metaverse"
+                title={t`Ready for Metaverse`}
                 entries={[
-                  '3D NFT',
-                  'Metaverse Partnerships',
+                  t`3D NFT`,
+                  t`Metaverse Partnerships`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Upgrade Event"
+                title={t`Upgrade Event`}
                 entries={[
-                  'Level Up NFT function',
-                  'Stacking rewards on Paycer',
+                  t`Level Up NFT function`,
+                  t`Stacking rewards on Paycer`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Expand NFT Partnerships"
+                title={t`Expand NFT Partnerships`}
                 entries={[
-                  'Partnership quests',
-                  'Breeding (Breed NFTs using PCR tokens)',
+                  t`Partnership quests`,
+                  t`Breeding (Breed NFTs using PCR tokens)`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '750px', left: '470px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Cashback in PCR Tokens"
+                title={t`Cashback in PCR Tokens`}
                 entries={[
-                  'Cashback Partnerships',
+                  t`Cashback Partnerships`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Credit Cards (Metaverse & Real)"
+                title={t`Credit Cards (Metaverse & Real)`}
                 entries={[
-                  'Launch NFT Credit Cards',
-                  'Send NFT Credit Cards',
+                  t`Launch NFT Credit Cards`,
+                  t`Send NFT Credit Cards`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', bottom: '-400px', left: '250px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title="Marketing Events & Community Boost"
+                title={t`Marketing Events & Community Boost`}
                 entries={[
-                  'Special Items & Marketing Partnerships',
-                  'Exclusive airdrops & Voting Systems',
-                  'Use NFT Credit Card in Metaverse',
+                  t`Special Items & Marketing Partnerships`,
+                  t`Exclusive airdrops & Voting Systems`,
+                  t`Use NFT Credit Card in Metaverse`,
                 ]}
               />
             </div>
