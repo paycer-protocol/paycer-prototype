@@ -23,7 +23,7 @@ const DownArrowButtonBorder = styled.div`
 
 export default function TitleSection() {
   return (
-    <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ minHeight: '90vh'}}>
+    <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
       <video
         style={{
           position: 'absolute',
@@ -31,10 +31,10 @@ export default function TitleSection() {
           right: 0,
           top: 0,
           bottom: 0,
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           objectFit: 'cover',
-          zIndex: -1,
+          zIndex: -5,
           opacity: '50%',
         }}
         autoPlay
