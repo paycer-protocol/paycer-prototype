@@ -21,7 +21,7 @@ const DownArrowButtonBorder = styled.div`
   }
 `
 
-export default function TitleSection() {
+export default function TitleSection({ onMintNowClicked }: { onMintNowClicked: () => void }) {
   return (
     <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
       <video
@@ -50,7 +50,9 @@ export default function TitleSection() {
             <PageHeader.Subtitle><span style={{ color: '#E224A2' }}><Trans>COLLECT</Trans></span></PageHeader.Subtitle>
             <PageHeader.Title><Trans>Paycer Utility NFT</Trans></PageHeader.Title>
             <h1 className="display-1 my-5"><Trans>Mint your unique Paycer Utility NFT</Trans></h1>
-            <GradientButton><Trans>MINT NFT NOW</Trans></GradientButton>
+            <span onClick={onMintNowClicked}>
+              <GradientButton><Trans>MINT NFT NOW</Trans></GradientButton>
+            </span>
           </PageHeader>
         </div>
       </div>
