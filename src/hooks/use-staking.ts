@@ -9,8 +9,9 @@ import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
 import { Interface } from '@ethersproject/abi'
-import {useWeb3ExecuteFunction} from "react-moralis";
-import Moralis from "moralis";
+import { useWeb3ExecuteFunction } from 'react-moralis'
+import { formatLastRewardtime, determineRewardRate } from '../helpers/staking-helper'
+import Moralis from 'moralis'
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
@@ -44,21 +45,32 @@ interface UseStakingProps {
     approveError: Error
 }
 
+type UserInfoRequest = {
+    accRewardPerShare: BigNumber
+    amount: BigNumber
+    lastDepositedAt: BigNumber
+    lastRewardTime: BigNumber
+    rewardDebt: BigNumber
+}
+
 export default function useStaking():UseStakingProps {
     const wallet = useWallet()
     const { chainId } = wallet
     const stakingAddress = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Polygon]
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-    const [isLoading, setLoading] = useState(false)
+
     const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
     const [depositIsSuccess, setDepositIsSuccess] = useState<boolean>(false)
     const [claimIsSuccess, setClaimIsSuccess] = useState<boolean>(false)
-    const [userInfo, setUserInfo] = useState<any>(null)
+    const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
+    const [rewardRate, setRewardRate] = useState<number>(12)
+    const [pendingReward, setPendingReward] = useState<number>(0)
 
     const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Polygon]
     const paycerToken = paycerTokenConfig.contract
-    const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
+    let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
+    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
     const { data: withdrawData, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const { data: depositData, error: depositError, fetch: deposit, isFetching: depositIsFetching, isLoading: depositIsLoading } = useWeb3ExecuteFunction()
@@ -161,11 +173,9 @@ export default function useStaking():UseStakingProps {
                 params: { beneficiary: wallet.address },
             }
             try {
-                const response = await Moralis.executeFunction(options)
-
-                console.log(response)
-
-                if (response && BigNumber.isBigNumber(response)) {
+                // @ts-ignore
+                const response:UserInfoRequest = await Moralis.executeFunction(options)
+                if (response) {
                     setUserInfo(response)
                 }
             } catch(e) {
@@ -175,45 +185,48 @@ export default function useStaking():UseStakingProps {
         fetch()
     }, [wallet.address])
 
-    let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
-    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
-
-    console.log(userInfo)
-
-    const rewardRateArgs:any = wallet.isConnected ? {
-        abi: new Interface(StakingContractProvider.abi),
-        address: stakingAddress,
-        method: 'rewardAPY',
-        args: [wallet.address],
-    } : false
-
-    const pendingRewardArgs:any = wallet.isConnected ? {
-        abi: new Interface(StakingContractProvider.abi),
-        address: stakingAddress,
-        method: 'pendingReward',
-        args: [wallet.address],
-    } : false
-
-    let rewardRate = useContractCall(rewardRateArgs) ?? 0
-    let [pendingReward] = useContractCall(pendingRewardArgs) ?? []
-
-    rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
-    rewardRate = rewardRate ? rewardRate : 12
-    pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
-
-
-    console.log(userInfo)
-
-    function formatLastRewardtime():any {
-        // @ts-ignore
-        if (!userInfo?.lastRewardTime) {
-            return null
+    useEffect(() => {
+        const fetch = async () => {
+            const options = {
+                contractAddress: stakingAddress,
+                functionName: 'rewardAPY',
+                abi: StakingContractProvider.abi,
+                params: { _user: wallet.address },
+            }
+            try {
+                // @ts-ignore
+                const response:BigNumber = await Moralis.executeFunction(options)
+                if (response && BigNumber.isBigNumber(response)) {
+                    setRewardRate(response.toNumber() / 100)
+                }
+            } catch(e) {
+                console.log(e)
+            }
         }
-        // @ts-ignore
-        let momentLastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
+        fetch()
+    }, [wallet.address])
 
-        return momentLastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
-    }
+    useEffect(() => {
+        const fetch = async () => {
+            const options = {
+                contractAddress: stakingAddress,
+                functionName: 'pendingReward',
+                abi: StakingContractProvider.abi,
+                params: { _user: wallet.address },
+            }
+            try {
+                // @ts-ignore
+                const response = await Moralis.executeFunction(options)
+                if (response && BigNumber.isBigNumber(response)) {
+                    setPendingReward(Number(formatUnits(response, 18)))
+                }
+            } catch(e) {
+                console.log(e)
+            }
+        }
+        fetch()
+    }, [wallet.address])
+
 
     const handleClaim = async () => {
         /*
@@ -227,7 +240,7 @@ export default function useStaking():UseStakingProps {
 
          */
     }
-
+    
     return {
         deposit: handleDeposit,
         withdraw: handleWithdraw,
@@ -239,7 +252,7 @@ export default function useStaking():UseStakingProps {
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         totalAmountClaimed: 0,
         // @ts-ignore
-        lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? formatLastRewardtime() : 0,
+        lastRewardTime: formatLastRewardtime(userInfo?.lastRewardTime),
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
         withdrawIsLoading,
