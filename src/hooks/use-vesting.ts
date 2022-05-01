@@ -1,28 +1,26 @@
-import { useContractFunction } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId } from '@usedapp/core'
-import { Contract } from '@ethersproject/contracts'
+import ChainId from '@providers/chain-id'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import {
     calculateEndTime,
     calculateNextDistribution,
     calculateStartTime
 } from '../helpers/vesting-helper'
 import Moralis from 'moralis'
-import { useWeb3ExecuteFunction } from "react-moralis";
+import { useWeb3ExecuteFunction } from 'react-moralis'
 
 interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
     totalAmount: number
-    resetStatus: () => void
     amountWithdrawn: number
-    withdrawTx: any
-    withdrawError?: boolean
-    isLoading?: boolean
+    withdrawIsLoading: boolean
+    withdrawIsFetching: boolean
+    withdrawIsError: boolean
+    withdrawIsSuccess: boolean
     showFormApproveModal: boolean
     startTime: string
     endTime: string
@@ -41,16 +39,25 @@ export default function useVesting(type):UseVestingProps {
     const { chainId } = wallet
     const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
-
-    const vestingContract = new Contract(vestingAddress, vestingConfig.abi)
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
     const [startTime, setStartTime] = useState<number>(0)
     const [releaseInterval, setReleaseInterval] = useState<number>(0)
     const [totalAmount, setTotalAmount] = useState<number>(0)
+    const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
     const [amountWithdrawn, setAmountWithdrawn] = useState<any>(null)
-    const { data, error, fetch: withdraw, isFetching, isLoading } = useWeb3ExecuteFunction()
+    const { data, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-    const [withdrawError, setWithdrawError] = useState(false)
+
+    const vestingWithdrawRequesParams = useMemo(() => {
+        return (
+            {
+                contractAddress: vestingAddress,
+                functionName: 'withdraw',
+                abi: vestingConfig.abi,
+                params: { beneficiary: wallet.address },
+            }
+        )
+    }, []);
 
     useEffect(() => {
         const fetch = async () => {
@@ -134,33 +141,37 @@ export default function useVesting(type):UseVestingProps {
         fetch()
 
     }, [wallet.address])
-
-
-    const resetStatus = () => {
-
-    }
-
-    // @ts-ignore
-
+    
     const withdrawVesting = async () => {
+
         try {
-            await withdraw()
+            await withdraw({
+                params: vestingWithdrawRequesParams,
+                onSuccess: results => {
+                    setWithdrawIsSuccess(true)
+                    setWithdrawAble(0)
+                }
+            })
+
         } catch (e) {
-            setWithdrawError(true)
+            console.log("HO")
+            console.log(e)
         }
     }
+
+    console.log(withdrawError, withdrawIsFetching, withdrawIsLoading)
 
     return {
         withdrawAble,
         totalAmount,
         amountWithdrawn,
-        withdrawTx,
-        withdrawError,
-        resetStatus,
+        withdrawIsLoading,
+        withdrawIsFetching,
+        withdrawIsSuccess,
+        withdrawIsError: !!withdrawError,
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal,
-        isLoading: false,
         startTime: calculateStartTime(startTime).format('MM/DD/YYYY, h:mm:ss a'),
         endTime: calculateEndTime(startTime, type).format('MM/DD/YYYY, h:mm:ss a'),
         nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a')

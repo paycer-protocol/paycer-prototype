@@ -28,14 +28,14 @@ const Claim = () => {
     const router = useRouter()
     const {
         withdrawAble,
-        withdrawTx,
         withdraw,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError,
-        isLoading,
-        nextDistribution,
-        resetStatus
+        withdrawIsLoading,
+        withdrawIsSuccess,
+        withdrawIsError,
+        withdrawIsFetching,
+        nextDistribution
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -85,15 +85,14 @@ const Claim = () => {
                     show={showFormApproveModal}
                     onHide={() => {
                         setShowFormApproveModal(false)
-                        resetStatus()
                     }}
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
-                    error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
-                    success={withdrawTx.status === 'Success'}
+                    error={withdrawIsError}
+                    success={withdrawIsSuccess}
                     successMessage={t`Transaction was successfully executed.`}
-                    loading={isLoading || withdrawTx.status === 'Mining'}
+                    loading={withdrawIsLoading || withdrawIsFetching}
                     additionalSuccessContent={
                         <div className="d-flex justify-content-center mt-5">
                             <GradientButton className="w-100" onClick={() => router.push('/staking')}>
