@@ -9,7 +9,7 @@ interface TransactionApproveModalProps {
   onHide: () => void
   onClick: () => void
   title?: string
-  error?: boolean
+  error?: Error
   success?: boolean
   loading?: boolean
   btnLabel?: string
@@ -73,7 +73,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
             </div>
 
             <p className="mb-0 text-center text-muted">
-              {t`Transaction failed, please try again.`}
+              {error.message}
             </p>
           </>
        )
@@ -96,7 +96,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null}>
       <>
-        <Modal.Header closeButton={!loading || success || error} onHide={onHide}>
+        <Modal.Header closeButton={!loading || success || !!error} onHide={onHide}>
           <Modal.Title className="text-center w-100">
             {renderTitle()}
           </Modal.Title>

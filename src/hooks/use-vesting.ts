@@ -33,18 +33,21 @@ type RecipientsResponse = {
 export default function useVesting(type):UseVestingProps {
     const wallet = useWallet()
     const { chainId } = wallet
+
     const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
+
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
     const [startTime, setStartTime] = useState<number>(0)
     const [releaseInterval, setReleaseInterval] = useState<number>(0)
     const [totalAmount, setTotalAmount] = useState<number>(0)
     const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
     const [amountWithdrawn, setAmountWithdrawn] = useState<any>(null)
-    const { data, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
 
-    const vestingWithdrawRequesParams = useMemo(() => {
+    const { data, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
+
+    const vestingWithdrawRequestParams = useMemo(() => {
         return (
             {
                 contractAddress: vestingAddress,
@@ -53,7 +56,21 @@ export default function useVesting(type):UseVestingProps {
                 params: { beneficiary: wallet.address },
             }
         )
-    }, []);
+    }, [wallet.address])
+
+    const withdrawVesting = async () => {
+        try {
+            await withdraw({
+                params: vestingWithdrawRequestParams,
+                onSuccess: results => {
+                    setWithdrawIsSuccess(true)
+                    setWithdrawAble(0)
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     useEffect(() => {
         const fetch = async () => {
@@ -72,7 +89,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [])
+    }, [wallet.address])
 
     useEffect(() => {
         const fetch = async () => {
@@ -91,7 +108,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [])
+    }, [wallet.address])
 
     useEffect(() => {
         const fetch = async () => {
@@ -112,7 +129,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [])
+    }, [wallet.address])
 
 
     useEffect(() => {
@@ -137,24 +154,6 @@ export default function useVesting(type):UseVestingProps {
         fetch()
 
     }, [wallet.address])
-
-    const withdrawVesting = async () => {
-
-        try {
-            await withdraw({
-                params: vestingWithdrawRequesParams,
-                onSuccess: results => {
-                    setWithdrawIsSuccess(true)
-                    setWithdrawAble(0)
-                }
-            })
-
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    console.log(withdrawError, withdrawIsFetching, withdrawIsLoading)
 
     return {
         withdrawAble,

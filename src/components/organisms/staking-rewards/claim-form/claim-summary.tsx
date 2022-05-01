@@ -25,25 +25,25 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const {
-    claim,
-    claimTx,
-    resetStatus,
-    pendingReward,
-    totalAmountClaimed,
-    lastRewardTime,
-    claimError,
-    isLoading,
-    showFormApproveModal,
-    setShowFormApproveModal
-  } = useStaking()
+    const {
+        claim,
+        pendingReward,
+        totalAmountClaimed,
+        lastRewardTime,
+        claimIsFetching,
+        claimError,
+        claimIsLoading,
+        claimIsSuccess,
+        showFormApproveModal,
+        setShowFormApproveModal
+    } = useStaking()
 
-  const handleClaim = async () => {
-    try {
-      await claim()
-    } catch (e) {
+    const handleClaim = async () => {
+        try {
+            await claim()
+        } catch (e) {
+        }
     }
-  }
 
   return (
       <>
@@ -107,16 +107,15 @@ export default function ClaimSummary() {
           <TransactionApproveModal
               show={showFormApproveModal}
               onHide={() => {
-                  resetStatus()
                   setShowFormApproveModal(false)
               }}
               title={t`Confirm Claim`}
               btnLabel={t`Claim now`}
               onClick={() => handleClaim()}
-              error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
-              success={claimTx.status === 'Success'}
+              error={claimError}
+              success={claimIsSuccess}
               successMessage={t`Transaction was successfully executed`}
-              loading={isLoading || claimTx.status === 'Mining'}
+              loading={claimIsLoading || claimIsFetching}
           >
               <div className="my-5">
                   <div className="d-flex flex-column mb-4 text-center">

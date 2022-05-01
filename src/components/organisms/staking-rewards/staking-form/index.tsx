@@ -23,15 +23,21 @@ export default function StakingForm() {
         deposit,
         stakedBalance,
         rewardRate,
-        withdrawTx,
-        approveTx,
-        depositTx,
-        resetStatus,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError,
+        depositIsLoading,
+        depositIsFetching,
         depositError,
-        isLoading
+        depositIsSuccess,
+
+        approveIsLoading,
+        approveIsFetching,
+        approveError,
+
+        withdrawIsLoading,
+        withdrawIsFetching,
+        withdrawError,
+        withdrawIsSuccess,
     } = useStaking()
 
     const token = useToken(rewardSymbol)
@@ -162,31 +168,14 @@ export default function StakingForm() {
                         <TransactionApproveModal
                             show={showFormApproveModal}
                             onHide={() => {
-                                resetStatus()
                                 setShowFormApproveModal(false)
                             }}
                             title={t`Confirm Transaction`}
                             onClick={() => handleStaking(values)}
                             successMessage={t`Transaction was successfully executed`}
-                            error={
-                                depositTx.status === 'Fail' ||
-                                depositTx.status === 'Exception' ||
-                                approveTx.status === 'Fail' ||
-                                approveTx.status === 'Exception' ||
-                                withdrawTx.status === 'Fail' ||
-                                withdrawTx.status === 'Exception' ||
-                                withdrawError || depositError
-                            }
-                            success={
-                                depositTx.status === 'Success' ||
-                                withdrawTx.status === 'Success'
-                            }
-                            loading={
-                                depositTx.status === 'Mining' ||
-                                withdrawTx.status === 'Mining' ||
-                                approveTx.status === 'Mining' ||
-                                isLoading
-                            }
+                            error={withdrawError || depositError || approveError}
+                            success={withdrawIsSuccess || depositIsSuccess}
+                            loading={withdrawIsLoading || withdrawIsFetching || depositIsLoading || depositIsFetching || approveIsLoading || approveIsFetching}
                         >
                             <>
                                 <div className="card blur-background">
