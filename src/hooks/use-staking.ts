@@ -1,16 +1,13 @@
 import {useEffect, useMemo, useState} from 'react'
 import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
-import moment from 'moment'
 import ChainId from '@providers/chain-id'
 import { formatUnits, parseUnits } from '@ethersproject/units'
-import { Contract } from '@ethersproject/contracts'
 import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
-import { Interface } from '@ethersproject/abi'
 import { useWeb3ExecuteFunction } from 'react-moralis'
-import { formatLastRewardtime, determineRewardRate } from '../helpers/staking-helper'
+import { formatLastRewardtime } from '../helpers/staking-helper'
 import Moralis from 'moralis'
 
 interface UseStakingProps {
@@ -240,7 +237,7 @@ export default function useStaking():UseStakingProps {
 
          */
     }
-    
+
     return {
         deposit: handleDeposit,
         withdraw: handleWithdraw,
