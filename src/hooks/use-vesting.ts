@@ -4,11 +4,7 @@ import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
 import useWallet from '@hooks/use-wallet'
 import { useEffect, useState, useMemo } from 'react'
-import {
-    calculateEndTime,
-    calculateNextDistribution,
-    calculateStartTime
-} from '../helpers/vesting-helper'
+import { calculateEndTime, calculateNextDistribution, calculateStartTime } from '../helpers/vesting-helper'
 import Moralis from 'moralis'
 import { useWeb3ExecuteFunction } from 'react-moralis'
 
@@ -141,7 +137,7 @@ export default function useVesting(type):UseVestingProps {
         fetch()
 
     }, [wallet.address])
-    
+
     const withdrawVesting = async () => {
 
         try {
@@ -154,7 +150,6 @@ export default function useVesting(type):UseVestingProps {
             })
 
         } catch (e) {
-            console.log("HO")
             console.log(e)
         }
     }
