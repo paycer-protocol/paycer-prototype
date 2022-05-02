@@ -11,7 +11,7 @@ const StyledPortal = styled.div`
     z-index: 990;
     background: rgba(0, 0, 0, 0.85);
     border-radius: 5px;
-    right: 1rem;
+    left: 1rem;
     bottom: 1rem;
     padding: 0.25rem 0.5rem;
 `
