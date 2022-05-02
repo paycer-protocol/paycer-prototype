@@ -14,6 +14,7 @@ import AddPaycerToken from '../web3/add-paycer-token'
 import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -64,10 +65,11 @@ const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
     const wallet = useWallet()
+    const { currentChainId } = useNetwork()
 
     const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId)
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId)
         && isAuthenticatedRoute(route, wallet))
 
     return (

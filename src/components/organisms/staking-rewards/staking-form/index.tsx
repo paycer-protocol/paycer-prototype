@@ -27,17 +27,14 @@ export default function StakingForm() {
         setShowFormApproveModal,
         depositIsLoading,
         depositIsFetching,
-        depositError,
         depositIsSuccess,
-
         approveIsLoading,
         approveIsFetching,
-        approveError,
-
         withdrawIsLoading,
         withdrawIsFetching,
-        withdrawError,
         withdrawIsSuccess,
+        contractCallError,
+        resetStatus
     } = useStaking()
 
     const token = useToken(rewardSymbol)
@@ -169,11 +166,12 @@ export default function StakingForm() {
                             show={showFormApproveModal}
                             onHide={() => {
                                 setShowFormApproveModal(false)
+                                resetStatus()
                             }}
                             title={t`Confirm Transaction`}
                             onClick={() => handleStaking(values)}
                             successMessage={t`Transaction was successfully executed`}
-                            error={withdrawError || depositError || approveError}
+                            error={contractCallError}
                             success={withdrawIsSuccess || depositIsSuccess}
                             loading={withdrawIsLoading || withdrawIsFetching || depositIsLoading || depositIsFetching || approveIsLoading || approveIsFetching}
                         >

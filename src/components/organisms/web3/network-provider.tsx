@@ -17,28 +17,8 @@ export interface NetworkProviderProps {
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
-  const network = useNetwork()
-  const wallet = useWallet()
-
-  const handleSwitchNetwork = async provider => {
-    try {
-      await network.switchNetwork(provider)
-    } catch (error) {
-      if (error.code === -32002) {
-        toast(<Trans>Network-Switch Pending, please open your Wallet</Trans>)
-      }
-      if (error.code === 4902) {
-        toast(<Trans>Adding Network to Wallet ...</Trans>)
-        try {
-          await network.addNetwork(provider)
-        } catch (error) {
-          if (error.code === -32002) {
-            toast(<Trans>Previously added network Pending, please open your Wallet</Trans>)
-          }
-        }
-      }
-    }
-  }
+  const { currentChainId, handleSwitchNetwork } = useNetwork()
+  const { isConnected } = useWallet()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>
@@ -50,7 +30,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
           <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
               const provider = providers[chainId]
-              const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
+              const isActive = isConnected && Number(chainId) === currentChainId
 
               return (
                   <Button

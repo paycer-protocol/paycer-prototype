@@ -24,15 +24,15 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const { handleSwitchNetwork, networkId } = useNetwork()
-    const wallet = useWallet()
+    const { handleSwitchNetwork, currentChainId } = useNetwork()
+    const { isConnected } = useWallet()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
-    if (!wallet.isConnected) {
+    if (!isConnected) {
         return null
     }
 
-    const activeNetworkLabel = providers[networkId]?.chainName
+    const activeNetworkLabel = providers[currentChainId]?.chainName
 
     const renderMenu = () => {
         return (
@@ -47,7 +47,7 @@ const NetworkMenu = () => {
                 </div>
                 {Object.keys(providers).map((chainId, index) => {
                     const provider = providers[chainId]
-                    const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
+                    const isActive = isConnected && Number(chainId) === currentChainId
                     const isLast = Object.keys(providers).length === index +1
 
                     return (

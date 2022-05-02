@@ -10,7 +10,7 @@ import { getExplorerBlockUrl } from '@providers/explorers'
 
 // TODO REFACTOR https://docs.moralis.io/moralis-dapp/web3-api/native#getdatetoblock
 export default function PortalBlockNumber() {
-  const { chainId } = useNetwork()
+  const { currentChainId } = useNetwork()
   const blockNumber: number | undefined = useBlockNumber()
   const { isConnected, address } = useWallet()
   const [href, setHref] = useState(null)
@@ -19,10 +19,10 @@ export default function PortalBlockNumber() {
     if (!isConnected || !blockNumber) {
       return
     }
-    const explorerBlockUrl = getExplorerBlockUrl(chainId, blockNumber)
+    const explorerBlockUrl = getExplorerBlockUrl(currentChainId, blockNumber)
     setHref(explorerBlockUrl)
     return () => setHref(null)
-  }, [blockNumber, chainId, isConnected, address])
+  }, [blockNumber, currentChainId, isConnected, address])
 
   return (
     <PortalOverlay>

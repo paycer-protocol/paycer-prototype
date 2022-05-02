@@ -4,11 +4,10 @@ import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
+import useNetwork from '@hooks/use-network'
 import useWallet from '@hooks/use-wallet'
-import Navbar from '@components/molecules/navbar'
-import Image from '@components/atoms/image'
-import WalletMenu from "@components/organisms/header/wallet-menu";
-import NetworkMenu from "@components/organisms/header/network-menu";
+import WalletMenu from '@components/organisms/header/wallet-menu'
+import NetworkMenu from '@components/organisms/header/network-menu'
 
 interface OffCanvasProps {
   show: boolean
@@ -17,8 +16,9 @@ interface OffCanvasProps {
 
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
-  const wallet = useWallet()
-  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
+  const { currentChainId } = useNetwork()
+  const { isConnected } = useWallet()
+  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
 
   return (
     <Modal show={show} onHide={onHide} vertical>
@@ -61,7 +61,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
               </li>
             </ul>
           </div>
-          {wallet.isConnected &&
+          {isConnected &&
             <div className="mb-5 border-bottom light-border pb-5">
               <NetworkMenu />
             </div>

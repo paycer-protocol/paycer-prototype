@@ -12,7 +12,7 @@ const Layout = (props: LayoutProps) => {
   const { children } = props
   const network = useNetwork()
 
-  if (network.supportedChain) {
+  if (network.currentChainIsSupportedForDApp) {
     return (
       <>
         <Header />

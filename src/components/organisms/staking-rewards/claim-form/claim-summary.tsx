@@ -4,9 +4,7 @@ import { t, Trans } from '@lingui/macro'
 import useStaking from '@hooks/use-staking'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import { rewardSymbol } from '@config/staking-rewards'
 import GradientButton from '@components/atoms/button/gradient-button'
-import Spinner from '@components/atoms/spinner'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 
 const RewardContainer = styled.div`
@@ -31,11 +29,12 @@ export default function ClaimSummary() {
         totalAmountClaimed,
         lastRewardTime,
         claimIsFetching,
-        claimError,
+        contractCallError,
         claimIsLoading,
         claimIsSuccess,
         showFormApproveModal,
-        setShowFormApproveModal
+        setShowFormApproveModal,
+        resetStatus
     } = useStaking()
 
     const handleClaim = async () => {
@@ -108,23 +107,24 @@ export default function ClaimSummary() {
               show={showFormApproveModal}
               onHide={() => {
                   setShowFormApproveModal(false)
+                  resetStatus()
               }}
               title={t`Confirm Claim`}
               btnLabel={t`Claim now`}
               onClick={() => handleClaim()}
-              error={claimError}
+              error={contractCallError}
               success={claimIsSuccess}
               successMessage={t`Transaction was successfully executed`}
               loading={claimIsLoading || claimIsFetching}
           >
               <div className="my-5">
                   <div className="d-flex flex-column mb-4 text-center">
-                            <span className="display-2 my-3">
-                                <FormattedNumber
-                                    value={pendingReward}
-                                    minimumFractionDigits={2}
-                                    maximumFractionDigits={2}
-                                />
+                        <span className="display-2 my-3">
+                            <FormattedNumber
+                                value={pendingReward}
+                                minimumFractionDigits={2}
+                                maximumFractionDigits={2}
+                            />
                             <CurrencyIcon
                                 style={{position: 'relative', top: '-5px'}}
                                 width={55}
@@ -132,7 +132,7 @@ export default function ClaimSummary() {
                                 symbol="PCR"
                                 className="ms-3"
                             />
-                            </span>
+                        </span>
                   </div>
               </div>
           </TransactionApproveModal>

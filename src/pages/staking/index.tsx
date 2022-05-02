@@ -6,9 +6,9 @@ import ClaimForm from '@components/organisms/staking-rewards/claim-form'
 import useNetwork from '@hooks/use-network'
 
 export default function Staking () {
-  const { supportedStakingChain } = useNetwork()
+  const { currentChainIsSupportedForStaking } = useNetwork()
 
-  if (!supportedStakingChain) {
+  if (!currentChainIsSupportedForStaking) {
     location.href = '/portfolio'
 
     return

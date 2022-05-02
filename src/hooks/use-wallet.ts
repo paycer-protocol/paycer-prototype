@@ -20,7 +20,6 @@ export interface UseWalletInterface {
     nativeSymbol: string
     chainName: string
     explorerUrl: string
-    chainId: number
     activeWallet: string
 }
 
@@ -81,7 +80,6 @@ export default function useWallet():UseWalletInterface {
         nativeSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
         explorerUrl: chain?.blockExplorerUrl,
-        chainId: chain?.networkId,
         activeWallet: web3?.connection ? web3?.connection?.url : ''
     }
 }

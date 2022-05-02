@@ -7,7 +7,7 @@ import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord} from '@styled-
 import Button from '@components/atoms/button'
 import { t, Trans } from '@lingui/macro'
 import {useRouter} from 'next/router'
-import useWallet from '@hooks/use-wallet'
+import useNetwork from '@hooks/use-network'
 import {routes} from '@config/routes'
 import classnames from 'classnames'
 
@@ -23,8 +23,8 @@ const NavHeader = styled.div`
 
 const Footer = () => {
     const { pathname } = useRouter()
-    const wallet = useWallet()
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
+    const { currentChainId } = useNetwork()
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
 
     return (
       <>
