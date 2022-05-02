@@ -39,7 +39,6 @@ export default function useWallet():UseWalletInterface {
         isWeb3Enabled
     } = useMoralis()
 
-
     const {
         getBalances,
         data: balance,

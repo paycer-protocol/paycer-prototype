@@ -1,14 +1,14 @@
 import {useEffect, useMemo, useState} from 'react'
-import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import useWallet from '@hooks/use-wallet'
-import { useWeb3ExecuteFunction } from 'react-moralis'
+import { useWeb3ExecuteFunction, useMoralisWeb3Api } from 'react-moralis'
 import { formatLastRewardtime } from '../helpers/staking-helper'
 import Moralis from 'moralis'
+import useToken from "@hooks/use-token";
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
@@ -52,6 +52,8 @@ type UserInfoRequest = {
 
 export default function useStaking():UseStakingProps {
     const wallet = useWallet()
+    const PCRToken = useToken('PCR')
+    const Web3Api = useMoralisWeb3Api()
     const { chainId } = wallet
     const stakingAddress = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Polygon]
 
@@ -62,12 +64,11 @@ export default function useStaking():UseStakingProps {
     const [claimIsSuccess, setClaimIsSuccess] = useState<boolean>(false)
     const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
     const [rewardRate, setRewardRate] = useState<number>(12)
+    const [tokenAllowance, setTokenAllowance] = useState<number>(0)
     const [pendingReward, setPendingReward] = useState<number>(0)
 
     const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Polygon]
     const paycerToken = paycerTokenConfig.contract
-    let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
-    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
 
     const { data: withdrawData, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const { data: depositData, error: depositError, fetch: deposit, isFetching: depositIsFetching, isLoading: depositIsLoading } = useWeb3ExecuteFunction()
@@ -96,7 +97,7 @@ export default function useStaking():UseStakingProps {
     const sendWithdraw = async (amount: number) => {
         const withdrawParams = {
             functionName: 'withdraw',
-            params: { user: wallet.address, amount:  parseUnits(String(amount), 18) }
+            params: { _user: wallet.address, amount:  parseUnits(String(amount), 18) }
         }
         const params = { ...stakingRequestParams, ...withdrawParams};
         try {
@@ -114,7 +115,7 @@ export default function useStaking():UseStakingProps {
     const sendDeposit = async (amount: number) => {
         const withdrawParams = {
             functionName: 'deposit',
-            params: { user: wallet.address, amount:  parseUnits(String(amount), 18) }
+            params: { _user: wallet.address, amount:  parseUnits(String(amount), 18) }
         }
         const params = { ...stakingRequestParams, ...withdrawParams};
         try {
@@ -130,7 +131,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const handleTransaction = async (amount: number, sendCallback: typeof sendDeposit | typeof sendWithdraw) => {
-        if (amount < formattedAllowance) {
+        if (amount < tokenAllowance) {
             await sendCallback(amount)
             return
         }
@@ -153,6 +154,24 @@ export default function useStaking():UseStakingProps {
         }
     }
 
+    const handleClaim = async () => {
+        const claimParams = {
+            functionName: 'claim',
+            params: { to: wallet.address }
+        }
+        const params = { ...stakingRequestParams, ...claimParams};
+        try {
+            await claim({
+                params,
+                onSuccess: results => {
+                    setClaimIsSuccess(true)
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     const handleDeposit = async (amount: number) => {
         await handleTransaction(amount, sendDeposit)
     }
@@ -162,81 +181,101 @@ export default function useStaking():UseStakingProps {
     }
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: stakingAddress,
-                functionName: 'userInfo',
-                abi: StakingContractProvider.abi,
-                params: { beneficiary: wallet.address },
-            }
-            try {
-                // @ts-ignore
-                const response:UserInfoRequest = await Moralis.executeFunction(options)
-                if (response) {
-                    setUserInfo(response)
+        if (wallet.address) {
+            const fetch = async () => {
+                const options = {
+                    owner_address: wallet.address,
+                    spender_address: stakingAddress,
+                    address: paycerToken.address,
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    // @ts-ignore
+                    const allowance = await Web3Api.token.getTokenAllowance(options)
+                    console.log(allowance)
+                    if (allowance) {
+                        setTokenAllowance(Number(allowance.allowance))
+                    }
+                } catch(e) {
+                    console.log('allowance', e)
+                }
             }
+            fetch()
         }
-        fetch()
+
+    }, [wallet.address])
+
+
+    console.log(tokenAllowance, 'tokenije')
+
+    useEffect(() => {
+        if (wallet.address) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'userInfo',
+                    abi: StakingContractProvider.abi,
+                    params: {beneficiary: wallet.address},
+                }
+                try {
+                    // @ts-ignore
+                    const response: UserInfoRequest = await Moralis.executeFunction(options)
+                    if (response) {
+                        setUserInfo(response)
+                    }
+                } catch (e) {
+                    console.log('userInfo', e)
+                }
+            }
+            fetch()
+        }
     }, [wallet.address])
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: stakingAddress,
-                functionName: 'rewardAPY',
-                abi: StakingContractProvider.abi,
-                params: { _user: wallet.address },
-            }
-            try {
-                // @ts-ignore
-                const response:BigNumber = await Moralis.executeFunction(options)
-                if (response && BigNumber.isBigNumber(response)) {
-                    setRewardRate(response.toNumber() / 100)
+        if (wallet.address) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'rewardAPY',
+                    abi: StakingContractProvider.abi,
+                    params: {_user: wallet.address},
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    // @ts-ignore
+                    const response: BigNumber = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setRewardRate(response.toNumber() / 100)
+                    }
+                } catch (e) {
+                    console.log('rewardAPY', e)
+                }
             }
+            fetch()
         }
-        fetch()
     }, [wallet.address])
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: stakingAddress,
-                functionName: 'pendingReward',
-                abi: StakingContractProvider.abi,
-                params: { _user: wallet.address },
-            }
-            try {
-                // @ts-ignore
-                const response = await Moralis.executeFunction(options)
-                if (response && BigNumber.isBigNumber(response)) {
-                    setPendingReward(Number(formatUnits(response, 18)))
+        if (wallet.address) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'pendingReward',
+                    abi: StakingContractProvider.abi,
+                    params: {_user: wallet.address},
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    // @ts-ignore
+                    const response = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setPendingReward(Number(formatUnits(response, 18)))
+                    }
+                } catch (e) {
+                    console.log('pendingReward', e)
+                }
             }
+            fetch()
         }
-        fetch()
+
     }, [wallet.address])
-
-
-    const handleClaim = async () => {
-        /*
-        setLoading(true)
-        try {
-            await sendClaim(wallet.address)
-        } catch(e) {
-            setClaimError(true)
-        }
-        setLoading(true)
-
-         */
-    }
 
     return {
         deposit: handleDeposit,
