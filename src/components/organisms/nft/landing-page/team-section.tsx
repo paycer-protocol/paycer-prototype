@@ -22,14 +22,14 @@ const TeamMemberCircleContent = styled.div`
 
 function TeamMember({ name, jobTitle }: { name: string, jobTitle: string }) {
   return (
-    <div className="d-flex flex-column align-items-center" style={{ width: '15rem', height: '20rem' }}>
+    <div className="mx-auto d-flex flex-column align-items-center" style={{ width: '13rem', height: '20rem' }}>
       <TeamMemberCircle>
         <TeamMemberCircleContent>
           <Image src="/img/avatars/profiles/avatar-2.jpg" layout="fill" />
         </TeamMemberCircleContent>
       </TeamMemberCircle>
-      <div className="text-center">
-        <h2 className="mt-4 mb-2"><b>{name}</b></h2>
+      <div className="text-center p-2">
+        <h2 className="mt-3 mb-2"><b>{name}</b></h2>
         <span className="opacity-50">{jobTitle}</span>
       </div>
     </div>
@@ -42,7 +42,11 @@ export default function TeamSection() {
       <PageHeader.Subtitle><Trans>PAYCER TEAM</Trans></PageHeader.Subtitle>
       <PageHeader.Title><Trans>Professionals working on Paycer NFT</Trans></PageHeader.Title>
 
-      <div className="mt-5 pt-5 d-flex flex-wrap justify-content-center">
+      <div className="mt-5 pt-5 d-flex flex-wrap justify-content-between">
+        <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
+        <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
+        <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
+        <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />
         <TeamMember name="Richard Vo" jobTitle="Founder & Managing Director" />

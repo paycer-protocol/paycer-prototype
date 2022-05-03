@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/404.tsx:20
+#: src/pages/404.tsx:21
 msgid "404"
 msgstr "404"
 
@@ -81,6 +81,10 @@ msgstr "APR"
 #~ msgid "APY"
 #~ msgstr "APY"
 
+#: src/pages/nft/index.tsx:23
+msgid "About"
+msgstr "About"
+
 #: src/components/organisms/web3/wallet-detail.tsx:95
 msgid "Account"
 msgstr "Account"
@@ -131,7 +135,7 @@ msgid "An unknown error occurred. Please try again."
 msgstr "An unknown error occurred. Please try again."
 
 #: src/config/routes.ts:40
-#: src/pages/analytics/index.tsx:16
+#: src/pages/analytics/index.tsx:17
 msgid "Analytics"
 msgstr "Analytics"
 
@@ -169,6 +173,10 @@ msgstr "Attention! The exchange rate has changed significantly."
 #: src/components/organisms/portfolio/portfolio-header.tsx:67
 #~ msgid "Available Balance"
 #~ msgstr "Available Balance"
+
+#: src/components/organisms/one-pager-header/one-pager-header.tsx:99
+msgid "Back to Finance"
+msgstr "Back to Finance"
 
 #: src/components/organisms/web3/wallet-detail.tsx:62
 msgid "Balance"
@@ -230,7 +238,8 @@ msgstr "Cashback in PCR Tokens"
 #~ msgid "Chain"
 #~ msgstr "Chain"
 
-#: src/components/organisms/layout/layout.tsx:33
+#: src/components/organisms/layout/layout.tsx:35
+#: src/components/organisms/nft/landing-page/layout.tsx:38
 msgid "Change network"
 msgstr "Change network"
 
@@ -278,7 +287,7 @@ msgstr "Claim PCR"
 msgid "Claim confirmation"
 msgstr "Claim confirmation"
 
-#: src/pages/vesting/index.tsx:18
+#: src/pages/vesting/index.tsx:19
 msgid "Claim distribution"
 msgstr "Claim distribution"
 
@@ -333,7 +342,7 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #: src/components/organisms/portfolio/portfolio-list.tsx:129
 #: src/components/organisms/web3/wallet-connect.tsx:27
 #: src/components/organisms/web3/wallet-detail.tsx:140
-#: src/pages/referral/index.tsx:35
+#: src/pages/referral/index.tsx:37
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
@@ -498,12 +507,12 @@ msgstr "Disconnect from your Wallet Extension"
 msgid "Disconnected"
 msgstr "Disconnected"
 
-#: src/components/organisms/nft/landing-page/icon-section.tsx:26
-#: src/components/organisms/nft/landing-page/icon-section.tsx:31
-#: src/components/organisms/nft/landing-page/icon-section.tsx:36
-#: src/components/organisms/nft/landing-page/icon-section.tsx:41
-#: src/components/organisms/nft/landing-page/icon-section.tsx:46
-#: src/components/organisms/nft/landing-page/icon-section.tsx:51
+#: src/components/organisms/nft/landing-page/usp-section.tsx:26
+#: src/components/organisms/nft/landing-page/usp-section.tsx:31
+#: src/components/organisms/nft/landing-page/usp-section.tsx:36
+#: src/components/organisms/nft/landing-page/usp-section.tsx:41
+#: src/components/organisms/nft/landing-page/usp-section.tsx:46
+#: src/components/organisms/nft/landing-page/usp-section.tsx:51
 msgid "Discount & Bonus"
 msgstr "Discount & Bonus"
 
@@ -590,6 +599,7 @@ msgid "Explorer"
 msgstr "Explorer"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:15
+#: src/pages/nft/index.tsx:28
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -614,7 +624,7 @@ msgstr "Fee:"
 #~ msgid "Fetching data from API failed."
 #~ msgstr "Fetching data from API failed."
 
-#: src/pages/analytics/index.tsx:19
+#: src/pages/analytics/index.tsx:20
 msgid "Financial Stats"
 msgstr "Financial Stats"
 
@@ -662,12 +672,12 @@ msgstr "Hide"
 msgid "High"
 msgstr "High"
 
-#: src/components/organisms/nft/landing-page/icon-section.tsx:27
-#: src/components/organisms/nft/landing-page/icon-section.tsx:32
-#: src/components/organisms/nft/landing-page/icon-section.tsx:37
-#: src/components/organisms/nft/landing-page/icon-section.tsx:42
-#: src/components/organisms/nft/landing-page/icon-section.tsx:47
-#: src/components/organisms/nft/landing-page/icon-section.tsx:52
+#: src/components/organisms/nft/landing-page/usp-section.tsx:27
+#: src/components/organisms/nft/landing-page/usp-section.tsx:32
+#: src/components/organisms/nft/landing-page/usp-section.tsx:37
+#: src/components/organisms/nft/landing-page/usp-section.tsx:42
+#: src/components/organisms/nft/landing-page/usp-section.tsx:47
+#: src/components/organisms/nft/landing-page/usp-section.tsx:52
 msgid "Holding an NFT with this utility will lower the platform fees for you."
 msgstr "Holding an NFT with this utility will lower the platform fees for you."
 
@@ -703,7 +713,7 @@ msgstr "Info"
 #: src/components/organisms/portfolio/portfolio-list.tsx:132
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:23
-#: src/pages/invest/index.tsx:18
+#: src/pages/invest/index.tsx:19
 msgid "Invest"
 msgstr "Invest"
 
@@ -814,7 +824,7 @@ msgstr "Light Mode"
 msgid "Lightpaper"
 msgstr "Lightpaper"
 
-#: src/pages/swap/index.tsx:28
+#: src/pages/swap/index.tsx:29
 msgid "Liquidity"
 msgstr "Liquidity"
 
@@ -891,6 +901,10 @@ msgstr "Minimum received"
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
 
+#: src/pages/nft/index.tsx:24
+msgid "Mint"
+msgstr "Mint"
+
 #: src/components/organisms/nft/landing-page/mint-section.tsx:64
 msgid "Mint your Paycer NFT."
 msgstr "Mint your Paycer NFT."
@@ -928,7 +942,8 @@ msgstr "Need help?"
 msgid "Network"
 msgstr "Network"
 
-#: src/components/organisms/layout/layout.tsx:32
+#: src/components/organisms/layout/layout.tsx:34
+#: src/components/organisms/nft/landing-page/layout.tsx:37
 msgid "Network not supported"
 msgstr "Network not supported"
 
@@ -965,9 +980,9 @@ msgstr "No available transactions"
 #~ msgid "Open"
 #~ msgstr "Open"
 
-#: src/pages/invest/index.tsx:15
-#: src/pages/portfolio/index.tsx:20
-#: src/pages/token-overview/index.tsx:19
+#: src/pages/invest/index.tsx:16
+#: src/pages/portfolio/index.tsx:21
+#: src/pages/token-overview/index.tsx:20
 msgid "Overview"
 msgstr "Overview"
 
@@ -985,7 +1000,7 @@ msgid "PCR NFT"
 msgstr "PCR NFT"
 
 #: src/config/routes.ts:46
-#: src/pages/token-overview/index.tsx:16
+#: src/pages/token-overview/index.tsx:17
 msgid "PCR Token"
 msgstr "PCR Token"
 
@@ -997,7 +1012,7 @@ msgstr "PCR Token amount"
 msgid "POOL"
 msgstr "POOL"
 
-#: src/pages/404.tsx:23
+#: src/pages/404.tsx:24
 msgid "Page not found"
 msgstr "Page not found"
 
@@ -1064,7 +1079,7 @@ msgid "Pool"
 msgstr "Pool"
 
 #: src/config/routes.ts:17
-#: src/pages/portfolio/index.tsx:23
+#: src/pages/portfolio/index.tsx:24
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -1171,6 +1186,7 @@ msgid "Risk Level"
 msgstr "Risk Level"
 
 #: src/components/organisms/footer/footer.tsx:141
+#: src/pages/nft/index.tsx:26
 msgid "Roadmap"
 msgstr "Roadmap"
 
@@ -1357,7 +1373,7 @@ msgstr "Supply"
 
 #: src/components/organisms/swap/fields/submit-button.tsx:34
 #: src/config/routes.ts:34
-#: src/pages/swap/index.tsx:26
+#: src/pages/swap/index.tsx:27
 msgid "Swap"
 msgstr "Swap"
 
@@ -1396,6 +1412,10 @@ msgstr "Switch your Wallet Provider"
 #: src/components/organisms/web3/account-detail.tsx:124
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
+
+#: src/pages/nft/index.tsx:27
+msgid "Team"
+msgstr "Team"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:26
 #~ msgid "Team distribution"
@@ -1555,6 +1575,10 @@ msgstr "Transfer to:"
 msgid "USD"
 msgstr "USD"
 
+#: src/pages/nft/index.tsx:25
+msgid "USPs"
+msgstr "USPs"
+
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
 #~ msgid "Unsakted Tokens"
@@ -1574,7 +1598,7 @@ msgid "Use NFT Credit Card in Metaverse"
 msgstr "Use NFT Credit Card in Metaverse"
 
 #: src/config/routes.ts:12
-#: src/pages/vesting/index.tsx:15
+#: src/pages/vesting/index.tsx:16
 msgid "Vesting"
 msgstr "Vesting"
 
