@@ -33,7 +33,7 @@ export default function NftLandingPage() {
         <AboutSection />
       </div>
       <div ref={mintSection}>
-        <MintSection />
+        <MintSection onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })} />
       </div>
       <div ref={uspSection}>
         <UspSection />

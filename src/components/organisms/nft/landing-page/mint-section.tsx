@@ -57,7 +57,11 @@ const NftCountBox = styled.div`
   padding: 1.5rem;
 `
 
-export default function MintSection() {
+export interface MintSectionProps {
+  onNeedHelpClicked: () => void;
+}
+
+export default function MintSection({ onNeedHelpClicked }: MintSectionProps) {
   return (
     <Background >
       <div className="position-relative mx-auto p-5" style={{ maxWidth: '55rem' }}>
@@ -90,7 +94,9 @@ export default function MintSection() {
               <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
             </Button>
             <div className="mt-4 text-end">
-              <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
+              <span className="cursor-pointer" onClick={onNeedHelpClicked}>
+                <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
+              </span>
             </div>
           </div>
         </div>
