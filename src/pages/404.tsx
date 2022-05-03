@@ -1,4 +1,5 @@
 import PageHeader from '@components/molecules/page-header'
+import Layout from '@components/organisms/layout'
 import { Trans } from '@lingui/macro'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -12,7 +13,7 @@ export default function Custom404() {
     }
 
     return (
-        <>
+        <Layout>
             <div className="container mt-6">
                     <div className="row align-items-center card">
                         <div className="card-body">
@@ -25,6 +26,6 @@ export default function Custom404() {
                         </div>
                     </div>
             </div>
-        </>
+        </Layout>
     )
 }
