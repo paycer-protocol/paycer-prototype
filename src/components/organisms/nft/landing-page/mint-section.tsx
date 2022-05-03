@@ -95,7 +95,7 @@ export default function MintSection({ onNeedHelpClicked }: MintSectionProps) {
             </Button>
             <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                <TransparentText><Link href="#"><Trans>Need help?</Trans></Link></TransparentText>
+                <TransparentText><Link href="#"><u><Trans>Need help?</Trans></u></Link></TransparentText>
               </span>
             </div>
           </div>
