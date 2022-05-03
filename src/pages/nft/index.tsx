@@ -1,6 +1,6 @@
 import AboutSection from "@components/organisms/nft/landing-page/about-section";
 import FaqSection from "@components/organisms/nft/landing-page/faq-section";
-import IconSection from "@components/organisms/nft/landing-page/icon-section";
+import UspSection from "@components/organisms/nft/landing-page/usp-section";
 import NftLandingPageLayout from "@components/organisms/nft/landing-page/layout";
 import MintSection from "@components/organisms/nft/landing-page/mint-section";
 import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section";
@@ -12,7 +12,7 @@ import { useRef } from "react";
 export default function NftLandingPage() {
   const aboutSection = useRef<HTMLDivElement>();
   const mintSection = useRef<HTMLDivElement>();
-  const iconSection = useRef<HTMLDivElement>();
+  const uspSection = useRef<HTMLDivElement>();
   const roadmapSection = useRef<HTMLDivElement>();
   const teamSection = useRef<HTMLDivElement>();
   const faqSection = useRef<HTMLDivElement>();
@@ -22,7 +22,7 @@ export default function NftLandingPage() {
       sections={[
         { label: t`About`, ref: aboutSection },
         { label: t`Mint`, ref: mintSection },
-        { label: t`USPs`, ref: iconSection },
+        { label: t`USPs`, ref: uspSection },
         { label: t`Roadmap`, ref: roadmapSection },
         { label: t`Team`, ref: teamSection },
         { label: t`FAQ`, ref: faqSection },
@@ -35,8 +35,8 @@ export default function NftLandingPage() {
       <div ref={mintSection}>
         <MintSection />
       </div>
-      <div ref={iconSection}>
-        <IconSection />
+      <div ref={uspSection}>
+        <UspSection />
       </div>
       <div ref={roadmapSection}>
         <RoadmapSection />

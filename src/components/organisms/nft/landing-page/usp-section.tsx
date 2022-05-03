@@ -54,7 +54,7 @@ const elements = [
   },
 ] as const
 
-export default function IconSection() {
+export default function UspSection() {
 
   return (
     <Background>
