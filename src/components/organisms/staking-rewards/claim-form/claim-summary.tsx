@@ -28,9 +28,8 @@ export default function ClaimSummary() {
         pendingReward,
         totalAmountClaimed,
         lastRewardTime,
-        claimIsFetching,
         contractCallError,
-        claimIsLoading,
+        isLoading,
         claimIsSuccess,
         showFormApproveModal,
         setShowFormApproveModal,
@@ -115,7 +114,7 @@ export default function ClaimSummary() {
               error={contractCallError}
               success={claimIsSuccess}
               successMessage={t`Transaction was successfully executed`}
-              loading={claimIsLoading || claimIsFetching}
+              loading={isLoading}
           >
               <div className="my-5">
                   <div className="d-flex flex-column mb-4 text-center">

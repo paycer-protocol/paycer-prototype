@@ -25,13 +25,8 @@ export default function StakingForm() {
         rewardRate,
         showFormApproveModal,
         setShowFormApproveModal,
-        depositIsLoading,
-        depositIsFetching,
         depositIsSuccess,
-        approveIsLoading,
-        approveIsFetching,
-        withdrawIsLoading,
-        withdrawIsFetching,
+        isLoading,
         withdrawIsSuccess,
         contractCallError,
         resetStatus
@@ -173,7 +168,7 @@ export default function StakingForm() {
                             successMessage={t`Transaction was successfully executed`}
                             error={contractCallError}
                             success={withdrawIsSuccess || depositIsSuccess}
-                            loading={withdrawIsLoading || withdrawIsFetching || depositIsLoading || depositIsFetching || approveIsLoading || approveIsFetching}
+                            loading={isLoading}
                         >
                             <>
                                 <div className="card blur-background">

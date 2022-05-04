@@ -36,6 +36,30 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
   }
 
   const renderStatusContent = ():any => {
+
+    if (error) {
+      return (
+          <>
+              <div className="d-flex justify-content-center mt-3 mb-5">
+                  <div className="sa">
+                      <div className="sa-error">
+                          <div className="sa-error-x">
+                              <div className="sa-error-left" />
+                              <div className="sa-error-right" />
+                          </div>
+                          <div className="sa-error-placeholder" />
+                          <div className="sa-error-fix" />
+                      </div>
+                  </div>
+              </div>
+
+              <p className="mb-0 text-center text-muted">
+                  {error.message}
+              </p>
+          </>
+      )
+    }
+
     if (success) {
       return (
           <>
@@ -54,29 +78,6 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
             )}
           </>
       )
-    }
-
-    if (error) {
-      return (
-          <>
-            <div className="d-flex justify-content-center mt-3 mb-5">
-                <div className="sa">
-                    <div className="sa-error">
-                        <div className="sa-error-x">
-                            <div className="sa-error-left" />
-                            <div className="sa-error-right" />
-                        </div>
-                        <div className="sa-error-placeholder" />
-                        <div className="sa-error-fix" />
-                    </div>
-                </div>
-            </div>
-
-            <p className="mb-0 text-center text-muted">
-              {error.message}
-            </p>
-          </>
-       )
     }
 
     if (loading) {

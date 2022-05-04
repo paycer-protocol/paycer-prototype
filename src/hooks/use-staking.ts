@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react'
 import Moralis from 'moralis'
-import { useWeb3ExecuteFunction, useMoralisWeb3Api } from 'react-moralis'
+import { useWeb3ExecuteFunction, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-moralis'
 import { BigNumber } from '@ethersproject/bignumber'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import StakingContractProvider from '@providers/staking'
@@ -21,22 +21,11 @@ interface UseStakingProps {
     totalAmountClaimed: number
     lastRewardTime: string
     showFormApproveModal: boolean
+    isLoading: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
-
-    withdrawIsLoading: boolean
-    withdrawIsFetching: boolean
     withdrawIsSuccess: boolean
-
-    depositIsLoading: boolean
-    depositIsFetching: boolean
     depositIsSuccess: boolean
-
-    claimIsLoading: boolean
-    claimIsFetching: boolean
     claimIsSuccess: boolean
-
-    approveIsLoading: boolean
-    approveIsFetching: boolean
 
     contractCallError: Error
 
@@ -65,6 +54,7 @@ export default function useStaking():UseStakingProps {
     const [claimIsSuccess, setClaimIsSuccess] = useState<boolean>(false)
     const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
     const [rewardRate, setRewardRate] = useState<number>(12)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [tokenAllowance, setTokenAllowance] = useState<number>(0)
     const [contractCallError, setContractCallError] = useState<Error | null>(null)
     const [pendingReward, setPendingReward] = useState<number>(0)
@@ -96,92 +86,119 @@ export default function useStaking():UseStakingProps {
         )
     }, [])
 
-    const sendWithdraw = async (amount: number) => {
+    const handleApprove = async (amount) => {
+
+        let approveParams = {
+            params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
+        }
+
+        approveParams = { ...paycerTokenApproveRequestParams, ...approveParams}
+
+        return await approve({
+            params: approveParams
+        })
+    }
+
+    const handleWithdraw = async (amount: number) => {
+        setIsLoading(true)
+
+        if (amount > tokenAllowance) {
+            const approveReponse = await handleApprove(amount)
+            await approveReponse.wait()
+        }
+
         const withdrawParams = {
             functionName: 'withdraw',
             params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
         }
-        const params = { ...stakingRequestParams, ...withdrawParams};
+
+        const params = { ...stakingRequestParams, ...withdrawParams}
+
         try {
-            await withdraw({
-                params,
-                onComplete: () => {
-                    setWithdrawIsSuccess(true)
-                }
+            const response = await withdraw({
+                params
             })
+            // @ts-ignore
+            await response.wait()
+            setIsLoading(false)
+            setWithdrawIsSuccess(true)
         } catch (e) {
-            console.log(e)
+            setIsLoading(false)
+            setContractCallError(e.error)
         }
     }
 
-    const sendDeposit = async (amount: number) => {
+    const handleDeposit = async (amount: number) => {
+
+        setIsLoading(true)
+
+        if (amount > tokenAllowance) {
+            const approveReponse = await handleApprove(amount)
+            await approveReponse.wait()
+        }
+
         const withdrawParams = {
             functionName: 'deposit',
             params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
         }
-        const params = { ...stakingRequestParams, ...withdrawParams};
+
+        const params = { ...stakingRequestParams, ...withdrawParams}
+
         try {
-            await deposit({
-                params,
-                onComplete: () => {
-                    setDepositIsSuccess(true)
-                }
+            const response = await deposit({
+                params
             })
+            // @ts-ignore
+            await response.wait()
+            setIsLoading(false)
+            setDepositIsSuccess(true)
         } catch (e) {
-            console.log(e)
-        }
-        console.log('DEPEND')
-    }
-
-    const handleTransaction = async (amount: number, sendCallback: typeof sendDeposit | typeof sendWithdraw) => {
-        if (amount < tokenAllowance) {
-            console.log(amount, tokenAllowance)
-            await sendCallback(amount)
-        } else {
-            console.log('with approve')
-            const approveParams = {
-                params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
-            }
-
-            const params = { ...paycerTokenApproveRequestParams, ...approveParams};
-
-            try {
-                await approve({
-                    params
-                })
-                await sendCallback(amount)
-            } catch (e) {
-                console.log(e)
-            }
+            setIsLoading(false)
+            setContractCallError(e.error)
         }
     }
 
     const handleClaim = async () => {
+
+        setIsLoading(true)
+
         const claimParams = {
             functionName: 'claim',
             params: { to: walletAddress }
         }
         const params = { ...stakingRequestParams, ...claimParams};
         try {
-            await claim({
+            const response = await claim({
                 params,
                 onComplete: () => {
                     setClaimIsSuccess(true)
                     setPendingReward(0)
                 }
             })
+            // @ts-ignore
+            await response.wait()
+            setIsLoading(false)
         } catch (e) {
             console.log(e)
         }
     }
 
-    const handleDeposit = async (amount: number) => {
-        await handleTransaction(amount, sendDeposit)
-    }
-
-    const handleWithdraw = async (amount: number) => {
-        await handleTransaction(amount, sendWithdraw)
-    }
+    useEffect(() => {
+        if (withdrawData) {
+            const fetch = async () => {
+                try {
+                    // @ts-ignore
+                    console.log("withdrawInner")
+                    const bla = await withdrawData.wait()
+                    console.log(bla)
+                    setWithdrawIsSuccess(true)
+                } catch (e) {
+                    console.log('withdraw', e)
+                }
+            }
+            fetch()
+        }
+    }, [withdrawData])
 
     useEffect(() => {
         if (walletAddress) {
@@ -331,27 +348,13 @@ export default function useStaking():UseStakingProps {
         lastRewardTime: formatLastRewardtime(userInfo?.lastRewardTime),
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
-
-        withdrawIsLoading,
-        withdrawIsFetching,
         withdrawIsSuccess,
-
-        depositIsLoading,
-        depositIsFetching,
         depositIsSuccess,
-
-        claimIsLoading,
-        claimIsFetching,
         claimIsSuccess,
-
         contractCallError,
-
-        approveIsLoading,
-        approveIsFetching,
         showFormApproveModal,
         setShowFormApproveModal,
-
-
+        isLoading,
         resetStatus
     }
 }

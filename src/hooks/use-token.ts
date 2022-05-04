@@ -22,11 +22,13 @@ export default function useToken(symbol: string): UseTokenInterface {
 
   if (tokenBalances && tokenBalances?.data) {
     const token = tokenBalances.data.find(t => t.symbol === symbol)
-    tokenAddress = token.token_address
-    tokenSymbol = token.symbol
-    rawTokenBalance = Number(token.balance),
-    tokenBalance = Number(formatUnits(token.balance, Number(token.decimals)))
-    tokenDecimals = Number(token.decimals)
+    if (token) {
+      tokenAddress = token.token_address
+      tokenSymbol = token.symbol
+      rawTokenBalance = Number(token.balance),
+      tokenBalance = Number(formatUnits(token.balance, Number(token.decimals)))
+      tokenDecimals = Number(token.decimals)
+    }
   }
 
   return {
