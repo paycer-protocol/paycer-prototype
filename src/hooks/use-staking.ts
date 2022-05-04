@@ -86,7 +86,7 @@ export default function useStaking():UseStakingProps {
         )
     }, [])
 
-    const handleApprove = async (amount) => {
+    const handleApprove = async (amount):Promise<unknown> => {
 
         let approveParams = {
             params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
@@ -102,28 +102,40 @@ export default function useStaking():UseStakingProps {
     const handleWithdraw = async (amount: number) => {
         setIsLoading(true)
 
-        if (amount > tokenAllowance) {
-            const approveReponse = await handleApprove(amount)
-            await approveReponse.wait()
-        }
-
-        const withdrawParams = {
-            functionName: 'withdraw',
-            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-        }
-
-        const params = { ...stakingRequestParams, ...withdrawParams}
-
         try {
+
+            //if (amount > tokenAllowance) {
+                const approveReponse = await handleApprove(amount)
+                if (approveReponse) {
+                    const bla = await approveReponse.wait(1)
+                    console.log(bla)
+                }
+            //}
+
+            console.log("HI")
+
+            const withdrawParams = {
+                functionName: 'withdraw',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+            }
+
+            const params = { ...stakingRequestParams, ...withdrawParams}
             const response = await withdraw({
                 params
             })
             // @ts-ignore
-            await response.wait()
-            setIsLoading(false)
-            setWithdrawIsSuccess(true)
+
+            if (response) {
+                console.log(response)
+                await response.wait(1)
+                console.log(response)
+                setIsLoading(false)
+                setWithdrawIsSuccess(true)
+            }
+
         } catch (e) {
             setIsLoading(false)
+            console.log(e)
             setContractCallError(e.error)
         }
     }
@@ -132,28 +144,31 @@ export default function useStaking():UseStakingProps {
 
         setIsLoading(true)
 
-        if (amount > tokenAllowance) {
-            const approveReponse = await handleApprove(amount)
-            await approveReponse.wait()
-        }
-
-        const withdrawParams = {
-            functionName: 'deposit',
-            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-        }
-
-        const params = { ...stakingRequestParams, ...withdrawParams}
-
         try {
+            if (amount > tokenAllowance) {
+                const approveReponse = await handleApprove(amount)
+                if (approveReponse) {
+                    const bla = await approveReponse.wait(1)
+                    console.log(bla)
+                }
+            }
+
+            const withdrawParams = {
+                functionName: 'deposit',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+            }
+
+            const params = { ...stakingRequestParams, ...withdrawParams}
             const response = await deposit({
                 params
             })
             // @ts-ignore
-            await response.wait()
+            await response.wait(1)
             setIsLoading(false)
             setDepositIsSuccess(true)
         } catch (e) {
             setIsLoading(false)
+            console.log(e)
             setContractCallError(e.error)
         }
     }
