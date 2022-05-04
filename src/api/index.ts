@@ -45,7 +45,7 @@ export default {
   },
   joinNftWhitelist: async(email: string, walletAddress: string, ref: string) => {
     try {
-      const result = await axios.post<{ status: 'success' }>('http://localhost:49168/v1/nft/whitelist', {
+      const result = await axios.post<{ status: 'success' }>('https://api.paycer.io/v1/nft/whitelist', {
         email,
         walletAddress,
         ref,

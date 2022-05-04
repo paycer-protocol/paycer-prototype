@@ -30,7 +30,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
   const onSubmit = useCallback(async ({ email }: FormValues) => {
     const result = await api.joinNftWhitelist(email, address, 'landingPage');
     setStatus(result);
-  }, []);
+  }, [address]);
 
   if (!address) return null;
 

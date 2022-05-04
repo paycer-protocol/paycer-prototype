@@ -1,5 +1,6 @@
 import Button from "@components/atoms/button";
 import Icon from "@components/atoms/icon";
+import useWallet from "@hooks/use-wallet";
 import { Trans } from "@lingui/macro";
 import { ArrowToRight } from "@styled-icons/boxicons-regular";
 import { ArrowForward, ArrowRight } from "@styled-icons/material";
@@ -7,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
+import ConnectWalletButton from "./connect-wallet-button";
 import JoinWhitelistModal from "./join-whitelist-modal";
 
 const Background = styled.div`
@@ -89,6 +91,8 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ onNeedHelpClicked, presaleStart }: MintSectionProps) {
+  const { isConnected } = useWallet();
+
   const [showWhitelistModal, setShowWhitelistModal] = useState(false);
 
   const presaleStartsIn = presaleStart.getTime() - Date.now()
@@ -141,15 +145,19 @@ export default function MintSection({ onNeedHelpClicked, presaleStart }: MintSec
                 : <Countdown timeLeft={presaleStartsIn} />
             }
             {
-              presaleStarted
-                ? <Button className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
-                  <Trans>CONNECT TO WALLET</Trans>
-                  <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                </Button>
-                : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
-                  <Trans>JOIN WHITELIST</Trans>
-                  <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                </Button>
+              !isConnected
+                ? <ConnectWalletButton />
+                : (
+                  presaleStarted
+                    ? <Button onClick={() => {}} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
+                        <Trans>MINT YOUR NFT</Trans>
+                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                      </Button>
+                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
+                        <Trans>JOIN WHITELIST</Trans>
+                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                      </Button>
+                )
             }
             <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
