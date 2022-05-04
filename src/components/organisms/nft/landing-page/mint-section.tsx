@@ -5,7 +5,9 @@ import { ArrowToRight } from "@styled-icons/boxicons-regular";
 import { ArrowForward, ArrowRight } from "@styled-icons/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import styled from "styled-components";
+import JoinWhitelistModal from "./join-whitelist-modal";
 
 const Background = styled.div`
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
@@ -87,11 +89,15 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ onNeedHelpClicked, presaleStart }: MintSectionProps) {
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false);
+
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
   return (
     <Background >
+      <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
+
       <div className="position-relative mx-auto p-5" style={{ maxWidth: '55rem' }}>
         <h1 className="display-1 my-5">
           {presaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
@@ -140,7 +146,7 @@ export default function MintSection({ onNeedHelpClicked, presaleStart }: MintSec
                   <Trans>CONNECT TO WALLET</Trans>
                   <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                 </Button>
-                : <Button className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
+                : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
                   <Trans>JOIN WHITELIST</Trans>
                   <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                 </Button>

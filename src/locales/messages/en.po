@@ -57,17 +57,33 @@ msgstr "6 months"
 msgid "60%"
 msgstr "60%"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:68
+#: src/components/organisms/nft/landing-page/mint-section.tsx:118
+msgid "<0>Add your email to the whitelist</0>"
+msgstr "<0>Add your email to the whitelist</0>"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:119
+msgid "<0>Buy your reserved NFT at launch</0>"
+msgstr "<0>Buy your reserved NFT at launch</0>"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:110
 msgid "<0>Connect MetaMask wallet for minting</0>"
 msgstr "<0>Connect MetaMask wallet for minting</0>"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:70
+#: src/components/organisms/nft/landing-page/mint-section.tsx:112
 msgid "<0>Limits:</0> 3 NFT per transaction"
 msgstr "<0>Limits:</0> 3 NFT per transaction"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:69
+#: src/components/organisms/nft/landing-page/mint-section.tsx:111
 msgid "<0>Price:</0> 5000 PCR per NFT + Gas fee"
 msgstr "<0>Price:</0> 5000 PCR per NFT + Gas fee"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:120
+msgid "<0>Upgrade your NFT by staking PCR</0>"
+msgstr "<0>Upgrade your NFT by staking PCR</0>"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:58
+msgid "ADVISORS"
+msgstr "ADVISORS"
 
 #: src/components/organisms/invest/invest-card/index.tsx:45
 #: src/components/organisms/invest/invest-table.tsx:32
@@ -81,7 +97,7 @@ msgstr "APR"
 #~ msgid "APY"
 #~ msgstr "APY"
 
-#: src/pages/nft/index.tsx:23
+#: src/pages/nft/index.tsx:28
 msgid "About"
 msgstr "About"
 
@@ -117,6 +133,10 @@ msgstr "Adding Network to Wallet ..."
 #: src/components/organisms/vesting/dashboard/index.tsx:28
 #~ msgid "Advisor distribution"
 #~ msgstr "Advisor distribution"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:59
+msgid "Advisors helping on Paycer NFT"
+msgstr "Advisors helping on Paycer NFT"
 
 #: src/components/organisms/analytics-dashboard/filter-bar/filter-bar.tsx:39
 msgid "All"
@@ -218,7 +238,7 @@ msgstr "Breeding (Breed NFTs using PCR tokens)"
 msgid "COLLECT"
 msgstr "COLLECT"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:89
+#: src/components/organisms/nft/landing-page/mint-section.tsx:146
 msgid "CONNECT TO WALLET"
 msgstr "CONNECT TO WALLET"
 
@@ -556,6 +576,10 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Edit invest"
 #~ msgstr "Edit invest"
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:27
+msgid "Email address"
+msgstr "Email address"
+
 #: src/components/molecules/languages/language-choice.tsx:9
 msgid "English"
 msgstr "English"
@@ -563,6 +587,10 @@ msgstr "English"
 #: src/providers/connectors.ts:110
 #~ msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 #~ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:26
+msgid "Enter your email address below to reserve your Paycer NFT."
+msgstr "Enter your email address below to reserve your Paycer NFT."
 
 #: src/pages/invest/create/fields/invest-input.tsx:15
 #~ msgid "Enter your invest amount"
@@ -599,7 +627,7 @@ msgid "Explorer"
 msgstr "Explorer"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:15
-#: src/pages/nft/index.tsx:28
+#: src/pages/nft/index.tsx:33
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -760,9 +788,22 @@ msgstr "Investment ratio"
 #~ msgid "Investor Dashboard"
 #~ msgstr "Investor Dashboard"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:150
+#: src/components/organisms/nft/landing-page/title-section.tsx:54
+msgid "JOIN WHITELIST"
+msgstr "JOIN WHITELIST"
+
 #: src/components/organisms/footer/footer.tsx:146
 msgid "Jobs"
 msgstr "Jobs"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:17
+msgid "Join NFT Whitelist"
+msgstr "Join NFT Whitelist"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:103
+msgid "Join our NFT whitelist"
+msgstr "Join our NFT whitelist"
 
 #: src/components/organisms/footer/footer.tsx:45
 msgid "Join us on"
@@ -901,11 +942,11 @@ msgstr "Minimum received"
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
 
-#: src/pages/nft/index.tsx:24
+#: src/pages/nft/index.tsx:29
 msgid "Mint"
 msgstr "Mint"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:64
+#: src/components/organisms/nft/landing-page/mint-section.tsx:103
 msgid "Mint your Paycer NFT."
 msgstr "Mint your Paycer NFT."
 
@@ -934,7 +975,7 @@ msgstr "NFT ROADMAP"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:93
+#: src/components/organisms/nft/landing-page/mint-section.tsx:156
 msgid "Need help?"
 msgstr "Need help?"
 
@@ -995,7 +1036,7 @@ msgstr "PAYCER TEAM"
 msgid "PCR"
 msgstr "PCR"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:79
+#: src/components/organisms/nft/landing-page/mint-section.tsx:132
 msgid "PCR NFT"
 msgstr "PCR NFT"
 
@@ -1104,6 +1145,14 @@ msgstr "Portfolio"
 msgid "Presale"
 msgstr "Presale"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:114
+msgid "Presale ends: 30.10.2022"
+msgstr "Presale ends: 30.10.2022"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:122
+msgid "Presale starts: 30.10.2022"
+msgstr "Presale starts: 30.10.2022"
+
 #: src/components/organisms/header/network-menu/network-menu.tsx:44
 #: src/components/organisms/web3/network-provider.tsx:36
 msgid "Previously added network Pending, please open your Wallet"
@@ -1186,7 +1235,7 @@ msgid "Risk Level"
 msgstr "Risk Level"
 
 #: src/components/organisms/footer/footer.tsx:141
-#: src/pages/nft/index.tsx:26
+#: src/pages/nft/index.tsx:31
 msgid "Roadmap"
 msgstr "Roadmap"
 
@@ -1355,6 +1404,10 @@ msgstr "Staking TVL"
 #~ msgid "Strategy"
 #~ msgstr "Strategy"
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:30
+msgid "Submit"
+msgstr "Submit"
+
 #: src/components/organisms/transaction-status/transaction-status.tsx:24
 #~ msgid "Successful"
 #~ msgstr "Successful"
@@ -1413,7 +1466,7 @@ msgstr "Switch your Wallet Provider"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
-#: src/pages/nft/index.tsx:27
+#: src/pages/nft/index.tsx:32
 msgid "Team"
 msgstr "Team"
 
@@ -1575,7 +1628,7 @@ msgstr "Transfer to:"
 msgid "USD"
 msgstr "USD"
 
-#: src/pages/nft/index.tsx:25
+#: src/pages/nft/index.tsx:30
 msgid "USPs"
 msgstr "USPs"
 
