@@ -102,74 +102,108 @@ export default function useStaking():UseStakingProps {
     const handleWithdraw = async (amount: number) => {
         setIsLoading(true)
 
-        try {
+        const approveTx = await handleApprove(amount)
 
-            //if (amount > tokenAllowance) {
-                const approveReponse = await handleApprove(amount)
-                if (approveReponse) {
-                    const bla = await approveReponse.wait(1)
-                    console.log(bla)
+        if (amount > tokenAllowance) {
+            try {
+                // Wait for the transaction to be mined
+               await approveTx.wait()
+                // The transactions was mined without issue
+            } catch (error) {
+                if (error.code === 'TRANSACTION_REPLACED') {
+                    if (error.cancelled) {
+                        // The transaction was replaced  :'(
+                        setIsLoading(false)
+                        setContractCallError(new Error('Approve has been canceled'))
+                    } else {
+                      console.log('approve speeded up')
+                    }
                 }
-            //}
-
-            console.log("HI")
-
-            const withdrawParams = {
-                functionName: 'withdraw',
-                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
             }
+        }
 
-            const params = { ...stakingRequestParams, ...withdrawParams}
-            const response = await withdraw({
-                params
-            })
-            // @ts-ignore
+        const withdrawParams = {
+            functionName: 'withdraw',
+            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+        }
 
-            if (response) {
-                console.log(response)
-                await response.wait(1)
-                console.log(response)
-                setIsLoading(false)
-                setWithdrawIsSuccess(true)
+        const params = { ...stakingRequestParams, ...withdrawParams}
+        const withdrawTx = await withdraw({
+            params
+        })
+
+        try {
+            // Wait for the transaction to be mined
+            const receipt = await withdrawTx.wait()
+            // The transactions was mined without issue
+            return receipt
+        } catch (error) {
+            if (error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    // The transaction was replaced  :'(
+                    setIsLoading(false)
+                    setContractCallError(new Error('Withdraw has been canceled'))
+                } else {
+                    // the withdraw was speeded up
+                    console.log('withdrae speeded up')
+                    setWithdrawIsSuccess(true)
+                    setIsLoading(false)
+                }
             }
-
-        } catch (e) {
-            setIsLoading(false)
-            console.log(e)
-            setContractCallError(e.error)
         }
     }
 
     const handleDeposit = async (amount: number) => {
-
         setIsLoading(true)
 
-        try {
-            if (amount > tokenAllowance) {
-                const approveReponse = await handleApprove(amount)
-                if (approveReponse) {
-                    const bla = await approveReponse.wait(1)
-                    console.log(bla)
+        const approveTx = await handleApprove(amount)
+
+        if (amount > tokenAllowance) {
+            try {
+                // Wait for the transaction to be mined
+                await approveTx.wait()
+                // The transactions was mined without issue
+            } catch (error) {
+                if (error.code === 'TRANSACTION_REPLACED') {
+                    if (error.cancelled) {
+                        // The transaction was replaced  :'(
+                        setIsLoading(false)
+                        setContractCallError(new Error('Approve has been canceled'))
+                    } else {
+                        console.log('approve speeded up')
+                    }
                 }
             }
+        }
 
-            const withdrawParams = {
-                functionName: 'deposit',
-                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+        const depositParams = {
+            functionName: 'deposit',
+            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+        }
+
+        const params = { ...stakingRequestParams, ...depositParams}
+        const depositTx = await deposit({
+            params
+        })
+
+        try {
+            // Wait for the transaction to be mined
+            const receipt = await depositTx.wait()
+            // The transactions was mined without issue
+            return receipt
+        } catch (error) {
+            if (error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    // The transaction was replaced  :'(
+                    setIsLoading(false)
+                    setContractCallError(new Error('deposi has been canceled'))
+                } else {
+                    // the withdraw was speeded up
+                    console.log('dposit speeded up')
+                    setDepositIsSuccess(true)
+                    setIsLoading(false)
+                }
             }
-
-            const params = { ...stakingRequestParams, ...withdrawParams}
-            const response = await deposit({
-                params
-            })
-            // @ts-ignore
-            await response.wait(1)
-            setIsLoading(false)
-            setDepositIsSuccess(true)
-        } catch (e) {
-            setIsLoading(false)
-            console.log(e)
-            setContractCallError(e.error)
         }
     }
 
