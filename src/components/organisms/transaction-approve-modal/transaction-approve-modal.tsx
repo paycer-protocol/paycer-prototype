@@ -16,10 +16,25 @@ interface TransactionApproveModalProps {
   children?: ReactElement | string | number | null,
   successMessage?: string
   additionalSuccessContent?: ReactElement | string | number | null
+  infoMessage?: string
 }
 
 export default function TransactionApproveModal(props: TransactionApproveModalProps) {
-  const { show, onHide, onClick, title, children, error, success, loading, btnLabel, successMessage, additionalSuccessContent } = props
+
+  const {
+      show,
+      onHide,
+      onClick,
+      title,
+      children,
+      error,
+      success,
+      loading,
+      btnLabel,
+      successMessage,
+      additionalSuccessContent,
+      infoMessage
+  } = props
 
   const renderTitle = ():any => {
     if (error) {
@@ -85,7 +100,14 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
           <>
             <div className="d-flex justify-content-center mt-6 pt-6">
                 <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
-                <p className="mb-0 text-center text-muted">{t`Transaction is processing...`}</p>
+                <div>
+                    <p className="mb-0 text-center text-muted">{t`Transaction is processing...`}</p>
+                    {infoMessage &&
+                      <small>
+                          {t`Tip:`}&nbsp;{infoMessage}
+                      </small>
+                    }
+                </div>
             </div>
           </>
       )
@@ -103,6 +125,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">
+
             {renderStatusContent()}
 
             {(!success && !loading && !error &&

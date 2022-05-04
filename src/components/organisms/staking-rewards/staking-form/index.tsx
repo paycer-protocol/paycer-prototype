@@ -29,11 +29,14 @@ export default function StakingForm() {
         isLoading,
         withdrawIsSuccess,
         contractCallError,
-        resetStatus
+        resetStatus,
+        transactionState
     } = useStaking()
 
     const token = useToken(rewardSymbol)
     const tokenBalance = token.tokenBalance
+
+    console.log(tokenBalance)
 
     const initialValues: StakingProps = {
         rewardSymbol,
@@ -45,11 +48,6 @@ export default function StakingForm() {
         withdrawFee,
         disabled: true,
     }
-
-    const validationSchema = Yup.object().shape({
-        stakedBalance: Yup.number().min(0).required(),
-        tokenBalance: Yup.number().min(0).required(),
-    })
 
     const handleSubmit = () => {
         setShowFormApproveModal(true)
@@ -68,7 +66,6 @@ export default function StakingForm() {
     return (
         <Form
             initialValues={initialValues}
-            validationSchema={validationSchema}
             onSubmit={handleSubmit}
             enableReinitialize
         >
@@ -169,6 +166,7 @@ export default function StakingForm() {
                             error={contractCallError}
                             success={withdrawIsSuccess || depositIsSuccess}
                             loading={isLoading}
+                            infoMessage={transactionState ? transactionState === 1 ? t`Approving... Open your Wallet-Extension and try to Speed it up. You might have to Re-Open your Wallet-Extension if the Transaction Dialog will not appear afterwards.` : t`Open your Wallet-Extension and try to Speed it up.` : ''}
                         >
                             <>
                                 <div className="card blur-background">

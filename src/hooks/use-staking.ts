@@ -11,6 +11,12 @@ import useToken from '@hooks/use-token'
 import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
 
+enum TRANSACTION_STATE {
+    "NONE" = 0,
+    "APPROVE" = 1,
+    "TRANSACTION" = 2
+}
+
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
@@ -26,6 +32,7 @@ interface UseStakingProps {
     withdrawIsSuccess: boolean
     depositIsSuccess: boolean
     claimIsSuccess: boolean
+    transactionState: TRANSACTION_STATE
 
     contractCallError: Error
 
@@ -55,6 +62,7 @@ export default function useStaking():UseStakingProps {
     const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
     const [rewardRate, setRewardRate] = useState<number>(12)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [transactionState, setTransactionState] = useState<TRANSACTION_STATE>(0)
     const [tokenAllowance, setTokenAllowance] = useState<number>(0)
     const [contractCallError, setContractCallError] = useState<Error | null>(null)
     const [pendingReward, setPendingReward] = useState<number>(0)
@@ -107,6 +115,7 @@ export default function useStaking():UseStakingProps {
         if (amount > tokenAllowance) {
             try {
                 // Wait for the transaction to be mined
+               setTransactionState(1)
                await approveTx.wait()
                 // The transactions was mined without issue
             } catch (error) {
@@ -118,6 +127,10 @@ export default function useStaking():UseStakingProps {
                     } else {
                       console.log('approve speeded up')
                     }
+                    setTransactionState(0)
+                } else {
+                    setIsLoading(false)
+                    setContractCallError(new Error('Withdraw Error occured'))
                 }
             }
         }
@@ -134,9 +147,11 @@ export default function useStaking():UseStakingProps {
 
         try {
             // Wait for the transaction to be mined
-            const receipt = await withdrawTx.wait()
+            setTransactionState(2)
+            await withdrawTx.wait()
+            setWithdrawIsSuccess(true)
+            setTransactionState(0)
             // The transactions was mined without issue
-            return receipt
         } catch (error) {
             if (error.code === 'TRANSACTION_REPLACED') {
                 if (error.cancelled) {
@@ -149,6 +164,7 @@ export default function useStaking():UseStakingProps {
                     setWithdrawIsSuccess(true)
                     setIsLoading(false)
                 }
+                setTransactionState(0)
             }
         }
     }
@@ -161,6 +177,7 @@ export default function useStaking():UseStakingProps {
         if (amount > tokenAllowance) {
             try {
                 // Wait for the transaction to be mined
+                setTransactionState(1)
                 await approveTx.wait()
                 // The transactions was mined without issue
             } catch (error) {
@@ -172,6 +189,10 @@ export default function useStaking():UseStakingProps {
                     } else {
                         console.log('approve speeded up')
                     }
+                    setTransactionState(0)
+                }  else {
+                    setIsLoading(false)
+                    setContractCallError(new Error('Deposit Error occured'))
                 }
             }
         }
@@ -187,10 +208,10 @@ export default function useStaking():UseStakingProps {
         })
 
         try {
-            // Wait for the transaction to be mined
-            const receipt = await depositTx.wait()
-            // The transactions was mined without issue
-            return receipt
+            setTransactionState(2)
+            await depositTx.wait()
+            setWithdrawIsSuccess(true)
+            setTransactionState(0)
         } catch (error) {
             if (error.code === 'TRANSACTION_REPLACED') {
                 if (error.cancelled) {
@@ -381,6 +402,8 @@ export default function useStaking():UseStakingProps {
         setWithdrawIsSuccess(false)
         setDepositIsSuccess(false)
         setContractCallError(null)
+        setIsLoading(false)
+        setTransactionState(0)
     }
 
     return {
@@ -404,6 +427,7 @@ export default function useStaking():UseStakingProps {
         showFormApproveModal,
         setShowFormApproveModal,
         isLoading,
-        resetStatus
+        resetStatus,
+        transactionState
     }
 }
