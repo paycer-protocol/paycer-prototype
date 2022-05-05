@@ -52,7 +52,7 @@ export default {
       });
       return result.data.status;
     } catch (err) {
-      const error = err as AxiosError<{ status: 'emailAlreadyUsed' | 'walletAlreadyUsed'}>
+      const error = err as AxiosError<{ status: 'noSpotsAvailable' | 'emailAlreadyUsed' | 'walletAlreadyUsed'}>
       if (!error.response) return 'error';
       return error.response.data.status;
     }

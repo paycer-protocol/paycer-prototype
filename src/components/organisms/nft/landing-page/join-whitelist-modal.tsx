@@ -25,7 +25,7 @@ const schema = Yup.object({
 export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
   const { address } = useWallet();
 
-  const [status, setStatus] = useState<'success' | 'emailAlreadyUsed' | 'walletAlreadyUsed' | 'error' | undefined>(undefined);
+  const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'walletAlreadyUsed' | 'error' | undefined>(undefined);
 
   const onSubmit = useCallback(async ({ email }: FormValues) => {
     const result = await api.joinNftWhitelist(email, address, 'landingPage');
@@ -62,6 +62,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                     <div>
                       <p><Trans>Enter your email address below to reserve your Paycer NFT.</Trans></p>
                       <Input label={t`Email address`} name="email" />
+                      { status == 'noSpotsAvailable' && <Alert className="mt-4" variant="danger"><Trans>There are no more spots left on the whitelist.</Trans></Alert> }
                       { status == 'emailAlreadyUsed' && <Alert className="mt-4" variant="danger"><Trans>This email is already on the whitelist.</Trans></Alert> }
                       { status == 'walletAlreadyUsed' && <Alert className="mt-4" variant="danger"><Trans>This wallet is already on the whitelist.</Trans></Alert> }
                       { status == 'error' && <Alert className="mt-4" variant="danger"><Trans>Something went wrong.</Trans></Alert> }
