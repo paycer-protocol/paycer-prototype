@@ -64,13 +64,13 @@ const NftCountBox = styled.div`
   padding: 1.5rem;
 `
 
-function InfoColumn({ preSaleStart, publicSaleStart }: { preSaleStart: Date, publicSaleStart: Date }) {
+function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, publicSaleStart: Date }) {
   const { i18n } = useLingui()
-  const preSaleStartFormatted = i18n.date(preSaleStart);
+  const presaleStartFormatted = i18n.date(presaleStart);
   const publicSaleStartFormatted = i18n.date(publicSaleStart);
 
   return (
-    preSaleStart.getTime() < Date.now()
+    presaleStart.getTime() < Date.now()
       ? <div className="col-lg">
         <ol className="p-0 mb-5">
           <PrettyLi><Trans><b>Connect MetaMask wallet for minting</b></Trans></PrettyLi>
@@ -88,7 +88,7 @@ function InfoColumn({ preSaleStart, publicSaleStart }: { preSaleStart: Date, pub
           <PrettyLi><Trans><b>Buy your reserved NFT at launch</b></Trans></PrettyLi>
           <PrettyLi><Trans><b>Upgrade your NFT by staking PCR</b></Trans></PrettyLi>
         </ol>
-        <TransparentText><Trans>Presale starts: {preSaleStartFormatted}</Trans></TransparentText>
+        <TransparentText><Trans>Presale starts: {presaleStartFormatted}</Trans></TransparentText>
       </div>
   );
 }
@@ -116,18 +116,18 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
 }
 
 export interface MintSectionProps {
-  preSaleStart: Date
+  presaleStart: Date
   publicSaleStart: Date
   onNeedHelpClicked: () => void
 }
 
-export default function MintSection({ preSaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
+export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
   const { isConnected } = useWallet();
 
   const [showWhitelistModal, setShowWhitelistModal] = useState(false);
 
-  const preSaleStartsIn = preSaleStart.getTime() - Date.now()
-  const preSaleStarted = preSaleStartsIn <= 0
+  const presaleStartsIn = presaleStart.getTime() - Date.now()
+  const presaleStarted = presaleStartsIn <= 0
 
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
   const publicSaleStarted = publicSaleStartsIn <= 0
@@ -138,13 +138,13 @@ export default function MintSection({ preSaleStart, publicSaleStart, onNeedHelpC
 
       <div className="position-relative mx-auto p-5" style={{ maxWidth: '55rem' }}>
         <h1 className="display-1 my-5">
-          {preSaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
+          {presaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
         </h1>
         <div className="row my-5">
-          <InfoColumn preSaleStart={preSaleStart} publicSaleStart={publicSaleStart} /> 
+          <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} /> 
           <div className="col-lg">
             {
-              preSaleStarted
+              presaleStarted
                 ? <NftCountBox>
                   <div className="d-flex align-items-center">
                     <Image src="/img/nft/logo.png" width="32" height="32" /> 
@@ -158,13 +158,13 @@ export default function MintSection({ preSaleStart, publicSaleStart, onNeedHelpC
                     </div>
                   </div>
                 </NftCountBox>
-                : <Countdown timeLeft={preSaleStartsIn} />
+                : <Countdown timeLeft={presaleStartsIn} />
             }
             {
               !isConnected
                 ? <ConnectWalletButton />
                 : (
-                  preSaleStarted
+                  presaleStarted
                     ? <Button onClick={() => {}} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
                         <Trans>MINT YOUR NFT</Trans>
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>

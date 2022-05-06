@@ -9,12 +9,12 @@ import TitleSection from "@components/organisms/nft/landing-page/title-section";
 import { t } from "@lingui/macro";
 import { useRef } from "react";
 
-const preSaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
+const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
 const publicSaleStart = new Date(Date.parse('30 Nov 2022 00:00:00 GMT'));
 
 export default function NftLandingPage() {
-  const preSaleStartsIn = preSaleStart.getTime() - Date.now()
-  const preSaleStarted = preSaleStartsIn <= 0
+  const presaleStartsIn = presaleStart.getTime() - Date.now()
+  const presaleStarted = presaleStartsIn <= 0
 
   const aboutSection = useRef<HTMLDivElement>();
   const mintSection = useRef<HTMLDivElement>();
@@ -36,7 +36,7 @@ export default function NftLandingPage() {
     >
       <TitleSection
         onMintNowClicked={() => mintSection.current.scrollIntoView({ behavior: 'smooth' })}
-        preSaleStarted={preSaleStarted}
+        presaleStarted={presaleStarted}
       />
       <div ref={aboutSection}>
         <AboutSection />
@@ -44,7 +44,7 @@ export default function NftLandingPage() {
       <div ref={mintSection}>
         <MintSection
           onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
-          preSaleStart={preSaleStart}
+          presaleStart={presaleStart}
           publicSaleStart={publicSaleStart}
         />
       </div>
