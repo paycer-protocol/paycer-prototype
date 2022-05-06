@@ -9,7 +9,7 @@ import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import useWallet from "@hooks/use-wallet";
+import { useWeb3Auth } from '@context/web3-auth-context'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 const AnimatedDiv = styled.div`
@@ -24,7 +24,7 @@ const AnimatedDiv = styled.div`
 const Claim = () => {
     const { dashboardData } = useVestingDashboard()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const wallet = useWallet()
+    const { walletIsAuthenticated, walletAddress } = useWeb3Auth()
     const router = useRouter()
     const {
         withdrawAble,
@@ -89,7 +89,7 @@ const Claim = () => {
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
-                    error={withdrawIsError}
+                    error={wi}
                     success={withdrawIsSuccess}
                     successMessage={t`Transaction was successfully executed.`}
                     loading={withdrawIsLoading || withdrawIsFetching}
@@ -121,13 +121,13 @@ const Claim = () => {
                                  />
                               </span>
                           </div>
-                          {wallet.isConnected &&
+                          {walletIsAuthenticated &&
                           <div className="w-75 m-auto">
                             <h3 className=" text-muted">
                                 {t`Transfer to:`}
                             </h3>
                             <span className="text-center fw-bold text-wrap">
-                                {!isTabletOrMobile ? wallet.address : truncateText(wallet.address, wallet.address.length / 2 )}
+                                {!isTabletOrMobile ? walletAddress : truncateText(walletAddress, walletAddress.length / 2 )}
                               </span>
                           </div>
                           }

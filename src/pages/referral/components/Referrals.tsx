@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { t, Trans } from '@lingui/macro'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { FormattedNumber } from '@components/atoms/number'
 import TxnLink from '@components/atoms/txn-link'
 import api from '../../../api'
@@ -21,7 +21,7 @@ interface RewardType {
 }
 
 export default function Referrals () {
-  const wallet = useWallet()
+  const { walletAddress, walletIsAuthenticated} = useWeb3Auth()
   const [rewards, setRewards] = useState<RewardType[] | []>([])
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -37,10 +37,10 @@ export default function Referrals () {
 
     setErrorMessage('')
 
-    if (wallet.isConnected && wallet.address) {
-      fetchReferralRewards(wallet.address)
+    if (walletIsAuthenticated && walletAddress) {
+      fetchReferralRewards(walletAddress)
     }
-  }, [wallet.isConnected])
+  }, [walletIsAuthenticated])
 
   return (
     <div className="table-responsive">

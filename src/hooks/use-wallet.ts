@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import ChainId from '@providers/chain-id'
-import { formatEther } from '@ethersproject/units'
+import useToken from '@hooks/use-token'
 import { IConnectorProvider } from '@providers/connectors'
 import { Symbols } from '@providers/symbols'
 import { useMoralis, useChain, useNativeBalance } from 'react-moralis'
 import { mainNetProviders } from '@providers/networks'
 
-export interface UseWalletInterface {
+export interface useWeb3AuthInterface {
     connector: unknown | null
     address: string
     shortenAddress: string
@@ -17,15 +17,23 @@ export interface UseWalletInterface {
     disconnect: () => Promise<void>
     nativeBalance: number
     nativeBalanceFormatted: string
-    nativeSymbol: string
+    nativeCurrencySymbol: string
     chainName: string
     explorerUrl: string
     activeWallet: string
     isAuthenticating: boolean
+    pcrBalance: number
+    setPcrBalance: React.Dispatch<React.SetStateAction<number>>,
 }
 
-export default function useWallet():UseWalletInterface {
+export default function useWeb3Auth():useWeb3AuthInterface {
     const { chain } = useChain()
+
+    console.log('hi')
+
+    // CHECK AUF RE RENDER
+
+    const [pcrBalance, setPcrBalance] = useState<number>(0)
 
     const {
         authenticate,
@@ -78,10 +86,12 @@ export default function useWallet():UseWalletInterface {
         disconnect: () => disconnect(),
         nativeBalance: Number(balance),
         nativeBalanceFormatted: balance.formatted,
-        nativeSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
+        nativeCurrencySymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
         chainName: chainProvider.chainName,
         explorerUrl: chain?.blockExplorerUrl,
         activeWallet: web3?.connection ? web3?.connection?.url : '',
-        isAuthenticating
+        isAuthenticating,
+        pcrBalance,
+        setPcrBalance
     }
 }

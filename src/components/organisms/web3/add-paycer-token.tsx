@@ -1,5 +1,5 @@
 import React from 'react'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { ChainId } from '@usedapp/core'
 import { useEthers } from '@usedapp/core'
 import useToken from '../../../hooks/use-token'
@@ -13,7 +13,7 @@ export interface AddPaycerTokenProps {
 const AddPaycerToken = (props: AddPaycerTokenProps) => {
     const { children } = props
     const { library, chainId } = useEthers()
-    const wallet = useWallet()
+    const { walletIsAuthenticated } = useWeb3Auth()
     const token = useToken('PCR')
     const { tokenAddress, tokenSymbol, tokenDecimals, tokenBalance } = token
 
@@ -54,7 +54,7 @@ const AddPaycerToken = (props: AddPaycerTokenProps) => {
       }
     }
     // @ts-ignore
-    if (!wallet.isConnected || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
+    if (!walletIsAuthenticated || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
       return null
     }
 

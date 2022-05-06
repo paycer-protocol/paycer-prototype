@@ -1,4 +1,4 @@
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import {useEffect, useState} from 'react'
 import api from '../api'
 
@@ -8,14 +8,14 @@ interface TokenSaleProps {
 }
 
 export default function UseTokenSale():TokenSaleProps {
-    const wallet = useWallet()
+    const { walletAddress, walletIsAuthenticated } = useWeb3Auth()
     const [loading, setLoading] = useState<boolean>(false)
     const [tokenSaleData, setTokenSaleData] = useState<TokenSaleProps>(null)
 
     const fetchTokenSaleData = async () => {
         try {
             setLoading(true)
-            const response = await api.fetchAllTokenSaleInfo(wallet.address)
+            const response = await api.fetchAllTokenSaleInfo(walletAddress)
             const payload = response?.data || null
             setTokenSaleData(payload['hydra:member'])
             setLoading(false)
@@ -26,14 +26,14 @@ export default function UseTokenSale():TokenSaleProps {
     }
 
     useEffect(() => {
-        if (wallet.isConnected && wallet.address) {
+        if (walletIsAuthenticated && walletAddress) {
             // @ts-ignore
             async function fetch() {
                 await fetchTokenSaleData()
             }
             fetch()
         }
-    }, [wallet.isConnected, wallet.address])
+    }, [walletIsAuthenticated, walletAddress])
 
     return {
         tokenSaleData,

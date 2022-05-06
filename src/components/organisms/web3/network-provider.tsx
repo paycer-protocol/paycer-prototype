@@ -1,8 +1,6 @@
 import React from 'react'
 import {Trans, t} from '@lingui/macro'
-import {toast} from 'react-toastify';
-import useWallet from '@hooks/use-wallet'
-import useNetwork from '@hooks/use-network'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
 import { INetworkProvider } from '@providers/networks'
@@ -17,8 +15,7 @@ export interface NetworkProviderProps {
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
-  const { currentChainId, handleSwitchNetwork } = useNetwork()
-  const { isConnected } = useWallet()
+  const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWeb3Auth()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>
@@ -30,7 +27,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
           <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
               const provider = providers[chainId]
-              const isActive = isConnected && Number(chainId) === currentChainId
+              const isActive = walletIsAuthenticated && Number(chainId) === currentChainId
 
               return (
                   <Button

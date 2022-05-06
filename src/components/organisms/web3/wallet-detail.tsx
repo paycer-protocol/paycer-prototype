@@ -3,14 +3,12 @@ import { Trans, t } from '@lingui/macro'
 import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
-import { FormattedNumber } from '@components/atoms/number'
 import Modal from '@components/molecules/modal'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
 import CurrencyIcon from '@components/atoms/currency-icon'
-
 
 export interface AccountDetailProps {
     show: boolean
@@ -54,7 +52,7 @@ const AccountAction = (props: ListGroupItemProps) => {
 }
 
 const AccountBalance = () => {
-    const wallet = useWallet()
+    const { nativeSymbol, nativeBalanceFormatted} = useWeb3Auth()
 
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
@@ -62,18 +60,14 @@ const AccountBalance = () => {
                 <strong><Trans>Balance</Trans></strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
-                        <FormattedNumber
-                          value={wallet.nativeBalance}
-                          minimumFractionDigits={2}
-                          maximumFractionDigits={4}
-                        />
+                        {nativeBalanceFormatted}
                         &nbsp;
-                        {wallet.nativeSymbol}
+                        {nativeSymbol}
                     </span>
                 </p>
             </div>
             <CurrencyIcon
-              symbol={wallet.nativeSymbol}
+              symbol={nativeSymbol}
               className="ms-2 mt-3"
               width={40}
               height={40}
@@ -84,7 +78,13 @@ const AccountBalance = () => {
 
 const WalletDetail = (props: AccountDetailProps) => {
     const { show, onHide, setShowWalletProviderModal } = props
-    const wallet = useWallet()
+    const {
+        walletIsAuthenticated,
+        walletAddress,
+        explorerUrl,
+        handleWalletDisconnect,
+        handleWalletConnect
+    } = useWeb3Auth()
     const [isCopied, setCopied] = useCopyClipboard()
 
     return (
@@ -92,24 +92,24 @@ const WalletDetail = (props: AccountDetailProps) => {
             <>
                 <Modal.Header closeButton onHide={onHide}>
                     <Modal.Title>
-                        <Trans>Account</Trans>
+                        {t`Account`}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {wallet.isConnected && (
+                    {walletIsAuthenticated && (
                       <>
                           <AccountBalance />
                           <ListGroup>
                               <AccountAction
                                 name={t`Explorer`}
                                 description={t`View your wallet in Blockchain Explorer`}
-                                href={wallet.explorerUrl}
+                                href={explorerUrl}
                                 target="_blank"
                               />
                               <AccountAction
                                 name={t`Copy address`}
                                 description={t`Copy your wallet address to clipboard`}
-                                onClick={() => setCopied(wallet.address)}
+                                onClick={() => setCopied(walletAddress)}
                               >
                                   {isCopied && <Icon component={CheckCircle} size={35} />}
                               </AccountAction>
@@ -126,18 +126,20 @@ const WalletDetail = (props: AccountDetailProps) => {
                                 onClick={async () => {
                                     await onHide()
                                     window.localStorage.setItem('walletConnectedProviderName', '')
-                                    await wallet.disconnect()
+                                    await handleWalletDisconnect
                                 }}
                               >
-                                  <small><Trans>Disconnect</Trans></small>
+                                  <small>
+                                      {t`Disconnect`}
+                                  </small>
                               </a>
                           </ListGroup>
                       </>
                     )}
-                    {!wallet.isConnected && (
+                    {!walletIsAuthenticated && (
                       <div className="d-flex justify-content-center">
-                          <Button variant="outline-primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
-                              <Trans>Connect to a Wallet</Trans>
+                          <Button variant="outline-primary" className="px-5" onClick={() => handleWalletConnect(connectors[0])}>
+                              {t`Connect to a Wallet`}
                           </Button>
                       </div>
                     )}

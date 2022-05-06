@@ -7,7 +7,7 @@ import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord} from '@styled-
 import Button from '@components/atoms/button'
 import { t, Trans } from '@lingui/macro'
 import {useRouter} from 'next/router'
-import useNetwork from '@hooks/use-network'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import {routes} from '@config/routes'
 import classnames from 'classnames'
 
@@ -23,7 +23,7 @@ const NavHeader = styled.div`
 
 const Footer = () => {
     const { pathname } = useRouter()
-    const { currentChainId } = useNetwork()
+    const { currentChainId } = useWeb3Auth()
     const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
 
     return (

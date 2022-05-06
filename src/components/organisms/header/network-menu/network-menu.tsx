@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import {t, Trans} from '@lingui/macro'
-import useWallet from '@hooks/use-wallet'
+import {t} from '@lingui/macro'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
 import { Network } from '@styled-icons/entypo'
-import useNetwork from "@hooks/use-network";
+import { useWeb3Auth } from '@context/web3-auth-context'
 import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
@@ -24,11 +23,10 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const { handleSwitchNetwork, currentChainId } = useNetwork()
-    const { isConnected } = useWallet()
+    const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWeb3Auth()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
-    if (!isConnected) {
+    if (!walletIsAuthenticated) {
         return null
     }
 
@@ -47,7 +45,7 @@ const NetworkMenu = () => {
                 </div>
                 {Object.keys(providers).map((chainId, index) => {
                     const provider = providers[chainId]
-                    const isActive = isConnected && Number(chainId) === currentChainId
+                    const isActive = walletIsAuthenticated && Number(chainId) === currentChainId
                     const isLast = Object.keys(providers).length === index +1
 
                     return (

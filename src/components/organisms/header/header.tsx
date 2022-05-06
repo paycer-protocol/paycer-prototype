@@ -2,75 +2,25 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
-import styled from 'styled-components'
+import * as Styles from './styles'
 import { TextLeft } from '@styled-icons/bootstrap'
 import { routes } from '@config/routes'
 import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
-import Navbar from '@components/molecules/navbar'
 import WalletMenu from './wallet-menu'
 import NetworkMenu from './network-menu'
-import AddPaycerToken from '../web3/add-paycer-token'
-import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
-import useWallet from '@hooks/use-wallet'
-import useNetwork from '@hooks/use-network'
-
-const StyledBrand = styled(Navbar.Brand)`
-    margin-top: -10px;
-
-    img {
-      max-height: 40px;
-    }
-
-    @media screen and (max-width: 768px) {
-        img {
-          max-height: 26px;
-        }
-    }
-`
-
-const StyledLogo = styled.a`
-    order: 1;
-    @media screen and (max-width: 768px) {
-      position: absolute;
-      top: 17px;
-      left: 15px;
-    }
-`
-
-const DemoBadge = styled.div`
-    position: absolute;
-    transform: rotate(48deg);
-    right: -89px;
-    top: 13px;
-    line-height: 25px;
-    font-size: 11px;
-    width: 222px;
-    padding-left: 3px;
-    text-align: center;
-    font-weight: 500;
-    color: white;
-    text-shadow: rgb(0 0 0) -1px 1px 7px;
-    height: 19px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    background: linear-gradient(101deg,#ca3dbf,#c3cef7);
-    letter-spacing: 0.1px;
-`
+import { useWeb3Auth } from '@context/web3-auth-context'
 
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const wallet = useWallet()
-    const { currentChainId } = useNetwork()
+    const { currentChainId, walletIsAuthenticated } = useWeb3Auth()
 
-    const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
+    const isAuthenticatedRoute = (route) => (route.auth ? walletIsAuthenticated : true)
 
     const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId)
-        && isAuthenticatedRoute(route, wallet))
+        && isAuthenticatedRoute(route))
 
     return (
       <>
@@ -78,11 +28,11 @@ const Header = () => {
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
-                          <StyledLogo>
-                              <StyledBrand className="me-4 py-0 ms-2">
+                          <Styles.StyledLogo>
+                              <Styles.StyledBrand className="me-4 py-0 ms-2">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
-                              </StyledBrand>
-                          </StyledLogo>
+                              </Styles.StyledBrand>
+                          </Styles.StyledLogo>
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex">
                           <li className="nav-item me-4 d-flex align-items-center position-relative">

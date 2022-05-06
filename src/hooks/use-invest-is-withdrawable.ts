@@ -3,7 +3,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { StrategyType } from '../types/investment'
 import {Interface} from '@ethersproject/abi'
 
@@ -12,16 +12,15 @@ interface UseVestingProps {
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseVestingProps {
-    const wallet = useWallet()
-    const { chainId } = wallet
-    const strategyAddress = strategy.chainAddresses[chainId] || strategy.chainAddresses[ChainId.Polygon]
+    const {currentChainId, walletIsAuthenticated, walletAddress} = useWeb3Auth()
+    const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
 
     const getBalanceOf = () => {
-        const balanceOfArgs:any = wallet.isConnected ? {
+        const balanceOfArgs:any = walletIsAuthenticated ? {
             abi: new Interface(InvestAbi),
             address: strategyAddress,
             method: 'balanceOf',
-            args: [wallet.address],
+            args: [walletAddress],
         } : false
         let [data] = useContractCall(balanceOfArgs) ?? []
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '@components/organisms/header'
-import useNetwork from '@hooks/use-network'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import Spinner from "@components/atoms/spinner";
 
 export interface LayoutProps {
@@ -9,9 +9,9 @@ export interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const { children } = props
-  const network = useNetwork()
+  const { currentChainIsSupportedForDApp } = useWeb3Auth()
 
-  if (network.currentChainIsSupportedForDApp) {
+  if (currentChainIsSupportedForDApp) {
     return (
       <>
         <Header />

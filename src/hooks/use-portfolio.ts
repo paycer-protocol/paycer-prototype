@@ -2,7 +2,7 @@ import { useCalls } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import InvestAbi from '../deployments/Invest.json'
 import { Contract } from '@ethersproject/contracts'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { StrategyType } from '../types/investment'
 import { investmentStrategies } from '@config/investment/strategies'
 import {formatUnits} from "@ethersproject/units";
@@ -19,20 +19,19 @@ interface PortfolioStrategy extends StrategyType {
 
 export default function usePortfolio():UsePortfolioProps {
 
-    const wallet = useWallet()
-    const { chainId } = wallet
+    const { currentChainId, walletAddress } = useWeb3Auth()
     
     const strategyAdressesOfUsersChainId = []
 
     investmentStrategies.map((strategy) => {
-        strategyAdressesOfUsersChainId.push(strategy.chainAddresses[chainId])
+        strategyAdressesOfUsersChainId.push(strategy.chainAddresses[currentChainId])
     })
 
     function getBalanceOfAll(tokenAddresses: string[] | undefined): (BigNumber | undefined)[] {
         const calls = tokenAddresses?.map(address => ({
             contract: new Contract(address, InvestAbi),
             method: 'balanceOf',
-            args: [wallet.address]
+            args: [walletAddress]
         })) ?? []
         // @ts-ignore
         const results = useCalls(calls) ?? []

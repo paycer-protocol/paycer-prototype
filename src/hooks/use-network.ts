@@ -1,33 +1,38 @@
-import { INetworkProvider, mainNetProviders } from '../providers'
+import { useEthers, useNetwork as useBaseNetwork } from '@usedapp/core'
+import { mainNetProviders, INetworkProvider } from '../providers'
 import { supportedChains, supportedStakingChains } from '@config/network'
-import { useChain } from 'react-moralis'
 
-export interface UseNetworkInterface {
-    currentNetwork: INetworkProvider
-    handleSwitchNetwork: (chainId: string) => Promise<void>
-    currentChainIsSupportedForDApp: boolean
-    currentChainIsSupportedForStaking: boolean
-    currentChainId: number
-    currentChainIdBinary: string
-}
+export default function useNetwork() {
+    const { network } = useBaseNetwork()
+    const { account, library, chainId } = useEthers()
+    const currentNetwork = mainNetProviders[chainId]
 
-export default function useNetwork():UseNetworkInterface {
-    const { chain, switchNetwork } = useChain()
-
-    const currentNetwork = mainNetProviders[chain?.networkId]
-    const currentChainIsSupportedForDApp = supportedChains.includes(chain?.networkId)
-    const currentChainIsSupportedForStaking = supportedStakingChains.includes(chain?.networkId)
-
-    const handleSwitchNetwork = async (chainId: string) => {
-        await switchNetwork(chainId)
+    const addNetwork = async (networkProvider: INetworkProvider) => {
+        await library?.send('wallet_addEthereumChain', [
+            networkProvider,
+            account,
+        ])
     }
 
+    const switchNetwork = async (networkProvider: INetworkProvider) => {
+        await library?.send('wallet_switchEthereumChain', [{
+            // @ts-ignore
+            chainId: networkProvider?.chainId
+        }])
+    }
+
+    const supportedChain = supportedChains.includes(chainId)
+    const supportedStakingChain = supportedStakingChains.includes(chainId)
+
     return {
-        currentNetwork,
-        handleSwitchNetwork,
-        currentChainIsSupportedForDApp,
-        currentChainIsSupportedForStaking,
-        currentChainId: chain?.networkId,
-        currentChainIdBinary: chain?.chainId
+        ...currentNetwork,
+        ...{
+            switchNetwork,
+            addNetwork,
+            supportedChain,
+            supportedStakingChain,
+            chainId,
+            provider: network.provider
+        }
     }
 }

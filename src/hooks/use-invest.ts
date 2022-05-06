@@ -6,7 +6,7 @@ import { formatUnits, parseUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
 import InvestAbi from '../deployments/Invest.json'
 import ERC20Abi from '../deployments/ERC20.json'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { StrategyType } from '../types/investment'
 import {Interface} from "@ethersproject/abi";
 
@@ -27,12 +27,11 @@ interface UseVestingProps {
 }
 
 export default function useInvest(strategy: StrategyType):UseVestingProps {
-    const wallet = useWallet()
-    const { chainId } = wallet
-    const strategyAddress = strategy.chainAddresses[chainId] || strategy.chainAddresses[ChainId.Polygon]
+    const { walletIsAuthenticated, currentChainId, walletAddress } = useWeb3Auth()
+    const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
 
     const strategyContract = new Contract(strategyAddress, InvestAbi)
-    const tokenContract = new Contract(strategy.input.chainAddresses[chainId], ERC20Abi)
+    const tokenContract = new Contract(strategy.input.chainAddresses[currentChainId], ERC20Abi)
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [isLoading, setLoading] = useState(false)
@@ -48,18 +47,18 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     let { send: approve, state: approveTx } = useContractFunction(tokenContract, 'approve')
 
     const getBalanceOf = () => {
-        const balanceOfArgs:any = wallet.isConnected ? {
+        const balanceOfArgs:any = walletIsAuthenticated ? {
             abi: new Interface(InvestAbi),
             address: strategyAddress,
             method: 'balanceOf',
-            args: [wallet.address],
+            args: [walletAddress],
         } : false
         let [data] = useContractCall(balanceOfArgs) ?? []
         return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
     }
 
     const getPricePerShare = () => {
-        const balanceOfArgs:any = wallet.isConnected ? {
+        const balanceOfArgs:any = walletIsAuthenticated ? {
             abi: new Interface(InvestAbi),
             address: strategyAddress,
             method: 'pricePerShare',
@@ -70,14 +69,13 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     }
 
     const pricePerShare = getPricePerShare()
-    console.log(pricePerShare)
 
     const getWithdrawableAmount = () => {
         const withdrawAbleAmount = getBalanceOf()
         return pricePerShare * withdrawAbleAmount
     }
 
-    let allowance = useTokenAllowance(tokenContract.address, wallet.address, strategyAddress)
+    let allowance = useTokenAllowance(tokenContract.address, walletAddress, strategyAddress)
     const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, strategy.decimals)) : 0
 
     const deposit = async (amount: number) => {

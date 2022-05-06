@@ -5,10 +5,10 @@ import { connectors } from '@providers/connectors'
 import Button from '@components/atoms/button'
 import ReferralUrl from './components/ReferralUrl'
 import Referrals from './components/Referrals'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 
 export default function Referral () {
-  const wallet = useWallet()
+  const { walletIsAuthenticated, handleWalletConnect } = useWeb3Auth()
 
   return (
     <div className="container mt-3">
@@ -22,16 +22,16 @@ export default function Referral () {
       </PageHeader>
       <div className="card blur-background">
         <div className="card-body">
-          {wallet.isConnected && (
+          {walletIsAuthenticated && (
             <>
               <ReferralUrl />
               <Referrals />
             </>
           )}
 
-          {!wallet.isConnected && (
+          {!walletIsAuthenticated && (
             <div className="d-flex justify-content-center">
-              <Button variant="primary" className="px-5" onClick={() => wallet.connect(connectors[0])}>
+              <Button variant="primary" className="px-5" onClick={() => handleWalletConnect(connectors[0])}>
                 <Trans>Connect to a Wallet</Trans>
               </Button>
             </div>

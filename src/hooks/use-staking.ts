@@ -8,8 +8,7 @@ import PaycerTokenContractProvider from '@providers/paycer-token'
 import ChainId from '@providers/chain-id'
 import { formatLastRewardtime } from '../helpers/staking-helper'
 import useToken from '@hooks/use-token'
-import useWallet from '@hooks/use-wallet'
-import useNetwork from '@hooks/use-network'
+import { useWeb3Auth } from '@context/web3-auth-context'
 
 enum TRANSACTION_STATE {
     "NONE" = 0,
@@ -48,8 +47,7 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { address: walletAddress } = useWallet()
-    const { currentChainId, currentChainIdBinary } = useNetwork()
+    const { walletAddress, currentChainId, currentChainIdBinary } = useWeb3Auth()
     const PCRToken = useToken('PCR')
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentChainId] || StakingContractProvider[ChainId.Polygon]
@@ -157,14 +155,14 @@ export default function useStaking():UseStakingProps {
                 if (error.cancelled) {
                     // The transaction was replaced  :'(
                     setIsLoading(false)
-                    setContractCallError(new Error('Withdraw has been canceled'))
+                    setContractCallError(new Error('withdraw has been canceled'))
                 } else {
-                    // the withdraw was speeded up
-                    console.log('withdrae speeded up')
-                    setWithdrawIsSuccess(true)
-                    setIsLoading(false)
+                    console.log('withdraw speeded up')
                 }
                 setTransactionState(0)
+            } else {
+                setIsLoading(false)
+                setContractCallError(new Error('withdraw Error occured'))
             }
         }
     }
@@ -252,23 +250,6 @@ export default function useStaking():UseStakingProps {
             console.log(e)
         }
     }
-
-    useEffect(() => {
-        if (withdrawData) {
-            const fetch = async () => {
-                try {
-                    // @ts-ignore
-                    console.log("withdrawInner")
-                    const bla = await withdrawData.wait()
-                    console.log(bla)
-                    setWithdrawIsSuccess(true)
-                } catch (e) {
-                    console.log('withdraw', e)
-                }
-            }
-            fetch()
-        }
-    }, [withdrawData])
 
     useEffect(() => {
         if (walletAddress) {

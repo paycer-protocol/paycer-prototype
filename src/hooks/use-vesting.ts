@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
-import useWallet from '@hooks/use-wallet'
+import { useWeb3Auth } from '@context/web3-auth-context'
 import { useEffect, useState, useMemo } from 'react'
 import { calculateEndTime, calculateNextDistribution, calculateStartTime } from '../helpers/vesting-helper'
 import Moralis from 'moralis'
@@ -24,17 +24,15 @@ interface UseVestingProps {
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
 type RecipientsResponse = {
     totalAmount: BigNumber
     amountWithdrawn: BigNumber
 }
 
 export default function useVesting(type):UseVestingProps {
-    const wallet = useWallet()
-    const { chainId } = wallet
+    const { currentChainId, walletAddress } = useWeb3Auth()
 
-    const vestingConfig = VestingContractProvider[chainId] ? VestingContractProvider[chainId] : VestingContractProvider[ChainId.Polygon]
+    const vestingConfig = VestingContractProvider[currentChainId] ? VestingContractProvider[currentChainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
 
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -53,10 +51,10 @@ export default function useVesting(type):UseVestingProps {
                 contractAddress: vestingAddress,
                 functionName: 'withdraw',
                 abi: vestingConfig.abi,
-                params: { beneficiary: wallet.address },
+                params: { beneficiary: walletAddress },
             }
         )
-    }, [wallet.address])
+    }, [walletAddress])
 
     const withdrawVesting = async () => {
         try {
@@ -89,7 +87,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [wallet.address])
+    }, [walletAddress])
 
     useEffect(() => {
         const fetch = async () => {
@@ -108,7 +106,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [wallet.address])
+    }, [walletAddress])
 
     useEffect(() => {
         const fetch = async () => {
@@ -116,7 +114,7 @@ export default function useVesting(type):UseVestingProps {
                 contractAddress: vestingAddress,
                 functionName: 'withdrawable',
                 abi: vestingConfig.abi,
-                params: { beneficiary: wallet.address },
+                params: { beneficiary: walletAddress },
             }
 
             try {
@@ -129,7 +127,7 @@ export default function useVesting(type):UseVestingProps {
             }
         }
         fetch()
-    }, [wallet.address])
+    }, [walletAddress])
 
 
     useEffect(() => {
@@ -138,7 +136,7 @@ export default function useVesting(type):UseVestingProps {
                 contractAddress: vestingAddress,
                 functionName: 'recipients',
                 abi: vestingConfig.abi,
-                params: { beneficiary: wallet.address },
+                params: { beneficiary: walletAddress },
             }
             try {
                 // @ts-ignore
@@ -153,7 +151,7 @@ export default function useVesting(type):UseVestingProps {
         }
         fetch()
 
-    }, [wallet.address])
+    }, [walletAddress])
 
     return {
         withdrawAble,

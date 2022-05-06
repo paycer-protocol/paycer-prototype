@@ -7,20 +7,20 @@ import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { swapTokens } from '@config/market-pairs'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
-import useWallet from "@hooks/use-wallet";
+import { useWeb3Auth } from '@context/web3-auth-context'
 
 export default function Token0Select(props: SwapTokenInputProps) {
     const { readOnly } = props
     const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const wallet = useWallet()
+    const { walletIsAuthenticated, walletAddress} = useWeb3Auth()
 
     const handleChange = async (token) => {
         setErrorMessage('')
 
         const networkSettings = values.networkSettings
-        networkSettings.walletAddress = wallet.address
+        networkSettings.walletAddress = walletAddress
         setFieldValue('quoteChangedState', null)
 
         try {
@@ -68,7 +68,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
           label={t`Swap from`}
           readOnly={readOnly}
         />
-          {wallet.isConnected && (
+          {walletIsAuthenticated && (
             <TokenSelectModal
               show={showModal}
               tokens={values.token0Markets}
@@ -78,7 +78,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
               errorMessage={errorMessage}
             />
           )}
-          {!wallet.isConnected && showModal && (
+          {!walletIsAuthenticated && showModal && (
             <WalletProvider
               providers={connectors}
               onHide={() => setShowModal(false)}

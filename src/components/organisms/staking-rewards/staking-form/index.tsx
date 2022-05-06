@@ -1,12 +1,10 @@
 import React from 'react'
 import {t, Trans} from '@lingui/macro'
-import * as Yup from 'yup'
 import {FormikValues} from 'formik'
 import {rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee} from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
-import useToken from '@hooks/use-token'
 import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
@@ -16,6 +14,7 @@ import {StakingProps} from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import InfoTooltip from "@components/atoms/info-tooltip"
 import TokenInputPanel from "@components/organisms/token-input-panel"
+import { useWeb3Auth } from '@context/web3-auth-context'
 
 export default function StakingForm() {
     const {
@@ -33,10 +32,7 @@ export default function StakingForm() {
         transactionState
     } = useStaking()
 
-    const token = useToken(rewardSymbol)
-    const tokenBalance = token.tokenBalance
-
-    console.log(tokenBalance)
+    const { pcrBalance: tokenBalance, setPcrBalance } = useWeb3Auth()
 
     const initialValues: StakingProps = {
         rewardSymbol,
@@ -57,9 +53,12 @@ export default function StakingForm() {
         if (values.stakedBalance > initialValues.stakedBalance) {
             const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
             await deposit(depositAmount)
+            setPcrBalance(tokenBalance - depositAmount)
         } else {
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
+            setPcrBalance(tokenBalance + withdrawAmount)
+
         }
     }
 

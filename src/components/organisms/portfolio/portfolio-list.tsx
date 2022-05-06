@@ -9,7 +9,7 @@ import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
-import useWallet from "@hooks/use-wallet";
+import { useWeb3Auth } from '@context/web3-auth-context'
 import GradientButton from "@components/atoms/button/gradient-button";
 
 interface PortfolioStrategy extends StrategyType {
