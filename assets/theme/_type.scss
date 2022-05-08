@@ -56,6 +56,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   letter-spacing: $display-letter-spacing;
 }
 
+.display-1 {
+  line-height: 6.25rem;
+}
+
 // Headings
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6 {
@@ -72,6 +76,10 @@ b, strong {
   font-weight: $font-weight-bold;
 }
 
+.paragraph-content {
+  font-size: $font-size-content-paragraph;
+  line-height: $line-height-content-paragraph;
+}
 
 // Links, buttons
 //

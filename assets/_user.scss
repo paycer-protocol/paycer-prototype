@@ -212,3 +212,9 @@ a:focus, button:focus {
     100% { opacity:1; }
   }
 }
+
+.content-gradient-border {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(284deg,rgba(255, 0, 184, 1),rgba(0, 209, 255, 1));
+}

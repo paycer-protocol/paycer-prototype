@@ -4,7 +4,7 @@ import Button from './button'
 const GradientButton = styled(Button)`
   background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
   color: #FFF;
-  font-weight: bold;
+  font-weight: normal;
   padding: 11px 40px 10px 40px;
   transition: all;
   border-radius: 25px;

@@ -41,7 +41,7 @@ $purple-dark: #231d4f;
 $blue: #2C7BE5 !default;
 $indigo: #727cf5 !default;
 $purple: #6b5eae !default;
-$pink: #ff679b !default;
+$pink: #E224A2 !default;
 $red: #E63757 !default;
 $orange: #fd7e14 !default;
 $yellow: #F6C343 !default;
@@ -61,6 +61,7 @@ $light: $gray-200;
 $lighter: $gray-100;
 $dark: $black !default;
 $lighter-border: #25364d;
+$neon-blue: #3A00E3;
 
 /* beautify ignore:start */
 $theme-colors: () !default;
@@ -82,7 +83,9 @@ $theme-colors: map-merge(
   "light-blue": $gray-750-dark,
   "card-blue": $gray-500-dark,
   "card-blue-light": $gray-850-dark,
-  "purple-dark": $purple-dark
+  "purple-dark": $purple-dark,
+  "pink": $pink,
+  "neon-blue": $neon-blue
 ),
 $theme-colors);
 /* beautify ignore:end */
@@ -141,6 +144,8 @@ $font-weight-normal: 400 !default;
 $font-weight-bold: 600 !default;
 
 
+$font-size-content-paragraph: 1.125rem;
+$line-height-content-paragraph: 1.95rem;
 
 // Tables
 //

@@ -1,7 +1,7 @@
 import GradientButton from "@components/atoms/button/gradient-button"
 import Icon from "@components/atoms/icon"
 import PageHeader from "@components/molecules/page-header"
-import { Trans } from "@lingui/macro"
+import {t, Trans} from "@lingui/macro"
 import styled from "styled-components"
 import { ArrowDownward } from "@styled-icons/material"
 
@@ -45,11 +45,17 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
       </video>
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div className="text-center m-5" style={{ maxWidth: '40rem' }}>
+        <div className="text-center m-5" style={{ maxWidth: '60rem' }}>
           <PageHeader>
-            <PageHeader.Subtitle><span style={{ color: '#E224A2' }}><Trans>COLLECT</Trans></span></PageHeader.Subtitle>
-            <PageHeader.Title><Trans>Paycer Utility NFT</Trans></PageHeader.Title>
-            <h1 className="display-1 my-5"><Trans>Mint your unique Paycer Utility NFT</Trans></h1>
+              <h5 className="text-uppercase mb-2 text-pink fw-bold">
+                  {t`COLLECT`}
+              </h5>
+              <div className="h1 mb-4">
+                  {t`Paycer Utility NFT`}
+              </div>
+            <h1 className="display-1 mb-5">
+                <Trans>Mint your unique <br /> Paycer Utility NFT</Trans>
+            </h1>
             <span onClick={onMintNowClicked}>
               <GradientButton>{presaleStarted ? <Trans>MINT NFT NOW</Trans> : <Trans>JOIN WHITELIST</Trans>}</GradientButton>
             </span>
@@ -61,6 +67,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
           <Icon size={24} component={ArrowDownward} />
         </div>
       </DownArrowButtonBorder>
+    <div className="content-gradient-border" />
     </div>
   )
 }

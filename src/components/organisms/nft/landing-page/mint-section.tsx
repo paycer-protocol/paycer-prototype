@@ -19,7 +19,7 @@ const Background = styled.div`
 const PrettyLi = styled.li`
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 18px;
 
   counter-increment: ordered-list;
 
@@ -38,30 +38,14 @@ const PrettyLi = styled.li`
     font-weight: bold;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 99999px;
   }
 
   &::marker {
     display: none;
   }
-`
-
-const TransparentText = styled.p`
-  font-size: 16px;
-  opacity: 60%;
-  font-weight: bold;
-`
-
-const NftCountBox = styled.div`
-  flex: 1;
-  text-align: center;
-  background-color: black;
-  border-radius: 5px;
-  border: 1px solid #3C506F;
-  font-size: 16px;
-  padding: 1.5rem;
 `
 
 function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, publicSaleStart: Date }) {
@@ -71,7 +55,7 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
 
   return (
     presaleStart.getTime() < Date.now()
-      ? <div className="col-lg">
+      ? <div className="col-lg-6">
         <ol className="p-0 mb-5">
           <PrettyLi><Trans><b>Connect MetaMask wallet for minting</b></Trans></PrettyLi>
           <PrettyLi><Trans><b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee</Trans></PrettyLi>
@@ -79,16 +63,18 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
         </ol>
         {
           publicSaleStart.getTime() < Date.now() &&
-            <TransparentText><Trans>Presale ends: {publicSaleStartFormatted}</Trans></TransparentText>
+          <p className="paragraph-content opacity-50">
+            <Trans>Presale ends: {publicSaleStartFormatted}</Trans>
+          </p>
         }
       </div>
-      : <div className="col-lg">
+      : <div className="col-lg-6">
         <ol className="p-0 mb-5">
           <PrettyLi><Trans><b>Add your email to the whitelist</b></Trans></PrettyLi>
           <PrettyLi><Trans><b>Buy your reserved NFT at launch</b></Trans></PrettyLi>
           <PrettyLi><Trans><b>Upgrade your NFT by staking PCR</b></Trans></PrettyLi>
         </ol>
-        <TransparentText><Trans>Presale starts: {presaleStartFormatted}</Trans></TransparentText>
+        <p className="paragraph-content opacity-50"><Trans>Presale starts: {presaleStartFormatted}</Trans></p>
       </div>
   );
 }
@@ -99,18 +85,28 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
   const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24));
 
   return (
-    <div className="d-flex align-items-center">
-      <NftCountBox>
-        <b>{days}D</b>
-      </NftCountBox>
-      <span className="display-4 mx-2">:</span>
-      <NftCountBox>
-        <b>{hours}H</b>
-      </NftCountBox>
-      <span className="display-4 mx-2">:</span>
-      <NftCountBox>
-        <b>{minutes}M</b>
-      </NftCountBox>
+    <div className="row d-flex align-items-center">
+        <div className="col-3">
+            <div className="card mb-0 p-4 bg-dark text-center">
+                <b>{days}D</b>
+            </div>
+        </div>
+        <div className="col-1">
+            <span className="display-4 mx-2">:</span>
+        </div>
+        <div className="col-3">
+            <div className="card mb-0 p-4 bg-dark text-center">
+                <b>{hours}H</b>
+            </div>
+        </div>
+        <div className="col-1">
+            <span className="display-4 mx-2">:</span>
+        </div>
+        <div className="col-3">
+            <div className="card mb-0 p-4 bg-dark text-center">
+                <b>{minutes}M</b>
+            </div>
+        </div>
     </div>
   );
 }
@@ -122,9 +118,9 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
-  const { isConnected } = useWallet();
+  const { isConnected } = useWallet()
 
-  const [showWhitelistModal, setShowWhitelistModal] = useState(false);
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false)
 
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
@@ -136,16 +132,16 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
     <Background >
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
 
-      <div className="position-relative mx-auto p-5" style={{ maxWidth: '55rem' }}>
-        <h1 className="display-1 my-5">
+      <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
+        <h2 className="display-2 mb-6">
           {presaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
-        </h1>
+        </h2>
         <div className="row my-5">
           <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} /> 
-          <div className="col-lg">
+          <div className="col-lg-6">
             {
               presaleStarted
-                ? <NftCountBox>
+                ? <div className="card p-4 bg-dark">
                   <div className="d-flex align-items-center">
                     <Image src="/img/nft/logo.png" width="32" height="32" /> 
                     <div className="mx-3 flex-grow-1">
@@ -157,7 +153,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                       <Button>+</Button>
                     </div>
                   </div>
-                </NftCountBox>
+                </div>
                 : <Countdown timeLeft={presaleStartsIn} />
             }
             {
@@ -165,11 +161,11 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                 ? <ConnectWalletButton />
                 : (
                   presaleStarted
-                    ? <Button onClick={() => {}} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
+                    ? <Button onClick={() => {}} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                         <Trans>MINT YOUR NFT</Trans>
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                       </Button>
-                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-primary border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-4">
+                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                         <Trans>JOIN WHITELIST</Trans>
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                       </Button>
@@ -177,18 +173,18 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             }
             <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                <TransparentText><Link href="#"><u><Trans>Need help?</Trans></u></Link></TransparentText>
+                <p className="paragraph-content opacity-50"><Link href="#"><u><Trans>Need help?</Trans></u></Link></p>
               </span>
             </div>
           </div>
         </div>
         <div className="position-absolute" style={{
-          width: '35rem',
+          width: '40rem',
           height: '100%',
           top: '0',
-          left: '-35rem',
+          left: '-43rem',
           transform: 'scaleX(-1)',
-          opacity: 0.7,
+          opacity: 0.5,
         }}>
           <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
         </div>
