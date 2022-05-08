@@ -30,7 +30,7 @@ const WalletMenu = () => {
         handleWalletDisconnect,
         pcrBalance,
         nativeSymbol,
-        nativeBalanceFormatted
+        nativeBalanceFormatted,
     } = useWeb3Auth()
 
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })

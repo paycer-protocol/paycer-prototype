@@ -103,7 +103,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                 <div>
                     <p className="mb-0 text-center text-muted">{t`Transaction is processing...`}</p>
                     {infoMessage &&
-                      <small>
+                      <small className="mt-3" style={{fontSize: 11}}>
                           {t`Tip:`}&nbsp;{infoMessage}
                       </small>
                     }

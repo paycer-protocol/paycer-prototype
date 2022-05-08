@@ -58,7 +58,6 @@ export default function StakingForm() {
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
             setPcrBalance(tokenBalance + withdrawAmount)
-
         }
     }
 

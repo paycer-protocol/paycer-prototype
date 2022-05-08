@@ -5,6 +5,7 @@ import {INetworkProvider, mainNetProviders} from "@providers/networks";
 import ChainId from "@providers/chain-id";
 import {Symbols} from "@providers/symbols";
 import {supportedChains, supportedStakingChains} from "@config/network";
+import useToken from "@hooks/use-token";
 
 export interface Web3AuthContextInterface {
     walletConnector: unknown | null
@@ -30,7 +31,6 @@ export interface Web3AuthContextInterface {
     currentChainId: number
     currentChainIdBinary: string
     currentNetworkProvider: unknown
-    rpcUrls: string[]
 }
 
 const contextDefaultValues: Web3AuthContextInterface = {
@@ -56,8 +56,7 @@ const contextDefaultValues: Web3AuthContextInterface = {
     currentChainIsSupportedForStaking: false,
     currentChainId: 0,
     currentChainIdBinary: '',
-    currentNetworkProvider: null,
-    rpcUrls: [],
+    currentNetworkProvider: null
 }
 
 const Web3AuthContext = createContext<Web3AuthContextInterface>(
@@ -93,9 +92,9 @@ const Web3AuthContextProvider = ({ children }) => {
         error,
         isLoading
         // @ts-ignore
-    } = useNativeBalance({ chain: chain?.chainId });
+    } = useNativeBalance({ chain: chain?.chainId })
 
-    const { rpc } = chain
+    const pcrToken = useToken('PCR')
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const currentNetwork = mainNetProviders[chain?.networkId]
     const currentChainIsSupportedForDApp = supportedChains.includes(chain?.networkId)
@@ -113,6 +112,10 @@ const Web3AuthContextProvider = ({ children }) => {
         }
         stayLoggedIn()
     }, [web3])
+
+    useEffect(() => {
+        setPcrBalance(pcrToken.tokenBalance)
+    }, [pcrToken.isFetching])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -150,7 +153,6 @@ const Web3AuthContextProvider = ({ children }) => {
                 currentChainIsSupportedForStaking,
                 currentChainId: chain?.networkId,
                 currentChainIdBinary: chain?.chainId,
-                rpcUrls: rpc
             }}
         >
             {children}
