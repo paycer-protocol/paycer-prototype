@@ -17,7 +17,7 @@ const Layout = (props: LayoutProps) => {
     return (
       <>
         <Header />
-        <main role="main">
+        <main role="main" className="mb-8">
           {children}
         </main>
         <Footer />
@@ -28,7 +28,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <>
       <Header />
-      <main role="main">
+      <main role="main" className="mb-8">
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
           <Network>
             <h1><Trans>Network not supported</Trans></h1>

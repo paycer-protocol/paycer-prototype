@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 const Background = styled.div`
   background: url("/img/nft/icon-section/background.png");
-  padding: 6rem 0;
+  padding: 6rem 0 4.5rem 0;
 `
 
 function IconElement({ title, description, icon }: { title: string, description: string, icon: string }) {
   return (
-    <div className="m-3 d-flex align-items-center">
-      <div className="position-relative me-4 flex-shrink-0" style={{ width: '4.5rem', height: '4.5rem' }}>
-        <Image src={`/img/nft/icon-section/${icon}.svg`} layout="fill" />
+    <div className="m-3 d-flex align-items-start">
+      <div className="position-relative me-4 flex-shrink-0" style={{ width: '4rem', height: '4rem' }}>
+        <Image src={`/img/nft/usps/icon-${icon}.svg`} layout="fill" />
       </div>
       <div className="d-flex flex-column">
         <div className="mb-3 h2"><b>{title}</b></div>
@@ -21,46 +21,51 @@ function IconElement({ title, description, icon }: { title: string, description:
   )
 }
 
-const elements = [
+const usps = [
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Unique 3D Artwork`,
+    description: t`High quality 3D generative art, 10,000 unique NFTs`,
+    icon: 'artwork',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Utilities`,
+    description: t`Holding the NFT provides platform benefits for DeFi and CeDeFi`,
+    icon: 'utilities',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Get your Unique NFT Credit Card`,
+    description: t`get your NFT printed on your Credit Card`,
+    icon: 'creditcard',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Ready for Metaverse`,
+    description: t`Our 3D NFT will be implemented in Metaverse Partner Projects`,
+    icon: 'metaverse',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Doxxed Team`,
+    description: t`public team and company based in Germany`,
+    icon: 'team',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Interaction with PCR token`,
+    description: t`Paycer has is own DeFi utility token PCR that interacts with the NFT`,
+    icon: 'pcrtoken',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Upgradable NFT`,
+    description: t`Level up your NFT by staking PCR tokens to create an even more valuable NFT`,
+    icon: 'upgrade',
   },
   {
-    title: t`Discount & Bonus`,
-    description: t`Holding an NFT with this utility will lower the platform fees for you.`,
-    icon: 'discount',
+    title: t`Breeding`,
+    description: t`Breed with two Paycer NFTs to create a new generation of NFTs by utilizing the PCR token`,
+    icon: 'breed',
+  },
+  {
+    title: t`Future Cash Back & Reward Program`,
+    description: t`The NFT adds features to your credit card and account to receive rewards and cash back`,
+    icon: 'cashback',
   },
 ] as const
 
@@ -71,12 +76,12 @@ export default function UspSection() {
         <Background>
           <div className="container">
             <div className="row">
-              {elements.map((element) => (
+              {usps.map((usp) => (
                   <div className="col-lg-4 mb-3">
                     <IconElement
-                        title="Discount & Bonus"
-                        description="Holding an NFT with this utility will lower the platform fees for you."
-                        icon="discount"
+                        title={usp.title}
+                        description={usp.description}
+                        icon={usp.icon}
                     />
                   </div>
               ))}

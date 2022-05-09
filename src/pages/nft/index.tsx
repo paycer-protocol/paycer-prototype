@@ -6,6 +6,7 @@ import MintSection from "@components/organisms/nft/landing-page/mint-section";
 import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section";
 import TeamSection from "@components/organisms/nft/landing-page/team-section";
 import TitleSection from "@components/organisms/nft/landing-page/title-section";
+import DiscordSection from "@components/organisms/nft/landing-page/discord-section";
 import { t } from "@lingui/macro";
 import { useRef } from "react";
 
@@ -59,6 +60,9 @@ export default function NftLandingPage() {
       </div>
       <div ref={faqSection}>
         <FaqSection />
+      </div>
+      <div className="mt-6">
+        <DiscordSection />
       </div>
     </NftLandingPageLayout>
   )

@@ -31,7 +31,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
   return (
     <>
       <OnePagerHeader sections={[]} />
-      <main role="main">
+      <main role="main" style={{paddingTop: '124px'}}>
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
           <Network>
             <h1><Trans>Network not supported</Trans></h1>

@@ -70,9 +70,9 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
       </div>
       : <div className="col-lg-6">
         <ol className="p-0 mb-5">
-          <PrettyLi><Trans><b>Add your email to the whitelist</b></Trans></PrettyLi>
-          <PrettyLi><Trans><b>Buy your reserved NFT at launch</b></Trans></PrettyLi>
-          <PrettyLi><Trans><b>Upgrade your NFT by staking PCR</b></Trans></PrettyLi>
+          <PrettyLi><Trans>Add your email to the whitelist</Trans></PrettyLi>
+          <PrettyLi><Trans>Buy your reserved NFT at launch</Trans></PrettyLi>
+          <PrettyLi><Trans>Upgrade your NFT by staking PCR</Trans></PrettyLi>
         </ol>
         <p className="paragraph-content opacity-50"><Trans>Presale starts: {presaleStartFormatted}</Trans></p>
       </div>
