@@ -73,7 +73,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
 
     return (
       <>
-          <header className="px-md-5 py-md-3 mb-md-5 bg-dark w-100" style={{ position: 'fixed', zIndex: 10 }}>
+          <header className="px-md-5 py-md-3 mb-md-5 bg-dark w-100 border-bottom border-purple-dark" style={{ position: 'fixed', zIndex: 10 }}>
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
@@ -91,7 +91,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
                               <WalletMenu />
                           </li>
                       </ul>
-                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-3 ms-5 ps-3">
+                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5 ps-3">
                           <li className="nav-item me-5">
                                 <Link href="/">
                                     <a className={classnames('nav-link', 'text-nowrap', 'd-flex align-items-center')}>
