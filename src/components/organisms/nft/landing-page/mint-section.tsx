@@ -85,7 +85,7 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
   const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24));
 
   return (
-    <div className="row d-flex align-items-center">
+    <div className="row d-flex align-items-center justify-content-between">
         <div className="col-3">
             <div className="card mb-0 p-4 bg-dark text-center">
                 <b>{days}D</b>

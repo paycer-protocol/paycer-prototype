@@ -81,10 +81,9 @@ export default function RoadmapSection() {
             <div style={{ position: 'absolute', top: '260px', left: '235px', transform: 'translate(-50%, -50%)' }}>
               <StageCircle label={t`Stage 2`} progress={t`60%`} />
             </div>
-            <div style={{ position: 'absolute', top: '730px', left: '120px', transform: 'translate(-50%, -50%)' }}>
+            <div style={{ position: 'absolute', top: '980px', left: '232px', transform: 'translate(-50%, -50%)' }}>
               <StageCircle label={t`Stage 3`} progress={t`100%`} />
             </div>
-
             <div style={{ position: 'absolute', top: '-15px', left: '280px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 isActive
