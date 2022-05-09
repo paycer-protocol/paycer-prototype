@@ -8,7 +8,7 @@ import useNfts, { UseNftsProps } from "./use-nfts";
 export default function useOwnedNfts(): UseNftsProps {
     const { address: owner, isConnected, chainId } = useWallet();
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).contract;
+    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).nft;
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 
     const [numberOfTokens] = useContractCall(isConnected && {

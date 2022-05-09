@@ -38,7 +38,7 @@ export type UseNftsProps = {
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
     const { chainId } = useWallet();
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).contract;
+    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).nft;
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 
     const properties = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({

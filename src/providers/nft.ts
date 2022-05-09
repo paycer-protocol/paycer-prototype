@@ -3,7 +3,5 @@ import MumbaiContract from "../deployments/mumbai/nft";
 
 
 export default <const>{
-  [ChainId.Mumbai]: {
-    contract: MumbaiContract,
-  },
+  [ChainId.Mumbai]: MumbaiContract,
 }
