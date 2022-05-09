@@ -18,9 +18,9 @@ function TechnologyList() {
             {technologies.map((technology) => (
                 <div className="col-2 mb-3 mb-md-0">
                     <Card>
-                        <div className="d-flex p-3">
+                        <div className="d-flex py-4">
                             <Image src={technology} alt="Technology" objectFit="contain" objectPosition="center center"
-                                   width="250" height="80"/>
+                                   width="200" height="30"/>
                         </div>
                     </Card>
                 </div>

@@ -7,13 +7,15 @@ import { ArrowDownward } from "@styled-icons/material"
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 99999px;
-  padding: 0.75rem;
+  width: 43px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 43px;
   margin-bottom: 3rem;
-
   cursor: pointer;
-
   transition: background-color 0.2s ease, color 0.2s ease;
   &:hover {
     background-color: white;
@@ -64,7 +66,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
       </div>
       <DownArrowButtonBorder>
         <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
-          <Icon size={24} component={ArrowDownward} />
+          <Icon size={16} component={ArrowDownward} />
         </div>
       </DownArrowButtonBorder>
     <div className="content-gradient-border" />
