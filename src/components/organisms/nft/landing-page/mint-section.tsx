@@ -3,14 +3,14 @@ import Icon from "@components/atoms/icon";
 import useWallet from "@hooks/use-wallet";
 import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
-import { ArrowToRight } from "@styled-icons/boxicons-regular";
-import { ArrowForward, ArrowRight } from "@styled-icons/material";
+import { ArrowForward } from "@styled-icons/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
 import ConnectWalletButton from "./connect-wallet-button";
 import JoinWhitelistModal from "./join-whitelist-modal";
+import MintingApproveModal from "./minting-approve-modal";
 
 const Background = styled.div`
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
@@ -79,6 +79,24 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
   );
 }
 
+function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amount: number) => void }) {
+  return (
+    <div className="card p-4 bg-dark">
+      <div className="d-flex align-items-center">
+        <Image src="/img/nft/logo.png" width="32" height="32" /> 
+        <div className="mx-3 flex-grow-1">
+          <Trans>PCR NFT</Trans>
+        </div>
+        <div className="d-flex align-items-center">
+          <Button disabled={amount <= 1} onClick={() => setAmount(amount - 1)}>−</Button>
+          <div className="mx-3">{amount}</div>
+          <Button disabled={amount >= 3} onClick={() => setAmount(amount + 1)}>+</Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Countdown({ timeLeft }: { timeLeft: number }) {
   const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
   const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24);
@@ -121,6 +139,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   const { isConnected } = useWallet()
 
   const [showWhitelistModal, setShowWhitelistModal] = useState(false)
+  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
 
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
@@ -128,9 +147,12 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
   const publicSaleStarted = publicSaleStartsIn <= 0
 
+  const [amount, setAmount] = useState(2);
+
   return (
     <Background >
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
+      <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
 
       <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
         <h2 className="display-2 mb-6">
@@ -141,19 +163,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
           <div className="col-lg-6">
             {
               presaleStarted
-                ? <div className="card p-4 bg-dark">
-                  <div className="d-flex align-items-center">
-                    <Image src="/img/nft/logo.png" width="32" height="32" /> 
-                    <div className="mx-3 flex-grow-1">
-                      <Trans>PCR NFT</Trans>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <Button>−</Button>
-                      <div className="mx-3">2</div>
-                      <Button>+</Button>
-                    </div>
-                  </div>
-                </div>
+                ? <AmountPicker amount={amount} setAmount={setAmount} />
                 : <Countdown timeLeft={presaleStartsIn} />
             }
             {
@@ -161,7 +171,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                 ? <ConnectWalletButton />
                 : (
                   presaleStarted
-                    ? <Button onClick={() => {}} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                    ? <Button onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                         <Trans>MINT YOUR NFT</Trans>
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                       </Button>
