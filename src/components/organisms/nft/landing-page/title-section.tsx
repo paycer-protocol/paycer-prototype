@@ -47,7 +47,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
       </video>
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div className="text-center m-5" style={{ maxWidth: '60rem' }}>
+        <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
           <PageHeader>
               <h5 className="text-uppercase mb-2 text-pink fw-bold">
                   {t`COLLECT`}

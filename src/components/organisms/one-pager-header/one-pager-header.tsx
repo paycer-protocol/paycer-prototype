@@ -8,7 +8,7 @@ import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import Navbar from '@components/molecules/navbar'
 import WalletMenu from '../header/wallet-menu'
-import NetworkMenu from '../header/network-menu'
+import NftMenu from '../header/nft-menu'
 import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
 import { Trans } from '@lingui/macro'
@@ -73,7 +73,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
 
     return (
       <>
-          <header className="mx-md-4 mx-lg-5 mb-md-5 pt-0 pt-md-3" style={{ position: 'relative', zIndex: 10 }}>
+          <header className="px-md-5 py-md-3 mb-md-5 bg-dark w-100" style={{ position: 'fixed', zIndex: 10 }}>
               <div className="navbar navbar-expand-lg border-bottom-0">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
@@ -85,7 +85,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex">
                           <li className="nav-item me-4 d-flex align-items-center position-relative">
-                              <NetworkMenu />
+                              <NftMenu />
                           </li>
                           <li className="nav-item d-flex align-items-center position-relative">
                               <WalletMenu />

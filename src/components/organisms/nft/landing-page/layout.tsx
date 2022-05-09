@@ -20,7 +20,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
         <OnePagerHeader
           sections={props.sections}
         />
-        <main role="main">
+        <main role="main" style={{paddingTop: '124px'}}>
           {children}
         </main>
         <Footer />

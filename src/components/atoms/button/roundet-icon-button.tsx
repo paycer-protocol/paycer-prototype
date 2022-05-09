@@ -30,6 +30,7 @@ export const Label = styled.div`
 
 export interface RoundetIconButtonProps {
     icon: StyledIcon
+    activeIcon?: StyledIcon
     label?: string
     toggleActive?: boolean
 }
@@ -38,6 +39,7 @@ const RoundetIconButton = (props: RoundetIconButtonProps) => {
 
     const {
         icon,
+        activeIcon,
         label,
         toggleActive
     } = props
@@ -58,7 +60,7 @@ const RoundetIconButton = (props: RoundetIconButtonProps) => {
 
     return (
         <IconButton ref={buttonRef} onClick={toggleActive ? () => setIsActive((!isActive)) : null} className="card mb-0 bg-dark" isActive={isActive}>
-            <Icon component={icon} size={20} />
+            <Icon component={isActive && activeIcon ? activeIcon : icon} size={20} />
             {label &&
                 <Label>{label}</Label>
             }
