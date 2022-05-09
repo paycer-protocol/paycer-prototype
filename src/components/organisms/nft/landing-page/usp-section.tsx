@@ -69,7 +69,7 @@ export default function UspSection() {
   return (
       <>
         <Background>
-          <div className="px-6">
+          <div className="container">
             <div className="row">
               {elements.map((element) => (
                   <div className="col-lg-4 mb-3">

@@ -22,6 +22,7 @@ h2, .h2 {
 
 h3, .h3 {
   margin-bottom: ($headings-margin-bottom * .75);
+  line-height: 1.5;
 }
 
 h4, .h4 {
@@ -79,6 +80,10 @@ b, strong {
 .paragraph-content {
   font-size: $font-size-content-paragraph;
   line-height: $line-height-content-paragraph;
+}
+
+.small-text {
+  font-size: $font-size-small-text;
 }
 
 // Links, buttons

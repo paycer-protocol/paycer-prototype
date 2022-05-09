@@ -1,5 +1,5 @@
 import PageHeader from "@components/molecules/page-header";
-import { Trans } from "@lingui/macro";
+import {t, Trans} from "@lingui/macro";
 import { Accordion } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -12,9 +12,12 @@ const AccordionItemBorder = styled.div`
 export default function FaqSection() {
   return (
     <div className="container">
-      <PageHeader.Subtitle><Trans>FAQ</Trans></PageHeader.Subtitle>
-      <PageHeader.Title><Trans>We answer your questions</Trans></PageHeader.Title>
-
+      <h5 className="text-uppercase mb-2 text-pink fw-bold">
+        {t`FAQ`}
+      </h5>
+      <div className="h1 mb-4">
+        {t`We answer your questions`}
+      </div>
       <Accordion className="mt-5">
         <AccordionItemBorder>
           <Accordion.Item eventKey="0">
