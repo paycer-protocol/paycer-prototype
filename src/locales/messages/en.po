@@ -57,27 +57,27 @@ msgstr "6 months"
 msgid "60%"
 msgstr "60%"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:73
+#: src/components/organisms/nft/landing-page/mint-section.tsx:75
 msgid "<0>Add your email to the whitelist</0>"
 msgstr "<0>Add your email to the whitelist</0>"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:74
+#: src/components/organisms/nft/landing-page/mint-section.tsx:76
 msgid "<0>Buy your reserved NFT at launch</0>"
 msgstr "<0>Buy your reserved NFT at launch</0>"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:60
+#: src/components/organisms/nft/landing-page/mint-section.tsx:62
 msgid "<0>Connect MetaMask wallet for minting</0>"
 msgstr "<0>Connect MetaMask wallet for minting</0>"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:62
+#: src/components/organisms/nft/landing-page/mint-section.tsx:64
 msgid "<0>Limits:</0> 3 NFT per transaction"
 msgstr "<0>Limits:</0> 3 NFT per transaction"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:61
+#: src/components/organisms/nft/landing-page/mint-section.tsx:63
 msgid "<0>Price:</0> 5000 PCR per NFT + Gas fee"
 msgstr "<0>Price:</0> 5000 PCR per NFT + Gas fee"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:75
+#: src/components/organisms/nft/landing-page/mint-section.tsx:77
 msgid "<0>Upgrade your NFT by staking PCR</0>"
 msgstr "<0>Upgrade your NFT by staking PCR</0>"
 
@@ -190,7 +190,7 @@ msgstr "Approve"
 #~ msgstr "Assets"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:90
-#: src/config/loyalty-tiers.ts:9
+#: src/config/loyalty-tiers.ts:15
 msgid "Associate"
 msgstr "Associate"
 
@@ -225,6 +225,10 @@ msgstr "Balance:"
 #: src/components/organisms/header/wallet-menu/wallet-menu.tsx:124
 msgid "Balances in connected wallet"
 msgstr "Balances in connected wallet"
+
+#: src/config/loyalty-tiers.ts:14
+msgid "Basic"
+msgstr "Basic"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -804,7 +808,7 @@ msgstr "Investment ratio"
 #~ msgid "Investor Dashboard"
 #~ msgstr "Investor Dashboard"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:169
+#: src/components/organisms/nft/landing-page/mint-section.tsx:182
 #: src/components/organisms/nft/landing-page/title-section.tsx:62
 msgid "JOIN WHITELIST"
 msgstr "JOIN WHITELIST"
@@ -817,7 +821,7 @@ msgstr "Jobs"
 msgid "Join NFT Whitelist"
 msgstr "Join NFT Whitelist"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:137
+#: src/components/organisms/nft/landing-page/mint-section.tsx:162
 msgid "Join our NFT whitelist"
 msgstr "Join our NFT whitelist"
 
@@ -945,7 +949,7 @@ msgstr "Low"
 msgid "MINT NFT NOW"
 msgstr "MINT NFT NOW"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:165
+#: src/components/organisms/nft/landing-page/mint-section.tsx:178
 msgid "MINT YOUR NFT"
 msgstr "MINT YOUR NFT"
 
@@ -982,7 +986,7 @@ msgstr "Minimum received"
 msgid "Mint"
 msgstr "Mint"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:137
+#: src/components/organisms/nft/landing-page/mint-section.tsx:162
 msgid "Mint your Paycer NFT."
 msgstr "Mint your Paycer NFT."
 
@@ -1015,7 +1019,7 @@ msgstr "NFT ROADMAP"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:176
+#: src/components/organisms/nft/landing-page/mint-section.tsx:189
 msgid "Need help?"
 msgstr "Need help?"
 
@@ -1076,7 +1080,7 @@ msgstr "PAYCER TEAM"
 msgid "PCR"
 msgstr "PCR"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:148
+#: src/components/organisms/nft/landing-page/mint-section.tsx:90
 msgid "PCR NFT"
 msgstr "PCR NFT"
 
@@ -1102,7 +1106,7 @@ msgid "Page not found"
 msgstr "Page not found"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:93
-#: src/config/loyalty-tiers.ts:21
+#: src/config/loyalty-tiers.ts:18
 msgid "Partner"
 msgstr "Partner"
 
@@ -1197,7 +1201,7 @@ msgstr "Presale"
 #~ msgid "Presale ends: 30.10.2022"
 #~ msgstr "Presale ends: 30.10.2022"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:67
+#: src/components/organisms/nft/landing-page/mint-section.tsx:69
 msgid "Presale ends: {publicSaleStartFormatted}"
 msgstr "Presale ends: {publicSaleStartFormatted}"
 
@@ -1205,7 +1209,7 @@ msgstr "Presale ends: {publicSaleStartFormatted}"
 #~ msgid "Presale starts: 30.10.2022"
 #~ msgstr "Presale starts: 30.10.2022"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:77
+#: src/components/organisms/nft/landing-page/mint-section.tsx:79
 msgid "Presale starts: {presaleStartFormatted}"
 msgstr "Presale starts: {presaleStartFormatted}"
 
@@ -1338,7 +1342,7 @@ msgid "Send NFT Credit Cards"
 msgstr "Send NFT Credit Cards"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:91
-#: src/config/loyalty-tiers.ts:13
+#: src/config/loyalty-tiers.ts:16
 msgid "Senior"
 msgstr "Senior"
 
@@ -1869,8 +1873,8 @@ msgstr "max"
 #~ msgstr "min"
 
 #: src/config/loyalty-tiers.ts:5
-msgid "none"
-msgstr "none"
+#~ msgid "none"
+#~ msgstr "none"
 
 #: src/components/organisms/web3/network-provider.tsx:29
 #: src/components/organisms/web3/network-provider.tsx:46
