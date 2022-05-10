@@ -7,22 +7,21 @@ import { useCallback } from "react";
 export interface MintingApproveModalProps {
     amount: number;
     publicSaleStarted: boolean;
+    alloc: number | undefined;
+    merkleProof: string[] | undefined;
     show: boolean;
     onHide: () => void;
 }
 
-const MintingApproveModal = ({ amount, publicSaleStarted, show, onHide }: MintingApproveModalProps) => {
+const MintingApproveModal = ({ amount, publicSaleStarted, alloc, merkleProof, show, onHide }: MintingApproveModalProps) => {
     const nftPresale = useNftPresale();
     const nftPublicSale = useNftPublicSale();
-
-    console.log(nftPresale);
-    console.log(nftPublicSale);
 
     const onMintClicked = useCallback(() => {
         if (publicSaleStarted) {
             nftPublicSale.buy(amount);
         } else {
-            nftPresale.buy(amount);
+            nftPresale.buy(amount, alloc, merkleProof);
         }
     }, [nftPresale, nftPublicSale, amount, publicSaleStarted])
 

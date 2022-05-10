@@ -14,6 +14,7 @@ export default function useNftPresale() {
 
     // @ts-ignore
     const { send: sendBuy, state: mintTx, resetState } = useContractFunction(contract, 'buy');
+    console.log(mintTx.errorMessage);
 
     return {
         status: (<const>{
@@ -24,8 +25,8 @@ export default function useNftPresale() {
             'Fail': 'error',
             'Exception': 'error',
         })[mintTx.status],
-        async buy(amount: number) {
-            await sendBuy(amount);
+        async buy(amount: number, alloc: number, merkleProof: string[]) {
+            await sendBuy(amount, alloc, merkleProof);
         },
         resetState,
     }

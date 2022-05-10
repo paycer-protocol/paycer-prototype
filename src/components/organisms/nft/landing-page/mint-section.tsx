@@ -163,6 +163,8 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
   const { isConnected } = useWallet()
   const whitelistState = useWhitelistState();
+  const presaleAlloc = whitelistState?.data?.alloc;
+  const presaleMerkleProof = whitelistState?.data?.merkle_proof;
 
   const notOnWhitelistDuringPresale = !publicSaleStarted && (whitelistState === undefined || whitelistState.status === 'notWhitelisted');
 
@@ -174,7 +176,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   return (
     <Background >
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
-      <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
+      <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} alloc={presaleAlloc} merkleProof={presaleMerkleProof} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
 
       <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
         <h2 className="display-2 mb-6">
