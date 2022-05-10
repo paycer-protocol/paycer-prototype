@@ -141,7 +141,7 @@ function useWhitelistState() {
   }>(undefined);
   useEffect(() => {
     setWhitelistState(undefined);
-    fetch('/api/nft/whitelist' + new URLSearchParams({ walletAddress })).then(async (result) => {
+    fetch('/api/nft/whitelist?' + new URLSearchParams({ walletAddress })).then(async (result) => {
       setWhitelistState(await result.json() as typeof whitelistState);
     });
   }, [walletAddress]);

@@ -14,7 +14,6 @@ export default function useNftPresale() {
 
     // @ts-ignore
     const { send: sendBuy, state: mintTx, resetState } = useContractFunction(contract, 'buy');
-    console.log(mintTx.errorMessage);
 
     return {
         status: (<const>{
