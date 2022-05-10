@@ -1,3 +1,4 @@
+import Alert from "@components/atoms/alert";
 import Button from "@components/atoms/button";
 import Icon from "@components/atoms/icon";
 import useWallet from "@hooks/use-wallet";
@@ -6,7 +7,7 @@ import { useLingui } from "@lingui/react";
 import { ArrowForward } from "@styled-icons/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ConnectWalletButton from "./connect-wallet-button";
 import JoinWhitelistModal from "./join-whitelist-modal";
@@ -129,6 +130,24 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
   );
 }
 
+function useWhitelistState() {
+  const { address: walletAddress } = useWallet()
+  const [whitelistState, setWhitelistState] = useState<undefined | {
+    status: 'whitelisted' | 'notWhitelisted';
+    data: {
+      alloc: number;
+      merkle_proof: string[];
+    };
+  }>(undefined);
+  useEffect(() => {
+    setWhitelistState(undefined);
+    fetch('/api/nft/whitelist' + new URLSearchParams({ walletAddress })).then(async (result) => {
+      setWhitelistState(await result.json() as typeof whitelistState);
+    });
+  }, [walletAddress]);
+  return whitelistState;
+}
+
 export interface MintSectionProps {
   presaleStart: Date
   publicSaleStart: Date
@@ -136,16 +155,19 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
-  const { isConnected } = useWallet()
-
-  const [showWhitelistModal, setShowWhitelistModal] = useState(false)
-  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
-
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
   const publicSaleStarted = publicSaleStartsIn <= 0
+
+  const { isConnected } = useWallet()
+  const whitelistState = useWhitelistState();
+
+  const notOnWhitelistDuringPresale = !publicSaleStarted && (whitelistState === undefined || whitelistState.status === 'notWhitelisted');
+
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false)
+  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
 
   const [amount, setAmount] = useState(2);
 
@@ -171,10 +193,19 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                 ? <ConnectWalletButton />
                 : (
                   presaleStarted
-                    ? <Button onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                        <Trans>MINT YOUR NFT</Trans>
-                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                      </Button>
+                    ? (
+                      <>
+                        { notOnWhitelistDuringPresale &&
+                            <Alert className="text-center" variant="danger">
+                              <Trans>It looks like your current wallet is not on the whitelist for the presale.</Trans>
+                            </Alert>
+                        }
+                        <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                          <Trans>MINT YOUR NFT</Trans>
+                          <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                        </Button>
+                      </>
+                    )
                     : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                         <Trans>JOIN WHITELIST</Trans>
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
