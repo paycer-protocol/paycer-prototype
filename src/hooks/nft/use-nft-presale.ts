@@ -24,8 +24,8 @@ export default function useNftPresale() {
             'Fail': 'error',
             'Exception': 'error',
         })[mintTx.status],
-        async buy(amount: number) {
-            await sendBuy(amount);
+        async buy(amount: number, alloc: number, merkleProof: string[]) {
+            await sendBuy(amount, alloc, merkleProof);
         },
         resetState,
     }
