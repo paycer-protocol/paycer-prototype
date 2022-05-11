@@ -8744,7 +8744,7 @@ ethers@^4.0.47, ethers@~4.0.4:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.0, ethers@^5.0.15, ethers@^5.0.26, "ethersv5@npm:ethers@^5.0.32":
+ethers@^5.0.0, ethers@^5.0.15, ethers@^5.0.26, ethers@^5.5.4, "ethersv5@npm:ethers@^5.0.32":
   version "5.6.5"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.6.5.tgz#3185ac7815dc640993408adf6f133ffabfbcbb63"
   integrity sha512-9CTmplO9bv0s/aPw3HB3txGzKz3tUSI2EfO4dJo0W2WvaEq1ArgsEX6obV+bj5X3yY+Zgb1kAux8TDtJKe1FaA==

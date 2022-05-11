@@ -37,7 +37,7 @@
     "cleave.js": "^1.6.0",
     "ethereum-abi-types-generator": "^1.1.6",
     "ethereum-multicall": "^2.7.0",
-    "ethers": "^5.0.26",
+    "ethers": "^5.5.4",
     "ethers-multicall": "^0.2.2",
     "moment": "^2.29.1",
     "next": "^v12.0.10",
