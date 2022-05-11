@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+// @ts-ignore
 import { BigNumber as EthersBigNumber } from 'ethers';
 import { hexlify as EthersHexlify } from 'ethers/lib/utils';
 
