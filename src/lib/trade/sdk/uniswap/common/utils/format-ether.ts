@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+// @ts-ignore
 import { formatEther as EthersFormatEther } from 'ethers/lib/utils';
 
 /**
