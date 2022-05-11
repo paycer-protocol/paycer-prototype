@@ -1,4 +1,5 @@
 import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
+// @ts-ignore
 import {
   BigNumber,
   BigNumberish,
