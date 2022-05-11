@@ -19,9 +19,13 @@ export interface EthereumProvider {
 
 export class EthersProvider {
   private _ethersProvider:
+      // @ts-ignore
     | providers.StaticJsonRpcProvider
+      // @ts-ignore
     | providers.JsonRpcProvider
+      // @ts-ignore
     | providers.InfuraProvider
+      // @ts-ignore
     | providers.Web3Provider;
   constructor(private _providerContext: ChainIdAndProvider | EthereumProvider) {
     const chainId = (<ChainIdAndProvider>this._providerContext).chainId;
@@ -30,6 +34,7 @@ export class EthersProvider {
       const providerUrl = (<ChainIdAndProvider>this._providerContext)
         .providerUrl;
       if (providerUrl) {
+        // @ts-ignore
         this._ethersProvider = new providers.StaticJsonRpcProvider(
           providerUrl,
           {
@@ -38,6 +43,7 @@ export class EthersProvider {
           }
         );
       } else {
+        // @ts-ignore
         this._ethersProvider = new providers.InfuraProvider(
           chainId,
           this._getApiKey
@@ -56,6 +62,7 @@ export class EthersProvider {
       if (ethereumProvider._isProvider) {
         this._ethersProvider = ethereumProvider;
       } else {
+        // @ts-ignore
         this._ethersProvider = new providers.Web3Provider(ethereumProvider);
       }
     }

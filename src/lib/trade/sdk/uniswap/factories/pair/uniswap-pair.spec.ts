@@ -18,6 +18,7 @@ describe('UniswapPair', () => {
     // @ts-ignore
     const context: UniswapPairContextForChainId = {};
     expect(() => new UniswapPair(context)).toThrowError(
+        // @ts-ignore
       new UniswapError(
         'Must have a `fromTokenContractAddress` on the context',
         ErrorCodes.fromTokenContractAddressRequired
