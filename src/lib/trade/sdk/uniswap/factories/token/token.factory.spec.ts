@@ -139,7 +139,7 @@ describe('TokenFactory', () => {
     describe('erc20', () => {
       it('balanceOf', async () => {
         // const spy = spyOn(
-        //   // @ts-ignore
+        //   // @ts-nocheck
         //   tokenFactory._erc20TokenContract,
         //   'balanceOf'
         // ).and.callThrough();

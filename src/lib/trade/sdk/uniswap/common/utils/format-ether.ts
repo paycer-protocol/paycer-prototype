@@ -1,5 +1,6 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js';
-// @ts-ignore
+// @ts-nocheck
 import { formatEther as EthersFormatEther } from 'ethers/lib/utils';
 
 /**

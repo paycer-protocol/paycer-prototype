@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-// @ts-ignore
+// @ts-nocheck
 import { Contract, ContractInterface, providers } from 'ethers';
 import { ErrorCodes } from './common/errors/error-codes';
 import { UniswapError } from './common/errors/uniswap-error';
@@ -19,13 +19,13 @@ export interface EthereumProvider {
 
 export class EthersProvider {
   private _ethersProvider:
-      // @ts-ignore
+      // @ts-nocheck
     | providers.StaticJsonRpcProvider
-      // @ts-ignore
+      // @ts-nocheck
     | providers.JsonRpcProvider
-      // @ts-ignore
+      // @ts-nocheck
     | providers.InfuraProvider
-      // @ts-ignore
+      // @ts-nocheck
     | providers.Web3Provider;
   constructor(private _providerContext: ChainIdAndProvider | EthereumProvider) {
     const chainId = (<ChainIdAndProvider>this._providerContext).chainId;
@@ -34,7 +34,7 @@ export class EthersProvider {
       const providerUrl = (<ChainIdAndProvider>this._providerContext)
         .providerUrl;
       if (providerUrl) {
-        // @ts-ignore
+        // @ts-nocheck
         this._ethersProvider = new providers.StaticJsonRpcProvider(
           providerUrl,
           {
@@ -43,7 +43,7 @@ export class EthersProvider {
           }
         );
       } else {
-        // @ts-ignore
+        // @ts-nocheck
         this._ethersProvider = new providers.InfuraProvider(
           chainId,
           this._getApiKey
@@ -62,7 +62,7 @@ export class EthersProvider {
       if (ethereumProvider._isProvider) {
         this._ethersProvider = ethereumProvider;
       } else {
-        // @ts-ignore
+        // @ts-nocheck
         this._ethersProvider = new providers.Web3Provider(ethereumProvider);
       }
     }
@@ -106,15 +106,15 @@ export class EthersProvider {
   /**
    * Get the network
    */
-  // @ts-ignore
+  // @ts-nocheck
   public network(): providers.Network {
     if (this._ethersProvider.network) {
       return this._ethersProvider.network;
     }
 
-    // @ts-ignore
+    // @ts-nocheck
     if (this._ethersProvider.provider) {
-      // @ts-ignore
+      // @ts-nocheck
       const chainId = this._ethersProvider.provider.chainId;
       if (chainId) {
         const chainIdNumber = new BigNumber(chainId).toNumber();
@@ -137,7 +137,7 @@ export class EthersProvider {
   /**
    * Get the ethers provider
    */
-  // @ts-ignore
+  // @ts-nocheck
   public get provider(): providers.BaseProvider {
     return this._ethersProvider;
   }

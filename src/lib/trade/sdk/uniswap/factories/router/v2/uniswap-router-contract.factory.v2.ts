@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 import { BigNumberish, BytesLike } from 'ethers';
 import { ContractContext as RouterContractContext } from '../../../ABI/types/uniswap-router-v2';
 import { EthersProvider } from '../../../ethers-provider';

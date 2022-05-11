@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getUnixTime } from './get-unix-time';
 
 /**

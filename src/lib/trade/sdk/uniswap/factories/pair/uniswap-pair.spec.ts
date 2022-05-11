@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 import { providers } from 'ethers';
 import { ChainId, ErrorCodes, UniswapError } from '../..';
 import { ETH } from '../../common/tokens';
@@ -15,10 +15,10 @@ import { UniswapPair } from './uniswap-pair';
 
 describe('UniswapPair', () => {
   it('should throw if no fromTokenContractAddress is passed in', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {};
     expect(() => new UniswapPair(context)).toThrowError(
-        // @ts-ignore
+        // @ts-nocheck
       new UniswapError(
         'Must have a `fromTokenContractAddress` on the context',
         ErrorCodes.fromTokenContractAddressRequired
@@ -27,7 +27,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if fromTokenContractAddress is invalid address', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: '1',
     };
@@ -40,7 +40,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if no toTokenContractAddress is passed in', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: MOCKFUN().contractAddress,
     };
@@ -53,7 +53,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if toTokenContractAddress is invalid address', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: MOCKFUN().contractAddress,
       toTokenContractAddress: '1',
@@ -67,7 +67,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if no ethereumAddress is passed in', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: MOCKFUN().contractAddress,
       toTokenContractAddress: MOCKREP().contractAddress,
@@ -81,7 +81,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if ethereumAddress is invalid address', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: MOCKFUN().contractAddress,
       toTokenContractAddress: MOCKREP().contractAddress,
@@ -96,7 +96,7 @@ describe('UniswapPair', () => {
   });
 
   it('should throw if no chainId or ethereum provider passed in', () => {
-    // @ts-ignore
+    // @ts-nocheck
     const context: UniswapPairContextForChainId = {
       fromTokenContractAddress: MOCKFUN().contractAddress,
       toTokenContractAddress: MOCKREP().contractAddress,
@@ -120,7 +120,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-ignore
+    //@ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 
@@ -135,7 +135,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-ignore
+    //@ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 
@@ -149,7 +149,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-ignore
+    //@ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 

@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck
 import { isHexString } from 'ethers/lib/utils';
 import { ChainId, WETHContract } from '../../..';
 import { MOCKFUN } from '../../../mocks/fun-token.mock';

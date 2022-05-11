@@ -140,7 +140,7 @@ describe('TokenFactoryPublic', () => {
     xdescribe('erc20', () => {
       it('balanceOf', async () => {
         const spy = spyOn(
-          // @ts-ignore
+          // @ts-nocheck
           tokenFactory._erc20TokenContract,
           'balanceOf'
         ).and.callThrough();
@@ -153,7 +153,7 @@ describe('TokenFactoryPublic', () => {
     describe('eth', () => {
       it('balanceOf', async () => {
         const spy = spyOn(
-          // @ts-ignore
+          // @ts-nocheck
           tokenFactoryEth._ethersProvider,
           'balanceOf'
         ).and.callThrough();

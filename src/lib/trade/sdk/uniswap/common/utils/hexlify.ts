@@ -1,7 +1,8 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js';
-// @ts-ignore
+// @ts-nocheck
 import { BigNumber as EthersBigNumber } from 'ethers';
-// @ts-ignore
+// @ts-nocheck
 import { hexlify as EthersHexlify } from 'ethers/lib/utils';
 
 /**
