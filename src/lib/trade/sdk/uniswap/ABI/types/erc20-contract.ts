@@ -6,14 +6,14 @@ export type ContractContext = EthersContractContextV5<
   Erc20ContractMethodNames,
   Erc20ContractEventsContext,
   Erc20ContractEvents
->;
+>
 
 export declare type EventFilter = {
   address?: string;
   topics?: Array<string>;
   fromBlock?: string | number;
   toBlock?: string | number;
-};
+}
 
 export interface ContractTransactionOverrides {
   /**
