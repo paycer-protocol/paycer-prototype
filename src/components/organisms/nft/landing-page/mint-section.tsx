@@ -1,16 +1,16 @@
-import Button from "@components/atoms/button";
-import Icon from "@components/atoms/icon";
-import useWallet from "@hooks/use-wallet";
-import { Trans } from "@lingui/macro";
-import { useLingui } from "@lingui/react";
-import { ArrowForward } from "@styled-icons/material";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import styled from "styled-components";
-import ConnectWalletButton from "./connect-wallet-button";
-import JoinWhitelistModal from "./join-whitelist-modal";
-import MintingApproveModal from "./minting-approve-modal";
+import Button from "@components/atoms/button"
+import Icon from "@components/atoms/icon"
+import useWallet from "@hooks/use-wallet"
+import { Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
+import { ArrowForward } from "@styled-icons/material"
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
+import styled from "styled-components"
+import ConnectWalletButton from "./connect-wallet-button"
+import JoinWhitelistModal from "./join-whitelist-modal"
+import MintingApproveModal from "./minting-approve-modal"
 
 const Background = styled.div`
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
@@ -55,7 +55,7 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
 
   return (
     presaleStart.getTime() < Date.now()
-      ? <div className="col-lg-6">
+      ? <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
           <PrettyLi><Trans><b>Connect MetaMask wallet for minting</b></Trans></PrettyLi>
           <PrettyLi><Trans><b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee</Trans></PrettyLi>
@@ -68,7 +68,7 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
           </p>
         }
       </div>
-      : <div className="col-lg-6">
+      : <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
           <PrettyLi><Trans>Add your email to the whitelist</Trans></PrettyLi>
           <PrettyLi><Trans>Buy your reserved NFT at launch</Trans></PrettyLi>
@@ -104,23 +104,30 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
 
   return (
     <div className="row d-flex align-items-center justify-content-between">
-        <div className="col-3">
+        <div className="col-4 col-md-3 position-relative">
             <div className="card mb-0 p-4 bg-dark text-center">
                 <b>{days}D</b>
             </div>
+            <div className="d-md-none position-absolute" style={{right: '-11px', top: '20px'}}>
+                <span className="display-4 mx-2">:</span>
+            </div>
         </div>
-        <div className="col-1">
+
+        <div className="col-1 d-none d-md-block">
             <span className="display-4 mx-2">:</span>
         </div>
-        <div className="col-3">
+        <div className="col-4 col-md-3 position-relative">
             <div className="card mb-0 p-4 bg-dark text-center">
                 <b>{hours}H</b>
             </div>
+            <div className="d-md-none position-absolute" style={{right: '-11px', top: '20px'}}>
+                <span className="display-4 mx-2">:</span>
+            </div>
         </div>
-        <div className="col-1">
+        <div className="col-1 d-none d-md-block">
             <span className="display-4 mx-2">:</span>
         </div>
-        <div className="col-3">
+        <div className="col-4 col-md-3">
             <div className="card mb-0 p-4 bg-dark text-center">
                 <b>{minutes}M</b>
             </div>
@@ -150,15 +157,15 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   const [amount, setAmount] = useState(2);
 
   return (
-    <Background >
+    <Background className="px-4 p-md-0">
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
       <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
 
       <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
-        <h2 className="display-2 mb-6">
+        <h2 className="display-1 mb-3 mb-md-6">
           {presaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
         </h2>
-        <div className="row my-5">
+        <div className="row mt-5">
           <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} /> 
           <div className="col-lg-6">
             {
@@ -183,7 +190,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             }
             <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                <p className="paragraph-content opacity-50"><Link href="#"><u><Trans>Need help?</Trans></u></Link></p>
+                <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u><Trans>Need help?</Trans></u></Link></p>
               </span>
             </div>
           </div>

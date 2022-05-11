@@ -59,6 +59,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .display-1 {
   line-height: 6.25rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: 52px;
+    line-height: 60px;
+  }
+
 }
 
 // Headings

@@ -2,6 +2,12 @@ import Card from "@components/molecules/card";
 import PageHeader from "@components/molecules/page-header";
 import { t } from "@lingui/macro";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import Icon from "@components/atoms/icon";
+import {ArrowRightCircle} from "@styled-icons/bootstrap";
+import React from "react";
+
 
 const partners = [
     '/img/nft/partner/bigbrain.png',
@@ -9,8 +15,7 @@ const partners = [
     '/img/nft/partner/dodo.png',
     '/img/nft/partner/mexc.png',
     '/img/nft/partner/polkaex.png',
-    '/img/nft/partner/polygon.png',
-    '/img/nft/partner/uniswap.png',
+    '/img/nft/partner/polygon.png'
 ]
 
 function TechnologyList() {
@@ -24,18 +29,43 @@ function TechnologyList() {
                     {t`Our Partners & Infrastructure`}
                 </PageHeader.Title>
             </div>
-            <div className="row mb-6">
-                {partners.map((partner) => (
-                    <div className="col-2 mb-3 mb-md-0">
-                        <Card>
-                            <div className="d-flex py-4">
-                                <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
-                                       width="200" height="30"/>
-                            </div>
-                        </Card>
-                    </div>
-                ))}
+
+            <div className="d-none d-md-block mb-6">
+
+                <div className="row">
+                    {partners.map((partner) => (
+                        <div className="col-4 col-md-2 mb-3 mb-md-0">
+                            <Card className="mb-3 mb-md-0">
+                                <div className="d-flex py-4">
+                                    <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
+                                           width="200" height="30"/>
+                                </div>
+                            </Card>
+                        </div>
+                    ))}
+                </div>
             </div>
+
+            <div className="d-md-none mb-6">
+                <Swiper
+                    spaceBetween={20}
+                    slidesPerView={2}
+                    initialSlide={3}
+                    centeredSlides
+                >
+                    {partners.map((partner) => (
+                        <SwiperSlide className="align-items-center">
+                            <Card className="mb-3 mb-md-0">
+                                <div className="d-flex py-4">
+                                    <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
+                                           width="200" height="30"/>
+                                </div>
+                            </Card>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+
         </div>
     )
 }
