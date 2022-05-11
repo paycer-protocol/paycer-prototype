@@ -1,10 +1,6 @@
 import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
-import {
-  BigNumber,
-  BigNumberish,
-  BytesLike as Arrayish,
-  ContractTransaction,
-} from 'ethers';
+// @ts-ignore
+import { BigNumber, BigNumberish, BytesLike as Arrayish, ContractTransaction} from 'ethers';
 
 export type ContractContext = EthersContractContextV5<
   UniswapRouterV2,
