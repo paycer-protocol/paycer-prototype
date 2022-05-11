@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fetch from 'node-fetch';
 import { removeEthFromContractAddress } from '../common/tokens';
 import { deepClone } from '../common/utils/deep-clone';

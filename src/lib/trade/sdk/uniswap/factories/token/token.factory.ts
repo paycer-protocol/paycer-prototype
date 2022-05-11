@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ContractCallContext } from 'ethereum-multicall';
 // @ts-ignore
 import { BigNumber } from 'ethers';
