@@ -3,7 +3,11 @@ import styled, { css } from 'styled-components'
 import Icon from "@components/atoms/icon";
 import {StyledIcon} from "@styled-icons/styled-icon";
 
-export const IconButton = styled.div`
+interface IconButtonProps {
+    isActive: boolean;
+}
+
+export const IconButton = styled.div<IconButtonProps>`
    ${props => props.isActive && css`
     background: linear-gradient(86deg,rgba(133,12,167,1) 0%,rgba(66,1,220,1) 100%)!important;
   `}
