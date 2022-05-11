@@ -44,7 +44,7 @@ function TechnologyList() {
                         </div>
                     ))}
                 </div>
-                
+
             </div>
 
             <div className="d-md-none mb-6">
