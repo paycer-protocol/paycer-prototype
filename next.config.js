@@ -11,13 +11,6 @@ const path = require('path')
 const { withSentryConfig } = require('@sentry/nextjs')
 
 const nextConfig = {
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
   poweredByHeader: false,
   locale: 'en',
   i18n: {
