@@ -16,6 +16,7 @@ export interface EthereumProvider {
   customNetwork?: CustomNetwork | undefined;
 }
 
+
 export class EthersProvider {
   private _ethersProvider:
     | providers.StaticJsonRpcProvider
