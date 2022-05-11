@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { ContractCallContext } from 'ethereum-multicall';
+// @ts-ignore
 import { BigNumber as EthersBigNumber } from 'ethers';
 import { ContractContext } from '../../common/contract-context';
 import { ErrorCodes } from '../../common/errors/error-codes';

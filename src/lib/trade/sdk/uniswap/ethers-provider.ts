@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+// @ts-ignore
 import { Contract, ContractInterface, providers } from 'ethers';
 import { ErrorCodes } from './common/errors/error-codes';
 import { UniswapError } from './common/errors/uniswap-error';
