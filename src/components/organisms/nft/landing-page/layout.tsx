@@ -3,7 +3,7 @@ import OnePagerHeader, { OnePagerHeaderProps } from '@components/organisms/one-p
 import Footer from '@components/organisms/footer'
 import Network from '@components/organisms/web3/network'
 import useNetwork from '@hooks/use-network'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 
 export interface NftLandingPageLayoutProps {
   sections: OnePagerHeaderProps['sections']
@@ -34,8 +34,8 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
       <main role="main" style={{paddingTop: '124px'}}>
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
           <Network>
-            <h1><Trans>Network not supported</Trans></h1>
-            <Trans>Change network</Trans>
+            <h1>{t`Network not supported`}</h1>
+            {t`Change network`}
           </Network>
         </div>
       </main>

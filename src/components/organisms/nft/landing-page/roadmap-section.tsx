@@ -38,7 +38,7 @@ const RoadmapCardBackground = styled.div`
   box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
 `
 
-const RoadmapCardWrapper= styled.div`
+const RoadmapCardWrapper= styled.div<any>`
    ${props => props.isActive && css`
     background: linear-gradient(284deg,rgba(255,0,184,1),rgba(0,209,255,1));
     padding: 1px;

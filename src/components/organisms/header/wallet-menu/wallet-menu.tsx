@@ -35,7 +35,7 @@ const WalletMenu = () => {
                 <Button
                     className="px-4 text-nowrap p-2 pt-3 pb-3 text-light"
                     onClick={() => setShowWalletProviderModal(true)}>
-                    <Trans>Connect to a Wallet</Trans>
+                    {t`Connect to a Wallet`}
                 </Button>
                 {(showWalletProviderModal &&
                   <WalletProvider

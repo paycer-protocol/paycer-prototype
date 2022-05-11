@@ -16,6 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Web3Context>
       <I18nProvider>
         <ToastContainer position="top-center" />
+       {/* @ts-ignore */}
        <Component {...pageProps} />
       </I18nProvider>
     </Web3Context>

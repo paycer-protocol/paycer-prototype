@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import InvestItem from './invest-item'
 import { useInvestList } from "@context/invest-list-context";
 
@@ -14,27 +14,27 @@ export default function   InvestList() {
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                             <span className="text-muted">
-                                <Trans>POOL</Trans>
+                                {t`POOL`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Risk Level</Trans>
+                                {t`Risk Level`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Rewards</Trans>
+                                {t`Rewards`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>APR</Trans>
+                                {t`APR`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Total Volume</Trans>
+                                {t`Total Volume`}
                             </span>
                         </th>
                         <th className={`${thClass} card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0`} />

@@ -2,7 +2,7 @@ import Alert from "@components/atoms/alert";
 import Button from "@components/atoms/button";
 import Icon from "@components/atoms/icon";
 import useWallet from "@hooks/use-wallet";
-import { Trans } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { ArrowForward } from "@styled-icons/material";
 import Image from "next/image";
@@ -58,24 +58,24 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
     presaleStart.getTime() < Date.now()
       ? <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
-          <PrettyLi><Trans><b>Connect MetaMask wallet for minting</b></Trans></PrettyLi>
-          <PrettyLi><Trans><b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee</Trans></PrettyLi>
-          <PrettyLi><Trans><b>Limits:</b>&nbsp;3 NFT per transaction</Trans></PrettyLi>
+          <PrettyLi>{t`<b>Connect MetaMask wallet for minting</b>`}</PrettyLi>
+          <PrettyLi>{t`<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee`}</PrettyLi>
+          <PrettyLi>{t`<b>Limits:</b>&nbsp;3 NFT per transaction`}</PrettyLi>
         </ol>
         {
           publicSaleStart.getTime() < Date.now() &&
           <p className="paragraph-content opacity-50">
-            <Trans>Presale ends: {publicSaleStartFormatted}</Trans>
+            {t`Presale ends: {publicSaleStartFormatted}`}
           </p>
         }
       </div>
       : <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
-          <PrettyLi><Trans>Add your email to the whitelist</Trans></PrettyLi>
-          <PrettyLi><Trans>Buy your reserved NFT at launch</Trans></PrettyLi>
-          <PrettyLi><Trans>Upgrade your NFT by staking PCR</Trans></PrettyLi>
+          <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
+          <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
+          <PrettyLi>{t`Upgrade your NFT by staking PCR`}</PrettyLi>
         </ol>
-        <p className="paragraph-content opacity-50"><Trans>Presale starts: {presaleStartFormatted}</Trans></p>
+        <p className="paragraph-content opacity-50">{t`Presale starts: {presaleStartFormatted}`}</p>
       </div>
   );
 }
@@ -86,7 +86,7 @@ function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amoun
       <div className="d-flex align-items-center">
         <Image src="/img/nft/logo.png" width="32" height="32" /> 
         <div className="mx-3 flex-grow-1">
-          <Trans>PCR NFT</Trans>
+          {t`PCR NFT`}
         </div>
         <div className="d-flex align-items-center">
           <Button disabled={amount <= 1} onClick={() => setAmount(amount - 1)}>−</Button>
@@ -187,7 +187,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
       <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
         <h2 className="display-1 mb-3 mb-md-6">
-          {presaleStarted ? <Trans>Mint your Paycer NFT.</Trans> : <Trans>Join our NFT whitelist</Trans>}
+            {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
         </h2>
         <div className="row mt-5">
           <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} /> 
@@ -206,24 +206,24 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                       <>
                         { notOnWhitelistDuringPresale &&
                             <Alert className="text-center" variant="danger">
-                              <Trans>It looks like your current wallet is not on the whitelist for the presale.</Trans>
+                              {t`It looks like your current wallet is not on the whitelist for the presale.`}
                             </Alert>
                         }
                         <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                          <Trans>MINT YOUR NFT</Trans>
+                          {t`MINT YOUR NFT`}
                           <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                         </Button>
                       </>
                     )
                     : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                        <Trans>JOIN WHITELIST</Trans>
+                        {t`JOIN WHITELIST`}
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
                       </Button>
                 )
             }
             <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u><Trans>Need help?</Trans></u></Link></p>
+                <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u>{t`Need help?`}</u></Link></p>
               </span>
             </div>
           </div>

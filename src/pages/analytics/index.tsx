@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import AnalyticsDashboard from '@components/organisms/analytics-dashboard'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
@@ -14,10 +14,10 @@ export default function Analytics () {
                 <div className="row align-items-center">
                    <div className="col">
                       <PageHeader.Subtitle>
-                         <Trans>Analytics</Trans>
+                         {t`Analytics`}
                       </PageHeader.Subtitle>
                       <PageHeader.Title>
-                         <Trans>Financial Stats</Trans>
+                         {t`Financial Stats`}
                       </PageHeader.Title>
                    </div>
                 </div>

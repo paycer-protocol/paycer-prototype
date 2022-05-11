@@ -11,7 +11,7 @@ import WalletMenu from '../header/wallet-menu'
 import NftMenu from '../header/nft-menu'
 import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { ArrowBack, ArrowLeft } from '@styled-icons/material-outlined'
 
 const StyledBrand = styled(Navbar.Brand)`
@@ -96,7 +96,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
                                 <Link href="/">
                                     <a className={classnames('nav-link', 'text-nowrap', 'd-flex align-items-center')}>
                                         <Icon component={ArrowBack} size={16} className="me-2" />
-                                        <Trans>Back to Finance</Trans>
+                                        {t`Back to Finance`}
                                     </a>
                                 </Link>
                           </li>

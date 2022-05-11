@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import VestingWrapper from '@components/organisms/vesting'
@@ -13,10 +13,10 @@ export default function Vesting() {
           <div className="row align-items-center">
             <div className="col">
               <PageHeader.Subtitle>
-                <Trans>Vesting</Trans>
+                {t`Vesting`}
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                <Trans>Claim distribution</Trans>
+                {t`Claim distribution`}
               </PageHeader.Title>
             </div>
           </div>

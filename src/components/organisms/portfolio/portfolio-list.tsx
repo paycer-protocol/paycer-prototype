@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import {t, Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -42,27 +42,27 @@ export default function PortfolioList(props: PortfolioProps) {
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Pool</Trans>
+                                {t`Pool`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Risk Level</Trans>
+                                {t`Risk Level`}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>Investment ratio </Trans>
+                                {t`Investment ratio `}
                             </span>
                         </th>
                         <th className={`${thClass} border-left-0 border-right-0`}>
                             <span className="text-muted">
-                                <Trans>APR</Trans>
+                                {t`APR`}
                             </span>
                         </th>
                         <th className={`${thClass} bg-card-blue border border-secondary-dark card-border-top-right-radius card-border-bottom-right-radius ps-0 pe-0 border-left-0`}>
                             <span className="text-muted">
-                                <Trans>Investment</Trans>
+                                {t`Investment`}
                             </span>
                         </th>
                     </tr>
@@ -87,7 +87,7 @@ export default function PortfolioList(props: PortfolioProps) {
                                     </div>
                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                    <Trans id={riskLabels[strategy.riskLevel].id}/>
+                                    {riskLabels[strategy.riskLevel].id}
                                 </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
                                     <div className="row align-items-center g-0">
@@ -122,14 +122,14 @@ export default function PortfolioList(props: PortfolioProps) {
                                 <td colSpan={5}>
                                     <div className="text-center">
                                         <h4 className="text-muted mb-4">
-                                            <Trans>You have no investments in your portfolio</Trans>
+                                            {t`You have no investments in your portfolio`}
                                         </h4>
                                         <Link href="/invest">
                                             <GradientButton
                                                 title={t`Connect to a Wallet`}
                                                 className="px-6"
                                             >
-                                                <Trans>Invest</Trans>
+                                                {t`Invest`}
                                             </GradientButton>
                                         </Link>
                                     </div>

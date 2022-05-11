@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
@@ -50,7 +50,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title>
-            <Trans>Select a token</Trans>
+            {t`Select a token`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">

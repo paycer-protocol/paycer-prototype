@@ -38,16 +38,16 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
     <Modal centered show={props.show} onHide={props.onHide}>
       <>
         <Modal.Header closeButton onHide={props.onHide}>
-          <Modal.Title><Trans>Join NFT Whitelist</Trans></Modal.Title>
+          <Modal.Title>{t`Join NFT Whitelist`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {
             status === 'success'
               ? <div>
-                  <p><Trans>An email has been sent to your address. Click the confirmation link to join the Paycer NFT whitelist.</Trans></p>
+                  <p>{t`An email has been sent to your address. Click the confirmation link to join the Paycer NFT whitelist.`}</p>
                   <div className="mt-4" onClick={props.onHide}>
                     <GradientButton className="w-100">
-                      <Trans>Close</Trans>
+                      {t`Close`}
                     </GradientButton>
                   </div>
                 </div>
@@ -60,15 +60,15 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                 >
                   {({ submitForm, isSubmitting }) => (
                     <div>
-                      <p><Trans>Enter your email address below to reserve your Paycer NFT.</Trans></p>
+                      <p>{t`Enter your email address below to reserve your Paycer NFT.`}</p>
                       <Input label={t`Email address`} name="email" />
-                      { status == 'noSpotsAvailable' && <Alert className="mt-4" variant="danger"><Trans>There are no more spots left on the whitelist.</Trans></Alert> }
-                      { status == 'emailAlreadyUsed' && <Alert className="mt-4" variant="danger"><Trans>This email is already on the whitelist.</Trans></Alert> }
-                      { status == 'walletAlreadyUsed' && <Alert className="mt-4" variant="danger"><Trans>This wallet is already on the whitelist.</Trans></Alert> }
-                      { status == 'error' && <Alert className="mt-4" variant="danger"><Trans>Something went wrong.</Trans></Alert> }
+                      { status == 'noSpotsAvailable' && <Alert className="mt-4" variant="danger">{t`There are no more spots left on the whitelist.`}</Alert> }
+                      { status == 'emailAlreadyUsed' && <Alert className="mt-4" variant="danger">{t`This email is already on the whitelist.`}</Alert> }
+                      { status == 'walletAlreadyUsed' && <Alert className="mt-4" variant="danger">{t`This wallet is already on the whitelist.`}</Alert> }
+                      { status == 'error' && <Alert className="mt-4" variant="danger">{t`Something went wrong.`}</Alert> }
                       <div className="mt-4" onClick={submitForm}>
                         <GradientButton disabled={isSubmitting} className="w-100">
-                          <Trans>Submit</Trans>
+                          {t`Submit`}
                         </GradientButton>
                       </div>
                     </div>

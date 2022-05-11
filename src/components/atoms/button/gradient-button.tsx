@@ -7,7 +7,7 @@ interface GradientButtonProps {
   disabled: boolean;
 }
 
-const GradientButton = styled(Button)<GradientButtonProps>`
+const GradientButton = styled(Button)<any>`
   background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
   color: #FFF;
   font-weight: normal;

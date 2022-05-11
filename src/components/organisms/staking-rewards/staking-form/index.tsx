@@ -141,7 +141,7 @@ export default function StakingForm() {
                                             <div className="col-4 d-none d-md-flex">
                                                 <div className="d-flex flex-column">
                                                     <span className="text-muted mb-3">
-                                                        <Trans>Estimated fee</Trans>&nbsp;
+                                                        {t`Estimated fee`}&nbsp;
                                                     </span>
                                                     <RewardFee/>
                                                 </div>
@@ -152,7 +152,7 @@ export default function StakingForm() {
                             </div>
                             <div className="mb-4 d-md-none">
                                 <span className="text-muted mb-1">
-                                    <Trans>Estimated fee</Trans>&nbsp;&nbsp;
+                                    {t`Estimated fee`}&nbsp;&nbsp;
                                 </span>
                                 <RewardFee/>
                             </div>

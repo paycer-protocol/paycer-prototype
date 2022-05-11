@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import InvestList from '@components/organisms/invest/invest-list'
 import InvestListContextProvider from '@context/invest-list-context'
@@ -13,10 +13,10 @@ export default function Invest() {
           <div className="row align-items-center">
             <div className="col">
               <PageHeader.Subtitle>
-                <Trans>Overview</Trans>
+                {t`Overview`}
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                <Trans>Invest</Trans>
+                {t`Invest`}
               </PageHeader.Title>
               <span className="badge bg-danger-soft mt-3 text-white py-2 px-3">This page is a demo</span>
             </div>
