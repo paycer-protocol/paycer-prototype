@@ -33,7 +33,7 @@ function TechnologyList() {
             <div className="d-none d-md-block mb-6">
 
                 <div className="row">
-                    {partnesrs.map((partner) => (
+                    {partners.map((partner) => (
                         <div className="col-4 col-md-2 mb-3 mb-md-0">
                             <Card className="mb-3 mb-md-0">
                                 <div className="d-flex py-4">
@@ -42,7 +42,9 @@ function TechnologyList() {
                                 </div>
                             </Card>
                         </div>
+                    ))}
                 </div>
+                
             </div>
 
             <div className="d-md-none mb-6">
