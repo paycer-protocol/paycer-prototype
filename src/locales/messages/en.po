@@ -44,7 +44,7 @@ msgstr "6 months"
 #: src/components/organisms/invest/invest-card/index.tsx:45
 #: src/components/organisms/invest/invest-table.tsx:32
 #: src/components/organisms/portfolio/portfolio-item.tsx:58
-#: src/components/organisms/portfolio/portfolio-list.tsx:62
+#: src/components/organisms/portfolio/portfolio-list.tsx:60
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 #~ msgid "APR"
 #~ msgstr "APR"
@@ -61,10 +61,19 @@ msgstr "6 months"
 #~ msgid "Action"
 #~ msgstr "Action"
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:98
+#~ msgid "Add PCR Token"
+#~ msgstr "Add PCR Token"
+
 #: src/components/organisms/off-canvas/index.tsx:80
 #~ msgid "Add Token"
 #~ msgstr "Add Token"
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:100
+#~ msgid "Add our PCR Token to your Wallet"
+#~ msgstr "Add our PCR Token to your Wallet"
+
+#: src/components/organisms/header/network-menu/network-menu.tsx:39
 #: src/components/organisms/web3/network-provider.tsx:31
 #~ msgid "Adding Network to Wallet ..."
 #~ msgstr "Adding Network to Wallet ..."
@@ -145,6 +154,10 @@ msgstr "Attention! The exchange rate has changed significantly."
 #: src/components/molecules/token-input/token-input.tsx:65
 msgid "Balance:"
 msgstr "Balance:"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:124
+#~ msgid "Balances in connected wallet"
+#~ msgstr "Balances in connected wallet"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -262,9 +275,10 @@ msgstr "Confirm Transaction"
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:38
 #: src/components/organisms/login-card/login-card.tsx:25
 #: src/components/organisms/login-card/login-card.tsx:29
-#: src/components/organisms/portfolio/portfolio-list.tsx:132
+#: src/components/organisms/portfolio/portfolio-list.tsx:129
 #: src/components/organisms/web3/wallet-connect.tsx:27
 #: src/components/organisms/web3/wallet-detail.tsx:140
 #: src/pages/referral/index.tsx:35
@@ -286,6 +300,10 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #: src/components/organisms/web3/account-detail.tsx:89
 #~ msgid "Connected with MetaMask"
 #~ msgstr "Connected with MetaMask"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:61
+#~ msgid "Copy Wallet Address"
+#~ msgstr "Copy Wallet Address"
 
 #: src/components/organisms/web3/wallet-detail.tsx:110
 #~ msgid "Copy address"
@@ -409,6 +427,14 @@ msgstr "Disable Multihops"
 #~ msgid "Disconnect"
 #~ msgstr "Disconnect"
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:113
+#~ msgid "Disconnect Wallet"
+#~ msgstr "Disconnect Wallet"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:115
+#~ msgid "Disconnect from your Wallet Extension"
+#~ msgstr "Disconnect from your Wallet Extension"
+
 #: src/components/organisms/portal-block-number/index.tsx:38
 #~ msgid "Disconnected"
 #~ msgstr "Disconnected"
@@ -482,6 +508,7 @@ msgstr "Estimated output:"
 #~ msgid "Exchangerate"
 #~ msgstr "Exchangerate"
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:70
 #: src/components/organisms/web3/wallet-detail.tsx:104
 #~ msgid "Explorer"
 #~ msgstr "Explorer"
@@ -505,6 +532,10 @@ msgstr "Fee:"
 #: src/pages/token-sale/components/alert.tsx:12
 #~ msgid "Fetching data from API failed."
 #~ msgstr "Fetching data from API failed."
+
+#: src/pages/analytics/index.tsx:19
+#~ msgid "Financial Stats"
+#~ msgstr "Financial Stats"
 
 #: src/pages/referral/components/Referrals.tsx:13
 #~ msgid "Friend`s User ID"
@@ -594,7 +625,7 @@ msgid "Invested"
 msgstr "Invested"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:63
-#: src/components/organisms/portfolio/portfolio-list.tsx:67
+#: src/components/organisms/portfolio/portfolio-list.tsx:65
 #~ msgid "Investment"
 #~ msgstr "Investment"
 
@@ -607,7 +638,7 @@ msgstr "Invested"
 #~ msgstr "Investment distribution"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:53
-#: src/components/organisms/portfolio/portfolio-list.tsx:57
+#: src/components/organisms/portfolio/portfolio-list.tsx:55
 #~ msgid "Investment ratio"
 #~ msgstr "Investment ratio"
 
@@ -744,10 +775,15 @@ msgstr "Minimum received"
 #~ msgid "Name"
 #~ msgstr "Name"
 
+#: src/components/organisms/header/network-menu/network-menu.tsx:62
+#~ msgid "Network"
+#~ msgstr "Network"
+
 #: src/components/organisms/layout/layout.tsx:32
 #~ msgid "Network not supported"
 #~ msgstr "Network not supported"
 
+#: src/components/organisms/header/network-menu/network-menu.tsx:36
 #: src/components/organisms/web3/network-provider.tsx:28
 #~ msgid "Network-Switch Pending, please open your Wallet"
 #~ msgstr "Network-Switch Pending, please open your Wallet"
@@ -781,7 +817,7 @@ msgstr "Minimum received"
 #~ msgstr "Open"
 
 #: src/pages/invest/index.tsx:15
-#: src/pages/portfolio/index.tsx:15
+#: src/pages/portfolio/index.tsx:20
 #: src/pages/token-overview/index.tsx:19
 #~ msgid "Overview"
 #~ msgstr "Overview"
@@ -856,7 +892,7 @@ msgstr "Partner"
 #~ msgstr "Please wait, retrieving data from API ..."
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:43
-#: src/components/organisms/portfolio/portfolio-list.tsx:47
+#: src/components/organisms/portfolio/portfolio-list.tsx:45
 #~ msgid "Pool"
 #~ msgstr "Pool"
 
@@ -881,6 +917,7 @@ msgstr "Portfolio"
 #~ msgid "PreSale"
 #~ msgstr "PreSale"
 
+#: src/components/organisms/header/network-menu/network-menu.tsx:44
 #: src/components/organisms/web3/network-provider.tsx:36
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
@@ -945,7 +982,7 @@ msgstr "Released Vesting Tokens"
 
 #: src/components/organisms/invest/invest-table.tsx:22
 #: src/components/organisms/portfolio/portfolio-item.tsx:48
-#: src/components/organisms/portfolio/portfolio-list.tsx:52
+#: src/components/organisms/portfolio/portfolio-list.tsx:50
 #~ msgid "Risk Level"
 #~ msgstr "Risk Level"
 
@@ -1125,13 +1162,25 @@ msgstr "Swap to"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:85
+#~ msgid "Switch Wallet"
+#~ msgstr "Switch Wallet"
+
 #: src/components/organisms/web3/network-provider.tsx:47
 #~ msgid "Switch network"
 #~ msgstr "Switch network"
 
+#: src/components/organisms/header/network-menu/network-menu.tsx:64
+#~ msgid "Switch the Blockchain Network"
+#~ msgstr "Switch the Blockchain Network"
+
 #: src/components/organisms/web3/wallet-detail.tsx:117
 #~ msgid "Switch wallet"
 #~ msgstr "Switch wallet"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:87
+#~ msgid "Switch your Wallet Provider"
+#~ msgstr "Switch your Wallet Provider"
 
 #: src/components/organisms/web3/account-detail.tsx:124
 #~ msgid "Switches to another wallet provider"
@@ -1280,7 +1329,7 @@ msgstr "Transaction was successfully executed"
 #~ msgid "Transfer from:"
 #~ msgstr "Transfer from:"
 
-#: src/components/organisms/vesting/claim/index.tsx:127
+#: src/components/organisms/vesting/claim/index.tsx:128
 #~ msgid "Transfer to:"
 #~ msgstr "Transfer to:"
 
@@ -1312,6 +1361,10 @@ msgstr "Vesting Phase"
 #: src/components/organisms/portal-block-number/index.tsx:31
 #~ msgid "View block details"
 #~ msgstr "View block details"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:72
+#~ msgid "View your Wallet in Blockchain-Explorer"
+#~ msgstr "View your Wallet in Blockchain-Explorer"
 
 #: src/components/organisms/web3/wallet-detail.tsx:105
 #~ msgid "View your wallet in Blockchain Explorer"
@@ -1347,7 +1400,7 @@ msgstr "Withdraw:"
 #~ msgstr "Withdrawable"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:123
-#: src/components/organisms/portfolio/portfolio-list.tsx:128
+#: src/components/organisms/portfolio/portfolio-list.tsx:125
 #~ msgid "You have no investments in your portfolio"
 #~ msgstr "You have no investments in your portfolio"
 
