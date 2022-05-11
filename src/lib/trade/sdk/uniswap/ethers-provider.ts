@@ -106,6 +106,7 @@ export class EthersProvider {
   /**
    * Get the network
    */
+  // @ts-ignore
   public network(): providers.Network {
     if (this._ethersProvider.network) {
       return this._ethersProvider.network;
@@ -136,6 +137,7 @@ export class EthersProvider {
   /**
    * Get the ethers provider
    */
+  // @ts-ignore
   public get provider(): providers.BaseProvider {
     return this._ethersProvider;
   }
