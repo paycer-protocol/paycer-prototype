@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Deep clone object
  * @param object The object to clone

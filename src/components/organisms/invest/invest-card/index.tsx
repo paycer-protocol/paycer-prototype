@@ -1,5 +1,5 @@
 import React from 'react'
-import { t, Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import Card from '@components/molecules/card'
 import { FormattedNumber } from '@components/atoms/number'
 import useToken from '@hooks/use-token'
@@ -83,7 +83,7 @@ const InvestCard = (strategy: StrategyType) => {
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span>{t`Risk`}</span>
-                        <Trans id={riskLabels[strategy.riskLevel].id} />
+                        {riskLabels[strategy.riskLevel].id}
                     </li>
                 </ul>
                 <div className="row mt-4">

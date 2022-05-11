@@ -72,11 +72,11 @@ const DataTable = (props: DataTableProps) => {
           {(showTable &&
               <tbody className="list">
               <tr>
-                <td><Trans>Date</Trans></td>
+                <td>{t`Date`}</td>
                 <td>{formattedDate}</td>
               </tr>
               <tr>
-                <td><Trans>Invested</Trans></td>
+                <td>{t`Invested`}</td>
                 <td>
                       <span className="pe-2">
                         <FormattedNumber
@@ -89,7 +89,7 @@ const DataTable = (props: DataTableProps) => {
                 </td>
               </tr>
               <tr>
-                <td><Trans>PCR Token amount</Trans></td>
+                <td>{t`PCR Token amount`}</td>
                 <td>
                     <span className="pe-2">
                       <FormattedNumber
@@ -102,7 +102,7 @@ const DataTable = (props: DataTableProps) => {
                 </td>
               </tr>
               <tr>
-                <td><Trans>From Wallet Address</Trans></td>
+                <td>{t`From Wallet Address`}</td>
                 <td>{props.fromAddress}</td>
               </tr>
               </tbody>

@@ -24,8 +24,8 @@ export default function StakingSummary() {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between mb-4">
-        <h2 className="m-0"><Trans>Staking</Trans></h2>
-        <span>{initialValues.rewardRate}% <Trans>APR</Trans></span>
+        <h2 className="m-0">{t`Staking`}</h2>
+        <span>{initialValues.rewardRate}% {t`APR`}</span>
       </div>
       <div className="mb-5">
         <StyledProgressBar

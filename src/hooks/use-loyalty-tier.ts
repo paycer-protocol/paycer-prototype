@@ -16,6 +16,7 @@ export default function useLoyaltyTier():LoyaltyTierProps {
   const getTierLevel = () => {
     let tierLevel = 0;
     LoyaltyTiers.forEach((v, i) => {
+      //@ts-ignore
       if (balance >= v.value) {
         tierLevel = i
       }
@@ -26,6 +27,7 @@ export default function useLoyaltyTier():LoyaltyTierProps {
   const tierLevel = getTierLevel()
 
   return {
+    //@ts-ignore
     tierLevel
   }
 }

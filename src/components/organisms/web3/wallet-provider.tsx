@@ -53,7 +53,7 @@ const WalletProvider = (props: WalletProviderProps) => {
     <Modal show onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
-          <Modal.Title><Trans>Connect to a wallet</Trans></Modal.Title>
+          <Modal.Title>{t`Connect to a wallet`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="danger" show={!!errorMessage}>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ChainId } from '../../../enums/chain-id';
 import { UniswapPairSettings } from './uniswap-pair-settings';
 
