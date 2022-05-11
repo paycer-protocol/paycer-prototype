@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js';
 // @ts-nocheck
 import { Contract, ContractInterface, providers } from 'ethers';
