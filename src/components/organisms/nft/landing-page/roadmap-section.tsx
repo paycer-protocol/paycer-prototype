@@ -87,10 +87,11 @@ export default function RoadmapSection() {
             <div style={{ position: 'absolute', top: '-15px', left: '280px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 isActive
-                title={t`Vision and Value`}
+                title={t`Vision & Value`}
                 entries={[
                   t`Launch Landingpage`,
                   t`Launch Whitepaper`,
+                  t`Launch Marketing`,
                 ]}
               />
             </div>
@@ -114,6 +115,15 @@ export default function RoadmapSection() {
                 ]}
               />
             </div>
+              <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
+                  <RoadmapCard
+                      title={t`Expand NFT Partnerships`}
+                      entries={[
+                          t`Partnership quests`,
+                          t`Breeding (Breed NFTs using PCR tokens)`,
+                      ]}
+                  />
+              </div>
             <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Upgrade Event`}
@@ -123,15 +133,15 @@ export default function RoadmapSection() {
                 ]}
               />
             </div>
-            <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
-              <RoadmapCard
-                title={t`Expand NFT Partnerships`}
-                entries={[
-                  t`Partnership quests`,
-                  t`Breeding (Breed NFTs using PCR tokens)`,
-                ]}
-              />
-            </div>
+              <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
+                  <RoadmapCard
+                      title={t`Credit Cards (Metaverse & real world)`}
+                      entries={[
+                          t`Launch NFT Credit Cards`,
+                          t`Send NFT Credit Cards`,
+                      ]}
+                  />
+              </div>
             <div style={{ position: 'absolute', top: '750px', left: '470px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Cashback in PCR Tokens`}
@@ -140,21 +150,12 @@ export default function RoadmapSection() {
                 ]}
               />
             </div>
-            <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
-              <RoadmapCard
-                title={t`Credit Cards (Metaverse & Real)`}
-                entries={[
-                  t`Launch NFT Credit Cards`,
-                  t`Send NFT Credit Cards`,
-                ]}
-              />
-            </div>
             <div style={{ position: 'absolute', bottom: '-400px', left: '250px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Marketing Events & Community Boost`}
                 entries={[
                   t`Special Items & Marketing Partnerships`,
-                  t`Exclusive airdrops & Voting Systems`,
+                  t`Exclusive airdrops & Voting System`,
                   t`Use NFT Credit Card in Metaverse`,
                 ]}
               />

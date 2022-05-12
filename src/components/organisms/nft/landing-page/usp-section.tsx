@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Background = styled.div`
   background: url("/img/nft/icon-section/background.png");
+  background-size: cover;
   padding: 6rem 0 4.5rem 0;
 `
 
