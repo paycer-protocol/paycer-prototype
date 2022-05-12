@@ -47,36 +47,40 @@ const achievements = [
 export default function AchievementsSection() {
     return (
         <div className="mt-6 mb-0 py-5 ps-md-4 pe-md-4 ps-4">
-            <div className="mb-5">
-                <h5 className="text-uppercase mb-3 text-pink">
-                    {t`WHAT WE ALREADY DID`}
-                </h5>
-                <PageHeader.Title>
-                    {t`Our achievements`}
-                </PageHeader.Title>
-            </div>
+
 
             <div className="d-none d-md-block">
-                <div className="row mb-6">
-                    {achievements.map((achievement) => (
-                        <div className="col-3 mb-4">
-                            <Card className="h-100">
-                                <div className="card-body h-100">
-                                    <div className="d-flex mb-4 align-items-center">
-                                        <div>
-                                            <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
-                                        </div>
-                                        <div className="h3 ms-3 mb-0">{achievement.title}</div>
-                                    </div>
-                                    <span className="text-muted">
-                                     {achievement.text}
-                                </span>
-                                </div>
+                <div className="container">
+                    <div className="mb-5">
+                        <h5 className="text-uppercase mb-3 text-pink">
+                            {t`WHAT WE ALREADY DID`}
+                        </h5>
+                        <PageHeader.Title>
+                            {t`Our achievements`}
+                        </PageHeader.Title>
+                    </div>
 
-                            </Card>
-                        </div>
-                    ))}
+                    <div className="row mb-6">
+                        {achievements.map((achievement) => (
+                            <div className="col-4 mb-4">
+                                <Card className="h-100">
+                                    <div className="card-body h-100">
+                                        <div className="d-flex mb-4 align-items-center">
+                                            <div>
+                                                <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
+                                            </div>
+                                            <div className="h3 ms-3 mb-0">{achievement.title}</div>
+                                        </div>
+                                        <span className="text-muted">
+                                            {achievement.text}
+                                        </span>
+                                    </div>
+                                </Card>
+                            </div>
+                        ))}
+                    </div>
                 </div>
+
             </div>
 
             <div className="d-md-none">
