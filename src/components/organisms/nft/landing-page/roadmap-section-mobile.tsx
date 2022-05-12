@@ -39,16 +39,41 @@ const RoadmapCardBackground = styled.div`
 
 const RoadmapCardWrapper= styled.div<any>`
    margin-bottom: 20px;
+   position: relative;
    ${props => props.isActive && css`
     background: linear-gradient(284deg,rgba(255,0,184,1),rgba(0,209,255,1));
     padding: 1px;
     border-radius: 5px;
   `}
+   ${props => props.indicator === 'right' && css`
+     &:before {
+        content: "";
+        height: 15px;
+        width: 15px;
+        background: white;
+        left: -23%;
+        top: 46%;
+        position: absolute;
+        border-radius: 50%;
+     }
+  `}
+   ${props => props.indicator === 'left' && css`
+     &:before {
+        content: "";
+        height: 15px;
+        width: 15px;
+        background: white;
+        left: -30%;
+        top: 46%;
+        position: absolute;
+        border-radius: 50%;
+     }
+  `}
 `
 
-function RoadmapCard({ title, entries, isActive }: { title: string, entries: string[], isActive?: boolean }) {
+function RoadmapCard({ title, entries, isActive, indicator }: { title: string, entries: string[], isActive?: boolean, indicator?: 'left' | 'right' }) {
   return (
-      <RoadmapCardWrapper isActive={isActive}>
+      <RoadmapCardWrapper isActive={isActive} indicator={indicator}>
           <RoadmapCardBackground>
               <h3>{title}</h3>
               {entries.map((entry) => (
@@ -79,7 +104,7 @@ export default function RoadmapSectionMobile() {
                   <div style={{ position: 'absolute', top: '2%', left: '45px', transform: 'translate(-50%, -50%)' }}>
                       <StageCircle label={t`Stage 1`} progress={t`30%`} />
                   </div>
-                  <div style={{ position: 'absolute', top: '43%', left: '45px', transform: 'translate(-50%, -50%)' }}>
+                  <div style={{ position: 'absolute', top: '60%', left: '45px', transform: 'translate(-50%, -50%)' }}>
                       <StageCircle label={t`Stage 2`} progress={t`60%`} />
                   </div>
                   <div style={{ position: 'absolute', top: '100%', left: '45px', transform: 'translate(-50%, -50%)' }}>
@@ -100,6 +125,7 @@ export default function RoadmapSectionMobile() {
                     />
                     <RoadmapCard
                         title={t`Launching NFT Collections`}
+                        indicator="left"
                         entries={[
                             t`Presale`,
                             t`Public Sale`,
@@ -109,12 +135,14 @@ export default function RoadmapSectionMobile() {
                     />
                     <RoadmapCard
                         title={t`Ready for Metaverse`}
+                        indicator="right"
                         entries={[
                             t`3D NFT`,
                             t`Metaverse Partnerships`,
                         ]}
                     />
                     <RoadmapCard
+                        indicator="left"
                         title={t`Expand NFT Partnerships`}
                         entries={[
                             t`Partnership quests`,
@@ -129,6 +157,7 @@ export default function RoadmapSectionMobile() {
                         ]}
                     />
                     <RoadmapCard
+                        indicator="right"
                         title={t`Credit Cards (Metaverse & real world)`}
                         entries={[
                             t`Launch NFT Credit Cards`,
@@ -136,6 +165,7 @@ export default function RoadmapSectionMobile() {
                         ]}
                     />
                     <RoadmapCard
+                        indicator="left"
                         title={t`Cashback in PCR Tokens`}
                         entries={[
                             t`Cashback Partnerships`,
