@@ -210,61 +210,66 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
       <div className="position-relative mx-auto py-8" style={{ maxWidth: '55rem' }}>
 
-        <TopEdge />
+        <div className="py-7">
+            <TopEdge />
 
-        <h2 className="display-1 mb-3 mb-md-6">
-            {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
-        </h2>
-        <div className="row mt-5">
-          <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} /> 
-          <div className="col-lg-6">
-            {
-              presaleStarted
-                ? <AmountPicker amount={amount} setAmount={setAmount} />
-                : <Countdown timeLeft={presaleStartsIn} />
-            }
-            {
-              !isConnected
-                ? <ConnectWalletButton />
-                : (
-                  presaleStarted
-                    ? (
-                      <>
-                        { notOnWhitelistDuringPresale &&
-                            <Alert className="text-center" variant="danger">
-                              {t`It looks like your current wallet is not on the whitelist for the presale.`}
-                            </Alert>
-                        }
-                        <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                          {t`MINT YOUR NFT`}
-                          <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                        </Button>
-                      </>
-                    )
-                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                        {t`JOIN WHITELIST`}
-                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                      </Button>
-                )
-            }
-            <div className="mt-4 text-end">
+            <h2 className="display-1 mb-3 mb-md-6">
+                {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
+            </h2>
+            <div className="row mt-5">
+                <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
+                <div className="col-lg-6">
+                    {
+                        presaleStarted
+                            ? <AmountPicker amount={amount} setAmount={setAmount} />
+                            : <Countdown timeLeft={presaleStartsIn} />
+                    }
+                    {
+                        !isConnected
+                            ? <ConnectWalletButton />
+                            : (
+                                presaleStarted
+                                    ? (
+                                        <>
+                                            { notOnWhitelistDuringPresale &&
+                                              <Alert className="text-center" variant="danger">
+                                                  {t`It looks like your current wallet is not on the whitelist for the presale.`}
+                                              </Alert>
+                                            }
+                                            <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                                                {t`MINT YOUR NFT`}
+                                                <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                                            </Button>
+                                        </>
+                                    )
+                                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                                        {t`JOIN WHITELIST`}
+                                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                                    </Button>
+                            )
+                    }
+                    <div className="mt-4 text-end">
               <span className="cursor-pointer" onClick={onNeedHelpClicked}>
                 <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u>{t`Need help?`}</u></Link></p>
               </span>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div className="position-absolute" style={{
+                width: '40rem',
+                height: '100%',
+                top: '0',
+                left: '-43rem',
+                transform: 'scaleX(-1)',
+                opacity: 0.5,
+            }}>
+                <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
+            </div>
+            <BottomEdge />
+
         </div>
-        <div className="position-absolute" style={{
-          width: '40rem',
-          height: '100%',
-          top: '0',
-          left: '-43rem',
-          transform: 'scaleX(-1)',
-          opacity: 0.5,
-        }}>
-          <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
-        </div>
-          <BottomEdge />
+
+
       </div>
     </Background>
   )

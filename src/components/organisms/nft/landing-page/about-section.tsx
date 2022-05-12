@@ -21,17 +21,7 @@ const partners = [
 function TechnologyList() {
     return (
         <div>
-            <div className="mb-5">
-                <h5 className="text-uppercase mb-3 text-pink">
-                    {t`PAYCER ECOSYSTEM`}
-                </h5>
-                <PageHeader.Title>
-                    {t`Our Partners & Infrastructure`}
-                </PageHeader.Title>
-            </div>
-
             <div className="d-none d-md-block mb-6">
-
                 <div className="row">
                     {partners.map((partner) => (
                         <div className="col-4 col-md-2 mb-3 mb-md-0">

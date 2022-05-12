@@ -2,11 +2,6 @@ import { t } from '@lingui/macro';
 import Image from 'next/image';
 import styled from "styled-components";
 
-const Background = styled.div`
-    background: #0B1120;
-  padding: 6rem 0 4.5rem 0;
-`
-
 function IconElement({ title, description, icon }: { title: string, description: string, icon: string }) {
   return (
     <div className="m-3 d-flex align-items-start">
@@ -73,23 +68,27 @@ export default function UspSection() {
 
   return (
       <>
-        <Background>
-          <div className="container">
-            <div className="row">
-              {usps.map((usp) => (
-                  <div className="col-lg-4 mb-3">
-                    <IconElement
-                        title={usp.title}
-                        description={usp.description}
-                        icon={usp.icon}
-                    />
-                  </div>
-              ))}
+        <div className="container pt-6">
+          <div className="mb-5">
+            <h5 className="text-uppercase mb-2 text-pink fw-bold">
+              {t`FAQ`}
+            </h5>
+            <div className="h1 mb-4">
+              {t`We answer your questions`}
             </div>
           </div>
-        </Background>
-        <div className="content-gradient-border" />
+          <div className="row">
+            {usps.map((usp) => (
+                <div className="col-lg-4 mb-3">
+                  <IconElement
+                      title={usp.title}
+                      description={usp.description}
+                      icon={usp.icon}
+                  />
+                </div>
+            ))}
+          </div>
+        </div>
       </>
-
   )
 }
