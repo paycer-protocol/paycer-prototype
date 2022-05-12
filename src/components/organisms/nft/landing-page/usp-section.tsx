@@ -3,8 +3,7 @@ import Image from 'next/image';
 import styled from "styled-components";
 
 const Background = styled.div`
-  background: url("/img/nft/icon-section/background.png");
-  background-size: cover;
+    background: #0B1120;
   padding: 6rem 0 4.5rem 0;
 `
 

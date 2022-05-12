@@ -4,12 +4,14 @@ import UspSection from "@components/organisms/nft/landing-page/usp-section"
 import NftLandingPageLayout from "@components/organisms/nft/landing-page/layout"
 import MintSection from "@components/organisms/nft/landing-page/mint-section"
 import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section"
+import RoadmapSectionMobile from "@components/organisms/nft/landing-page/roadmap-section-mobile"
 import TeamSection from "@components/organisms/nft/landing-page/team-section"
 import TitleSection from "@components/organisms/nft/landing-page/title-section"
 import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
 import { t } from "@lingui/macro";
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive"
 
 const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
 const publicSaleStart = new Date(Date.parse('30 Nov 2022 00:00:00 GMT'));
@@ -25,6 +27,8 @@ export default function NftLandingPage() {
   const roadmapSection = useRef<HTMLDivElement>()
   const teamSection = useRef<HTMLDivElement>()
   const faqSection = useRef<HTMLDivElement>()
+
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
   return (
     <NftLandingPageLayout
@@ -45,21 +49,21 @@ export default function NftLandingPage() {
       <div ref={aboutSection}>
         <AboutSection />
       </div>
-      <div ref={mintSection}>
+      <div ref={mintSection} className="position-relative" style={{zIndex: 1}}>
         <MintSection
           onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
           presaleStart={presaleStart}
           publicSaleStart={publicSaleStart}
         />
       </div>
-      <div ref={uspSection}>
+      <div ref={uspSection} className="position-relative" style={{zIndex: 2}}>
         <UspSection />
       </div>
       <div ref={achievementSection}>
         <AchievementsSection />
       </div>
       <div ref={roadmapSection}>
-        <RoadmapSection />
+        {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
       </div>
       <div ref={teamSection}>
         <TeamSection />
