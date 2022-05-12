@@ -71,10 +71,10 @@ export default function UspSection() {
         <div className="container pt-6">
           <div className="mb-5">
             <h5 className="text-uppercase mb-2 text-pink fw-bold">
-              {t`FAQ`}
+              {t`WHAT WE OFFER`}
             </h5>
             <div className="h1 mb-4">
-              {t`We answer your questions`}
+              {t`Your advantages`}
             </div>
           </div>
           <div className="row">
