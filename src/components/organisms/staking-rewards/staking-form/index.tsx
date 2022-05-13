@@ -53,11 +53,9 @@ export default function StakingForm() {
         if (values.stakedBalance > initialValues.stakedBalance) {
             const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
             await deposit(depositAmount)
-            setPcrBalance(tokenBalance - depositAmount)
         } else {
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
-            setPcrBalance(tokenBalance + withdrawAmount)
         }
     }
 
@@ -164,7 +162,7 @@ export default function StakingForm() {
                             error={contractCallError}
                             success={withdrawIsSuccess || depositIsSuccess}
                             loading={isLoading}
-                            infoMessage={transactionState ? transactionState === 1 ? t`Approving... Open your Wallet-Extension and try to Speed it up. You might have to Re-Open your Wallet-Extension if the Transaction Dialog will not appear afterwards.` : t`Open your Wallet-Extension and try to Speed it up.` : ''}
+                            infoMessage={transactionState ? transactionState === 1 ? t`Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : t` Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : ''}
                         >
                             <>
                                 <div className="card blur-background">

@@ -8,20 +8,25 @@ import { calculateEndTime, calculateNextDistribution, calculateStartTime } from 
 import Moralis from 'moralis'
 import { useWeb3ExecuteFunction } from 'react-moralis'
 
+enum TRANSACTION_STATE {
+    "NONE" = 0,
+    "TRANSACTION" = 1
+}
+
 interface UseVestingProps {
     withdraw: () => Promise<void>
     withdrawAble: number
     totalAmount: number
     amountWithdrawn: number
-    withdrawIsLoading: boolean
-    withdrawIsFetching: boolean
-    withdrawIsError: boolean
-    withdrawIsSuccess: boolean
     showFormApproveModal: boolean
     startTime: string
     endTime: string
     nextDistribution: string
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
+    isLoading: boolean
+    contractCallError: Error
+    transactionState: TRANSACTION_STATE
+    withdrawIsSuccess: boolean
 }
 
 type RecipientsResponse = {
@@ -34,12 +39,14 @@ export default function useVesting(type):UseVestingProps {
 
     const vestingConfig = VestingContractProvider[currentChainId] ? VestingContractProvider[currentChainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
-
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
     const [startTime, setStartTime] = useState<number>(0)
     const [releaseInterval, setReleaseInterval] = useState<number>(0)
     const [totalAmount, setTotalAmount] = useState<number>(0)
     const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [transactionState, setTransactionState] = useState<TRANSACTION_STATE>(0)
+    const [contractCallError, setContractCallError] = useState<Error | null>(null)
     const [amountWithdrawn, setAmountWithdrawn] = useState<any>(null)
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
 
@@ -57,110 +64,129 @@ export default function useVesting(type):UseVestingProps {
     }, [walletAddress])
 
     const withdrawVesting = async () => {
+        setIsLoading(true)
+        const withdrawTx = await withdraw({
+            params: vestingWithdrawRequestParams,
+        })
+
         try {
-            await withdraw({
-                params: vestingWithdrawRequestParams,
-                onSuccess: results => {
+            await withdrawTx.wait()
+            setIsLoading(false)
+            setWithdrawAble(0)
+            setWithdrawIsSuccess(true)
+        } catch (error) {
+            if (error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    // The transaction was replaced  :'(
+                    setIsLoading(false)
+                    setContractCallError(new Error('Claim has been aborted.'))
+                } else {
+                    //  was speeded up
                     setWithdrawIsSuccess(true)
-                    setWithdrawAble(0)
+                    setIsLoading(false)
                 }
-            })
-        } catch (e) {
-            console.log(e)
+            }
         }
     }
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: vestingAddress,
-                functionName: 'startTime',
-                abi: vestingConfig.abi
-            }
-            try {
-                const response = await Moralis.executeFunction(options)
-                if (response && BigNumber.isBigNumber(response)) {
-                    setStartTime(response.toNumber())
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: vestingAddress,
+                    functionName: 'startTime',
+                    abi: vestingConfig.abi
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    const response = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setStartTime(response.toNumber())
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            fetch()
         }
-        fetch()
     }, [walletAddress])
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: vestingAddress,
-                functionName: 'releaseInterval',
-                abi: vestingConfig.abi
-            }
-            try {
-                const response = await Moralis.executeFunction(options)
-                if (response && BigNumber.isBigNumber(response)) {
-                    setReleaseInterval(response.toNumber())
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: vestingAddress,
+                    functionName: 'releaseInterval',
+                    abi: vestingConfig.abi
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    const response = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setReleaseInterval(response.toNumber())
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            fetch()
         }
-        fetch()
     }, [walletAddress])
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: vestingAddress,
-                functionName: 'withdrawable',
-                abi: vestingConfig.abi,
-                params: { beneficiary: walletAddress },
-            }
-
-            try {
-                const response = await Moralis.executeFunction(options)
-                if (response && BigNumber.isBigNumber(response)) {
-                    setWithdrawAble(Number(formatUnits(response, 18)))
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: vestingAddress,
+                    functionName: 'withdrawable',
+                    abi: vestingConfig.abi,
+                    params: {beneficiary: walletAddress},
                 }
-            } catch(e) {
-                console.log(e)
+
+                try {
+                    const response = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setWithdrawAble(Number(formatUnits(response, 18)))
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            fetch()
         }
-        fetch()
     }, [walletAddress])
 
 
     useEffect(() => {
-        const fetch = async () => {
-            const options = {
-                contractAddress: vestingAddress,
-                functionName: 'recipients',
-                abi: vestingConfig.abi,
-                params: { beneficiary: walletAddress },
-            }
-            try {
-                // @ts-ignore
-                const response:RecipientsResponse = await Moralis.executeFunction(options)
-                if (response) {
-                    setTotalAmount(Number(formatUnits(response?.totalAmount, 18)))
-                    setAmountWithdrawn(Number(formatUnits(response?.amountWithdrawn, 18)))
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: vestingAddress,
+                    functionName: 'recipients',
+                    abi: vestingConfig.abi,
+                    params: {beneficiary: walletAddress},
                 }
-            } catch(e) {
-                console.log(e)
+                try {
+                    // @ts-ignore
+                    const response: RecipientsResponse = await Moralis.executeFunction(options)
+                    if (response) {
+                        setTotalAmount(Number(formatUnits(response?.totalAmount, 18)))
+                        setAmountWithdrawn(Number(formatUnits(response?.amountWithdrawn, 18)))
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            fetch()
         }
-        fetch()
-
     }, [walletAddress])
 
     return {
         withdrawAble,
         totalAmount,
         amountWithdrawn,
-        withdrawIsLoading,
-        withdrawIsFetching,
+        isLoading,
+        contractCallError,
+        transactionState,
         withdrawIsSuccess,
-        withdrawIsError: !!withdrawError,
         withdraw: withdrawVesting,
         showFormApproveModal,
         setShowFormApproveModal,

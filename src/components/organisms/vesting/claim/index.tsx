@@ -31,11 +31,11 @@ const Claim = () => {
         withdraw,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawIsLoading,
+        isLoading,
         withdrawIsSuccess,
-        withdrawIsError,
-        withdrawIsFetching,
-        nextDistribution
+        contractCallError,
+        nextDistribution,
+        transactionState
     } = useVesting(dashboardData?.type)
 
     const handleSubmit = async () => {
@@ -89,10 +89,11 @@ const Claim = () => {
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
-                    error={wi}
+                    error={contractCallError}
                     success={withdrawIsSuccess}
                     successMessage={t`Transaction was successfully executed.`}
-                    loading={withdrawIsLoading || withdrawIsFetching}
+                    loading={isLoading}
+                    infoMessage={t`Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up.`}
                     additionalSuccessContent={
                         <div className="d-flex justify-content-center mt-5">
                             <GradientButton className="w-100" onClick={() => router.push('/staking')}>

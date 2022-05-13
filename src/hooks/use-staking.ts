@@ -7,7 +7,6 @@ import StakingContractProvider from '@providers/staking'
 import PaycerTokenContractProvider from '@providers/paycer-token'
 import ChainId from '@providers/chain-id'
 import { formatLastRewardtime } from '../helpers/staking-helper'
-import useToken from '@hooks/use-token'
 import { useWeb3Auth } from '@context/web3-auth-context'
 
 enum TRANSACTION_STATE {
@@ -32,9 +31,7 @@ interface UseStakingProps {
     depositIsSuccess: boolean
     claimIsSuccess: boolean
     transactionState: TRANSACTION_STATE
-
     contractCallError: Error
-
     resetStatus: () => void
 }
 
@@ -275,7 +272,6 @@ export default function useStaking():UseStakingProps {
             }
             fetch()
         }
-
     }, [walletAddress])
 
     const fetchPcrBalance = () => {
