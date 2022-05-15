@@ -109,8 +109,9 @@ export default function useStaking():UseStakingProps {
                         // The transaction was replaced  :'(
                         setIsLoading(false)
                         setContractCallError(new Error('Approve has been canceled'))
+                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
                     } else {
-                      console.log('approve speeded up')
+                      //console.log('approve speeded up')
                     }
                     setTransactionState(0)
                 } else {
@@ -144,8 +145,9 @@ export default function useStaking():UseStakingProps {
                     // The transaction was replaced  :'(
                     setIsLoading(false)
                     setContractCallError(new Error('withdraw has been canceled'))
+                    // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
                 } else {
-                    console.log('withdraw speeded up')
+                    //console.log('withdraw speeded up')
                 }
                 setTransactionState(0)
             } else {
@@ -172,8 +174,9 @@ export default function useStaking():UseStakingProps {
                         // The transaction was replaced  :'(
                         setIsLoading(false)
                         setContractCallError(new Error('Approve has been aboted'))
+                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
                     } else {
-                        console.log('approve speeded up')
+                        //console.log('approve speeded up')
                     }
                     setTransactionState(0)
                 }  else {
@@ -196,7 +199,7 @@ export default function useStaking():UseStakingProps {
         try {
             setTransactionState(2)
             await depositTx.wait()
-            setWithdrawIsSuccess(true)
+            setDepositIsSuccess(true)
             setTransactionState(0)
             fetchPcrBalance()
         } catch (error) {
@@ -275,33 +278,30 @@ export default function useStaking():UseStakingProps {
     }, [walletAddress])
 
     const fetchPcrBalance = () => {
-        useEffect(() => {
-            if (walletAddress) {
-                const fetch = async () => {
-                    const options = {
-                        contractAddress: paycerToken.address,
-                        functionName: 'balanceOf',
-                        abi: paycerToken.abi,
-                        params: {account: walletAddress}
-                    }
-
-                    try {
-                        // @ts-ignore
-                        const response: BigNumber = await Moralis.executeFunction(options)
-                        if (response && BigNumber.isBigNumber(response)) {
-                            setPcrBalance(Number(formatUnits(response, 18)))
-                        }
-                    } catch (e) {
-                        console.log('balanceOf', e)
-                    }
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: paycerToken.address,
+                    functionName: 'balanceOf',
+                    abi: paycerToken.abi,
+                    params: {account: walletAddress}
                 }
-                fetch()
-            }
 
-        }, [walletAddress])
+                try {
+                    // @ts-ignore
+                    const response: BigNumber = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setPcrBalance(Number(formatUnits(response, 18)))
+                    }
+                } catch (e) {
+                    console.log('balanceOf', e)
+                }
+            }
+            fetch()
+        }
     }
 
-    useEffect(() => {
+    const fetchUserInfo = () => {
         if (walletAddress) {
             const fetch = async () => {
                 const options = {
@@ -322,9 +322,13 @@ export default function useStaking():UseStakingProps {
             }
             fetch()
         }
-    }, [walletAddress])
+    }
 
     useEffect(() => {
+        fetchUserInfo()
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess])
+
+    const fetchRewardRate = () => {
         if (walletAddress) {
             const fetch = async () => {
                 const options = {
@@ -345,6 +349,10 @@ export default function useStaking():UseStakingProps {
             }
             fetch()
         }
+    }
+
+    useEffect(() => {
+        fetchRewardRate()
     }, [walletAddress])
 
     const fetchPendingRewards = () => {

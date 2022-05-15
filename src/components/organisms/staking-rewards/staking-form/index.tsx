@@ -32,7 +32,7 @@ export default function StakingForm() {
         transactionState
     } = useStaking()
 
-    const { pcrBalance: tokenBalance, setPcrBalance } = useWeb3Auth()
+    const { pcrBalance: tokenBalance } = useWeb3Auth()
 
     const initialValues: StakingProps = {
         rewardSymbol,
@@ -51,11 +51,15 @@ export default function StakingForm() {
 
     const handleStaking = async (values: FormikValues) => {
         if (values.stakedBalance > initialValues.stakedBalance) {
+            console.log('deposit')
             const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
             await deposit(depositAmount)
+
         } else {
+            console.log('withdraw')
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
+
         }
     }
 

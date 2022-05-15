@@ -82,7 +82,8 @@ const Web3AuthContextProvider = ({ children }) => {
         isAuthenticating: walletIsAuthenticating,
         enableWeb3,
         web3,
-        isWeb3Enabled
+        isWeb3Enabled,
+        isInitialized
     } = useMoralis()
 
     const {
