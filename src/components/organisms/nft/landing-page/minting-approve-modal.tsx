@@ -1,6 +1,5 @@
 import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
-import useNftPresale from "@hooks/nft/use-nft-presale";
-import useNftPublicSale from "@hooks/nft/use-nft-public-sale";
+import useNftSale from "@hooks/nft/use-nft-sale";
 import { t } from "@lingui/macro";
 import { useCallback } from "react";
 
@@ -14,8 +13,8 @@ export interface MintingApproveModalProps {
 }
 
 const MintingApproveModal = ({ amount, publicSaleStarted, alloc, merkleProof, show, onHide }: MintingApproveModalProps) => {
-    const nftPresale = useNftPresale();
-    const nftPublicSale = useNftPublicSale();
+    const nftPresale = useNftSale('presale');
+    const nftPublicSale = useNftSale('publicSale');
 
     const onMintClicked = useCallback(() => {
         if (publicSaleStarted) {

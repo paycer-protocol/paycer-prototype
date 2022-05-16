@@ -186,10 +186,10 @@ export interface MintSectionProps {
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
   const presaleStartsIn = presaleStart.getTime() - Date.now()
-  const presaleStarted = true//presaleStartsIn <= 0
+  const presaleStarted = presaleStartsIn <= 0
 
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
-  const publicSaleStarted = false//publicSaleStartsIn <= 0
+  const publicSaleStarted = publicSaleStartsIn <= 0
 
   const { isConnected } = useWallet()
   const whitelistState = useWhitelistState();

@@ -6,10 +6,10 @@ import { useMemo } from "react";
 import { BigNumber } from '@ethersproject/bignumber'
 import { Interface } from "@ethersproject/abi";
 
-export default function useNftPresale() {
+export default function useNftSale(type: 'presale' | 'publicSale') {
     const { chainId, address: walletAddress } = useWallet();
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Polygon]).presale;
+    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Polygon])[type];
     const contract = useMemo(() => new Contract(contractAddress, abi), [contractAddress, abi]);
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 
@@ -45,7 +45,7 @@ export default function useNftPresale() {
 
     return {
         status,
-        async buy(amount: number, alloc: number, merkleProof: string[]) {
+        async buy(amount: number, alloc?: number, merkleProof?: string[]) {
             if (!BigNumber.isBigNumber(price)) return;
             const total = price.mul(amount);
             if (allowance.sub(total).isNegative()) {
