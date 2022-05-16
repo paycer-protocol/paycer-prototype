@@ -1,5 +1,5 @@
 {
-    "address": "0x71254382F6661267c151471340723d78bB585331",
+    "address": "0xe085eE3001FD1cC0306F964Cc8EFc5F221Ca6A85",
     "abi": [
         {
             "anonymous": false,
@@ -112,6 +112,19 @@
         },
         {
             "inputs": [],
+            "name": "fundToken",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
             "name": "initialize",
             "outputs": [],
             "stateMutability": "nonpayable",
@@ -192,6 +205,19 @@
         },
         {
             "inputs": [],
+            "name": "price",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
             "name": "renounceOwnership",
             "outputs": [],
             "stateMutability": "nonpayable",
@@ -227,6 +253,16 @@
                 {
                     "internalType": "uint256",
                     "name": "_startTokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_fundToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_price",
                     "type": "uint256"
                 }
             ],
@@ -272,6 +308,19 @@
                 }
             ],
             "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                }
+            ],
+            "name": "withdrawFunds",
+            "outputs": [],
+            "stateMutability": "nonpayable",
             "type": "function"
         }
     ]

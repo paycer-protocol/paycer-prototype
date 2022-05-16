@@ -107,7 +107,7 @@ function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amoun
   return (
     <div className="card p-4 bg-dark">
       <div className="d-flex align-items-center">
-        <Image src="/img/nft/logo.png" width="32" height="32" /> 
+        <Image src="/img/nft/logo.png" width="32" height="32" />
         <div className="mx-3 flex-grow-1">
           {t`PCR NFT`}
         </div>
@@ -128,34 +128,34 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
 
   return (
     <div className="row d-flex align-items-center justify-content-between">
-        <div className="col-4 col-md-3 position-relative">
-            <div className="card mb-0 p-4 bg-dark text-center">
-                <b>{days}D</b>
-            </div>
-            <div className="d-md-none position-absolute" style={{right: '-11px', top: '20px'}}>
-                <span className="display-4 mx-2">:</span>
-            </div>
+      <div className="col-4 col-md-3 position-relative">
+        <div className="card mb-0 p-4 bg-dark text-center">
+          <b>{days}D</b>
         </div>
+        <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
+          <span className="display-4 mx-2">:</span>
+        </div>
+      </div>
 
-        <div className="col-1 d-none d-md-block">
-            <span className="display-4 mx-2">:</span>
+      <div className="col-1 d-none d-md-block">
+        <span className="display-4 mx-2">:</span>
+      </div>
+      <div className="col-4 col-md-3 position-relative">
+        <div className="card mb-0 p-4 bg-dark text-center">
+          <b>{hours}H</b>
         </div>
-        <div className="col-4 col-md-3 position-relative">
-            <div className="card mb-0 p-4 bg-dark text-center">
-                <b>{hours}H</b>
-            </div>
-            <div className="d-md-none position-absolute" style={{right: '-11px', top: '20px'}}>
-                <span className="display-4 mx-2">:</span>
-            </div>
+        <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
+          <span className="display-4 mx-2">:</span>
         </div>
-        <div className="col-1 d-none d-md-block">
-            <span className="display-4 mx-2">:</span>
+      </div>
+      <div className="col-1 d-none d-md-block">
+        <span className="display-4 mx-2">:</span>
+      </div>
+      <div className="col-4 col-md-3">
+        <div className="card mb-0 p-4 bg-dark text-center">
+          <b>{minutes}M</b>
         </div>
-        <div className="col-4 col-md-3">
-            <div className="card mb-0 p-4 bg-dark text-center">
-                <b>{minutes}M</b>
-            </div>
-        </div>
+      </div>
     </div>
   );
 }
@@ -186,10 +186,10 @@ export interface MintSectionProps {
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
   const presaleStartsIn = presaleStart.getTime() - Date.now()
-  const presaleStarted = presaleStartsIn <= 0
+  const presaleStarted = true//presaleStartsIn <= 0
 
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
-  const publicSaleStarted = publicSaleStartsIn <= 0
+  const publicSaleStarted = false//publicSaleStartsIn <= 0
 
   const { isConnected } = useWallet()
   const whitelistState = useWhitelistState();
@@ -211,61 +211,61 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
       <div className="position-relative mx-auto py-8" style={{ maxWidth: '55rem' }}>
 
         <div className="py-7">
-            <TopEdge />
+          <TopEdge />
 
-            <h2 className="display-1 mb-3 mb-md-6">
-                {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
-            </h2>
-            <div className="row mt-5">
-                <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
-                <div className="col-lg-6">
-                    {
-                        presaleStarted
-                            ? <AmountPicker amount={amount} setAmount={setAmount} />
-                            : <Countdown timeLeft={presaleStartsIn} />
-                    }
-                    {
-                        !isConnected
-                            ? <ConnectWalletButton />
-                            : (
-                                presaleStarted
-                                    ? (
-                                        <>
-                                            { notOnWhitelistDuringPresale &&
-                                              <Alert className="text-center" variant="danger">
-                                                  {t`It looks like your current wallet is not on the whitelist for the presale.`}
-                                              </Alert>
-                                            }
-                                            <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                                                {t`MINT YOUR NFT`}
-                                                <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                                            </Button>
-                                        </>
-                                    )
-                                    : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                                        {t`JOIN WHITELIST`}
-                                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                                    </Button>
-                            )
-                    }
-                    <div className="mt-4 text-end">
-              <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u>{t`Need help?`}</u></Link></p>
-              </span>
-                    </div>
-                </div>
+          <h2 className="display-1 mb-3 mb-md-6">
+            {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
+          </h2>
+          <div className="row mt-5">
+            <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
+            <div className="col-lg-6">
+              {
+                presaleStarted
+                  ? <AmountPicker amount={amount} setAmount={setAmount} />
+                  : <Countdown timeLeft={presaleStartsIn} />
+              }
+              {
+                !isConnected
+                  ? <ConnectWalletButton />
+                  : (
+                    presaleStarted
+                      ? (
+                        <>
+                          {notOnWhitelistDuringPresale &&
+                            <Alert className="text-center" variant="danger">
+                              {t`It looks like your current wallet is not on the whitelist for the presale.`}
+                            </Alert>
+                          }
+                          <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                            {t`MINT YOUR NFT`}
+                            <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                          </Button>
+                        </>
+                      )
+                      : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                        {t`JOIN WHITELIST`}
+                        <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+                      </Button>
+                  )
+              }
+              <div className="mt-4 text-end">
+                <span className="cursor-pointer" onClick={onNeedHelpClicked}>
+                  <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u>{t`Need help?`}</u></Link></p>
+                </span>
+              </div>
             </div>
-            <div className="position-absolute" style={{
-                width: '40rem',
-                height: '100%',
-                top: '0',
-                left: '-43rem',
-                transform: 'scaleX(-1)',
-                opacity: 0.5,
-            }}>
-                <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
-            </div>
-            <BottomEdge />
+          </div>
+          <div className="position-absolute" style={{
+            width: '40rem',
+            height: '100%',
+            top: '0',
+            left: '-43rem',
+            transform: 'scaleX(-1)',
+            opacity: 0.5,
+          }}>
+            <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
+          </div>
+          <BottomEdge />
 
         </div>
 

@@ -1,5 +1,5 @@
 {
-    "address": "0xC412220F46e90e95fC044f8Cd96496904270DD97",
+    "address": "0x71254382F6661267c151471340723d78bB585331",
     "abi": [
         {
             "anonymous": false,
@@ -77,16 +77,6 @@
                     "internalType": "uint256",
                     "name": "amount",
                     "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "alloc",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bytes32[]",
-                    "name": "proof",
-                    "type": "bytes32[]"
                 }
             ],
             "name": "buy",
@@ -138,35 +128,6 @@
             "name": "initialize",
             "outputs": [],
             "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "user",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "alloc",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bytes32[]",
-                    "name": "proof",
-                    "type": "bytes32[]"
-                }
-            ],
-            "name": "isWhitelisted",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -263,19 +224,6 @@
             "type": "function"
         },
         {
-            "inputs": [],
-            "name": "root",
-            "outputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "",
-                    "type": "bytes32"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "contract IERC721",
@@ -316,11 +264,6 @@
                     "internalType": "uint256",
                     "name": "_price",
                     "type": "uint256"
-                },
-                {
-                    "internalType": "bytes32",
-                    "name": "_root",
-                    "type": "bytes32"
                 }
             ],
             "name": "setSaleSettings",
