@@ -4,13 +4,13 @@ import { t, Trans } from '@lingui/macro'
 import IndicatorItem from '@components/atoms/indicator-item'
 import LinkExternal from '@components/atoms/link-external'
 import PortalOverlay from '@components/molecules/portal-overlay'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import { getExplorerBlockUrl } from '@providers/explorers'
 
 // TODO REFACTOR https://docs.moralis.io/moralis-dapp/web3-api/native#getdatetoblock
 export default function PortalBlockNumber() {
   const blockNumber: number | undefined = useBlockNumber()
-  const { walletIsAuthenticated, walletAddress, currentChainId } = useWeb3Auth()
+  const { walletIsAuthenticated, walletAddress, currentChainId } = useWallet()
   const [href, setHref] = useState(null)
 
   useEffect(() => {

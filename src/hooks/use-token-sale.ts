@@ -1,4 +1,4 @@
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import {useEffect, useState} from 'react'
 import api from '../api'
 
@@ -8,7 +8,7 @@ interface TokenSaleProps {
 }
 
 export default function UseTokenSale():TokenSaleProps {
-    const { walletAddress, walletIsAuthenticated } = useWeb3Auth()
+    const { walletAddress, walletIsAuthenticated } = useWallet()
     const [loading, setLoading] = useState<boolean>(false)
     const [tokenSaleData, setTokenSaleData] = useState<TokenSaleProps>(null)
 

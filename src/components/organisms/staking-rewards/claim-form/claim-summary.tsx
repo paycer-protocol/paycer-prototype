@@ -6,7 +6,7 @@ import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import GradientButton from '@components/atoms/button/gradient-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import {useWeb3Auth} from "@context/web3-auth-context";
+import {useWallet} from "@context/wallet-context";
 
 const RewardContainer = styled.div`
   display: flex;
@@ -25,8 +25,6 @@ const HorizontalLine = styled.div`
 
 export default function ClaimSummary() {
 
-    const { setPcrBalance, pcrBalance } = useWeb3Auth()
-
     const {
         claim,
         pendingReward,
@@ -43,7 +41,6 @@ export default function ClaimSummary() {
     const handleClaim = async () => {
         try {
             await claim()
-            setPcrBalance(pcrBalance + pendingReward)
         } catch (e) {
         }
     }

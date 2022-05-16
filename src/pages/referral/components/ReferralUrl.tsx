@@ -4,13 +4,13 @@ import { InputGroup, FormControl } from 'react-bootstrap'
 import Icon from '@components/atoms/icon'
 import { Bookmark, BookmarkCheck } from '@styled-icons/bootstrap'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import api from '../../../api'
 
 export default function ReferralUrl () {
   const [isCopied, setCopied] = useCopyClipboard()
   const [code, setCode] = useState()
-  const { walletIsAuthenticated, walletAddress } = useWeb3Auth()
+  const { walletIsAuthenticated, walletAddress } = useWallet()
 
   useEffect(() => {
     async function fetchReferralCode(walletAddress) {

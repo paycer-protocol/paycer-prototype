@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import WalletMenu from '@components/organisms/header/wallet-menu'
 import NetworkMenu from '@components/organisms/header/network-menu'
 
@@ -15,7 +15,7 @@ interface OffCanvasProps {
 
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
-  const { walletIsAuthenticated, currentChainId } = useWeb3Auth()
+  const { walletIsAuthenticated, currentChainId } = useWallet()
   const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
 
   return (

@@ -2,7 +2,7 @@ import { useCalls } from '@usedapp/core'
 import { BigNumber } from '@ethersproject/bignumber'
 import InvestAbi from '../deployments/Invest.json'
 import { Contract } from '@ethersproject/contracts'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import { StrategyType } from '../types/investment'
 import { investmentStrategies } from '@config/investment/strategies'
 import {formatUnits} from "@ethersproject/units";
@@ -19,7 +19,7 @@ interface PortfolioStrategy extends StrategyType {
 
 export default function usePortfolio():UsePortfolioProps {
 
-    const { currentChainId, walletAddress } = useWeb3Auth()
+    const { currentChainId, walletAddress } = useWallet()
     
     const strategyAdressesOfUsersChainId = []
 

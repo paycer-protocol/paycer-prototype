@@ -4,7 +4,7 @@ import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import Modal from '@components/molecules/modal'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
@@ -52,7 +52,7 @@ const AccountAction = (props: ListGroupItemProps) => {
 }
 
 const AccountBalance = () => {
-    const { nativeSymbol, nativeBalanceFormatted} = useWeb3Auth()
+    const { nativeSymbol, nativeBalanceFormatted} = useWallet()
 
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
@@ -84,7 +84,7 @@ const WalletDetail = (props: AccountDetailProps) => {
         explorerUrl,
         handleWalletDisconnect,
         handleWalletConnect
-    } = useWeb3Auth()
+    } = useWallet()
     const [isCopied, setCopied] = useCopyClipboard()
 
     return (

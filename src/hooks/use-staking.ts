@@ -4,10 +4,10 @@ import { useWeb3ExecuteFunction, useMoralisWeb3Api, useMoralisWeb3ApiCall } from
 import { BigNumber } from '@ethersproject/bignumber'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import StakingContractProvider from '@providers/staking'
-import PaycerTokenContractProvider from '@providers/paycer-token'
 import ChainId from '@providers/chain-id'
 import { formatLastRewardtime } from '../helpers/staking-helper'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
+import PaycerTokenContractProvider from "@providers/paycer-token";
 
 enum TRANSACTION_STATE {
     "NONE" = 0,
@@ -44,9 +44,11 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { walletAddress, currentChainId, currentChainIdBinary, setPcrBalance } = useWeb3Auth()
+    const { walletAddress, currentChainId, currentChainIdBinary, fetchPcrBalance } = useWallet()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentChainId] || StakingContractProvider[ChainId.Polygon]
+    const paycerTokenConfig = PaycerTokenContractProvider[currentChainId] || PaycerTokenContractProvider[ChainId.Polygon]
+    const pcrContract = paycerTokenConfig.contract
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
 
@@ -60,9 +62,6 @@ export default function useStaking():UseStakingProps {
     const [tokenAllowance, setTokenAllowance] = useState<number>(0)
     const [contractCallError, setContractCallError] = useState<Error | null>(null)
     const [pendingReward, setPendingReward] = useState<number>(0)
-
-    const paycerTokenConfig = PaycerTokenContractProvider[currentChainId] || PaycerTokenContractProvider[ChainId.Polygon]
-    const paycerToken = paycerTokenConfig.contract
 
     const { data: withdrawData, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const { data: depositData, error: depositError, fetch: deposit, isFetching: depositIsFetching, isLoading: depositIsLoading } = useWeb3ExecuteFunction()
@@ -78,142 +77,137 @@ export default function useStaking():UseStakingProps {
         )
     }, [])
 
-    const handleApprove = async (amount):Promise<unknown> => {
+    const handleApprove = async (amount) => {
 
-        const approveParams = {
-            functionName: 'approve',
-            contractAddress: paycerToken.address,
-            abi: paycerToken.abi,
-            params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
+        try {
+            const approveParams = {
+                functionName: 'approve',
+                contractAddress: pcrContract.address,
+                abi: pcrContract.abi,
+                params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
+            }
+
+            const approveTx = await approve({
+                params: approveParams
+            })
+
+            setTransactionState(1)
+
+            if (approveTx) {
+                try {
+                    await approveTx.wait()
+                    // The transactions was mined without issue
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Approve has been canceled.'))
+                            // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
+                        } else {
+                            //console.log('approve speeded up')
+                        }
+                        setTransactionState(0)
+                    }  else {
+                        setIsLoading(false)
+                        setContractCallError(new Error('Approve failed. Please try again.'))
+                    }
+                }
+            }
+        } catch(e) {
+            setIsLoading(false)
+            setContractCallError(new Error('Approve failed. Please try again.'))
         }
-
-        return await approve({
-            params: approveParams
-        })
     }
 
     const handleWithdraw = async (amount: number) => {
         setIsLoading(true)
 
-        const approveTx = await handleApprove(amount)
-
         if (amount > tokenAllowance) {
+            await handleApprove(amount)
+        }
+
+        try {
+            const withdrawParams = {
+                functionName: 'withdraw',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+            }
+            const params = { ...stakingRequestParams, ...withdrawParams}
+            const withdrawTx = await withdraw({
+                params
+            })
+
             try {
                 // Wait for the transaction to be mined
-               setTransactionState(1)
-               await approveTx.wait()
+                setTransactionState(2)
+                await withdrawTx.wait()
+                setWithdrawIsSuccess(true)
+                setTransactionState(0)
+                fetchPcrBalance()
                 // The transactions was mined without issue
             } catch (error) {
                 if (error.code === 'TRANSACTION_REPLACED') {
                     if (error.cancelled) {
                         // The transaction was replaced  :'(
                         setIsLoading(false)
-                        setContractCallError(new Error('Approve has been canceled'))
+                        setContractCallError(new Error('Withdraw has been canceled.'))
                         // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
                     } else {
-                      //console.log('approve speeded up')
+                        //console.log('withdraw speeded up')
                     }
                     setTransactionState(0)
                 } else {
                     setIsLoading(false)
-                    setContractCallError(new Error('Withdraw Error. Please try again'))
+                    setWithdrawIsSuccess(true)
                 }
             }
-        }
-
-        const withdrawParams = {
-            functionName: 'withdraw',
-            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-        }
-
-        const params = { ...stakingRequestParams, ...withdrawParams}
-        const withdrawTx = await withdraw({
-            params
-        })
-
-        try {
-            // Wait for the transaction to be mined
-            setTransactionState(2)
-            await withdrawTx.wait()
-            setWithdrawIsSuccess(true)
-            setTransactionState(0)
-            fetchPcrBalance()
-            // The transactions was mined without issue
         } catch (error) {
-            if (error.code === 'TRANSACTION_REPLACED') {
-                if (error.cancelled) {
-                    // The transaction was replaced  :'(
-                    setIsLoading(false)
-                    setContractCallError(new Error('withdraw has been canceled'))
-                    // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
-                } else {
-                    //console.log('withdraw speeded up')
-                }
-                setTransactionState(0)
-            } else {
-                setIsLoading(false)
-                setWithdrawIsSuccess(true)
-            }
+            setContractCallError(new Error('Withdraw failed. Please try again.'))
+            setIsLoading(false)
         }
     }
 
     const handleDeposit = async (amount: number) => {
         setIsLoading(true)
 
-        const approveTx = await handleApprove(amount)
-
         if (amount > tokenAllowance) {
-            try {
-                // Wait for the transaction to be mined
-                setTransactionState(1)
-                await approveTx.wait()
-                // The transactions was mined without issue
-            } catch (error) {
-                if (error.code === 'TRANSACTION_REPLACED') {
-                    if (error.cancelled) {
-                        // The transaction was replaced  :'(
-                        setIsLoading(false)
-                        setContractCallError(new Error('Approve has been aboted'))
-                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
-                    } else {
-                        //console.log('approve speeded up')
-                    }
-                    setTransactionState(0)
-                }  else {
-                    setIsLoading(false)
-                    setContractCallError(new Error('Deposit Error. Please try again'))
-                }
-            }
+            await handleApprove(amount)
         }
-
-        const depositParams = {
-            functionName: 'deposit',
-            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-        }
-
-        const params = { ...stakingRequestParams, ...depositParams}
-        const depositTx = await deposit({
-            params
-        })
 
         try {
-            setTransactionState(2)
-            await depositTx.wait()
-            setDepositIsSuccess(true)
-            setTransactionState(0)
-            fetchPcrBalance()
-        } catch (error) {
-            if (error.code === 'TRANSACTION_REPLACED') {
-                if (error.cancelled) {
-                    // The transaction was replaced  :'(
-                    setIsLoading(false)
-                    setContractCallError(new Error('Deposit has been aborted.'))
-                } else {
-                    //  was speeded up
+            const depositParams = {
+                functionName: 'deposit',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+            }
+            const params = { ...stakingRequestParams, ...depositParams}
+            const depositTx = await deposit({
+                params
+            })
+
+            if (depositTx) {
+                try {
+                    setTransactionState(2)
+                    await depositTx.wait()
                     setDepositIsSuccess(true)
-                    setIsLoading(false)
+                    setTransactionState(0)
+                    fetchPcrBalance()
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Deposit has been canceled.'))
+                        } else {
+                            //  was speeded up
+                            setDepositIsSuccess(true)
+                            setIsLoading(false)
+                        }
+                    }
                 }
             }
+        } catch(error) {
+            setContractCallError(new Error('Deposit failed. Please try again.'))
+            setIsLoading(false)
         }
     }
 
@@ -253,14 +247,14 @@ export default function useStaking():UseStakingProps {
         }
     }
 
-    useEffect(() => {
+    const fetchAllowance = () => {
         if (walletAddress) {
             const fetch = async () => {
                 const options = {
                     chain: currentChainIdBinary,
                     owner_address: walletAddress,
                     spender_address: stakingAddress,
-                    address: paycerToken.address,
+                    address: pcrContract.address,
                 }
                 try {
                     // @ts-ignore
@@ -271,30 +265,6 @@ export default function useStaking():UseStakingProps {
                     }
                 } catch(e) {
                     console.log('allowance', e)
-                }
-            }
-            fetch()
-        }
-    }, [walletAddress])
-
-    const fetchPcrBalance = () => {
-        if (walletAddress) {
-            const fetch = async () => {
-                const options = {
-                    contractAddress: paycerToken.address,
-                    functionName: 'balanceOf',
-                    abi: paycerToken.abi,
-                    params: {account: walletAddress}
-                }
-
-                try {
-                    // @ts-ignore
-                    const response: BigNumber = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
-                        setPcrBalance(Number(formatUnits(response, 18)))
-                    }
-                } catch (e) {
-                    console.log('balanceOf', e)
                 }
             }
             fetch()
@@ -324,10 +294,6 @@ export default function useStaking():UseStakingProps {
         }
     }
 
-    useEffect(() => {
-        fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess])
-
     const fetchRewardRate = () => {
         if (walletAddress) {
             const fetch = async () => {
@@ -350,10 +316,6 @@ export default function useStaking():UseStakingProps {
             fetch()
         }
     }
-
-    useEffect(() => {
-        fetchRewardRate()
-    }, [walletAddress])
 
     const fetchPendingRewards = () => {
         if (walletAddress) {
@@ -379,7 +341,13 @@ export default function useStaking():UseStakingProps {
     }
 
     useEffect(() => {
+        fetchUserInfo()
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess])
+
+    useEffect(() => {
+        fetchRewardRate()
         fetchPendingRewards()
+        fetchAllowance()
     }, [walletAddress])
 
     // refresh pending rewards UI

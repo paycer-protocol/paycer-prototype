@@ -14,7 +14,7 @@ import {StakingProps} from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import InfoTooltip from "@components/atoms/info-tooltip"
 import TokenInputPanel from "@components/organisms/token-input-panel"
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 export default function StakingForm() {
     const {
@@ -32,7 +32,7 @@ export default function StakingForm() {
         transactionState
     } = useStaking()
 
-    const { pcrBalance: tokenBalance } = useWeb3Auth()
+    const { pcrBalance: tokenBalance } = useWallet()
 
     const initialValues: StakingProps = {
         rewardSymbol,

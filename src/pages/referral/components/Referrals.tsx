@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { t, Trans } from '@lingui/macro'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import { FormattedNumber } from '@components/atoms/number'
 import TxnLink from '@components/atoms/txn-link'
 import api from '../../../api'
@@ -21,7 +21,7 @@ interface RewardType {
 }
 
 export default function Referrals () {
-  const { walletAddress, walletIsAuthenticated} = useWeb3Auth()
+  const { walletAddress, walletIsAuthenticated} = useWallet()
   const [rewards, setRewards] = useState<RewardType[] | []>([])
   const [errorMessage, setErrorMessage] = useState('')
 

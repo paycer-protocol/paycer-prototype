@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import styled from 'styled-components'
 import Button from '@components/atoms/button'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number'
 import NetworkProvider  from './network-provider'
@@ -23,7 +23,7 @@ const StyledButton = styled(Button)`
 
 const Network = (props) => {
   const [showNetworkModal, setShowNetworkModal] = useState(false)
-  const { walletIsAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useWeb3Auth()
+  const { walletIsAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useWallet()
 
   if (!walletIsAuthenticated) {
     return null

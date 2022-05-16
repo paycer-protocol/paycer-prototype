@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {t} from '@lingui/macro'
 import Button from '@components/atoms/button'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import { Wallet } from '@styled-icons/ionicons-sharp'
@@ -28,10 +28,10 @@ const WalletMenu = () => {
         walletShortenAddress,
         explorerUrl,
         handleWalletDisconnect,
-        pcrBalance,
         nativeSymbol,
         nativeBalanceFormatted,
-    } = useWeb3Auth()
+        pcrBalance
+    } = useWallet()
 
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 

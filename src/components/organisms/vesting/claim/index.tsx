@@ -9,7 +9,7 @@ import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 const AnimatedDiv = styled.div`
@@ -24,7 +24,7 @@ const AnimatedDiv = styled.div`
 const Claim = () => {
     const { dashboardData } = useVestingDashboard()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const { walletIsAuthenticated, walletAddress } = useWeb3Auth()
+    const { walletIsAuthenticated, walletAddress } = useWallet()
     const router = useRouter()
     const {
         withdrawAble,

@@ -1,13 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import {IConnectorProvider} from "@providers/connectors";
-import {useChain, useMoralis, useNativeBalance} from "react-moralis";
-import {INetworkProvider, mainNetProviders} from "@providers/networks";
-import ChainId from "@providers/chain-id";
-import {Symbols} from "@providers/symbols";
-import {supportedChains, supportedStakingChains} from "@config/network";
-import useToken from "@hooks/use-token";
+import {IConnectorProvider} from "@providers/connectors"
+import {useChain, useMoralis, useNativeBalance} from "react-moralis"
+import {INetworkProvider, mainNetProviders} from "@providers/networks"
+import ChainId from "@providers/chain-id"
+import { Symbols } from "@providers/symbols"
+import { supportedChains, supportedStakingChains } from "@config/network"
+import {BigNumber} from "@ethersproject/bignumber";
+import Moralis from "moralis";
+import {formatUnits} from "@ethersproject/units";
+import PaycerTokenContractProvider from "@providers/paycer-token";
 
-export interface Web3AuthContextInterface {
+export interface WalletContextInterface {
     walletConnector: unknown | null
     walletAddress: string
     walletShortenAddress: string
@@ -22,8 +25,6 @@ export interface Web3AuthContextInterface {
     chainName: string
     explorerUrl: string
     activeWallet: string
-    pcrBalance: number
-    setPcrBalance: React.Dispatch<React.SetStateAction<number>>,
     currentNetwork: INetworkProvider
     handleSwitchNetwork: (chainId: string) => Promise<void>
     currentChainIsSupportedForDApp: boolean
@@ -31,9 +32,11 @@ export interface Web3AuthContextInterface {
     currentChainId: number
     currentChainIdBinary: string
     currentNetworkProvider: unknown
+    pcrBalance: number
+    fetchPcrBalance: () => void
 }
 
-const contextDefaultValues: Web3AuthContextInterface = {
+const contextDefaultValues: WalletContextInterface = {
     walletConnector: null,
     walletAddress: '',
     walletShortenAddress: '',
@@ -48,24 +51,24 @@ const contextDefaultValues: Web3AuthContextInterface = {
     chainName: '',
     explorerUrl: '',
     activeWallet: '',
-    pcrBalance: 0,
-    setPcrBalance: null,
     currentNetwork: null,
     handleSwitchNetwork: null,
     currentChainIsSupportedForDApp: false,
     currentChainIsSupportedForStaking: false,
     currentChainId: 0,
     currentChainIdBinary: '',
-    currentNetworkProvider: null
+    currentNetworkProvider: null,
+    pcrBalance: 0,
+    fetchPcrBalance: null
 }
 
-const Web3AuthContext = createContext<Web3AuthContextInterface>(
+const WalletContext = createContext<WalletContextInterface>(
     contextDefaultValues
 )
 
-export const useWeb3Auth = () => useContext(Web3AuthContext)
+export const useWallet = () => useContext(WalletContext)
 
-const Web3AuthContextProvider = ({ children }) => {
+const WalletContextProvider = ({ children }) => {
 
     const {
         chain,
@@ -82,8 +85,7 @@ const Web3AuthContextProvider = ({ children }) => {
         isAuthenticating: walletIsAuthenticating,
         enableWeb3,
         web3,
-        isWeb3Enabled,
-        isInitialized
+        isWeb3Enabled
     } = useMoralis()
 
     const {
@@ -95,11 +97,13 @@ const Web3AuthContextProvider = ({ children }) => {
         // @ts-ignore
     } = useNativeBalance({ chain: chain?.chainId })
 
-    const pcrToken = useToken('PCR')
-    const [pcrBalance, setPcrBalance] = useState<number>(0)
+    const walletAddress = account || ''
+    const paycerTokenConfig = PaycerTokenContractProvider[chain?.networkId] || PaycerTokenContractProvider[ChainId.Polygon]
+    const pcrContract = paycerTokenConfig.contract
     const currentNetwork = mainNetProviders[chain?.networkId]
     const currentChainIsSupportedForDApp = supportedChains.includes(chain?.networkId)
     const currentChainIsSupportedForStaking = supportedStakingChains.includes(chain?.networkId)
+    const [pcrBalance, setPcrBalance] = useState<number>(0)
 
     const handleSwitchNetwork = async (chainId: string) => {
         await switchNetwork(chainId)
@@ -114,9 +118,11 @@ const Web3AuthContextProvider = ({ children }) => {
         stayLoggedIn()
     }, [web3])
 
+
     useEffect(() => {
-        setPcrBalance(pcrToken.tokenBalance)
-    }, [pcrToken.isFetching])
+        fetchPcrBalance()
+    }, [walletIsAuthenticated, walletAddress])
+
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -126,13 +132,38 @@ const Web3AuthContextProvider = ({ children }) => {
         await logout()
     }
 
+    const fetchPcrBalance = () => {
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: pcrContract.address,
+                    functionName: 'balanceOf',
+                    abi: pcrContract.abi,
+                    params: {account: walletAddress}
+                }
+
+                try {
+                    // @ts-ignore
+                    const response: BigNumber = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        console.log(Number(formatUnits(response, 18)), 'hi')
+                        setPcrBalance(Number(formatUnits(response, 18)))
+                    }
+                } catch (e) {
+                    console.log('balanceOf', e)
+                }
+            }
+            fetch()
+        }
+    }
+
     const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
 
     return (
-        <Web3AuthContext.Provider
+        <WalletContext.Provider
             value={{
                 walletConnector,
-                walletAddress: account || '',
+                walletAddress,
                 walletShortenAddress: account ? account.substring(0, 10) + '...' : '',
                 walletIsActive: true,
                 walletIsAuthenticating,
@@ -145,8 +176,6 @@ const Web3AuthContextProvider = ({ children }) => {
                 chainName: chainProvider.chainName,
                 explorerUrl: chain?.blockExplorerUrl,
                 activeWallet: web3?.connection ? web3?.connection?.url : '',
-                pcrBalance,
-                setPcrBalance,
                 currentNetwork,
                 currentNetworkProvider,
                 handleSwitchNetwork,
@@ -154,11 +183,13 @@ const Web3AuthContextProvider = ({ children }) => {
                 currentChainIsSupportedForStaking,
                 currentChainId: chain?.networkId,
                 currentChainIdBinary: chain?.chainId,
+                pcrBalance,
+                fetchPcrBalance
             }}
         >
             {children}
-        </Web3AuthContext.Provider>
+        </WalletContext.Provider>
     )
 }
 
-export default Web3AuthContextProvider
+export default WalletContextProvider

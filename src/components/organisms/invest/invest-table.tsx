@@ -42,12 +42,12 @@ export default function   InvestList() {
                 </thead>
 
                 <tbody className="list position-relative" style={{top: '-10px'}}>
-                {strategies.map((strategy, key) => (
-                    <InvestItem
-                        key={`invest${key}`}
-                        {...strategy}
-                    />
-                ))}
+                    {strategies.map((strategy, key) => (
+                        <InvestItem
+                            key={`invest${key}`}
+                            {...strategy}
+                        />
+                    ))}
                 </tbody>
             </table>
         </div>

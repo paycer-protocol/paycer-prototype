@@ -2,13 +2,13 @@ import React from 'react'
 import {t} from '@lingui/macro'
 import { VestingDashboardProvider } from '@context/vesting-dashboard-context'
 import useTokenSale from '@hooks/use-token-sale'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import Spinner from '@components/atoms/spinner'
 import Dashboard from './dashboard'
 import LoginCard from '@components/organisms/login-card'
 
 const Vesting = () => {
-    const { walletIsAuthenticated } = useWeb3Auth()
+    const { walletIsAuthenticated } = useWallet()
     const { tokenSaleData, loading, } = useTokenSale()
 
     if (!walletIsAuthenticated) {

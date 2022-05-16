@@ -6,7 +6,7 @@ import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 const DashContainer = styled.div`
   height: 260px;
@@ -35,7 +35,7 @@ interface DashCardsProps {
 
 export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsProps) {
 
-    const { walletIsAuthenticated } = useWeb3Auth()
+    const { walletIsAuthenticated } = useWallet()
 
     const renderPieChart = () => {
         if (!strategies.length || !walletIsAuthenticated) {

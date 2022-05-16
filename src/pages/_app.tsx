@@ -4,7 +4,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import { ToastContainer } from 'react-toastify'
 import I18nProvider from '../locales/i18n'
-import Web3AuthContextProvider from '@context/web3-auth-context'
+import WalletContextProvider from '@context/wallet-context'
 import { MoralisProvider } from 'react-moralis'
 import Footer from '@components/organisms/footer'
 import Layout from '@components/organisms/layout'
@@ -17,7 +17,7 @@ Router.events.on('routeChangeError', NProgress.done)
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <MoralisProvider appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID} serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL}>
-        <Web3AuthContextProvider>
+        <WalletContextProvider>
             <I18nProvider>
                 <Layout>
                     <ToastContainer position="top-center" />
@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                     <Footer />
                 </Layout>
             </I18nProvider>
-        </Web3AuthContextProvider>
+        </WalletContextProvider>
     </MoralisProvider>
   )
 }

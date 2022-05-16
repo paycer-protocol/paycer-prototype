@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
 import Spinner from '@components/atoms/spinner'
@@ -16,7 +16,7 @@ export interface WalletProviderProps {
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
-  const { connect, isConnecting, activeWallet } = useWeb3Auth()
+  const { connect, isConnecting, activeWallet } = useWallet()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from '@providers/connectors'
@@ -15,7 +15,7 @@ const WalletConnect = (props: WalletConnectProps) => {
     const { className } = props
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const [showAccountModal, setShowAccountModal] = useState(false)
-    const { walletIsAuthenticated, walletShortenAddress } = useWeb3Auth()
+    const { walletIsAuthenticated, walletShortenAddress } = useWallet()
 
     if (!walletIsAuthenticated) {
         return (

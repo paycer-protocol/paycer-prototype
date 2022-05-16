@@ -10,12 +10,12 @@ import Icon from '@components/atoms/icon'
 import WalletMenu from './wallet-menu'
 import NetworkMenu from './network-menu'
 import OffCanvas from '@components/organisms/off-canvas'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const { currentChainId, walletIsAuthenticated } = useWeb3Auth()
+    const { currentChainId, walletIsAuthenticated } = useWallet()
 
     const isAuthenticatedRoute = (route) => (route.auth ? walletIsAuthenticated : true)
 

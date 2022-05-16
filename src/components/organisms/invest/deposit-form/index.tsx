@@ -21,9 +21,9 @@ const DepositForm = () => {
 
     const {
         deposit,
-        depositError,
-        depositTx,
-        approveTx,
+        contractCallError,
+        depositIsSuccess,
+        transactionState,
         setShowFormApproveModal,
         showFormApproveModal,
         resetStatus,
@@ -174,21 +174,10 @@ const DepositForm = () => {
                         title={t`Confirm Transaction`}
                         onClick={() => handleDeposit(values)}
                         successMessage={t`Transaction was successfully executed`}
-                        error={
-                            depositTx.status === 'Fail' ||
-                            depositTx.status === 'Exception' ||
-                            approveTx.status === 'Fail' ||
-                            approveTx.status === 'Exception' ||
-                            depositError
-                        }
-                        success={
-                            depositTx.status === 'Success'
-                        }
-                        loading={
-                            depositTx.status === 'Mining' ||
-                            approveTx.status === 'Mining' ||
-                            isLoading
-                        }
+                        error={contractCallError}
+                        success={depositIsSuccess}
+                        loading={isLoading}
+                        infoMessage={transactionState ? transactionState === 1 ? t`Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : t` Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : ''}
                     >
                         <>
                             <div className="card blur-background">

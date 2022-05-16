@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import { useEffect, useState, useMemo } from 'react'
 import { calculateEndTime, calculateNextDistribution, calculateStartTime } from '../helpers/vesting-helper'
 import Moralis from 'moralis'
@@ -35,8 +35,7 @@ type RecipientsResponse = {
 }
 
 export default function useVesting(type):UseVestingProps {
-    const { currentChainId, walletAddress } = useWeb3Auth()
-
+    const { currentChainId, walletAddress, fetchPcrBalance } = useWallet()
     const vestingConfig = VestingContractProvider[currentChainId] ? VestingContractProvider[currentChainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -73,6 +72,7 @@ export default function useVesting(type):UseVestingProps {
             await withdrawTx.wait()
             setIsLoading(false)
             setWithdrawAble(0)
+            fetchPcrBalance()
             setWithdrawIsSuccess(true)
         } catch (error) {
             if (error.code === 'TRANSACTION_REPLACED') {

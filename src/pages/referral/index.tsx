@@ -5,10 +5,10 @@ import { connectors } from '@providers/connectors'
 import Button from '@components/atoms/button'
 import ReferralUrl from './components/ReferralUrl'
 import Referrals from './components/Referrals'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 export default function Referral () {
-  const { walletIsAuthenticated, handleWalletConnect } = useWeb3Auth()
+  const { walletIsAuthenticated, handleWalletConnect } = useWallet()
 
   return (
     <div className="container mt-3">

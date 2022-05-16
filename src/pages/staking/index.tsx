@@ -3,10 +3,10 @@ import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 export default function Staking () {
-  const { currentChainIsSupportedForStaking } = useWeb3Auth()
+  const { currentChainIsSupportedForStaking } = useWallet()
 
   if (!currentChainIsSupportedForStaking) {
     location.href = '/portfolio'

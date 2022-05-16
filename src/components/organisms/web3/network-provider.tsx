@@ -1,6 +1,6 @@
 import React from 'react'
 import {Trans, t} from '@lingui/macro'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
 import { INetworkProvider } from '@providers/networks'
@@ -15,7 +15,7 @@ export interface NetworkProviderProps {
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
-  const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWeb3Auth()
+  const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWallet()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>

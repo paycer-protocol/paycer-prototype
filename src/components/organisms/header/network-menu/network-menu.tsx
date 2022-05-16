@@ -4,7 +4,7 @@ import {t} from '@lingui/macro'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
 import { Network } from '@styled-icons/entypo'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
@@ -23,7 +23,7 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWeb3Auth()
+    const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWallet()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
     if (!walletIsAuthenticated) {

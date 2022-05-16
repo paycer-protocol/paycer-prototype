@@ -7,14 +7,14 @@ import { swapTokens } from '@config/market-pairs'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { t } from '@lingui/macro'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 
 export default function Token1Select(props: SwapTokenInputProps) {
     const { readOnly } = props
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const { walletIsAuthenticated, walletAddress } = useWeb3Auth()
+    const { walletIsAuthenticated, walletAddress } = useWallet()
 
     const handleChange = async (token) => {
         setErrorMessage('')

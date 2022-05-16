@@ -26,14 +26,16 @@ const WithdrawForm = () => {
     const {
         withdrawAbleAmount,
         withdraw,
-        withdrawError,
-        withdrawTx,
-        approveTx,
+        withdrawIsSuccess,
+        transactionState,
+        contractCallError,
         setShowFormApproveModal,
         showFormApproveModal,
         resetStatus,
         isLoading
     } = useInvest(strategy)
+
+
 
     const handleSubmit = () => {
         setShowFormModal(false)
@@ -46,7 +48,7 @@ const WithdrawForm = () => {
     }
 
     const baseToken = useToken(strategy.input.symbol)
-
+    console.log(withdrawAbleAmount)
     const initialValues: InvestFormFields = {
         // invest pairs
         baseSymbol: strategy.input.symbol,
@@ -179,21 +181,9 @@ const WithdrawForm = () => {
                         title={t`Confirm Transaction`}
                         onClick={() => handleWithdraw(values)}
                         successMessage={t`Transaction was successfully executed`}
-                        error={
-                            withdrawTx.status === 'Fail' ||
-                            withdrawTx.status === 'Exception' ||
-                            approveTx.status === 'Fail' ||
-                            approveTx.status === 'Exception' ||
-                            withdrawError
-                        }
-                        success={
-                            withdrawTx.status === 'Success'
-                        }
-                        loading={
-                            withdrawTx.status === 'Mining' ||
-                            approveTx.status === 'Mining' ||
-                            isLoading
-                        }
+                        error={contractCallError}
+                        success={withdrawIsSuccess}
+                        loading={isLoading}
                     >
                         <>
                             <div className="card blur-background">

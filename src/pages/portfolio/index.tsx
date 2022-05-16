@@ -3,12 +3,12 @@ import {Trans} from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import Portfolio from '@components/organisms/portfolio'
-import { useWeb3Auth } from '@context/web3-auth-context'
+import { useWallet } from '@context/wallet-context'
 import LoginCard from "@components/organisms/login-card";
 
 export default function PortfolioPage() {
 
-    const { walletIsAuthenticated } = useWeb3Auth()
+    const { walletIsAuthenticated } = useWallet()
 
     return (
         <>
