@@ -16,11 +16,11 @@ export interface WalletProviderProps {
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
-  const { connect, isConnecting, activeWallet } = useWallet()
+  const { handleWalletConnect, walletIsAuthenticating, activeWallet } = useWallet()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
-      await connect(provider)
+      await handleWalletConnect(provider)
       onHide()
     } catch (e) {
       setErrorMessage(e.message)
@@ -48,7 +48,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                   variant="outline-primary"
                   className="mb-2"
                   active={item.providerId === activeWallet}
-                  disabled={isConnecting}
+                  disabled={walletIsAuthenticating}
                   onClick={() => handleConnect(item)}
                 >
                   <div className="d-flex align-items-center justify-content-between py-3 px-2">
@@ -59,7 +59,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                       </p>
                     </div>
                     {
-                      isConnecting
+                      walletIsAuthenticating
                         ? <Spinner animation="border" />
                         : <img src={item.icon} alt={item.name} width="28" />
                     }

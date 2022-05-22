@@ -179,6 +179,7 @@ export default function useStaking():UseStakingProps {
                 functionName: 'deposit',
                 params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
             }
+
             const params = { ...stakingRequestParams, ...depositParams}
             const depositTx = await deposit({
                 params

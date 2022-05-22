@@ -6,11 +6,11 @@ import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import {useInvestList} from '@context/invest-list-context'
-import useInvest from '@hooks/use-invest'
+import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
 
 export default function InvestItem(strategy: StrategyType) {
   const { setStrategy, setInvestType } = useInvestList()
-  const { isWithdrawAble } = useInvest(strategy)
+  const { isWithdrawAble } = useInvestIsWithdrawable(strategy)
   const tdClass = 'bg-dark border border-purple-dark'
 
   return (

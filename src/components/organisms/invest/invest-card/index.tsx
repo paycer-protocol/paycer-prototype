@@ -8,7 +8,7 @@ import { riskLabels } from '../../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon"
 import GradientButton from "@components/atoms/button/gradient-button"
 import {useInvestList} from "@context/invest-list-context"
-import useInvest from "@hooks/use-invest"
+import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
 
 const InvestCard = (strategy: StrategyType) => {
     const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate
@@ -20,7 +20,7 @@ const InvestCard = (strategy: StrategyType) => {
         setInvestType
     } = useInvestList()
 
-    const { isWithdrawAble } = useInvest(strategy)
+    const { isWithdrawAble } = useInvestIsWithdrawable(strategy)
 
     return (
         <Card className="box-shadow overflow-hidden">

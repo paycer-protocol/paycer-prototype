@@ -82,11 +82,14 @@ const WalletContextProvider = ({ children }) => {
         connector: walletConnector,
         logout,
         account,
+        deactivateWeb3,
         isAuthenticating: walletIsAuthenticating,
         enableWeb3,
         web3,
         isWeb3Enabled
     } = useMoralis()
+
+    console.log(account)
 
     const {
         getBalances,
@@ -109,6 +112,7 @@ const WalletContextProvider = ({ children }) => {
         await switchNetwork(chainId)
     }
 
+    /*
     useEffect(() => {
         const stayLoggedIn = async () => {
             if (!isWeb3Enabled) {
@@ -117,6 +121,8 @@ const WalletContextProvider = ({ children }) => {
         }
         stayLoggedIn()
     }, [web3])
+
+     */
 
 
     useEffect(() => {
@@ -130,6 +136,7 @@ const WalletContextProvider = ({ children }) => {
 
     const handleWalletDisconnect = async () => {
         await logout()
+        await deactivateWeb3()
     }
 
     const fetchPcrBalance = () => {
@@ -146,7 +153,6 @@ const WalletContextProvider = ({ children }) => {
                     // @ts-ignore
                     const response: BigNumber = await Moralis.executeFunction(options)
                     if (response && BigNumber.isBigNumber(response)) {
-                        console.log(Number(formatUnits(response, 18)), 'hi')
                         setPcrBalance(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {

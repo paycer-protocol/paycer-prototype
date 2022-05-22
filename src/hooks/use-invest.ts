@@ -7,6 +7,7 @@ import ERC20Abi from '../deployments/ERC20.json'
 import { Contract } from '@ethersproject/contracts'
 import { useWallet } from '@context/wallet-context'
 import { StrategyType } from '../types/investment'
+import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
 import {useMoralisWeb3Api, useWeb3ExecuteFunction} from "react-moralis";
 import Moralis from "moralis";
 
@@ -16,7 +17,7 @@ enum TRANSACTION_STATE {
     "TRANSACTION" = 2
 }
 
-interface UseVestingProps {
+interface UseInvestProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     resetStatus: () => void
@@ -28,14 +29,14 @@ interface UseVestingProps {
     transactionState: TRANSACTION_STATE
     contractCallError: Error
     isLoading?: boolean
-    isWithdrawAble: boolean
 }
 
-export default function useInvest(strategy: StrategyType):UseVestingProps {
+export default function useInvest(strategy: StrategyType):UseInvestProps {
     const { currentChainId, walletAddress, currentChainIdBinary } = useWallet()
     const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
     const tokenContract = new Contract(strategy.input.chainAddresses[currentChainId], ERC20Abi)
     const Web3Api = useMoralisWeb3Api()
+    const { setIsWithdrawAble } = useInvestIsWithdrawable(strategy)
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -50,11 +51,9 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
     const [contractCallError, setContractCallError] = useState<Error | null>(null)
     const [transactionState, setTransactionState] = useState<TRANSACTION_STATE>(0)
 
-
     const { data: withdrawData, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
     const { data: depositData, error: depositError, fetch: deposit, isFetching: depositIsFetching, isLoading: depositIsLoading } = useWeb3ExecuteFunction()
     const { data: approveData, error: approveError, fetch: approve, isFetching: approveIsFetching, isLoading: approveIsLoading } = useWeb3ExecuteFunction()
-
 
     const investRequestParams = useMemo(() => {
         return (
@@ -78,6 +77,7 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
                 try {
                     // @ts-ignore
                     const response: BigNumber = await Moralis.executeFunction(options)
+                    console.log(response, 'balanceOf')
                     if (response && BigNumber.isBigNumber(response)) {
                         setBalanceOf(Number(formatUnits(response, 18)))
 
@@ -123,8 +123,6 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
                     address: tokenContract.address,
                 }
 
-                console.log(options)
-
                 try {
                     // @ts-ignore
                     const response = await Web3Api.token.getTokenAllowance(options)
@@ -144,124 +142,167 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         fetchAllowance()
         fetchBalanceOf()
         fetchPricePerShare()
-    }, [withdrawIsSuccess, depositIsSuccess])
+    }, [])
 
     useEffect(() => {
         if (walletAddress && balanceOf && pricePerShare) {
             setWithdrawAbleAmount(pricePerShare * balanceOf)
+            setIsWithdrawAble(balanceOf > strategy.minWithdraw)
+            console.log(balanceOf > strategy.minWithdraw, 'isWithdraable', strategy.input.symbol)
         }
-    }, [balanceOf, pricePerShare, withdrawIsSuccess])
+    }, [balanceOf, pricePerShare])
 
-    const handleApprove = async (amount):Promise<unknown> => {
-        const approveParams = {
-            functionName: 'approve',
-            contractAddress: tokenContract.address,
-            abi: ERC20Abi,
-            params: { spender: strategyAddress, amount: parseUnits(String((amount * 2).toFixed(strategy.decimals)), strategy.decimals) }
+    useEffect(() => {
+        if (withdrawError) {
+            setContractCallError(withdrawError)
         }
+    }, [withdrawError])
 
-        return await approve({
-            params: approveParams
-        })
+    useEffect(() => {
+        if (depositError) {
+            setContractCallError(depositError)
+        }
+    }, [depositError])
+
+    const handleApprove = async (amount) => {
+
+        try {
+            const approveParams = {
+                functionName: 'approve',
+                contractAddress: tokenContract.address,
+                abi: ERC20Abi,
+                params: { spender: strategyAddress, amount: parseUnits(String((amount * 2).toFixed(strategy.decimals)), strategy.decimals) }
+            }
+
+            const approveTx = await approve({
+                params: approveParams
+            })
+
+            setTransactionState(1)
+
+            if (approveTx) {
+                try {
+                    await approveTx.wait()
+                    // The transactions was mined without issue
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Approve has been canceled.'))
+                            // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
+                        } else {
+                            //console.log('approve speeded up')
+                        }
+                        setTransactionState(0)
+                    }  else {
+                        setIsLoading(false)
+                        setContractCallError(new Error('Approve failed. Please try again.'))
+                    }
+                }
+            }
+        } catch(e) {
+            setIsLoading(false)
+            setContractCallError(new Error('Approve failed. Please try again.'))
+        }
     }
 
     const handleDeposit = async (amount: number) => {
         setIsLoading(true)
 
-        const approveTx = await handleApprove(amount)
-
         if (amount > tokenAllowance) {
-            try {
-                // Wait for the transaction to be mined
-                setTransactionState(1)
-                await approveTx.wait()
-                // The transactions was mined without issue
-            } catch (error) {
-                if (error.code === 'TRANSACTION_REPLACED') {
-                    if (error.cancelled) {
-                        // The transaction was replaced  :'(
-                        setIsLoading(false)
-                        setContractCallError(new Error('Approve has been aboted'))
-                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
-                    } else {
-                        //console.log('approve speeded up')
-                    }
-                    setTransactionState(0)
-                }  else {
-                    setIsLoading(false)
-                    setContractCallError(new Error('Deposit Error. Please try again'))
-                }
-            }
+            await handleApprove(amount)
         }
 
-        const depositParams = {
-            functionName: 'deposit',
-            params: { amount:  parseUnits(String(amount.toFixed(strategy.decimals)), strategy.decimals) }
-        }
-
-        const params = { ...investRequestParams, ...depositParams}
-        const depositTx = await deposit({
-            params
-        })
+        const _amount = parseUnits(String(amount.toFixed(strategy.decimals)), strategy.decimals)
 
         try {
-            setTransactionState(2)
-            await depositTx.wait()
-            setDepositIsSuccess(true)
-            setTransactionState(0)
-        } catch (error) {
-            if (error.code === 'TRANSACTION_REPLACED') {
-                if (error.cancelled) {
-                    // The transaction was replaced  :'(
-                    setIsLoading(false)
-                    setContractCallError(new Error('Deposit has been aborted.'))
-                } else {
-                    //  was speeded up
+            const depositParams = {
+                functionName: 'deposit',
+                params: { _amount }
+            }
+
+            const params = { ...investRequestParams, ...depositParams}
+            const depositTx = await deposit({
+                params
+            })
+
+            if (depositTx) {
+                try {
+                    setTransactionState(2)
+                    await depositTx.wait()
+                    fetchBalanceOf()
                     setDepositIsSuccess(true)
-                    setIsLoading(false)
+                    setTransactionState(0)
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Deposit has been aborted.'))
+                        } else {
+                            //  was speeded up
+                            setDepositIsSuccess(true)
+                            setIsLoading(false)
+                        }
+                    }
                 }
             }
+
+        } catch (error) {
+            setContractCallError(new Error('Withdraw failed. Please try again.'))
+            setIsLoading(false)
         }
     }
 
     const handleWithdraw = async (amount: number) => {
+
         setIsLoading(true)
+
+
+
         try {
             const realAmount = amount / pricePerShare
+            const _shares = parseUnits(String(realAmount.toFixed(18)), 18)
 
             const withdrawParams = {
                 functionName: 'withdraw',
-                params: { _shares: parseUnits(String(realAmount.toFixed(18)), 18) }
+                params: { _shares }
             }
 
-            const params = { ...investRequestParams, ...withdrawParams}
+            console.log(amount, _shares, realAmount)
+
+            const params = {...investRequestParams, ...withdrawParams}
 
             const withdrawTx = await withdraw({
                 params
             })
 
-            try {
-                console.log('try..')
-                setTransactionState(2)
-                await withdrawTx.wait()
-                setWithdrawIsSuccess(true)
-                setTransactionState(0)
-            } catch (error) {
-                console.log(error)
-                if (error.code === 'TRANSACTION_REPLACED') {
-                    if (error.cancelled) {
-                        // The transaction was replaced  :'(
-                        setIsLoading(false)
-                        setContractCallError(new Error('Withdraw has been aborted.'))
-                    } else {
-                        //  was speeded up
-                        setWithdrawIsSuccess(true)
-                        setIsLoading(false)
+            if (withdrawTx) {
+                try {
+                    setTransactionState(2)
+                    await withdrawTx.wait()
+                    fetchBalanceOf()
+                    setWithdrawIsSuccess(true)
+                    setTransactionState(0)
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Withdraw has been aborted.'))
+                        } else {
+                            //  was speeded up
+                            setWithdrawIsSuccess(true)
+                            setIsLoading(false)
+                        }
                     }
                 }
             }
-        } catch(error) {
-            console.log(error)
+
+        } catch (error) {
+            setContractCallError(new Error('Withdraw failed. Please try again.'))
+            setIsLoading(false)
         }
     }
 
@@ -273,14 +314,11 @@ export default function useInvest(strategy: StrategyType):UseVestingProps {
         setTransactionState(0)
     }
 
-    console.log(withdrawAbleAmount)
-
     return {
         deposit: handleDeposit,
         withdraw: handleWithdraw,
         withdrawAbleAmount,
         resetStatus,
-        isWithdrawAble: balanceOf > strategy.minWithdraw,
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         // @ts-ignore

@@ -1,34 +1,60 @@
-import {useContractCall} from '@usedapp/core'
+import {useEffect, useState} from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
 import { useWallet } from '@context/wallet-context'
 import { StrategyType } from '../types/investment'
-import {Interface} from '@ethersproject/abi'
+import Moralis from "moralis";
 
-interface UseVestingProps {
+interface UseInvestIsWithdrawAbleProps {
     isWithdrawAble: boolean
+    setIsWithdrawAble: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function useInvestIsWithdrawable(strategy: StrategyType):UseVestingProps {
-    const {currentChainId, walletIsAuthenticated, walletAddress} = useWallet()
+export default function useInvestIsWithdrawable(strategy: StrategyType):UseInvestIsWithdrawAbleProps {
+    const { currentChainId, walletAddress } = useWallet()
     const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
+    const [balanceOf, setBalanceOf] = useState<number>(0)
+    const [isWithdrawAble, setIsWithdrawAble] = useState<boolean>(false)
 
-    const getBalanceOf = () => {
-        const balanceOfArgs:any = walletIsAuthenticated ? {
-            abi: new Interface(InvestAbi),
-            address: strategyAddress,
-            method: 'balanceOf',
-            args: [walletAddress],
-        } : false
-        let [data] = useContractCall(balanceOfArgs) ?? []
-        return BigNumber.isBigNumber(data) ? Number(formatUnits(data, 18)) : 0
+    const fetchBalanceOf = () => {
+        if (walletAddress) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: strategyAddress,
+                    functionName: 'balanceOf',
+                    abi: InvestAbi,
+                    params: {account: walletAddress},
+                }
+                try {
+                    // @ts-ignore
+                    const response: BigNumber = await Moralis.executeFunction(options)
+                    console.log(response, 'balanceOf')
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setBalanceOf(Number(formatUnits(response, 18)))
+
+                    }
+                } catch (e) {
+                    console.log('balanceOf', e)
+                }
+            }
+            fetch()
+        }
     }
 
-    const withdrawAble = getBalanceOf()
+    useEffect(() => {
+        fetchBalanceOf()
+    }, [])
+
+    useEffect(() => {
+        if (walletAddress && balanceOf) {
+            setIsWithdrawAble(balanceOf > strategy.minWithdraw)
+        }
+    }, [balanceOf])
 
     return {
-        isWithdrawAble: withdrawAble > strategy.minWithdraw
+        isWithdrawAble,
+        setIsWithdrawAble
     }
 }
