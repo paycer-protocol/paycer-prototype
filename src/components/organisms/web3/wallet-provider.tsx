@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
 import Spinner from '@components/atoms/spinner'
@@ -16,7 +16,7 @@ export interface WalletProviderProps {
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
-  const { handleWalletConnect, walletIsAuthenticating, activeWallet } = useWallet()
+  const { handleWalletConnect, isAuthenticating, activeWallet } = useDapp()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
@@ -48,7 +48,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                   variant="outline-primary"
                   className="mb-2"
                   active={item.providerId === activeWallet}
-                  disabled={walletIsAuthenticating}
+                  disabled={isAuthenticating}
                   onClick={() => handleConnect(item)}
                 >
                   <div className="d-flex align-items-center justify-content-between py-3 px-2">
@@ -59,7 +59,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                       </p>
                     </div>
                     {
-                      walletIsAuthenticating
+                      isAuthenticating
                         ? <Spinner animation="border" />
                         : <img src={item.icon} alt={item.name} width="28" />
                     }

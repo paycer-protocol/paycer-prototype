@@ -3,12 +3,12 @@ import {Trans} from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import Portfolio from '@components/organisms/portfolio'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import LoginCard from "@components/organisms/login-card";
 
 export default function PortfolioPage() {
 
-    const { walletIsAuthenticated } = useWallet()
+    const { isAuthenticated } = useDapp()
 
     return (
         <>
@@ -25,7 +25,7 @@ export default function PortfolioPage() {
                         </div>
                     </div>
                 </PageHeader>
-                {walletIsAuthenticated ? <Portfolio/> :  <LoginCard /> }
+                {isAuthenticated ? <Portfolio/> :  <LoginCard /> }
                 <PortalBlockNumber/>
             </div>
         </>

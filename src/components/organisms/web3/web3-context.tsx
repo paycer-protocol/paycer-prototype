@@ -9,11 +9,11 @@ const config: Config = {
     multicallAddresses: multicallAddrs
 }
 
-export interface WalletContextProps {
+export interface DappContextProps {
     children: any
 }
 
-export default function WalletContext({ children }: WalletContextProps) {
+export default function DappContext({ children }: DappContextProps) {
     return (
         <DAppProvider config={config}>
             {children}

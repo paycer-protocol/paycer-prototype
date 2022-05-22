@@ -5,7 +5,7 @@ import { formatUnits, parseUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
 import ERC20Abi from '../deployments/ERC20.json'
 import { Contract } from '@ethersproject/contracts'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import { StrategyType } from '../types/investment'
 import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
 import {useMoralisWeb3Api, useWeb3ExecuteFunction} from "react-moralis";
@@ -32,7 +32,7 @@ interface UseInvestProps {
 }
 
 export default function useInvest(strategy: StrategyType):UseInvestProps {
-    const { currentChainId, walletAddress, currentChainIdBinary } = useWallet()
+    const { currentChainId, walletAddress, currentChainIdBinary, isAuthenticated } = useDapp()
     const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
     const tokenContract = new Contract(strategy.input.chainAddresses[currentChainId], ERC20Abi)
     const Web3Api = useMoralisWeb3Api()
@@ -66,7 +66,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
 
 
     const fetchBalanceOf = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: strategyAddress,
@@ -77,7 +77,6 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
                 try {
                     // @ts-ignore
                     const response: BigNumber = await Moralis.executeFunction(options)
-                    console.log(response, 'balanceOf')
                     if (response && BigNumber.isBigNumber(response)) {
                         setBalanceOf(Number(formatUnits(response, 18)))
 
@@ -91,7 +90,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
     }
 
     const fetchPricePerShare = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: strategyAddress,
@@ -114,7 +113,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
     }
 
     const fetchAllowance = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     chain: currentChainIdBinary,
@@ -148,7 +147,6 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
         if (walletAddress && balanceOf && pricePerShare) {
             setWithdrawAbleAmount(pricePerShare * balanceOf)
             setIsWithdrawAble(balanceOf > strategy.minWithdraw)
-            console.log(balanceOf > strategy.minWithdraw, 'isWithdraable', strategy.input.symbol)
         }
     }, [balanceOf, pricePerShare])
 
@@ -259,8 +257,6 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
 
         setIsLoading(true)
 
-
-
         try {
             const realAmount = amount / pricePerShare
             const _shares = parseUnits(String(realAmount.toFixed(18)), 18)
@@ -269,8 +265,6 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
                 functionName: 'withdraw',
                 params: { _shares }
             }
-
-            console.log(amount, _shares, realAmount)
 
             const params = {...investRequestParams, ...withdrawParams}
 

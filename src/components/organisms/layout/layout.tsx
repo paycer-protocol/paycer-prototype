@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@components/organisms/header'
-import { useWallet } from '@context/wallet-context'
-import Network from '@components/organisms/web3/network'
+import { useDapp } from '@context/dapp-context'
+import Spinner from "@components/atoms/spinner";
 import { Trans } from '@lingui/macro'
 
 export interface LayoutProps {
@@ -10,7 +10,9 @@ export interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const { children } = props
-  const { currentChainIsSupportedForDApp } = useWallet()
+  const { currentChainIsSupportedForDApp, isWeb3EnableLoading } = useDapp()
+
+    console.log(currentChainIsSupportedForDApp, 'currentChainIsSupportedForDApp')
 
   if (currentChainIsSupportedForDApp) {
     return (
@@ -23,15 +25,21 @@ const Layout = (props: LayoutProps) => {
     )
   }
 
+  if (isWeb3EnableLoading) {
+      return (
+          <div className="d-flex flex-column align-items-center justify-content-center mt-8">
+              <Spinner animation="border" show />
+          </div>
+      )
+  }
+
   return (
     <>
       <Header />
       <main role="main">
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-            <Network>
-                <h1><Trans>Network not supported</Trans></h1>
-                <Trans>Change network</Trans>
-            </Network>
+            <h1><Trans>Network not supported</Trans></h1>
+            <Trans>Change network</Trans>
         </div>
       </main>
     </>

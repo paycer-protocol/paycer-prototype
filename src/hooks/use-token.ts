@@ -1,6 +1,6 @@
 import { formatUnits } from '@ethersproject/units'
 import { useERC20Balances } from 'react-moralis'
-import {useWallet} from "@context/wallet-context";
+import {useDapp} from "@context/dapp-context";
 
 export interface UseTokenInterface {
   tokenAddress: string

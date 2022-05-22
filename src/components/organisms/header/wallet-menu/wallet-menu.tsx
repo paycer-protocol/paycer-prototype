@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {t} from '@lingui/macro'
 import Button from '@components/atoms/button'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import { Wallet } from '@styled-icons/ionicons-sharp'
@@ -23,7 +23,7 @@ const WalletMenu = () => {
     const [copiedWalletAdress, setCopiedWalletAdress] = useCopyClipboard()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const {
-        walletIsAuthenticated,
+        isAuthenticated,
         walletAddress,
         walletShortenAddress,
         explorerUrl,
@@ -31,11 +31,11 @@ const WalletMenu = () => {
         nativeSymbol,
         nativeBalanceFormatted,
         pcrBalance
-    } = useWallet()
+    } = useDapp()
 
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
-    if (!walletIsAuthenticated) {
+    if (!isAuthenticated) {
         return (
             <>
                 <Button

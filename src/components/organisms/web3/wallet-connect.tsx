@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Trans } from '@lingui/macro'
 import Button from '@components/atoms/button'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from '@providers/connectors'
@@ -15,9 +15,9 @@ const WalletConnect = (props: WalletConnectProps) => {
     const { className } = props
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const [showAccountModal, setShowAccountModal] = useState(false)
-    const { walletIsAuthenticated, walletShortenAddress } = useWallet()
+    const { isAuthenticated, walletShortenAddress } = useDapp()
 
-    if (!walletIsAuthenticated) {
+    if (!isAuthenticated) {
         return (
             <>
                 <Button

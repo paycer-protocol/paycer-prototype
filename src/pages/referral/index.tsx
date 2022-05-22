@@ -5,10 +5,10 @@ import { connectors } from '@providers/connectors'
 import Button from '@components/atoms/button'
 import ReferralUrl from './components/ReferralUrl'
 import Referrals from './components/Referrals'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 
 export default function Referral () {
-  const { walletIsAuthenticated, handleWalletConnect } = useWallet()
+  const { isAuthenticated, handleWalletConnect } = useDapp()
 
   return (
     <div className="container mt-3">
@@ -22,14 +22,14 @@ export default function Referral () {
       </PageHeader>
       <div className="card blur-background">
         <div className="card-body">
-          {walletIsAuthenticated && (
+          {isAuthenticated && (
             <>
               <ReferralUrl />
               <Referrals />
             </>
           )}
 
-          {!walletIsAuthenticated && (
+          {!isAuthenticated && (
             <div className="d-flex justify-content-center">
               <Button variant="primary" className="px-5" onClick={() => handleWalletConnect(connectors[0])}>
                 <Trans>Connect to a Wallet</Trans>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import styled from 'styled-components'
 import Button from '@components/atoms/button'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number'
 import NetworkProvider  from './network-provider'
@@ -23,9 +23,9 @@ const StyledButton = styled(Button)`
 
 const Network = (props) => {
   const [showNetworkModal, setShowNetworkModal] = useState(false)
-  const { walletIsAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useWallet()
+  const { isAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useDapp()
 
-  if (!walletIsAuthenticated) {
+  if (!isAuthenticated) {
     return null
   }
 

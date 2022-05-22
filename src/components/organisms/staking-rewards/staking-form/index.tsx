@@ -14,7 +14,7 @@ import {StakingProps} from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import InfoTooltip from "@components/atoms/info-tooltip"
 import TokenInputPanel from "@components/organisms/token-input-panel"
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 
 export default function StakingForm() {
     const {
@@ -32,7 +32,7 @@ export default function StakingForm() {
         transactionState
     } = useStaking()
 
-    const { pcrBalance: tokenBalance } = useWallet()
+    const { pcrBalance: tokenBalance } = useDapp()
 
     const initialValues: StakingProps = {
         rewardSymbol,

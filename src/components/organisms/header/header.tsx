@@ -10,14 +10,14 @@ import Icon from '@components/atoms/icon'
 import WalletMenu from './wallet-menu'
 import NetworkMenu from './network-menu'
 import OffCanvas from '@components/organisms/off-canvas'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const { currentChainId, walletIsAuthenticated } = useWallet()
+    const { currentChainId, isAuthenticated } = useDapp()
 
-    const isAuthenticatedRoute = (route) => (route.auth ? walletIsAuthenticated : true)
+    const isAuthenticatedRoute = (route) => (route.auth ? isAuthenticated : true)
 
     const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId)
         && isAuthenticatedRoute(route))

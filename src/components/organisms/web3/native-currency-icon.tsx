@@ -2,7 +2,7 @@ import React from 'react'
 import { Bnb, Eth } from '@styled-icons/crypto'
 import { ChainId } from '@usedapp/core'
 import Icon from '@components/atoms/icon'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 
 export const NativeCurrencyMap = {
   [ChainId.BSC]: Bnb,
@@ -16,7 +16,7 @@ export interface NativeCurrencyIconProps {
 }
 
 export default function NativeCurrencyIcon({ size = 20, chainId, ...restProps }: NativeCurrencyIconProps) {
-  const { currentChainId } = useWallet()
+  const { currentChainId } = useDapp()
   const iconComponent = NativeCurrencyMap[chainId || currentChainId] || NativeCurrencyMap.default
 
   return (

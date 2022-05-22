@@ -10,13 +10,13 @@ import Moralis from "moralis";
 import {formatUnits} from "@ethersproject/units";
 import PaycerTokenContractProvider from "@providers/paycer-token";
 
-export interface WalletContextInterface {
+export interface DappContextInterface {
     walletConnector: unknown | null
     walletAddress: string
     walletShortenAddress: string
     walletIsActive: boolean
-    walletIsAuthenticating: boolean
-    walletIsAuthenticated: boolean
+    isWeb3EnableLoading: boolean
+    isAuthenticated: boolean
     handleWalletConnect: (provider: IConnectorProvider) => Promise<void>
     handleWalletDisconnect: () => Promise<void>
     nativeBalance: number
@@ -36,13 +36,13 @@ export interface WalletContextInterface {
     fetchPcrBalance: () => void
 }
 
-const contextDefaultValues: WalletContextInterface = {
+const contextDefaultValues: DappContextInterface = {
     walletConnector: null,
     walletAddress: '',
     walletShortenAddress: '',
     walletIsActive: false,
-    walletIsAuthenticating: false,
-    walletIsAuthenticated: false,
+    isAuthenticating: false,
+    isAuthenticated: false,
     handleWalletConnect: null,
     handleWalletDisconnect: null,
     nativeBalance: 0,
@@ -62,13 +62,13 @@ const contextDefaultValues: WalletContextInterface = {
     fetchPcrBalance: null
 }
 
-const WalletContext = createContext<WalletContextInterface>(
+const DappContext = createContext<DappContextInterface>(
     contextDefaultValues
 )
 
-export const useWallet = () => useContext(WalletContext)
+export const useDapp = () => useContext(DappContext)
 
-const WalletContextProvider = ({ children }) => {
+const DappContextProvider = ({ children }) => {
 
     const {
         chain,
@@ -78,18 +78,16 @@ const WalletContextProvider = ({ children }) => {
 
     const {
         authenticate,
-        isAuthenticated: walletIsAuthenticated,
+        isAuthenticated,
         connector: walletConnector,
         logout,
         account,
-        deactivateWeb3,
-        isAuthenticating: walletIsAuthenticating,
+        isAuthenticating: isAuthenticating,
         enableWeb3,
         web3,
-        isWeb3Enabled
+        isWeb3Enabled,
+        isWeb3EnableLoading
     } = useMoralis()
-
-    console.log(account)
 
     const {
         getBalances,
@@ -112,7 +110,6 @@ const WalletContextProvider = ({ children }) => {
         await switchNetwork(chainId)
     }
 
-    /*
     useEffect(() => {
         const stayLoggedIn = async () => {
             if (!isWeb3Enabled) {
@@ -122,13 +119,9 @@ const WalletContextProvider = ({ children }) => {
         stayLoggedIn()
     }, [web3])
 
-     */
-
-
     useEffect(() => {
         fetchPcrBalance()
-    }, [walletIsAuthenticated, walletAddress])
-
+    }, [isAuthenticated, walletAddress])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -136,11 +129,10 @@ const WalletContextProvider = ({ children }) => {
 
     const handleWalletDisconnect = async () => {
         await logout()
-        await deactivateWeb3()
     }
 
     const fetchPcrBalance = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: pcrContract.address,
@@ -166,14 +158,14 @@ const WalletContextProvider = ({ children }) => {
     const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
 
     return (
-        <WalletContext.Provider
+        <DappContext.Provider
             value={{
                 walletConnector,
                 walletAddress,
                 walletShortenAddress: account ? account.substring(0, 10) + '...' : '',
                 walletIsActive: true,
-                walletIsAuthenticating,
-                walletIsAuthenticated,
+                isWeb3EnableLoading,
+                isAuthenticated,
                 handleWalletConnect,
                 handleWalletDisconnect,
                 nativeBalance: Number(balance),
@@ -190,12 +182,12 @@ const WalletContextProvider = ({ children }) => {
                 currentChainId: chain?.networkId,
                 currentChainIdBinary: chain?.chainId,
                 pcrBalance,
-                fetchPcrBalance
+                fetchPcrBalance,
             }}
         >
             {children}
-        </WalletContext.Provider>
+        </DappContext.Provider>
     )
 }
 
-export default WalletContextProvider
+export default DappContextProvider

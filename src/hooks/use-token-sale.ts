@@ -1,4 +1,4 @@
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import {useEffect, useState} from 'react'
 import api from '../api'
 
@@ -8,7 +8,7 @@ interface TokenSaleProps {
 }
 
 export default function UseTokenSale():TokenSaleProps {
-    const { walletAddress, walletIsAuthenticated } = useWallet()
+    const { walletAddress, isAuthenticated } = useDapp()
     const [loading, setLoading] = useState<boolean>(false)
     const [tokenSaleData, setTokenSaleData] = useState<TokenSaleProps>(null)
 
@@ -26,14 +26,14 @@ export default function UseTokenSale():TokenSaleProps {
     }
 
     useEffect(() => {
-        if (walletIsAuthenticated && walletAddress) {
+        if (isAuthenticated && walletAddress) {
             // @ts-ignore
             async function fetch() {
                 await fetchTokenSaleData()
             }
             fetch()
         }
-    }, [walletIsAuthenticated, walletAddress])
+    }, [isAuthenticated, walletAddress])
 
     return {
         tokenSaleData,

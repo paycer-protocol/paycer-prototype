@@ -16,7 +16,7 @@ import TransactionApproveModal from "@components/organisms/transaction-approve-m
 import {t} from "@lingui/macro";
 import DashNumber from "@components/organisms/dashboard/dash-number";
 import useNetwork from "@hooks/use-network";
-import { useWallet } from "@context/wallet-context";
+import { useDapp } from "@context/dapp-context";
 import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
 import {TradeContext} from "simple-uniswap-sdk";
@@ -26,7 +26,7 @@ export default function Swap() {
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
     const network = useNetwork()
-    const { walletAddress } = useWallet()
+    const { walletAddress } = useDapp()
     const formRef = useRef<FormikProps<SwapProps>>(null)
 
     const {

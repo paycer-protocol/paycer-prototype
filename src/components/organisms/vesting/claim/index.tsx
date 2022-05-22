@@ -9,7 +9,7 @@ import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 const AnimatedDiv = styled.div`
@@ -24,7 +24,7 @@ const AnimatedDiv = styled.div`
 const Claim = () => {
     const { dashboardData } = useVestingDashboard()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const { walletIsAuthenticated, walletAddress } = useWallet()
+    const { isAuthenticated, walletAddress } = useDapp()
     const router = useRouter()
     const {
         withdrawAble,
@@ -122,7 +122,7 @@ const Claim = () => {
                                  />
                               </span>
                           </div>
-                          {walletIsAuthenticated &&
+                          {isAuthenticated &&
                           <div className="w-75 m-auto">
                             <h3 className=" text-muted">
                                 {t`Transfer to:`}

@@ -6,7 +6,7 @@ import { formatUnits, parseUnits } from '@ethersproject/units'
 import StakingContractProvider from '@providers/staking'
 import ChainId from '@providers/chain-id'
 import { formatLastRewardtime } from '../helpers/staking-helper'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import PaycerTokenContractProvider from "@providers/paycer-token";
 
 enum TRANSACTION_STATE {
@@ -44,7 +44,7 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { walletAddress, currentChainId, currentChainIdBinary, fetchPcrBalance } = useWallet()
+    const { walletAddress, currentChainId, currentChainIdBinary, fetchPcrBalance, isAuthenticated } = useDapp()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentChainId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentChainId] || PaycerTokenContractProvider[ChainId.Polygon]
@@ -249,7 +249,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchAllowance = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     chain: currentChainIdBinary,
@@ -273,7 +273,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchUserInfo = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -296,7 +296,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchRewardRate = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -319,7 +319,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchPendingRewards = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -343,13 +343,13 @@ export default function useStaking():UseStakingProps {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess])
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated])
 
     useEffect(() => {
         fetchRewardRate()
         fetchPendingRewards()
         fetchAllowance()
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
     // refresh pending rewards UI
     useEffect(() => {

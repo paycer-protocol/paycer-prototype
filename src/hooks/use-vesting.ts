@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
 import { formatUnits } from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import { useEffect, useState, useMemo } from 'react'
 import { calculateEndTime, calculateNextDistribution, calculateStartTime } from '../helpers/vesting-helper'
 import Moralis from 'moralis'
@@ -35,7 +35,7 @@ type RecipientsResponse = {
 }
 
 export default function useVesting(type):UseVestingProps {
-    const { currentChainId, walletAddress, fetchPcrBalance } = useWallet()
+    const { currentChainId, walletAddress, fetchPcrBalance, isAuthenticated } = useDapp()
     const vestingConfig = VestingContractProvider[currentChainId] ? VestingContractProvider[currentChainId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -60,7 +60,7 @@ export default function useVesting(type):UseVestingProps {
                 params: { beneficiary: walletAddress },
             }
         )
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
     const withdrawVesting = async () => {
         setIsLoading(true)
@@ -90,7 +90,7 @@ export default function useVesting(type):UseVestingProps {
     }
 
     useEffect(() => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -108,10 +108,10 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
     useEffect(() => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -129,10 +129,10 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
     useEffect(() => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -152,11 +152,11 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
 
     useEffect(() => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -177,7 +177,7 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress])
+    }, [walletAddress, isAuthenticated])
 
     return {
         withdrawAble,

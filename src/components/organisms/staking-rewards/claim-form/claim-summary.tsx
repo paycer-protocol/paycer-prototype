@@ -6,7 +6,7 @@ import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import GradientButton from '@components/atoms/button/gradient-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import {useWallet} from "@context/wallet-context";
+import {useDapp} from "@context/dapp-context";
 
 const RewardContainer = styled.div`
   display: flex;

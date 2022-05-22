@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import { routes } from '@config/routes'
 import Modal from '@components/molecules/modal'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import WalletMenu from '@components/organisms/header/wallet-menu'
 import NetworkMenu from '@components/organisms/header/network-menu'
 
@@ -15,7 +15,7 @@ interface OffCanvasProps {
 
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
-  const { walletIsAuthenticated, currentChainId } = useWallet()
+  const { isAuthenticated, currentChainId } = useDapp()
   const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
 
   return (
@@ -59,7 +59,7 @@ export default function OffCanvas({show, onHide}: OffCanvasProps) {
               </li>
             </ul>
           </div>
-          {walletIsAuthenticated &&
+          {isAuthenticated &&
             <div className="mb-5 border-bottom light-border pb-5">
               <NetworkMenu />
             </div>

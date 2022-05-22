@@ -7,14 +7,14 @@ import { swapTokens } from '@config/market-pairs'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { t } from '@lingui/macro'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 
 export default function Token1Select(props: SwapTokenInputProps) {
     const { readOnly } = props
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const { walletIsAuthenticated, walletAddress } = useWallet()
+    const { isAuthenticated, walletAddress } = useDapp()
 
     const handleChange = async (token) => {
         setErrorMessage('')
@@ -67,7 +67,7 @@ export default function Token1Select(props: SwapTokenInputProps) {
                 label={t`Swap to`}
                 readOnly={readOnly}
             />
-            {walletIsAuthenticated && (
+            {isAuthenticated && (
                 <TokenSelectModal
                     show={showModal}
                     tokens={values.token1Markets}
@@ -77,7 +77,7 @@ export default function Token1Select(props: SwapTokenInputProps) {
                     errorMessage={errorMessage}
                 />
             )}
-            {!walletIsAuthenticated && showModal && (
+            {!isAuthenticated && showModal && (
                 <WalletProvider
                     providers={connectors}
                     onHide={() => setShowModal(false)}

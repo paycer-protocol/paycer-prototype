@@ -4,7 +4,7 @@ import { CheckCircle } from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
 import Icon from '@components/atoms/icon'
 import Modal from '@components/molecules/modal'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import ListGroup from '@components/molecules/list-group'
 import { connectors } from '@providers/connectors'
@@ -52,7 +52,7 @@ const AccountAction = (props: ListGroupItemProps) => {
 }
 
 const AccountBalance = () => {
-    const { nativeSymbol, nativeBalanceFormatted} = useWallet()
+    const { nativeSymbol, nativeBalanceFormatted} = useDapp()
 
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
@@ -79,12 +79,12 @@ const AccountBalance = () => {
 const WalletDetail = (props: AccountDetailProps) => {
     const { show, onHide, setShowWalletProviderModal } = props
     const {
-        walletIsAuthenticated,
+        isAuthenticated,
         walletAddress,
         explorerUrl,
         handleWalletDisconnect,
         handleWalletConnect
-    } = useWallet()
+    } = useDapp()
     const [isCopied, setCopied] = useCopyClipboard()
 
     return (
@@ -96,7 +96,7 @@ const WalletDetail = (props: AccountDetailProps) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {walletIsAuthenticated && (
+                    {isAuthenticated && (
                       <>
                           <AccountBalance />
                           <ListGroup>
@@ -136,7 +136,7 @@ const WalletDetail = (props: AccountDetailProps) => {
                           </ListGroup>
                       </>
                     )}
-                    {!walletIsAuthenticated && (
+                    {!isAuthenticated && (
                       <div className="d-flex justify-content-center">
                           <Button variant="outline-primary" className="px-5" onClick={() => handleWalletConnect(connectors[0])}>
                               {t`Connect to a Wallet`}

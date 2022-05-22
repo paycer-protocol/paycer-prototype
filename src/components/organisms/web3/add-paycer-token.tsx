@@ -1,5 +1,5 @@
 import React from 'react'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import { ChainId } from '@usedapp/core'
 import { useEthers } from '@usedapp/core'
 import useToken from '../../../hooks/use-token'
@@ -13,7 +13,7 @@ export interface AddPaycerTokenProps {
 const AddPaycerToken = (props: AddPaycerTokenProps) => {
     const { children } = props
     const { library, chainId } = useEthers()
-    const { walletIsAuthenticated } = useWallet()
+    const { isAuthenticated } = useDapp()
     const token = useToken('PCR')
     const { tokenAddress, tokenSymbol, tokenDecimals, tokenBalance } = token
 
@@ -54,7 +54,7 @@ const AddPaycerToken = (props: AddPaycerTokenProps) => {
       }
     }
     // @ts-ignore
-    if (!walletIsAuthenticated || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
+    if (!isAuthenticated || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
       return null
     }
 

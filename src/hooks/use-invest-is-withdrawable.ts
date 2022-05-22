@@ -3,7 +3,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import { StrategyType } from '../types/investment'
 import Moralis from "moralis";
 
@@ -13,7 +13,7 @@ interface UseInvestIsWithdrawAbleProps {
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseInvestIsWithdrawAbleProps {
-    const { currentChainId, walletAddress } = useWallet()
+    const { currentChainId, walletAddress } = useDapp()
     const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
     const [balanceOf, setBalanceOf] = useState<number>(0)
     const [isWithdrawAble, setIsWithdrawAble] = useState<boolean>(false)

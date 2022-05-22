@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { t, Trans } from '@lingui/macro'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import { FormattedNumber } from '@components/atoms/number'
 import TxnLink from '@components/atoms/txn-link'
 import api from '../../../api'
@@ -21,7 +21,7 @@ interface RewardType {
 }
 
 export default function Referrals () {
-  const { walletAddress, walletIsAuthenticated} = useWallet()
+  const { walletAddress, isAuthenticated} = useDapp()
   const [rewards, setRewards] = useState<RewardType[] | []>([])
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -37,10 +37,10 @@ export default function Referrals () {
 
     setErrorMessage('')
 
-    if (walletIsAuthenticated && walletAddress) {
+    if (isAuthenticated && walletAddress) {
       fetchReferralRewards(walletAddress)
     }
-  }, [walletIsAuthenticated])
+  }, [isAuthenticated])
 
   return (
     <div className="table-responsive">

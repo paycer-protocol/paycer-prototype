@@ -1,6 +1,6 @@
 import React from 'react'
 import {Trans, t} from '@lingui/macro'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
 import { INetworkProvider } from '@providers/networks'
@@ -15,7 +15,7 @@ export interface NetworkProviderProps {
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
-  const { walletIsAuthenticated, currentChainId, handleSwitchNetwork } = useWallet()
+  const { isAuthenticated, currentChainId, handleSwitchNetwork } = useDapp()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>
@@ -27,7 +27,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
           <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
               const provider = providers[chainId]
-              const isActive = walletIsAuthenticated && Number(chainId) === currentChainId
+              const isActive = isAuthenticated && Number(chainId) === currentChainId
 
               return (
                   <Button

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import {t, Trans} from '@lingui/macro'
-import { useWallet } from '@context/wallet-context'
+import { useDapp } from '@context/dapp-context'
 import GradientButton from '@components/atoms/button/gradient-button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 
 const LoginCard = () => {
-    const { walletIsAuthenticated } = useWallet()
+    const { isAuthenticated } = useDapp()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
 
-    if (walletIsAuthenticated) {
+    if (isAuthenticated) {
         return null
     }
 
