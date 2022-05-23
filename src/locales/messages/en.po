@@ -99,7 +99,7 @@ msgstr "An error has occurred. Please refresh the page"
 #~ msgid "An unknown error occurred. Please try again."
 #~ msgstr "An unknown error occurred. Please try again."
 
-#: src/config/routes.ts:40
+#: src/config/routes.ts:34
 #: src/pages/analytics/index.tsx:16
 msgid "Analytics"
 msgstr "Analytics"
@@ -136,7 +136,7 @@ msgstr "Approving ... if it takes too long, you can try to open your Wallet-Exte
 msgid "Associate"
 msgstr "Associate"
 
-#: src/components/organisms/swap/swap.tsx:176
+#: src/components/organisms/swap/swap.tsx:178
 msgid "Attention! The exchange rate has changed significantly."
 msgstr "Attention! The exchange rate has changed significantly."
 
@@ -184,7 +184,7 @@ msgstr "Cancel"
 #~ msgid "Chain"
 #~ msgstr "Chain"
 
-#: src/components/organisms/layout/layout.tsx:44
+#: src/components/organisms/layout/layout.tsx:42
 msgid "Change network"
 msgstr "Change network"
 
@@ -273,7 +273,7 @@ msgstr "Confirm Claim"
 #: src/components/organisms/invest/deposit-form/index.tsx:174
 #: src/components/organisms/invest/withdraw-form/index.tsx:181
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:163
-#: src/components/organisms/swap/swap.tsx:190
+#: src/components/organisms/swap/swap.tsx:192
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -451,7 +451,7 @@ msgstr "Disconnect Wallet"
 msgid "Disconnect from your Wallet Extension"
 msgstr "Disconnect from your Wallet Extension"
 
-#: src/components/organisms/portal-block-number/index.tsx:37
+#: src/components/organisms/portal-block-number/index.tsx:35
 msgid "Disconnected"
 msgstr "Disconnected"
 
@@ -516,7 +516,7 @@ msgstr "Easy-to-use browser extension."
 msgid "Estimated fee"
 msgstr "Estimated fee"
 
-#: src/components/organisms/swap/swap.tsx:238
+#: src/components/organisms/swap/swap.tsx:240
 msgid "Estimated output:"
 msgstr "Estimated output:"
 
@@ -542,7 +542,7 @@ msgstr "Fee"
 #: src/components/organisms/invest/deposit-form/index.tsx:220
 #: src/components/organisms/invest/withdraw-form/index.tsx:237
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:220
-#: src/components/organisms/swap/swap.tsx:257
+#: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
 msgstr "Fee:"
 
@@ -626,7 +626,7 @@ msgstr "Info"
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
-#: src/config/routes.ts:23
+#: src/config/routes.ts:17
 #: src/pages/invest/index.tsx:18
 msgid "Invest"
 msgstr "Invest"
@@ -736,7 +736,7 @@ msgstr "Loading ..."
 #~ msgid "Loading..."
 #~ msgstr "Loading..."
 
-#: src/components/organisms/portal-block-number/index.tsx:35
+#: src/components/organisms/portal-block-number/index.tsx:33
 msgid "Login to your wallet to see block details"
 msgstr "Login to your wallet to see block details"
 
@@ -798,7 +798,7 @@ msgstr "Monthly rewards:"
 msgid "Network"
 msgstr "Network"
 
-#: src/components/organisms/layout/layout.tsx:42
+#: src/components/organisms/layout/layout.tsx:40
 msgid "Network not supported"
 msgstr "Network not supported"
 
@@ -846,7 +846,7 @@ msgstr "Overview"
 msgid "PCR"
 msgstr "PCR"
 
-#: src/config/routes.ts:46
+#: src/config/routes.ts:40
 #: src/pages/token-overview/index.tsx:16
 msgid "PCR Token"
 msgstr "PCR Token"
@@ -916,7 +916,6 @@ msgstr "Please connect to your wallet."
 #~ msgid "Pool"
 #~ msgstr "Pool"
 
-#: src/config/routes.ts:17
 #: src/pages/portfolio/index.tsx:23
 msgid "Portfolio"
 msgstr "Portfolio"
@@ -1080,7 +1079,7 @@ msgstr "Show"
 msgid "Slippage tollerance"
 msgstr "Slippage tollerance"
 
-#: src/components/organisms/swap/swap.tsx:249
+#: src/components/organisms/swap/swap.tsx:251
 msgid "Slippage:"
 msgstr "Slippage:"
 
@@ -1171,7 +1170,7 @@ msgstr "Supply"
 #~ msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/fields/submit-button.tsx:34
-#: src/config/routes.ts:34
+#: src/config/routes.ts:28
 #: src/pages/swap/index.tsx:26
 msgid "Swap"
 msgstr "Swap"
@@ -1341,7 +1340,7 @@ msgstr "Transaction is processing..."
 #: src/components/organisms/invest/withdraw-form/index.tsx:183
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:165
-#: src/components/organisms/swap/swap.tsx:191
+#: src/components/organisms/swap/swap.tsx:193
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 
@@ -1387,7 +1386,7 @@ msgstr "Vesting"
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
-#: src/components/organisms/portal-block-number/index.tsx:29
+#: src/components/organisms/portal-block-number/index.tsx:27
 msgid "View block details"
 msgstr "View block details"
 
