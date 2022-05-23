@@ -1,7 +1,7 @@
 import React from 'react'
 import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
-import PortalBlockNumber from '@components/organisms/portal-block-number'
+import PortalBlockNumber from '@components/organisms/portal-block-number'lib
 import VestingWrapper from '@components/organisms/vesting'
 
 export default function Vesting() {

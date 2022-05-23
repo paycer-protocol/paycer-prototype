@@ -6,6 +6,7 @@ import {
 } from '../tokens/eth';
 
 export function getAddress(address: string, keepEthPrefix = false): string {
+  //@ts-nocheck
   const parsedAddress = ethers.utils.getAddress(
     removeEthFromContractAddress(address)
   );

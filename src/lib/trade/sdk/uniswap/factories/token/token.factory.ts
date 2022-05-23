@@ -1,4 +1,6 @@
+// @ts-nocheck
 import { ContractCallContext } from 'ethereum-multicall';
+// @ts-nocheck
 import { BigNumber } from 'ethers';
 import { ContractContext as ERC20ContractContext } from '../../ABI/types/erc20-contract';
 import { ContractContext } from '../../common/contract-context';

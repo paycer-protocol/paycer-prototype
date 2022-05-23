@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BigNumber, BigNumberish, BytesLike as Arrayish } from 'ethers';
 import { ContractContext as QuoterContractContext } from '../../../ABI/types/uniswap-quoter-v3';
 import { EthersProvider } from '../../../ethers-provider';
