@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import Button from '@components/atoms/button'
 import { useDapp } from '@context/dapp-context'
 import WalletProvider from '../web3/wallet-provider'
@@ -24,7 +24,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                     className={classnames(className, 'px-4 text-nowrap p-2 pt-3 pb-3 text-light')}
                     onClick={() => setShowWalletProviderModal(true)}
                 >
-                    <Trans>Connect to a Wallet</Trans>
+                    {t`Connect to a Wallet`}
                 </Button>
                 {(showWalletProviderModal &&
                   <WalletProvider
@@ -43,7 +43,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                 onClick={() => setShowAccountModal(true)}
             >
                 <div className="mx-2 me-2">
-                    {shortenAddress}
+                    {walletShortenAddress}
                 </div>
             </Button>
             <WalletDetail

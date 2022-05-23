@@ -180,6 +180,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
 
             if (approveTx) {
                 try {
+                    //@ts-ignore
                     await approveTx.wait()
                     // The transactions was mined without issue
                 } catch (error) {
@@ -228,6 +229,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
             if (depositTx) {
                 try {
                     setTransactionState(2)
+                    //@ts-ignore
                     await depositTx.wait()
                     fetchBalanceOf()
                     setDepositIsSuccess(true)
@@ -275,6 +277,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
             if (withdrawTx) {
                 try {
                     setTransactionState(2)
+                    //@ts-ignore
                     await withdrawTx.wait()
                     fetchBalanceOf()
                     setWithdrawIsSuccess(true)

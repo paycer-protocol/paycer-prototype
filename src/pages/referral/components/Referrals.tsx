@@ -49,17 +49,17 @@ export default function Referrals () {
         <tr>
           <th>
             <span className="text-muted">
-              <Trans>Date</Trans>
+              {t`Date`}
             </span>
           </th>
           <th>
             <span className="text-muted">
-              <Trans>Referral Bonus</Trans>
+              {t`Referral Bonus`}
             </span>
           </th>
           <th>
             <span className="text-muted">
-              <Trans>Transaction</Trans>
+              {t`Transaction`}
             </span>
           </th>
         </tr>

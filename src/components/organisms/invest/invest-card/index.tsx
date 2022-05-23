@@ -71,7 +71,7 @@ const InvestCard = (strategy: StrategyType) => {
                                             minimumFractionDigits={2}
                                             maximumFractionDigits={4}
                                         />
-                                        &nbsp;{investedToken.symbol}
+                                        &nbsp;{strategy.input.symbol}
                                     </>
                                 )
                                 : (
@@ -81,6 +81,7 @@ const InvestCard = (strategy: StrategyType) => {
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span>{t`Risk`}</span>
+                        {/*@ts-ignore*/}
                         <Trans id={riskLabels[strategy.riskLevel].id} />
                     </li>
                 </ul>

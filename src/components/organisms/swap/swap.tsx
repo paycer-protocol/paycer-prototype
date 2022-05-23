@@ -40,6 +40,8 @@ export default function Swap() {
         approveTx
     } = useSwap()
 
+    console.log(network)
+
     const networkSettings = {
         providerUrl: network.rpcUrls[0],
         walletAddress: walletAddress,
@@ -189,13 +191,11 @@ export default function Swap() {
                         }}
                         title={t`Confirm Transaction`}
                         successMessage={t`Transaction was successfully executed`}
-                        error={
-                            swapTx.status === 'Fail' ||
+                        error={swapTx.status === 'Fail' ||
                             swapTx.status === 'Exception' ||
                             approveTx.status === 'Fail' ||
                             approveTx.status === 'Exception' ||
-                            swapError
-                        }
+                            swapError ? new Error('Something went wrong') : null}
                         success={
                             swapTx.status === 'Success'
                         }

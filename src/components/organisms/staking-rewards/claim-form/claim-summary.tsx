@@ -52,7 +52,7 @@ export default function ClaimSummary() {
           </div>
 
           <h3 className="mb-3 text-center text-center text-muted">
-              <Trans>Claim your rewards</Trans>
+              {t`Claim your rewards`}
           </h3>
 
           <div className="d-flex flex-column mb-4 text-center">

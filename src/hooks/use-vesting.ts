@@ -69,6 +69,7 @@ export default function useVesting(type):UseVestingProps {
         })
 
         try {
+            //@ts-ignore
             await withdrawTx.wait()
             setIsLoading(false)
             setWithdrawAble(0)

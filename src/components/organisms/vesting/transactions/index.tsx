@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
 import DataTable from './data-table'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 
 export const Wrapper = styled.div`
     padding: 30px;
@@ -19,7 +19,7 @@ const Transactions = () => {
     if (!transactions) {
         return(
             <Wrapper>
-                <Trans>No available transactions</Trans>
+                {t`No available transactions`}
             </Wrapper>
         )
     }

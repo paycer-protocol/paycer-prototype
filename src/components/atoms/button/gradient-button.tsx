@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import Button from './button'
 
-const GradientButton = styled(Button)`
+const GradientButton = styled(Button)<any>`
   background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
   color: #FFF;
   font-weight: bold;
@@ -30,5 +30,3 @@ const GradientButton = styled(Button)`
 `
 
 export default GradientButton
-
-

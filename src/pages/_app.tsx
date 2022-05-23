@@ -21,6 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <I18nProvider>
                 <Layout>
                     <ToastContainer position="top-center" />
+                    {/* @ts-ignore */ }
                     <Component {...pageProps} />
                     <Footer />
                 </Layout>

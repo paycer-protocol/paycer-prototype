@@ -1,37 +1,22 @@
-import { useEthers, useNetwork as useBaseNetwork } from '@usedapp/core'
+import { useNetwork as useBaseNetwork } from '@usedapp/core'
 import { mainNetProviders, INetworkProvider } from '../providers'
 import { supportedChains, supportedStakingChains } from '@config/network'
+import {useDapp} from "@context/dapp-context";
 
 export default function useNetwork() {
     const { network } = useBaseNetwork()
-    const { account, library, chainId } = useEthers()
-    const currentNetwork = mainNetProviders[chainId]
+    const { currentChainId } = useDapp()
+    const currentNetwork = mainNetProviders[currentChainId]
 
-    const addNetwork = async (networkProvider: INetworkProvider) => {
-        await library?.send('wallet_addEthereumChain', [
-            networkProvider,
-            account,
-        ])
-    }
-
-    const switchNetwork = async (networkProvider: INetworkProvider) => {
-        await library?.send('wallet_switchEthereumChain', [{
-            // @ts-ignore
-            chainId: networkProvider?.chainId
-        }])
-    }
-
-    const supportedChain = supportedChains.includes(chainId)
-    const supportedStakingChain = supportedStakingChains.includes(chainId)
+    const supportedChain = supportedChains.includes(currentChainId)
+    const supportedStakingChain = supportedStakingChains.includes(currentChainId)
 
     return {
         ...currentNetwork,
         ...{
-            switchNetwork,
-            addNetwork,
             supportedChain,
             supportedStakingChain,
-            chainId,
+            chainId: currentChainId,
             provider: network.provider
         }
     }

@@ -20,6 +20,7 @@ export const LanguageChoice = () => {
               <Link href={asPath} locale={lang}>
                 <div className="d-flex align-items-center">
                   <img className="me-3" src={`/assets/flags/${lang}.svg`} alt={lang} width={22} height={22} />
+                    {/*@ts-ignore*/}
                   <span><Trans id={languageLabels[lang].id}/></span>
                 </div>
               </Link>

@@ -26,7 +26,7 @@ const LoginCard = () => {
                       className="px-5"
                       onClick={() => setShowWalletProviderModal(true)}
                     >
-                        <Trans>Connect to a Wallet</Trans>
+                        {t`Connect to a Wallet`}
                     </GradientButton>
                     {(showWalletProviderModal &&
                       <WalletProvider

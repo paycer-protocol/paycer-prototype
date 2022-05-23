@@ -26,10 +26,13 @@ const Modal = (props: ModalProps) => {
     const { vertical = false, ...restProps } = props
 
     return (
-      <BaseModal
-        {...restProps}
-        dialogClassName={classnames({'modal-dialog-vertical': vertical})}
-      />
+        <>
+            {/* @ts-ignore */ }
+            <BaseModal
+                {...restProps}
+                dialogClassName={classnames({'modal-dialog-vertical': vertical})}
+            />
+        </>
     )
 }
 

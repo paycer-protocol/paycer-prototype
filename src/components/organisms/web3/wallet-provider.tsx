@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { useDapp } from '@context/dapp-context'
 import Button from '@components/atoms/button'
 import Alert from '@components/atoms/alert'
@@ -16,7 +16,7 @@ export interface WalletProviderProps {
 const WalletProvider = (props: WalletProviderProps) => {
   const { providers = [], onHide } = props
   const [errorMessage, setErrorMessage] = useState(null)
-  const { handleWalletConnect, isAuthenticating, activeWallet } = useDapp()
+  const { handleWalletConnect, isWeb3EnableLoading, activeWallet } = useDapp()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
@@ -32,7 +32,8 @@ const WalletProvider = (props: WalletProviderProps) => {
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title>
-            <Trans>Connect to a wallet</Trans>
+            {/*@ts-ignore*/}
+            {t`Connect to a wallet`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -48,7 +49,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                   variant="outline-primary"
                   className="mb-2"
                   active={item.providerId === activeWallet}
-                  disabled={isAuthenticating}
+                  disabled={isWeb3EnableLoading}
                   onClick={() => handleConnect(item)}
                 >
                   <div className="d-flex align-items-center justify-content-between py-3 px-2">
@@ -59,7 +60,7 @@ const WalletProvider = (props: WalletProviderProps) => {
                       </p>
                     </div>
                     {
-                      isAuthenticating
+                      isWeb3EnableLoading
                         ? <Spinner animation="border" />
                         : <img src={item.icon} alt={item.name} width="28" />
                     }

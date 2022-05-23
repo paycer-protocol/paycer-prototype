@@ -1,5 +1,5 @@
 import React from 'react'
-import {Trans} from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import Portfolio from '@components/organisms/portfolio'
@@ -17,10 +17,10 @@ export default function PortfolioPage() {
                     <div className="row align-items-center">
                         <div className="col">
                             <PageHeader.Subtitle>
-                                <Trans>Overview</Trans>
+                                {t`Overview`}
                             </PageHeader.Subtitle>
                             <PageHeader.Title>
-                                <Trans>Portfolio</Trans>
+                                {t`Portfolio`}
                             </PageHeader.Title>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { InputGroup, FormControl } from 'react-bootstrap'
 import Icon from '@components/atoms/icon'
 import { Bookmark, BookmarkCheck } from '@styled-icons/bootstrap'
@@ -31,8 +31,8 @@ export default function ReferralUrl () {
   return (
     <div className="mb-5">
       <div className="d-flex align-items-center justify-content-between mb-4">
-        <h2 className="m-0"><Trans>Referral Program</Trans></h2>
-        <small className="text-muted"><Trans>Earn up to 2.5% rewards for you and your friend on every transaction.</Trans></small>
+        <h2 className="m-0">{t`Referral Program`}</h2>
+        <small className="text-muted">{t`Earn up to 2.5% rewards for you and your friend on every transaction.`}</small>
       </div>
       <div className="mb-5">
         <InputGroup className="mb-3">

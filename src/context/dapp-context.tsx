@@ -124,7 +124,7 @@ const DappContextProvider = ({ children }) => {
     useEffect(() => {
         fetchPcrBalance()
         fetchDateToBlock()
-    }, [isAuthenticated, walletAddress])
+    }, [isAuthenticated, walletAddress, isWeb3Enabled])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -163,12 +163,15 @@ const DappContextProvider = ({ children }) => {
     }
 
     const fetchDateToBlock = async () => {
-        const options = { chain: chainId, date: Date.now() }
-        // @ts-ignore
-        const date = await Web3Api.native.getDateToBlock(options);
-        if (date) {
-            setBlockNumber(date.block)
+        if (isWeb3Enabled) {
+            const options = { chain: chainId, date: Date.now() }
+            // @ts-ignore
+            const date = await Web3Api.native.getDateToBlock(options);
+            if (date) {
+                setBlockNumber(date.block)
+            }
         }
+
     }
 
     return (

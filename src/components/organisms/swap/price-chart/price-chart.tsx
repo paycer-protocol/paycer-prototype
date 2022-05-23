@@ -207,12 +207,15 @@ const PriceChart = (props: PriceChartProps) => {
             </div>
 
             {data &&
-                <Chart
-                    {...data}
-                    type="area"
-                    width={'100%'}
-                    height="300"
-                />
+                <>
+                  {/*@ts-ignore*/}
+                  <Chart
+                      {...data}
+                      type="area"
+                      width={'100%'}
+                      height="300"
+                  />
+                </>
             }
         </div>
     )

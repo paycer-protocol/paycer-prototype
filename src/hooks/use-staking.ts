@@ -95,6 +95,7 @@ export default function useStaking():UseStakingProps {
 
             if (approveTx) {
                 try {
+                    //@ts-ignore
                     await approveTx.wait()
                     // The transactions was mined without issue
                 } catch (error) {
@@ -140,6 +141,7 @@ export default function useStaking():UseStakingProps {
             try {
                 // Wait for the transaction to be mined
                 setTransactionState(2)
+                //@ts-ignore
                 await withdrawTx.wait()
                 setWithdrawIsSuccess(true)
                 setTransactionState(0)
@@ -188,6 +190,7 @@ export default function useStaking():UseStakingProps {
             if (depositTx) {
                 try {
                     setTransactionState(2)
+                    //@ts-ignore
                     await depositTx.wait()
                     setDepositIsSuccess(true)
                     setTransactionState(0)

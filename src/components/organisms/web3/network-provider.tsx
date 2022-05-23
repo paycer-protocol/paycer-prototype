@@ -21,7 +21,8 @@ const NetworkProvider = (props: NetworkProviderProps) => {
     <Modal size="sm" show={show} onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
-          <Modal.Title><Trans>Switch network</Trans></Modal.Title>
+          {/*@ts-ignore*/}
+          <Modal.Title>{t`Switch network`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex flex-column align-items-center">

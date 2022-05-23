@@ -57,7 +57,7 @@ const AccountBalance = () => {
     return (
         <div className="d-flex align-items-center justify-content-between mb-5 px-2">
             <div className="text-start">
-                <strong><Trans>Balance</Trans></strong>
+                <strong>{t`Balance`}</strong>
                 <p className="text-muted mb-0">
                     <span className="h1">
                         {nativeBalanceFormatted}

@@ -12,8 +12,6 @@ export default function PortalBlockNumber() {
   const { isAuthenticated, walletAddress, currentChainId, explorerUrl, blockNumber } = useDapp()
   const [href, setHref] = useState(null)
 
-  console.log(isAuthenticated)
-
   useEffect(() => {
     if (!isAuthenticated || !blockNumber) {
       return
@@ -22,7 +20,7 @@ export default function PortalBlockNumber() {
     setHref(explorerBlockUrl + '/block/' + blockNumber)
     return () => setHref(null)
   }, [blockNumber, currentChainId, isAuthenticated, walletAddress])
-  
+
   return (
     <PortalOverlay>
       {href ? (
@@ -33,7 +31,8 @@ export default function PortalBlockNumber() {
         </IndicatorItem>
       ) : (
         <IndicatorItem state="danger" title={t`Login to your wallet to see block details`}>
-          <Trans>Disconnected</Trans>
+          {/*@ts-ignore*/}
+          {t`Disconnected`}
         </IndicatorItem>
       )}
     </PortalOverlay>

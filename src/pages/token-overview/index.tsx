@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import { TokenOverviewListItems } from '@config/token-overview'
 import TokenOverviewList from '@components/organisms/token-overview/token-overview-list'
@@ -13,10 +13,10 @@ export default function TokenOverview() {
           <div className="row align-items-center">
             <div className="col">
               <PageHeader.Subtitle>
-                  <Trans>PCR Token</Trans>
+                  {t`PCR Token`}
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                  <Trans>Overview</Trans>
+                  {t`Overview`}
               </PageHeader.Title>
             </div>
           </div>
