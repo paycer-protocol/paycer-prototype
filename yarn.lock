@@ -9581,7 +9581,8 @@ ethers@^4.0.47, ethers@~4.0.4:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.0, ethers@^5.0.15, ethers@^5.0.26, "ethersv5@npm:ethers@^5.0.32":
+ethers@^5.0.0, ethers@^5.0.15, ethers@^5.0.26, ethers@^5.5.4, "ethersv5@npm:ethers@^5.0.32":
+  name ethersv5
   version "5.6.7"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.6.7.tgz#3e6257b2a0fdd5fc93e68e141cf2b9761900f374"
   integrity sha512-Q8pmMraUENK0cY6cy6IvIe3e9xL/+4kBvxmUvLXg1O7Abob0c7XzWI76E29j5em/HxWMl5hYiSClmOMW3jJmdg==
