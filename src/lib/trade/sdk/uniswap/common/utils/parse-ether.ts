@@ -1,7 +1,7 @@
 // @ts-nocheck
 import BigNumber from 'bignumber.js';
 // @ts-nocheck
-import { parseEther as EthersParseEther } from 'ethers/lib/utils';
+import { parseEther as EthersParseEther } from 'node_modules/ethers/lib/utils.d.ts';
 
 /**
  * Convert a string value to wei
