@@ -4,6 +4,7 @@ import Footer from '@components/organisms/footer'
 import Network from '@components/organisms/web3/network'
 import useNetwork from '@hooks/use-network'
 import { t } from '@lingui/macro'
+import Header from "@components/organisms/header";
 
 export interface NftLandingPageLayoutProps {
   sections: OnePagerHeaderProps['sections']

@@ -47,5 +47,29 @@ export const routes = [
     path: '/token-overview',
     supportedChains,
     auth: false
+  },
+  {
+    label: t`NFT`,
+    path: '',
+    supportedChains,
+    auth: false,
+    isDropdown: true,
+    subroutes: [
+      {
+        label: t`About Paycer NFT`,
+        path: '/nft',
+        auth: false
+      },
+      {
+        label: t`My NFTs`,
+        path: '/my-nfts',
+        auth: false
+      },
+      {
+        label: t`Upgrade NFT`,
+        path: '/upgrade-nft',
+        auth: false
+      },
+    ],
   }
 ]

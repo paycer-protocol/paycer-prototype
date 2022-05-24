@@ -16,7 +16,9 @@ const Layout = (props: LayoutProps) => {
   if (network.supportedChain) {
     return (
       <>
-        <Header />
+        <div className="mb-md-5">
+          <Header/>
+        </div>
         <main role="main" className="mb-8">
           {children}
         </main>

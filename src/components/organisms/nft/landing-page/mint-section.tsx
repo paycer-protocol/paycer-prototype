@@ -18,28 +18,6 @@ const Background = styled.div`
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
 `
 
-const TopEdge = styled.div`
-    height: 200px;
-    width: 150vw;
-    left: 0;
-    position: absolute;
-    transform: rotate(357deg);
-    background: #0B1120;
-    top: -105px;
-    left: -50vw;
-`
-
-const BottomEdge = styled.div`
-    height: 200px;
-    width: 150vw;
-    left: 0;
-    position: absolute;
-    transform: rotate(357deg);
-    background: #0B1120;
-    bottom: -105px;
-    left: -50vw;
-`
-
 const PrettyLi = styled.li`
   display: flex;
   align-items: center;
@@ -208,11 +186,9 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
       <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} alloc={presaleAlloc} merkleProof={presaleMerkleProof} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
 
-      <div className="position-relative mx-auto py-8" style={{ maxWidth: '55rem' }}>
+      <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
 
-        <div className="py-7">
-          <TopEdge />
-
+        <div className="py-6">
           <h2 className="display-1 mb-3 mb-md-6">
             {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
           </h2>
@@ -265,11 +241,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
           }}>
             <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
           </div>
-          <BottomEdge />
-
         </div>
-
-
       </div>
     </Background>
   )

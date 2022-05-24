@@ -13,6 +13,7 @@ import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
 import { t } from '@lingui/macro'
 import { ArrowBack, ArrowLeft } from '@styled-icons/material-outlined'
+import Header from "@components/organisms/header";
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -73,55 +74,26 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
 
     return (
       <>
-          <header className="px-md-5 py-md-3 mb-md-5 bg-dark w-100 border-bottom border-purple-dark" style={{ position: 'fixed', zIndex: 10 }}>
-              <div className="navbar navbar-expand-lg border-bottom-0">
+          <div className="mb-md-5 w-100" style={{ position: 'fixed', zIndex: 10 }}>
+              <div className="bg-dark-800">
+                  <Header />
+              </div>
+
+
+              <div className="navbar navbar-expand-lg border-bottom border-purple-dark bg-dark py-2">
                   <div className="container-fluid flex-row-reverse">
-                      <Link href="/">
-                          <StyledLogo>
-                              <StyledBrand className="me-4 py-0 ms-2">
-                                  <Image src="/assets/logo.svg" alt="Paycer" />
-                              </StyledBrand>
-                          </StyledLogo>
-                      </Link>
-                      <ul className="navbar-nav flex-row d-none d-lg-flex">
-                          <li className="nav-item me-4 d-flex align-items-center position-relative">
-                              <NftMenu />
-                          </li>
-                          <li className="nav-item d-flex align-items-center position-relative">
-                              <WalletMenu />
-                          </li>
-                      </ul>
-                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5 ps-3">
-                          <li className="nav-item me-5">
-                                <Link href="/">
-                                    <a className={classnames('nav-link', 'text-nowrap', 'd-flex align-items-center')}>
-                                        <Icon component={ArrowBack} size={16} className="me-2" />
-                                        {t`Back to Finance`}
-                                    </a>
-                                </Link>
-                          </li>
+                      <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5" style={{paddingLeft: '212px'}}>
                           {sections.map((section, key) => (
-                            <li className="nav-item me-4" key={`nav${key}`} onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}>
-                                <a className={classnames('nav-link', 'text-nowrap')}>
-                                    {section.label}
-                                </a>
-                            </li>
+                              <li className="nav-item me-4" key={`nav${key}`} onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}>
+                                  <a className={classnames('nav-link text-white', 'text-nowrap')}>
+                                      {section.label}
+                                  </a>
+                              </li>
                           ))}
-                      </ul>
-                      <ul className="navbar-nav flex-row d-flex d-lg-none">
-                          <li className="me-3">
-                              <Icon
-                                onClick={() => setShowModalNav(true)}
-                                component={TextLeft}
-                                size={30}
-                                color="white"
-                                className="cursor-pointer"
-                              />
-                          </li>
                       </ul>
                   </div>
               </div>
-          </header>
+          </div>
           <OffCanvas
             show={showModalNav}
             onHide={() => setShowModalNav(false)}
