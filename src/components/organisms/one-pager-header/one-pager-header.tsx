@@ -77,7 +77,7 @@ const OnePagerHeader = ({ sections }: OnePagerHeaderProps) => {
               <div className="bg-dark-800">
                   <Header />
               </div>
-              <div className="navbar navbar-expand-lg border-bottom border-purple-dark bg-dark py-3">
+              <div className="navbar navbar-expand-lg border-bottom border-primary bg-dark py-3">
                   <div className="container-fluid flex-row-reverse">
                       <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5" style={{paddingLeft: '212px'}}>
                           {sections.map((section, key) => (
