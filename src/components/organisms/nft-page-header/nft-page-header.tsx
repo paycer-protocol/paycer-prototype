@@ -101,6 +101,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
         if (window.pageYOffset < 100) {
 
         }
+
     }
 
     useEffect(() => {
@@ -114,11 +115,11 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
     return (
       <>
           <Wrapper isSticky={isSticky} isGoingSticky={isGoingSticky} ref={wrapperRef} className="mb-md-5 w-100">
-              <div style={{transition: 'all .23s ease-in'}} className={isSticky ? 'bg-dark-800' : ''}>
+              <div style={{transition: 'background-color .23s ease-in'}} className={isSticky ? 'bg-dark-800' : ''}>
                   <Header />
               </div>
               {(sections.length > 0 && isSticky) &&
-                <div style={{transition: 'all .23s ease-in'}} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark border-primary border-bottom' : 'border-bottom-0 '}`}>
+                <div style={{transition: 'background-color .23s ease-in'}} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark border-primary border-bottom' : 'border-bottom-0 '}`}>
                   <div className="container-fluid flex-row-reverse">
                     <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5" style={{paddingLeft: '212px'}}>
                         {sections.map((section, key) => (

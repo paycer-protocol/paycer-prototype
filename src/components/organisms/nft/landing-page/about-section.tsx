@@ -4,10 +4,7 @@ import { t } from "@lingui/macro";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import Icon from "@components/atoms/icon";
-import {ArrowRightCircle} from "@styled-icons/bootstrap";
 import React from "react";
-
 
 const partners = [
     '/img/nft/partner/bigbrain.png',
