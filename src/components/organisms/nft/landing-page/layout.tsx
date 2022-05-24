@@ -1,13 +1,12 @@
 import React from 'react'
-import OnePagerHeader, { OnePagerHeaderProps } from '@components/organisms/one-pager-header'
+import NftPageHeader, { NftPageHeaderProps } from '@components/organisms/nft-page-header'
 import Footer from '@components/organisms/footer'
 import Network from '@components/organisms/web3/network'
 import useNetwork from '@hooks/use-network'
 import { t } from '@lingui/macro'
-import Header from "@components/organisms/header";
 
 export interface NftLandingPageLayoutProps {
-  sections: OnePagerHeaderProps['sections']
+  sections: NftPageHeaderProps['sections']
   children: any
 }
 
@@ -18,7 +17,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
   if (network.supportedChain) {
     return (
       <>
-        <OnePagerHeader
+        <NftPageHeader
           sections={props.sections}
         />
         <main role="main" style={{paddingTop: '124px'}}>
@@ -31,7 +30,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
 
   return (
     <>
-      <OnePagerHeader sections={[]} />
+      <NftPageHeader sections={[]} />
       <main role="main" style={{paddingTop: '124px'}}>
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
           <Network>
