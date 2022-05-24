@@ -4,6 +4,7 @@ import PageHeader from "@components/molecules/page-header"
 import {t, Trans} from "@lingui/macro"
 import styled from "styled-components"
 import { ArrowDownward } from "@styled-icons/material"
+import React from "react";
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
@@ -26,6 +27,7 @@ const DownArrowButtonBorder = styled.div`
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
   return (
     <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
+        {/*
       <video
         style={{
           position: 'absolute',
@@ -46,6 +48,22 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
       >
         <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
       </video>
+      */}
+        <img
+            src={`/img/nft/bg-stage.jpg`}
+            style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: -5,
+                opacity: '50%',
+            }}
+        />
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
         <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
           <PageHeader>
