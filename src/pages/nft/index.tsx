@@ -9,8 +9,9 @@ import TeamSection from "@components/organisms/nft/landing-page/team-section"
 import TitleSection from "@components/organisms/nft/landing-page/title-section"
 import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
-import { t } from "@lingui/macro";
-import { useRef } from "react";
+import { t } from "@lingui/macro"
+import SectionHoc from './section-hoc'
+import { useRef } from "react"
 import { useMediaQuery } from "react-responsive"
 
 const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
@@ -30,47 +31,54 @@ export default function NftLandingPage() {
 
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
+  const sections = [
+    { label: t`About`, ref: aboutSection },
+    { label: t`Mint`, ref: mintSection },
+    { label: t`USPs`, ref: uspSection },
+    { label: t`Achievements`, ref: achievementSection },
+    { label: t`Roadmap`, ref: roadmapSection },
+    { label: t`Team`, ref: teamSection },
+    { label: t`FAQ`, ref: faqSection },
+  ]
+
   return (
     <NftLandingPageLayout
-      sections={[
-        { label: t`About`, ref: aboutSection },
-        { label: t`Mint`, ref: mintSection },
-        { label: t`USPs`, ref: uspSection },
-        { label: t`Roadmap`, ref: roadmapSection },
-        { label: t`Achievements`, ref: achievementSection },
-        { label: t`Team`, ref: teamSection },
-        { label: t`FAQ`, ref: faqSection },
-      ]}
+      sections={sections}
     >
       <TitleSection
         onMintNowClicked={() => mintSection.current.scrollIntoView({ behavior: 'smooth' })}
         presaleStarted={presaleStarted}
       />
-      <div ref={aboutSection}>
+      <SectionHoc anchorRef={aboutSection} anchorId={1}>
         <AboutSection />
-      </div>
-      <div ref={mintSection} className="position-relative" style={{zIndex: 1}}>
-        <MintSection
-          onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
-          presaleStart={presaleStart}
-          publicSaleStart={publicSaleStart}
-        />
-      </div>
-      <div ref={uspSection} className="position-relative" style={{zIndex: 2}}>
-        <UspSection />
-      </div>
-      <div ref={achievementSection}>
-        <AchievementsSection />
-      </div>
-      <div ref={roadmapSection}>
+      </SectionHoc>
+
+      <SectionHoc anchorRef={mintSection} anchorId={2}>
+        <div className="position-relative" style={{zIndex: 1}}>
+          <MintSection
+            onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
+            presaleStart={presaleStart}
+            publicSaleStart={publicSaleStart}
+          />
+        </div>
+      </SectionHoc>
+      <SectionHoc anchorRef={uspSection} anchorId={3}>
+        <div className="position-relative" style={{zIndex: 2}}>
+          <UspSection />
+        </div>
+      </SectionHoc>
+      <SectionHoc anchorRef={achievementSection} anchorId={4}>
+          <AchievementsSection />
+      </SectionHoc>
+      <SectionHoc anchorRef={roadmapSection} anchorId={5}>
         {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
-      </div>
-      <div ref={teamSection}>
+      </SectionHoc>
+      <SectionHoc anchorRef={teamSection} anchorId={6}>
         <TeamSection />
-      </div>
-      <div ref={faqSection}>
+      </SectionHoc>
+      <SectionHoc anchorRef={faqSection} anchorId={7}>
         <FaqSection />
-      </div>
+      </SectionHoc>
       <div className="mt-6">
         <DiscordSection />
       </div>

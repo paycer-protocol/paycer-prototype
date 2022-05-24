@@ -51,8 +51,8 @@ function RoadmapCard({ title, entries, isActive }: { title: string, entries: str
       <RoadmapCardWrapper isActive={isActive}>
           <RoadmapCardBackground>
               <h3>{title}</h3>
-              {entries.map((entry) => (
-                  <div className="d-flex mt-2 align-items-center">
+              {entries.map((entry, key) => (
+                  <div key={key} className="d-flex mt-2 align-items-center">
                       <span className="me-2" style={{ color: '#E224A2' }}><Icon size={16} component={Plus} /></span>
                       <span className="text-muted small-text">{entry}</span>
                   </div>

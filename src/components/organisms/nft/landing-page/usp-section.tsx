@@ -78,8 +78,8 @@ export default function UspSection() {
             </div>
           </div>
           <div className="row">
-            {usps.map((usp) => (
-                <div className="col-lg-4 mb-3">
+            {usps.map((usp, key) => (
+                <div key={key} className="col-lg-4 mb-3">
                   <IconElement
                       title={usp.title}
                       description={usp.description}

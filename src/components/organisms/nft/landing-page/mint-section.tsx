@@ -107,8 +107,8 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
   return (
     <div className="row d-flex align-items-center justify-content-between">
       <div className="col-4 col-md-3 position-relative">
-        <div className="card mb-0 p-4 bg-dark text-center">
-          <b>{days}D</b>
+        <div className="card mb-0 p-3 bg-dark text-center">
+          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{days}D</span>
         </div>
         <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
           <span className="display-4 mx-2">:</span>
@@ -119,8 +119,8 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
         <span className="display-4 mx-2">:</span>
       </div>
       <div className="col-4 col-md-3 position-relative">
-        <div className="card mb-0 p-4 bg-dark text-center">
-          <b>{hours}H</b>
+        <div className="card mb-0 p-3 bg-dark text-center">
+          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{hours}H</span>
         </div>
         <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
           <span className="display-4 mx-2">:</span>
@@ -130,8 +130,8 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
         <span className="display-4 mx-2">:</span>
       </div>
       <div className="col-4 col-md-3">
-        <div className="card mb-0 p-4 bg-dark text-center">
-          <b>{minutes}M</b>
+        <div className="card mb-0 p-3 bg-dark text-center">
+          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{minutes}M</span>
         </div>
       </div>
     </div>

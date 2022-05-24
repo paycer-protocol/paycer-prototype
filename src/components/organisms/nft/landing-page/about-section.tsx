@@ -20,8 +20,8 @@ function TechnologyList() {
         <div>
             <div className="d-none d-md-block mb-6">
                 <div className="row">
-                    {partners.map((partner) => (
-                        <div className="col-4 col-md-2 mb-3 mb-md-0">
+                    {partners.map((partner, key) => (
+                        <div key={key} className="col-4 col-md-2 mb-3 mb-md-0">
                             <Card className="mb-3 mb-md-0">
                                 <div className="d-flex py-4">
                                     <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
@@ -41,8 +41,8 @@ function TechnologyList() {
                     initialSlide={3}
                     centeredSlides
                 >
-                    {partners.map((partner) => (
-                        <SwiperSlide className="align-items-center">
+                    {partners.map((partner, key) => (
+                        <SwiperSlide key={key} className="align-items-center">
                             <Card className="mb-3 mb-md-0">
                                 <div className="d-flex py-4">
                                     <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"

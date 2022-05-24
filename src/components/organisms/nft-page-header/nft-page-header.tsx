@@ -1,9 +1,8 @@
 import React, {MutableRefObject, useState, useEffect, useRef} from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import styled, { css } from 'styled-components'
-import { TextLeft } from '@styled-icons/bootstrap'
+import {ArrowRight} from '@styled-icons/bootstrap'
 import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import Navbar from '@components/molecules/navbar'
@@ -13,7 +12,9 @@ import useWallet from '@hooks/use-wallet'
 import { t } from '@lingui/macro'
 import { ArrowBack, ArrowLeft } from '@styled-icons/material-outlined'
 import Header from "@components/organisms/header";
-import {clearAll} from "@components/organisms/nft-page-header/scroll-handler";
+import {useMediaQuery} from "react-responsive";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import Card from "@components/molecules/card";
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -36,6 +37,12 @@ const StyledLogo = styled.a`
       top: 17px;
       left: 15px;
     }
+`
+
+const AnchorLink = styled.a`
+   &.anchor--isActive,&:hover {
+     color: #E224A2!important;
+   }
 `
 
 export const Wrapper = styled.div<any>`
@@ -76,6 +83,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
     const [ isSticky, setIsSticky ] = useState(false)
     const [ isGoingSticky, setIsGoingSticky ] = useState(false)
     const wrapperRef = useRef(null)
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
     const wallet = useWallet()
 
     function scrollHandler() {
@@ -118,18 +126,45 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
               <div style={{transition: 'background-color .23s ease-in'}} className={isSticky ? 'bg-dark-800' : ''}>
                   <Header />
               </div>
-              {(sections.length > 0 && isSticky) &&
-                <div style={{transition: 'background-color .23s ease-in'}} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark border-primary border-bottom' : 'border-bottom-0 '}`}>
+              {sections.length > 0 &&
+                <div style={{transition: 'background-color .23s ease-in', borderBottom: '1px solid #17212d'}} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark d-flex' : 'border-bottom-0 d-none'}`}>
                   <div className="container-fluid flex-row-reverse">
-                    <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5" style={{paddingLeft: '212px'}}>
-                        {sections.map((section, key) => (
-                            <li className="nav-item me-4" key={`nav${key}`} onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}>
-                                <a className={classnames('nav-link text-white', 'text-nowrap')}>
-                                    {section.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+                      {isTabletOrMobile ?
+                            <>
+                              <Swiper
+                                  spaceBetween={5}
+                                  slidesPerView={3.33}
+                                  className="me-4"
+                              >
+                                  {sections.map((section, key) => (
+                                      <SwiperSlide key={key} className="align-items-center">
+                                          <li className="nav-item me-4" key={`nav${key}`}
+                                              onClick={() => section.ref.current.scrollIntoView({behavior: 'smooth'})}>
+                                              <AnchorLink rel={`anchor-${key + 1}`}
+                                                          className={classnames('nav-link text-white anchor-link', 'text-nowrap')}>
+                                                  {section.label}
+                                              </AnchorLink>
+                                          </li>
+                                      </SwiperSlide>
+                                  ))}
+                              </Swiper>
+                              <div className="position-absolute" style={{right: '15px'}}>
+                                  <Icon color="#FFFFFF" component={ArrowRight} size={18} />
+                              </div>
+                            </>
+                          : <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5"
+                                style={{paddingLeft: '212px'}}>
+                              {sections.map((section, key) => (
+                                  <li className="nav-item me-4" key={`nav${key}`}
+                                      onClick={() => section.ref.current.scrollIntoView({behavior: 'smooth'})}>
+                                      <AnchorLink rel={`anchor-${key + 1}`}
+                                                  className={classnames('nav-link text-white anchor-link', 'text-nowrap')}>
+                                          {section.label}
+                                      </AnchorLink>
+                                  </li>
+                              ))}
+                          </ul>
+                      }
                   </div>
                 </div>
               }

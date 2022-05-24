@@ -74,7 +74,7 @@ const Header = () => {
     return (
       <>
           <header className="mx-md-4 mx-lg-5 pt-0 pt-md-2 pb-md-3" style={{ position: 'relative', zIndex: 10 }}>
-              <div className="navbar navbar-expand-lg border-bottom-0">
+              <div className="navbar navbar-expand-lg border-bottom-0 pb-4">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
                           <StyledLogo>
@@ -106,8 +106,8 @@ const Header = () => {
                                             />
                                         </a>
                                         <div className="dropdown-menu dropdown-menu-end">
-                                            {route.subroutes.map((subroute, key) => (
-                                                <>
+                                            {route.subroutes.map((subroute, innerKey) => (
+                                                <div key={innerKey}>
                                                 {(subroute.auth) ?
                                                     <>
                                                     {wallet.isConnected && subroute.supportedChains.includes(wallet.chainId) &&
@@ -125,7 +125,7 @@ const Header = () => {
                                                         </a>
                                                     </Link>
                                                 }
-                                                </>
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@ const Header = () => {
                           ))}
                       </ul>
                       <ul className="navbar-nav flex-row d-flex d-lg-none">
-                          <li className="me-3">
+                          <li className="me-3 position-relative" style={{top: '6px'}}>
                               <Icon
                                 onClick={() => setShowModalNav(true)}
                                 component={TextLeft}

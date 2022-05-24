@@ -47,8 +47,6 @@ const achievements = [
 export default function AchievementsSection() {
     return (
         <div className="mt-6 mb-0 py-5 ps-md-4 pe-md-4 ps-4">
-
-
             <div className="d-none d-md-block">
                 <div className="container">
                     <div className="mb-5">
@@ -61,8 +59,8 @@ export default function AchievementsSection() {
                     </div>
 
                     <div className="row mb-6">
-                        {achievements.map((achievement) => (
-                            <div className="col-4 mb-4">
+                        {achievements.map((achievement, key) => (
+                            <div key={key} className="col-4 mb-4">
                                 <Card className="h-100">
                                     <div className="card-body h-100">
                                         <div className="d-flex mb-4 align-items-center">
@@ -88,8 +86,8 @@ export default function AchievementsSection() {
                     spaceBetween={20}
                     slidesPerView={1.4}
                 >
-                    {achievements.map((achievement) => (
-                        <SwiperSlide className="align-items-center">
+                    {achievements.map((achievement, key) => (
+                        <SwiperSlide key={key} className="align-items-center">
                             <Card className="mb-0 mb-md-4">
                                 <div className="card-body">
                                     <div className="d-flex mb-4 align-items-center">

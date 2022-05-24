@@ -14,6 +14,12 @@ const AccordionItemBorder = styled.div`
   .accordion-body { background: #16212E; color: #FFF; }
 `
 
+const StyledAccordionHeader = styled(Accordion.Header)`
+  &:hover {
+    button,button:after { color: #E224A2; }
+  }
+`
+
 export default function FaqSection() {
   return (
     <div className="container">
@@ -26,7 +32,7 @@ export default function FaqSection() {
       <Accordion className="mt-5">
         <AccordionItemBorder>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>{t`When can I sign up for the whitelisting?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`When can I sign up for the whitelisting?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -40,7 +46,7 @@ export default function FaqSection() {
         </AccordionItemBorder>
         <AccordionItemBorder>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>{t`When does the pre-sale take place?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`When does the pre-sale take place?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -54,7 +60,7 @@ export default function FaqSection() {
         </AccordionItemBorder>
         <AccordionItemBorder>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>{t`When does the Public Sale take place?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`When does the Public Sale take place?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -68,7 +74,7 @@ export default function FaqSection() {
         </AccordionItemBorder>
         <AccordionItemBorder>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>{t`On which blockchain will the NFT be launched?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -82,7 +88,7 @@ export default function FaqSection() {
         </AccordionItemBorder>
         <AccordionItemBorder>
           <Accordion.Item eventKey="4">
-            <Accordion.Header>{t`How much will the NFT cost?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`How much will the NFT cost?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -96,7 +102,7 @@ export default function FaqSection() {
         </AccordionItemBorder>
         <AccordionItemBorder>
           <Accordion.Item eventKey="5">
-            <Accordion.Header>{t`How many NFTs may be purchased per person?`}</Accordion.Header>
+            <StyledAccordionHeader>{t`How many NFTs may be purchased per person?`}</StyledAccordionHeader>
             <Accordion.Body>
               {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
