@@ -11,10 +11,10 @@ import OffCanvas from '@components/organisms/off-canvas'
 import useWallet from '@hooks/use-wallet'
 import { t } from '@lingui/macro'
 import { ArrowBack, ArrowLeft } from '@styled-icons/material-outlined'
-import Header from "@components/organisms/header";
-import {useMediaQuery} from "react-responsive";
-import { Swiper, SwiperSlide } from 'swiper/react'
-import Card from "@components/molecules/card";
+import Header from "@components/organisms/header"
+import {useMediaQuery} from "react-responsive"
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
+import Card from "@components/molecules/card"
 
 const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -70,6 +70,20 @@ export const Wrapper = styled.div<any>`
  `}  
 `
 
+const StyledSwiper = styled(Swiper)`
+   &:after {
+    content: "";
+    background-image: linear-gradient(270deg, #0B1120 3.31%, rgba(255,255,255,0) 100%);
+    bottom: 0;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1.5rem;
+    z-index: 9998;
+   }
+`
+
 export interface NftPageHeaderProps {
     sections: {
         label: string;
@@ -85,6 +99,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
     const wrapperRef = useRef(null)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
     const wallet = useWallet()
+    const swiper = useSwiper()
 
     function scrollHandler() {
         const header = wrapperRef.current
@@ -131,14 +146,14 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                   <div className="container-fluid flex-row-reverse">
                       {isTabletOrMobile ?
                             <>
-                              <Swiper
-                                  spaceBetween={5}
-                                  slidesPerView={3.33}
-                                  className="me-4"
+                              <StyledSwiper
+                                  spaceBetween={10}
+                                  slidesPerView={3.6}
+                                  centerInsufficientSlides
                               >
                                   {sections.map((section, key) => (
                                       <SwiperSlide key={key} className="align-items-center">
-                                          <li className="nav-item me-4" key={`nav${key}`}
+                                          <li className="nav-item" key={`nav${key}`}
                                               onClick={() => section.ref.current.scrollIntoView({behavior: 'smooth'})}>
                                               <AnchorLink rel={`anchor-${key + 1}`}
                                                           className={classnames('nav-link text-white anchor-link', 'text-nowrap')}>
@@ -147,10 +162,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                                           </li>
                                       </SwiperSlide>
                                   ))}
-                              </Swiper>
-                              <div className="position-absolute" style={{right: '15px'}}>
-                                  <Icon color="#FFFFFF" component={ArrowRight} size={18} />
-                              </div>
+                              </StyledSwiper>
                             </>
                           : <ul className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5"
                                 style={{paddingLeft: '212px'}}>
