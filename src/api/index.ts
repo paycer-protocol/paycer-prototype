@@ -43,16 +43,16 @@ export default {
     }
     return axios.get(url)
   },
-  joinNftWhitelist: async(email: string, walletAddress: string, ref: string) => {
+  joinNftWhitelist: async(email: string, /*walletAddress: string,*/ ref: string) => {
     try {
       const result = await axios.post<{ status: 'success' }>('https://api.paycer.io/v1/nft/whitelist', {
         email,
-        walletAddress,
+        //walletAddress,
         ref,
       });
       return result.data.status;
     } catch (err) {
-      const error = err as AxiosError<{ status: 'noSpotsAvailable' | 'emailAlreadyUsed' | 'walletAlreadyUsed'}>
+      const error = err as AxiosError<{ status: 'noSpotsAvailable' | 'emailAlreadyUsed' /*| 'walletAlreadyUsed'*/}>
       if (!error.response) return 'error';
       return error.response.data.status;
     }

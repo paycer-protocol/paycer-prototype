@@ -23,16 +23,16 @@ const schema = Yup.object({
 });
 
 export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
-  const { address } = useWallet();
+  //const { address } = useWallet();
 
-  const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'walletAlreadyUsed' | 'error' | undefined>(undefined);
+  const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'error' | undefined>(undefined);
 
   const onSubmit = useCallback(async ({ email }: FormValues) => {
-    const result = await api.joinNftWhitelist(email, address, 'landingPage');
+    const result = await api.joinNftWhitelist(email,'landingPage');
     setStatus(result);
-  }, [address]);
+  }, []);
 
-  if (!address) return null;
+  //if (!address) return null;
 
   return (
     <Modal centered show={props.show} onHide={props.onHide}>
@@ -64,7 +64,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                       <Input label={t`Email address`} name="email" />
                       { status == 'noSpotsAvailable' && <Alert className="mt-4" variant="danger">{t`There are no more spots left on the whitelist.`}</Alert> }
                       { status == 'emailAlreadyUsed' && <Alert className="mt-4" variant="danger">{t`This email is already on the whitelist.`}</Alert> }
-                      { status == 'walletAlreadyUsed' && <Alert className="mt-4" variant="danger">{t`This wallet is already on the whitelist.`}</Alert> }
+
                       { status == 'error' && <Alert className="mt-4" variant="danger">{t`Something went wrong.`}</Alert> }
                       <div className="mt-4" onClick={submitForm}>
                         <GradientButton disabled={isSubmitting} className="w-100">

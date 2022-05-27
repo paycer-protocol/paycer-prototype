@@ -145,6 +145,7 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
   );
 }
 
+
 function useWhitelistState() {
   const { address: walletAddress } = useWallet()
   const [whitelistState, setWhitelistState] = useState<undefined | {
@@ -176,13 +177,6 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
   const publicSaleStarted = publicSaleStartsIn <= 0
 
-  const { isConnected } = useWallet()
-  const whitelistState = useWhitelistState();
-  const presaleAlloc = whitelistState?.data?.alloc;
-  const presaleMerkleProof = whitelistState?.data?.merkle_proof;
-
-  const notOnWhitelistDuringPresale = !publicSaleStarted && (whitelistState === undefined || whitelistState.status === 'notWhitelisted');
-
   const [showWhitelistModal, setShowWhitelistModal] = useState(false)
   const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
 
@@ -191,7 +185,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
   return (
     <Background className="px-4 p-md-0">
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
-      <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} alloc={presaleAlloc} merkleProof={presaleMerkleProof} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
+
 
       <div className="position-relative mx-auto px-4 py-md-6" style={{ maxWidth: '55rem' }}>
 
@@ -202,7 +196,9 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
           <div className="row mt-5">
             <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
             <div className="col-lg-6">
-              {
+
+              {/*
+                    {
                 presaleStarted
                   ? <AmountPicker amount={amount} setAmount={setAmount} />
                   : <Countdown timeLeft={presaleStartsIn} />
@@ -231,6 +227,13 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                       </button>
                   )
               }
+              */}
+
+              <button onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                {t`JOIN NEWSLETTER`}
+                <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
+              </button>
+
               <div className="mt-4 text-end">
                 <span className="cursor-pointer" onClick={onNeedHelpClicked}>
                   <p className="paragraph-content opacity-50 text-right">
