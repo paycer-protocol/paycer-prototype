@@ -60,7 +60,7 @@ function TechnologyList() {
 
 function AboutText() {
     return (
-        <div className="col-md">
+        <div className="col-md-6">
             <div className="mb-5">
                 <h5 className="text-uppercase mb-3 text-pink">
                     {t`POSSIBLE FEATURES`}
@@ -84,8 +84,8 @@ function AboutText() {
 
 function Animation() {
     return (
-        <div className="col-md text-center">
-            (Animation)
+        <div className="col-md-6 text-center">
+            <img src="/img/nft/nft-about-image.png" className="w-100"  />
         </div>
     )
 }

@@ -11,13 +11,39 @@ import DiscordSection from "@components/organisms/nft/landing-page/discord-secti
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
 import { t } from "@lingui/macro"
 import SectionHoc from './section-hoc'
-import { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "react-responsive"
+import Icon from "@components/atoms/icon";
+import { ArrowUpward } from "@styled-icons/material"
+import styled from "styled-components"
+
+const ToTopButton = styled.div`
+  position: fixed;
+  background: linear-gradient(86deg, rgba(133, 12, 167, 1) 0%, rgba(66, 1, 220, 1) 100%);
+  color: #FFF;
+  border-radius: 99999px;
+  width: 43px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 43px;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;    
+  bottom: -10px;
+  left: 40px;
+  z-index: 33;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`
 
 const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
 const publicSaleStart = new Date(Date.parse('30 Nov 2022 00:00:00 GMT'));
 
 export default function NftLandingPage() {
+  const [ showScrollTopButton, setShowScrollTopButton ] = useState(false)
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
@@ -40,6 +66,25 @@ export default function NftLandingPage() {
     { label: t`Team`, ref: teamSection },
     { label: t`FAQ`, ref: faqSection },
   ]
+
+  function scrollHandler() {
+
+    if (window.pageYOffset === 0) {
+      setShowScrollTopButton(false)
+    }
+
+    if (window.pageYOffset > 500) {
+      setShowScrollTopButton(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler)
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler)
+    }
+  }, [])
 
   return (
     <NftLandingPageLayout
@@ -82,6 +127,15 @@ export default function NftLandingPage() {
       <div className="mt-6">
         <DiscordSection />
       </div>
+
+      {showScrollTopButton &&
+          <ToTopButton>
+            <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Icon size={16} component={ArrowUpward} />
+            </div>
+          </ToTopButton>
+      }
+
     </NftLandingPageLayout>
   )
 }

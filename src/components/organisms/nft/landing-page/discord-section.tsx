@@ -38,7 +38,7 @@ export default function UspSection() {
                         {t`Be part of our community`}
                     </p>
                     <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/BVbrZh5A4H">
-                        <button type="button" className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5 btn btn-primary">
+                        <button type="button" className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                             {t`JOIN PAYCER DISCORD`}
                             <div className="ms-3">
                                 <Icon size={16} component={ArrowForward} />

@@ -50,6 +50,13 @@ const PrettyLi = styled.li`
   }
 `
 
+const StyledLink = styled.a`
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+`
+
 function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, publicSaleStart: Date }) {
   const { i18n } = useLingui()
   const presaleStartFormatted = i18n.date(presaleStart);
@@ -212,21 +219,25 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
                               {t`It looks like your current wallet is not on the whitelist for the presale.`}
                             </Alert>
                           }
-                          <Button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                          <button disabled={notOnWhitelistDuringPresale} onClick={() => setShowMintingApproveModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                             {t`MINT YOUR NFT`}
                             <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                          </Button>
+                          </button>
                         </>
                       )
-                      : <Button onClick={() => setShowWhitelistModal(true)} className="w-100 bg-white text-neon-blue fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                      : <button onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                         {t`JOIN WHITELIST`}
                         <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
-                      </Button>
+                      </button>
                   )
               }
               <div className="mt-4 text-end">
                 <span className="cursor-pointer" onClick={onNeedHelpClicked}>
-                  <p className="paragraph-content opacity-50 text-center text-md-start"><Link href="#"><u>{t`Need help?`}</u></Link></p>
+                  <p className="paragraph-content opacity-50 text-right">
+                    <StyledLink href="#">
+                      {t`Need help?`}
+                    </StyledLink>
+                  </p>
                 </span>
               </div>
             </div>

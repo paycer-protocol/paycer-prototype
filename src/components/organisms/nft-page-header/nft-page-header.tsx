@@ -138,7 +138,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
     return (
       <>
           <Wrapper isSticky={isSticky} isGoingSticky={isGoingSticky} ref={wrapperRef} className="mb-md-5 w-100">
-              <div style={{transition: 'background-color .23s ease-in'}} className={isSticky ? 'bg-dark-800' : ''}>
+              <div className={isSticky ? 'd-none' : ''}>
                   <Header />
               </div>
               {sections.length > 0 &&
