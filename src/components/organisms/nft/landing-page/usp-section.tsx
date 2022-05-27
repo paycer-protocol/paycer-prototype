@@ -19,47 +19,47 @@ function IconElement({ title, description, icon }: { title: string, description:
 const usps = [
   {
     title: t`Unique 3D Artwork`,
-    description: t`High quality 3D generative art, 10,000 unique NFTs`,
+    description: t`High quality 3D generative artwork with 10,000 unique NFTs`,
     icon: 'artwork',
   },
   {
-    title: t`Utilities`,
-    description: t`Holding the NFT provides platform benefits for DeFi and CeDeFi`,
+    title: t`Utility NFT`,
+    description: t`Holding the NFT provides benefits on Paycer's DeFi and CeDeFi platform`,
     icon: 'utilities',
   },
   {
-    title: t`Get your Unique NFT Credit Card`,
-    description: t`get your NFT printed on your Credit Card`,
+    title: t`Get your unique Paycer NFT Credit Card`,
+    description: t`Get your NFT printed on your Paycer Credit Card`,
     icon: 'creditcard',
   },
   {
     title: t`Ready for Metaverse`,
-    description: t`Our 3D NFT will be implemented in Metaverse Partner Projects`,
+    description: t`Our 3D NFT is ready for the implementation in Metaverse partner projects`,
     icon: 'metaverse',
   },
   {
     title: t`Doxxed Team`,
-    description: t`public team and company based in Germany`,
+    description: t`Public team of professionals and Paycer company based in Germany`,
     icon: 'team',
   },
   {
-    title: t`Interaction with PCR token`,
-    description: t`Paycer has is own DeFi utility token PCR that interacts with the NFT`,
+    title: t`PCR Token Interaction`,
+    description: t`Paycer has is own utility token "PCR" that interacts with the NFT`,
     icon: 'pcrtoken',
   },
   {
     title: t`Upgradable NFT`,
-    description: t`Level up your NFT by staking PCR tokens to create an even more valuable NFT`,
+    description: t`Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT`,
     icon: 'upgrade',
   },
   {
     title: t`Breeding`,
-    description: t`Breed with two Paycer NFTs to create a new generation of NFTs by utilizing the PCR token`,
+    description: t`Breed with two Paycer NFTs to create a new NFT generation by utilizing the PCR token`,
     icon: 'breed',
   },
   {
-    title: t`Future Cash Back & Reward Program`,
-    description: t`The NFT adds features to your credit card and account to receive rewards and cash back`,
+    title: t`Cash Back & Rewards`,
+    description: t`Paycer is about to become a Web3 Neo Bank - The NFT will add cash back rewards to your credit card`,
     icon: 'cashback',
   },
 ] as const
@@ -71,7 +71,7 @@ export default function UspSection() {
         <div className="container pt-6">
           <div className="mb-5">
             <h5 className="text-uppercase mb-2 text-pink fw-bold">
-              {t`WHAT WE OFFER`}
+              {t`PAYCER NFT features`}
             </h5>
             <div className="h1 mb-4">
               {t`Your advantages`}

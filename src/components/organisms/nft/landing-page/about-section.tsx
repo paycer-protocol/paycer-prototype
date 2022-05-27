@@ -8,7 +8,7 @@ import React from "react";
 
 const partners = [
     '/img/nft/partner/bigbrain.png',
-    '/img/nft/partner/binance.png',
+    '/img/nft/partner/bloktopia.png',
     '/img/nft/partner/dodo.png',
     '/img/nft/partner/mexc.png',
     '/img/nft/partner/polkaex.png',
@@ -63,7 +63,7 @@ function AboutText() {
         <div className="col-md-6">
             <div className="mb-5">
                 <h5 className="text-uppercase mb-3 text-pink">
-                    {t`POSSIBLE FEATURES`}
+                    {t`NEXT LEVEL NFT`}
                 </h5>
                 <PageHeader.Title>
                     {t`About Paycer NFT`}
@@ -71,12 +71,7 @@ function AboutText() {
             </div>
 
             <p className="mt-4 text-muted paragraph-content">
-                {t`Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`}
+                {t`Paycer's mission is to make web3 accesible for retail clients. Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. The Paycer team is putting a lot of effort into the NFT development to provide the best possible product. With the Paycer NFT you get your unique 3D model that is ready for the Metaverse. The Paycer NFT will also provide utilities on our DeFi and CeDeFi platform. In addition the NFT will be linked to your Paycer credit card to provide cash back rewards and more.`}
             </p>
         </div>
     )

@@ -9,28 +9,28 @@ import 'swiper/css'
 
 const achievements = [
     {
-        title: 'Company in GER registered',
+        title: 'Registered German Company',
         text: 'Paycer is a fully regulated and registered company. With its headquarters in Hamburg, Germany, we are in the best position to ensure our European leadership as CeDeFi champion.'
     },
     {
-        title: 'Token launched (Utility token)',
-        text: 'Our PCR (ERC-20 Polygon) token has been launched successfully and is trading on DEX/CEX. The use cases include loyalty programs, voting rights, staking rewards and platform incentives.'
+        title: 'Utility Token launched (PCR)',
+        text: 'Our regulated PCR (ERC-20 Polygon) utility token has been launched successfully in Jan 2022 and is traded on DEX/CEX. The utilities include: loyalty tiers, voting rights, liquidity mining, burning, staking rewards and more.'
     },
     {
-        title: 'Staking on paycer.finance',
-        text: 'By holding PCR tokens in your wallet, you can earn staking rewards. With different loyalty tiers you can earn up to 24% staking rewards and more benefits for deposit and loan rates.'
+        title: 'Staking on Paycer Finance',
+        text: 'Users can stake PCR to earn staking rewards. With different loyalty tiers you can earn up to 24% staking rewards. PCR staking will also add new utilities for the NFT and governance soon.'
     },
     {
         title: 'DeFi App launched',
-        text: 'Paycers application has successfully launched on paycer.finance. This prototype includes fully functional features like Staking, Vesting, Investments, Swap and PCR Analytics.'
+        text: 'Paycers DeFi application has successfully been launched on paycer.finance. This DApp provides fully functional features like Staking, PCR Vesting, Investments, Swap and PCR Analytics.'
     },
     {
-        title: 'Awesome partnerships',
-        text: 'Paycer has partnered with other exciting projects that are leading in their area of expertise. We have partnered with Bloktopia’s metaverse and will announce a banking partnership as part of our roadmap'
+        title: 'Awesome Partnerships',
+        text: 'Paycer has already partnered with exciting projects that are leading in their area. For example Paycer has partnered with Bloktopia and will announce a banking partnership very soon.'
     },
     {
         title: 'Big and loyal community',
-        text: 'Ever since launching our token PCR on various launchpads and with institutional & private investors we have enjoyed a big growth of our community. Get involved in Telegram, Twitter and Discord.'
+        text: 'Since launching our token PCR on various launchpads and with institutional & private investors we have enjoyed a big growth of our community. Get involved in Telegram, Twitter and Discord or join our next live AMA session.'
     },
     /*
     {
@@ -51,7 +51,7 @@ export default function AchievementsSection() {
                 <div className="container">
                     <div className="mb-5">
                         <h5 className="text-uppercase mb-3 text-pink">
-                            {t`WHAT WE ALREADY DID`}
+                            {t`Paycer's experience`}
                         </h5>
                         <PageHeader.Title>
                             {t`Our achievements`}

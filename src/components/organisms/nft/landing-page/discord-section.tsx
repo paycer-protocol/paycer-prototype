@@ -35,11 +35,11 @@ export default function UspSection() {
                         {t`CHECK OUR DISCORD`}
                     </div>
                     <p className="fw-light" style={{fontSize: '20px'}}>
-                        {t`Be part of our community`}
+                        {t`Be a part of our Paycer Community!`}
                     </p>
                     <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/BVbrZh5A4H">
                         <button type="button" className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                            {t`JOIN PAYCER DISCORD`}
+                            {t`JOIN OUR DISCORD`}
                             <div className="ms-3">
                                 <Icon size={16} component={ArrowForward} />
                             </div>

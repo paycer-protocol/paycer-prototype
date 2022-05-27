@@ -67,95 +67,103 @@ export default function RoadmapSection() {
     <div className="mt-5 py-5" style={{ marginBottom: '10rem' }}>
       <div className="container my-5">
         <h5 className="text-uppercase mb-2 text-pink fw-bold">
-            {t`NFT ROADMAP`}
+            {t`PAYCER NFT ROADMAP`}
         </h5>
         <div className="h1 mb-4">
-            {t`What is coming up next?`}
+            {t`Awesome Milestones to be exited about!`}
         </div>
         <div className="d-flex align-items-center justify-content-center w-100 my-5 py-5" style={{ height: '80rem' }}>
           <div className="position-relative">
             <Image src="/img/nft/timeline.svg" width="254px" height="977px" />
             <div style={{ position: 'absolute', top: '-15px', left: '25px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label={t`Stage 1`} progress={t`30%`} />
+              <StageCircle label={t`Stage 1`} progress={t`Q2/22`} />
             </div>
             <div style={{ position: 'absolute', top: '260px', left: '235px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label={t`Stage 2`} progress={t`60%`} />
+              <StageCircle label={t`Stage 2`} progress={t`Q3/Q4`} />
             </div>
             <div style={{ position: 'absolute', top: '980px', left: '232px', transform: 'translate(-50%, -50%)' }}>
-              <StageCircle label={t`Stage 3`} progress={t`100%`} />
+              <StageCircle label={t`Stage 3`} progress={t`Q4/Q1+`} />
             </div>
             <div style={{ position: 'absolute', top: '-15px', left: '280px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 isActive
-                title={t`Vision & Value`}
+                title={t`Takeoff`}
                 entries={[
                   t`Launch Landingpage`,
                   t`Launch Whitepaper`,
-                  t`Launch Marketing`,
+                  t`Marketing & Grow Community`,
+                  t`Whitelisting Events`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '200px', left: '-180px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title={t`Launching NFT Collections`}
+                title={t`Getting Ready For The Ride`}
                 entries={[
-                  t`Presale`,
-                  t`Public Sale`,
-                  t`Reveal Date`,
-                  t`Upgrade Event`,
+                  t`Launch of Sale Page`,
+                  t`Launch of Reveal Page`,
+                  t`Launch of NFT Detail Page`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', top: '230px', left: '500px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title={t`Ready for Metaverse`}
+                title={t`NFT Sale`}
                 entries={[
-                  t`3D NFT`,
-                  t`Metaverse Partnerships`,
+                  t`Start Presale`,
+                  t`Start Public Sale`,
+                  t`Set Reveal Date`,
                 ]}
               />
             </div>
               <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
                   <RoadmapCard
-                      title={t`Expand NFT Partnerships`}
+                      title={t`Growing The NFT Fam`}
                       entries={[
-                          t`Partnership quests`,
-                          t`Breeding (Breed NFTs using PCR tokens)`,
+                        t`Launch Breeding Feature`,
+                        t`Use PCR to breed the new Generation`,
+                        t`Launch of NFT Marketplace`,
                       ]}
                   />
               </div>
             <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title={t`Upgrade Event`}
-                entries={[
-                  t`Level Up NFT function`,
-                  t`Stacking rewards on Paycer`,
+                title={t`Upgrade Your NFT`}
+                entries={[            
+                  t`Launch of NFT Upgrade Function`,
+                  t`Stake PCR on Paycer Finance to:`,
+                  t`Receive new awesome NFT Utilities`,
+                  t`Receive unique visual Upgrades`,
                 ]}
               />
             </div>
               <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
                   <RoadmapCard
-                      title={t`Credit Cards (Metaverse & real world)`}
+                      title={t`NFT Credit Cards`}
                       entries={[
-                          t`Launch NFT Credit Cards`,
-                          t`Send NFT Credit Cards`,
+                          t`Launch Paycer NFT Credit Cards`,
+                          t`Get your unique NFT Credit Card!`,
+                          t`Ship the NFT Credit Cards`,                         
                       ]}
                   />
               </div>
             <div style={{ position: 'absolute', top: '750px', left: '470px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title={t`Cashback in PCR Tokens`}
+                title={t`Ready for Metaverse`}
                 entries={[
-                  t`Cashback Partnerships`,
+                  t`Early NFT Metaverse demo`,
+                  t`Develop Metaverse Partnerships`,
+                  t`Start to integrate the NFT`,
                 ]}
               />
             </div>
             <div style={{ position: 'absolute', bottom: '-400px', left: '250px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
-                title={t`Marketing Events & Community Boost`}
+                title={t`Cashback & Metaverse`}
                 entries={[
-                  t`Special Items & Marketing Partnerships`,
-                  t`Exclusive airdrops & Voting System`,
+                  t`Special Items & Cashback Partnerships`,
+                  t`Launch NFT Credit Card Cashback Features`,
+                  t`Gamification and level your NFT`,
                   t`Use NFT Credit Card in Metaverse`,
                 ]}
               />
