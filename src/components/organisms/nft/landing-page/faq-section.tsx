@@ -34,13 +34,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="0">
             <StyledAccordionHeader>{t`When can I sign up for the whitelisting?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`We will launch specific campaigns to grant our community and early supporters whitelist spots. Stay tuned, we will announce all the details on our social media.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
@@ -48,13 +42,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="1">
             <StyledAccordionHeader>{t`When does the pre-sale take place?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`The pre-sale is for everyone that has a whitelist spot. The minting for these wallets will be before the public sale. A specific date will be announced, please follow our social media for updates.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
@@ -62,13 +50,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="2">
             <StyledAccordionHeader>{t`When does the Public Sale take place?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`The public sale is open for everyone. Depending how many NFTs are sold in the pre-sale, the remaining batch will be up for grabs. Stay tuned, we will announce all the dates on our social media soon.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
@@ -76,13 +58,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="3">
             <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`Ethereum.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
@@ -90,13 +66,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="4">
             <StyledAccordionHeader>{t`How much will the NFT cost?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`Please follow our announcement channels and social media. We will publicise a mint price ahead of the sale dates.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
@@ -104,13 +74,7 @@ export default function FaqSection() {
           <Accordion.Item eventKey="5">
             <StyledAccordionHeader>{t`How many NFTs may be purchased per person?`}</StyledAccordionHeader>
             <Accordion.Body>
-              {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.`}
+              {t`2.`}
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
