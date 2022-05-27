@@ -55,10 +55,6 @@ export const Wrapper = styled.div<any>`
   align-items: center;
   z-index: 99999;
   
-  @media (max-width: 770px) {
-    height: 85px;
-  }
-
   ${props => props.isGoingSticky && css`
     transform: translateY(-100%);
  `}  

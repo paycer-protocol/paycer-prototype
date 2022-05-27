@@ -193,7 +193,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
       <MintingApproveModal amount={amount} publicSaleStarted={publicSaleStarted} alloc={presaleAlloc} merkleProof={presaleMerkleProof} show={showMintingApproveModal} onHide={() => setShowMintingApproveModal(false)} />
 
-      <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
+      <div className="position-relative mx-auto px-4 py-md-6" style={{ maxWidth: '55rem' }}>
 
         <div className="py-6">
           <h2 className="display-1 mb-3 mb-md-6">
