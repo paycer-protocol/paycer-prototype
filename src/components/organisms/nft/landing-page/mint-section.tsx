@@ -247,7 +247,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
               <div className="mt-4 text-end">
                 <span className="cursor-pointer" onClick={onNeedHelpClicked}>
                   <p className="paragraph-content opacity-50 text-right">
-                    <StyledLink href="#">
+                    <StyledLink onClick={onNeedHelpClicked}>
                       {t`Need help?`}
                     </StyledLink>
                   </p>
