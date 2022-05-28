@@ -30,7 +30,7 @@ const achievements = [
     },
     {
         title: 'Big and loyal community',
-        text: 'Since launching our token PCR on various launchpads and with institutional & private investors we have enjoyed a big growth of our community. Get involved in Telegram, Twitter and Discord or join our next live AMA session.'
+        text: 'Since launching on various launchpads and with institutional & private investors we have enjoyed a big growth of our community. Get involved in Telegram, Twitter and Discord or join our next live AMA session.'
     },
     /*
     {
