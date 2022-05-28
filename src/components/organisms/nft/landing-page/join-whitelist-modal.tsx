@@ -44,7 +44,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
           {
             status === 'success'
               ? <div>
-                  <p>{t`An email has been sent to your address. Click the confirmation link to join the Paycer NFT whitelist.`}</p>
+                  <p>{t`An email has been sent to your address. Click the confirmation link.`}</p>
                   <div className="mt-4" onClick={props.onHide}>
                     <GradientButton className="w-100">
                       {t`Close`}
