@@ -73,19 +73,29 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
         {
           publicSaleStart.getTime() < Date.now() &&
           <p className="paragraph-content opacity-50">
-            {t`Presale ends: {publicSaleStartFormatted}`}
+            {t`Presale ends:`} {publicSaleStartFormatted}
           </p>
         }
       </div>
       : <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
-          <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
-          <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
+          <PrettyLi>{t`Add your email to the newsletter`}</PrettyLi>
+          <PrettyLi>{t`You will be notified with the Whitelisting Date`}</PrettyLi>
+          {/*
+                    <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
+                    <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
           <PrettyLi>{t`Upgrade your NFT by staking PCR`}</PrettyLi>
+
+          */}
+
         </ol>
-        <p className="paragraph-content opacity-50">{t`Presale starts: {presaleStartFormatted}`}</p>
+          {/*
+          {presaleStartFormatted &&
+              <p className="paragraph-content opacity-50">{t`Presale starts:`} {presaleStartFormatted}</p>
+          }
+          */}
       </div>
-  );
+  )
 }
 
 function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amount: number) => void }) {
