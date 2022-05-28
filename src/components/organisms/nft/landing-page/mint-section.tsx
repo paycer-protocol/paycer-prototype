@@ -79,8 +79,8 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
       </div>
       : <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
-          <PrettyLi>{t`Add your email to the newsletter`}</PrettyLi>
-          <PrettyLi>{t`You will be notified with the Whitelisting Date`}</PrettyLi>
+          <PrettyLi>{t`Join the whitelisting waiting list.`}</PrettyLi>
+          <PrettyLi>{t`Get notified when the whitelisting date is fixed.`}</PrettyLi>
           {/*
                     <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
                     <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
