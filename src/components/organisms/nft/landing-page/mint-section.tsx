@@ -201,7 +201,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
         <div className="py-6">
           <h2 className="display-1 mb-3 mb-md-6">
-            {presaleStarted ? t`Mint your Paycer NFT.` : t`Join our NFT whitelist`}
+            {presaleStarted ? t`Mint your Paycer NFT.` : t`NFT whitelist`}
           </h2>
           <div className="row mt-5">
             <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
@@ -240,7 +240,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
               */}
 
               <button onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                {t`JOIN NEWSLETTER`}
+                {t`JOIN WAITING LIST`}
                 <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
               </button>
 

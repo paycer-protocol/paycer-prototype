@@ -38,7 +38,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
     <Modal centered show={props.show} onHide={props.onHide}>
       <>
         <Modal.Header closeButton onHide={props.onHide}>
-          <Modal.Title>{t`Join NFT Whitelist`}</Modal.Title>
+          <Modal.Title>{t`NFT Whitelist`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {
@@ -60,7 +60,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                 >
                   {({ submitForm, isSubmitting }) => (
                     <div>
-                      <p>{t`Enter your email address below to reserve your Paycer NFT.`}</p>
+                      <p>{t`Enter your email address below to join the waitinglist.`}</p>
                       <Input label={t`Email address`} name="email" />
                       { status == 'noSpotsAvailable' && <Alert className="mt-4" variant="danger">{t`There are no more spots left on the whitelist.`}</Alert> }
                       { status == 'emailAlreadyUsed' && <Alert className="mt-4" variant="danger">{t`This email is already on the whitelist.`}</Alert> }
