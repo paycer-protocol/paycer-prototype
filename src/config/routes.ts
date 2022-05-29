@@ -1,7 +1,25 @@
 import { t } from '@lingui/macro'
+import {ChainId} from '@usedapp/core'
 import {supportedChains, supportedStakingChains, supportedVestingChains} from './network'
 
-export const routes = [
+interface SubRoutesInterface {
+  label?: string
+  path: string
+  supportedChains?: ChainId[],
+  auth?: boolean
+  isDropdown?: boolean
+}
+
+interface RoutesInterface {
+  label?: string
+  path: string
+  supportedChains?: ChainId[],
+  auth?: boolean
+  subroutes?: SubRoutesInterface[]
+  isDropdown?: boolean
+}
+
+export const routes:RoutesInterface[] = [
   {
     label: t`Staking`,
     path: '/',

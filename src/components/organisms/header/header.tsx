@@ -95,7 +95,7 @@ const Header = () => {
                           {qualifiedRoutes.map((route, key) => (
                             <li className="nav-item me-4" key={`nav${key}`}>
 
-                                {(route?.isDropdown && !route.path && route.subroutes && routes.subroutes.length) ?
+                                {(route?.isDropdown && !route.path && route.subroutes && route.subroutes.length) ?
                                     <div className="dropdown p-0">
                                         <a href="#" className="nav-link text-nowrap" role="button"
                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -105,7 +105,7 @@ const Header = () => {
                                                 size={20}
                                             />
                                         </a>
-                                        {(route.subroutes && routes.subroutes.length) &&
+                                        {(route.subroutes && route.subroutes.length) &&
                                           <div className="dropdown-menu dropdown-menu-end">
                                               {route.subroutes.map((subroute, innerKey) => (
                                                   <div key={innerKey}>
