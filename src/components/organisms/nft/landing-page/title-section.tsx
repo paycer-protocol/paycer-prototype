@@ -77,7 +77,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
                 {t`Mint your unique Paycer Utility NFT`}
             </h1>
             <span onClick={onMintNowClicked}>
-              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WHITELIST`}</GradientButton>
+              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WHITELIST WAITING LIST`}</GradientButton>
             </span>
           </PageHeader>
         </div>
