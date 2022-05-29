@@ -95,7 +95,7 @@ const Header = () => {
                           {qualifiedRoutes.map((route, key) => (
                             <li className="nav-item me-4" key={`nav${key}`}>
 
-                                {(route.isDropdown && !route.path) ?
+                                {(route?.isDropdown && !route.path) ?
                                     <div className="dropdown p-0">
                                         <a href="#" className="nav-link text-nowrap" role="button"
                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
