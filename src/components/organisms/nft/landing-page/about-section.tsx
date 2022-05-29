@@ -66,14 +66,14 @@ function AboutText() {
                     {t`NEXT LEVEL NFT`}
                 </h5>
                 <PageHeader.Title>
-                    {t`About Paycer NFT`}
+                    {t`What is the Paycer NFT?`}
                 </PageHeader.Title>
             </div>
 
             <p className="mt-4 text-muted paragraph-content">
-                {t`The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique full 3D model that is ready for game implementations and the Metaverse.
-                The Paycer NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with you Paycer credit card in the near future (Pay2Earn).
-                Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level.`}
+                {t`The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.
+                The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).
+                Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!`}
             </p>
         </div>
     )
