@@ -53,6 +53,13 @@ export const routes = [
     path: '',
     supportedChains,
     auth: false,
+  }
+    /*
+  {
+    label: t`NFT`,
+    path: '',
+    supportedChains,
+    auth: false,
     isDropdown: true,
     subroutes: [
       {
@@ -70,6 +77,12 @@ export const routes = [
         path: '/upgrade-nft',
         auth: false
       },
+      {
+        label: t`Reveal`,
+        path: '/nft/reveal',
+        auth: false
+      },
     ],
   }
+     */
 ]
