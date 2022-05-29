@@ -102,13 +102,13 @@ export default function RoadmapSectionMobile() {
 
               <div className="col-3 position-relative ps-5">
                   <div style={{ position: 'absolute', top: '2%', left: '45px', transform: 'translate(-50%, -50%)' }}>
-                      <StageCircle label={t`Stage 1`} progress={t`30%`} />
+                      <StageCircle label={t`Stage 1`} progress={t`Q2`} />
                   </div>
                   <div style={{ position: 'absolute', top: '60%', left: '45px', transform: 'translate(-50%, -50%)' }}>
-                      <StageCircle label={t`Stage 2`} progress={t`60%`} />
+                      <StageCircle label={t`Stage 2`} progress={t`Q3`} />
                   </div>
                   <div style={{ position: 'absolute', top: '100%', left: '45px', transform: 'translate(-50%, -50%)' }}>
-                      <StageCircle label={t`Stage 3`} progress={t`100%`} />
+                      <StageCircle label={t`Stage 3`} progress={t`Q4/Q1`} />
                   </div>
                   <img src="/img/nft/timeline-mobile.svg" className="h-100" />
               </div>
@@ -116,66 +116,77 @@ export default function RoadmapSectionMobile() {
                 <div className="col-9">
                     <RoadmapCard
                         isActive
-                        title={t`Vision & Value`}
-                        entries={[
+                        title={t`Takeoff`}
+                        indicator="right"
+                            entries={[
                             t`Launch Landingpage`,
                             t`Launch Whitepaper`,
-                            t`Launch Marketing`,
-                        ]}
+                            t`Marketing & Grow Community`,
+                            t`Whitelisting Events`,
+                ]}
                     />
                     <RoadmapCard
-                        title={t`Launching NFT Collections`}
+                        title={t`Getting Ready For The Ride`}
                         indicator="left"
                         entries={[
-                            t`Presale`,
-                            t`Public Sale`,
-                            t`Reveal Date`,
-                            t`Upgrade Event`,
+                          t`Launch of Sale Page`,
+                          t`Launch of Reveal Page`,
+                          t`Launch of NFT Detail Page`,
                         ]}
                     />
                     <RoadmapCard
+                        title={t`NFT Sale`}
+                        indicator="right"
+                        entries={[
+                          t`Start Presale`,
+                          t`Start Public Sale`,
+                          t`Set Reveal Date`,
+                        ]}
+                    />
+                    <RoadmapCard
+                        indicator="left"
+                        title={t`Upgrade Your NFT`}
+                        entries={[            
+                          t`Launch of NFT Upgrade Function`,
+                          t`Stake PCR on Paycer Finance to:`,
+                          t`Receive new awesome NFT Utilities`,
+                          t`Receive unique visual Upgrades`,
+                        ]}
+                    />
+                    <RoadmapCard
+                        indicator="right"
+                         title={t`Growing The NFT Fam`}
+                         entries={[
+                           t`Launch Breeding Feature`,
+                           t`Use PCR to breed the new Generation`,
+                           t`Launch of NFT Marketplace`,
+                         ]}
+                    />
+                    <RoadmapCard
+                        indicator="left"
                         title={t`Ready for Metaverse`}
-                        indicator="right"
                         entries={[
-                            t`3D NFT`,
-                            t`Metaverse Partnerships`,
-                        ]}
-                    />
-                    <RoadmapCard
-                        indicator="left"
-                        title={t`Expand NFT Partnerships`}
-                        entries={[
-                            t`Partnership quests`,
-                            t`Breeding (Breed NFTs using PCR tokens)`,
-                        ]}
-                    />
-                    <RoadmapCard
-                        title={t`Upgrade Event`}
-                        entries={[
-                            t`Level Up NFT function`,
-                            t`Stacking rewards on Paycer`,
+                            t`Early NFT Metaverse demo`,
+                            t`Develop Metaverse Partnerships`,
+                            t`Start to integrate the NFT`,
                         ]}
                     />
                     <RoadmapCard
                         indicator="right"
-                        title={t`Credit Cards (Metaverse & real world)`}
+                        title={t`NFT Credit Cards`}
                         entries={[
-                            t`Launch NFT Credit Cards`,
-                            t`Send NFT Credit Cards`,
+                            t`Launch Paycer NFT Credit Cards`,
+                            t`Get your unique NFT Credit Card!`,
+                            t`Ship the NFT Credit Cards`,                         
                         ]}
                     />
                     <RoadmapCard
                         indicator="left"
-                        title={t`Cashback in PCR Tokens`}
+                        title={t`Cashback & Metaverse`}
                         entries={[
-                            t`Cashback Partnerships`,
-                        ]}
-                    />
-                    <RoadmapCard
-                        title={t`Marketing Events & Community Boost`}
-                        entries={[
-                            t`Special Items & Marketing Partnerships`,
-                            t`Exclusive airdrops & Voting System`,
+                            t`Special Items & Cashback Partnerships`,
+                            t`Launch NFT Credit Card Cashback Features`,
+                            t`Gamification and level your NFT`,
                             t`Use NFT Credit Card in Metaverse`,
                         ]}
                     />
