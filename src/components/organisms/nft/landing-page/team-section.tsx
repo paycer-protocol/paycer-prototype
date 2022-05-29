@@ -74,6 +74,12 @@ export default function TeamSection() {
                 <div className="col-md-3 mb-4 mb-5">
                     <TeamMember imgSrc="/img/nft/team/kerim.jpg" name={t`Kerim Yurttas`} jobTitle={t`Head of UI / UX`} />
                 </div>
+                <div className="col-md-3 mb-4 mb-5">
+                    <TeamMember imgSrc="/img/nft/team/daniel.png" name={t`Daniel`} jobTitle={t`DeFi Architect & NFT Developer`} />
+                </div>
+                <div className="col-md-3 mb-4 mb-5">
+                    <TeamMember imgSrc="/img/nft/team/julien.png" name={t`Julien Scholz`} jobTitle={t`3D Backend & Fullstack Developer`} />
+                </div>
             </div>
         </div>
         <div className="mb-5">

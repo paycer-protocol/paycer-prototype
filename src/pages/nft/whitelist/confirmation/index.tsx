@@ -21,7 +21,7 @@ export default function NftWhitelistConfirmationPage() {
       <Layout>
         <div className="p-5 mx-auto text-center" style={{ maxWidth: '20rem' }}>
           <h1>Already confirmed</h1>
-          <p>You already used this link to confirm your spot on the Paycer NFT whitelist.</p>
+          <p>You already used this link to confirm your spot on the Paycer NFT Whitelist.</p>
         </div>
       </Layout>
     )

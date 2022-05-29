@@ -201,7 +201,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
         <div className="py-6">
           <h2 className="display-1 mb-3 mb-md-6">
-            {presaleStarted ? t`Mint your Paycer NFT.` : t`NFT whitelist`}
+            {presaleStarted ? t`Mint your Paycer NFT.` : t`Paycer NFT Waitinglist`}
           </h2>
           <div className="row mt-5">
             <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
@@ -259,11 +259,11 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             width: '40rem',
             height: '100%',
             top: '0',
-            left: '-43rem',
+            left: '-40rem',
             transform: 'scaleX(-1)',
-            opacity: 0.5,
+            opacity: 0.9,
           }}>
-            <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
+            <Image src="/img/nft/horse2.png" layout="fill" objectFit="contain" />
           </div>
         </div>
       </div>

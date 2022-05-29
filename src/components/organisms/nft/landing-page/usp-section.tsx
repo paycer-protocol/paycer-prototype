@@ -43,7 +43,7 @@ const usps = [
     icon: 'team',
   },
   {
-    title: t`PCR Token Interaction`,
+    title: t`PCR NFT Tokenomics`,
     description: t`Paycer has is own utility token "PCR" that interacts with the NFT`,
     icon: 'pcrtoken',
   },
@@ -59,7 +59,7 @@ const usps = [
   },
   {
     title: t`Cash Back & Rewards`,
-    description: t`Paycer is about to become a Web3 Neo Bank - The NFT will add cash back rewards to your credit card`,
+    description: t`Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card`,
     icon: 'cashback',
   },
 ] as const

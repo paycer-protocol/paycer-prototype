@@ -71,7 +71,7 @@ function AboutText() {
             </div>
 
             <p className="mt-4 text-muted paragraph-content">
-                {t`Paycer's mission is to make web3 accesible for retail clients. Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. The Paycer team is putting a lot of effort into the NFT development to provide the best possible product. With the Paycer NFT you get your unique 3D model that is ready for the Metaverse. The Paycer NFT will also provide utilities on our DeFi and CeDeFi platform. In addition the NFT will be linked to your Paycer credit card to provide cash back rewards and more.`}
+                {t`The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique 3D model that is ready for the Metaverse and game integrations. The Paycer NFT will also provide utilities on our DeFi and CeDeFi platform. In addition the NFT will be linked to your Paycer credit card to provide cash back rewards in the near future. Paycer's mission is to make web3 accesible for retail clients. Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022.`}
             </p>
         </div>
     )
@@ -80,7 +80,7 @@ function AboutText() {
 function Animation() {
     return (
         <div className="col-md-6 text-center">
-            <img src="/img/nft/nft-about-image.png" className="w-100"  />
+            <img src="/img/nft/nft-about-image-2.png" className="w-100"  />
         </div>
     )
 }

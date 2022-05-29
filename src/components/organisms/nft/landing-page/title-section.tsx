@@ -68,10 +68,10 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
           <PageHeader>
               <h5 className="text-uppercase mb-2 text-pink fw-bold">
-                  {t`COLLECT`}
+                  {t`NEW COLLECTION`}
               </h5>
               <div className="h1 mb-4">
-                  {t`Paycer Utility NFT`}
+                  {t`Paycer 3D NFT`}
               </div>
             <h1 className="display-1 mb-5">
                 {t`Mint your unique Paycer Utility NFT`}
