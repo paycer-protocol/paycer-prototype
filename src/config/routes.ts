@@ -68,7 +68,7 @@ export const routes:RoutesInterface[] = [
   },
   {
     label: t`NFT`,
-    path: '',
+    path: '/nft',
     supportedChains,
     auth: false,
   }
