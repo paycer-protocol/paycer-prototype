@@ -7,7 +7,6 @@ export interface RevealPanelProps {
 }
 
 const RevealPanel = (props: RevealPanelProps) => {
-    const {children} = props
     const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
     const timeLeft = startTime.getTime() - Date.now()
     const isRevealAble = true
