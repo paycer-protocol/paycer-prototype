@@ -52,19 +52,19 @@ export default function UspSection() {
                 width: '35rem',
                 height: '180%',
                 top: '-45%',
-                left: '-40rem',
+                left: '-43rem',
                 transform: 'scaleX(-1)',
             }}>
-                <Image src="/img/nft/horse2.png" layout="fill" objectFit="contain" />
+                <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
             </div>
                 <div className="position-absolute" style={{
                     width: '35rem',
                     height: '180%',
                     top: '-45%',
-                    right: '-40rem',
+                    right: '-43rem',
                     transform: 'scaleX(1)',
                 }}>
-                    <Image src="/img/nft/horse2.png" layout="fill" objectFit="contain" />
+                    <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
                 </div>
             </div>
         </Background>
