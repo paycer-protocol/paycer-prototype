@@ -7,6 +7,7 @@ import Card from "@components/molecules/card";
 import Icon from "@components/atoms/icon";
 import {ArrowRightCircle} from "@styled-icons/bootstrap";
 import React from "react";
+import {useMediaQuery} from "react-responsive";
 
 const SwiperInner = styled.div`
     transform: skew(-20deg);
@@ -19,8 +20,12 @@ const InnerImageSlide = styled.div`
     background-size: cover;
 `
 
+
+
 export default function SwiperSection() {
 
+const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' })
+const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' })
 
 const items = [
 
@@ -76,16 +81,17 @@ const items = [
 
 ]
 
-
+console.log(isLargeScreen)
   
   return (
       <>
-        <div style={{height: '650px', width: '120vw', overflow: 'hidden'}}>
+        <div style={{height: '650px', width: '100%', overflow: 'hidden'}}>
           <Swiper
               spaceBetween={0}
-              slidesPerView={6.4}
+              slidesPerView={4}
               autoHeight
               loop
+              slidesOffsetBefore={isMidScreen ? 250 : -100}
               autoplay={{
                   delay: 2500,
                   disableOnInteraction: false,
