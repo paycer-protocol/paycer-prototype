@@ -81,21 +81,18 @@ const StyledSwiper = styled(Swiper)`
 `
 
 export interface NftPageHeaderProps {
-    sections: {
+    sections?: {
         label: string;
         ref: MutableRefObject<HTMLDivElement>;
     }[]
 }
 
 const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
-    const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
     const [ isSticky, setIsSticky ] = useState(false)
     const [ isGoingSticky, setIsGoingSticky ] = useState(false)
     const wrapperRef = useRef(null)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const wallet = useWallet()
-    const swiper = useSwiper()
 
     function scrollHandler() {
         const header = wrapperRef.current
@@ -133,11 +130,11 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
 
     return (
       <>
-          <Wrapper isSticky={isSticky} isGoingSticky={isGoingSticky} ref={wrapperRef} className="mb-md-5 w-100">
+          <Wrapper isSticky={isSticky} isGoingSticky={isGoingSticky} ref={wrapperRef} className="w-100">
               <div className={isSticky ? 'd-none' : ''}>
                   <Header />
               </div>
-              {sections.length > 0 &&
+              {sections && sections.length > 0 &&
                 <div style={{transition: 'background-color .23s ease-in', borderBottom: '1px solid #17212d'}} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark d-flex' : 'border-bottom-0 d-none'}`}>
                   <div className="container-fluid flex-row-reverse">
                       {isTabletOrMobile ?

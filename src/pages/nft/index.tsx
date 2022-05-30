@@ -9,6 +9,7 @@ import TeamSection from "@components/organisms/nft/landing-page/team-section"
 import TitleSection from "@components/organisms/nft/landing-page/title-section"
 import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
+import SwiperSection from "@components/organisms/nft/landing-page/swiper-section"
 import { t } from "@lingui/macro"
 import SectionHoc from './section-hoc'
 import React, { useEffect, useRef, useState } from "react"
@@ -118,6 +119,11 @@ export default function NftLandingPage() {
       <SectionHoc anchorRef={roadmapSection} anchorId={5}>
         {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
       </SectionHoc>
+
+      <div className="d-none d-md-block">
+        <SwiperSection />
+      </div>
+
       <SectionHoc anchorRef={teamSection} anchorId={6}>
         <TeamSection />
       </SectionHoc>
