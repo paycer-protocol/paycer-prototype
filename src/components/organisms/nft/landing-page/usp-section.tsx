@@ -19,7 +19,7 @@ function IconElement({ title, description, icon }: { title: string, description:
 const usps = [
   {
     title: t`Unique 3D Artwork`,
-    description: t`High quality 3D generative artwork with 10,000 unique NFTs`,
+    description: t`High quality and true 3D generative artwork with 10,000 unique NFTs`,
     icon: 'artwork',
   },
   {
@@ -29,7 +29,7 @@ const usps = [
   },
   {
     title: t`Get your unique Paycer NFT Credit Card`,
-    description: t`Get your NFT printed on your Paycer Credit Card`,
+    description: t`Get your very own NFT printed on your Paycer Credit Card`,
     icon: 'creditcard',
   },
   {
@@ -58,7 +58,7 @@ const usps = [
     icon: 'breed',
   },
   {
-    title: t`Cash Back & Rewards`,
+    title: t`Cashback & Rewards`,
     description: t`Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card`,
     icon: 'cashback',
   },
