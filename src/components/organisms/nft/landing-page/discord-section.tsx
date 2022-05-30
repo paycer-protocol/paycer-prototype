@@ -11,7 +11,6 @@ const Background = styled.div`
   background: url("/img/nft/icon-section/background.png");
   background-size: cover;
 }
-
 `
 
 export default function UspSection() {

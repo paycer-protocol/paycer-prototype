@@ -117,10 +117,12 @@ export default function NftLandingPage() {
           <AchievementsSection />
       </SectionHoc>
 
+      {/*
       <div className="d-none d-md-block mt-2 mb-7">
         <SwiperSection />
       </div>
-
+      */}
+      
       <SectionHoc anchorRef={roadmapSection} anchorId={5}>
         {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
       </SectionHoc>
