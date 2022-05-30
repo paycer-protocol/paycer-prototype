@@ -103,6 +103,7 @@ const items = [
                             autoplay={{
                                 delay: item.loopDelay,
                                 disableOnInteraction: false,
+                                reverseDirection: innerKey % 2 === 0,
                             }}
                             height={650}
                             speed={400}
