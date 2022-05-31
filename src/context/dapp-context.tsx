@@ -125,7 +125,6 @@ const DappContextProvider = ({ children }) => {
     useEffect(() => {
         fetchPcrBalance()
         fetchDateToBlock()
-        console.log('ssss')
     }, [isAuthenticated, walletAddress, isWeb3Enabled, currentChainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {

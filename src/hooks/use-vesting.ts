@@ -82,8 +82,6 @@ export default function useVesting(type):UseVestingProps {
                     fetchPcrBalance()
                     setWithdrawIsSuccess(true)
                 } catch (error) {
-
-                    console.log(error, 'hs')
                     if (error.code === 'TRANSACTION_REPLACED') {
                         if (error.cancelled) {
                             // The transaction was replaced  :'(
@@ -101,14 +99,9 @@ export default function useVesting(type):UseVestingProps {
                 setContractCallError(new Error('Claim has been aborted.'))
             }
         } catch(error) {
-            console.log(error, 'hohoho')
             setContractCallError(new Error('Deposit failed. Please try again.'))
             setIsLoading(false)
         }
-
-
-
-
     }
 
     useEffect(() => {

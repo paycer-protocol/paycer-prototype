@@ -8,9 +8,6 @@ import { useDapp } from '@context/dapp-context'
 export default function Staking () {
   const { currentChainIsSupportedForStaking } = useDapp()
 
-  console.log('HI')
-  console.log(currentChainIsSupportedForStaking)
-
   if (!currentChainIsSupportedForStaking) {
     location.href = '/portfolio'
 
