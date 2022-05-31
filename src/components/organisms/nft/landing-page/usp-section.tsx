@@ -28,8 +28,8 @@ const usps = [
     icon: 'utilities',
   },
   {
-    title: t`Get your unique Paycer NFT Credit Card`,
-    description: t`Get your very own NFT printed on your Paycer Credit Card`,
+    title: t`Branded NFT Credit Card`,
+    description: t`Get your own branded credit card with your unique NFT to get more benefits.`,
     icon: 'creditcard',
   },
   {
@@ -59,7 +59,7 @@ const usps = [
   },
   {
     title: t`Cashback & Rewards`,
-    description: t`Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card`,
+    description: t`The NFT will add more cashback rewards to your credit card`,
     icon: 'cashback',
   },
 ] as const

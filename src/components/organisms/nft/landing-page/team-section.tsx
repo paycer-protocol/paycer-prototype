@@ -1,15 +1,14 @@
-import PageHeader from "@components/molecules/page-header";
-import {t, Trans} from "@lingui/macro";
+import {t} from "@lingui/macro";
 import Image from "next/image";
 import styled from "styled-components";
 
 const TeamMemberCircle = styled.div`
   position: relative;
-  background: linear-gradient(to right, #FF00B8, #00D1FF);
   width: 10.5rem;
   height: 10.5rem;
   padding: 2px;
-  border-radius: 99999999px;
+  border-radius: 50%;
+  border: 2px solid rgb(226, 36, 162);
 `
 
 const TeamMemberCircleContent = styled.div`

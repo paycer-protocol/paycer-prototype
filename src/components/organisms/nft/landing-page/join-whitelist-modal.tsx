@@ -38,7 +38,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
     <Modal centered show={props.show} onHide={props.onHide}>
       <>
         <Modal.Header closeButton onHide={props.onHide}>
-          <Modal.Title>{t`NFT Whitelist`}</Modal.Title>
+          <Modal.Title>{t`Join Waitinglist`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {
@@ -75,7 +75,7 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                   )}
                 </Form>
           }
-          
+
         </Modal.Body>
       </>
     </Modal>

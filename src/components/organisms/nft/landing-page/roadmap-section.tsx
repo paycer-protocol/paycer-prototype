@@ -110,9 +110,9 @@ export default function RoadmapSection() {
               <RoadmapCard
                 title={t`NFT Sale`}
                 entries={[
-                  t`Start Presale`,
-                  t`Start Public Sale`,
-                  t`Set Reveal Date`,
+                  t`Presale Event`,
+                  t`Public Sale Event`,
+                  t`NFT Reveal Event`,
                 ]}
               />
             </div>
@@ -129,7 +129,7 @@ export default function RoadmapSection() {
             <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Upgrade Your NFT`}
-                entries={[            
+                entries={[
                   t`Launch of NFT Upgrade Function`,
                   t`Stake PCR on Paycer Finance to:`,
                   t`Receive new awesome NFT Utilities`,
@@ -143,7 +143,7 @@ export default function RoadmapSection() {
                       entries={[
                           t`Launch Paycer NFT Credit Cards`,
                           t`Get your unique NFT Credit Card!`,
-                          t`Ship the NFT Credit Cards`,                         
+                          t`Ship the NFT Credit Cards`,
                       ]}
                   />
               </div>

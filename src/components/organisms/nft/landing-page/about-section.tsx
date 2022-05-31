@@ -1,11 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
-import Card from "@components/molecules/card";
-import PageHeader from "@components/molecules/page-header";
-import { t } from "@lingui/macro";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
+import PageHeader from "@components/molecules/page-header"
+import { t } from "@lingui/macro"
 
 const partners = [
   {
@@ -101,22 +97,40 @@ function AboutText() {
     )
 }
 
-function Animation() {
-    return (
-        <div className="col-md-6 text-center">
-            <img src="/img/nft/nft-about-image-2.png" className="w-100"  />
-        </div>
-    )
-}
+
+const AboutWrapper = styled.div`
+  position: relative;
+`
 
 export default function AboutSection() {
     return (
-        <div className="my-5 py-5 container">
+      <div>
+        <AboutWrapper>
+          <img
+            src={`/img/nft/shape_.png`}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: -5,
+              opacity: '50%',
+            }}
+          />
+          <div className="pt-5 container">
             <TechnologyList/>
+          </div>
+          <div className="pb-5 container">
             <div className="row">
-                <AboutText/>
-                <Animation/>
+              <AboutText/>
             </div>
-        </div>
+          </div>
+        </AboutWrapper>
+      </div>
+
     )
 }
