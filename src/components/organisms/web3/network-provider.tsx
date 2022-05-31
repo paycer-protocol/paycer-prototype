@@ -15,7 +15,7 @@ export interface NetworkProviderProps {
 
 const NetworkProvider = (props: NetworkProviderProps) => {
   const { providers = [], show = false, onHide } = props
-  const { isAuthenticated, currentChainId, handleSwitchNetwork } = useDapp()
+  const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>
@@ -28,7 +28,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
           <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
               const provider = providers[chainId]
-              const isActive = isAuthenticated && Number(chainId) === currentChainId
+              const isActive = isAuthenticated && Number(chainId) === currentNetworkId
 
               return (
                   <Button

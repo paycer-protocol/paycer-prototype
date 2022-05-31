@@ -102,6 +102,5 @@ export const infoChartProviders: INetworkProvider = {
 }
 
 export const chainedNetworkProvider = {
-    ...testNetNetworks,
     ...mainNetProviders,
 }

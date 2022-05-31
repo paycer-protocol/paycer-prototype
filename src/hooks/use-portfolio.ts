@@ -19,12 +19,12 @@ interface PortfolioStrategy extends StrategyType {
 
 export default function usePortfolio():UsePortfolioProps {
 
-    const { currentChainId, walletAddress } = useDapp()
+    const { currentNetworkId, walletAddress } = useDapp()
     
     const strategyAdressesOfUsersChainId = []
 
     investmentStrategies.map((strategy) => {
-        strategyAdressesOfUsersChainId.push(strategy.chainAddresses[currentChainId])
+        strategyAdressesOfUsersChainId.push(strategy.chainAddresses[currentNetworkId])
     })
 
     function getBalanceOfAll(tokenAddresses: string[] | undefined): (BigNumber | undefined)[] {

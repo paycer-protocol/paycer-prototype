@@ -23,8 +23,8 @@ const NavHeader = styled.div`
 
 const Footer = () => {
     const { pathname } = useRouter()
-    const { currentChainId } = useDapp()
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
+    const { currentNetworkId } = useDapp()
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId))
 
     return (
       <>

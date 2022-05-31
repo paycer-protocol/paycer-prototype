@@ -32,9 +32,9 @@ interface UseInvestProps {
 }
 
 export default function useInvest(strategy: StrategyType):UseInvestProps {
-    const { currentChainId, walletAddress, currentChainIdBinary, isAuthenticated } = useDapp()
-    const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
-    const tokenContract = new Contract(strategy.input.chainAddresses[currentChainId], ERC20Abi)
+    const { currentNetworkId, walletAddress, currentChainId, isAuthenticated } = useDapp()
+    const strategyAddress = strategy.chainAddresses[currentNetworkId] || strategy.chainAddresses[ChainId.Polygon]
+    const tokenContract = new Contract(strategy.input.chainAddresses[currentNetworkId], ERC20Abi)
     const Web3Api = useMoralisWeb3Api()
     const { setIsWithdrawAble } = useInvestIsWithdrawable(strategy)
 
@@ -116,7 +116,7 @@ export default function useInvest(strategy: StrategyType):UseInvestProps {
         if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
-                    chain: currentChainIdBinary,
+                    chain: currentChainId,
                     owner_address: walletAddress,
                     spender_address: strategyAddress,
                     address: tokenContract.address,

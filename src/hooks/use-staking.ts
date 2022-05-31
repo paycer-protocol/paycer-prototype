@@ -44,10 +44,10 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { walletAddress, currentChainId, currentChainIdBinary, fetchPcrBalance, isAuthenticated } = useDapp()
+    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated } = useDapp()
     const Web3Api = useMoralisWeb3Api()
-    const stakingAddress = StakingContractProvider[currentChainId] || StakingContractProvider[ChainId.Polygon]
-    const paycerTokenConfig = PaycerTokenContractProvider[currentChainId] || PaycerTokenContractProvider[ChainId.Polygon]
+    const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
+    const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
@@ -252,10 +252,10 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchAllowance = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && currentChainId) {
             const fetch = async () => {
                 const options = {
-                    chain: currentChainIdBinary,
+                    chain: currentChainId,
                     owner_address: walletAddress,
                     spender_address: stakingAddress,
                     address: pcrContract.address,
@@ -346,13 +346,13 @@ export default function useStaking():UseStakingProps {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated])
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentChainId])
 
     useEffect(() => {
         fetchRewardRate()
         fetchPendingRewards()
         fetchAllowance()
-    }, [walletAddress, isAuthenticated])
+    }, [walletAddress, isAuthenticated, currentChainId])
 
     // refresh pending rewards UI
     useEffect(() => {
@@ -360,7 +360,7 @@ export default function useStaking():UseStakingProps {
             fetchPendingRewards()
         }, 20000)
         return () => clearInterval(interval)
-    }, [])
+    }, [currentChainId])
 
     useEffect(() => {
         if (withdrawError) {

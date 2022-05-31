@@ -26,11 +26,11 @@ export interface DappContextInterface {
     explorerUrl: string
     activeWallet: string
     currentNetwork: INetworkProvider
-    handleSwitchNetwork: (chainId: string) => Promise<void>
+    handleSwitchNetwork: (provider: any) => Promise<void>
     currentChainIsSupportedForDApp: boolean
     currentChainIsSupportedForStaking: boolean
-    currentChainId: number
-    currentChainIdBinary: string
+    currentNetworkId: number
+    currentChainId: string
     currentNetworkProvider: unknown
     pcrBalance: number
     blockNumber: number
@@ -56,8 +56,8 @@ const contextDefaultValues: DappContextInterface = {
     handleSwitchNetwork: null,
     currentChainIsSupportedForDApp: false,
     currentChainIsSupportedForStaking: false,
-    currentChainId: 0,
-    currentChainIdBinary: '',
+    currentNetworkId: 0,
+    currentChainId: '',
     currentNetworkProvider: null,
     pcrBalance: 0,
     blockNumber: 0,
@@ -109,6 +109,7 @@ const DappContextProvider = ({ children }) => {
     const currentChainIsSupportedForStaking = supportedStakingChains.includes(chain?.networkId)
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const [blockNumber, setBlockNumber] = useState<number>(0)
+    const [currentChainId, setCurrentChainId] = useState<string>(chain?.chainId)
     const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
     const Web3Api = useMoralisWeb3Api()
 
@@ -124,7 +125,8 @@ const DappContextProvider = ({ children }) => {
     useEffect(() => {
         fetchPcrBalance()
         fetchDateToBlock()
-    }, [isAuthenticated, walletAddress, isWeb3Enabled])
+        console.log('ssss')
+    }, [isAuthenticated, walletAddress, isWeb3Enabled, currentChainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
@@ -134,8 +136,9 @@ const DappContextProvider = ({ children }) => {
         await logout()
     }
 
-    const handleSwitchNetwork = async (chainId: string) => {
-        await switchNetwork(chainId)
+    const handleSwitchNetwork = async (provider: any) => {
+        await switchNetwork(provider.chainId)
+        setCurrentChainId(provider.chainId)
     }
 
     const fetchPcrBalance = () => {
@@ -196,8 +199,8 @@ const DappContextProvider = ({ children }) => {
                 handleSwitchNetwork,
                 currentChainIsSupportedForDApp,
                 currentChainIsSupportedForStaking,
-                currentChainId: chain?.networkId,
-                currentChainIdBinary: chain?.chainId,
+                currentNetworkId: chain?.networkId,
+                currentChainId,
                 pcrBalance,
                 fetchPcrBalance,
                 blockNumber

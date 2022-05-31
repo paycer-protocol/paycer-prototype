@@ -27,6 +27,7 @@ interface UseVestingProps {
     contractCallError: Error
     transactionState: TRANSACTION_STATE
     withdrawIsSuccess: boolean
+    resetStatus: () => void
 }
 
 type RecipientsResponse = {
@@ -35,8 +36,8 @@ type RecipientsResponse = {
 }
 
 export default function useVesting(type):UseVestingProps {
-    const { currentChainId, walletAddress, fetchPcrBalance, isAuthenticated } = useDapp()
-    const vestingConfig = VestingContractProvider[currentChainId] ? VestingContractProvider[currentChainId] : VestingContractProvider[ChainId.Polygon]
+    const { currentNetworkId, walletAddress, fetchPcrBalance, isAuthenticated, currentChainId } = useDapp()
+    const vestingConfig = VestingContractProvider[currentNetworkId] ? VestingContractProvider[currentNetworkId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
     const [startTime, setStartTime] = useState<number>(0)
@@ -63,31 +64,51 @@ export default function useVesting(type):UseVestingProps {
     }, [walletAddress, isAuthenticated])
 
     const withdrawVesting = async () => {
-        setIsLoading(true)
-        const withdrawTx = await withdraw({
-            params: vestingWithdrawRequestParams,
-        })
 
         try {
-            //@ts-ignore
-            await withdrawTx.wait()
-            setIsLoading(false)
-            setWithdrawAble(0)
-            fetchPcrBalance()
-            setWithdrawIsSuccess(true)
-        } catch (error) {
-            if (error.code === 'TRANSACTION_REPLACED') {
-                if (error.cancelled) {
-                    // The transaction was replaced  :'(
+            setIsLoading(true)
+            const withdrawTx = await withdraw({
+                params: vestingWithdrawRequestParams,
+            })
+
+            console.log(withdrawTx)
+
+            if (withdrawTx) {
+                try {
+                    //@ts-ignore
+                    await withdrawTx.wait()
                     setIsLoading(false)
-                    setContractCallError(new Error('Claim has been aborted.'))
-                } else {
-                    //  was speeded up
+                    setWithdrawAble(0)
+                    fetchPcrBalance()
                     setWithdrawIsSuccess(true)
-                    setIsLoading(false)
+                } catch (error) {
+
+                    console.log(error, 'hs')
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Claim has been aborted.'))
+                        } else {
+                            //  was speeded up
+                            setWithdrawIsSuccess(true)
+                            setIsLoading(false)
+                        }
+                    }
                 }
+            } else {
+                setIsLoading(false)
+                setContractCallError(new Error('Claim has been aborted.'))
             }
+        } catch(error) {
+            console.log(error, 'hohoho')
+            setContractCallError(new Error('Deposit failed. Please try again.'))
+            setIsLoading(false)
         }
+
+
+
+
     }
 
     useEffect(() => {
@@ -109,7 +130,7 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated])
+    }, [walletAddress, isAuthenticated, currentChainId])
 
     useEffect(() => {
         if (walletAddress && isAuthenticated) {
@@ -130,7 +151,7 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated])
+    }, [walletAddress, isAuthenticated, currentChainId])
 
     useEffect(() => {
         if (walletAddress && isAuthenticated) {
@@ -153,7 +174,7 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated])
+    }, [walletAddress, isAuthenticated, currentChainId])
 
 
     useEffect(() => {
@@ -178,7 +199,14 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated])
+    }, [walletAddress, isAuthenticated, currentChainId])
+
+    const resetStatus = () => {
+        setWithdrawIsSuccess(false)
+        setContractCallError(null)
+        setIsLoading(false)
+        setTransactionState(0)
+    }
 
     return {
         withdrawAble,
@@ -193,6 +221,7 @@ export default function useVesting(type):UseVestingProps {
         setShowFormApproveModal,
         startTime: calculateStartTime(startTime).format('MM/DD/YYYY, h:mm:ss a'),
         endTime: calculateEndTime(startTime, type).format('MM/DD/YYYY, h:mm:ss a'),
-        nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a')
+        nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a'),
+        resetStatus
     }
 }

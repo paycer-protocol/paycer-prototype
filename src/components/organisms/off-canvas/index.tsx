@@ -15,8 +15,8 @@ interface OffCanvasProps {
 
 export default function OffCanvas({show, onHide}: OffCanvasProps) {
   const { pathname } = useRouter()
-  const { isAuthenticated, currentChainId } = useDapp()
-  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId))
+  const { isAuthenticated, currentNetworkId } = useDapp()
+  const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId))
 
   return (
     <Modal show={show} onHide={onHide} vertical>

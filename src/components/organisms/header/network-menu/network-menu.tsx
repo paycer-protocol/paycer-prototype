@@ -23,14 +23,14 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const { isAuthenticated, currentChainId, handleSwitchNetwork } = useDapp()
+    const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
     if (!isAuthenticated) {
         return null
     }
 
-    const activeNetworkLabel = providers[currentChainId]?.chainName
+    const activeNetworkLabel = providers[currentNetworkId]?.chainName
 
     const renderMenu = () => {
         return (
@@ -45,13 +45,13 @@ const NetworkMenu = () => {
                 </div>
                 {Object.keys(providers).map((chainId, index) => {
                     const provider = providers[chainId]
-                    const isActive = isAuthenticated && Number(chainId) === currentChainId
+                    const isActive = isAuthenticated && Number(chainId) === currentNetworkId
                     const isLast = Object.keys(providers).length === index +1
 
                     return (
                         <NetworkItem key={index} as={isActive ? 'div' : 'a'} title={provider.chainName} className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`} onClick={async () => {
                             if (!isActive) {
-                                await handleSwitchNetwork(provider.chainId)
+                                await handleSwitchNetwork(provider)
                             }
                         }}>
                             <div className="d-flex align-items-center">

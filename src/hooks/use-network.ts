@@ -5,18 +5,18 @@ import {useDapp} from "@context/dapp-context";
 
 export default function useNetwork() {
     const { network } = useBaseNetwork()
-    const { currentChainId } = useDapp()
-    const currentNetwork = mainNetProviders[currentChainId]
+    const { currentNetworkId } = useDapp()
+    const currentNetwork = mainNetProviders[currentNetworkId]
 
-    const supportedChain = supportedChains.includes(currentChainId)
-    const supportedStakingChain = supportedStakingChains.includes(currentChainId)
+    const supportedChain = supportedChains.includes(currentNetworkId)
+    const supportedStakingChain = supportedStakingChains.includes(currentNetworkId)
 
     return {
         ...currentNetwork,
         ...{
             supportedChain,
             supportedStakingChain,
-            chainId: currentChainId,
+            chainId: currentNetworkId,
             provider: network.provider
         }
     }

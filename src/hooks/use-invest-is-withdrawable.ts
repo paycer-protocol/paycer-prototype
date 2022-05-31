@@ -13,8 +13,8 @@ interface UseInvestIsWithdrawAbleProps {
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseInvestIsWithdrawAbleProps {
-    const { currentChainId, walletAddress } = useDapp()
-    const strategyAddress = strategy.chainAddresses[currentChainId] || strategy.chainAddresses[ChainId.Polygon]
+    const { currentNetworkId, walletAddress } = useDapp()
+    const strategyAddress = strategy.chainAddresses[currentNetworkId] || strategy.chainAddresses[ChainId.Polygon]
     const [balanceOf, setBalanceOf] = useState<number>(0)
     const [isWithdrawAble, setIsWithdrawAble] = useState<boolean>(false)
 

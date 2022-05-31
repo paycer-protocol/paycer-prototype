@@ -15,11 +15,11 @@ import { useDapp } from '@context/dapp-context'
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const { currentChainId, isAuthenticated } = useDapp()
+    const { currentNetworkId, isAuthenticated } = useDapp()
 
     const isAuthenticatedRoute = (route) => (route.auth ? isAuthenticated : true)
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentChainId)
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId)
         && isAuthenticatedRoute(route))
 
     return (

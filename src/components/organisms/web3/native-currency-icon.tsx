@@ -16,8 +16,8 @@ export interface NativeCurrencyIconProps {
 }
 
 export default function NativeCurrencyIcon({ size = 20, chainId, ...restProps }: NativeCurrencyIconProps) {
-  const { currentChainId } = useDapp()
-  const iconComponent = NativeCurrencyMap[chainId || currentChainId] || NativeCurrencyMap.default
+  const { currentNetworkId } = useDapp()
+  const iconComponent = NativeCurrencyMap[chainId || currentNetworkId] || NativeCurrencyMap.default
 
   return (
     <Icon
