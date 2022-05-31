@@ -124,7 +124,7 @@ export default function AboutSection() {
           <div className="pt-5 container">
             <TechnologyList/>
           </div>
-          <div className="pb-5 container">
+          <div className="pb-6 container">
             <div className="row">
               <AboutText/>
             </div>
