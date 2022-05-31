@@ -259,11 +259,10 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             width: '40rem',
             height: '100%',
             top: '0',
-            left: '-43rem',
-            transform: 'scaleX(-1)',
+            left: '-20rem',
             opacity: 0.5,
           }}>
-            <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
+            <Image src="/img/nft/nft-mint.png" layout="fill" objectFit="contain" />
           </div>
         </div>
       </div>

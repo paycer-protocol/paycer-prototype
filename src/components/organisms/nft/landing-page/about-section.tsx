@@ -15,14 +15,14 @@ const partners = [
     imagePath: 'img/featured/yahoo-finance.png',
   },
   {
+    name: 'Forbes',
+    url: 'https://www.forbes.com/sites/kenrapoza/2021/12/30/cryptocurrency-investing-predictions-for-2022/',
+    imagePath: 'img/featured/forbes.png',
+  },
+  {
     name: 'Benzinga',
     url: 'https://www.benzinga.com/pressreleases/21/12/g24432433/german-fintech-startup-paycer-to-combine-defi-crypto-with-conventional-banking-services',
     imagePath: 'img/featured/bezinga.png',
-  },
-  {
-    name: 'MarketWatch',
-    url: 'http://www.marketwatch.com/story/german-fintech-startup-paycer-to-combine-defi-crypto-with-conventional-banking-services-2021-12-03',
-    imagePath: 'img/featured/marketwatch.png',
   },
 ]
 
@@ -60,6 +60,14 @@ export const FeatureListWrapper = styled.div`
 function TechnologyList() {
     return (
       <div className="mt-5 mb-6">
+          <div className="mb-5">
+                <h5 className="text-uppercase mb-3 text-pink">
+                    {t`featured on`}
+                </h5>
+                <PageHeader.Title>
+                    {t`Paycer in the Media`}
+                </PageHeader.Title>
+            </div>
         <FeatureListWrapper>
           <ul className="row">
             {partners.map((item, key) => (
@@ -77,6 +85,7 @@ function TechnologyList() {
 function AboutText() {
     return (
         <div className="col-md-6">
+            <div className="mb-2"></div>
             <div className="mb-5">
                 <h5 className="text-uppercase mb-3 text-pink">
                     {t`NEXT LEVEL NFT`}
@@ -107,18 +116,19 @@ export default function AboutSection() {
       <div>
         <AboutWrapper>
           <img
-            src={`/img/nft/shape_.png`}
+            src={`/img/nft/about-nft-3.png`}
             style={{
               position: 'absolute',
-              left: 0,
+              left: 550,
               right: 0,
-              top: 0,
+              top: 265,
               bottom: 0,
-              width: '100%',
-              height: '100%',
+              width: '65%',
+              height: '65%',
               objectFit: 'cover',
               zIndex: -5,
-              opacity: '50%',
+              opacity: '80%',
+              
             }}
           />
           <div className="pt-5 container">
