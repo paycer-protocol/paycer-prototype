@@ -54,14 +54,14 @@ export default function FaqSection() {
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
-        <AccordionItemBorder>
-          <Accordion.Item eventKey="3">
-            <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader>
-            <Accordion.Body>
-              {t`Ethereum.`}
-            </Accordion.Body>
-          </Accordion.Item>
-        </AccordionItemBorder>
+        {/*<AccordionItemBorder>*/}
+        {/*  <Accordion.Item eventKey="3">*/}
+        {/*    <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader>*/}
+        {/*    <Accordion.Body>*/}
+        {/*      {t`Ethereum.`}*/}
+        {/*    </Accordion.Body>*/}
+        {/*  </Accordion.Item>*/}
+        {/*</AccordionItemBorder>*/}
         <AccordionItemBorder>
           <Accordion.Item eventKey="4">
             <StyledAccordionHeader>{t`How much will the NFT cost?`}</StyledAccordionHeader>
