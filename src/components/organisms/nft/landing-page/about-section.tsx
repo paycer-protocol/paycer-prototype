@@ -1,60 +1,80 @@
+import React from "react";
+import styled from 'styled-components'
 import Card from "@components/molecules/card";
 import PageHeader from "@components/molecules/page-header";
 import { t } from "@lingui/macro";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import React from "react";
 
 const partners = [
-    '/img/nft/partner/bigbrain.png',
-    '/img/nft/partner/bloktopia.png',
-    '/img/nft/partner/dodo.png',
-    '/img/nft/partner/mexc.png',
-    '/img/nft/partner/polkaex.png',
-    '/img/nft/partner/polygon.png'
+  {
+    name: 'Cointelegraph',
+    url: 'https://cointelegraph.com/press-releases/paycer-set-to-combine-defi-and-crypto-with-traditional-banking-services',
+    imagePath: 'img/featured/cointelegraph.png',
+  },
+  {
+    name: 'YAHOO Finance Global',
+    url: 'https://finance.yahoo.com/news/german-fintech-startup-paycer-combine-155400031.html',
+    imagePath: 'img/featured/yahoo-finance.png',
+  },
+  {
+    name: 'Benzinga',
+    url: 'https://www.benzinga.com/pressreleases/21/12/g24432433/german-fintech-startup-paycer-to-combine-defi-crypto-with-conventional-banking-services',
+    imagePath: 'img/featured/bezinga.png',
+  },
+  {
+    name: 'MarketWatch',
+    url: 'http://www.marketwatch.com/story/german-fintech-startup-paycer-to-combine-defi-crypto-with-conventional-banking-services-2021-12-03',
+    imagePath: 'img/featured/marketwatch.png',
+  },
 ]
+
+export const FeatureListWrapper = styled.div`
+  margin-top: -8px;
+  .team-card {
+    margin-top: 48px;
+    padding-right: 60px;
+    
+    @media (max-width: 770px) {
+      margin-top: 40px; 
+      padding-right: 13px;
+    }
+    @media (max-width: 768px) and (min-width: 600px) {
+      margin-top: 40px; 
+      padding-right: 13px;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin-bottom: 0;
+    li {
+      list-style: none;filter: grayscale(100%);
+      @media (max-width: 770px) {
+         display: flex;
+         flex-direction: column;
+         align-items: center;  
+      }
+    }
+  }
+`
+
 
 function TechnologyList() {
     return (
-        <div>
-            <div className="d-none d-md-block mb-6">
-                <div className="row">
-                    {partners.map((partner, key) => (
-                        <div key={key} className="col-4 col-md-2 mb-3 mb-md-0">
-                            <Card className="mb-3 mb-md-0">
-                                <div className="d-flex py-4">
-                                    <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
-                                           width="200" height="30"/>
-                                </div>
-                            </Card>
-                        </div>
-                    ))}
-                </div>
-
-            </div>
-
-            <div className="d-md-none mb-6">
-                <Swiper
-                    spaceBetween={20}
-                    slidesPerView={2}
-                    initialSlide={3}
-                    centeredSlides
-                >
-                    {partners.map((partner, key) => (
-                        <SwiperSlide key={key} className="align-items-center">
-                            <Card className="mb-3 mb-md-0">
-                                <div className="d-flex py-4">
-                                    <Image src={partner} alt="Technology" objectFit="contain" objectPosition="center center"
-                                           width="200" height="30"/>
-                                </div>
-                            </Card>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-
-        </div>
+      <div className="mt-5 mb-6">
+        <FeatureListWrapper>
+          <ul className="row">
+            {partners.map((item, key) => (
+              <a href={item.url} target="_blank" key={key} className="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <li style={{height: '80px', margin: '0 45px', background: `center / 100% no-repeat url(${item.imagePath})`}} >
+                </li>
+              </a>
+            ))}
+          </ul>
+        </FeatureListWrapper>
+      </div>
     )
 }
 
@@ -71,9 +91,11 @@ function AboutText() {
             </div>
 
             <p className="mt-4 text-muted paragraph-content">
-                {t`The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.
-                The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).
-                Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!`}
+                {t`The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.
+                The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card.`}
+                <br />
+                <br />
+                {t`Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!`}
             </p>
         </div>
     )

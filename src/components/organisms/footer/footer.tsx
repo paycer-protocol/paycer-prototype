@@ -141,18 +141,6 @@ const Footer = () => {
                                     {t`Roadmap`}
                                 </a>
                             </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link p-0 pb-4" href="https://webrigade-gmbh.jobs.personio.de">
-                                    {t`Jobs`}
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <Link href="/referral">
-                                    <a className="nav-link p-0 pb-4">
-                                        {t`Referral Program`}
-                                    </a>
-                                </Link>
-                            </li>
                         </ul>
                     </div>
                     <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">

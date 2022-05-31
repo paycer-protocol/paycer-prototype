@@ -71,13 +71,13 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
                   {t`NEW COLLECTION`}
               </h5>
               <div className="h1 mb-4">
-                  {t`Paycer 3D NFT`}
+                  {t`Unique 3D artworks`}
               </div>
             <h1 className="display-1 mb-5">
-                {t`Mint your unique Paycer Utility NFT`}
+                {t`The first utility NFT designed by a CeDeFi platform`}
             </h1>
             <span onClick={onMintNowClicked}>
-              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WHITELIST WAITING LIST`}</GradientButton>
+              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
             </span>
           </PageHeader>
         </div>

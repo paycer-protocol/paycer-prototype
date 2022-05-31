@@ -1,43 +1,10 @@
-import React, {MutableRefObject, useState, useEffect, useRef} from 'react'
-import { useRouter } from 'next/router'
+import React, { MutableRefObject, useState, useEffect, useRef } from 'react'
 import classnames from 'classnames'
 import styled, { css } from 'styled-components'
-import {ArrowRight} from '@styled-icons/bootstrap'
-import Image from '@components/atoms/image'
-import Icon from '@components/atoms/icon'
-import Navbar from '@components/molecules/navbar'
-import WalletMenu from '../header/wallet-menu'
 import OffCanvas from '@components/organisms/off-canvas'
-import useWallet from '@hooks/use-wallet'
-import { t } from '@lingui/macro'
-import { ArrowBack, ArrowLeft } from '@styled-icons/material-outlined'
 import Header from "@components/organisms/header"
 import {useMediaQuery} from "react-responsive"
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
-import Card from "@components/molecules/card"
-
-const StyledBrand = styled(Navbar.Brand)`
-    margin-top: -10px;
-
-    img {
-      max-height: 40px;
-    }
-
-    @media screen and (max-width: 768px) {
-        img {
-          max-height: 26px;
-        }
-    }
-`
-
-const StyledLogo = styled.a`
-    order: 1;
-    @media screen and (max-width: 768px) {
-      position: absolute;
-      top: 17px;
-      left: 15px;
-    }
-`
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 const AnchorLink = styled.a`
    &.anchor--isActive,&:hover {
