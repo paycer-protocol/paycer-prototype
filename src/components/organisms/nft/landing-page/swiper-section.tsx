@@ -13,82 +13,118 @@ const SwiperInner = styled.div`
     transform: skew(-20deg);
 `
 
-const InnerImageSlide = styled.div`
-    height: 650px;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
+const SliderImage = styled.img`
+    transform: skew(20deg);
+    position: relative;
+    left: -30%;
+    @media screen and (min-width: 3000px) {
+       left: -3vw;
+    }
+    @media screen and (min-width: 1200px) and (max-width: 1450px)  {
+      left: -40%;
+    }
+    @media screen and (min-width: 800px) and (max-width: 1100px)  {
+      left: -50%;
+    }
 `
-
-
 
 export default function SwiperSection() {
 
-const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' })
-const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' })
+    const isVeryLargeScreen = useMediaQuery({ query: '(min-width: 2600px)' })
+    const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' })
+    const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' })
+    const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
 
-const items = [
+    const items = [
 
-    {
-        images: [
-            '/img/nft/renderings/1.png',
-            '/img/nft/renderings/2.png',
-        ],
-        loopDelay: 1500
-    },
-    {
-        images: [
-            '/img/nft/renderings/4.png',
-            '/img/nft/renderings/3.png',
-        ],
-        loopDelay: 2500
-    },
-    {
-        images: [
-            '/img/nft/renderings/5.png',
-            '/img/nft/renderings/6.png',
-        ],
-        loopDelay: 3000
-    },
-    {
-        images: [
-            '/img/nft/renderings/7.png',
-            '/img/nft/renderings/8.png',
-        ],
-        loopDelay: 2500
-    },
-    {
-        images: [
-            '/img/nft/renderings/9.png',
-            '/img/nft/renderings/10.png',
-        ],
-        loopDelay: 1500
-    },
-    {
-        images: [
-            '/img/nft/renderings/11.png',
-            '/img/nft/renderings/12.png',
-        ],
-        loopDelay: 2500
-    },
-    {
-        images: [
-            '/img/nft/renderings/13.png',
-            '/img/nft/renderings/14.png',
-        ],
-        loopDelay: 2000
-    },
+        {
+            images: [
+                '/img/nft/slider/blue-side-1.png',
+                '/img/nft/slider/blue-side-2.png'
+            ],
+            loopDelay: 1500
+        },
+        {
+            images: [
+                '/img/nft/slider/green-side-2.png',
+                '/img/nft/slider/green-side-1.png'
+            ],
+            loopDelay: 2500
+        },
+        {
+            images: [
+                '/img/nft/slider/yellow-side-2.png',
+                '/img/nft/slider/yellow-side-1.png'
+            ],
+            loopDelay: 3000
+        },
+        {
+            images: [
+                '/img/nft/slider/pink-side-2.png',
+                '/img/nft/slider/pink-side-1.png'
+            ],
+            loopDelay: 2500
+        },
+        {
+            images: [
+                '/img/nft/slider/purple-side-1.png',
+                '/img/nft/slider/purple-side-2.png'
+            ],
+            loopDelay: 1500
+        },
+        {
+            images: [
+                '/img/nft/slider/white-side-1.png',
+                '/img/nft/slider/white-side-2.png'
+            ],
+            loopDelay: 2500
+        }
+    ]
 
-]
+    const sliderSlidesPerView = () => {
+        if (isMobile) {
+            return 2
+        }
+        if (isMidScreen) {
+            return 4
+        }
+        if (isLargeScreen) {
+            return 6
+        }
+    }
 
-console.log(isLargeScreen)
-  
   return (
       <>
         <div style={{height: '650px', width: '100%', overflow: 'hidden'}}>
           <Swiper
               spaceBetween={0}
-              slidesPerView={4}
+              breakpoints={{
+                  2800: {
+                      slidesPerView: 8,
+                  },
+                  2500: {
+                      slidesPerView: 7,
+                  },
+                  1979: {
+                      slidesPerView: 6,
+                  },
+                  1700: {
+                      slidesPerView: 5,
+                  },
+                  1200: {
+                      slidesPerView: 4,
+                  },
+                  800: {
+                      slidesPerView: 3,
+                  },
+                  400: {
+                      slidesPerView: 2,
+                  },
+
+
+
+
+              }}
               autoHeight
               loop
               slidesOffsetBefore={isMidScreen ? 250 : -100}
@@ -108,8 +144,7 @@ console.log(isLargeScreen)
                             direction="vertical"
                             autoplay={{
                                 delay: item.loopDelay,
-                                disableOnInteraction: false,
-                                reverseDirection: innerKey % 2 === 0,
+                                disableOnInteraction: false
                             }}
                             height={650}
                             speed={400}
@@ -117,7 +152,7 @@ console.log(isLargeScreen)
                         >
                             {item.images.map((img, innerKey) => (
                                 <SwiperSlide key={innerKey}>
-                                    <InnerImageSlide style={{backgroundImage: `url("${img}")`}} />
+                                    <SliderImage width="650" height="650" src={img} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

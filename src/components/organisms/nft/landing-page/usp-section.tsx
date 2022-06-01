@@ -68,7 +68,7 @@ export default function UspSection() {
 
   return (
       <>
-        <div className="container pt-6">
+        <div className="container">
           <div className="mb-5">
             <h5 className="text-uppercase mb-2 text-pink fw-bold">
               {t`PAYCER NFT features`}

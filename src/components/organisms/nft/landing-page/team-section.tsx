@@ -37,7 +37,7 @@ function TeamMember({ name, jobTitle, imgSrc }: { name: string, jobTitle: string
 
 export default function TeamSection() {
   return (
-    <div className="my-5 py-5 container">
+    <div className="container">
         <div className="mb-6">
             <div className="mb-5">
                 <h5 className="text-uppercase mb-2 text-pink fw-bold">

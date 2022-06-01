@@ -96,11 +96,11 @@ export default function NftLandingPage() {
         presaleStarted={presaleStarted}
       />
       <SectionHoc anchorRef={aboutSection} anchorId={1}>
-        <AboutSection />
+          <AboutSection />
       </SectionHoc>
 
       <SectionHoc anchorRef={mintSection} anchorId={2}>
-        <div className="position-relative" style={{zIndex: 1}}>
+        <div className="position-relative mb-7" style={{zIndex: 1}}>
           <MintSection
             onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
             presaleStart={presaleStart}
@@ -109,29 +109,32 @@ export default function NftLandingPage() {
         </div>
       </SectionHoc>
       <SectionHoc anchorRef={uspSection} anchorId={3}>
-        <div className="position-relative" style={{zIndex: 2}}>
+        <div className="position-relative mb-7" style={{zIndex: 2}}>
           <UspSection />
         </div>
       </SectionHoc>
-      <SectionHoc anchorRef={achievementSection} anchorId={4}>
-          <AchievementsSection />
-      </SectionHoc>
-
-      {/*
-      <div className="d-none d-md-block mt-2 mb-7">
+      <div className="mb-7">
         <SwiperSection />
       </div>
-      */}
-      
-      <SectionHoc anchorRef={roadmapSection} anchorId={5}>
-        {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
+      <SectionHoc anchorRef={achievementSection} anchorId={4}>
+        <div className="mb-7">
+          <AchievementsSection />
+        </div>
       </SectionHoc>
-
+      <SectionHoc anchorRef={roadmapSection} anchorId={5}>
+        <div className="mb-8 pb-md-5">
+          {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
+        </div>
+      </SectionHoc>
       <SectionHoc anchorRef={teamSection} anchorId={6}>
-        <TeamSection />
+        <div className="mb-7">
+          <TeamSection />
+        </div>
       </SectionHoc>
       <SectionHoc anchorRef={faqSection} anchorId={7}>
-        <FaqSection />
+        <div className="mb-7">
+          <FaqSection />
+        </div>
       </SectionHoc>
       <div className="mt-6">
         <DiscordSection />

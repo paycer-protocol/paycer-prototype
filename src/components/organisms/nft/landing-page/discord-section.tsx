@@ -18,57 +18,53 @@ export default function UspSection() {
   return (
       <>
         <div className="content-gradient-border" />
-        <Background>
-            <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
-          <div className="container">
-            <div className="d-flex justify-content-center">
-                <div className="text-center">
-                    <div className="mb-4">
-                        <Icon
-                            component={Discord}
-                            size={50}
-                            color="white"
-                        />
-                    </div>
-                    <div className="display-3 mb-3">
-                        {t`CHECK OUR DISCORD`}
-                    </div>
-                    <p className="fw-light" style={{fontSize: '20px'}}>
-                        {t`Be a part of our Paycer Community!`}
-                    </p>
-                    <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/qTTbyZQ6Z8">
-                        <button type="button" className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
-                            {t`JOIN OUR DISCORD`}
-                            <div className="ms-3">
-                                <Icon size={16} component={ArrowForward} />
-                            </div>
-                        </button>
-                    </a>
-                </div>
-            </div>
-          </div>
+        <Background className="position-relative">
             <div className="position-absolute" style={{
                 width: '35rem',
                 height: '180%',
-                top: '-45%',
-                left: '-43rem',
-                transform: 'scaleX(-1)',
+                top: '-148px',
             }}>
-                <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
+                <Image src="/img/nft/paycer-nft-dark 2.png" layout="fill" objectFit="contain" />
             </div>
-                <div className="position-absolute" style={{
-                    width: '35rem',
-                    height: '180%',
-                    top: '-45%',
-                    right: '-43rem',
-                    transform: 'scaleX(1)',
-                }}>
-                    <Image src="/img/nft/horse.png" layout="fill" objectFit="contain" />
-                </div>
+            <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
+                  <div className="container">
+                    <div className="d-flex justify-content-center">
+                        <div className="text-center">
+                            <div className="mb-4">
+                                <Icon
+                                    component={Discord}
+                                    size={50}
+                                    color="white"
+                                />
+                            </div>
+                            <div className="display-3 mb-3">
+                                {t`CHECK OUR DISCORD`}
+                            </div>
+                            <p className="fw-light" style={{fontSize: '20px'}}>
+                                {t`Be a part of our Paycer Community!`}
+                            </p>
+                            <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/qTTbyZQ6Z8">
+                                <button type="button" className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+                                    {t`JOIN OUR DISCORD`}
+                                    <div className="ms-3">
+                                        <Icon size={16} component={ArrowForward} />
+                                    </div>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div className="position-absolute" style={{
+                width: '35rem',
+                height: '180%',
+                top: '-148px',
+                right: '0',
+                transform: 'scaleX(-1)'
+            }}>
+                <Image src="/img/nft/paycer-nft-dark 2.png" layout="fill" objectFit="contain" />
             </div>
         </Background>
-
       </>
-
   )
 }

@@ -72,7 +72,7 @@ function TechnologyList() {
           <ul className="row">
             {partners.map((item, key) => (
               <a href={item.url} target="_blank" key={key} className="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <li style={{height: '80px', margin: '0 45px', background: `center / 100% no-repeat url(${item.imagePath})`}} >
+                <li style={{height: '100px', margin: '0 45px', background: `center / 100% no-repeat url(${item.imagePath})`}} >
                 </li>
               </a>
             ))}

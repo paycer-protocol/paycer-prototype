@@ -46,7 +46,7 @@ const achievements = [
 
 export default function AchievementsSection() {
     return (
-        <div className="mt-6 mb-0 py-5 ps-md-4 pe-md-4 ps-4">
+        <div>
             <div className="d-none d-md-block">
                 <div className="container">
                     <div className="mb-5">
@@ -58,7 +58,7 @@ export default function AchievementsSection() {
                         </PageHeader.Title>
                     </div>
 
-                    <div className="row mb-6">
+                    <div className="row">
                         {achievements.map((achievement, key) => (
                             <div key={key} className="col-4 mb-4">
                                 <Card className="h-100">
@@ -81,7 +81,7 @@ export default function AchievementsSection() {
 
             </div>
 
-            <div className="d-md-none">
+            <div className="d-md-none ms-4">
                 <Swiper
                     spaceBetween={20}
                     slidesPerView={1.4}
