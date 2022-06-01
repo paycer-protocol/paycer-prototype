@@ -19,13 +19,6 @@ export default function UspSection() {
       <>
         <div className="content-gradient-border" />
         <Background className="position-relative">
-            <div className="position-absolute" style={{
-                width: '35rem',
-                height: '180%',
-                top: '-148px',
-            }}>
-                <Image src="/img/nft/paycer-nft-dark 2.png" layout="fill" objectFit="contain" />
-            </div>
             <div className="position-relative mx-auto py-6" style={{ maxWidth: '55rem' }}>
                   <div className="container">
                     <div className="d-flex justify-content-center">
@@ -54,15 +47,6 @@ export default function UspSection() {
                         </div>
                     </div>
                   </div>
-            </div>
-            <div className="position-absolute" style={{
-                width: '35rem',
-                height: '180%',
-                top: '-148px',
-                right: '0',
-                transform: 'scaleX(-1)'
-            }}>
-                <Image src="/img/nft/paycer-nft-dark 2.png" layout="fill" objectFit="contain" />
             </div>
         </Background>
       </>
