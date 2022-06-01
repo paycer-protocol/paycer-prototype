@@ -79,13 +79,13 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
       </div>
       : <div className="col-lg-6 mb-4 mb-md-0">
         <ol className="p-0 mb-5">
-          <PrettyLi>{t`Join the whitelisting waiting list.`}</PrettyLi>
-          <PrettyLi>{t`Get notified when the whitelisting date is fixed.`}</PrettyLi>
+          <PrettyLi>{t`Enter your email address.`}</PrettyLi>
+          <PrettyLi>{t`You will receive a confirmation email.`}</PrettyLi>
+          <PrettyLi>{t`Click on the verification link which is in the email.`}</PrettyLi>
           {/*
-                    <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
-                    <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
+          <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
+          <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
           <PrettyLi>{t`Upgrade your NFT by staking PCR`}</PrettyLi>
-
           */}
 
         </ol>
@@ -201,7 +201,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
 
         <div className="py-6">
           <h2 className="display-1 mb-3 mb-md-6">
-            {presaleStarted ? t`Mint your Paycer NFT.` : t`Paycer NFT Waitinglist`}
+            {presaleStarted ? t`Mint your Paycer NFT.` : t`Join for the waiting list`}
           </h2>
           <div className="row mt-5">
             <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />

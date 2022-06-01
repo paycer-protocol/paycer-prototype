@@ -47,7 +47,7 @@ msgstr "2."
 msgid "36 months"
 msgstr "36 months"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:81
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
 msgid "3D Backend & Fullstack Developer"
 msgstr "3D Backend & Fullstack Developer"
 
@@ -81,7 +81,7 @@ msgstr "<b>Limits:</b>&nbsp;3 NFT per transaction"
 msgid "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
 msgstr "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:87
+#: src/components/organisms/nft/landing-page/team-section.tsx:86
 msgid "ADVISORS"
 msgstr "ADVISORS"
 
@@ -146,7 +146,7 @@ msgstr "Adding Network to Wallet ..."
 #~ msgid "Advisor distribution"
 #~ msgstr "Advisor distribution"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:90
+#: src/components/organisms/nft/landing-page/team-section.tsx:89
 msgid "Advisors helping on Paycer NFT"
 msgstr "Advisors helping on Paycer NFT"
 
@@ -242,7 +242,7 @@ msgstr "Balance:"
 msgid "Balances in connected wallet"
 msgstr "Balances in connected wallet"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:95
+#: src/components/organisms/nft/landing-page/team-section.tsx:94
 msgid "Banking Advisor | former Bank Director and Board Member"
 msgstr "Banking Advisor | former Bank Director and Board Member"
 
@@ -265,6 +265,10 @@ msgstr "Bonus & Availability"
 #: src/components/organisms/vesting/info/index.tsx:29
 msgid "Bonus Percentage"
 msgstr "Bonus Percentage"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:31
+msgid "Branded NFT Credit Card"
+msgstr "Branded NFT Credit Card"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:57
 msgid "Breed with two Paycer NFTs to create a new NFT generation by utilizing the PCR token"
@@ -355,7 +359,7 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:69
+#: src/components/organisms/nft/landing-page/team-section.tsx:68
 msgid "Christoff Berlage"
 msgstr "Christoff Berlage"
 
@@ -412,11 +416,11 @@ msgstr "Claimable PCR Tokens"
 msgid "Close"
 msgstr "Close"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:60
+#: src/components/organisms/nft/landing-page/team-section.tsx:59
 msgid "Co-Founder & CRO"
 msgstr "Co-Founder & CRO"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:63
+#: src/components/organisms/nft/landing-page/team-section.tsx:62
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
@@ -571,7 +575,7 @@ msgstr "Daily rewards"
 msgid "Daily rewards:"
 msgstr "Daily rewards:"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:78
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
 msgid "Daniel"
 msgstr "Daniel"
 
@@ -588,7 +592,7 @@ msgstr "Dark Mode"
 msgid "Date"
 msgstr "Date"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:78
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
 msgid "DeFi Architect & NFT Developer"
 msgstr "DeFi Architect & NFT Developer"
 
@@ -625,7 +629,7 @@ msgstr "Deposit:"
 msgid "Develop Metaverse Partnerships"
 msgstr "Develop Metaverse Partnerships"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:98
+#: src/components/organisms/nft/landing-page/team-section.tsx:97
 msgid "Dias Lonappan"
 msgstr "Dias Lonappan"
 
@@ -736,8 +740,8 @@ msgid "Estimated output:"
 msgstr "Estimated output:"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:61
-msgid "Ethereum."
-msgstr "Ethereum."
+#~ msgid "Ethereum."
+#~ msgstr "Ethereum."
 
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:22
 #~ msgid "Exchangerate"
@@ -792,8 +796,8 @@ msgstr "Fee:"
 msgid "Financial Stats"
 msgstr "Financial Stats"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:54
-#: src/components/organisms/nft/landing-page/team-section.tsx:57
+#: src/components/organisms/nft/landing-page/team-section.tsx:53
+#: src/components/organisms/nft/landing-page/team-section.tsx:56
 msgid "Founder & Managing Director"
 msgstr "Founder & Managing Director"
 
@@ -846,18 +850,22 @@ msgstr "Get notified when the whitelisting date is fixed."
 #~ msgid "Get your Unique NFT Credit Card"
 #~ msgstr "Get your Unique NFT Credit Card"
 
+#: src/components/organisms/nft/landing-page/usp-section.tsx:32
+msgid "Get your own branded credit card with your unique NFT to get more benefits."
+msgstr "Get your own branded credit card with your unique NFT to get more benefits."
+
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:179
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:145
 msgid "Get your unique NFT Credit Card!"
 msgstr "Get your unique NFT Credit Card!"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:31
-msgid "Get your unique Paycer NFT Credit Card"
-msgstr "Get your unique Paycer NFT Credit Card"
+#~ msgid "Get your unique Paycer NFT Credit Card"
+#~ msgstr "Get your unique Paycer NFT Credit Card"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:32
-msgid "Get your very own NFT printed on your Paycer Credit Card"
-msgstr "Get your very own NFT printed on your Paycer Credit Card"
+#~ msgid "Get your very own NFT printed on your Paycer Credit Card"
+#~ msgstr "Get your very own NFT printed on your Paycer Credit Card"
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:129
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:101
@@ -869,11 +877,11 @@ msgstr "Getting Ready For The Ride"
 msgid "Growing The NFT Fam"
 msgstr "Growing The NFT Fam"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:69
+#: src/components/organisms/nft/landing-page/team-section.tsx:68
 msgid "Head of Marketing"
 msgstr "Head of Marketing"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:75
+#: src/components/organisms/nft/landing-page/team-section.tsx:74
 msgid "Head of UI / UX"
 msgstr "Head of UI / UX"
 
@@ -881,11 +889,11 @@ msgstr "Head of UI / UX"
 #~ msgid "Height"
 #~ msgstr "Height"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:60
+#: src/components/organisms/nft/landing-page/team-section.tsx:59
 msgid "Helge Ippensen"
 msgstr "Helge Ippensen"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:95
+#: src/components/organisms/nft/landing-page/team-section.tsx:94
 msgid "Hermann Neunaber"
 msgstr "Hermann Neunaber"
 
@@ -1021,6 +1029,7 @@ msgstr "JOIN OUR DISCORD"
 #~ msgstr "JOIN PAYCER DISCORD"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:243
+#: src/components/organisms/nft/landing-page/title-section.tsx:80
 msgid "JOIN WAITING LIST"
 msgstr "JOIN WAITING LIST"
 
@@ -1030,8 +1039,8 @@ msgstr "JOIN WAITING LIST"
 #~ msgstr "JOIN WHITELIST"
 
 #: src/components/organisms/nft/landing-page/title-section.tsx:80
-msgid "JOIN WHITELIST WAITING LIST"
-msgstr "JOIN WHITELIST WAITING LIST"
+#~ msgid "JOIN WHITELIST WAITING LIST"
+#~ msgstr "JOIN WHITELIST WAITING LIST"
 
 #: src/components/organisms/footer/footer.tsx:146
 #~ msgid "Jobs"
@@ -1040,6 +1049,10 @@ msgstr "JOIN WHITELIST WAITING LIST"
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
 #~ msgid "Join NFT Whitelist"
 #~ msgstr "Join NFT Whitelist"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
+msgid "Join Waitinglist"
+msgstr "Join Waitinglist"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:217
 #~ msgid "Join our NFT whitelist"
@@ -1053,7 +1066,7 @@ msgstr "Join the whitelisting waiting list."
 msgid "Join us on"
 msgstr "Join us on"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:81
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
 msgid "Julien Scholz"
 msgstr "Julien Scholz"
 
@@ -1061,7 +1074,7 @@ msgstr "Julien Scholz"
 #~ msgid "KYC Status"
 #~ msgstr "KYC Status"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:75
+#: src/components/organisms/nft/landing-page/team-section.tsx:74
 msgid "Kerim Yurttas"
 msgstr "Kerim Yurttas"
 
@@ -1254,7 +1267,7 @@ msgstr "Low"
 #~ msgid "Loyalty Tier:"
 #~ msgstr "Loyalty Tier:"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:63
+#: src/components/organisms/nft/landing-page/team-section.tsx:62
 msgid "Lukas Gurschler"
 msgstr "Lukas Gurschler"
 
@@ -1266,7 +1279,7 @@ msgstr "MINT NFT NOW"
 #~ msgid "MINT YOUR NFT"
 #~ msgstr "MINT YOUR NFT"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:72
+#: src/components/organisms/nft/landing-page/team-section.tsx:71
 msgid "Mahsa Doorfard"
 msgstr "Mahsa Doorfard"
 
@@ -1298,7 +1311,7 @@ msgstr "Medium"
 #~ msgid "Metaverse Partnerships"
 #~ msgstr "Metaverse Partnerships"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:66
+#: src/components/organisms/nft/landing-page/team-section.tsx:65
 msgid "Metin Demirdere"
 msgstr "Metin Demirdere"
 
@@ -1347,7 +1360,7 @@ msgstr "My NFTs"
 msgid "NEW COLLECTION"
 msgstr "NEW COLLECTION"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:66
+#: src/components/organisms/nft/landing-page/about-section.tsx:91
 msgid "NEXT LEVEL NFT"
 msgstr "NEXT LEVEL NFT"
 
@@ -1364,14 +1377,19 @@ msgstr "NFT Credit Cards"
 msgid "NFT ROADMAP"
 msgstr "NFT ROADMAP"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:143
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:115
+msgid "NFT Reveal Event"
+msgstr "NFT Reveal Event"
+
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:138
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:111
 msgid "NFT Sale"
 msgstr "NFT Sale"
 
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
-msgid "NFT Whitelist"
-msgstr "NFT Whitelist"
+#~ msgid "NFT Whitelist"
+#~ msgstr "NFT Whitelist"
 
 #: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:37
 msgid "NFT was minted successfully"
@@ -1403,7 +1421,7 @@ msgstr "Network-Switch Pending, please open your Wallet"
 msgid "Next distribution"
 msgstr "Next distribution"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:57
+#: src/components/organisms/nft/landing-page/team-section.tsx:56
 msgid "Nils Gregersen"
 msgstr "Nils Gregersen"
 
@@ -1428,8 +1446,8 @@ msgstr "No available transactions"
 #~ msgstr "OK"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:59
-msgid "On which blockchain will the NFT be launched?"
-msgstr "On which blockchain will the NFT be launched?"
+#~ msgid "On which blockchain will the NFT be launched?"
+#~ msgstr "On which blockchain will the NFT be launched?"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:21
 #~ msgid "Open"
@@ -1469,7 +1487,7 @@ msgstr "PAYCER NFT ROADMAP"
 msgid "PAYCER NFT features"
 msgstr "PAYCER NFT features"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:45
+#: src/components/organisms/nft/landing-page/team-section.tsx:44
 msgid "PAYCER TEAM"
 msgstr "PAYCER TEAM"
 
@@ -1503,7 +1521,7 @@ msgstr "POOL"
 #~ msgid "POSSIBLE FEATURES"
 #~ msgstr "POSSIBLE FEATURES"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:66
+#: src/components/organisms/nft/landing-page/team-section.tsx:65
 msgid "PR & Head of HR"
 msgstr "PR & Head of HR"
 
@@ -1549,9 +1567,17 @@ msgstr "Paycer Utility NFT"
 msgid "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 msgstr "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 
+#: src/components/organisms/nft/landing-page/about-section.tsx:68
+msgid "Paycer in the Media"
+msgstr "Paycer in the Media"
+
 #: src/components/organisms/nft/landing-page/usp-section.tsx:62
-msgid "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
-msgstr "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
+#~ msgid "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
+#~ msgstr "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:103
+msgid "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+msgstr "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 
 #: src/components/organisms/nft/landing-page/achievements-section.tsx:54
 msgid "Paycer's experience"
@@ -1629,6 +1655,11 @@ msgstr "Portfolio"
 #~ msgid "Presale"
 #~ msgstr "Presale"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:141
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
+msgid "Presale Event"
+msgstr "Presale Event"
+
 #: src/components/organisms/nft/landing-page/mint-section.tsx:76
 msgid "Presale ends:"
 msgstr "Presale ends:"
@@ -1663,7 +1694,7 @@ msgstr "Privacy"
 #~ msgid "Private Sale distribution"
 #~ msgstr "Private Sale distribution"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:48
+#: src/components/organisms/nft/landing-page/team-section.tsx:47
 msgid "Professionals working on Paycer NFT"
 msgstr "Professionals working on Paycer NFT"
 
@@ -1671,6 +1702,11 @@ msgstr "Professionals working on Paycer NFT"
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:103
 #~ msgid "Public Sale"
 #~ msgstr "Public Sale"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:142
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:114
+msgid "Public Sale Event"
+msgstr "Public Sale Event"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:20
 #~ msgid "Public Sale distribution"
@@ -1744,7 +1780,7 @@ msgstr "Released Vesting Tokens"
 #~ msgid "Request Submitted"
 #~ msgstr "Request Submitted"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:72
+#: src/components/organisms/nft/landing-page/team-section.tsx:71
 msgid "Researcher & Marketing Manager"
 msgstr "Researcher & Marketing Manager"
 
@@ -1757,7 +1793,7 @@ msgstr "Researcher & Marketing Manager"
 msgid "Rewards"
 msgstr "Rewards"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:54
+#: src/components/organisms/nft/landing-page/team-section.tsx:53
 msgid "Richard Vo"
 msgstr "Richard Vo"
 
@@ -1838,8 +1874,8 @@ msgstr "Service"
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:143
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:115
-msgid "Set Reveal Date"
-msgstr "Set Reveal Date"
+#~ msgid "Set Reveal Date"
+#~ msgstr "Set Reveal Date"
 
 #: src/components/organisms/header/settings-modal.tsx:28
 msgid "Settings"
@@ -1870,7 +1906,7 @@ msgstr "Slippage tollerance"
 msgid "Slippage:"
 msgstr "Slippage:"
 
-#: src/components/organisms/nft/landing-page/team-section.tsx:98
+#: src/components/organisms/nft/landing-page/team-section.tsx:97
 msgid "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 msgstr "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 
@@ -1969,13 +2005,13 @@ msgstr "Staking TVL"
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:141
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
-msgid "Start Presale"
-msgstr "Start Presale"
+#~ msgid "Start Presale"
+#~ msgstr "Start Presale"
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:142
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:114
-msgid "Start Public Sale"
-msgstr "Start Public Sale"
+#~ msgid "Start Public Sale"
+#~ msgstr "Start Public Sale"
 
 #: src/components/organisms/invest/invest-card/index.tsx:85
 #~ msgid "Start invest"
@@ -2073,23 +2109,39 @@ msgstr "Team"
 #~ msgid "The NFT adds features to your credit card and account to receive rewards and cash back"
 #~ msgstr "The NFT adds features to your credit card and account to receive rewards and cash back"
 
+#: src/components/organisms/nft/landing-page/usp-section.tsx:62
+msgid "The NFT will add more cashback rewards to your credit card"
+msgstr "The NFT will add more cashback rewards to your credit card"
+
 #: src/components/organisms/nft/landing-page/title-section.tsx:74
-msgid "The Next Generation Utility NFT"
-msgstr "The Next Generation Utility NFT"
+#~ msgid "The Next Generation Utility NFT"
+#~ msgstr "The Next Generation Utility NFT"
 
 #: src/components/organisms/footer/footer.tsx:42
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 
 #: src/components/organisms/nft/landing-page/about-section.tsx:74
+#~ msgid ""
+#~ "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+#~ "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
+#~ "Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+#~ msgstr ""
+#~ "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+#~ "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
+#~ "Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:99
 msgid ""
-"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
-"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
-"Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
 msgstr ""
-"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
-"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
-"Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:77
+msgid "The first utility NFT designed by a CeDeFi platform"
+msgstr "The first utility NFT designed by a CeDeFi platform"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:45
 msgid "The pre-sale is for everyone that has a whitelist spot. The minting for these wallets will be before the public sale. A specific date will be announced, please follow our social media for updates."
@@ -2274,8 +2326,12 @@ msgid "Unique 3D Artwork"
 msgstr "Unique 3D Artwork"
 
 #: src/components/organisms/nft/landing-page/title-section.tsx:77
-msgid "Unique 3D NFT with cashback rewards on your Paycer credit card"
-msgstr "Unique 3D NFT with cashback rewards on your Paycer credit card"
+#~ msgid "Unique 3D NFT with cashback rewards on your Paycer credit card"
+#~ msgstr "Unique 3D NFT with cashback rewards on your Paycer credit card"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:74
+msgid "Unique 3D artworks"
+msgstr "Unique 3D artworks"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
@@ -2394,7 +2450,7 @@ msgstr "We will launch specific campaigns to grant our community and early suppo
 msgid "What is coming up next?"
 msgstr "What is coming up next?"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:69
+#: src/components/organisms/nft/landing-page/about-section.tsx:94
 msgid "What is the Paycer NFT?"
 msgstr "What is the Paycer NFT?"
 
@@ -2515,6 +2571,10 @@ msgstr "Your advantages"
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:84
 #~ msgid "by"
 #~ msgstr "by"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:65
+msgid "featured on"
+msgstr "featured on"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:32
 #~ msgid "get your NFT printed on your Credit Card"
