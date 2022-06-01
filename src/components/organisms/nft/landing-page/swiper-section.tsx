@@ -16,15 +16,27 @@ const SwiperInner = styled.div`
 const SliderImage = styled.img`
     transform: skew(20deg);
     position: relative;
-    left: -30%;
+    left: -34%;
     @media screen and (min-width: 3000px) {
        left: -3vw;
     }
-    @media screen and (min-width: 1200px) and (max-width: 1450px)  {
+    @media screen and (min-width: 1190px) and (max-width: 1450px)  {
+      left: -35%;
+    }
+    @media screen and (min-width: 401px) and (max-width: 739px)  {
+      left: -55%;
+    }
+    @media screen and (min-width: 734px) and (max-width: 1046px)  {
       left: -40%;
     }
-    @media screen and (min-width: 800px) and (max-width: 1100px)  {
-      left: -50%;
+    @media screen and (min-width: 796px) and (max-width: 900px)  {
+      left: -60%;
+    }
+    @media screen and (min-width: 1635px)  {
+      left: -30%;
+    }
+    @media screen and (min-width: 1660px) and (max-width: 1920px) {
+      left: -25%;
     }
 `
 
@@ -62,6 +74,7 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-2.png',
                 '/img/nft/slider/pink-side-1.png'
             ],
+
             loopDelay: 4500
         },
         {
@@ -107,8 +120,8 @@ export default function SwiperSection() {
                   1979: {
                       slidesPerView: 6,
                   },
-                  1700: {
-                      slidesPerView: 5,
+                  1920: {
+                      slidesPerView: 5.3,
                   },
                   1200: {
                       slidesPerView: 4,
@@ -124,6 +137,7 @@ export default function SwiperSection() {
               loop
               slidesOffsetBefore={isMidScreen ? 250 : -100}
               speed={700}
+              initialSlide={5}
               autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
