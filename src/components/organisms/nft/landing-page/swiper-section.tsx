@@ -62,7 +62,7 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-2.png',
                 '/img/nft/slider/pink-side-1.png'
             ],
-            loopDelay: 2500
+            loopDelay: 4500
         },
         {
             images: [
@@ -119,16 +119,13 @@ export default function SwiperSection() {
                   400: {
                       slidesPerView: 2,
                   },
-
-
-
-
               }}
               autoHeight
               loop
               slidesOffsetBefore={isMidScreen ? 250 : -100}
+              speed={700}
               autoplay={{
-                  delay: 2500,
+                  delay: 4000,
                   disableOnInteraction: false,
               }}
               modules={[Autoplay]}
@@ -146,7 +143,7 @@ export default function SwiperSection() {
                                 disableOnInteraction: false
                             }}
                             height={650}
-                            speed={400}
+                            speed={700}
                             modules={[Autoplay]}
                         >
                             {item.images.map((img, innerKey) => (

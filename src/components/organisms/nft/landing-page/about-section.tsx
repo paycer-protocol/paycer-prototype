@@ -46,11 +46,9 @@ export const FeatureListWrapper = styled.div`
     padding: 0;
     margin-bottom: 0;
     li {
-      list-style: none;filter: grayscale(100%);
-      @media (max-width: 770px) {
-         display: flex;
-         flex-direction: column;
-         align-items: center;  
+      list-style: none;
+      img {
+        filter: grayscale(100%);
       }
     }
   }
@@ -71,10 +69,11 @@ function TechnologyList() {
         <FeatureListWrapper>
           <ul className="row">
             {partners.map((item, key) => (
-              <a href={item.url} target="_blank" key={key} className="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <li style={{height: '100px', margin: '0 45px', background: `center / 100% no-repeat url(${item.imagePath})`}} >
+                <li className="col-6 col-lg-3 mb-4 d-flex align-items-center">
+                    <a href={item.url} target="_blank" key={key} className="d-flex justify-content-md-center">
+                        <img className="w-75" src={item.imagePath} />
+                    </a>
                 </li>
-              </a>
             ))}
           </ul>
         </FeatureListWrapper>
@@ -84,7 +83,7 @@ function TechnologyList() {
 
 function AboutText() {
     return (
-        <div className="col-md-6">
+        <>
             <div className="mb-2"></div>
             <div className="mb-5">
                 <h5 className="text-uppercase mb-3 text-pink">
@@ -102,7 +101,7 @@ function AboutText() {
                 <br />
                 {t`Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!`}
             </p>
-        </div>
+        </>
     )
 }
 
@@ -111,32 +110,33 @@ const AboutWrapper = styled.div`
   position: relative;
 `
 
+const HorseImage = styled.img`
+    width: 1150px;
+    z-index: -5;
+    opacity: 80%;
+    position: absolute;
+    top: -60px;
+    right: -16vw;
+`
+
 export default function AboutSection() {
     return (
       <div>
         <AboutWrapper>
-          <img
-            src={`/img/nft/about-nft-3.png`}
-            style={{
-              position: 'absolute',
-              left: 550,
-              right: 0,
-              top: 265,
-              bottom: 0,
-              width: '65%',
-              height: '65%',
-              objectFit: 'cover',
-              zIndex: -5,
-              opacity: '80%',
-              
-            }}
-          />
+
           <div className="pt-5 container">
             <TechnologyList/>
           </div>
           <div className="pb-6 container">
             <div className="row">
-              <AboutText/>
+                <div className="col-12 col-lg-6">
+                    <AboutText/>
+                </div>
+                <div className="col-lg-6 d-none d-lg-block position-relative">
+                    <HorseImage
+                        src={`/img/nft/about-nft-3.png`}
+                    />
+                </div>
             </div>
           </div>
         </AboutWrapper>
