@@ -256,10 +256,10 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             </div>
           </div>
           <div className="position-absolute" style={{
-            width: '40rem',
+            width: '45rem',
             height: '100%',
             top: '0',
-            left: '-20rem',
+            left: '-25rem',
             opacity: 0.5,
           }}>
             <Image src="/img/nft/nft-mint.png" layout="fill" objectFit="contain" />

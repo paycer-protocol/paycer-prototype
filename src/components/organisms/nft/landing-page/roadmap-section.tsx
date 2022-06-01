@@ -64,8 +64,8 @@ function RoadmapCard({ title, entries, isActive }: { title: string, entries: str
 
 export default function RoadmapSection() {
   return (
-    <div className="mt-5 py-5" style={{ marginBottom: '10rem' }}>
-      <div className="container my-5">
+    <div>
+      <div className="container">
         <h5 className="text-uppercase mb-2 text-pink fw-bold">
             {t`PAYCER NFT ROADMAP`}
         </h5>
