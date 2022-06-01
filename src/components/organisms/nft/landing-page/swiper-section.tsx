@@ -16,7 +16,7 @@ const SwiperInner = styled.div`
 const SliderImage = styled.img`
     transform: skew(20deg);
     position: relative;
-    left: -30%;
+    left: -34%;
     @media screen and (min-width: 3000px) {
        left: -3vw;
     }
@@ -68,6 +68,7 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-2.png',
                 '/img/nft/slider/pink-side-1.png'
             ],
+
             loopDelay: 4500
         },
         {
@@ -113,8 +114,8 @@ export default function SwiperSection() {
                   1979: {
                       slidesPerView: 6,
                   },
-                  1700: {
-                      slidesPerView: 5,
+                  1920: {
+                      slidesPerView: 5.3,
                   },
                   1200: {
                       slidesPerView: 4,
