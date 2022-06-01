@@ -20,11 +20,17 @@ const SliderImage = styled.img`
     @media screen and (min-width: 3000px) {
        left: -3vw;
     }
-    @media screen and (min-width: 1200px) and (max-width: 1450px)  {
+    @media screen and (min-width: 1190px) and (max-width: 1450px)  {
+      left: -35%;
+    }
+    @media screen and (min-width: 401px) and (max-width: 739px)  {
+      left: -55%;
+    }
+    @media screen and (min-width: 734px) and (max-width: 1046px)  {
       left: -40%;
     }
-    @media screen and (min-width: 800px) and (max-width: 1100px)  {
-      left: -50%;
+    @media screen and (min-width: 796px) and (max-width: 900px)  {
+      left: -60%;
     }
 `
 
@@ -62,7 +68,7 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-2.png',
                 '/img/nft/slider/pink-side-1.png'
             ],
-            loopDelay: 4500
+            loopDelay: 500
         },
         {
             images: [
@@ -124,6 +130,7 @@ export default function SwiperSection() {
               loop
               slidesOffsetBefore={isMidScreen ? 250 : -100}
               speed={700}
+              initialSlide={5}
               autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
