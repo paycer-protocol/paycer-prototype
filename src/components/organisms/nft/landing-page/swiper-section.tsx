@@ -68,7 +68,7 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-2.png',
                 '/img/nft/slider/pink-side-1.png'
             ],
-            loopDelay: 500
+            loopDelay: 4500
         },
         {
             images: [
