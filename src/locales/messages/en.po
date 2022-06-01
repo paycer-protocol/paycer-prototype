@@ -48,8 +48,8 @@ msgid "36 months"
 msgstr "36 months"
 
 #: src/components/organisms/nft/landing-page/team-section.tsx:80
-msgid "3D Backend & Fullstack Developer"
-msgstr "3D Backend & Fullstack Developer"
+#~ msgid "3D Backend & Fullstack Developer"
+#~ msgstr "3D Backend & Fullstack Developer"
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:140
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
@@ -250,13 +250,17 @@ msgstr "Banking Advisor | former Bank Director and Board Member"
 msgid "Basic"
 msgstr "Basic"
 
-#: src/components/organisms/nft/landing-page/discord-section.tsx:37
+#: src/components/organisms/nft/landing-page/discord-section.tsx:44
 msgid "Be a part of our Paycer Community!"
 msgstr "Be a part of our Paycer Community!"
 
 #: src/components/organisms/nft/landing-page/discord-section.tsx:38
 #~ msgid "Be part of our community"
 #~ msgstr "Be part of our community"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
+msgid "Blockchain & SmartContract Developer"
+msgstr "Blockchain & SmartContract Developer"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -295,7 +299,7 @@ msgstr "Breeding"
 #~ msgid "Buy your reserved NFT at launch"
 #~ msgstr "Buy your reserved NFT at launch"
 
-#: src/components/organisms/nft/landing-page/discord-section.tsx:34
+#: src/components/organisms/nft/landing-page/discord-section.tsx:41
 msgid "CHECK OUR DISCORD"
 msgstr "CHECK OUR DISCORD"
 
@@ -411,6 +415,10 @@ msgstr "Claimable PCR Tokens"
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:54
 #~ msgid "Claimable rewards"
 #~ msgstr "Claimable rewards"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:84
+msgid "Click on the verification link which is in the email."
+msgstr "Click on the verification link which is in the email."
 
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:50
 msgid "Close"
@@ -593,8 +601,8 @@ msgid "Date"
 msgstr "Date"
 
 #: src/components/organisms/nft/landing-page/team-section.tsx:77
-msgid "DeFi Architect & NFT Developer"
-msgstr "DeFi Architect & NFT Developer"
+#~ msgid "DeFi Architect & NFT Developer"
+#~ msgstr "DeFi Architect & NFT Developer"
 
 #: src/components/organisms/swap/fields/deadline-minutes.tsx:37
 msgid "Deadline minutes"
@@ -722,6 +730,10 @@ msgstr "Enter your email address below to join the waitinglist."
 #~ msgid "Enter your email address below to reserve your Paycer NFT."
 #~ msgstr "Enter your email address below to reserve your Paycer NFT."
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:82
+msgid "Enter your email address."
+msgstr "Enter your email address."
+
 #: src/pages/invest/create/fields/invest-input.tsx:15
 #~ msgid "Enter your invest amount"
 #~ msgstr "Enter your invest amount"
@@ -817,6 +829,10 @@ msgstr "Founder & Managing Director"
 msgid "From Wallet Address"
 msgstr "From Wallet Address"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
+msgid "Fullstack Developer"
+msgstr "Fullstack Developer"
+
 #: src/components/organisms/nft/landing-page/usp-section.tsx:61
 #~ msgid "Future Cash Back & Reward Program"
 #~ msgstr "Future Cash Back & Reward Program"
@@ -843,8 +859,8 @@ msgid "German"
 msgstr "German"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:83
-msgid "Get notified when the whitelisting date is fixed."
-msgstr "Get notified when the whitelisting date is fixed."
+#~ msgid "Get notified when the whitelisting date is fixed."
+#~ msgstr "Get notified when the whitelisting date is fixed."
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:31
 #~ msgid "Get your Unique NFT Credit Card"
@@ -1020,7 +1036,7 @@ msgstr "Investment ratio"
 #~ msgid "It looks like your current wallet is not on the whitelist for the presale."
 #~ msgstr "It looks like your current wallet is not on the whitelist for the presale."
 
-#: src/components/organisms/nft/landing-page/discord-section.tsx:41
+#: src/components/organisms/nft/landing-page/discord-section.tsx:48
 msgid "JOIN OUR DISCORD"
 msgstr "JOIN OUR DISCORD"
 
@@ -1054,13 +1070,17 @@ msgstr "JOIN WAITING LIST"
 msgid "Join Waitinglist"
 msgstr "Join Waitinglist"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:204
+msgid "Join for the waiting list"
+msgstr "Join for the waiting list"
+
 #: src/components/organisms/nft/landing-page/mint-section.tsx:217
 #~ msgid "Join our NFT whitelist"
 #~ msgstr "Join our NFT whitelist"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:82
-msgid "Join the whitelisting waiting list."
-msgstr "Join the whitelisting waiting list."
+#~ msgid "Join the whitelisting waiting list."
+#~ msgstr "Join the whitelisting waiting list."
 
 #: src/components/organisms/footer/footer.tsx:45
 msgid "Join us on"
@@ -1544,8 +1564,8 @@ msgstr "Partner"
 #~ msgstr "Paycer Financial Stats"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:204
-msgid "Paycer NFT Waitinglist"
-msgstr "Paycer NFT Waitinglist"
+#~ msgid "Paycer NFT Waitinglist"
+#~ msgstr "Paycer NFT Waitinglist"
 
 #: src/components/organisms/kyc-process/info/index.tsx:27
 #~ msgid "Paycer Private is Live"
@@ -2523,6 +2543,10 @@ msgstr "You invest after:"
 #: src/components/organisms/invest/deposit-form/index.tsx:198
 msgid "You will invest:"
 msgstr "You will invest:"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:83
+msgid "You will receive a confirmation email."
+msgstr "You will receive a confirmation email."
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:196
 msgid "You will stake:"

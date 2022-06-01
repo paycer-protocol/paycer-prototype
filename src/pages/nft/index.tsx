@@ -113,9 +113,9 @@ export default function NftLandingPage() {
           <UspSection />
         </div>
       </SectionHoc>
-      <div className="mb-7">
-        <SwiperSection />
-      </div>
+      {/*<div className="mb-7">*/}
+      {/*  <SwiperSection />*/}
+      {/*</div>*/}
       <SectionHoc anchorRef={achievementSection} anchorId={4}>
         <div className="mb-7">
           <AchievementsSection />
