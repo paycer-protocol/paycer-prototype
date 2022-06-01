@@ -32,6 +32,12 @@ const SliderImage = styled.img`
     @media screen and (min-width: 796px) and (max-width: 900px)  {
       left: -60%;
     }
+    @media screen and (min-width: 1635px)  {
+      left: -30%;
+    }
+    @media screen and (min-width: 1660px) and (max-width: 1920px) {
+      left: -25%;
+    }
 `
 
 export default function SwiperSection() {
