@@ -29,7 +29,6 @@ const SliderImage = styled.img`
 `
 
 export default function SwiperSection() {
-
     const isVeryLargeScreen = useMediaQuery({ query: '(min-width: 2600px)' })
     const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' })
     const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' })
@@ -95,7 +94,7 @@ export default function SwiperSection() {
 
   return (
       <>
-        <div style={{height: '650px', width: '100%', overflow: 'hidden'}}>
+        <div style={{height: '650px', width: '100%', overflow: 'hidden', opacity: 0.95}}>
           <Swiper
               spaceBetween={0}
               breakpoints={{
