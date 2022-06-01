@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const StyledTimeline = styled.div`
+export const StyledTimeline = styled.div<any>`
     background: #1B2236;
     border: 1px solid #3B506C;
 
@@ -18,7 +18,7 @@ export const StyledTimeline = styled.div`
 `
 
 
-export const StyledListGroupItem = styled.div`
+export const StyledListGroupItem = styled.div<any>`
   ${props => props.isIndendet && css`
     margin-left: 30px;
   `}

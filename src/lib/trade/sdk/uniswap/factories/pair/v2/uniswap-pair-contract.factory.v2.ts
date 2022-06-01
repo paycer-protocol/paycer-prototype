@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BigNumberish } from 'ethers';
 import { ContractContext as PairContractContext } from '../../../ABI/types/uniswap-pair-v2';
 import { EthersProvider } from '../../../ethers-provider';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EthersProvider } from '../../../ethers-provider';
 import { Token } from '../../token/models/token';
 import { UniswapPairSettings } from './uniswap-pair-settings';

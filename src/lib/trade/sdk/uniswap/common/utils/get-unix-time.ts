@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Get unix timestamp
  * @param date The date

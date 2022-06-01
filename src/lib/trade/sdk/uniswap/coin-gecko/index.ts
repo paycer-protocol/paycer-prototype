@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fetch from 'node-fetch';
 import { removeEthFromContractAddress } from '../common/tokens';
 import { deepClone } from '../common/utils/deep-clone';
@@ -48,7 +49,7 @@ export class CoinGecko {
       for (const [key, value] of Object.entries(response)) {
         for (let i = 0; i < contractAddresses.length; i++) {
           const mappedKey = getAddress(key);
-          // @ts-ignore
+          // @ts-nocheck
           coinGeckoResponse[mappedKey] = Number(value['usd']);
         }
       }

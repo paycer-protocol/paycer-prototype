@@ -4,12 +4,13 @@ import PageHeader from '@components/molecules/page-header'
 import Swap from '@components/organisms/swap'
 import SupplyLiquidity from '@components/organisms/supply-liquidity'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
+import Layout from '@components/organisms/layout'
 
 export default function Trade() {
     const [supplyTabActive, setSupplyTabActive] = useState(false)
 
     return (
-        <>
+        <Layout>
             <div className="container mt-3">
                 <PageHeader>
                     <div className="row align-items-center">
@@ -39,6 +40,6 @@ export default function Trade() {
                 </div>
             </div>
             <PortalBlockNumber/>
-        </>
+        </Layout>
     )
 }

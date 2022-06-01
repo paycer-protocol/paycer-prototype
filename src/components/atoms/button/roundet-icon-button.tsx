@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Icon from "@components/atoms/icon";
 import {StyledIcon} from "@styled-icons/styled-icon";
 
-export const IconButton = styled.div`
+export const IconButton = styled.div<any>`
    ${props => props.isActive && css`
     background: linear-gradient(86deg,rgba(133,12,167,1) 0%,rgba(66,1,220,1) 100%)!important;
   `}
@@ -30,16 +30,22 @@ export const Label = styled.div`
 
 export interface RoundetIconButtonProps {
     icon: StyledIcon
+    activeIcon?: StyledIcon
     label?: string
     toggleActive?: boolean
+    onClick?: () => void
+    bgClass?: string
 }
 
 const RoundetIconButton = (props: RoundetIconButtonProps) => {
 
     const {
         icon,
+        activeIcon,
         label,
-        toggleActive
+        toggleActive,
+        onClick,
+        bgClass = 'bg-dark'
     } = props
 
     const buttonRef = useRef(null)
@@ -57,8 +63,8 @@ const RoundetIconButton = (props: RoundetIconButtonProps) => {
     }, [])
 
     return (
-        <IconButton ref={buttonRef} onClick={toggleActive ? () => setIsActive((!isActive)) : null} className="card mb-0 bg-dark" isActive={isActive}>
-            <Icon component={icon} size={20} />
+        <IconButton ref={buttonRef} onClick={toggleActive ? () => setIsActive((!isActive)) : onClick} className={`card mb-0 ${bgClass}`} isActive={isActive}>
+            <Icon component={isActive && activeIcon ? activeIcon : icon} size={20} />
             {label &&
                 <Label>{label}</Label>
             }

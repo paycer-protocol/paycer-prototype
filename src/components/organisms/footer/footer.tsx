@@ -5,7 +5,7 @@ import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord} from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
-import { t, Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import {useRouter} from 'next/router'
 import useWallet from '@hooks/use-wallet'
 import {routes} from '@config/routes'
@@ -28,7 +28,7 @@ const Footer = () => {
 
     return (
       <>
-          <footer className="border-top mt-8">
+          <footer className="border-top">
             <div className="container pt-6 pb-4">
                 <div className="row">
                     <div className="col-md-6 mb-6 mb-lg-0">
@@ -39,10 +39,10 @@ const Footer = () => {
                         </Link>
                         <div className="row">
                             <small className="text-muted col-lg-8 mt-4 text-center text-lg-start" style={{lineHeight: '25px'}}>
-                                <Trans>The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain.</Trans>
+                                {t`The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain.`}
                                 <br />
                                 <span className="text-light px-2 fw-bold">
-                                    <Trans>Join us on</Trans>
+                                    {t`Join us on`}
                                 </span>
                                 <Icon
                                   component={ArrowDown}
@@ -138,41 +138,29 @@ const Footer = () => {
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link p-0 pb-4" href="https://www.paycer.io/#anchor-RoadMap">
-                                    <Trans>Roadmap</Trans>
+                                    {t`Roadmap`}
                                 </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link p-0 pb-4" href="https://webrigade-gmbh.jobs.personio.de">
-                                    <Trans>Jobs</Trans>
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <Link href="/referral">
-                                    <a className="nav-link p-0 pb-4">
-                                        <Trans>Referral Program</Trans>
-                                    </a>
-                                </Link>
                             </li>
                         </ul>
                     </div>
                     <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
                         <NavHeader className="mb-4">
-                            <Trans>Service</Trans>
+                            {t`Service`}
                         </NavHeader>
                         <ul className="nav nav-tabs d-block border-0">
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/">
-                                    <Trans>Docs</Trans>
+                                    {t`Docs`}
                                 </a>
                             </li>
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.gitbook.io/paycer/documentation/whitepaper">
-                                    <Trans>Whitepaper</Trans>
+                                    {t`Whitepaper`}
                                 </a>
                             </li>
                             <li className="nav-item m-0">
                                 <a target="_blank" className="nav-link pt-0 pb-4" href="https://paycer.io/paycer_litepaper.pdf?t=1635467490116">
-                                    <Trans>Lightpaper</Trans>
+                                    {t`Lightpaper`}
                                 </a>
                             </li>
                         </ul>
@@ -182,22 +170,22 @@ const Footer = () => {
                     <ul className="nav nav-tabs border-0 m-0 d-flex justify-content-lg-start justify-content-center">
                         <li className="nav-item m-0 me-4">
                             <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://www.paycer.io/imprint">
-                                <Trans>Imprint</Trans>
+                                {t`Imprint`}
                             </a>
                         </li>
                         <li className="nav-item m-0 me-4">
                             <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://www.paycer.io/privacy">
-                                <Trans>Privacy</Trans>
+                                {t`Privacy`}
                             </a>
                         </li>
                         <li className="nav-item m-0 me-4">
                             <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://paycer.gitbook.io/paycer/legal/risk-disclaimer">
-                                <Trans>Risk Disclaimer</Trans>
+                                {t`Risk Disclaimer`}
                             </a>
                         </li>
                         <li className="nav-item m-0">
                             <a target="_blank" className="nav-link pt-0 pb-0" rel="noopener noreferrer" href="https://paycer.gitbook.io/paycer/legal/general-terms-and-conditions">
-                                <Trans>General Terms and Conditions</Trans>
+                                {t`General Terms and Conditions`}
                             </a>
                         </li>
                     </ul>

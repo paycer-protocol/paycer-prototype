@@ -32,11 +32,8 @@ const WalletMenu = () => {
     if (!wallet.isConnected) {
         return (
             <>
-                <Button
-                    className="px-4 text-nowrap p-2 pt-3 pb-3 text-light"
-                    onClick={() => setShowWalletProviderModal(true)}>
-                    <Trans>Connect to a Wallet</Trans>
-                </Button>
+                <RoundetIconButton bgClass="bg-transparent" onClick={() => setShowWalletProviderModal(true)} icon={Wallet} label={t`Connect to a Wallet`} />
+
                 {(showWalletProviderModal &&
                   <WalletProvider
                     providers={connectors}
@@ -72,7 +69,6 @@ const WalletMenu = () => {
                             {t`View your Wallet in Blockchain-Explorer`}
                         </small>
                     </div>
-
                 </a>
 
                 <a onClick={() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Trans, t} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import {toast} from 'react-toastify';
 import useWallet from '@hooks/use-wallet'
 import useNetwork from '@hooks/use-network'
@@ -25,15 +25,15 @@ const NetworkProvider = (props: NetworkProviderProps) => {
       await network.switchNetwork(provider)
     } catch (error) {
       if (error.code === -32002) {
-        toast(<Trans>Network-Switch Pending, please open your Wallet</Trans>)
+        toast(t`Network-Switch Pending, please open your Wallet`)
       }
       if (error.code === 4902) {
-        toast(<Trans>Adding Network to Wallet ...</Trans>)
+        toast(t`Adding Network to Wallet ...`)
         try {
           await network.addNetwork(provider)
         } catch (error) {
           if (error.code === -32002) {
-            toast(<Trans>Previously added network Pending, please open your Wallet</Trans>)
+            toast(t`Previously added network Pending, please open your Wallet`)
           }
         }
       }
@@ -44,7 +44,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
     <Modal size="sm" show={show} onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
-          <Modal.Title><Trans>Switch network</Trans></Modal.Title>
+          <Modal.Title>{t`Switch network`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex flex-column align-items-center">

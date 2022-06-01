@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import Icon from '@components/atoms/icon'
 import { LanguageChoice } from '@components/molecules/languages/language-choice'
@@ -25,12 +25,12 @@ export const SettingsModal = (props) => {
       <Modal show={show} onHide={() => setShow(false)}>
         <>
           <Modal.Header closeButton onHide={() => setShow(false)}>
-            <Modal.Title><Trans>Settings</Trans></Modal.Title>
+            <Modal.Title>{t`Settings`}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="mb-5">
               <h4 className="mb-3 text-muted">
-                <Trans>Language</Trans>
+                {t`Language`}
               </h4>
               <LanguageChoice />
             </div>

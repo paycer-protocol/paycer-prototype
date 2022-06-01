@@ -1,5 +1,6 @@
 import PageHeader from '@components/molecules/page-header'
-import { Trans } from '@lingui/macro'
+import Layout from '@components/organisms/layout'
+import { t } from '@lingui/macro'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -12,19 +13,19 @@ export default function Custom404() {
     }
 
     return (
-        <>
+        <Layout>
             <div className="container mt-6">
                     <div className="row align-items-center card">
                         <div className="card-body">
                             <PageHeader.Subtitle>
-                                <Trans>404</Trans>
+                                {t`404`}
                             </PageHeader.Subtitle>
                             <PageHeader.Title>
-                                <Trans>Page not found</Trans>
+                                {t`Page not found`}
                             </PageHeader.Title>
                         </div>
                     </div>
             </div>
-        </>
+        </Layout>
     )
 }
