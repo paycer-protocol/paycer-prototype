@@ -1,4 +1,3 @@
-import Alert from "@components/atoms/alert";
 import Button from "@components/atoms/button";
 import Icon from "@components/atoms/icon";
 import useWallet from "@hooks/use-wallet";
@@ -6,12 +5,9 @@ import { t } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { ArrowForward } from "@styled-icons/material";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import ConnectWalletButton from "./connect-wallet-button";
 import JoinWhitelistModal from "./join-whitelist-modal";
-import MintingApproveModal from "./minting-approve-modal";
 
 const Background = styled.div`
   position: relative;

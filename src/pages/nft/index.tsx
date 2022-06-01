@@ -9,7 +9,6 @@ import TeamSection from "@components/organisms/nft/landing-page/team-section"
 import TitleSection from "@components/organisms/nft/landing-page/title-section"
 import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
-import SwiperSection from "@components/organisms/nft/landing-page/swiper-section"
 import { t } from "@lingui/macro"
 import SectionHoc from './section-hoc'
 import React, { useEffect, useRef, useState } from "react"
@@ -80,10 +79,10 @@ export default function NftLandingPage() {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollHandler)
+    // window.addEventListener('scroll', scrollHandler)
 
     return () => {
-      window.removeEventListener('scroll', scrollHandler)
+      // window.removeEventListener('scroll', scrollHandler)
     }
   }, [])
 
