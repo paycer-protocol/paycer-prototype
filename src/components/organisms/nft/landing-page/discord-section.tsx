@@ -36,7 +36,7 @@ export default function UspSection() {
                             <p className="fw-light" style={{fontSize: '20px'}}>
                                 {t`Be a part of our Paycer Community!`}
                             </p>
-                            <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/qTTbyZQ6Z8">
+                            <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/n6Xmmr6cse">
                                 <button type="button" className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                                     {t`JOIN OUR DISCORD`}
                                     <div className="ms-3">
