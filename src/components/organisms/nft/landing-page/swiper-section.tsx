@@ -122,10 +122,10 @@ export default function SwiperSection() {
               slidesOffsetBefore={isMidScreen ? 250 : -100}
               speed={700}
               initialSlide={5}
-              /*autoplay={{
+              autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
-              }}*/
+              }}
               modules={[Autoplay]}
           >
             {items.map((item, innerKey) => (
@@ -136,10 +136,10 @@ export default function SwiperSection() {
                             slidesPerView={1}
                             loop
                             direction="vertical"
-                            /*autoplay={{
+                            autoplay={{
                                 delay: item.loopDelay,
                                 disableOnInteraction: false
-                            }}*/
+                            }}
                             height={650}
                             speed={700}
                             modules={[Autoplay]}
