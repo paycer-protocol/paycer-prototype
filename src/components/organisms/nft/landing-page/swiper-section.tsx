@@ -34,21 +34,21 @@ export default function SwiperSection() {
                 '/img/nft/slider/blue-side-1.png',
                 '/img/nft/slider/blue-side-2.png'
             ],
-            loopDelay: 1500
+            loopDelay: 4500
         },
         {
             images: [
                 '/img/nft/slider/green-side-2.png',
                 '/img/nft/slider/green-side-1.png'
             ],
-            loopDelay: 2500
+            loopDelay: 6500
         },
         {
             images: [
                 '/img/nft/slider/yellow-side-2.png',
                 '/img/nft/slider/yellow-side-1.png'
             ],
-            loopDelay: 3000
+            loopDelay: 7000
         },
         {
             images: [
@@ -56,21 +56,21 @@ export default function SwiperSection() {
                 '/img/nft/slider/pink-side-1.png'
             ],
 
-            loopDelay: 4500
+            loopDelay: 5500
         },
         {
             images: [
                 '/img/nft/slider/purple-side-1.png',
                 '/img/nft/slider/purple-side-2.png'
             ],
-            loopDelay: 1500
+            loopDelay: 3500
         },
         {
             images: [
                 '/img/nft/slider/white-side-1.png',
                 '/img/nft/slider/white-side-2.png'
             ],
-            loopDelay: 2500
+            loopDelay: 6500
         }
     ]
 
