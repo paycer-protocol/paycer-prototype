@@ -16,28 +16,9 @@ const SwiperInner = styled.div`
 const SliderImage = styled.img`
     transform: skew(20deg);
     position: relative;
-    left: -34%;
-    @media screen and (min-width: 3000px) {
-       left: -3vw;
-    }
-    @media screen and (min-width: 1190px) and (max-width: 1450px)  {
-      left: -35%;
-    }
-    @media screen and (min-width: 401px) and (max-width: 739px)  {
-      left: -55%;
-    }
-    @media screen and (min-width: 734px) and (max-width: 1046px)  {
-      left: -40%;
-    }
-    @media screen and (min-width: 796px) and (max-width: 900px)  {
-      left: -60%;
-    }
-    @media screen and (min-width: 1635px)  {
-      left: -30%;
-    }
-    @media screen and (min-width: 1660px) and (max-width: 1920px) {
-      left: -25%;
-    }
+     left: -120px;
+
+
 `
 
 export default function SwiperSection() {
@@ -120,8 +101,11 @@ export default function SwiperSection() {
                   1979: {
                       slidesPerView: 6,
                   },
-                  1920: {
+                  1919: {
                       slidesPerView: 5.3,
+                  },
+                  1700: {
+                      slidesPerView: 5,
                   },
                   1200: {
                       slidesPerView: 4,
@@ -138,10 +122,10 @@ export default function SwiperSection() {
               slidesOffsetBefore={isMidScreen ? 250 : -100}
               speed={700}
               initialSlide={5}
-              autoplay={{
+              /*autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
-              }}
+              }}*/
               modules={[Autoplay]}
           >
             {items.map((item, innerKey) => (
@@ -152,10 +136,10 @@ export default function SwiperSection() {
                             slidesPerView={1}
                             loop
                             direction="vertical"
-                            autoplay={{
+                            /*autoplay={{
                                 delay: item.loopDelay,
                                 disableOnInteraction: false
-                            }}
+                            }}*/
                             height={650}
                             speed={700}
                             modules={[Autoplay]}
