@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styled from 'styled-components'
 import PageHeader from "@components/molecules/page-header"
 import { t } from "@lingui/macro"
+import { Canvas } from "react-three-fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const partners = [
   {
@@ -54,6 +56,10 @@ export const FeatureListWrapper = styled.div`
   }
 `
 
+function Model(props) {
+    const { scene } = useGLTF("/glb/paycer_small8.glb")
+    return <primitive object={scene} />
+}
 
 function TechnologyList() {
     return (
@@ -105,6 +111,22 @@ function AboutText() {
     )
 }
 
+function AnimatedHorse() {
+    return (
+        <Canvas camera={{ position: [930, 340, 5], zoom: 30, scale: 100}}>
+            <ambientLight intensity={0.6} />
+            <pointLight intensity={1} position={[240, -300, 5]} color="white" />
+            <spotLight intensity={4} position={[1240, -2300, 5]} penumbra={1} color="black" />
+            <spotLight intensity={4} position={[240, -300, 5]} penumbra={1} color="white" />
+            <spotLight intensity={2} position={[400, -400, 5]} penumbra={1} color="white" />
+            <Suspense fallback={null}>
+                <Model />
+            </Suspense>
+            <OrbitControls />
+        </Canvas>
+    );
+}
+
 
 const AboutWrapper = styled.div`
   position: relative;
@@ -133,9 +155,7 @@ export default function AboutSection() {
                     <AboutText/>
                 </div>
                 <div className="col-lg-6 d-none d-lg-block position-relative">
-                    <HorseImage
-                        src={`/img/nft/about-nft-3.png`}
-                    />
+                    <AnimatedHorse />
                 </div>
             </div>
           </div>
