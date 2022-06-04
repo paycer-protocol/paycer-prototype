@@ -113,12 +113,18 @@ function AboutText() {
 
 function AnimatedHorse() {
     return (
-        <Canvas camera={{ position: [930, 340, 5], zoom: 30, scale: 100}}>
+        <Canvas camera={{ position: [900, 100, 100], zoom: 30, scale: 100}}>
             <ambientLight intensity={0.6} />
-            <pointLight intensity={1} position={[240, -300, 5]} color="white" />
-            <spotLight intensity={4} position={[1240, -2300, 5]} penumbra={1} color="black" />
-            <spotLight intensity={4} position={[240, -300, 5]} penumbra={1} color="white" />
+            <pointLight intensity={1} position={[-500, 0, 0]} color="purple" />
+            <pointLight intensity={1} position={[5, 5, 1000]} color="white" />
+            <pointLight intensity={1} position={[0, -4, 700]} color="white" />
+            <pointLight intensity={2} position={[0, -4, -700]} color="white" />
+            <pointLight intensity={1} position={[-500, -10, 0]} color="purple" />
+            <pointLight intensity={2} position={[-40, 500, 0]} color="purple" />
+            <spotLight intensity={2} position={[340, -350, 5]} penumbra={1} color="purple" />
+            <spotLight intensity={1.5} position={[240, -300, 5]} penumbra={1} color="white" />
             <spotLight intensity={2} position={[400, -400, 5]} penumbra={1} color="white" />
+            <spotLight intensity={1.5} position={[-400, -400, 30]} penumbra={1} color="white" />
             <Suspense fallback={null}>
                 <Model />
             </Suspense>
