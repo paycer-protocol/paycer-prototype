@@ -16,12 +16,17 @@ import { useDapp } from '@context/dapp-context'
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const { currentNetworkId, isAuthenticated } = useDapp()
+    const { currentNetworkId, isAuthenticated, walletAddress, isWeb3Enabled } = useDapp()
 
-    const isAuthenticatedRoute = (route) => (route.auth ? isAuthenticated : true)
+    const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
+
+    console.log(isAuthenticatedRoute)
 
     const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId)
         && isAuthenticatedRoute(route))
+
+
+    console.log(currentNetworkId)
 
     return (
       <>

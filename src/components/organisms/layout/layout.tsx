@@ -14,14 +14,17 @@ const Layout = (props: LayoutProps) => {
   const { currentChainIsSupportedForDApp, isWeb3EnableLoading } = useDapp()
 
   if (currentChainIsSupportedForDApp) {
-    return (
-      <>
-        <Header />
-        <main role="main">
-          {children}
-        </main>
-      </>
-    )
+      return (
+          <>
+              <div className="mb-md-5">
+                  <Header/>
+              </div>
+              <main role="main" className="mb-8">
+                  {children}
+              </main>
+              <Footer />
+          </>
+      )
   }
 
   if (isWeb3EnableLoading) {
@@ -46,7 +49,6 @@ const Layout = (props: LayoutProps) => {
       <Footer />
     </>
   )
-
 }
 
 export default Layout

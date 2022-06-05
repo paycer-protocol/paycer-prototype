@@ -9,7 +9,7 @@ import Layout from '@components/organisms/layout'
 
 export default function PortfolioPage() {
 
-    const { isAuthenticated } = useDapp()
+    const { isAuthenticated, walletAddress } = useDapp()
 
     return (
         <Layout>
@@ -26,7 +26,7 @@ export default function PortfolioPage() {
                         </div>
                     </div>
                 </PageHeader>
-                {isAuthenticated ? <Portfolio/> :  <LoginCard /> }
+                {(isAuthenticated && walletAddress) ? <Portfolio/> :  <LoginCard /> }
                 <PortalBlockNumber/>
             </div>
         </Layout>

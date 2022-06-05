@@ -6,12 +6,7 @@ import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 
 const LoginCard = () => {
-    const { isAuthenticated } = useDapp()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
-
-    if (isAuthenticated) {
-        return null
-    }
 
     return (
         <div className="card">

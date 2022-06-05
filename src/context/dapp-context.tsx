@@ -9,6 +9,7 @@ import {BigNumber} from "@ethersproject/bignumber";
 import Moralis from "moralis";
 import {formatUnits} from "@ethersproject/units";
 import PaycerTokenContractProvider from "@providers/paycer-token";
+import Web3 from "web3";
 
 export interface DappContextInterface {
     walletConnector: unknown | null
@@ -16,6 +17,7 @@ export interface DappContextInterface {
     walletShortenAddress: string
     walletIsActive: boolean
     isWeb3EnableLoading: boolean
+    isWeb3Enabled: boolean
     isAuthenticated: boolean
     handleWalletConnect: (provider: IConnectorProvider) => Promise<void>
     handleWalletDisconnect: () => Promise<void>
@@ -43,6 +45,7 @@ const contextDefaultValues: DappContextInterface = {
     walletShortenAddress: '',
     walletIsActive: false,
     isWeb3EnableLoading: false,
+    isWeb3Enabled: false,
     isAuthenticated: false,
     handleWalletConnect: null,
     handleWalletDisconnect: null,
@@ -105,22 +108,30 @@ const DappContextProvider = ({ children }) => {
     const paycerTokenConfig = PaycerTokenContractProvider[chain?.networkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
     const currentNetwork = mainNetProviders[chain?.networkId]
-    const currentChainIsSupportedForDApp = supportedChains.includes(chain?.networkId)
-    const currentChainIsSupportedForStaking = supportedStakingChains.includes(chain?.networkId)
+
+    const [currentChainIsSupportedForStaking, setCurrentChainIsSupportedForStaking] = useState<boolean>(false)
+    const [currentChainIsSupportedForDApp, setCurrentChainIsSupportedForDApp] = useState<boolean>(false)
+
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const [blockNumber, setBlockNumber] = useState<number>(0)
     const [currentChainId, setCurrentChainId] = useState<string>(chain?.chainId)
+    const [currentNetworkId, setCurrentNetworkId] = useState<number>(chain?.networkId)
     const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
     const Web3Api = useMoralisWeb3Api()
 
     useEffect(() => {
         const stayLoggedIn = async () => {
             if (!isWeb3Enabled) {
-                await enableWeb3()
+                await enableWeb3();
+                const web3Js = new Web3(window?.web3.currentProvider)
+                const web3NetworkId = await web3Js.eth.net.getId()
+                setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
+                setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
+                setCurrentNetworkId(chain?.networkId || web3NetworkId)
             }
         }
         stayLoggedIn()
-    }, [web3])
+    }, [web3, chain?.networkId])
 
     useEffect(() => {
         fetchPcrBalance()
@@ -184,6 +195,7 @@ const DappContextProvider = ({ children }) => {
                 walletShortenAddress: account ? account.substring(0, 10) + '...' : '',
                 walletIsActive: true,
                 isWeb3EnableLoading,
+                isWeb3Enabled,
                 isAuthenticated,
                 handleWalletConnect,
                 handleWalletDisconnect,
@@ -195,10 +207,10 @@ const DappContextProvider = ({ children }) => {
                 activeWallet: web3?.connection ? web3?.connection?.url : '',
                 currentNetwork,
                 currentNetworkProvider,
+                currentNetworkId,
                 handleSwitchNetwork,
                 currentChainIsSupportedForDApp,
                 currentChainIsSupportedForStaking,
-                currentNetworkId: chain?.networkId,
                 currentChainId,
                 pcrBalance,
                 fetchPcrBalance,

@@ -32,6 +32,12 @@ export const routes:RoutesInterface[] = [
     supportedChains: supportedVestingChains
   },
   {
+    label: t`Portfolio`,
+    path: '/portfolio',
+    supportedChains,
+    auth: false
+  },
+  {
     label: t`Invest`,
     path: '/invest',
     supportedChains,

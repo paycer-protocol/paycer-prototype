@@ -6,8 +6,6 @@ import { ToastContainer } from 'react-toastify'
 import I18nProvider from '../locales/i18n'
 import DappContextProvider from '@context/dapp-context'
 import { MoralisProvider } from 'react-moralis'
-import Footer from '@components/organisms/footer'
-import Layout from '@components/organisms/layout'
 import '../../assets/theme-universe.scss'
 
 Router.events.on('routeChangeStart', NProgress.start)
@@ -19,12 +17,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <MoralisProvider appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID} serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL}>
         <DappContextProvider>
             <I18nProvider>
-                <Layout>
-                    <ToastContainer position="top-center" />
-                    {/* @ts-ignore */ }
-                    <Component {...pageProps} />
-                    <Footer />
-                </Layout>
+                <ToastContainer position="top-center" />
+                {/* @ts-ignore */ }
+                <Component {...pageProps} />
             </I18nProvider>
         </DappContextProvider>
     </MoralisProvider>
