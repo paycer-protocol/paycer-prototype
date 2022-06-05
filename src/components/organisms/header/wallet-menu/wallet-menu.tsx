@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import {t} from '@lingui/macro'
-import Button from '@components/atoms/button'
-import { useDapp } from '@context/dapp-context'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
+import { useDapp } from '@context/dapp-context'
 import { Wallet } from '@styled-icons/ionicons-sharp'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
@@ -38,11 +37,7 @@ const WalletMenu = () => {
     if (!isAuthenticated) {
         return (
             <>
-                <Button
-                    className="px-4 text-nowrap p-2 pt-3 pb-3 text-light"
-                    onClick={() => setShowWalletProviderModal(true)}>
-                    {t`Connect to a Wallet`}
-                </Button>
+                <RoundetIconButton bgClass="bg-transparent" onClick={() => setShowWalletProviderModal(true)} icon={Wallet} label={t`Connect to a Wallet`} />
                 {(showWalletProviderModal &&
                   <WalletProvider
                     providers={connectors}
@@ -78,7 +73,6 @@ const WalletMenu = () => {
                             {t`View your Wallet in Blockchain-Explorer`}
                         </small>
                     </div>
-
                 </a>
 
                 <a onClick={() => {

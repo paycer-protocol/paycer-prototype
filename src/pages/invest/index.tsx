@@ -3,10 +3,11 @@ import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import InvestList from '@components/organisms/invest/invest-list'
 import InvestListContextProvider from '@context/invest-list-context'
+import Layout from '@components/organisms/layout'
 
 export default function Invest() {
   return (
-    <>
+    <Layout>
       <div className="container mt-3">
         <PageHeader>
           <div className="row align-items-center">
@@ -27,6 +28,6 @@ export default function Invest() {
           </InvestListContextProvider>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

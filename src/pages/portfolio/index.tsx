@@ -5,13 +5,14 @@ import PortalBlockNumber from '@components/organisms/portal-block-number'
 import Portfolio from '@components/organisms/portfolio'
 import { useDapp } from '@context/dapp-context'
 import LoginCard from "@components/organisms/login-card";
+import Layout from '@components/organisms/layout'
 
 export default function PortfolioPage() {
 
     const { isAuthenticated } = useDapp()
 
     return (
-        <>
+        <Layout>
             <div className="container mt-3 mb-8">
                 <PageHeader>
                     <div className="row align-items-center">
@@ -28,7 +29,7 @@ export default function PortfolioPage() {
                 {isAuthenticated ? <Portfolio/> :  <LoginCard /> }
                 <PortalBlockNumber/>
             </div>
-        </>
+        </Layout>
     )
 }
 

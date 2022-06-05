@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PieChart } from 'react-minimal-pie-chart'
-import { Trans, t } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
 import { StrategyType } from '../../../types/investment'

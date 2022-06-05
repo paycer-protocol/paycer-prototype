@@ -25,11 +25,14 @@
 // Button white
 
 .btn-white {
-  border-color: $gray-300;
-
+  transition: background-color .1s ease-in;
+  background-color: #FFF;
+  border: 1px solid #FFF!important;
+  color:  #3A00E3;
   &:hover, &:focus {
-    background-color: $gray-100;
-    border-color: $gray-400;
+    background-color: transparent;
+    border: 1px solid #FFF!important;
+    color: #FFF;
   }
 }
 

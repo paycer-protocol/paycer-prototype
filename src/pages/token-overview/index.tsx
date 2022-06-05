@@ -3,11 +3,12 @@ import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import { TokenOverviewListItems } from '@config/token-overview'
 import TokenOverviewList from '@components/organisms/token-overview/token-overview-list'
+import Layout from '@components/organisms/layout'
 
 export default function TokenOverview() {
 
   return (
-    <>
+    <Layout>
       <div className="container mt-3 mb-8">
         <PageHeader>
           <div className="row align-items-center">
@@ -31,7 +32,7 @@ export default function TokenOverview() {
             </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 

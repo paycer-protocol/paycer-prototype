@@ -3,11 +3,12 @@ import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import AnalyticsDashboard from '@components/organisms/analytics-dashboard'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
+import Layout from '@components/organisms/layout'
 
 export default function Analytics () {
 
    return (
-       <>
+       <Layout>
           <div className="container mt-3">
              <PageHeader>
                 <div className="row align-items-center">
@@ -26,6 +27,6 @@ export default function Analytics () {
              </div>
           </div>
           <PortalBlockNumber />
-       </>
+       </Layout>
    )
 }

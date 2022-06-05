@@ -7,6 +7,10 @@
 // Bootstrap Overrides =======================
 //
 
+.modal {
+  z-index: 99999;
+}
+
 .modal-dialog {
 
   // When fading in the modal, animate it to slide down

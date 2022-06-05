@@ -1,0 +1,16 @@
+{
+    "0xcCc77a58b92505caf3bb969C77Ce29ae0D6E6586": {
+        "wallet": "0xcCc77a58b92505caf3bb969C77Ce29ae0D6E6586",
+        "alloc": 100,
+        "merkle_proof": [
+            "0xb6e2d9f42a0794a68bb49d43afdf7b7e079e3a89ecd829d33798382404ce4f21"
+        ]
+    },
+    "0x1D1c0f717080AFF5071B942EF02363E9eA03980f": {
+        "wallet": "0x1D1c0f717080AFF5071B942EF02363E9eA03980f",
+        "alloc": 100,
+        "merkle_proof": [
+            "0x39c8232dfd7f3ccdf156c91a7f5c74fb43b636a5d69d8e142202e8f6e4577247"
+        ]
+    }
+}

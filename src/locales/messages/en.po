@@ -13,13 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/404.tsx:20
+#: src/pages/404.tsx:21
 msgid "404"
 msgstr "404"
 
 #: src/components/organisms/vesting/overview/index.tsx:72
 msgid "% Bonus included"
 msgstr "% Bonus included"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:111
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:85
+#~ msgid "100%"
+#~ msgstr "100%"
 
 #: src/components/organisms/vesting/overview/index.tsx:32
 msgid "12 months"
@@ -29,9 +34,27 @@ msgstr "12 months"
 #~ msgid "12 months after TGE"
 #~ msgstr "12 months after TGE"
 
+#: src/components/organisms/nft/landing-page/faq-section.tsx:77
+msgid "2."
+msgstr "2."
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:105
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:79
+#~ msgid "30%"
+#~ msgstr "30%"
+
 #: src/components/organisms/vesting/overview/index.tsx:30
 msgid "36 months"
 msgstr "36 months"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
+#~ msgid "3D Backend & Fullstack Developer"
+#~ msgstr "3D Backend & Fullstack Developer"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:140
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
+#~ msgid "3D NFT"
+#~ msgstr "3D NFT"
 
 #: src/components/organisms/vesting/overview/index.tsx:28
 msgid "6 months"
@@ -41,7 +64,31 @@ msgstr "6 months"
 #~ msgid "6 months after TGE"
 #~ msgstr "6 months after TGE"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:108
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:82
+#~ msgid "60%"
+#~ msgstr "60%"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:65
+msgid "<b>Connect MetaMask wallet for minting</b>"
+msgstr "<b>Connect MetaMask wallet for minting</b>"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:67
+msgid "<b>Limits:</b>&nbsp;3 NFT per transaction"
+msgstr "<b>Limits:</b>&nbsp;3 NFT per transaction"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:66
+msgid "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
+msgstr "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:86
+msgid "ADVISORS"
+msgstr "ADVISORS"
+
+#: src/components/organisms/invest/invest-card/index.tsx:45
 #: src/components/organisms/invest/invest-table.tsx:32
+#: src/components/organisms/portfolio/portfolio-item.tsx:58
+#: src/components/organisms/portfolio/portfolio-list.tsx:60
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APR"
 msgstr "APR"
@@ -50,15 +97,27 @@ msgstr "APR"
 #~ msgid "APY"
 #~ msgstr "APY"
 
+#: src/pages/nft/index.tsx:61
+msgid "About"
+msgstr "About"
+
+#: src/config/nft-routes.ts:5
+msgid "About Paycer NFT"
+msgstr "About Paycer NFT"
+
 #: src/components/organisms/web3/wallet-detail.tsx:95
 msgid "Account"
 msgstr "Account"
+
+#: src/pages/nft/index.tsx:64
+msgid "Achievements"
+msgstr "Achievements"
 
 #: src/components/organisms/kyc-process/info/index.tsx:20
 #~ msgid "Action"
 #~ msgstr "Action"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:104
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:94
 msgid "Add PCR Token"
 msgstr "Add PCR Token"
 
@@ -66,14 +125,18 @@ msgstr "Add PCR Token"
 #~ msgid "Add Token"
 #~ msgstr "Add Token"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:106
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:96
 msgid "Add our PCR Token to your Wallet"
 msgstr "Add our PCR Token to your Wallet"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:97
+#~ msgid "Add your email to the whitelist"
+#~ msgstr "Add your email to the whitelist"
+
 #: src/components/organisms/header/network-menu/network-menu.tsx:39
 #: src/components/organisms/web3/network-provider.tsx:31
-#~ msgid "Adding Network to Wallet ..."
-#~ msgstr "Adding Network to Wallet ..."
+msgid "Adding Network to Wallet ..."
+msgstr "Adding Network to Wallet ..."
 
 #: src/context/token-sale-context.tsx:115
 #~ msgid "Address not found"
@@ -83,6 +146,10 @@ msgstr "Add our PCR Token to your Wallet"
 #~ msgid "Advisor distribution"
 #~ msgstr "Advisor distribution"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:89
+msgid "Advisors helping on Paycer NFT"
+msgstr "Advisors helping on Paycer NFT"
+
 #: src/components/organisms/analytics-dashboard/filter-bar/filter-bar.tsx:39
 msgid "All"
 msgstr "All"
@@ -91,16 +158,24 @@ msgstr "All"
 msgid "All Chains"
 msgstr "All Chains"
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:47
+#~ msgid "An email has been sent to your address. Click the confirmation link to join the Paycer NFT whitelist."
+#~ msgstr "An email has been sent to your address. Click the confirmation link to join the Paycer NFT whitelist."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:47
+msgid "An email has been sent to your address. Click the confirmation link."
+msgstr "An email has been sent to your address. Click the confirmation link."
+
 #: src/pages/referral/components/Referrals.tsx:34
 msgid "An error has occurred. Please refresh the page"
 msgstr "An error has occurred. Please refresh the page"
 
 #: src/components/organisms/web3/wallet-provider.tsx:46
-#~ msgid "An unknown error occurred. Please try again."
-#~ msgstr "An unknown error occurred. Please try again."
+msgid "An unknown error occurred. Please try again."
+msgstr "An unknown error occurred. Please try again."
 
-#: src/config/routes.ts:34
-#: src/pages/analytics/index.tsx:16
+#: src/config/routes.ts:58
+#: src/pages/analytics/index.tsx:17
 msgid "Analytics"
 msgstr "Analytics"
 
@@ -110,14 +185,9 @@ msgstr "Analytics"
 msgid "Apply"
 msgstr "Apply"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:140
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:119
 msgid "Approve"
 msgstr "Approve"
-
-#: src/components/organisms/invest/deposit-form/index.tsx:180
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:169
-msgid "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
 #: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:42
 #~ msgid "Apy"
@@ -131,12 +201,12 @@ msgstr "Approving ... if it takes too long, you can try to open your Wallet-Exte
 #~ msgid "Assets"
 #~ msgstr "Assets"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:85
-#: src/config/loyalty-tiers.ts:9
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:90
+#: src/config/loyalty-tiers.ts:15
 msgid "Associate"
 msgstr "Associate"
 
-#: src/components/organisms/swap/swap.tsx:178
+#: src/components/organisms/swap/swap.tsx:176
 msgid "Attention! The exchange rate has changed significantly."
 msgstr "Attention! The exchange rate has changed significantly."
 
@@ -144,7 +214,15 @@ msgstr "Attention! The exchange rate has changed significantly."
 #~ msgid "Available Balance"
 #~ msgstr "Available Balance"
 
-#: src/components/organisms/web3/wallet-detail.tsx:60
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:73
+msgid "Awesome Milestones to be exited about!"
+msgstr "Awesome Milestones to be exited about!"
+
+#: src/components/organisms/one-pager-header/one-pager-header.tsx:99
+#~ msgid "Back to Finance"
+#~ msgstr "Back to Finance"
+
+#: src/components/organisms/web3/wallet-detail.tsx:62
 msgid "Balance"
 msgstr "Balance"
 
@@ -152,7 +230,7 @@ msgstr "Balance"
 #~ msgid "Balance after"
 #~ msgstr "Balance after"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:187
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:207
 msgid "Balance after:"
 msgstr "Balance after:"
 
@@ -160,9 +238,29 @@ msgstr "Balance after:"
 msgid "Balance:"
 msgstr "Balance:"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:130
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:120
 msgid "Balances in connected wallet"
 msgstr "Balances in connected wallet"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:94
+msgid "Banking Advisor | former Bank Director and Board Member"
+msgstr "Banking Advisor | former Bank Director and Board Member"
+
+#: src/config/loyalty-tiers.ts:14
+msgid "Basic"
+msgstr "Basic"
+
+#: src/components/organisms/nft/landing-page/discord-section.tsx:37
+msgid "Be a part of our Paycer Community!"
+msgstr "Be a part of our Paycer Community!"
+
+#: src/components/organisms/nft/landing-page/discord-section.tsx:38
+#~ msgid "Be part of our community"
+#~ msgstr "Be part of our community"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
+msgid "Blockchain & SmartContract Developer"
+msgstr "Blockchain & SmartContract Developer"
 
 #: src/components/organisms/vesting/info/index.tsx:22
 msgid "Bonus & Availability"
@@ -172,19 +270,76 @@ msgstr "Bonus & Availability"
 msgid "Bonus Percentage"
 msgstr "Bonus Percentage"
 
+#: src/components/organisms/nft/landing-page/usp-section.tsx:31
+msgid "Branded NFT Credit Card"
+msgstr "Branded NFT Credit Card"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:57
+msgid "Breed with two Paycer NFTs to create a new NFT generation by utilizing the PCR token"
+msgstr "Breed with two Paycer NFTs to create a new NFT generation by utilizing the PCR token"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:57
+#~ msgid "Breed with two Paycer NFTs to create a new generation of NFTs by utilizing the PCR token"
+#~ msgstr "Breed with two Paycer NFTs to create a new generation of NFTs by utilizing the PCR token"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:56
+msgid "Breeding"
+msgstr "Breeding"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:149
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:123
+#~ msgid "Breeding (Breed NFTs using PCR tokens)"
+#~ msgstr "Breeding (Breed NFTs using PCR tokens)"
+
 #: src/pages/staking/index.tsx:34
 #~ msgid "Buy PCR Token"
 #~ msgstr "Buy PCR Token"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:98
+#~ msgid "Buy your reserved NFT at launch"
+#~ msgstr "Buy your reserved NFT at launch"
+
+#: src/components/organisms/nft/landing-page/discord-section.tsx:34
+msgid "CHECK OUR DISCORD"
+msgstr "CHECK OUR DISCORD"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:53
+#~ msgid "COLLECT"
+#~ msgstr "COLLECT"
+
+#: src/components/organisms/nft/landing-page/connect-wallet-button.tsx:15
+msgid "CONNECT TO WALLET"
+msgstr "CONNECT TO WALLET"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:19
 msgid "Cancel"
 msgstr "Cancel"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:185
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:162
+msgid "Cashback & Metaverse"
+msgstr "Cashback & Metaverse"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:61
+msgid "Cashback & Rewards"
+msgstr "Cashback & Rewards"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:171
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:149
+#~ msgid "Cashback Partnerships"
+#~ msgstr "Cashback Partnerships"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:169
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:147
+#~ msgid "Cashback in PCR Tokens"
+#~ msgstr "Cashback in PCR Tokens"
+
 #: src/components/organisms/token-overview/token-overview-list.tsx:57
 #~ msgid "Chain"
 #~ msgstr "Chain"
 
-#: src/components/organisms/layout/layout.tsx:42
+#: src/components/organisms/layout/layout.tsx:37
+#: src/components/organisms/nft/landing-page/layout.tsx:38
 msgid "Change network"
 msgstr "Change network"
 
@@ -208,6 +363,10 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:68
+msgid "Christoff Berlage"
+msgstr "Christoff Berlage"
+
 #: src/components/organisms/vesting/claim/index.tsx:69
 msgid "Claim"
 msgstr "Claim"
@@ -228,16 +387,16 @@ msgstr "Claim PCR"
 #~ msgid "Claim Rewards"
 #~ msgstr "Claim Rewards"
 
-#: src/components/organisms/vesting/claim/index.tsx:89
+#: src/components/organisms/vesting/claim/index.tsx:90
 msgid "Claim confirmation"
 msgstr "Claim confirmation"
 
-#: src/pages/vesting/index.tsx:18
+#: src/pages/vesting/index.tsx:19
 msgid "Claim distribution"
 msgstr "Claim distribution"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:114
-#: src/components/organisms/vesting/claim/index.tsx:90
+#: src/components/organisms/vesting/claim/index.tsx:91
 msgid "Claim now"
 msgstr "Claim now"
 
@@ -257,9 +416,25 @@ msgstr "Claimable PCR Tokens"
 #~ msgid "Claimable rewards"
 #~ msgstr "Claimable rewards"
 
-#: src/components/organisms/vesting/claim/index.tsx:96
-msgid "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#: src/components/organisms/nft/landing-page/mint-section.tsx:80
+msgid "Click on the verification link which is in the email."
+msgstr "Click on the verification link which is in the email."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:50
+msgid "Close"
+msgstr "Close"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:59
+msgid "Co-Founder & CRO"
+msgstr "Co-Founder & CRO"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:62
+msgid "Co-Founder & Fullstack DApp Developer"
+msgstr "Co-Founder & Fullstack DApp Developer"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:60
+msgid "Collect"
+msgstr "Collect"
 
 #: src/components/organisms/header/settings-modal.tsx:32
 #: src/components/organisms/off-canvas/index.tsx:81
@@ -270,10 +445,14 @@ msgstr "Claiming... if it takes too long, you can try to open your Wallet-Extens
 msgid "Confirm Claim"
 msgstr "Confirm Claim"
 
+#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:32
+msgid "Confirm Mint"
+msgstr "Confirm Mint"
+
 #: src/components/organisms/invest/deposit-form/index.tsx:174
-#: src/components/organisms/invest/withdraw-form/index.tsx:181
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:163
-#: src/components/organisms/swap/swap.tsx:192
+#: src/components/organisms/invest/withdraw-form/index.tsx:179
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:168
+#: src/components/organisms/swap/swap.tsx:190
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -281,20 +460,21 @@ msgstr "Confirm Transaction"
 #~ msgid "Confirmed"
 #~ msgstr "Confirmed"
 
-#: src/providers/connectors.ts:29
+#: src/providers/connectors.ts:79
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
 msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:44
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:35
 #: src/components/organisms/login-card/login-card.tsx:25
 #: src/components/organisms/login-card/login-card.tsx:29
+#: src/components/organisms/portfolio/portfolio-list.tsx:129
 #: src/components/organisms/web3/wallet-connect.tsx:27
-#: src/components/organisms/web3/wallet-detail.tsx:142
-#: src/pages/referral/index.tsx:36
+#: src/components/organisms/web3/wallet-detail.tsx:140
+#: src/pages/referral/index.tsx:37
 msgid "Connect to a Wallet"
 msgstr "Connect to a Wallet"
 
-#: src/components/organisms/web3/wallet-provider.tsx:36
+#: src/components/organisms/web3/wallet-provider.tsx:56
 msgid "Connect to a wallet"
 msgstr "Connect to a wallet"
 
@@ -310,7 +490,11 @@ msgstr "Connect to a wallet"
 #~ msgid "Connected with MetaMask"
 #~ msgstr "Connected with MetaMask"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:67
+#: src/components/organisms/nft/landing-page/team-section.tsx:81
+#~ msgid "Contract Law & Data Protection"
+#~ msgstr "Contract Law & Data Protection"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:58
 msgid "Copy Wallet Address"
 msgstr "Copy Wallet Address"
 
@@ -333,6 +517,15 @@ msgstr "Copy your wallet address to clipboard"
 #: src/pages/invest/create/index.tsx:70
 #~ msgid "Create investment"
 #~ msgstr "Create investment"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:145
+#~ msgid "Credit Cards (Metaverse & Real)"
+#~ msgstr "Credit Cards (Metaverse & Real)"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:161
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:138
+#~ msgid "Credit Cards (Metaverse & real world)"
+#~ msgstr "Credit Cards (Metaverse & real world)"
 
 #: src/components/organisms/invest/invest-form/fields/__invest-input.tsx:17
 #~ msgid "Current Invest"
@@ -367,28 +560,32 @@ msgid "Daily Vesting Withdrawn"
 msgstr "Daily Vesting Withdrawn"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:151
-#: src/components/organisms/invest/withdraw-form/index.tsx:158
+#: src/components/organisms/invest/withdraw-form/index.tsx:156
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:209
-#: src/components/organisms/invest/withdraw-form/index.tsx:226
+#: src/components/organisms/invest/deposit-form/index.tsx:220
+#: src/components/organisms/invest/withdraw-form/index.tsx:236
 msgid "Daily interest:"
 msgstr "Daily interest:"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:144
-#: src/components/organisms/invest/withdraw-form/index.tsx:151
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:124
+#: src/components/organisms/invest/withdraw-form/index.tsx:149
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:129
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 #: src/components/organisms/supply-liquidity/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:198
-#: src/components/organisms/invest/withdraw-form/index.tsx:215
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:198
+#: src/components/organisms/invest/deposit-form/index.tsx:209
+#: src/components/organisms/invest/withdraw-form/index.tsx:225
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:218
 msgid "Daily rewards:"
 msgstr "Daily rewards:"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
+msgid "Daniel"
+msgstr "Daniel"
 
 #: src/components/molecules/dark-mode-toggle/index.tsx:22
 msgid "Dark Mode"
@@ -402,6 +599,10 @@ msgstr "Dark Mode"
 #: src/pages/referral/components/Referrals.tsx:52
 msgid "Date"
 msgstr "Date"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:77
+#~ msgid "DeFi Architect & NFT Developer"
+#~ msgstr "DeFi Architect & NFT Developer"
 
 #: src/components/organisms/swap/fields/deadline-minutes.tsx:37
 msgid "Deadline minutes"
@@ -427,31 +628,36 @@ msgstr "Deposit:"
 #~ msgid "Deposited"
 #~ msgstr "Deposited"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:180
-msgid "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-
 #: src/components/organisms/token-overview/token-overview-list.tsx:47
 #~ msgid "Description"
 #~ msgstr "Description"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:170
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:155
+msgid "Develop Metaverse Partnerships"
+msgstr "Develop Metaverse Partnerships"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:97
+msgid "Dias Lonappan"
+msgstr "Dias Lonappan"
 
 #: src/components/organisms/swap/fields/disable-multihops.tsx:35
 msgid "Disable Multihops"
 msgstr "Disable Multihops"
 
-#: src/components/organisms/web3/wallet-detail.tsx:133
+#: src/components/organisms/web3/wallet-detail.tsx:132
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:119
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:109
 msgid "Disconnect Wallet"
 msgstr "Disconnect Wallet"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:121
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:111
 msgid "Disconnect from your Wallet Extension"
 msgstr "Disconnect from your Wallet Extension"
 
-#: src/components/organisms/portal-block-number/index.tsx:35
+#: src/components/organisms/portal-block-number/index.tsx:38
 msgid "Disconnected"
 msgstr "Disconnected"
 
@@ -459,13 +665,22 @@ msgstr "Disconnected"
 #~ msgid "Distribution"
 #~ msgstr "Distribution"
 
-#: src/components/organisms/footer/footer.tsx:165
+#: src/components/organisms/footer/footer.tsx:153
 msgid "Docs"
 msgstr "Docs"
 
 #: src/components/organisms/header/header.tsx:102
 #~ msgid "Documentation"
 #~ msgstr "Documentation"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:41
+msgid "Doxxed Team"
+msgstr "Doxxed Team"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:169
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:154
+msgid "Early NFT Metaverse demo"
+msgstr "Early NFT Metaverse demo"
 
 #: src/pages/invest/create/index.tsx:67
 #~ msgid "Earn interest"
@@ -483,7 +698,7 @@ msgstr "Earn up to 2.5% rewards for you and your friend on every transaction."
 #~ msgid "Earned"
 #~ msgstr "Earned"
 
-#: src/providers/connectors.ts:23
+#: src/providers/connectors.ts:71
 msgid "Easy-to-use browser extension."
 msgstr "Easy-to-use browser extension."
 
@@ -495,13 +710,29 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Edit invest"
 #~ msgstr "Edit invest"
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:64
+msgid "Email address"
+msgstr "Email address"
+
 #: src/components/molecules/languages/language-choice.tsx:9
-#~ msgid "English"
-#~ msgstr "English"
+msgid "English"
+msgstr "English"
 
 #: src/providers/connectors.ts:110
 #~ msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
 #~ msgstr "Enjoy security, ownership and ease of use for your crypto with Ledger."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:63
+msgid "Enter your email address below to join the waitinglist."
+msgstr "Enter your email address below to join the waitinglist."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:63
+#~ msgid "Enter your email address below to reserve your Paycer NFT."
+#~ msgstr "Enter your email address below to reserve your Paycer NFT."
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:78
+msgid "Enter your email address."
+msgstr "Enter your email address."
 
 #: src/pages/invest/create/fields/invest-input.tsx:15
 #~ msgid "Enter your invest amount"
@@ -511,8 +742,8 @@ msgstr "Easy-to-use browser extension."
 #~ msgid "Error"
 #~ msgstr "Error"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:139
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:150
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:144
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:155
 msgid "Estimated fee"
 msgstr "Estimated fee"
 
@@ -520,28 +751,51 @@ msgstr "Estimated fee"
 msgid "Estimated output:"
 msgstr "Estimated output:"
 
+#: src/components/organisms/nft/landing-page/faq-section.tsx:61
+#~ msgid "Ethereum."
+#~ msgstr "Ethereum."
+
 #: src/components/organisms/swap/swap-form/minimum-to-receive-dropdown/minimum-to-receive-dropdown.tsx:22
 #~ msgid "Exchangerate"
 #~ msgstr "Exchangerate"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:76
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:178
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:158
+#~ msgid "Exclusive airdrops & Voting System"
+#~ msgstr "Exclusive airdrops & Voting System"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:157
+#~ msgid "Exclusive airdrops & Voting Systems"
+#~ msgstr "Exclusive airdrops & Voting Systems"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:146
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:120
+#~ msgid "Expand NFT Partnerships"
+#~ msgstr "Expand NFT Partnerships"
+
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:67
 #: src/components/organisms/web3/wallet-detail.tsx:104
 msgid "Explorer"
 msgstr "Explorer"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:27
+#: src/pages/nft/index.tsx:67
+msgid "FAQ"
+msgstr "FAQ"
 
 #: src/components/organisms/transaction-status/transaction-status.tsx:27
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:158
-#: src/components/organisms/invest/withdraw-form/index.tsx:165
+#: src/components/organisms/invest/withdraw-form/index.tsx:163
 #: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:78
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:220
-#: src/components/organisms/invest/withdraw-form/index.tsx:237
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:220
+#: src/components/organisms/invest/deposit-form/index.tsx:231
+#: src/components/organisms/invest/withdraw-form/index.tsx:247
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:240
 #: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
 msgstr "Fee:"
@@ -550,9 +804,18 @@ msgstr "Fee:"
 #~ msgid "Fetching data from API failed."
 #~ msgstr "Fetching data from API failed."
 
-#: src/pages/analytics/index.tsx:19
+#: src/pages/analytics/index.tsx:20
 msgid "Financial Stats"
 msgstr "Financial Stats"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:53
+#: src/components/organisms/nft/landing-page/team-section.tsx:56
+msgid "Founder & Managing Director"
+msgstr "Founder & Managing Director"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:78
+#~ msgid "Freelance Frontend Developer"
+#~ msgstr "Freelance Frontend Developer"
 
 #: src/pages/referral/components/Referrals.tsx:13
 #~ msgid "Friend`s User ID"
@@ -566,6 +829,14 @@ msgstr "Financial Stats"
 msgid "From Wallet Address"
 msgstr "From Wallet Address"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
+msgid "Fullstack Developer"
+msgstr "Fullstack Developer"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:61
+#~ msgid "Future Cash Back & Reward Program"
+#~ msgstr "Future Cash Back & Reward Program"
+
 #: src/components/organisms/vesting/overview/index.tsx:104
 #~ msgid "Future Loyalty Tier"
 #~ msgstr "Future Loyalty Tier"
@@ -574,17 +845,73 @@ msgstr "From Wallet Address"
 #~ msgid "Future Loyalty Tier Level"
 #~ msgstr "Future Loyalty Tier Level"
 
-#: src/components/organisms/footer/footer.tsx:200
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:189
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:166
+msgid "Gamification and level your NFT"
+msgstr "Gamification and level your NFT"
+
+#: src/components/organisms/footer/footer.tsx:188
 msgid "General Terms and Conditions"
 msgstr "General Terms and Conditions"
 
 #: src/components/molecules/languages/language-choice.tsx:10
-#~ msgid "German"
-#~ msgstr "German"
+msgid "German"
+msgstr "German"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:83
+#~ msgid "Get notified when the whitelisting date is fixed."
+#~ msgstr "Get notified when the whitelisting date is fixed."
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:31
+#~ msgid "Get your Unique NFT Credit Card"
+#~ msgstr "Get your Unique NFT Credit Card"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:32
+msgid "Get your own branded credit card with your unique NFT to get more benefits."
+msgstr "Get your own branded credit card with your unique NFT to get more benefits."
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:179
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:145
+msgid "Get your unique NFT Credit Card!"
+msgstr "Get your unique NFT Credit Card!"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:31
+#~ msgid "Get your unique Paycer NFT Credit Card"
+#~ msgstr "Get your unique Paycer NFT Credit Card"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:32
+#~ msgid "Get your very own NFT printed on your Paycer Credit Card"
+#~ msgstr "Get your very own NFT printed on your Paycer Credit Card"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:129
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:101
+msgid "Getting Ready For The Ride"
+msgstr "Getting Ready For The Ride"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:158
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:121
+msgid "Growing The NFT Fam"
+msgstr "Growing The NFT Fam"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:68
+msgid "Head of Marketing"
+msgstr "Head of Marketing"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:74
+msgid "Head of UI / UX"
+msgstr "Head of UI / UX"
 
 #: src/pages/invest/create/index.tsx:21
 #~ msgid "Height"
 #~ msgstr "Height"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:59
+msgid "Helge Ippensen"
+msgstr "Helge Ippensen"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:94
+msgid "Hermann Neunaber"
+msgstr "Hermann Neunaber"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:67
 msgid "Hide"
@@ -598,9 +925,33 @@ msgstr "Hide"
 msgid "High"
 msgstr "High"
 
+#: src/components/organisms/nft/landing-page/usp-section.tsx:22
+#~ msgid "High quality 3D generative art, 10,000 unique NFTs"
+#~ msgstr "High quality 3D generative art, 10,000 unique NFTs"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:22
+msgid "High quality and true 3D generative artwork with 10,000 unique NFTs"
+msgstr "High quality and true 3D generative artwork with 10,000 unique NFTs"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:27
+msgid "Holding the NFT provides benefits on Paycer's DeFi and CeDeFi platform"
+msgstr "Holding the NFT provides benefits on Paycer's DeFi and CeDeFi platform"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:27
+#~ msgid "Holding the NFT provides platform benefits for DeFi and CeDeFi"
+#~ msgstr "Holding the NFT provides platform benefits for DeFi and CeDeFi"
+
 #: src/components/organisms/invest/invest-card/index.tsx:66
-#~ msgid "Holdings"
-#~ msgstr "Holdings"
+msgid "Holdings"
+msgstr "Holdings"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:75
+msgid "How many NFTs may be purchased per person?"
+msgstr "How many NFTs may be purchased per person?"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:67
+msgid "How much will the NFT cost?"
+msgstr "How much will the NFT cost?"
 
 #: src/components/organisms/kyc-process/info/index.tsx:62
 #~ msgid "If you have not yet invested in Paycer you should have a look at our token sale."
@@ -610,7 +961,7 @@ msgstr "High"
 msgid "Immediate Availability Percentage"
 msgstr "Immediate Availability Percentage"
 
-#: src/components/organisms/footer/footer.tsx:185
+#: src/components/organisms/footer/footer.tsx:173
 msgid "Imprint"
 msgstr "Imprint"
 
@@ -623,11 +974,18 @@ msgstr "Info"
 #~ msgid "Insufficient {0} balance"
 #~ msgstr "Insufficient {0} balance"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
+#: src/components/organisms/nft/landing-page/usp-section.tsx:46
+#~ msgid "Interaction with PCR token"
+#~ msgstr "Interaction with PCR token"
+
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:27
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
+#: src/components/organisms/invest/invest-card/index.tsx:95
+#: src/components/organisms/invest/invest-item.tsx:48
+#: src/components/organisms/portfolio/portfolio-list.tsx:132
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
-#: src/config/routes.ts:17
-#: src/pages/invest/index.tsx:18
+#: src/config/routes.ts:41
+#: src/pages/invest/index.tsx:19
 msgid "Invest"
 msgstr "Invest"
 
@@ -636,8 +994,8 @@ msgstr "Invest"
 #~ msgstr "Invest amount"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:127
-#~ msgid "Invest now"
-#~ msgstr "Invest now"
+msgid "Invest now"
+msgstr "Invest now"
 
 #: src/components/organisms/vesting/overview/index.tsx:45
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:79
@@ -645,8 +1003,9 @@ msgid "Invested"
 msgstr "Invested"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:63
-#~ msgid "Investment"
-#~ msgstr "Investment"
+#: src/components/organisms/portfolio/portfolio-list.tsx:65
+msgid "Investment"
+msgstr "Investment"
 
 #: src/pages/invest/create/index.tsx:80
 #~ msgid "Investment amount"
@@ -657,8 +1016,9 @@ msgstr "Invested"
 #~ msgstr "Investment distribution"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:53
-#~ msgid "Investment ratio"
-#~ msgstr "Investment ratio"
+#: src/components/organisms/portfolio/portfolio-list.tsx:55
+msgid "Investment ratio"
+msgstr "Investment ratio"
 
 #: src/components/organisms/kyc-process/timeline/data.tsx:23
 #~ msgid "Investment receivd"
@@ -672,17 +1032,75 @@ msgstr "Invested"
 #~ msgid "Investor Dashboard"
 #~ msgstr "Investor Dashboard"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:236
+#~ msgid "It looks like your current wallet is not on the whitelist for the presale."
+#~ msgstr "It looks like your current wallet is not on the whitelist for the presale."
+
+#: src/components/organisms/nft/landing-page/discord-section.tsx:41
+msgid "JOIN OUR DISCORD"
+msgstr "JOIN OUR DISCORD"
+
+#: src/components/organisms/nft/landing-page/discord-section.tsx:42
+#~ msgid "JOIN PAYCER DISCORD"
+#~ msgstr "JOIN PAYCER DISCORD"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:239
+#: src/components/organisms/nft/landing-page/title-section.tsx:80
+msgid "JOIN WAITING LIST"
+msgstr "JOIN WAITING LIST"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:246
+#: src/components/organisms/nft/landing-page/title-section.tsx:62
+#~ msgid "JOIN WHITELIST"
+#~ msgstr "JOIN WHITELIST"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:80
+#~ msgid "JOIN WHITELIST WAITING LIST"
+#~ msgstr "JOIN WHITELIST WAITING LIST"
+
 #: src/components/organisms/footer/footer.tsx:146
-msgid "Jobs"
-msgstr "Jobs"
+#~ msgid "Jobs"
+#~ msgstr "Jobs"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
+#~ msgid "Join NFT Whitelist"
+#~ msgstr "Join NFT Whitelist"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
+msgid "Join Waitinglist"
+msgstr "Join Waitinglist"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:200
+msgid "Join for the waiting list"
+msgstr "Join for the waiting list"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:217
+#~ msgid "Join our NFT whitelist"
+#~ msgstr "Join our NFT whitelist"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:82
+#~ msgid "Join the whitelisting waiting list."
+#~ msgstr "Join the whitelisting waiting list."
 
 #: src/components/organisms/footer/footer.tsx:45
 msgid "Join us on"
 msgstr "Join us on"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:80
+msgid "Julien Scholz"
+msgstr "Julien Scholz"
+
 #: src/components/organisms/token-sale/timeline/index.tsx:45
 #~ msgid "KYC Status"
 #~ msgstr "KYC Status"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:74
+msgid "Kerim Yurttas"
+msgstr "Kerim Yurttas"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:78
+#~ msgid "Kristine Lampe-Dreyer"
+#~ msgstr "Kristine Lampe-Dreyer"
 
 #: src/components/organisms/header/settings-modal.tsx:33
 msgid "Language"
@@ -708,15 +1126,89 @@ msgstr "Language"
 msgid "Last rewarded"
 msgstr "Last rewarded"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:160
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:123
+msgid "Launch Breeding Feature"
+msgstr "Launch Breeding Feature"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:122
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:92
+msgid "Launch Landingpage"
+msgstr "Launch Landingpage"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:123
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:94
+#~ msgid "Launch Marketing"
+#~ msgstr "Launch Marketing"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:188
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:165
+msgid "Launch NFT Credit Card Cashback Features"
+msgstr "Launch NFT Credit Card Cashback Features"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:163
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:140
+#~ msgid "Launch NFT Credit Cards"
+#~ msgstr "Launch NFT Credit Cards"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:178
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:144
+msgid "Launch Paycer NFT Credit Cards"
+msgstr "Launch Paycer NFT Credit Cards"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:123
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:93
+msgid "Launch Whitepaper"
+msgstr "Launch Whitepaper"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:134
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:105
+msgid "Launch of NFT Detail Page"
+msgstr "Launch of NFT Detail Page"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:162
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:125
+msgid "Launch of NFT Marketplace"
+msgstr "Launch of NFT Marketplace"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:150
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:133
+msgid "Launch of NFT Upgrade Function"
+msgstr "Launch of NFT Upgrade Function"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:133
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:104
+msgid "Launch of Reveal Page"
+msgstr "Launch of Reveal Page"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:132
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:103
+msgid "Launch of Sale Page"
+msgstr "Launch of Sale Page"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:127
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:100
+#~ msgid "Launching NFT Collections"
+#~ msgstr "Launching NFT Collections"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:155
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:131
+#~ msgid "Level Up NFT function"
+#~ msgstr "Level Up NFT function"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:52
+#~ msgid "Level up your NFT by staking PCR tokens to create an even more valuable NFT"
+#~ msgstr "Level up your NFT by staking PCR tokens to create an even more valuable NFT"
+
 #: src/components/molecules/dark-mode-toggle/index.tsx:16
 msgid "Light Mode"
 msgstr "Light Mode"
 
-#: src/components/organisms/footer/footer.tsx:175
+#: src/components/organisms/footer/footer.tsx:163
 msgid "Lightpaper"
 msgstr "Lightpaper"
 
-#: src/pages/swap/index.tsx:28
+#: src/pages/swap/index.tsx:29
 msgid "Liquidity"
 msgstr "Liquidity"
 
@@ -728,7 +1220,7 @@ msgstr "Liquidity Pool"
 #~ msgid "Loading"
 #~ msgstr "Loading"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:47
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:32
 msgid "Loading ..."
 msgstr "Loading ..."
 
@@ -736,13 +1228,52 @@ msgstr "Loading ..."
 #~ msgid "Loading..."
 #~ msgstr "Loading..."
 
-#: src/components/organisms/portal-block-number/index.tsx:33
+#: src/components/organisms/portal-block-number/index.tsx:37
 msgid "Login to your wallet to see block details"
 msgstr "Login to your wallet to see block details"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:31
+#: src/components/organisms/nft/landing-page/faq-section.tsx:45
+#: src/components/organisms/nft/landing-page/faq-section.tsx:59
+#: src/components/organisms/nft/landing-page/faq-section.tsx:73
+#: src/components/organisms/nft/landing-page/faq-section.tsx:87
+#: src/components/organisms/nft/landing-page/faq-section.tsx:101
+#~ msgid ""
+#~ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n"
+#~ "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\n"
+#~ "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n"
+#~ "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\n"
+#~ "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n"
+#~ "cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id\n"
+#~ "est laborum."
+#~ msgstr ""
+#~ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n"
+#~ "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\n"
+#~ "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n"
+#~ "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\n"
+#~ "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n"
+#~ "cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id\n"
+#~ "est laborum."
 
 #: src/components/organisms/kyc-process/info/index.tsx:12
 #~ msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
 #~ msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis non dolore est fuga nobis ipsum illum eligendi nemo iure repellat, soluta, optio minus ut reiciendis voluptates enim impedit veritatis officiis."
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:77
+#~ msgid ""
+#~ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\n"
+#~ "labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\n"
+#~ "et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n"
+#~ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\n"
+#~ "labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\n"
+#~ "et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+#~ msgstr ""
+#~ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\n"
+#~ "labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\n"
+#~ "et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n"
+#~ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\n"
+#~ "labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\n"
+#~ "et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
 
 #: src/locales/index.ts:5
 msgid "Low"
@@ -756,10 +1287,36 @@ msgstr "Low"
 #~ msgid "Loyalty Tier:"
 #~ msgstr "Loyalty Tier:"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:87
+#: src/components/organisms/nft/landing-page/team-section.tsx:62
+msgid "Lukas Gurschler"
+msgstr "Lukas Gurschler"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:80
+msgid "MINT NFT NOW"
+msgstr "MINT NFT NOW"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:240
+#~ msgid "MINT YOUR NFT"
+#~ msgstr "MINT YOUR NFT"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:71
+msgid "Mahsa Doorfard"
+msgstr "Mahsa Doorfard"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:92
 #: src/config/loyalty-tiers.ts:17
 msgid "Manager"
 msgstr "Manager"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:124
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:94
+msgid "Marketing & Grow Community"
+msgstr "Marketing & Grow Community"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:175
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:155
+#~ msgid "Marketing Events & Community Boost"
+#~ msgstr "Marketing Events & Community Boost"
 
 #: src/locales/index.ts:6
 msgid "Medium"
@@ -769,6 +1326,15 @@ msgstr "Medium"
 #~ msgid "Menu"
 #~ msgstr "Menu"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:141
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:114
+#~ msgid "Metaverse Partnerships"
+#~ msgstr "Metaverse Partnerships"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:65
+msgid "Metin Demirdere"
+msgstr "Metin Demirdere"
+
 #: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:65
 msgid "Minimum received"
 msgstr "Minimum received"
@@ -777,43 +1343,111 @@ msgstr "Minimum received"
 #~ msgid "Minimum to receive"
 #~ msgstr "Minimum to receive"
 
+#: src/pages/nft/index.tsx:62
+msgid "Mint"
+msgstr "Mint"
+
+#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:33
+msgid "Mint now"
+msgstr "Mint now"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:200
+msgid "Mint your Paycer NFT."
+msgstr "Mint your Paycer NFT."
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:77
+#~ msgid "Mint your unique Paycer Utility NFT"
+#~ msgstr "Mint your unique Paycer Utility NFT"
+
 #: src/pages/portfolio/components/dash-cards.tsx:24
 #~ msgid "Moderat"
 #~ msgstr "Moderat"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:131
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:136
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:68
 msgid "Monthly rewards"
 msgstr "Monthly rewards"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:209
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:229
 msgid "Monthly rewards:"
 msgstr "Monthly rewards:"
+
+#: src/config/nft-routes.ts:10
+msgid "My NFTs"
+msgstr "My NFTs"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:71
+msgid "NEW COLLECTION"
+msgstr "NEW COLLECTION"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:91
+msgid "NEXT LEVEL NFT"
+msgstr "NEXT LEVEL NFT"
+
+#: src/config/routes.ts:70
+msgid "NFT"
+msgstr "NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:176
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:142
+msgid "NFT Credit Cards"
+msgstr "NFT Credit Cards"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:95
+msgid "NFT ROADMAP"
+msgstr "NFT ROADMAP"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:143
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:115
+msgid "NFT Reveal Event"
+msgstr "NFT Reveal Event"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:138
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:111
+msgid "NFT Sale"
+msgstr "NFT Sale"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:41
+#~ msgid "NFT Whitelist"
+#~ msgstr "NFT Whitelist"
+
+#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:37
+msgid "NFT was minted successfully"
+msgstr "NFT was minted successfully"
 
 #: src/components/organisms/invest/invest-list-item-header/invest-list-item-header.tsx:13
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/header/network-menu/network-menu.tsx:40
+#: src/components/organisms/nft/landing-page/mint-section.tsx:247
+msgid "Need help?"
+msgstr "Need help?"
+
+#: src/components/organisms/header/network-menu/network-menu.tsx:62
 msgid "Network"
 msgstr "Network"
 
-#: src/components/organisms/layout/layout.tsx:40
+#: src/components/organisms/layout/layout.tsx:36
+#: src/components/organisms/nft/landing-page/layout.tsx:37
 msgid "Network not supported"
 msgstr "Network not supported"
 
 #: src/components/organisms/header/network-menu/network-menu.tsx:36
 #: src/components/organisms/web3/network-provider.tsx:28
-#~ msgid "Network-Switch Pending, please open your Wallet"
-#~ msgstr "Network-Switch Pending, please open your Wallet"
+msgid "Network-Switch Pending, please open your Wallet"
+msgstr "Network-Switch Pending, please open your Wallet"
 
 #: src/components/organisms/vesting/claim/index.tsx:76
 msgid "Next distribution"
 msgstr "Next distribution"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:56
+msgid "Nils Gregersen"
+msgstr "Nils Gregersen"
+
 #: src/components/organisms/web3/wallet-provider.tsx:32
-#~ msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
-#~ msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
+msgid "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
+msgstr "No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile."
 
 #: src/components/organisms/vesting/transactions/index.tsx:22
 msgid "No available transactions"
@@ -831,23 +1465,67 @@ msgstr "No available transactions"
 #~ msgid "OK"
 #~ msgstr "OK"
 
+#: src/components/organisms/nft/landing-page/faq-section.tsx:59
+#~ msgid "On which blockchain will the NFT be launched?"
+#~ msgstr "On which blockchain will the NFT be launched?"
+
 #: src/components/organisms/token-sale/timeline/index.tsx:21
 #~ msgid "Open"
 #~ msgstr "Open"
 
-#: src/pages/invest/index.tsx:15
-#: src/pages/portfolio/index.tsx:20
-#: src/pages/token-overview/index.tsx:19
+#: src/components/organisms/nft/landing-page/usp-section.tsx:37
+msgid "Our 3D NFT is ready for the implementation in Metaverse partner projects"
+msgstr "Our 3D NFT is ready for the implementation in Metaverse partner projects"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:37
+#~ msgid "Our 3D NFT will be implemented in Metaverse Partner Projects"
+#~ msgstr "Our 3D NFT will be implemented in Metaverse Partner Projects"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:29
+#~ msgid "Our Partners & Infrastructure"
+#~ msgstr "Our Partners & Infrastructure"
+
+#: src/components/organisms/nft/landing-page/achievements-section.tsx:57
+msgid "Our achievements"
+msgstr "Our achievements"
+
+#: src/pages/invest/index.tsx:16
+#: src/pages/portfolio/index.tsx:21
+#: src/pages/token-overview/index.tsx:20
 msgid "Overview"
 msgstr "Overview"
 
+#: src/components/organisms/nft/landing-page/about-section.tsx:26
+#~ msgid "PAYCER ECOSYSTEM"
+#~ msgstr "PAYCER ECOSYSTEM"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:70
+msgid "PAYCER NFT ROADMAP"
+msgstr "PAYCER NFT ROADMAP"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:74
+msgid "PAYCER NFT features"
+msgstr "PAYCER NFT features"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:44
+msgid "PAYCER TEAM"
+msgstr "PAYCER TEAM"
+
 #: src/components/organisms/invest/deposit-form/index.tsx:108
-#: src/components/organisms/invest/withdraw-form/index.tsx:115
+#: src/components/organisms/invest/withdraw-form/index.tsx:113
 msgid "PCR"
 msgstr "PCR"
 
-#: src/config/routes.ts:40
-#: src/pages/token-overview/index.tsx:16
+#: src/components/organisms/nft/landing-page/mint-section.tsx:103
+msgid "PCR NFT"
+msgstr "PCR NFT"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:46
+msgid "PCR NFT Tokenomics"
+msgstr "PCR NFT Tokenomics"
+
+#: src/config/routes.ts:64
+#: src/pages/token-overview/index.tsx:17
 msgid "PCR Token"
 msgstr "PCR Token"
 
@@ -859,18 +1537,35 @@ msgstr "PCR Token amount"
 msgid "POOL"
 msgstr "POOL"
 
-#: src/pages/404.tsx:23
+#: src/components/organisms/nft/landing-page/about-section.tsx:69
+#~ msgid "POSSIBLE FEATURES"
+#~ msgstr "POSSIBLE FEATURES"
+
+#: src/components/organisms/nft/landing-page/team-section.tsx:65
+msgid "PR & Head of HR"
+msgstr "PR & Head of HR"
+
+#: src/pages/404.tsx:24
 msgid "Page not found"
 msgstr "Page not found"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:88
-#: src/config/loyalty-tiers.ts:21
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:93
+#: src/config/loyalty-tiers.ts:18
 msgid "Partner"
 msgstr "Partner"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:148
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:122
+#~ msgid "Partnership quests"
+#~ msgstr "Partnership quests"
 
 #: src/pages/analytics/index.tsx:19
 #~ msgid "Paycer Financial Stats"
 #~ msgstr "Paycer Financial Stats"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:204
+#~ msgid "Paycer NFT Waitinglist"
+#~ msgstr "Paycer NFT Waitinglist"
 
 #: src/components/organisms/kyc-process/info/index.tsx:27
 #~ msgid "Paycer Private is Live"
@@ -879,6 +1574,34 @@ msgstr "Partner"
 #: src/components/organisms/off-canvas/index.tsx:87
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:63
+msgid "Paycer Utility NFT"
+msgstr "Paycer Utility NFT"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:47
+#~ msgid "Paycer has is own DeFi utility token PCR that interacts with the NFT"
+#~ msgstr "Paycer has is own DeFi utility token PCR that interacts with the NFT"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:47
+msgid "Paycer has is own utility token \"PCR\" that interacts with the NFT"
+msgstr "Paycer has is own utility token \"PCR\" that interacts with the NFT"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:68
+msgid "Paycer in the Media"
+msgstr "Paycer in the Media"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:62
+#~ msgid "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
+#~ msgstr "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:103
+msgid "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+msgstr "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+
+#: src/components/organisms/nft/landing-page/achievements-section.tsx:54
+msgid "Paycer's experience"
+msgstr "Paycer's experience"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:24
 #~ msgid "Pending"
@@ -889,8 +1612,8 @@ msgstr "Partner"
 #~ msgstr "Platform"
 
 #: src/components/organisms/web3/wallet-provider.tsx:40
-#~ msgid "Please authorize this website to access your Ethereum account."
-#~ msgstr "Please authorize this website to access your Ethereum account."
+msgid "Please authorize this website to access your Ethereum account."
+msgstr "Please authorize this website to access your Ethereum account."
 
 #: src/components/organisms/login-card/login-card.tsx:20
 msgid "Please connect to your wallet."
@@ -900,23 +1623,33 @@ msgstr "Please connect to your wallet."
 #~ msgid "Please connect your wallet to see this area."
 #~ msgstr "Please connect your wallet to see this area."
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:22
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
+
 #: src/components/organisms/token-sale/vesting/index.tsx:49
 #~ msgid "Please find your claimable PCR tokens below, you can claim your PCR daily."
 #~ msgstr "Please find your claimable PCR tokens below, you can claim your PCR daily."
 
+#: src/components/organisms/nft/landing-page/faq-section.tsx:69
+msgid "Please follow our announcement channels and social media. We will publicise a mint price ahead of the sale dates."
+msgstr "Please follow our announcement channels and social media. We will publicise a mint price ahead of the sale dates."
+
 #: src/components/organisms/web3/wallet-provider.tsx:42
-#~ msgid "Please open your wallet and connect your account."
-#~ msgstr "Please open your wallet and connect your account."
+msgid "Please open your wallet and connect your account."
+msgstr "Please open your wallet and connect your account."
 
 #: src/pages/token-sale/components/status-info.tsx:32
 #~ msgid "Please wait, retrieving data from API ..."
 #~ msgstr "Please wait, retrieving data from API ..."
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:43
-#~ msgid "Pool"
-#~ msgstr "Pool"
+#: src/components/organisms/portfolio/portfolio-list.tsx:45
+msgid "Pool"
+msgstr "Pool"
 
-#: src/pages/portfolio/index.tsx:23
+#: src/config/routes.ts:35
+#: src/pages/portfolio/index.tsx:24
 msgid "Portfolio"
 msgstr "Portfolio"
 
@@ -937,16 +1670,38 @@ msgstr "Portfolio"
 #~ msgid "PreSale"
 #~ msgstr "PreSale"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:130
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:102
+#~ msgid "Presale"
+#~ msgstr "Presale"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:141
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
+msgid "Presale Event"
+msgstr "Presale Event"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:72
+msgid "Presale ends:"
+msgstr "Presale ends:"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:91
+#~ msgid "Presale ends: {publicSaleStartFormatted}"
+#~ msgstr "Presale ends: {publicSaleStartFormatted}"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:101
+#~ msgid "Presale starts: {presaleStartFormatted}"
+#~ msgstr "Presale starts: {presaleStartFormatted}"
+
 #: src/components/organisms/header/network-menu/network-menu.tsx:44
 #: src/components/organisms/web3/network-provider.tsx:36
-#~ msgid "Previously added network Pending, please open your Wallet"
-#~ msgstr "Previously added network Pending, please open your Wallet"
+msgid "Previously added network Pending, please open your Wallet"
+msgstr "Previously added network Pending, please open your Wallet"
 
 #: src/components/organisms/swap/swap-form/summary-dropdown/summary-dropdown.tsx:72
 #~ msgid "Price impact"
 #~ msgstr "Price impact"
 
-#: src/components/organisms/footer/footer.tsx:190
+#: src/components/organisms/footer/footer.tsx:178
 msgid "Privacy"
 msgstr "Privacy"
 
@@ -959,13 +1714,71 @@ msgstr "Privacy"
 #~ msgid "Private Sale distribution"
 #~ msgstr "Private Sale distribution"
 
-#: src/components/organisms/token-sale/dashboard/index.tsx:42
+#: src/components/organisms/nft/landing-page/team-section.tsx:47
+msgid "Professionals working on Paycer NFT"
+msgstr "Professionals working on Paycer NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:131
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:103
 #~ msgid "Public Sale"
 #~ msgstr "Public Sale"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:142
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:114
+msgid "Public Sale Event"
+msgstr "Public Sale Event"
 
 #: src/components/organisms/vesting/dashboard/index.tsx:20
 #~ msgid "Public Sale distribution"
 #~ msgstr "Public Sale distribution"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:42
+msgid "Public team of professionals and Paycer company based in Germany"
+msgstr "Public team of professionals and Paycer company based in Germany"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:105
+msgid "Q2"
+msgstr "Q2"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:79
+msgid "Q2/22"
+msgstr "Q2/22"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:108
+msgid "Q3"
+msgstr "Q3"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:82
+msgid "Q3/Q4"
+msgstr "Q3/Q4"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:111
+msgid "Q4/Q1"
+msgstr "Q4/Q1"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:85
+msgid "Q4/Q1+"
+msgstr "Q4/Q1+"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:76
+msgid "REVEAL MY NFT"
+msgstr "REVEAL MY NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:167
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:152
+#: src/components/organisms/nft/landing-page/usp-section.tsx:36
+msgid "Ready for Metaverse"
+msgstr "Ready for Metaverse"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:152
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:135
+msgid "Receive new awesome NFT Utilities"
+msgstr "Receive new awesome NFT Utilities"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:153
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:136
+msgid "Receive unique visual Upgrades"
+msgstr "Receive unique visual Upgrades"
 
 #: src/components/organisms/token-sale/transactions/data-table/index.tsx:68
 #~ msgid "Received"
@@ -975,7 +1788,6 @@ msgstr "Privacy"
 msgid "Referral Bonus"
 msgstr "Referral Bonus"
 
-#: src/components/organisms/footer/footer.tsx:152
 #: src/pages/referral/components/ReferralUrl.tsx:34
 msgid "Referral Program"
 msgstr "Referral Program"
@@ -988,23 +1800,39 @@ msgstr "Released Vesting Tokens"
 #~ msgid "Request Submitted"
 #~ msgstr "Request Submitted"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:71
+msgid "Researcher & Marketing Manager"
+msgstr "Researcher & Marketing Manager"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:132
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:104
+#~ msgid "Reveal Date"
+#~ msgstr "Reveal Date"
+
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
 msgstr "Rewards"
 
-#: src/components/organisms/invest/invest-card/index.tsx:85
-#~ msgid "Risk"
-#~ msgstr "Risk"
+#: src/components/organisms/nft/landing-page/team-section.tsx:53
+msgid "Richard Vo"
+msgstr "Richard Vo"
 
-#: src/components/organisms/footer/footer.tsx:195
+#: src/components/organisms/invest/invest-card/index.tsx:85
+msgid "Risk"
+msgstr "Risk"
+
+#: src/components/organisms/footer/footer.tsx:183
 msgid "Risk Disclaimer"
 msgstr "Risk Disclaimer"
 
 #: src/components/organisms/invest/invest-table.tsx:22
+#: src/components/organisms/portfolio/portfolio-item.tsx:48
+#: src/components/organisms/portfolio/portfolio-list.tsx:50
 msgid "Risk Level"
 msgstr "Risk Level"
 
 #: src/components/organisms/footer/footer.tsx:141
+#: src/pages/nft/index.tsx:65
 msgid "Roadmap"
 msgstr "Roadmap"
 
@@ -1013,8 +1841,8 @@ msgstr "Roadmap"
 #~ msgstr "SAFT Status"
 
 #: src/providers/connectors.ts:95
-#~ msgid "Safe hardware wallet for your coins."
-#~ msgstr "Safe hardware wallet for your coins."
+msgid "Safe hardware wallet for your coins."
+msgstr "Safe hardware wallet for your coins."
 
 #: src/pages/portfolio/components/dash-cards.tsx:83
 #~ msgid "Savings"
@@ -1046,8 +1874,13 @@ msgstr "Select a token"
 #~ msgid "Select token"
 #~ msgstr "Select token"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:86
-#: src/config/loyalty-tiers.ts:13
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:164
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:141
+#~ msgid "Send NFT Credit Cards"
+#~ msgstr "Send NFT Credit Cards"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:91
+#: src/config/loyalty-tiers.ts:16
 msgid "Senior"
 msgstr "Senior"
 
@@ -1055,13 +1888,23 @@ msgstr "Senior"
 #~ msgid "Sent and in Progress"
 #~ msgstr "Sent and in Progress"
 
-#: src/components/organisms/footer/footer.tsx:160
+#: src/components/organisms/footer/footer.tsx:148
 msgid "Service"
 msgstr "Service"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:143
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:115
+#~ msgid "Set Reveal Date"
+#~ msgstr "Set Reveal Date"
 
 #: src/components/organisms/header/settings-modal.tsx:28
 msgid "Settings"
 msgstr "Settings"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:180
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:146
+msgid "Ship the NFT Credit Cards"
+msgstr "Ship the NFT Credit Cards"
 
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:67
 msgid "Show"
@@ -1083,18 +1926,61 @@ msgstr "Slippage tollerance"
 msgid "Slippage:"
 msgstr "Slippage:"
 
+#: src/components/organisms/nft/landing-page/team-section.tsx:97
+msgid "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
+msgstr "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
+
 #: src/components/organisms/web3/add-paycer-token.tsx:48
 #: src/components/organisms/web3/add-paycer-token.tsx:53
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:41
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:26
 msgid "Something went wrong!"
 msgstr "Something went wrong!"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:68
+msgid "Something went wrong."
+msgstr "Something went wrong."
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:187
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:164
+msgid "Special Items & Cashback Partnerships"
+msgstr "Special Items & Cashback Partnerships"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:177
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:157
+#~ msgid "Special Items & Marketing Partnerships"
+#~ msgstr "Special Items & Marketing Partnerships"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:156
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:132
+#~ msgid "Stacking rewards on Paycer"
+#~ msgstr "Stacking rewards on Paycer"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:105
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:79
+msgid "Stage 1"
+msgstr "Stage 1"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:108
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:82
+msgid "Stage 2"
+msgstr "Stage 2"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:111
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:85
+msgid "Stage 3"
+msgstr "Stage 3"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:82
 msgid "Stake"
 msgstr "Stake"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:151
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:134
+msgid "Stake PCR on Paycer Finance to:"
+msgstr "Stake PCR on Paycer Finance to:"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:148
 #~ msgid "Stake the current Selection?"
@@ -1117,13 +2003,9 @@ msgstr "Stake your tokens"
 #~ msgstr "Staked:"
 
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:27
-#: src/config/routes.ts:6
+#: src/config/routes.ts:24
 msgid "Staking"
 msgstr "Staking"
-
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:169
-msgid "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
 #: src/pages/staking/index.tsx:20
 #~ msgid "Staking Rewards"
@@ -1141,9 +2023,24 @@ msgstr "Staking TVL"
 #~ msgid "Start"
 #~ msgstr "Start"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:141
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:113
+#~ msgid "Start Presale"
+#~ msgstr "Start Presale"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:142
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:114
+#~ msgid "Start Public Sale"
+#~ msgstr "Start Public Sale"
+
 #: src/components/organisms/invest/invest-card/index.tsx:85
 #~ msgid "Start invest"
 #~ msgstr "Start invest"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:171
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:156
+msgid "Start to integrate the NFT"
+msgstr "Start to integrate the NFT"
 
 #: src/pages/token-sale/index.tsx:42
 #~ msgid "Status"
@@ -1153,6 +2050,10 @@ msgstr "Staking TVL"
 #~ msgid "Strategy"
 #~ msgstr "Strategy"
 
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:71
+msgid "Submit"
+msgstr "Submit"
+
 #: src/components/organisms/transaction-status/transaction-status.tsx:24
 #~ msgid "Successful"
 #~ msgstr "Successful"
@@ -1161,7 +2062,7 @@ msgstr "Staking TVL"
 msgid "Supplied:"
 msgstr "Supplied:"
 
-#: src/components/organisms/supply-liquidity/fields/submit-button.tsx:15
+#: src/components/organisms/supply-liquidity/fields/submit-button.tsx:16
 msgid "Supply"
 msgstr "Supply"
 
@@ -1170,8 +2071,8 @@ msgstr "Supply"
 #~ msgstr "Supply Liquidity"
 
 #: src/components/organisms/swap/fields/submit-button.tsx:34
-#: src/config/routes.ts:28
-#: src/pages/swap/index.tsx:26
+#: src/config/routes.ts:52
+#: src/pages/swap/index.tsx:27
 msgid "Swap"
 msgstr "Swap"
 
@@ -1187,15 +2088,15 @@ msgstr "Swap to"
 #~ msgid "Switch Language"
 #~ msgstr "Switch Language"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:91
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:81
 msgid "Switch Wallet"
 msgstr "Switch Wallet"
 
-#: src/components/organisms/web3/network-provider.tsx:25
+#: src/components/organisms/web3/network-provider.tsx:47
 msgid "Switch network"
 msgstr "Switch network"
 
-#: src/components/organisms/header/network-menu/network-menu.tsx:42
+#: src/components/organisms/header/network-menu/network-menu.tsx:64
 msgid "Switch the Blockchain Network"
 msgstr "Switch the Blockchain Network"
 
@@ -1203,7 +2104,7 @@ msgstr "Switch the Blockchain Network"
 msgid "Switch wallet"
 msgstr "Switch wallet"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:93
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:83
 msgid "Switch your Wallet Provider"
 msgstr "Switch your Wallet Provider"
 
@@ -1211,17 +2112,68 @@ msgstr "Switch your Wallet Provider"
 #~ msgid "Switches to another wallet provider"
 #~ msgstr "Switches to another wallet provider"
 
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:119
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:90
+msgid "Takeoff"
+msgstr "Takeoff"
+
+#: src/pages/nft/index.tsx:66
+msgid "Team"
+msgstr "Team"
+
 #: src/components/organisms/vesting/dashboard/index.tsx:26
 #~ msgid "Team distribution"
 #~ msgstr "Team distribution"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:62
+#~ msgid "The NFT adds features to your credit card and account to receive rewards and cash back"
+#~ msgstr "The NFT adds features to your credit card and account to receive rewards and cash back"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:62
+msgid "The NFT will add more cashback rewards to your credit card"
+msgstr "The NFT will add more cashback rewards to your credit card"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:74
+#~ msgid "The Next Generation Utility NFT"
+#~ msgstr "The Next Generation Utility NFT"
 
 #: src/components/organisms/footer/footer.tsx:42
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 
+#: src/components/organisms/nft/landing-page/about-section.tsx:74
+#~ msgid ""
+#~ "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+#~ "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
+#~ "Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+#~ msgstr ""
+#~ "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & badass full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+#~ "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
+#~ "Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:99
+msgid ""
+"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
+msgstr ""
+"The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
+"The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:77
+msgid "The first utility NFT designed by a CeDeFi platform"
+msgstr "The first utility NFT designed by a CeDeFi platform"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:45
+msgid "The pre-sale is for everyone that has a whitelist spot. The minting for these wallets will be before the public sale. A specific date will be announced, please follow our social media for updates."
+msgstr "The pre-sale is for everyone that has a whitelist spot. The minting for these wallets will be before the public sale. A specific date will be announced, please follow our social media for updates."
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:53
+msgid "The public sale is open for everyone. Depending how many NFTs are sold in the pre-sale, the remaining batch will be up for grabs. Stay tuned, we will announce all the dates on our social media soon."
+msgstr "The public sale is open for everyone. Depending how many NFTs are sold in the pre-sale, the remaining batch will be up for grabs. Stay tuned, we will announce all the dates on our social media soon."
+
 #: src/providers/connectors.ts:87
-#~ msgid "The secure app to store crypto yourself"
-#~ msgstr "The secure app to store crypto yourself"
+msgid "The secure app to store crypto yourself"
+msgstr "The secure app to store crypto yourself"
 
 #: src/components/organisms/vesting/claim/index.tsx:91
 #~ msgid "The tokens will be transferred to your wallet."
@@ -1240,6 +2192,22 @@ msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and
 #: src/components/organisms/off-canvas/index.tsx:81
 #~ msgid "Theme"
 #~ msgstr "Theme"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:65
+msgid "There are no more spots left on the whitelist."
+msgstr "There are no more spots left on the whitelist."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:66
+msgid "This email is already on the whitelist."
+msgstr "This email is already on the whitelist."
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:22
+msgid "This field is required"
+msgstr "This field is required"
+
+#: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:67
+#~ msgid "This wallet is already on the whitelist."
+#~ msgstr "This wallet is already on the whitelist."
 
 #: src/components/organisms/swap/swap-form/index.tsx:171
 #~ msgid "To"
@@ -1282,6 +2250,7 @@ msgstr "Total Investment"
 msgid "Total Pool Supply"
 msgstr "Total Pool Supply"
 
+#: src/components/organisms/invest/invest-card/index.tsx:62
 #: src/components/organisms/invest/invest-table.tsx:37
 msgid "Total Volume"
 msgstr "Total Volume"
@@ -1312,7 +2281,7 @@ msgstr "Transaction"
 #~ msgid "Transaction Typ"
 #~ msgstr "Transaction Typ"
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:44
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:29
 msgid "Transaction confirmed"
 msgstr "Transaction confirmed"
 
@@ -1321,14 +2290,14 @@ msgstr "Transaction confirmed"
 #~ msgstr "Transaction failed, please try again or contact the Support"
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:76
-#~ msgid "Transaction failed, please try again."
-#~ msgstr "Transaction failed, please try again."
+msgid "Transaction failed, please try again."
+msgstr "Transaction failed, please try again."
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:90
 #~ msgid "Transaction is proccessing..."
 #~ msgstr "Transaction is proccessing..."
 
-#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:105
+#: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:87
 msgid "Transaction is processing..."
 msgstr "Transaction is processing..."
 
@@ -1337,14 +2306,14 @@ msgstr "Transaction is processing..."
 #~ msgstr "Transaction submitted"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:176
-#: src/components/organisms/invest/withdraw-form/index.tsx:183
+#: src/components/organisms/invest/withdraw-form/index.tsx:181
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:165
-#: src/components/organisms/swap/swap.tsx:193
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:170
+#: src/components/organisms/swap/swap.tsx:191
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 
-#: src/components/organisms/vesting/claim/index.tsx:94
+#: src/components/organisms/vesting/claim/index.tsx:95
 msgid "Transaction was successfully executed."
 msgstr "Transaction was successfully executed."
 
@@ -1368,6 +2337,22 @@ msgstr "Transfer to:"
 msgid "USD"
 msgstr "USD"
 
+#: src/pages/nft/index.tsx:63
+msgid "USPs"
+msgstr "USPs"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:21
+msgid "Unique 3D Artwork"
+msgstr "Unique 3D Artwork"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:77
+#~ msgid "Unique 3D NFT with cashback rewards on your Paycer credit card"
+#~ msgstr "Unique 3D NFT with cashback rewards on your Paycer credit card"
+
+#: src/components/organisms/nft/landing-page/title-section.tsx:74
+msgid "Unique 3D artworks"
+msgstr "Unique 3D artworks"
+
 #: src/components/organisms/staking-rewards/staking-form/fields/unstaked-input.tsx:17
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:51
 #~ msgid "Unsakted Tokens"
@@ -1377,8 +2362,54 @@ msgstr "USD"
 #~ msgid "Unstaked"
 #~ msgstr "Unstaked"
 
-#: src/config/routes.ts:12
-#: src/pages/vesting/index.tsx:15
+#: src/components/organisms/nft/landing-page/usp-section.tsx:51
+msgid "Upgradable NFT"
+msgstr "Upgradable NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:133
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:153
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:105
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:129
+#~ msgid "Upgrade Event"
+#~ msgstr "Upgrade Event"
+
+#: src/config/nft-routes.ts:15
+msgid "Upgrade NFT"
+msgstr "Upgrade NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:148
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:131
+msgid "Upgrade Your NFT"
+msgstr "Upgrade Your NFT"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:99
+#~ msgid "Upgrade your NFT by staking PCR"
+#~ msgstr "Upgrade your NFT by staking PCR"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:52
+msgid "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
+msgstr "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:190
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:167
+msgid "Use NFT Credit Card in Metaverse"
+msgstr "Use NFT Credit Card in Metaverse"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:161
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:124
+msgid "Use PCR to breed the new Generation"
+msgstr "Use PCR to breed the new Generation"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:26
+#~ msgid "Utilities"
+#~ msgstr "Utilities"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:26
+msgid "Utility NFT"
+msgstr "Utility NFT"
+
+#: src/config/routes.ts:30
+#: src/pages/vesting/index.tsx:16
 msgid "Vesting"
 msgstr "Vesting"
 
@@ -1386,17 +2417,26 @@ msgstr "Vesting"
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
-#: src/components/organisms/portal-block-number/index.tsx:27
+#: src/components/organisms/portal-block-number/index.tsx:31
 msgid "View block details"
 msgstr "View block details"
 
-#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:78
+#: src/components/organisms/header/wallet-menu/wallet-menu.tsx:69
 msgid "View your Wallet in Blockchain-Explorer"
 msgstr "View your Wallet in Blockchain-Explorer"
 
 #: src/components/organisms/web3/wallet-detail.tsx:105
 msgid "View your wallet in Blockchain Explorer"
 msgstr "View your wallet in Blockchain Explorer"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:119
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:90
+#~ msgid "Vision & Value"
+#~ msgstr "Vision & Value"
+
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:90
+#~ msgid "Vision and Value"
+#~ msgstr "Vision and Value"
 
 #: src/components/organisms/token-overview/token-overview-list.tsx:60
 msgid "Visit"
@@ -1406,15 +2446,58 @@ msgstr "Visit"
 #~ msgid "Visit Staking"
 #~ msgstr "Visit Staking"
 
+#: src/components/organisms/nft/landing-page/achievements-section.tsx:56
+#~ msgid "WHAT WE ALREADY DID"
+#~ msgstr "WHAT WE ALREADY DID"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:74
+#~ msgid "WHAT WE OFFER"
+#~ msgstr "WHAT WE OFFER"
+
 #: src/components/organisms/off-canvas/index.tsx:43
 #~ msgid "Wallet"
 #~ msgstr "Wallet"
 
-#: src/components/organisms/footer/footer.tsx:170
+#: src/components/organisms/nft/landing-page/faq-section.tsx:30
+msgid "We answer your questions"
+msgstr "We answer your questions"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:37
+msgid "We will launch specific campaigns to grant our community and early supporters whitelist spots. Stay tuned, we will announce all the details on our social media."
+msgstr "We will launch specific campaigns to grant our community and early supporters whitelist spots. Stay tuned, we will announce all the details on our social media."
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:98
+msgid "What is coming up next?"
+msgstr "What is coming up next?"
+
+#: src/components/organisms/nft/landing-page/about-section.tsx:94
+msgid "What is the Paycer NFT?"
+msgstr "What is the Paycer NFT?"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:35
+msgid "When can I sign up for the whitelisting?"
+msgstr "When can I sign up for the whitelisting?"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:51
+msgid "When does the Public Sale take place?"
+msgstr "When does the Public Sale take place?"
+
+#: src/components/organisms/nft/landing-page/faq-section.tsx:43
+msgid "When does the pre-sale take place?"
+msgstr "When does the pre-sale take place?"
+
+#: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:125
+#: src/components/organisms/nft/landing-page/roadmap-section.tsx:95
+msgid "Whitelisting Events"
+msgstr "Whitelisting Events"
+
+#: src/components/organisms/footer/footer.tsx:158
 msgid "Whitepaper"
 msgstr "Whitepaper"
 
-#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:54
+#: src/components/molecules/step-progress-bar/step-progress-bar.tsx:53
+#: src/components/organisms/invest/invest-card/index.tsx:107
+#: src/components/organisms/invest/invest-item.tsx:56
 #: src/components/organisms/invest/withdraw-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 msgid "Withdraw"
@@ -1428,9 +2511,18 @@ msgstr "Withdraw:"
 #~ msgid "Withdrawable"
 #~ msgstr "Withdrawable"
 
+#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:41
+msgid "You are about to mint an NFT. Are you ready?"
+msgstr "You are about to mint an NFT. Are you ready?"
+
+#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:42
+msgid "You are about to mint {amount} NFTs. Are you ready?"
+msgstr "You are about to mint {amount} NFTs. Are you ready?"
+
 #: src/components/organisms/portfolio/portfolio-item.tsx:123
-#~ msgid "You have no investments in your portfolio"
-#~ msgstr "You have no investments in your portfolio"
+#: src/components/organisms/portfolio/portfolio-list.tsx:125
+msgid "You have no investments in your portfolio"
+msgstr "You have no investments in your portfolio"
 
 #: src/pages/referral/components/Referrals.tsx:38
 #~ msgid "You have no referrals"
@@ -1444,19 +2536,23 @@ msgstr "You have no rewards"
 msgid "You have not participated in the paycer token sale."
 msgstr "You have not participated in the paycer token sale."
 
-#: src/components/organisms/invest/withdraw-form/index.tsx:204
+#: src/components/organisms/invest/withdraw-form/index.tsx:214
 msgid "You invest after:"
 msgstr "You invest after:"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:187
+#: src/components/organisms/invest/deposit-form/index.tsx:198
 msgid "You will invest:"
 msgstr "You will invest:"
 
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:176
+#: src/components/organisms/nft/landing-page/mint-section.tsx:79
+msgid "You will receive a confirmation email."
+msgstr "You will receive a confirmation email."
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:196
 msgid "You will stake:"
 msgstr "You will stake:"
 
-#: src/components/organisms/invest/withdraw-form/index.tsx:193
+#: src/components/organisms/invest/withdraw-form/index.tsx:203
 msgid "You will withdraw:"
 msgstr "You will withdraw:"
 
@@ -1465,14 +2561,22 @@ msgstr "You will withdraw:"
 #~ msgstr "You're connected to an unsupported network."
 
 #: src/components/organisms/web3/wallet-provider.tsx:34
-#~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
-#~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
+msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
+msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:85
-#: src/components/organisms/invest/withdraw-form/index.tsx:92
-#: src/components/organisms/staking-rewards/staking-form/index.tsx:78
+#: src/components/organisms/invest/withdraw-form/index.tsx:90
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:83
 msgid "Your APR:"
 msgstr "Your APR:"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:67
+msgid "Your NFT reveal"
+msgstr "Your NFT reveal"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:77
+msgid "Your advantages"
+msgstr "Your advantages"
 
 #: src/components/organisms/swap/supply-form_/supply-info/your-supply.tsx:14
 #~ msgid "Your supply"
@@ -1492,6 +2596,14 @@ msgstr "Your APR:"
 #~ msgid "by"
 #~ msgstr "by"
 
+#: src/components/organisms/nft/landing-page/about-section.tsx:65
+msgid "featured on"
+msgstr "featured on"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:32
+#~ msgid "get your NFT printed on your Credit Card"
+#~ msgstr "get your NFT printed on your Credit Card"
+
 #: src/components/organisms/swap/fields/submit-button.tsx:34
 msgid "insufficient balance"
 msgstr "insufficient balance"
@@ -1505,8 +2617,12 @@ msgstr "max"
 #~ msgstr "min"
 
 #: src/config/loyalty-tiers.ts:5
-msgid "none"
-msgstr "none"
+#~ msgid "none"
+#~ msgstr "none"
+
+#: src/components/organisms/nft/landing-page/usp-section.tsx:42
+#~ msgid "public team and company based in Germany"
+#~ msgstr "public team and company based in Germany"
 
 #: src/components/organisms/web3/network-provider.tsx:29
 #: src/components/organisms/web3/network-provider.tsx:46

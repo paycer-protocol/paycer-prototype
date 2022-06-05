@@ -28,7 +28,7 @@ const Footer = () => {
 
     return (
       <>
-          <footer className="border-top mt-8">
+          <footer className="border-top">
             <div className="container pt-6 pb-4">
                 <div className="row">
                     <div className="col-md-6 mb-6 mb-lg-0">
@@ -140,18 +140,6 @@ const Footer = () => {
                                 <a target="_blank" className="nav-link p-0 pb-4" href="https://www.paycer.io/#anchor-RoadMap">
                                     {t`Roadmap`}
                                 </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <a target="_blank" className="nav-link p-0 pb-4" href="https://webrigade-gmbh.jobs.personio.de">
-                                    {t`Jobs`}
-                                </a>
-                            </li>
-                            <li className="nav-item m-0">
-                                <Link href="/referral">
-                                    <a className="nav-link p-0 pb-4">
-                                        {t`Referral Program`}
-                                    </a>
-                                </Link>
                             </li>
                         </ul>
                     </div>

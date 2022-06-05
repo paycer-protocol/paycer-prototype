@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '@components/organisms/header'
+import Footer from '@components/organisms/footer'
 import { useDapp } from '@context/dapp-context'
 import Spinner from "@components/atoms/spinner";
 import { t } from '@lingui/macro'
@@ -34,7 +35,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <>
       <Header />
-      <main role="main">
+      <main role="main" className="mb-8">
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
             {/*@ts-ignore*/}
             <h1>{t`Network not supported`}</h1>
@@ -42,6 +43,7 @@ const Layout = (props: LayoutProps) => {
             {t`Change network`}
         </div>
       </main>
+      <Footer />
     </>
   )
 

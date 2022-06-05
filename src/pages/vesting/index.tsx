@@ -3,10 +3,11 @@ import { t } from '@lingui/macro'
 import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import VestingWrapper from '@components/organisms/vesting'
+import Layout from '@components/organisms/layout'
 
 export default function Vesting() {
   return (
-    <>
+    <Layout>
       <div className="container mt-3 mb-8">
         <PageHeader>
           <div className="row align-items-center">
@@ -23,7 +24,7 @@ export default function Vesting() {
         <VestingWrapper />
       </div>
       <PortalBlockNumber />
-    </>
+    </Layout>
   )
 }
 

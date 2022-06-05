@@ -3,6 +3,7 @@ import PageHeader from '@components/molecules/page-header'
 import PortalBlockNumber from '@components/organisms/portal-block-number'
 import StakingForm from '@components/organisms/staking-rewards/staking-form'
 import ClaimForm from '@components/organisms/staking-rewards/claim-form'
+import Layout from '@components/organisms/layout'
 import { useDapp } from '@context/dapp-context'
 
 export default function Staking () {
@@ -15,7 +16,7 @@ export default function Staking () {
   }
 
   return (
-    <>
+    <Layout>
       <div className="container mt-3">
         <PageHeader>
           <div className="row align-items-center">
@@ -44,6 +45,6 @@ export default function Staking () {
         </div>
       </div>
       <PortalBlockNumber />
-    </>
+    </Layout>
   )
 }

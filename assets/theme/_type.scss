@@ -22,6 +22,7 @@ h2, .h2 {
 
 h3, .h3 {
   margin-bottom: ($headings-margin-bottom * .75);
+  line-height: 1.5;
 }
 
 h4, .h4 {
@@ -56,6 +57,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   letter-spacing: $display-letter-spacing;
 }
 
+.display-1 {
+  line-height: 6.25rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: 52px;
+    line-height: 60px;
+  }
+
+}
+
 // Headings
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h6, .h6 {
@@ -72,6 +83,14 @@ b, strong {
   font-weight: $font-weight-bold;
 }
 
+.paragraph-content {
+  font-size: $font-size-content-paragraph;
+  line-height: $line-height-content-paragraph;
+}
+
+.small-text {
+  font-size: $font-size-small-text;
+}
 
 // Links, buttons
 //
