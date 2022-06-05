@@ -12,12 +12,14 @@ export default function Staking () {
 
   if (!currentChainIsSupportedForStaking) {
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-          {/*@ts-ignore*/}
-          <h1>{t`Network not supported`}</h1>
-          {/*@ts-ignore*/}
-          {t`Change network`}
-        </div>
+        <Layout>
+          <div className="d-flex flex-column align-items-center justify-content-center mt-8">
+            {/*@ts-ignore*/}
+            <h1>{t`Network not supported`}</h1>
+            {/*@ts-ignore*/}
+            {t`Change network`}
+          </div>
+        </Layout>
     )
   }
 

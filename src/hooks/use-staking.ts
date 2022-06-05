@@ -272,6 +272,8 @@ export default function useStaking():UseStakingProps {
                 }
             }
             fetch()
+        } else {
+            setTokenAllowance(0)
         }
     }
 
@@ -295,6 +297,8 @@ export default function useStaking():UseStakingProps {
                 }
             }
             fetch()
+        } else {
+            setUserInfo(null)
         }
     }
 
@@ -318,6 +322,8 @@ export default function useStaking():UseStakingProps {
                 }
             }
             fetch()
+        } else {
+            setRewardRate(0)
         }
     }
 
@@ -341,6 +347,8 @@ export default function useStaking():UseStakingProps {
                 }
             }
             fetch()
+        } else {
+            setPendingReward(0)
         }
     }
 

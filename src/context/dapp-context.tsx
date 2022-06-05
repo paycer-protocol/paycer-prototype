@@ -121,17 +121,25 @@ const DappContextProvider = ({ children }) => {
 
     useEffect(() => {
         const stayLoggedIn = async () => {
-            if (!isWeb3Enabled) {
-                await enableWeb3();
-                const web3Js = new Web3(window?.web3.currentProvider)
-                const web3NetworkId = await web3Js.eth.net.getId()
-                setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
-                setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
-                setCurrentNetworkId(chain?.networkId || web3NetworkId)
+            if (!isWeb3Enabled && isAuthenticated) {
+                await enableWeb3()
             }
         }
         stayLoggedIn()
-    }, [web3, chain?.networkId])
+    }, [web3, chain?.networkId, isAuthenticated])
+
+    useEffect(() => {
+        const test = async () => {
+            const web3Js = new Web3(window?.web3.currentProvider)
+            const web3NetworkId = await web3Js.eth.net.getId()
+            setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
+            setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
+            setCurrentNetworkId(chain?.networkId || web3NetworkId)
+
+            console.log(web3NetworkId)
+        }
+        test()
+    }, [chain?.networkId, isAuthenticated])
 
     useEffect(() => {
         fetchPcrBalance()
