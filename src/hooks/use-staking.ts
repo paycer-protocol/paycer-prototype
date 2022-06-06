@@ -364,10 +364,12 @@ export default function useStaking():UseStakingProps {
 
     // refresh pending rewards UI
     useEffect(() => {
-        const interval = setInterval(() => {
-            fetchPendingRewards()
-        }, 20000)
-        return () => clearInterval(interval)
+        if (walletAddress && isAuthenticated) {
+            const interval = setInterval(() => {
+                fetchPendingRewards()
+            }, 20000)
+            return () => clearInterval(interval)
+        }
     }, [currentNetworkId])
 
     useEffect(() => {
