@@ -137,9 +137,7 @@ const DappContextProvider = ({ children }) => {
             setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
             setCurrentNetworkId(chain?.networkId || web3NetworkId)
         }
-        if (window?.web3.currentProvider) {
-            fetch()
-        }
+        fetch()
     }, [chain?.networkId, isAuthenticated])
 
     useEffect(() => {
