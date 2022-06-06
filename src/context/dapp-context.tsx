@@ -107,16 +107,16 @@ const DappContextProvider = ({ children }) => {
     const walletAddress = account || ''
     const paycerTokenConfig = PaycerTokenContractProvider[chain?.networkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
-    const currentNetwork = mainNetProviders[chain?.networkId]
+    const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
 
-    const [currentChainIsSupportedForStaking, setCurrentChainIsSupportedForStaking] = useState<boolean>(false)
-    const [currentChainIsSupportedForDApp, setCurrentChainIsSupportedForDApp] = useState<boolean>(false)
+    const [currentChainIsSupportedForStaking, setCurrentChainIsSupportedForStaking] = useState<boolean>(supportedStakingChains.includes(chain?.networkId || ChainId.Polygon))
+    const [currentChainIsSupportedForDApp, setCurrentChainIsSupportedForDApp] = useState<boolean>(supportedChains.includes(chain?.networkId || ChainId.Polygon))
 
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const [blockNumber, setBlockNumber] = useState<number>(0)
-    const [currentChainId, setCurrentChainId] = useState<string>(chain?.chainId)
-    const [currentNetworkId, setCurrentNetworkId] = useState<number>(chain?.networkId)
-    const chainProvider = mainNetProviders[chain?.networkId] || mainNetProviders[ChainId.Polygon]
+    const [currentChainId, setCurrentChainId] = useState<string>(chain?.chainId || currentNetwork.chainId)
+    const [currentNetworkId, setCurrentNetworkId] = useState<number>(chain?.networkId || ChainId.Polygon)
+    const chainProvider = mainNetProviders[chain?.networkId || ChainId.Polygon]
     const Web3Api = useMoralisWeb3Api()
 
     useEffect(() => {
@@ -128,17 +128,6 @@ const DappContextProvider = ({ children }) => {
         stayLoggedIn()
     }, [web3, chain?.networkId, isAuthenticated])
 
-    useEffect(() => {
-        const fetch = async () => {
-            // @ts-ignore
-            const web3Js = new Web3(window?.web3.currentProvider)
-            const web3NetworkId = await web3Js.eth.net.getId()
-            setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
-            setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
-            setCurrentNetworkId(chain?.networkId || web3NetworkId)
-        }
-        fetch()
-    }, [chain?.networkId, isAuthenticated])
 
     useEffect(() => {
         fetchPcrBalance()
@@ -194,7 +183,6 @@ const DappContextProvider = ({ children }) => {
                 setBlockNumber(date.block)
             }
         }
-
     }
 
     return (
