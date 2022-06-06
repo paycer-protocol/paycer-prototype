@@ -129,16 +129,16 @@ const DappContextProvider = ({ children }) => {
     }, [web3, chain?.networkId, isAuthenticated])
 
     useEffect(() => {
-        const test = async () => {
+        const fetch = async () => {
             const web3Js = new Web3(window?.web3.currentProvider)
             const web3NetworkId = await web3Js.eth.net.getId()
             setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
             setCurrentChainIsSupportedForDApp(supportedChains.includes(chain?.networkId || web3NetworkId))
             setCurrentNetworkId(chain?.networkId || web3NetworkId)
-
-            console.log(web3NetworkId)
         }
-        test()
+        if (window?.web3.currentProvider) {
+            fetch()
+        }
     }, [chain?.networkId, isAuthenticated])
 
     useEffect(() => {
@@ -148,6 +148,9 @@ const DappContextProvider = ({ children }) => {
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
+        if (!isWeb3Enabled) {
+            await enableWeb3()
+        }
     }
 
     const handleWalletDisconnect = async () => {

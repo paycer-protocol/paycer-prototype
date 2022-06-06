@@ -354,13 +354,13 @@ export default function useStaking():UseStakingProps {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentChainId])
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentNetworkId])
 
     useEffect(() => {
         fetchRewardRate()
         fetchPendingRewards()
         fetchAllowance()
-    }, [walletAddress, isAuthenticated, currentChainId])
+    }, [walletAddress, isAuthenticated, currentNetworkId])
 
     // refresh pending rewards UI
     useEffect(() => {
@@ -368,7 +368,7 @@ export default function useStaking():UseStakingProps {
             fetchPendingRewards()
         }, 20000)
         return () => clearInterval(interval)
-    }, [currentChainId])
+    }, [currentNetworkId])
 
     useEffect(() => {
         if (withdrawError) {

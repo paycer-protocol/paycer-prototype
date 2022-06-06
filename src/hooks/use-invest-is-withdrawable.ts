@@ -13,13 +13,13 @@ interface UseInvestIsWithdrawAbleProps {
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseInvestIsWithdrawAbleProps {
-    const { currentNetworkId, walletAddress } = useDapp()
+    const { currentNetworkId, walletAddress, isAuthenticated } = useDapp()
     const strategyAddress = strategy.chainAddresses[currentNetworkId] || strategy.chainAddresses[ChainId.Polygon]
     const [balanceOf, setBalanceOf] = useState<number>(0)
     const [isWithdrawAble, setIsWithdrawAble] = useState<boolean>(false)
 
     const fetchBalanceOf = () => {
-        if (walletAddress) {
+        if (walletAddress && isAuthenticated) {
             const fetch = async () => {
                 const options = {
                     contractAddress: strategyAddress,
@@ -30,7 +30,6 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseInves
                 try {
                     // @ts-ignore
                     const response: BigNumber = await Moralis.executeFunction(options)
-                    console.log(response, 'balanceOf')
                     if (response && BigNumber.isBigNumber(response)) {
                         setBalanceOf(Number(formatUnits(response, 18)))
 
@@ -40,17 +39,17 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseInves
                 }
             }
             fetch()
+        } else {
+            setBalanceOf(0)
         }
     }
 
     useEffect(() => {
         fetchBalanceOf()
-    }, [])
+    }, [currentNetworkId, isAuthenticated])
 
     useEffect(() => {
-        if (walletAddress && balanceOf) {
-            setIsWithdrawAble(balanceOf > strategy.minWithdraw)
-        }
+        setIsWithdrawAble(balanceOf > strategy.minWithdraw)
     }, [balanceOf])
 
     return {
