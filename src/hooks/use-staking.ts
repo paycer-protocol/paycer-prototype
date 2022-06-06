@@ -370,7 +370,7 @@ export default function useStaking():UseStakingProps {
             }, 20000)
             return () => clearInterval(interval)
         }
-    }, [currentNetworkId])
+    }, [walletAddress, isAuthenticated, currentNetworkId])
 
     useEffect(() => {
         if (withdrawError) {
