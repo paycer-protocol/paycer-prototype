@@ -130,6 +130,7 @@ const DappContextProvider = ({ children }) => {
 
     useEffect(() => {
         const fetch = async () => {
+            // @ts-ignore
             const web3Js = new Web3(window?.web3.currentProvider)
             const web3NetworkId = await web3Js.eth.net.getId()
             setCurrentChainIsSupportedForStaking(supportedStakingChains.includes(chain?.networkId || web3NetworkId))
