@@ -95,7 +95,7 @@ const Claim = () => {
                     success={withdrawIsSuccess}
                     successMessage={t`Transaction was successfully executed.`}
                     loading={isLoading}
-                    infoMessage={t`Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up.`}
+                    infoMessage={t`Claiming...`}
                     additionalSuccessContent={
                         <div className="d-flex justify-content-center mt-5">
                             <GradientButton className="w-100" onClick={() => router.push('/staking')}>

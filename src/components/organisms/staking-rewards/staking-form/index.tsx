@@ -166,7 +166,7 @@ export default function StakingForm() {
                             error={contractCallError}
                             success={withdrawIsSuccess || depositIsSuccess}
                             loading={isLoading}
-                            infoMessage={transactionState ? transactionState === 1 ? t`Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : t` Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : ''}
+                            infoMessage={transactionState ? transactionState === 1 ? t`Approving...` : t` Staking...` : ''}
                         >
                             <>
                                 <div className="card blur-background">

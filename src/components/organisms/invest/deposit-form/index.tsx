@@ -177,7 +177,7 @@ const DepositForm = () => {
                         error={contractCallError}
                         success={depositIsSuccess}
                         loading={isLoading}
-                        infoMessage={transactionState ? transactionState === 1 ? t`Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : t` Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up.` : ''}
+                        infoMessage={transactionState ? transactionState === 1 ? t`Approving...` : t` Depositing...` : ''}
                     >
                         <>
                             <div className="card blur-background">
