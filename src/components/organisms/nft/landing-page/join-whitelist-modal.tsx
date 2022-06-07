@@ -3,7 +3,7 @@ import GradientButton from "@components/atoms/button/gradient-button"
 import Form from "@components/atoms/form"
 import Input from "@components/atoms/form/input"
 import Modal from "@components/molecules/modal"
-import useWallet from "@hooks/use-wallet"
+import { useDapp } from '@context/dapp-context'
 import { t, Trans } from "@lingui/macro"
 import api from "api"
 import { useCallback, useState } from "react"

@@ -1,6 +1,7 @@
-import { ChainId, Mainnet, Polygon, Kovan, Mumbai } from '@usedapp/core'
+import { Mainnet, Polygon, Kovan, Mumbai } from '@usedapp/core'
 import { explorers } from './explorers'
 import { rpcUrls } from './rpcs'
+import ChainId from './chain-id'
 
 export interface INetworkProvider {
     [chainId: number]: {
@@ -27,26 +28,6 @@ export interface INetworkProvider {
 }
 
 export const testNetNetworks: INetworkProvider = {
-    [ChainId.Kovan]: {
-        chainId: '0x2A',
-        chainName: 'Kovan',
-        nativeCurrency: {
-            name: 'Ethereum - Kovan',
-            symbol: 'ETH',
-            decimals: 18,
-        },
-        rpcUrls: [rpcUrls[ChainId.Kovan]],
-        blockExplorerUrls: [explorers[ChainId.Kovan]],
-        getExplorerAddressLink: Kovan.getExplorerAddressLink,
-        nativeWrappedTokenInfo: {
-            chainId: ChainId.Kovan,
-            contractAddress: "0xf3a6679b266899042276804930b3bfbaf807f15b",
-            decimals: 18,
-            symbol: 'WETH',
-            name: 'Wrapped ETH'
-        },
-        multicallAddress: '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696'
-    },
     [ChainId.Mumbai]: {
         chainId: '0x13881',
         chainName: 'Polygon - Testnet',
@@ -121,6 +102,5 @@ export const infoChartProviders: INetworkProvider = {
 }
 
 export const chainedNetworkProvider = {
-    ...testNetNetworks,
     ...mainNetProviders,
 }

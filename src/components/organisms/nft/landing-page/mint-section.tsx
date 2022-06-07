@@ -1,13 +1,13 @@
-import Button from "@components/atoms/button";
-import Icon from "@components/atoms/icon";
-import useWallet from "@hooks/use-wallet";
-import { t } from "@lingui/macro";
-import { useLingui } from "@lingui/react";
-import { ArrowForward } from "@styled-icons/material";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import JoinWhitelistModal from "./join-whitelist-modal";
+import Button from "@components/atoms/button"
+import { useEffect, useState } from "react"
+import { t } from "@lingui/macro"
+import Icon from "@components/atoms/icon"
+import { useLingui } from "@lingui/react"
+import { useDapp } from '@context/dapp-context'
+import { ArrowForward } from "@styled-icons/material"
+import Image from "next/image"
+import styled from "styled-components"
+import JoinWhitelistModal from "./join-whitelist-modal"
 
 const Background = styled.div`
   position: relative;
@@ -153,7 +153,7 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
 
 
 function useWhitelistState() {
-  const { address: walletAddress } = useWallet()
+  const { walletAddress } = useDapp()
   const [whitelistState, setWhitelistState] = useState<undefined | {
     status: 'whitelisted' | 'notWhitelisted';
     data: {

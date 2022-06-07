@@ -9,11 +9,11 @@ const config: Config = {
     multicallAddresses: multicallAddrs
 }
 
-export interface Web3ContextProps {
+export interface DappContextProps {
     children: any
 }
 
-export default function Web3Context({ children }: Web3ContextProps) {
+export default function DappContext({ children }: DappContextProps) {
     return (
         <DAppProvider config={config}>
             {children}

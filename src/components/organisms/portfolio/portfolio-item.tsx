@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { t } from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -85,7 +85,8 @@ export default function PortfolioList(props: PortfolioProps) {
                                     </div>
                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                    {riskLabels[strategy.riskLevel].id}
+                                    {/*@ts-ignore*/}
+                                    <Trans id={riskLabels[strategy.riskLevel].id}/>
                                 </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
                                     <div className="row align-items-center g-0">

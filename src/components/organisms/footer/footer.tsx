@@ -5,9 +5,9 @@ import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
 import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord} from '@styled-icons/bootstrap'
 import Button from '@components/atoms/button'
-import { t } from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import {useRouter} from 'next/router'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import {routes} from '@config/routes'
 import classnames from 'classnames'
 
@@ -23,8 +23,8 @@ const NavHeader = styled.div`
 
 const Footer = () => {
     const { pathname } = useRouter()
-    const wallet = useWallet()
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId))
+    const { currentNetworkId } = useDapp()
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId))
 
     return (
       <>

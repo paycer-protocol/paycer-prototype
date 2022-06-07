@@ -32,7 +32,7 @@ const MintingApproveModal = ({ amount, publicSaleStarted, alloc, merkleProof, sh
             title={t`Confirm Mint`}
             btnLabel={t`Mint now`}
             loading={nftPresale.status === 'loading' || nftPublicSale.status === 'loading'}
-            error={nftPresale.status === 'error' || nftPublicSale.status === 'error'}
+            error={(nftPresale.status === 'error' || nftPublicSale.status === 'error') ? new Error('Something went wrong') : null}
             success={nftPresale.status === 'success' || nftPublicSale.status === 'success'}
             successMessage={t`NFT was minted successfully`}
         >

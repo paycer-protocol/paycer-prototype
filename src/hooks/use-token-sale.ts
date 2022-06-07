@@ -1,4 +1,4 @@
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import {useEffect, useState} from 'react'
 import api from '../api'
 
@@ -8,14 +8,14 @@ interface TokenSaleProps {
 }
 
 export default function UseTokenSale():TokenSaleProps {
-    const wallet = useWallet()
+    const { walletAddress, isAuthenticated } = useDapp()
     const [loading, setLoading] = useState<boolean>(false)
     const [tokenSaleData, setTokenSaleData] = useState<TokenSaleProps>(null)
 
     const fetchTokenSaleData = async () => {
         try {
             setLoading(true)
-            const response = await api.fetchAllTokenSaleInfo(wallet.address)
+            const response = await api.fetchAllTokenSaleInfo(walletAddress)
             const payload = response?.data || null
             setTokenSaleData(payload['hydra:member'])
             setLoading(false)
@@ -26,14 +26,14 @@ export default function UseTokenSale():TokenSaleProps {
     }
 
     useEffect(() => {
-        if (wallet.isConnected && wallet.address) {
+        if (isAuthenticated && walletAddress) {
             // @ts-ignore
             async function fetch() {
                 await fetchTokenSaleData()
             }
             fetch()
         }
-    }, [wallet.isConnected, wallet.address])
+    }, [isAuthenticated, walletAddress])
 
     return {
         tokenSaleData,

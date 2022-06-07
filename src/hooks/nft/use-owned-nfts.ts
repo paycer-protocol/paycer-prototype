@@ -1,17 +1,19 @@
-import useWallet from "@hooks/use-wallet";
 import nftProvider from '@providers/nft';
 import { ChainId, useContractCall, useContractCalls } from "@usedapp/core";
 import { useMemo } from "react";
 import { Interface } from "@ethersproject/abi";
 import useNfts, { UseNftsProps } from "./use-nfts";
+import {useDapp} from "@context/dapp-context";
+
+/* TODO: REFACTOR FOR MORALIS */
 
 export default function useOwnedNfts(): UseNftsProps {
-    const { address: owner, isConnected, chainId } = useWallet();
+    const { currentNetworkId, walletAddress: owner, isAuthenticated } = useDapp()
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).nft;
+    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft;
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 
-    const [numberOfTokens] = useContractCall(isConnected && {
+    const [numberOfTokens] = useContractCall(isAuthenticated && {
         abi: abiInterface,
         address: contractAddress,
         method: 'balanceOf',

@@ -2,7 +2,7 @@ import React from 'react'
 import NftPageHeader, {NftPageHeaderProps} from '@components/organisms/nft-page-header'
 import Footer from '@components/organisms/footer'
 import Network from '@components/organisms/web3/network'
-import useNetwork from '@hooks/use-network'
+import {useDapp} from "@context/dapp-context";
 import {t} from '@lingui/macro'
 
 export interface NftLandingPageLayoutProps {
@@ -12,9 +12,9 @@ export interface NftLandingPageLayoutProps {
 
 const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
     const {children} = props
-    const network = useNetwork()
+    const { currentChainIsSupportedForDApp } = useDapp()
 
-    if (network.supportedChain) {
+    if (currentChainIsSupportedForDApp) {
         return (
             <>
                 <NftPageHeader

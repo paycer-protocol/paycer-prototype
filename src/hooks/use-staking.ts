@@ -1,165 +1,414 @@
-import { useState } from 'react'
-import { useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
+import {useEffect, useMemo, useState} from 'react'
+import Moralis from 'moralis'
+import { useWeb3ExecuteFunction, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-moralis'
 import { BigNumber } from '@ethersproject/bignumber'
-import moment from 'moment'
-import { ChainId } from '@usedapp/core'
 import { formatUnits, parseUnits } from '@ethersproject/units'
-import { Contract } from '@ethersproject/contracts'
 import StakingContractProvider from '@providers/staking'
-import PaycerTokenContractProvider from '@providers/paycer-token'
-import useWallet from '@hooks/use-wallet'
-import { Interface } from '@ethersproject/abi'
+import ChainId from '@providers/chain-id'
+import { formatLastRewardtime } from '../helpers/staking-helper'
+import { useDapp } from '@context/dapp-context'
+import PaycerTokenContractProvider from "@providers/paycer-token";
+
+enum TRANSACTION_STATE {
+    "NONE" = 0,
+    "APPROVE" = 1,
+    "TRANSACTION" = 2
+}
 
 interface UseStakingProps {
     deposit: (amount: Number) => Promise<void>
     withdraw: (amount: Number) => Promise<void>
     claim: () => Promise<void>
-    resetStatus: () => void
     pendingReward: number
     stakedBalance: number
     rewardRate: number
     totalAmountClaimed: number
     lastRewardTime: string
-    depositTx: any
-    withdrawTx: any
-    claimTx: any
-    approveTx: any
     showFormApproveModal: boolean
+    isLoading: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
-    withdrawError?: boolean
-    depositError?: boolean
-    claimError?: boolean
-    isLoading?: boolean
+    withdrawIsSuccess: boolean
+    depositIsSuccess: boolean
+    claimIsSuccess: boolean
+    transactionState: TRANSACTION_STATE
+    contractCallError: Error
+    resetStatus: () => void
+}
+
+type UserInfoRequest = {
+    accRewardPerShare: BigNumber
+    amount: BigNumber
+    lastDepositedAt: BigNumber
+    lastRewardTime: BigNumber
+    rewardDebt: BigNumber
 }
 
 export default function useStaking():UseStakingProps {
-    const wallet = useWallet()
-    const { chainId } = wallet
-    const stakingAddress = StakingContractProvider[chainId] || StakingContractProvider[ChainId.Polygon]
-    const stakingContract = new Contract(stakingAddress, StakingContractProvider.abi)
+    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated } = useDapp()
+    const Web3Api = useMoralisWeb3Api()
+    const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
+    const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
+    const pcrContract = paycerTokenConfig.contract
+
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-    const [isLoading, setLoading] = useState(false)
-    const [withdrawError, setWithdrawError] = useState(false)
-    const [depositError, setDepositError] = useState(false)
-    const [claimError, setClaimError] = useState(false)
-    const paycerTokenConfig = PaycerTokenContractProvider[chainId] || PaycerTokenContractProvider[ChainId.Polygon]
-    const paycerToken = paycerTokenConfig.contract
-    const paycerTokenContract = new Contract(paycerToken.address, paycerToken.abi)
 
-    // @ts-ignore
-    let { send: sendDeposit, state: depositTx } = useContractFunction(stakingContract, 'deposit')
-    // @ts-ignore
-    let { send: sendWithdraw, state: withdrawTx } = useContractFunction(stakingContract, 'withdraw')
-    // @ts-ignore
-    let { send: sendClaim, state: claimTx } = useContractFunction(stakingContract, 'claim')
-    // @ts-ignore
-    let { send: approve, state: approveTx } = useContractFunction(paycerTokenContract, 'approve')
+    const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
+    const [depositIsSuccess, setDepositIsSuccess] = useState<boolean>(false)
+    const [claimIsSuccess, setClaimIsSuccess] = useState<boolean>(false)
+    const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
+    const [rewardRate, setRewardRate] = useState<number>(12)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [transactionState, setTransactionState] = useState<TRANSACTION_STATE>(0)
+    const [tokenAllowance, setTokenAllowance] = useState<number>(0)
+    const [contractCallError, setContractCallError] = useState<Error | null>(null)
+    const [pendingReward, setPendingReward] = useState<number>(0)
 
-    let allowance = useTokenAllowance(paycerToken.address, wallet.address, stakingAddress)
-    const formattedAllowance = BigNumber.isBigNumber(allowance) ? Number(formatUnits(allowance, 18)) : 0
+    const { data: withdrawData, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
+    const { data: depositData, error: depositError, fetch: deposit, isFetching: depositIsFetching, isLoading: depositIsLoading } = useWeb3ExecuteFunction()
+    const { data: claimData, error: claimError, fetch: claim, isFetching: claimIsFetching, isLoading: claimIsLoading } = useWeb3ExecuteFunction()
+    const { data: approveData, error: approveError, fetch: approve, isFetching: approveIsFetching, isLoading: approveIsLoading } = useWeb3ExecuteFunction()
 
-    const userInfoArgs:any = wallet.isConnected ? {
-        abi: new Interface(StakingContractProvider.abi),
-        address: stakingAddress,
-        method: 'userInfo',
-        args: [wallet.address],
-    } : false
+    const stakingRequestParams = useMemo(() => {
+        return (
+            {
+                contractAddress: stakingAddress,
+                abi: StakingContractProvider.abi,
+            }
+        )
+    }, [])
 
-    const rewardRateArgs:any = wallet.isConnected ? {
-        abi: new Interface(StakingContractProvider.abi),
-        address: stakingAddress,
-        method: 'rewardAPY',
-        args: [wallet.address],
-    } : false
+    const handleApprove = async (amount) => {
 
-    const pendingRewardArgs:any = wallet.isConnected ? {
-        abi: new Interface(StakingContractProvider.abi),
-        address: stakingAddress,
-        method: 'pendingReward',
-        args: [wallet.address],
-    } : false
-
-    let userInfo = useContractCall(userInfoArgs) ?? 0
-    let rewardRate = useContractCall(rewardRateArgs) ?? 0
-    let [pendingReward] = useContractCall(pendingRewardArgs) ?? []
-
-    rewardRate = Array.isArray(rewardRate) && BigNumber.isBigNumber(rewardRate[0]) ? rewardRate[0].toNumber() / 100 : 10
-    rewardRate = rewardRate ? rewardRate : 12
-    pendingReward = BigNumber.isBigNumber(pendingReward) ? Number(formatUnits(pendingReward, 18)) : 0
-
-    function formatLastRewardtime():any {
-        // @ts-ignore
-        if (!userInfo?.lastRewardTime) {
-            return null
-        }
-        // @ts-ignore
-        let momentLastRewardTime = moment(userInfo?.lastRewardTime.toNumber() * 1000)
-
-        return momentLastRewardTime.format('MM/DD/YYYY, h:mm:ss a')
-    }
-
-    const deposit = async (amount: number) => {
-        setLoading(true)
         try {
-            if (amount > formattedAllowance) {
-                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
+            const approveParams = {
+                functionName: 'approve',
+                contractAddress: pcrContract.address,
+                abi: pcrContract.abi,
+                params: { spender: stakingAddress, amount: parseUnits(String(amount * 2), 18) }
             }
 
-            await sendDeposit(parseUnits(String(amount), 18), wallet.address)
+            const approveTx = await approve({
+                params: approveParams
+            })
 
-            if (depositTx.status === 'Success') {
-                setTimeout(() =>{
-                    setShowFormApproveModal(false)
-                }, 3000);
+            setTransactionState(1)
+
+            if (approveTx) {
+                try {
+                    //@ts-ignore
+                    await approveTx.wait()
+                    // The transactions was mined without issue
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Approve has been canceled.'))
+                            // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
+                        } else {
+                            //console.log('approve speeded up')
+                        }
+                        setTransactionState(0)
+                    }  else {
+                        setIsLoading(false)
+                        setContractCallError(new Error('Approve failed. Please try again.'))
+                    }
+                }
             }
         } catch(e) {
-            setDepositError(true)
+            setIsLoading(false)
+            setContractCallError(new Error('Approve failed. Please try again.'))
         }
-        setLoading(false)
     }
 
-    const withdraw = async (amount: number) => {
-        setLoading(true)
+    const handleWithdraw = async (amount: number) => {
+        setIsLoading(true)
+
+        if (amount > tokenAllowance) {
+            await handleApprove(amount)
+        }
+
         try {
-            if (amount > formattedAllowance) {
-                await approve(stakingAddress, parseUnits(String(amount * 2), 18))
+            const withdrawParams = {
+                functionName: 'withdraw',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+            }
+            const params = { ...stakingRequestParams, ...withdrawParams}
+            const withdrawTx = await withdraw({
+                params
+            })
+
+            try {
+                // Wait for the transaction to be mined
+                setTransactionState(2)
+                //@ts-ignore
+                await withdrawTx.wait()
+                setWithdrawIsSuccess(true)
+                setTransactionState(0)
+                fetchPcrBalance()
+                // The transactions was mined without issue
+            } catch (error) {
+                if (error.code === 'TRANSACTION_REPLACED') {
+                    if (error.cancelled) {
+                        // The transaction was replaced  :'(
+                        setIsLoading(false)
+                        setContractCallError(new Error('Withdraw has been canceled.'))
+                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
+                    } else {
+                        //console.log('withdraw speeded up')
+                    }
+                    setTransactionState(0)
+                } else {
+                    setIsLoading(false)
+                    setWithdrawIsSuccess(true)
+                }
+            }
+        } catch (error) {
+            setContractCallError(new Error('Withdraw failed. Please try again.'))
+            setIsLoading(false)
+        }
+    }
+
+    const handleDeposit = async (amount: number) => {
+        setIsLoading(true)
+
+        if (amount > tokenAllowance) {
+            await handleApprove(amount)
+        }
+
+        try {
+            const depositParams = {
+                functionName: 'deposit',
+                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
             }
 
-            await sendWithdraw(parseUnits(String(amount), 18), wallet.address)
+            const params = { ...stakingRequestParams, ...depositParams}
+            const depositTx = await deposit({
+                params
+            })
 
-            if (withdrawTx.status === 'Success') {
-                setTimeout(() =>{
-                    setShowFormApproveModal(false)
-                }, 3000);
+            if (depositTx) {
+                try {
+                    setTransactionState(2)
+                    //@ts-ignore
+                    await depositTx.wait()
+                    setDepositIsSuccess(true)
+                    setTransactionState(0)
+                    fetchPcrBalance()
+                } catch (error) {
+                    if (error.code === 'TRANSACTION_REPLACED') {
+                        if (error.cancelled) {
+                            // The transaction was replaced  :'(
+                            setIsLoading(false)
+                            setContractCallError(new Error('Deposit has been canceled.'))
+                        } else {
+                            //  was speeded up
+                            setDepositIsSuccess(true)
+                            setIsLoading(false)
+                        }
+                    }
+                }
             }
-        } catch(e) {
-            setWithdrawError(true)
+        } catch(error) {
+            setContractCallError(new Error('Deposit failed. Please try again.'))
+            setIsLoading(false)
         }
-        setLoading(false)
     }
 
-    const claim = async () => {
-        setLoading(true)
-        try {
-            await sendClaim(wallet.address)
-        } catch(e) {
-            setClaimError(true)
+    const handleClaim = async () => {
+
+        setIsLoading(true)
+
+        const claimParams = {
+            functionName: 'claim',
+            params: { to: walletAddress }
         }
-        setLoading(true)
+        const params = { ...stakingRequestParams, ...claimParams}
+
+        const claimTx = await claim({
+            params
+        })
+
+        try {
+            // @ts-ignore
+            await claimTx.wait()
+            setIsLoading(false)
+            setClaimIsSuccess(true)
+            setPendingReward(0)
+            fetchPcrBalance()
+        } catch (error) {
+            if (error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    // The transaction was replaced  :'(
+                    setIsLoading(false)
+                    setContractCallError(new Error('Claim has been aborted.'))
+                } else {
+                    //  was speeded up
+                    setClaimIsSuccess(true)
+                    setIsLoading(false)
+                }
+            }
+        }
     }
+
+    const fetchAllowance = () => {
+        if (walletAddress && isAuthenticated && currentChainId) {
+            const fetch = async () => {
+                const options = {
+                    chain: currentChainId,
+                    owner_address: walletAddress,
+                    spender_address: stakingAddress,
+                    address: pcrContract.address,
+                }
+                try {
+                    // @ts-ignore
+                    const response = await Web3Api.token.getTokenAllowance(options)
+                    const { allowance } = response
+                    if (allowance) {
+                        setTokenAllowance(Math.round(Number(formatUnits(allowance, 18))))
+                    }
+                } catch(e) {
+                    console.log('allowance', e)
+                }
+            }
+            fetch()
+        } else {
+            setTokenAllowance(0)
+        }
+    }
+
+    const fetchUserInfo = () => {
+        if (walletAddress && isAuthenticated) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'userInfo',
+                    abi: StakingContractProvider.abi,
+                    params: {beneficiary: walletAddress},
+                }
+                try {
+                    // @ts-ignore
+                    const response: UserInfoRequest = await Moralis.executeFunction(options)
+                    if (response) {
+                        setUserInfo(response)
+                    }
+                } catch (e) {
+                    console.log('userInfo', e)
+                }
+            }
+            fetch()
+        } else {
+            setUserInfo(null)
+        }
+    }
+
+    const fetchRewardRate = () => {
+        if (walletAddress && isAuthenticated) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'rewardAPY',
+                    abi: StakingContractProvider.abi,
+                    params: {_user: walletAddress},
+                }
+                try {
+                    // @ts-ignore
+                    const response: BigNumber = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setRewardRate(response.toNumber() / 100)
+                    }
+                } catch (e) {
+                    console.log('rewardAPY', e)
+                }
+            }
+            fetch()
+        } else {
+            setRewardRate(0)
+        }
+    }
+
+    const fetchPendingRewards = () => {
+        if (walletAddress && isAuthenticated) {
+            const fetch = async () => {
+                const options = {
+                    contractAddress: stakingAddress,
+                    functionName: 'pendingReward',
+                    abi: StakingContractProvider.abi,
+                    params: {_user: walletAddress},
+                }
+                try {
+                    // @ts-ignore
+                    const response = await Moralis.executeFunction(options)
+                    if (response && BigNumber.isBigNumber(response)) {
+                        setPendingReward(Number(formatUnits(response, 18)))
+                    }
+                } catch (e) {
+                    console.log('pendingReward', e)
+                }
+            }
+            fetch()
+        } else {
+            setPendingReward(0)
+        }
+    }
+
+    useEffect(() => {
+        fetchUserInfo()
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentNetworkId])
+
+    useEffect(() => {
+        fetchRewardRate()
+        fetchPendingRewards()
+        fetchAllowance()
+    }, [walletAddress, isAuthenticated, currentNetworkId])
+
+    // refresh pending rewards UI
+    useEffect(() => {
+        if (walletAddress && isAuthenticated) {
+            const interval = setInterval(() => {
+                fetchPendingRewards()
+            }, 20000)
+            return () => clearInterval(interval)
+        }
+    }, [walletAddress, isAuthenticated, currentNetworkId])
+
+    useEffect(() => {
+        if (withdrawError) {
+            setContractCallError(withdrawError)
+        }
+    }, [withdrawError])
+
+    useEffect(() => {
+        if (depositError) {
+            setContractCallError(depositError)
+        }
+    }, [depositError])
+
+    useEffect(() => {
+        if (claimError) {
+            setContractCallError(claimError)
+        }
+    }, [claimError])
+
+    useEffect(() => {
+        if (approveError) {
+            setContractCallError(approveError)
+        }
+    }, [approveError])
 
     const resetStatus = () => {
-        depositTx.status = 'None'
-        withdrawTx.status = 'None'
-        claimTx.status = 'None'
-        approveTx.status = 'None'
+        setClaimIsSuccess(false)
+        setWithdrawIsSuccess(false)
+        setDepositIsSuccess(false)
+        setContractCallError(null)
+        setIsLoading(false)
+        setTransactionState(0)
     }
 
     return {
-        deposit,
-        withdraw,
-        claim,
-        resetStatus,
+        deposit: handleDeposit,
+        withdraw: handleWithdraw,
+        claim: handleClaim,
         pendingReward,
         // @ts-ignore
         stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
@@ -167,18 +416,17 @@ export default function useStaking():UseStakingProps {
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         totalAmountClaimed: 0,
         // @ts-ignore
-        lastRewardTime: BigNumber.isBigNumber(userInfo?.lastRewardTime) ? formatLastRewardtime() : 0,
+        lastRewardTime: formatLastRewardtime(userInfo?.lastRewardTime),
         //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
         rewardRate,
-        depositTx,
-        withdrawTx,
-        claimTx,
-        approveTx,
+        withdrawIsSuccess,
+        depositIsSuccess,
+        claimIsSuccess,
+        contractCallError,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError,
-        depositError,
-        claimError,
-        isLoading
+        isLoading,
+        resetStatus,
+        transactionState
     }
 }

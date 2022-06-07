@@ -6,7 +6,7 @@ import DashCard from '@components/organisms/dashboard/dash-card'
 import { Money } from '@components/atoms/number'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
-import useWallet from "@hooks/use-wallet";
+import { useDapp } from '@context/dapp-context'
 
 const DashContainer = styled.div`
   height: 260px;
@@ -35,13 +35,13 @@ interface DashCardsProps {
 
 export default function PortfolioHeader ({ totalInvest, strategies }: DashCardsProps) {
 
-    const wallet = useWallet()
+    const { isAuthenticated } = useDapp()
 
     const renderPieChart = () => {
-        if (!strategies.length || !wallet.isConnected) {
+        if (!strategies.length || !isAuthenticated) {
            return (
                <ChartWrapper>
-                <PieChart data={[{value: 100, color: '#999999'}]} lineWidth={2} paddingAngle={2} />
+                    <PieChart data={[{value: 100, color: '#999999'}]} lineWidth={2} paddingAngle={2} />
                </ChartWrapper>
            )
         }

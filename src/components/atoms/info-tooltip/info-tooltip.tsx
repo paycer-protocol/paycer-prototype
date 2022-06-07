@@ -18,7 +18,10 @@ const InfoTooltip: React.FC<InfoTooltipProps> = (props) => {
                 <Icon component={InfoCircle} size={11} />
             </Styles.StyledDropdownToggle>
             <Styles.StyledDropdownMenu>
-                {children}
+                <>
+                    {/* @ts-ignore */}
+                    {children}
+                </>
             </Styles.StyledDropdownMenu>
         </DropdownComponent>
     )

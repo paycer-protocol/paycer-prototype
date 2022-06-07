@@ -1,5 +1,5 @@
 import React from 'react'
-import {t} from '@lingui/macro'
+import { t } from '@lingui/macro'
 import { ProgressBar , Step } from 'react-step-progress-bar'
 
 export interface StepLineProps {
@@ -24,8 +24,8 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         >
                             <img src={`/assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
-                                {t`Invest`}
-                                <br />
+                                  {/*@ts-ignore*/}
+                                {t`Invest`}<br />
                                 {symbolName}
                             </span>
                         </div>
@@ -50,8 +50,8 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
                         >
                             <img src={`/assets/token/svg/color/${symbolShort.toLowerCase()}.svg`} alt={symbolName} />
                             <span>
-                                {t`Withdraw`}
-                                <br />
+                                  {/*@ts-ignore*/}
+                                {t`Withdraw`}<br />
                                 {symbolName}
                             </span>
                         </div>

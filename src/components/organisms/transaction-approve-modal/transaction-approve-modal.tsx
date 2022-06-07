@@ -9,17 +9,32 @@ interface TransactionApproveModalProps {
   onHide: () => void
   onClick: () => void
   title?: string
-  error?: boolean
+  error?: Error
   success?: boolean
   loading?: boolean
   btnLabel?: string
   children?: ReactElement | string | number | null,
   successMessage?: string
   additionalSuccessContent?: ReactElement | string | number | null
+  infoMessage?: string
 }
 
 export default function TransactionApproveModal(props: TransactionApproveModalProps) {
-  const { show, onHide, onClick, title, children, error, success, loading, btnLabel, successMessage, additionalSuccessContent } = props
+
+  const {
+      show,
+      onHide,
+      onClick,
+      title,
+      children,
+      error,
+      success,
+      loading,
+      btnLabel,
+      successMessage,
+      additionalSuccessContent,
+      infoMessage
+  } = props
 
   const renderTitle = ():any => {
     if (error) {
@@ -36,6 +51,30 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
   }
 
   const renderStatusContent = ():any => {
+
+    if (error) {
+      return (
+          <>
+              <div className="d-flex justify-content-center mt-3 mb-5">
+                  <div className="sa">
+                      <div className="sa-error">
+                          <div className="sa-error-x">
+                              <div className="sa-error-left" />
+                              <div className="sa-error-right" />
+                          </div>
+                          <div className="sa-error-placeholder" />
+                          <div className="sa-error-fix" />
+                      </div>
+                  </div>
+              </div>
+
+              <p className="mb-0 text-center text-muted">
+                  {error.message}
+              </p>
+          </>
+      )
+    }
+
     if (success) {
       return (
           <>
@@ -56,35 +95,16 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
       )
     }
 
-    if (error) {
-      return (
-          <>
-            <div className="d-flex justify-content-center mt-3 mb-5">
-                <div className="sa">
-                    <div className="sa-error">
-                        <div className="sa-error-x">
-                            <div className="sa-error-left" />
-                            <div className="sa-error-right" />
-                        </div>
-                        <div className="sa-error-placeholder" />
-                        <div className="sa-error-fix" />
-                    </div>
-                </div>
-            </div>
-
-            <p className="mb-0 text-center text-muted">
-              {t`Transaction failed, please try again.`}
-            </p>
-          </>
-       )
-    }
-
     if (loading) {
       return (
           <>
             <div className="d-flex justify-content-center mt-6 pt-6">
                 <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
-                <p className="mb-0 text-center text-muted">{t`Transaction is processing...`}</p>
+                <div>
+                    <p className="mb-0 text-center">
+                        {infoMessage || t`Transaction is processing...`}
+                    </p>
+                </div>
             </div>
           </>
       )
@@ -96,12 +116,13 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null}>
       <>
-        <Modal.Header closeButton={!loading || success || error} onHide={onHide}>
+        <Modal.Header closeButton={!loading || success || !!error} onHide={onHide}>
           <Modal.Title className="text-center w-100">
             {renderTitle()}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="pt-0">
+
             {renderStatusContent()}
 
             {(!success && !loading && !error &&

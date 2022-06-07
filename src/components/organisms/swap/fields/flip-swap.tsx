@@ -4,9 +4,6 @@ import {SwapVert} from '@styled-icons/material/SwapVert'
 import styled from 'styled-components'
 import Icon from '@components/atoms/icon'
 import {SwapProps} from '@components/organisms/swap/types'
-import useSwap from "@hooks/use-swap";
-import useNetwork from "@hooks/use-network";
-import useWallet from "@hooks/use-wallet";
 
 export const Circle = styled.div`
   height: 34px;

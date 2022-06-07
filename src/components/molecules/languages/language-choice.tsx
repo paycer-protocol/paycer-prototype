@@ -1,5 +1,5 @@
 import React from 'react'
-import { defineMessage } from '@lingui/macro'
+import { defineMessage, Trans } from '@lingui/macro'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Button from '@components/atoms/button'
@@ -20,9 +20,8 @@ export const LanguageChoice = () => {
               <Link href={asPath} locale={lang}>
                 <div className="d-flex align-items-center">
                   <img className="me-3" src={`/assets/flags/${lang}.svg`} alt={lang} width={22} height={22} />
-                  <span className="text-uppercase">
-                      {languageLabels[lang].id}
-                  </span>
+                    {/*@ts-ignore*/}
+                  <span><Trans id={languageLabels[lang].id}/></span>
                 </div>
               </Link>
             </Button>

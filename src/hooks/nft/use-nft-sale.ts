@@ -1,4 +1,4 @@
-import useWallet from '@hooks/use-wallet';
+import { useDapp } from '@context/dapp-context'
 import nftProvider from '@providers/nft';
 import { ChainId, ERC20, useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core';
 import { Contract } from '@ethersproject/contracts'
@@ -6,10 +6,12 @@ import { useMemo } from "react";
 import { BigNumber } from '@ethersproject/bignumber'
 import { Interface } from "@ethersproject/abi";
 
-export default function useNftSale(type: 'presale' | 'publicSale') {
-    const { chainId, address: walletAddress } = useWallet();
+/* TODO: REFACTOR FOR MORALIS */
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Polygon])[type];
+export default function useNftSale(type: 'presale' | 'publicSale') {
+    const { currentNetworkId, walletAddress } = useDapp()
+
+    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon])[type];
     const contract = useMemo(() => new Contract(contractAddress, abi), [contractAddress, abi]);
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 

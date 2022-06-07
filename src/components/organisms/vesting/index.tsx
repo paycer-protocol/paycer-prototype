@@ -2,16 +2,16 @@ import React from 'react'
 import {t} from '@lingui/macro'
 import { VestingDashboardProvider } from '@context/vesting-dashboard-context'
 import useTokenSale from '@hooks/use-token-sale'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import Spinner from '@components/atoms/spinner'
 import Dashboard from './dashboard'
 import LoginCard from '@components/organisms/login-card'
 
 const Vesting = () => {
-    const wallet = useWallet()
+    const { isAuthenticated } = useDapp()
     const { tokenSaleData, loading, } = useTokenSale()
 
-    if (!wallet.isConnected) {
+    if (!isAuthenticated) {
         return (
             <LoginCard />
         )
@@ -27,7 +27,7 @@ const Vesting = () => {
         )
     }
 
-    if (!tokenSaleData) {
+    if (!tokenSaleData?.length) {
         return (
           <div className="card bg-transparent border-0 blur-background">
               <div className="bg-transparent d-flex justify-content-center align-items-center">

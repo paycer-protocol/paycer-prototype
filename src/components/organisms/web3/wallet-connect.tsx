@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { t } from '@lingui/macro'
 import Button from '@components/atoms/button'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import WalletProvider from '../web3/wallet-provider'
 import WalletDetail from './wallet-detail'
 import { connectors } from '@providers/connectors'
@@ -15,9 +15,9 @@ const WalletConnect = (props: WalletConnectProps) => {
     const { className } = props
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
     const [showAccountModal, setShowAccountModal] = useState(false)
-    const wallet = useWallet()
+    const { isAuthenticated, walletShortenAddress } = useDapp()
 
-    if (!wallet.isConnected) {
+    if (!isAuthenticated) {
         return (
             <>
                 <Button
@@ -43,7 +43,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                 onClick={() => setShowAccountModal(true)}
             >
                 <div className="mx-2 me-2">
-                    {wallet.shortenAddress}
+                    {walletShortenAddress}
                 </div>
             </Button>
             <WalletDetail

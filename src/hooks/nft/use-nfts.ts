@@ -1,4 +1,3 @@
-import useWallet from '@hooks/use-wallet';
 import nftProvider from '@providers/nft';
 import Nft from '../../types/nft';
 import { ChainId, useContractCalls } from '@usedapp/core';
@@ -6,6 +5,9 @@ import axios from "axios";
 import { Interface } from "@ethersproject/abi";
 import { useEffect, useMemo, useState } from "react";
 import loyaltyTiers from '@config/loyalty-tiers';
+import {useDapp} from "@context/dapp-context";
+
+/* TODO: REFACTOR FOR MORALIS */
 
 interface OpenseaMetadata {
     name: string;
@@ -36,9 +38,9 @@ export type UseNftsProps = {
 };
 
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
-    const { chainId } = useWallet();
+    const { currentNetworkId } = useDapp()
 
-    const { address: contractAddress, abi } = (nftProvider[chainId] || nftProvider[ChainId.Mumbai]).nft;
+    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft;
     const abiInterface = useMemo(() => new Interface(abi), [abi]);
 
     const properties = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({

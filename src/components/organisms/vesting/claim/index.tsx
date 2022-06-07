@@ -9,7 +9,7 @@ import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import useWallet from "@hooks/use-wallet";
+import { useDapp } from '@context/dapp-context'
 import CurrencyIcon from "@components/atoms/currency-icon";
 
 const AnimatedDiv = styled.div`
@@ -24,17 +24,18 @@ const AnimatedDiv = styled.div`
 const Claim = () => {
     const { dashboardData } = useVestingDashboard()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const wallet = useWallet()
+    const { isAuthenticated, walletAddress } = useDapp()
     const router = useRouter()
     const {
         withdrawAble,
-        withdrawTx,
         withdraw,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError,
         isLoading,
+        withdrawIsSuccess,
+        contractCallError,
         nextDistribution,
+        transactionState,
         resetStatus
     } = useVesting(dashboardData?.type)
 
@@ -90,10 +91,11 @@ const Claim = () => {
                     title={t`Claim confirmation`}
                     btnLabel={t`Claim now`}
                     onClick={() => handleSubmit()}
-                    error={withdrawTx.status === 'Fail' || withdrawTx.status === 'Exception' || withdrawError}
-                    success={withdrawTx.status === 'Success'}
+                    error={contractCallError}
+                    success={withdrawIsSuccess}
                     successMessage={t`Transaction was successfully executed.`}
-                    loading={isLoading || withdrawTx.status === 'Mining'}
+                    loading={isLoading}
+                    infoMessage={t`Claiming...`}
                     additionalSuccessContent={
                         <div className="d-flex justify-content-center mt-5">
                             <GradientButton className="w-100" onClick={() => router.push('/staking')}>
@@ -122,13 +124,13 @@ const Claim = () => {
                                  />
                               </span>
                           </div>
-                          {wallet.isConnected &&
+                          {isAuthenticated &&
                           <div className="w-75 m-auto">
                             <h3 className=" text-muted">
                                 {t`Transfer to:`}
                             </h3>
                             <span className="text-center fw-bold text-wrap">
-                                {!isTabletOrMobile ? wallet.address : truncateText(wallet.address, wallet.address.length / 2 )}
+                                {!isTabletOrMobile ? walletAddress : truncateText(walletAddress, walletAddress.length / 2 )}
                               </span>
                           </div>
                           }

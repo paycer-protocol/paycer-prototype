@@ -2,74 +2,26 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
-import styled from 'styled-components'
+import * as Styles from './styles'
 import { TextLeft } from '@styled-icons/bootstrap'
 import { routes } from '@config/routes'
+import {ArrowDropDown} from "@styled-icons/material-outlined";
 import Image from '@components/atoms/image'
 import Icon from '@components/atoms/icon'
-import Navbar from '@components/molecules/navbar'
 import WalletMenu from './wallet-menu'
 import NetworkMenu from './network-menu'
-import AddPaycerToken from '../web3/add-paycer-token'
-import Network from '../web3/network'
 import OffCanvas from '@components/organisms/off-canvas'
-import useWallet from '@hooks/use-wallet'
-import {ArrowDropDown} from "@styled-icons/material-outlined";
-
-const StyledBrand = styled(Navbar.Brand)`
-    margin-top: -10px;
-
-    img {
-      max-height: 40px;
-    }
-
-    @media screen and (max-width: 768px) {
-        img {
-          max-height: 26px;
-        }
-    }
-`
-
-const StyledLogo = styled.a`
-    order: 1;
-    @media screen and (max-width: 768px) {
-      position: absolute;
-      top: 17px;
-      left: 15px;
-    }
-`
-
-const DemoBadge = styled.div`
-    position: absolute;
-    transform: rotate(48deg);
-    right: -89px;
-    top: 13px;
-    line-height: 25px;
-    font-size: 11px;
-    width: 222px;
-    padding-left: 3px;
-    text-align: center;
-    font-weight: 500;
-    color: white;
-    text-shadow: rgb(0 0 0) -1px 1px 7px;
-    height: 19px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    background: linear-gradient(101deg,#ca3dbf,#c3cef7);
-    letter-spacing: 0.1px;
-`
+import { useDapp } from '@context/dapp-context'
 
 const Header = () => {
     const { pathname } = useRouter()
     const [ showModalNav, setShowModalNav ] = useState(false)
-    const wallet = useWallet()
+    const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp()
 
-    const isAuthenticatedRoute = (route, wallet) => (route.auth ? wallet.isConnected : true);
+    const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(wallet.chainId)
-        && isAuthenticatedRoute(route, wallet))
+    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId)
+        && isAuthenticatedRoute(route))
 
     return (
       <>
@@ -77,11 +29,11 @@ const Header = () => {
               <div className="navbar navbar-expand-lg border-bottom-0 pb-4">
                   <div className="container-fluid flex-row-reverse">
                       <Link href="/">
-                          <StyledLogo>
-                              <StyledBrand className="me-4 py-0 ms-2">
+                          <Styles.StyledLogo>
+                              <Styles.StyledBrand className="me-4 py-0 ms-2">
                                   <Image src="/assets/logo.svg" alt="Paycer" />
-                              </StyledBrand>
-                          </StyledLogo>
+                              </Styles.StyledBrand>
+                          </Styles.StyledLogo>
                       </Link>
                       <ul className="navbar-nav flex-row d-none d-lg-flex pt-md-2">
                           <li className="nav-item me-4 d-flex align-items-center position-relative">
@@ -111,7 +63,7 @@ const Header = () => {
                                                   <div key={innerKey}>
                                                       {(subroute?.auth) ?
                                                           <>
-                                                              {wallet.isConnected && subroute?.supportedChains.includes(wallet.chainId) &&
+                                                              {isAuthenticated && subroute?.supportedChains.includes(currentNetworkId) &&
                                                                 <Link href={subroute.path}>
                                                                   <a href="#!" className="dropdown-item">
                                                                       {subroute?.label}

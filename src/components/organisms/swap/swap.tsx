@@ -16,7 +16,7 @@ import TransactionApproveModal from "@components/organisms/transaction-approve-m
 import {t} from "@lingui/macro";
 import DashNumber from "@components/organisms/dashboard/dash-number";
 import useNetwork from "@hooks/use-network";
-import useWallet from "@hooks/use-wallet";
+import { useDapp } from "@context/dapp-context";
 import { Trade, UniswapProvider } from "../../../lib/trade";
 import { FormattedNumber } from "../../atoms/number/formatted-number";
 import {TradeContext} from "simple-uniswap-sdk";
@@ -26,7 +26,7 @@ export default function Swap() {
     const provider = new UniswapProvider()
     const tradeFactory = new Trade(provider)
     const network = useNetwork()
-    const wallet = useWallet()
+    const { walletAddress } = useDapp()
     const formRef = useRef<FormikProps<SwapProps>>(null)
 
     const {
@@ -40,9 +40,11 @@ export default function Swap() {
         approveTx
     } = useSwap()
 
+    console.log(network)
+
     const networkSettings = {
         providerUrl: network.rpcUrls[0],
-        walletAddress: wallet.address,
+        walletAddress: walletAddress,
         networkProvider: network.provider,
         chainId: network.chainId,
         nameNetwork: network.chainName,
@@ -128,7 +130,7 @@ export default function Swap() {
 
     useEffect(() => {
         formRef.current?.resetForm()
-    }, [network.chainId, wallet.address])
+    }, [network.chainId, walletAddress])
 
     return (
         <Form
@@ -189,13 +191,11 @@ export default function Swap() {
                         }}
                         title={t`Confirm Transaction`}
                         successMessage={t`Transaction was successfully executed`}
-                        error={
-                            swapTx.status === 'Fail' ||
+                        error={swapTx.status === 'Fail' ||
                             swapTx.status === 'Exception' ||
                             approveTx.status === 'Fail' ||
                             approveTx.status === 'Exception' ||
-                            swapError
-                        }
+                            swapError ? new Error('Something went wrong') : null}
                         success={
                             swapTx.status === 'Success'
                         }

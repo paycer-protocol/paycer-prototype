@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useBlockNumber } from '@usedapp/core'
-import { t } from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import IndicatorItem from '@components/atoms/indicator-item'
 import LinkExternal from '@components/atoms/link-external'
 import PortalOverlay from '@components/molecules/portal-overlay'
-import useNetwork from '@hooks/use-network'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import { getExplorerBlockUrl } from '@providers/explorers'
 
+// TODO REFACTOR https://docs.moralis.io/moralis-dapp/web3-api/native#getdatetoblock
 export default function PortalBlockNumber() {
-  const network = useNetwork()
-  const blockNumber: number | undefined = useBlockNumber()
-  const wallet = useWallet()
+  const { isAuthenticated, walletAddress, currentNetworkId, explorerUrl, blockNumber } = useDapp()
   const [href, setHref] = useState(null)
 
   useEffect(() => {
-    if (!wallet.isConnected || !blockNumber) {
+    if (!isAuthenticated || !blockNumber) {
       return
     }
-
-    const explorerBlockUrl = getExplorerBlockUrl(network.chainId, blockNumber)
-    setHref(explorerBlockUrl)
-
+    const explorerBlockUrl = explorerUrl
+    setHref(explorerBlockUrl + '/block/' + blockNumber)
     return () => setHref(null)
-  }, [blockNumber, network.chainId, wallet.isConnected, wallet.address])
+  }, [blockNumber, currentNetworkId, isAuthenticated, walletAddress])
 
   return (
     <PortalOverlay>
@@ -35,6 +31,7 @@ export default function PortalBlockNumber() {
         </IndicatorItem>
       ) : (
         <IndicatorItem state="danger" title={t`Login to your wallet to see block details`}>
+          {/*@ts-ignore*/}
           {t`Disconnected`}
         </IndicatorItem>
       )}

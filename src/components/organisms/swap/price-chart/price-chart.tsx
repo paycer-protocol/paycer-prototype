@@ -208,7 +208,7 @@ const PriceChart = (props: PriceChartProps) => {
 
             {data &&
                 <>
-                  {/* @ts-ignore */}
+                  {/*@ts-ignore*/}
                   <Chart
                       {...data}
                       type="area"

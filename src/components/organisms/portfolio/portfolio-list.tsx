@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import {t} from '@lingui/macro'
+import {t, Trans} from '@lingui/macro'
 import Link from 'next/link'
 import ProgressBar from '@components/atoms/progress-bars'
 import Button from '@components/atoms/button'
@@ -9,7 +9,7 @@ import Card from '@components/molecules/card'
 import { StrategyType } from '../../../types/investment'
 import { riskLabels } from '../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon";
-import useWallet from "@hooks/use-wallet";
+import { useDapp } from '@context/dapp-context'
 import GradientButton from "@components/atoms/button/gradient-button";
 
 interface PortfolioStrategy extends StrategyType {
@@ -87,7 +87,8 @@ export default function PortfolioList(props: PortfolioProps) {
                                     </div>
                                </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
-                                    {riskLabels[strategy.riskLevel].id}
+                                    {/*@ts-ignore*/}
+                                    <Trans id={riskLabels[strategy.riskLevel].id}/>
                                 </td>
                                 <td className={`${tdClass} border-left-0 border-right-0`}>
                                     <div className="row align-items-center g-0">

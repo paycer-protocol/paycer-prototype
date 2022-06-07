@@ -12,14 +12,14 @@ export default function Index() {
     <div className="btn-group-toggle d-flex align-items-center">
       <Button variant="light" className="w-50 me-2" active={!darkMode.enabled} onClick={() => darkMode.setEnabled(false)}>
         <div className="d-flex align-items-center p-1 text-nowrap">
-          <Icon component={Sun} className="me-2" size={18} />
-            {t`Light Mode`}
+            {/*@ts-ignore*/}
+          <Icon component={Sun} className="me-2" size={18} /> {t`Light Mode`}
         </div>
       </Button>
       <Button variant="light" className="w-50" active={darkMode.enabled} onClick={() => darkMode.setEnabled(true)}>
         <div className="d-flex align-items-center p-1 text-nowrap">
-          <Icon component={Moon} className="me-2" size={18} />
-            {t`Dark Mode`}
+            {/*@ts-ignore*/}
+          <Icon component={Moon} className="me-2" size={18} /> {t`Dark Mode`}
         </div>
       </Button>
     </div>

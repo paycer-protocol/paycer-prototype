@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import {t, Trans} from '@lingui/macro'
-import Button from '@components/atoms/button'
-import useWallet from '@hooks/use-wallet'
+import {t} from '@lingui/macro'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
+import { useDapp } from '@context/dapp-context'
 import { Wallet } from '@styled-icons/ionicons-sharp'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
@@ -11,7 +10,6 @@ import useCopyClipboard from "@hooks/use-copy-clipboard";
 import { Copy, CheckCircle, Compass } from '@styled-icons/feather'
 import { SwitchCamera } from '@styled-icons/material'
 import { PlugDisconnected } from '@styled-icons/fluentui-system-regular'
-import useToken from "@hooks/use-token";
 import CurrencyIcon from "@components/atoms/currency-icon";
 import {FormattedNumber} from "../../../atoms/number/formatted-number";
 import AddPaycerToken from '@components/organisms/web3/add-paycer-token'
@@ -23,17 +21,23 @@ const WalletMenu = () => {
 
     const [copiedWalletAdress, setCopiedWalletAdress] = useCopyClipboard()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
-    const wallet = useWallet()
-    const token = useToken('PCR')
-    const { symbol, tokenBalance } = token
-    const balance = tokenBalance()
+    const {
+        isAuthenticated,
+        walletAddress,
+        walletShortenAddress,
+        explorerUrl,
+        handleWalletDisconnect,
+        nativeSymbol,
+        nativeBalanceFormatted,
+        pcrBalance
+    } = useDapp()
+
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
-    if (!wallet.isConnected) {
+    if (!isAuthenticated) {
         return (
             <>
                 <RoundetIconButton bgClass="bg-transparent" onClick={() => setShowWalletProviderModal(true)} icon={Wallet} label={t`Connect to a Wallet`} />
-
                 {(showWalletProviderModal &&
                   <WalletProvider
                     providers={connectors}
@@ -47,19 +51,19 @@ const WalletMenu = () => {
     const renderMenu = () => {
         return (
             <>
-                <a onClick={() => setCopiedWalletAdress(wallet.address)} className="mb-4 d-flex">
+                <a onClick={() => setCopiedWalletAdress(walletAddress)} className="mb-4 d-flex">
                     <div className="d-flex me-3 pe-1">
                         <Icon component={Copy} size={21} />
                         {copiedWalletAdress && <Icon className="ms-2 ps-2" component={CheckCircle} size={23} />}
                     </div>
                     <div>
-                        <h3 className="mb-0">{wallet.shortenAddress}</h3>
+                        <h3 className="mb-0">{walletShortenAddress}</h3>
                         <small className="text-muted" style={{fontSize: 10}}>
                             {t`Copy Wallet Address`}
                         </small>
                     </div>
                 </a>
-                <a href={wallet.explorerUrl} target="_blank" className="mb-4 d-flex">
+                <a href={explorerUrl} target="_blank" className="mb-4 d-flex">
                     <div className="d-flex me-3 pe-1">
                         <Icon component={Compass} size={21} />
                     </div>
@@ -100,7 +104,7 @@ const WalletMenu = () => {
                 </AddPaycerToken>
                 <a onClick={async () => {
                     window.localStorage.setItem('walletConnectedProviderName', '')
-                    await wallet.disconnect()
+                    await handleWalletDisconnect()
                 }} className="d-flex">
                     <div className="d-flex me-3 pe-1">
                         <Icon component={PlugDisconnected} size={21} />
@@ -126,16 +130,15 @@ const WalletMenu = () => {
                             className="me-3"
                             width={21}
                             height={21}
-                            symbol={symbol}
+                            symbol={'PCR'}
                         />
                         <div className="ps-1 mb-0">
                             <FormattedNumber
-                                value={balance}
+                                value={pcrBalance}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
-                            />
+                            /> PCR
                         </div>
-                        &nbsp; PCR
                     </div>
 
                     <div className="d-flex align-items-center">
@@ -143,16 +146,11 @@ const WalletMenu = () => {
                             className="me-3"
                             width={21}
                             height={21}
-                            symbol={wallet.etherSymbol}
+                            symbol={nativeSymbol}
                         />
                         <div className="ps-1 mb-0">
-                            <FormattedNumber
-                                value={wallet.etherBalance}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
+                            {nativeBalanceFormatted}
                         </div>
-                        &nbsp; {wallet.etherSymbol}
                     </div>
                 </div>
             </>
@@ -163,7 +161,7 @@ const WalletMenu = () => {
         <>
             {isTabletOrMobile ?
               renderMenu()
-            : <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Wallet} label={wallet.shortenAddress} />}>
+            : <Dropdown desktopWidth={300} openBy="click" opener={<RoundetIconButton toggleActive icon={Wallet} label={walletShortenAddress} />}>
                 {renderMenu()}
               </Dropdown>
             }

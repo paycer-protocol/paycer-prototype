@@ -17,8 +17,8 @@ export default function SupplyLiquidity() {
     const pcrToken = useToken(tokenProvider.PCR.symbol)
     const usdcToken = useToken(tokenProvider.USDC.symbol)
 
-    const initialToken1Balance = pcrToken.tokenBalance()
-    const initialToken0Balance = usdcToken.tokenBalance()
+    const initialToken1Balance = pcrToken.tokenBalance
+    const initialToken0Balance = usdcToken.tokenBalance
 
     const initialValues: SupplyProps = {
         token1: tokenProvider.PCR,

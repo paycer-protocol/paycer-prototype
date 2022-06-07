@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isHexString } from 'ethers/lib/utils';
+import { isHexString } from 'ethers-utils;
 import { ChainId, WETHContract } from '../../..';
 import { MOCKFUN } from '../../../mocks/fun-token.mock';
 import { UniswapPairContractFactoryPublicV2 } from './uniswap-pair-contract.factory.public.v2';

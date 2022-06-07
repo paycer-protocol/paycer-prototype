@@ -1,18 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import {t} from '@lingui/macro'
-import useWallet from '@hooks/use-wallet'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
 import { Network } from '@styled-icons/entypo'
-import useNetwork from "@hooks/use-network";
+import { useDapp } from '@context/dapp-context'
 import {toast} from "react-toastify";
 import {chainedNetworkProvider, mainNetProviders} from "@providers/networks";
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from "@components/atoms/currency-icon";
 import RoundetIconButton from "@components/atoms/button/roundet-icon-button";
-import {Wallet} from "@styled-icons/ionicons-sharp";
-import {useMediaQuery} from "react-responsive";
+import { Wallet } from "@styled-icons/ionicons-sharp";
+import { useMediaQuery } from "react-responsive";
 
 function isDebug() {
     return window.location.hostname === 'localhost'
@@ -24,35 +23,14 @@ export const NetworkItem = styled.a`
 
 const NetworkMenu = () => {
     const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
-    const network = useNetwork()
-    const wallet = useWallet()
+    const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
-    const handleSwitchNetwork = async provider => {
-        try {
-            await network.switchNetwork(provider)
-        } catch (error) {
-            if (error.code === -32002) {
-                toast(t`Network-Switch Pending, please open your Wallet`)
-            }
-            if (error.code === 4902) {
-                toast(t`Adding Network to Wallet ...`)
-                try {
-                    await network.addNetwork(provider)
-                } catch (error) {
-                    if (error.code === -32002) {
-                        toast(t`Previously added network Pending, please open your Wallet`)
-                    }
-                }
-            }
-        }
-    }
-
-    if (!wallet.isConnected) {
+    if (!isAuthenticated) {
         return null
     }
 
-    const activeNetworkLabel = providers[network.chainId]?.chainName
+    const activeNetworkLabel = providers[currentNetworkId]?.chainName
 
     const renderMenu = () => {
         return (
@@ -67,7 +45,7 @@ const NetworkMenu = () => {
                 </div>
                 {Object.keys(providers).map((chainId, index) => {
                     const provider = providers[chainId]
-                    const isActive = wallet.isConnected && Number(chainId) === wallet.chainId
+                    const isActive = isAuthenticated && Number(chainId) === currentNetworkId
                     const isLast = Object.keys(providers).length === index +1
 
                     return (

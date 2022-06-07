@@ -4,10 +4,9 @@ import { t, Trans } from '@lingui/macro'
 import useStaking from '@hooks/use-staking'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import { rewardSymbol } from '@config/staking-rewards'
 import GradientButton from '@components/atoms/button/gradient-button'
-import Spinner from '@components/atoms/spinner'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import {useDapp} from "@context/dapp-context";
 
 const RewardContainer = styled.div`
   display: flex;
@@ -25,25 +24,26 @@ const HorizontalLine = styled.div`
 `
 
 export default function ClaimSummary() {
-  const {
-    claim,
-    claimTx,
-    resetStatus,
-    pendingReward,
-    totalAmountClaimed,
-    lastRewardTime,
-    claimError,
-    isLoading,
-    showFormApproveModal,
-    setShowFormApproveModal
-  } = useStaking()
 
-  const handleClaim = async () => {
-    try {
-      await claim()
-    } catch (e) {
+    const {
+        claim,
+        pendingReward,
+        totalAmountClaimed,
+        lastRewardTime,
+        contractCallError,
+        isLoading,
+        claimIsSuccess,
+        showFormApproveModal,
+        setShowFormApproveModal,
+        resetStatus
+    } = useStaking()
+
+    const handleClaim = async () => {
+        try {
+            await claim()
+        } catch (e) {
+        }
     }
-  }
 
   return (
       <>
@@ -107,25 +107,25 @@ export default function ClaimSummary() {
           <TransactionApproveModal
               show={showFormApproveModal}
               onHide={() => {
-                  resetStatus()
                   setShowFormApproveModal(false)
+                  resetStatus()
               }}
               title={t`Confirm Claim`}
               btnLabel={t`Claim now`}
               onClick={() => handleClaim()}
-              error={claimTx.status === 'Fail' || claimTx.status === 'Exception' || claimError}
-              success={claimTx.status === 'Success'}
+              error={contractCallError}
+              success={claimIsSuccess}
               successMessage={t`Transaction was successfully executed`}
-              loading={isLoading || claimTx.status === 'Mining'}
+              loading={isLoading}
           >
               <div className="my-5">
                   <div className="d-flex flex-column mb-4 text-center">
-                            <span className="display-2 my-3">
-                                <FormattedNumber
-                                    value={pendingReward}
-                                    minimumFractionDigits={2}
-                                    maximumFractionDigits={2}
-                                />
+                        <span className="display-2 my-3">
+                            <FormattedNumber
+                                value={pendingReward}
+                                minimumFractionDigits={2}
+                                maximumFractionDigits={2}
+                            />
                             <CurrencyIcon
                                 style={{position: 'relative', top: '-5px'}}
                                 width={55}
@@ -133,7 +133,7 @@ export default function ClaimSummary() {
                                 symbol="PCR"
                                 className="ms-3"
                             />
-                            </span>
+                        </span>
                   </div>
               </div>
           </TransactionApproveModal>

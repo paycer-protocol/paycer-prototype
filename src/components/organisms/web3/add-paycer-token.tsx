@@ -1,67 +1,50 @@
 import React from 'react'
-import useWallet from '@hooks/use-wallet'
-import { ChainId } from '@usedapp/core'
-import { useEthers } from '@usedapp/core'
+import { useDapp } from '@context/dapp-context'
+import ChainId from '@providers/chain-id'
 import useToken from '../../../hooks/use-token'
-import {toast} from "react-toastify";
-import {t} from "@lingui/macro";
+import {useChain} from "react-moralis";
 
 export interface AddPaycerTokenProps {
     children: React.ReactNode
 }
 
+
 const AddPaycerToken = (props: AddPaycerTokenProps) => {
     const { children } = props
-    const { library, chainId } = useEthers()
-    const wallet = useWallet()
+    const { isAuthenticated, currentNetworkId, currentNetworkProvider} = useDapp()
     const token = useToken('PCR')
-    const { tokenAddress, symbol, decimals, tokenBalance } = token
+    const { tokenAddress, tokenSymbol, tokenDecimals, tokenBalance } = token
 
-    const addToken = async () => {
+    const addPCRToken = async () => {
+        try {
+            //@ts-ignore
+            await window.ethereum.request({
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                    options: {
+                        address: tokenAddress,
+                        symbol: tokenSymbol,
+                        decimals: tokenDecimals,
+                        image: 'https://paycer-prototype.vercel.app/assets/icons/pcr.svg',
+                    },
+                },
+            });
 
-        // @ts-ignore
-      if (!library && !library.provider.isMetaMask && !library.provider.request) {
-          return false
-      }
-
-      try {
-          const params: any = {
-              type: 'ERC20',
-              options: {
-                  address: tokenAddress,
-                  symbol: symbol,
-                  decimals: decimals,
-                  image: 'https://paycer-prototype.vercel.app/assets/icons/pcr.svg',
-              },
-          }
-          // @ts-ignore
-          library.provider
-              .request({
-                  method: 'wallet_watchAsset',
-                  params,
-              })
-              .then((success) => {
-                  if (success) {
-                      // TODO check of token really was added
-                      //toast(t`Successfully added PAYCER TOKEN to MetaMask`)
-                  } else {
-                      toast(t`Something went wrong`)
-                  }
-              })
-              .catch(console.error)
-      } catch {
-          toast(t`Something went wrong`)
-      }
+        } catch (error) {
+            console.log(error);
+        }
     }
+
     // @ts-ignore
-    if (!wallet.isConnected || (!chainId && ![ChainId.Mainnet].includes(chainId) && !library && !library.provider.isMetaMask))  {
+    if (!isAuthenticated || (!currentNetworkId && ![ChainId.Polygon].includes(currentNetworkId) && currentNetworkProvider.isMetaMask))  {
       return null
     }
 
     return (
       <div
           onClick={async () => {
-            await addToken()
+            await addPCRToken()
           }}
       >
           {children}

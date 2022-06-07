@@ -1,6 +1,5 @@
 import React from 'react'
 import Footer from '@components/organisms/footer'
-import useNetwork from '@hooks/use-network'
 import Header from "@components/organisms/header";
 
 export interface NftRevealLayoutProps {
@@ -9,7 +8,6 @@ export interface NftRevealLayoutProps {
 
 const NftRevealLayout = (props: NftRevealLayoutProps) => {
     const {children} = props
-    const network = useNetwork()
 
     return (
         <>

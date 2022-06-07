@@ -4,13 +4,13 @@ import { InputGroup, FormControl } from 'react-bootstrap'
 import Icon from '@components/atoms/icon'
 import { Bookmark, BookmarkCheck } from '@styled-icons/bootstrap'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import api from '../../../api'
 
 export default function ReferralUrl () {
   const [isCopied, setCopied] = useCopyClipboard()
   const [code, setCode] = useState()
-  const wallet = useWallet()
+  const { isAuthenticated, walletAddress } = useDapp()
 
   useEffect(() => {
     async function fetchReferralCode(walletAddress) {
@@ -23,10 +23,10 @@ export default function ReferralUrl () {
       }
     }
 
-    if (wallet.isConnected && wallet.address) {
-      fetchReferralCode(wallet.address)
+    if (isAuthenticated && walletAddress) {
+      fetchReferralCode(walletAddress)
     }
-  }, [wallet.isConnected])
+  }, [isAuthenticated])
 
   return (
     <div className="mb-5">

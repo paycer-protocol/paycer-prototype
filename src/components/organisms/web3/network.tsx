@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import styled from 'styled-components'
 import Button from '@components/atoms/button'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number'
 import NetworkProvider  from './network-provider'
@@ -21,12 +21,11 @@ const StyledButton = styled(Button)`
     }
 `
 
-
 const Network = (props) => {
   const [showNetworkModal, setShowNetworkModal] = useState(false)
-  const wallet = useWallet()
+  const { isAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useDapp()
 
-  if (!wallet.isConnected) {
+  if (!isAuthenticated) {
     return null
   }
 
@@ -41,21 +40,17 @@ const Network = (props) => {
                   <CurrencyIcon
                       style={{ marginTop: '1px' }}
                       className="me-3"
-                      symbol={wallet.etherSymbol}
+                      symbol={nativeSymbol}
                       width={20}
                   />
-                  <FormattedNumber
-                      value={wallet.etherBalance}
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={4}
-                  />
+                  {nativeBalanceFormatted}
               </div>
           </div>
 
       </StyledButton>
 
       <Button onClick={() => setShowNetworkModal(true)} className="mb-3 mb-md-0 w-100 d-flex align-items-center justify-content-center bg-dark text-light bg-primary">
-          <span className="mx-2">{wallet.chainName}</span>
+          <span className="mx-2">{chainName}</span>
       </Button>
 
       <NetworkProvider

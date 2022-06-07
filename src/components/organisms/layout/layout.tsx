@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '@components/organisms/header'
 import Footer from '@components/organisms/footer'
-import Network from '@components/organisms/web3/network'
-import useNetwork from '@hooks/use-network'
+import { useDapp } from '@context/dapp-context'
+import Spinner from "@components/atoms/spinner";
 import { t } from '@lingui/macro'
 
 export interface LayoutProps {
@@ -11,20 +11,28 @@ export interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const { children } = props
-  const network = useNetwork()
+  const { currentChainIsSupportedForDApp, isWeb3EnableLoading } = useDapp()
 
-  if (network.supportedChain) {
-    return (
-      <>
-        <div className="mb-md-5">
-          <Header/>
-        </div>
-        <main role="main" className="mb-8">
-          {children}
-        </main>
-        <Footer />
-      </>
-    )
+  if (currentChainIsSupportedForDApp) {
+      return (
+          <>
+              <div className="mb-md-5">
+                  <Header/>
+              </div>
+              <main role="main" className="mb-8">
+                  {children}
+              </main>
+              <Footer />
+          </>
+      )
+  }
+
+  if (isWeb3EnableLoading) {
+      return (
+          <div className="d-flex flex-column align-items-center justify-content-center mt-8">
+              <Spinner animation="border" show />
+          </div>
+      )
   }
 
   return (
@@ -32,16 +40,15 @@ const Layout = (props: LayoutProps) => {
       <Header />
       <main role="main" className="mb-8">
         <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-          <Network>
+            {/*@ts-ignore*/}
             <h1>{t`Network not supported`}</h1>
+            {/*@ts-ignore*/}
             {t`Change network`}
-          </Network>
         </div>
       </main>
       <Footer />
     </>
   )
-
 }
 
 export default Layout

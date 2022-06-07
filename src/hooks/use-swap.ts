@@ -8,7 +8,7 @@ interface UseSwapProps {
     resetStatus: () => void
     swapTx: any
     approveTx: any
-    swapError?: boolean
+    swapError?: Error
     isLoading?: boolean
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -21,7 +21,7 @@ export default function useSwap():UseSwapProps {
 
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const [swapError, setSwapError] = useState(false)
+    const [swapError, setSwapError] = useState<Error | null>(null)
 
     const handleSwap = async (values: SwapProps) => {
         setIsLoading(true)
@@ -35,7 +35,7 @@ export default function useSwap():UseSwapProps {
                 const approved = await sendSwapTransaction(transaction)
             }
         } catch {
-            setSwapError(true)
+
         }
         setIsLoading(false)
     }

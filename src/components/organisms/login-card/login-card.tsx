@@ -1,17 +1,12 @@
 import React, { useState } from 'react'
 import {t, Trans} from '@lingui/macro'
-import useWallet from '@hooks/use-wallet'
+import { useDapp } from '@context/dapp-context'
 import GradientButton from '@components/atoms/button/gradient-button'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 
 const LoginCard = () => {
-    const wallet = useWallet()
     const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
-
-    if (wallet.isConnected) {
-        return null
-    }
 
     return (
         <div className="card">

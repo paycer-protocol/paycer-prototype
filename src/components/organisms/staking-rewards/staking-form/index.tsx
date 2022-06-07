@@ -1,12 +1,10 @@
 import React from 'react'
 import {t, Trans} from '@lingui/macro'
-import * as Yup from 'yup'
 import {FormikValues} from 'formik'
 import {rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee} from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
-import useToken from '@hooks/use-token'
 import useStaking from '@hooks/use-staking'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
@@ -16,6 +14,7 @@ import {StakingProps} from '../types'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import InfoTooltip from "@components/atoms/info-tooltip"
 import TokenInputPanel from "@components/organisms/token-input-panel"
+import { useDapp } from '@context/dapp-context'
 
 export default function StakingForm() {
     const {
@@ -23,19 +22,17 @@ export default function StakingForm() {
         deposit,
         stakedBalance,
         rewardRate,
-        withdrawTx,
-        approveTx,
-        depositTx,
-        resetStatus,
         showFormApproveModal,
         setShowFormApproveModal,
-        withdrawError,
-        depositError,
-        isLoading
+        depositIsSuccess,
+        isLoading,
+        withdrawIsSuccess,
+        contractCallError,
+        resetStatus,
+        transactionState
     } = useStaking()
 
-    const token = useToken(rewardSymbol)
-    const tokenBalance = token.tokenBalance()
+    const { pcrBalance: tokenBalance } = useDapp()
 
     const initialValues: StakingProps = {
         rewardSymbol,
@@ -48,29 +45,27 @@ export default function StakingForm() {
         disabled: true,
     }
 
-    const validationSchema = Yup.object().shape({
-        stakedBalance: Yup.number().min(0).required(),
-        tokenBalance: Yup.number().min(0).required(),
-    })
-
     const handleSubmit = () => {
         setShowFormApproveModal(true)
     }
 
     const handleStaking = async (values: FormikValues) => {
         if (values.stakedBalance > initialValues.stakedBalance) {
+            console.log('deposit')
             const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
             await deposit(depositAmount)
+
         } else {
+            console.log('withdraw')
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
+
         }
     }
 
     return (
         <Form
             initialValues={initialValues}
-            validationSchema={validationSchema}
             onSubmit={handleSubmit}
             enableReinitialize
         >
@@ -162,31 +157,16 @@ export default function StakingForm() {
                         <TransactionApproveModal
                             show={showFormApproveModal}
                             onHide={() => {
-                                resetStatus()
                                 setShowFormApproveModal(false)
+                                resetStatus()
                             }}
                             title={t`Confirm Transaction`}
                             onClick={() => handleStaking(values)}
                             successMessage={t`Transaction was successfully executed`}
-                            error={
-                                depositTx.status === 'Fail' ||
-                                depositTx.status === 'Exception' ||
-                                approveTx.status === 'Fail' ||
-                                approveTx.status === 'Exception' ||
-                                withdrawTx.status === 'Fail' ||
-                                withdrawTx.status === 'Exception' ||
-                                withdrawError || depositError
-                            }
-                            success={
-                                depositTx.status === 'Success' ||
-                                withdrawTx.status === 'Success'
-                            }
-                            loading={
-                                depositTx.status === 'Mining' ||
-                                withdrawTx.status === 'Mining' ||
-                                approveTx.status === 'Mining' ||
-                                isLoading
-                            }
+                            error={contractCallError}
+                            success={withdrawIsSuccess || depositIsSuccess}
+                            loading={isLoading}
+                            infoMessage={transactionState ? transactionState === 1 ? t`Approving...` : t` Staking...` : ''}
                         >
                             <>
                                 <div className="card blur-background">
