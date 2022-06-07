@@ -81,6 +81,8 @@ const DappContextProvider = ({ children }) => {
         provider: currentNetworkProvider
     } = useChain()
 
+    console.log(useChain())
+
     const {
         authenticate,
         isAuthenticated,
@@ -108,14 +110,8 @@ const DappContextProvider = ({ children }) => {
     const pcrContract = paycerTokenConfig.contract
     const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
 
-    const [currentChainIsSupportedForStaking, setCurrentChainIsSupportedForStaking] = useState<boolean>(supportedStakingChains.includes(chain?.networkId || ChainId.Polygon))
-    const [currentChainIsSupportedForDApp, setCurrentChainIsSupportedForDApp] = useState<boolean>(supportedChains.includes(chain?.networkId || ChainId.Polygon))
-
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const [blockNumber, setBlockNumber] = useState<number>(0)
-    const [currentChainId, setCurrentChainId] = useState<string>(chain?.chainId || currentNetwork.chainId)
-    const [currentNetworkId, setCurrentNetworkId] = useState<number>(chain?.networkId || ChainId.Polygon)
-    const chainProvider = mainNetProviders[chain?.networkId || ChainId.Polygon]
     const Web3Api = useMoralisWeb3Api()
 
     useEffect(() => {
@@ -131,7 +127,7 @@ const DappContextProvider = ({ children }) => {
     useEffect(() => {
         fetchPcrBalance()
         fetchDateToBlock()
-    }, [isAuthenticated, walletAddress, isWeb3Enabled, currentChainId])
+    }, [isAuthenticated, walletAddress, isWeb3Enabled, chain?.chainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({
@@ -150,7 +146,6 @@ const DappContextProvider = ({ children }) => {
 
     const handleSwitchNetwork = async (provider: any) => {
         await switchNetwork(provider.chainId)
-        setCurrentChainId(provider.chainId)
     }
 
     const fetchPcrBalance = () => {
@@ -203,16 +198,16 @@ const DappContextProvider = ({ children }) => {
                 nativeBalance: Number(balance),
                 nativeBalanceFormatted: balance.formatted,
                 nativeSymbol: Symbols[chain?.networkId] || Symbols[ChainId.Mainnet],
-                chainName: chainProvider.chainName,
+                chainName: chain?.name,
                 explorerUrl: chain?.blockExplorerUrl,
                 activeWallet: web3?.connection ? web3?.connection?.url : '',
                 currentNetwork,
                 currentNetworkProvider,
-                currentNetworkId,
+                currentNetworkId: chain?.networkId,
                 handleSwitchNetwork,
-                currentChainIsSupportedForDApp,
-                currentChainIsSupportedForStaking,
-                currentChainId,
+                currentChainIsSupportedForDApp: supportedChains.includes(chain?.networkId),
+                currentChainIsSupportedForStaking: supportedStakingChains.includes(chain?.networkId),
+                currentChainId: chain?.chainId,
                 pcrBalance,
                 fetchPcrBalance,
                 blockNumber

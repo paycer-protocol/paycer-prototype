@@ -1,7 +1,6 @@
 import ChainId from '@providers/chain-id'
 
 export const supportedChains = [
-  ChainId.Mainnet,
   ChainId.Polygon,
   ChainId.Mumbai
 ]
