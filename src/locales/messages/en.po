@@ -191,8 +191,13 @@ msgstr "Approve"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:180
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:169
-msgid "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgid "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgstr "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+
+#: src/components/organisms/invest/deposit-form/index.tsx:180
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:169
+msgid "Approving..."
+msgstr "Approving..."
 
 #: src/components/organisms/swap/supply-form/supply-info/supply-info.tsx:42
 #~ msgid "Apy"
@@ -423,8 +428,12 @@ msgstr "Claimable PCR Tokens"
 #~ msgstr "Claimable rewards"
 
 #: src/components/organisms/vesting/claim/index.tsx:98
-msgid "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+msgid "Claiming..."
+msgstr "Claiming..."
+
+#: src/components/organisms/vesting/claim/index.tsx:98
+#~ msgid "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgstr "Claiming... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:80
 msgid "Click on the verification link which is in the email."
@@ -639,8 +648,12 @@ msgstr "Deposit:"
 #~ msgstr "Deposited"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:180
-msgid "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgid "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgstr "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+
+#: src/components/organisms/invest/deposit-form/index.tsx:180
+msgid "Depositing..."
+msgstr "Depositing..."
 
 #: src/components/organisms/token-overview/token-overview-list.tsx:47
 #~ msgid "Description"
@@ -2023,8 +2036,8 @@ msgid "Staking"
 msgstr "Staking"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:169
-msgid "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
-msgstr "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgid "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
+#~ msgstr "Staking ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
 #: src/pages/staking/index.tsx:20
 #~ msgid "Staking Rewards"
@@ -2037,6 +2050,10 @@ msgstr "Staking TVL"
 #: src/components/organisms/header/header.tsx:95
 #~ msgid "Staking rewards"
 #~ msgstr "Staking rewards"
+
+#: src/components/organisms/staking-rewards/staking-form/index.tsx:169
+msgid "Staking..."
+msgstr "Staking..."
 
 #: src/components/organisms/invest/invest-list-item/invest-list-item.tsx:124
 #~ msgid "Start"
