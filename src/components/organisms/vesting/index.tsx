@@ -27,7 +27,7 @@ const Vesting = () => {
         )
     }
 
-    if (!tokenSaleData) {
+    if (!tokenSaleData.length) {
         return (
           <div className="card bg-transparent border-0 blur-background">
               <div className="bg-transparent d-flex justify-content-center align-items-center">

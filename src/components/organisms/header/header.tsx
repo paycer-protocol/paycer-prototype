@@ -25,9 +25,6 @@ const Header = () => {
     const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId)
         && isAuthenticatedRoute(route))
 
-
-    console.log(currentNetworkId)
-
     return (
       <>
           <header className="mx-md-4 mx-lg-5 pt-0 pt-md-2 pb-md-3" style={{ position: 'relative', zIndex: 10 }}>

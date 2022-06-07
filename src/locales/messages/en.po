@@ -1938,8 +1938,8 @@ msgstr "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 
 #: src/components/organisms/web3/add-paycer-token.tsx:48
 #: src/components/organisms/web3/add-paycer-token.tsx:53
-msgid "Something went wrong"
-msgstr "Something went wrong"
+#~ msgid "Something went wrong"
+#~ msgstr "Something went wrong"
 
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:41
 msgid "Something went wrong!"

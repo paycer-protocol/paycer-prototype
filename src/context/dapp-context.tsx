@@ -137,7 +137,7 @@ const DappContextProvider = ({ children }) => {
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({ provider: provider.providerId})
         if (!isWeb3Enabled) {
-            await enableWeb3()
+            await enableWeb3({ provider: provider.providerId})
         }
     }
 
