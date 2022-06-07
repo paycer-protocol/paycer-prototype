@@ -9,7 +9,6 @@ import {BigNumber} from "@ethersproject/bignumber";
 import Moralis from "moralis";
 import {formatUnits} from "@ethersproject/units";
 import PaycerTokenContractProvider from "@providers/paycer-token";
-import Web3 from "web3";
 
 export interface DappContextInterface {
     walletConnector: unknown | null
@@ -135,9 +134,13 @@ const DappContextProvider = ({ children }) => {
     }, [isAuthenticated, walletAddress, isWeb3Enabled, currentChainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
-        await authenticate({ provider: provider.providerId})
+        await authenticate({
+            provider: provider.providerId,
+            signingMessage: "Paycer Authentication"
+        })
+
         if (!isWeb3Enabled) {
-            await enableWeb3({ provider: provider.providerId})
+            await enableWeb3({ provider: provider.providerId })
         }
     }
 
