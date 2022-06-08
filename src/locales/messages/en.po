@@ -692,7 +692,7 @@ msgstr "Disconnected"
 #~ msgid "Distribution"
 #~ msgstr "Distribution"
 
-#: src/components/organisms/footer/footer.tsx:153
+#: src/components/organisms/footer/footer.tsx:163
 msgid "Docs"
 msgstr "Docs"
 
@@ -877,7 +877,7 @@ msgstr "Fullstack Developer"
 msgid "Gamification and level your NFT"
 msgstr "Gamification and level your NFT"
 
-#: src/components/organisms/footer/footer.tsx:188
+#: src/components/organisms/footer/footer.tsx:198
 msgid "General Terms and Conditions"
 msgstr "General Terms and Conditions"
 
@@ -988,7 +988,7 @@ msgstr "How much will the NFT cost?"
 msgid "Immediate Availability Percentage"
 msgstr "Immediate Availability Percentage"
 
-#: src/components/organisms/footer/footer.tsx:173
+#: src/components/organisms/footer/footer.tsx:183
 msgid "Imprint"
 msgstr "Imprint"
 
@@ -1109,7 +1109,7 @@ msgstr "Join for the waiting list"
 #~ msgid "Join the whitelisting waiting list."
 #~ msgstr "Join the whitelisting waiting list."
 
-#: src/components/organisms/footer/footer.tsx:45
+#: src/components/organisms/footer/footer.tsx:55
 msgid "Join us on"
 msgstr "Join us on"
 
@@ -1231,7 +1231,7 @@ msgstr "Launch of Sale Page"
 msgid "Light Mode"
 msgstr "Light Mode"
 
-#: src/components/organisms/footer/footer.tsx:163
+#: src/components/organisms/footer/footer.tsx:173
 msgid "Lightpaper"
 msgstr "Lightpaper"
 
@@ -1729,7 +1729,7 @@ msgstr "Presale ends:"
 #~ msgid "Price impact"
 #~ msgstr "Price impact"
 
-#: src/components/organisms/footer/footer.tsx:178
+#: src/components/organisms/footer/footer.tsx:188
 msgid "Privacy"
 msgstr "Privacy"
 
@@ -1849,7 +1849,7 @@ msgstr "Richard Vo"
 msgid "Risk"
 msgstr "Risk"
 
-#: src/components/organisms/footer/footer.tsx:183
+#: src/components/organisms/footer/footer.tsx:193
 msgid "Risk Disclaimer"
 msgstr "Risk Disclaimer"
 
@@ -1859,7 +1859,7 @@ msgstr "Risk Disclaimer"
 msgid "Risk Level"
 msgstr "Risk Level"
 
-#: src/components/organisms/footer/footer.tsx:141
+#: src/components/organisms/footer/footer.tsx:151
 #: src/pages/nft/index.tsx:66
 msgid "Roadmap"
 msgstr "Roadmap"
@@ -1916,7 +1916,7 @@ msgstr "Senior"
 #~ msgid "Sent and in Progress"
 #~ msgstr "Sent and in Progress"
 
-#: src/components/organisms/footer/footer.tsx:148
+#: src/components/organisms/footer/footer.tsx:158
 msgid "Service"
 msgstr "Service"
 
@@ -2173,7 +2173,7 @@ msgstr "The NFT will add more cashback rewards to your credit card"
 #~ msgid "The Next Generation Utility NFT"
 #~ msgstr "The Next Generation Utility NFT"
 
-#: src/components/organisms/footer/footer.tsx:42
+#: src/components/organisms/footer/footer.tsx:52
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 
@@ -2527,7 +2527,7 @@ msgstr "When does the pre-sale take place?"
 msgid "Whitelisting Events"
 msgstr "Whitelisting Events"
 
-#: src/components/organisms/footer/footer.tsx:158
+#: src/components/organisms/footer/footer.tsx:168
 msgid "Whitepaper"
 msgstr "Whitepaper"
 
