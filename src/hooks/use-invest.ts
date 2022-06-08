@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react'
-import { BigNumber, FixedFormat } from '@ethersproject/bignumber'
-import { ChainId } from '@usedapp/core'
+import { BigNumber } from '@ethersproject/bignumber'
+import ChainId from '@providers/chain-id'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
 import ERC20Abi from '../deployments/ERC20.json'
@@ -34,7 +34,7 @@ interface UseInvestProps {
 export default function useInvest(strategy: StrategyType):UseInvestProps {
     const { currentNetworkId, walletAddress, currentChainId, isAuthenticated } = useDapp()
     const strategyAddress = strategy.chainAddresses[currentNetworkId] || strategy.chainAddresses[ChainId.Polygon]
-    const tokenContract = new Contract(strategy.input.chainAddresses[currentNetworkId], ERC20Abi)
+    const tokenContract = new Contract(strategy.input.chainAddresses[currentNetworkId || ChainId.Polygon], ERC20Abi)
     const Web3Api = useMoralisWeb3Api()
     const { setIsWithdrawAble } = useInvestIsWithdrawable(strategy)
 
