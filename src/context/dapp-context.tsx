@@ -59,7 +59,7 @@ const contextDefaultValues: DappContextInterface = {
     currentChainIsSupportedForDApp: false,
     currentChainIsSupportedForStaking: false,
     currentNetworkId: 0,
-    currentChainId: '',
+    currentChainId: 'test',
     currentNetworkProvider: null,
     pcrBalance: 0,
     blockNumber: 0,
@@ -73,7 +73,6 @@ const DappContext = createContext<DappContextInterface>(
 export const useDapp = () => useContext(DappContext)
 
 const DappContextProvider = ({ children }) => {
-
     const {
         chain,
         chainId,
@@ -81,15 +80,12 @@ const DappContextProvider = ({ children }) => {
         provider: currentNetworkProvider
     } = useChain()
 
-    console.log(useChain())
-
     const {
         authenticate,
         isAuthenticated,
         connector: walletConnector,
         logout,
         account,
-        isAuthenticating: isAuthenticating,
         enableWeb3,
         web3,
         isWeb3Enabled,
@@ -97,11 +93,7 @@ const DappContextProvider = ({ children }) => {
     } = useMoralis()
 
     const {
-        getBalances,
         data: balance,
-        nativeToken,
-        error,
-        isLoading
         // @ts-ignore
     } = useNativeBalance({ chain: chain?.chainId })
 
@@ -205,8 +197,8 @@ const DappContextProvider = ({ children }) => {
                 currentNetworkProvider,
                 currentNetworkId: chain?.networkId,
                 handleSwitchNetwork,
-                currentChainIsSupportedForDApp: supportedChains.includes(chain?.networkId),
-                currentChainIsSupportedForStaking: supportedStakingChains.includes(chain?.networkId),
+                currentChainIsSupportedForDApp: chain?.networkId ? supportedChains.includes(chain?.networkId) : true,
+                currentChainIsSupportedForStaking: chain?.networkId ? supportedStakingChains.includes(chain?.networkId) : true,
                 currentChainId: chain?.chainId,
                 pcrBalance,
                 fetchPcrBalance,
