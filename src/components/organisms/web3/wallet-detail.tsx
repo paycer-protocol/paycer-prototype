@@ -103,7 +103,7 @@ const WalletDetail = (props: AccountDetailProps) => {
                               <AccountAction
                                 name={t`Explorer`}
                                 description={t`View your wallet in Blockchain Explorer`}
-                                href={explorerUrl}
+                                href={explorerUrl + '/address/' + walletAddress}
                                 target="_blank"
                               />
                               <AccountAction
