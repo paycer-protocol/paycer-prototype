@@ -43,7 +43,7 @@ export default function Swap() {
     console.log(network)
 
     const networkSettings = {
-        providerUrl: network.rpcUrls[0],
+        providerUrl: network.rpcUrls ? network.rpcUrls[0] : '',
         walletAddress: walletAddress,
         networkProvider: network.provider,
         chainId: network.chainId,
