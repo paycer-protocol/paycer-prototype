@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { t, Trans } from '@lingui/macro'
+import { t } from '@lingui/macro'
 import InfoChart from '@components/organisms/analytics-dashboard/info-chart'
 import Modal from '@components/molecules/modal'
 import { InfoChartProps } from '../types'
@@ -97,7 +97,7 @@ const ChartList = () => {
                     />
                 </div>
 
-                <p className="text-muted mt-3"><Trans>USD prices provided by the CoinGecko API.</Trans></p>
+                <p className="text-muted mt-3">{t`USD prices provided by the CoinGecko API.`}</p>
             </div>
             {modalChartProps &&
                 <Modal show size="xl" centered>
