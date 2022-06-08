@@ -20,8 +20,14 @@ const Header = () => {
 
     const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
 
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId)
-        && isAuthenticatedRoute(route))
+    const qualifiedRoutes = routes.filter((route) => {
+        if (!currentNetworkId) {
+            return true
+        }
+
+        return route.supportedChains.includes(currentNetworkId)
+          && isAuthenticatedRoute(route)
+    })
 
     return (
       <>

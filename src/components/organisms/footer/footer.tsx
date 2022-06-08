@@ -23,8 +23,18 @@ const NavHeader = styled.div`
 
 const Footer = () => {
     const { pathname } = useRouter()
-    const { currentNetworkId } = useDapp()
-    const qualifiedRoutes = routes.filter((route) => route.supportedChains.includes(currentNetworkId))
+    const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp()
+
+    const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
+
+    const qualifiedRoutes = routes.filter((route) => {
+        if (!currentNetworkId) {
+            return true
+        }
+
+        return route.supportedChains.includes(currentNetworkId)
+          && isAuthenticatedRoute(route)
+    })
 
     return (
       <>
