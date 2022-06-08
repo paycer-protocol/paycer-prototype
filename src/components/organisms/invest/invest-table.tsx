@@ -3,14 +3,14 @@ import { t } from '@lingui/macro'
 import InvestItem from './invest-item'
 import { useInvestList } from "@context/invest-list-context";
 
-export default function   InvestList() {
+export default function InvestList() {
     const { strategies } = useInvestList()
     const thClass = 'bg-card-blue border border-secondary-dark'
 
     return (
         <div className="table-responsive mb-0 border-0">
-            <table className="table table-sm table-nowrap card-table" style={{background: 'rgb(14 22 40 / 50%)'}}>
-                <thead className="position-relative" style={{top: '-10px'}}>
+            <table className="table table-sm table-nowrap card-table" style={{ background: 'rgb(14 22 40 / 50%)' }}>
+                <thead className="position-relative" style={{ top: '-10px' }}>
                     <tr>
                         <th className={`${thClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                             <span className="text-muted">
@@ -41,8 +41,8 @@ export default function   InvestList() {
                     </tr>
                 </thead>
 
-                <tbody className="list position-relative" style={{top: '-10px'}}>
-                    {strategies.map((strategy, key) => (
+                <tbody className="list position-relative" style={{ top: '-10px' }}>
+                    {strategies?.map((strategy, key) => (
                         <InvestItem
                             key={`invest${key}`}
                             {...strategy}

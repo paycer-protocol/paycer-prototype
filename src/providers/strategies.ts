@@ -26,6 +26,7 @@ export const strategyProvider: IStrategyProvider = {
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDC.symbol,
     },
+    totalValue: undefined,
     chainAddresses: {
       [ChainId.Polygon]: '0x007f4817dDacd820690303e21A9505AdF9ea32F8'
     }
@@ -52,6 +53,7 @@ export const strategyProvider: IStrategyProvider = {
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.DAI.symbol,
     },
+    totalValue: undefined,
     chainAddresses: {
       [ChainId.Polygon]: '0xb667841138d226962fAB5b85907650BEA08A9733'
     }
@@ -78,6 +80,7 @@ export const strategyProvider: IStrategyProvider = {
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.USDT.symbol,
     },
+    totalValue: undefined,
     chainAddresses: {
       [ChainId.Polygon]: '0xbB40e77Fd13DcF70CAF737a2AE74cAdE11219620'
     }
@@ -104,6 +107,7 @@ export const strategyProvider: IStrategyProvider = {
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wBTC.symbol,
     },
+    totalValue: undefined,
     chainAddresses: {
       [ChainId.Polygon]: '0xE99D420a0e36850F3C3876C0a06725102801dfeB'
     }
@@ -130,6 +134,7 @@ export const strategyProvider: IStrategyProvider = {
       withdrawFee: 0.1,
       feeSymbol: tokenProvider.wETH.symbol,
     },
+    totalValue: undefined,
     chainAddresses: {
       [ChainId.Polygon]: '0x84f38466afFafC230c0273E5404087202c25F238'
     }

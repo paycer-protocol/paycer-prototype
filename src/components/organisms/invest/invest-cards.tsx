@@ -9,7 +9,7 @@ export default function InvestCards() {
 
   return (
     <div className="row mt-4">
-      {strategies.map((strategy, key) => (
+      {strategies?.map((strategy, key) => (
         <div key={`invest-card${key}`} className="col-12 col-md-6 col-lg-4">
           <InvestCard {...strategy} />
         </div>

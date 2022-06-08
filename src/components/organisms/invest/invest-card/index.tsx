@@ -7,7 +7,7 @@ import { StrategyType } from '../../../../types/investment'
 import { riskLabels } from '../../../../locales'
 import CurrencyIcon from "@components/atoms/currency-icon"
 import GradientButton from "@components/atoms/button/gradient-button"
-import {useInvestList} from "@context/invest-list-context"
+import { useInvestList } from "@context/invest-list-context"
 import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
 
 const InvestCard = (strategy: StrategyType) => {
@@ -27,7 +27,7 @@ const InvestCard = (strategy: StrategyType) => {
             <Card.Body>
                 <div className="mb-3">
                     <h6 className="text-uppercase text-center my-4 font-size-lg">
-                        { strategy.name }
+                        {strategy.name}
                     </h6>
                     <div className="row g-0 align-items-center justify-content-center">
                         <div className="col-auto">
@@ -50,7 +50,7 @@ const InvestCard = (strategy: StrategyType) => {
                             <CurrencyIcon
                                 symbol={strategy.input.symbol}
                                 className="ms-2 position-relative"
-                                style={{top: '-1px'}}
+                                style={{ top: '-1px' }}
                                 width={30}
                                 height={30}
                             />
@@ -58,7 +58,9 @@ const InvestCard = (strategy: StrategyType) => {
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span>{t`Total Volume`}</span>
-                        <span>-</span>
+                        <span>
+                            <FormattedNumber value={strategy.totalValue} />
+                        </span>
                     </li>
                     <li className="list-group-item d-flex align-items-center justify-content-between px-0">
                         <span>{t`Holdings`}</span>

@@ -1,4 +1,5 @@
 import { ChainId } from '@usedapp/core'
+import { BigNumber } from 'ethers'
 
 export enum RiskLevel {
   Low = 0,
@@ -57,6 +58,7 @@ export interface StrategyType {
   rewards: RewardType
   interest: InterestType
   fees: FeesType
+  totalValue: string | undefined
   color: string
   decimals: number
   minWithdraw: number

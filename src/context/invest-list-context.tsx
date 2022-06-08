@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { StrategyType } from '..././../types/investment'
 import { useMediaQuery } from "react-responsive";
-import { investmentStrategies } from "@config/investment/strategies";
-import {riskLabels} from "../locales";
+import { riskLabels } from "../locales";
+import useInvestmentStrategies from '@hooks/use-investment-strategies';
 
 export type InvestListContextTypes = {
     setStrategy: React.Dispatch<React.SetStateAction<StrategyType>>,
@@ -37,12 +37,18 @@ const InvestListContext = createContext<InvestListContextTypes>(
 export const useInvestList = () => useContext(InvestListContext)
 
 const InvestListContextProvider = ({ children }) => {
+    const investmentStrategies = useInvestmentStrategies();
     const [strategy, setStrategy] = useState<StrategyType | null>(null)
     const [investType, setInvestType] = useState<'deposit' | 'withdraw'>('deposit')
     const [showFormModal, setShowFormModal] = useState(true)
     const [isListView, setIsListView] = useState<boolean>(false)
-    const [strategies, setStrategies] = useState<StrategyType[] | null>(investmentStrategies)
+    const [strategies, setStrategies] = useState<StrategyType[] | undefined>(investmentStrategies)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
+
+    useEffect(() => {
+        // Update local strategy cache when useInvestmentStrategies returns new info.
+        setStrategies(investmentStrategies);
+    }, [investmentStrategies]);
 
     const toggleListView = (isListView) => {
         setIsListView(isListView)
