@@ -43,6 +43,7 @@
     "ethers": "^5.5.3",
     "ethers-multicall": "^0.2.2",
     "ethers-utils": "^2.1.11",
+    "magic-sdk": "^8.1.1",
     "moment": "^2.29.1",
     "moralis": "^1.5.11",
     "next": "^v12.0.10",
@@ -68,8 +69,6 @@
     "swiper": "^8.1.4"
   },
   "devDependencies": {
-    "ethers": "5.6.1",
-    "ethers-utils": "^2.1.11",
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
@@ -104,6 +103,8 @@
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "css-loader": "^6.6.0",
+    "ethers": "5.6.1",
+    "ethers-utils": "^2.1.11",
     "fibers": "^5.0.0",
     "file-loader": "^6.2.0",
     "formik": "^2.2.9",
