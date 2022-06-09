@@ -37,7 +37,7 @@ export default function StakingForm() {
     const initialValues: StakingProps = {
         rewardSymbol,
         stakedBalance,
-        tokenBalance,
+        tokenBalanceAfter: tokenBalance,
         rewardRate,
         stakeRange: stakedBalance ? (stakedBalance * 100) / (stakedBalance + tokenBalance) : 0,
         depositFee,
@@ -51,15 +51,11 @@ export default function StakingForm() {
 
     const handleStaking = async (values: FormikValues) => {
         if (values.stakedBalance > initialValues.stakedBalance) {
-            console.log('deposit')
             const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
             await deposit(depositAmount)
-
         } else {
-            console.log('withdraw')
             const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
             await withdraw(withdrawAmount)
-
         }
     }
 
@@ -188,7 +184,7 @@ export default function StakingForm() {
                                             </div>
                                             <div className="col-6 fw-bold">
                                                 <DashNumber
-                                                    value={values.tokenBalance}
+                                                    value={values.tokenBalanceAfter}
                                                     symbol={values.rewardSymbol}
                                                 />
                                             </div>

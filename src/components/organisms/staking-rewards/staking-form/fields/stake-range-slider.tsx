@@ -5,7 +5,7 @@ import { StakingProps } from '../../types'
 
 export default function InvestRangeSlider() {
   const { values, initialValues, setFieldValue, dirty } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
+  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalanceAfter
 
   return (
       <>
@@ -23,20 +23,20 @@ export default function InvestRangeSlider() {
               value={values.stakeRange}
               onChange={(value) => {
                   let stakedBalance = 0 as number
-                  let tokenBalance = 0 as number
+                  let tokenBalanceAfter = 0 as number
 
                   const stakeDiff = totalBalance * value / 100
                   stakedBalance = stakeDiff
-                  tokenBalance = totalBalance - stakeDiff
+                  tokenBalanceAfter = totalBalance - stakeDiff
 
                   stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
                   stakedBalance = stakedBalance < 0  ? 0 : stakedBalance
 
-                  tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
-                  tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
+                  tokenBalanceAfter = tokenBalanceAfter > totalBalance ? totalBalance : tokenBalanceAfter
+                  tokenBalanceAfter = tokenBalanceAfter < 0 ? 0 : tokenBalanceAfter
 
                   setFieldValue('stakedBalance', stakedBalance)
-                  setFieldValue('tokenBalance', tokenBalance)
+                  setFieldValue('tokenBalanceAfter', tokenBalanceAfter)
                   setFieldValue('stakeRange', value)
               }}
           />

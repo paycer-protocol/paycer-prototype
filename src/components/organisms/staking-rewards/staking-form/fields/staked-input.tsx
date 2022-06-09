@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { StakingProps } from '../../types'
 import TokenInput from "@components/molecules/token-input";
+import {useDapp} from "@context/dapp-context";
 
 export default function StakedInput() {
     const {
@@ -10,32 +11,33 @@ export default function StakedInput() {
         setFieldValue,
     } = useFormikContext<StakingProps>()
 
+    const { pcrBalance } = useDapp()
+
     const handleChange = (value: number) => {
         let stakedBalance = value
-        let tokenBalance = 0 as number
+        let tokenBalanceAfter = 0 as number
         let stakedDiff = 0 as number
 
         // plus
         if (stakedBalance > initialValues.stakedBalance) {
             stakedDiff = stakedBalance - initialValues.stakedBalance
-            tokenBalance = initialValues.tokenBalance - stakedDiff
-            // minus
+            tokenBalanceAfter = initialValues.tokenBalanceAfter - stakedDiff
         } else {
             stakedDiff = initialValues.stakedBalance - stakedBalance
-            tokenBalance = initialValues.tokenBalance + stakedDiff
+            tokenBalanceAfter = initialValues.tokenBalanceAfter + stakedDiff
         }
 
-        const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
+        const totalBalance = initialValues.stakedBalance + initialValues.tokenBalanceAfter
         const stakeRange = stakedBalance * 100 / totalBalance
 
         stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
         stakedBalance = stakedBalance > totalBalance ? totalBalance : stakedBalance
 
-        tokenBalance = tokenBalance < 0 ? 0 : tokenBalance
-        tokenBalance = tokenBalance > totalBalance ? totalBalance : tokenBalance
+        tokenBalanceAfter = tokenBalanceAfter < 0 ? 0 : tokenBalanceAfter
+        tokenBalanceAfter = tokenBalanceAfter > totalBalance ? totalBalance : tokenBalanceAfter
 
         setFieldValue('stakedBalance', stakedBalance)
-        setFieldValue('tokenBalance', tokenBalance)
+        setFieldValue('tokenBalanceAfter', tokenBalanceAfter)
         setFieldValue('stakeRange', stakeRange)
     }
 
@@ -47,7 +49,7 @@ export default function StakedInput() {
             handleChange={handleChange}
             raiseMax
             autoFocus
-            balance={values.tokenBalance}
+            balance={pcrBalance}
             decimals={4}
             value={values.stakedBalance}
         />
