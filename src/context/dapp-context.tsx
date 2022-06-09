@@ -36,6 +36,7 @@ export interface DappContextInterface {
     pcrBalance: number
     blockNumber: number
     fetchPcrBalance: () => void
+    setPcrBalance: React.Dispatch<React.SetStateAction<number>>
 }
 
 const contextDefaultValues: DappContextInterface = {
@@ -63,7 +64,8 @@ const contextDefaultValues: DappContextInterface = {
     currentNetworkProvider: null,
     pcrBalance: 0,
     blockNumber: 0,
-    fetchPcrBalance: null
+    fetchPcrBalance: null,
+    setPcrBalance: null,
 }
 
 const DappContext = createContext<DappContextInterface>(
@@ -202,7 +204,8 @@ const DappContextProvider = ({ children }) => {
                 currentChainId: chain?.chainId,
                 pcrBalance,
                 fetchPcrBalance,
-                blockNumber
+                blockNumber,
+                setPcrBalance,
             }}
         >
             {children}

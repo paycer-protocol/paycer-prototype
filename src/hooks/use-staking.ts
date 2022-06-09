@@ -44,7 +44,7 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated } = useDapp()
+    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated, pcrBalance, setPcrBalance } = useDapp()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
@@ -235,7 +235,7 @@ export default function useStaking():UseStakingProps {
             setIsLoading(false)
             setClaimIsSuccess(true)
             setPendingReward(0)
-            fetchPcrBalance()
+            setPcrBalance(pcrBalance + pendingReward)
         } catch (error) {
             if (error.code === 'TRANSACTION_REPLACED') {
                 if (error.cancelled) {
