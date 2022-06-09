@@ -21,13 +21,13 @@ export default function StakedInput() {
         // plus
         if (stakedBalance > initialValues.stakedBalance) {
             stakedDiff = stakedBalance - initialValues.stakedBalance
-            tokenBalanceAfter = initialValues.tokenBalanceAfter - stakedDiff
+            tokenBalanceAfter = pcrBalance - stakedDiff
         } else {
             stakedDiff = initialValues.stakedBalance - stakedBalance
-            tokenBalanceAfter = initialValues.tokenBalanceAfter + stakedDiff
+            tokenBalanceAfter = pcrBalance + stakedDiff
         }
 
-        const totalBalance = initialValues.stakedBalance + initialValues.tokenBalanceAfter
+        const totalBalance = initialValues.stakedBalance + pcrBalance
         const stakeRange = stakedBalance * 100 / totalBalance
 
         stakedBalance = stakedBalance < 0 ? 0 : stakedBalance
@@ -49,7 +49,7 @@ export default function StakedInput() {
             handleChange={handleChange}
             raiseMax
             autoFocus
-            balance={pcrBalance}
+            balance={values.tokenBalanceAfter || pcrBalance}
             decimals={4}
             value={values.stakedBalance}
         />

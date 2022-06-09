@@ -2,10 +2,12 @@ import React from 'react'
 import Slider from '@components/atoms/form/range'
 import { useFormikContext } from 'formik'
 import { StakingProps } from '../../types'
+import {useDapp} from "@context/dapp-context";
 
 export default function InvestRangeSlider() {
   const { values, initialValues, setFieldValue, dirty } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalanceAfter
+  const { pcrBalance } = useDapp()
+  const totalBalance = initialValues.stakedBalance + pcrBalance
 
   return (
       <>

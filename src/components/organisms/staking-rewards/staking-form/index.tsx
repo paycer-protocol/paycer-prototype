@@ -37,7 +37,7 @@ export default function StakingForm() {
     const initialValues: StakingProps = {
         rewardSymbol,
         stakedBalance,
-        tokenBalanceAfter: tokenBalance,
+        tokenBalanceAfter: 0,
         rewardRate,
         stakeRange: stakedBalance ? (stakedBalance * 100) / (stakedBalance + tokenBalance) : 0,
         depositFee,
