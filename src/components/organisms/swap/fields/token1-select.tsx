@@ -17,51 +17,13 @@ export default function Token1Select(props: SwapTokenInputProps) {
     const { isAuthenticated, walletAddress } = useDapp()
 
     const handleChange = async (token) => {
-        setErrorMessage('')
 
-        const networkSettings = values.networkSettings
-        networkSettings.walletAddress = walletAddress
-        setFieldValue('quoteChangedState', null)
-
-        try {
-            const nextValues = {
-                ...values,
-                ...{
-                    token1Markets: swapTokens,
-                    token1: token,
-                    networkSettings,
-                    tradePair: {
-                        fromTokenAddress: values.tradePair.fromTokenAddress,
-                        toTokenAddress: token.chainAddresses[networkSettings.chainId],
-                        amount: values.token0Value ? String(values.token0Value) : '1',
-                    },
-                }
-            }
-
-            if (nextValues.token0 && nextValues.token1) {
-                setFieldValue('isLoading', true)
-                const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
-                setValues(nextValues)
-                setFieldValue('tradeContext', nextTradeContext)
-                setShowModal(false)
-                if (values.token1Value) {
-                    setFieldValue('token1Value', nextTradeContext.expectedConvertQuote)
-                }
-                setFieldValue('isLoading', false)
-            } else {
-                setValues(nextValues)
-                setShowModal(false)
-            }
-        } catch (e) {
-            setErrorMessage(e.message)
-            setFieldValue('isLoading', false)
-        }
     }
 
     return (
         <>
             <TokenToggle
-                token={values.token1}
+                token={values.toToken}
                 onClick={() => setShowModal(true)}
                 placeholder={t`Select a token`}
                 label={t`Swap to`}
@@ -70,8 +32,8 @@ export default function Token1Select(props: SwapTokenInputProps) {
             {isAuthenticated && (
                 <TokenSelectModal
                     show={showModal}
-                    tokens={values.token1Markets}
-                    activeToken={values.token1}
+                    tokens={values.toTokenMarkets}
+                    activeToken={values.toToken}
                     onHide={() => setShowModal(false)}
                     onClick={handleChange}
                     errorMessage={errorMessage}

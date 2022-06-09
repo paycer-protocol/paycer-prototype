@@ -30,23 +30,23 @@ const SummaryDropdown = () => {
         <div className="position-relative">
             <div
                 onClick={() => {
-                    if (values.token1 && values.token0) {
+                    if (values?.fromToken && values?.toToken) {
                         setOpen(!open)
                     }
-                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`} style={!values.token1 || !values.token0 || !values.token0Value ? {opacity: '0.5'} : null}>
+                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`} style={!values?.toToken || !values?.fromToken || !values.fromTokenValue ? {opacity: '0.5'} : null}>
                 <div className="card-body p-3 p-md-3">
                     <div className="d-flex align-items-center justify-content-between w-100">
-                        {!values.token1 || !values.token0 || !values.token0Value ?
+                        {!values?.toToken || !values?.fromToken || !values.fromTokenValue ?
                         <>-</>
                         :
                             <div className="me-2">
-                                1 {values.token1?.symbol} =&nbsp;
+                                1 {values?.toToken?.symbol} =&nbsp;
                                 <FormattedNumber
-                                    value={values.token0Value / values.token1Value}
+                                    value={values.fromTokenValue / values.toTokenValue}
                                     minimumFractionDigits={2}
                                     maximumFractionDigits={4}
                                 />
-                                &nbsp; {values?.token0?.symbol}
+                                &nbsp; {values?.fromToken?.symbol}
                             </div>
                         }
                         <Icon
@@ -66,11 +66,11 @@ const SummaryDropdown = () => {
                         </span>
                         <span className="d-flex align-items-center">
                             <FormattedNumber
-                                value={Number(values.tradeContext?.minAmountConvertQuote) * Number(values.tradePair.amount)}
+                                value={99999999}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
-                            &nbsp; { values?.token1?.symbol }
+                            &nbsp; { values?.toToken?.symbol }
                         </span>
                     </div>
                     <div className="d-flex justify-content-between">
@@ -79,11 +79,11 @@ const SummaryDropdown = () => {
                         </span>
                         <span className="d-flex align-items-center">
                             <FormattedNumber
-                                value={values.tradeContext?.liquidityProviderFee}
+                                value={values.fee}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
-                            &nbsp; { values?.token0?.symbol }
+                            &nbsp; { values?.fromToken?.symbol }
                         </span>
                     </div>
                 </div>

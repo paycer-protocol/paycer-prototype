@@ -2,45 +2,33 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
+import useSwap from "@hooks/use-swap_";
+import useToken from "@hooks/use-token";
 
 export default function Token1Input(props: SwapTokenInputProps) {
     const { readOnly } = props
     const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
+    const { tokenBalance: balance} = useToken(values?.toToken?.symbol)
+
+    const {
+        isLoading,
+        fetchQuote
+    } = useSwap()
 
     const handleChange = async (value: number) => {
-
-        const nextValues = {
-            ...values,
-            ... {
-                token0Value: value / Number(values.tradeContext?.expectedConvertQuote || 0),
-                token1Value: value,
-                token1ValueByUserInput: value,
-                tradePair: {
-                    fromTokenAddress: values.tradePair.fromTokenAddress,
-                    toTokenAddress: values.tradePair.toTokenAddress,
-                    amount: values.token0Value ? String(values.token0Value) : '1',
-                },
-            }
-        }
-
-        if (values.token0 && values.token1) {
-            setFieldValue('isLoading', true)
-            const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
-            setFieldValue('tradeContext', nextTradeContext)
-            setFieldValue('isLoading', false)
-        }
+        fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
     }
 
     return (
         <TokenInput
             name="token1Value"
-            disabled={!values.token0 || !values.token1}
+            disabled={!values?.fromToken || !values?.toToken}
             required
-            currency={values?.tradeContext?.toToken?.symbol}
+            currency={values?.toToken?.symbol}
             handleChange={handleChange}
-            balance={Number(values?.tradeContext?.toBalance || 0)}
+            balance={balance}
             decimals={6}
-            readOnly={values.isLoading || readOnly}
+            readOnly={isLoading || readOnly}
         />
     )
 }

@@ -1,10 +1,7 @@
 import { useSendTransaction } from '@usedapp/core'
-import Moralis from "moralis";
-import {useEffect, useState} from 'react'
+import { useState } from 'react'
 import { SwapProps } from '@components/organisms/swap/types'
 import {FormikValues} from "formik";
-import {useDapp} from "@context/dapp-context";
-import {swapTokens} from '@config/market-pairs'
 
 interface UseSwapProps {
     handleSwap: (values: FormikValues) => void
@@ -18,7 +15,6 @@ interface UseSwapProps {
 }
 
 export default function useSwap():UseSwapProps {
-    const { walletAddress, currentNetworkId, currentChainId, chainName, isWeb3Enabled, isAuthenticated, currentChainShortName, currentNetwork } = useDapp()
 
     const { sendTransaction: sendApproveTransaction , state: approveTx } = useSendTransaction({ transactionName: 'approve' })
     const { sendTransaction: sendSwapTransaction , state: swapTx } = useSendTransaction({ transactionName: 'swap' })
@@ -43,50 +39,6 @@ export default function useSwap():UseSwapProps {
         }
         setIsLoading(false)
     }
-
-    const fetchAvailableTokens = async () => {
-        // Get all tokens
-
-        const result = await Moralis.Plugins.oneInch.getSupportedTokens({
-            chain: currentNetwork.chainName.toLowerCase(), // The blockchain you want to use (eth/bsc/polygon)
-        });
-
-        let tokens = result.tokens
-
-        tokens = Object.keys(tokens).map((k) => tokens[k])
-
-        const nextTokens = tokens.filter(f =>
-            swapTokens.some(k => f.symbol === k.symbol)
-        )
-
-        console.log(nextTokens, 'yo')
-
-
-        return result.tokens
-    }
-
-    const getQuote = async() => {
-
-        console.log(swapTokens[0])
-
-        const quote = await Moralis.Plugins.oneInch.quote({
-            chain: currentNetwork.chainName.toLowerCase(), // The blockchain you want to use (eth/bsc/polygon)
-            fromTokenAddress: swapTokens[0].chainAddresses[currentNetworkId], // The token you want to swap
-            toTokenAddress: swapTokens[1].chainAddresses[currentNetworkId], // The token you want to receive
-            amount: '1000',
-        });
-        console.log(quote, 'bla');
-    }
-
-    useEffect(() => {
-        const fetchTokens = async () => {
-            if (isWeb3Enabled && isAuthenticated) {
-                await getQuote()
-            }
-        }
-        fetchTokens()
-    }, [currentNetworkId, isAuthenticated])
-
 
     const resetStatus = () => {
         swapTx.status = 'None'
