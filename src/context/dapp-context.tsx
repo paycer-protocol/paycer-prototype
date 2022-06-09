@@ -26,7 +26,7 @@ export interface DappContextInterface {
     chainName: string
     explorerUrl: string
     activeWallet: string
-    currentNetwork: INetworkProvider
+    currentNetwork: any
     handleSwitchNetwork: (provider: any) => Promise<void>
     currentChainIsSupportedForDApp: boolean
     currentChainIsSupportedForStaking: boolean
@@ -77,7 +77,8 @@ const DappContextProvider = ({ children }) => {
         chain,
         chainId,
         switchNetwork,
-        provider: currentNetworkProvider
+        provider: currentNetworkProvider,
+        network
     } = useChain()
 
     const {

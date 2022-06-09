@@ -40,8 +40,6 @@ export default function Swap() {
         approveTx
     } = useSwap()
 
-    console.log(network)
-
     const networkSettings = {
         providerUrl: network.rpcUrls ? network.rpcUrls[0] : '',
         walletAddress: walletAddress,
