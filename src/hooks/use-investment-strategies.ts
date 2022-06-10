@@ -8,11 +8,11 @@ import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';
 
 export default function useInvestmentStrategies() {
-  const { currentNetworkId } = useDapp();
-  const Web3Api = useMoralisWeb3Api()
+  const { currentNetworkId, isWeb3Enabled } = useDapp();
   const [strategies, setStrategies] = useState<typeof strategyProvider[number][] | undefined>(undefined);
 
   useEffect(() => {
+    if (!isWeb3Enabled) return;
     (async () => {
       const baseStrategies = strategyProvider;
       const acc = <typeof strategies>[];
@@ -22,6 +22,12 @@ export default function useInvestmentStrategies() {
           abi: InvestAbi,
           functionName: 'totalValue',
         });
+        const poolRewardsContractAddress = await Moralis.executeFunction({
+          contractAddress: baseStrategy.chainAddresses[currentNetworkId],
+          abi: InvestAbi,
+          functionName: 'poolRewards',
+        });
+        console.log(poolRewardsContractAddress);
         acc.push({
           ...baseStrategy,
           totalValue: formatUnits(totalValue as unknown as BigNumber, baseStrategy.decimals),
@@ -29,7 +35,7 @@ export default function useInvestmentStrategies() {
       }
       setStrategies(acc);
     })();
-  }, []);
+  }, [isWeb3Enabled]);
 
   return strategies;
 }
