@@ -6,13 +6,13 @@ import { InfoChartProps } from '../types'
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios'
 
-const TOKEN_PRICE_ENDPOINT = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=paycer-protocol';
+const TOKEN_PRICE_ENDPOINT = 'https://api.paycer.io/v1/trade/exchange_rate?base=USD&symbol=PCR';
 
 function useTokenPrice(): number | undefined {
     const [price, setPrice] = useState<number | undefined>(undefined);
     useEffect(() => {
-        axios.get<[{ current_price: number }]>(TOKEN_PRICE_ENDPOINT).then((response) => {
-            setPrice(response.data[0].current_price)
+        axios.get<{ rate: number }>(TOKEN_PRICE_ENDPOINT).then((response) => {
+            setPrice(response.data.rate)
         });
     }, []);
     return price;
