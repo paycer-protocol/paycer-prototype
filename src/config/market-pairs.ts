@@ -2,6 +2,8 @@ import { tokenProvider } from '@providers/tokens'
 import { MarketPairType } from '../types/market'
 import { TokenType } from '../types/investment'
 
+export const initialFromTokenValue = 0.998787
+
 export const swapTokens: TokenType[] = [
   tokenProvider.PCR,
   tokenProvider.DAI,

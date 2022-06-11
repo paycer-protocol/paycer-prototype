@@ -10,7 +10,7 @@ import useSwap from "@hooks/use-swap_";
 export default function SubmitButton() {
     const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
 
-    const { tokenBalance: fromTokenBalance} = useToken(values?.fromToken?.symbol)
+    const fromTokenBalance = 0
     const {
         isLoading,
     } = useSwap()

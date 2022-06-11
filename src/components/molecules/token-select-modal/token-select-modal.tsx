@@ -7,18 +7,19 @@ import Alert from '@components/atoms/alert'
 import { TokenType } from '../../../types/investment'
 import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
+import useToken from "@hooks/use-token";
 
 interface TokenSelectModalProps {
   show: boolean
   onHide: () => void
-  activeToken: TokenType
+  activeTokenSymbol: string
   onClick: (token: TokenType) => void
   tokens: TokenType[]
   errorMessage?: string
 }
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
-  const { show, onHide, onClick, tokens, activeToken, errorMessage } = props
+  const { show, onHide, onClick, tokens, activeTokenSymbol, errorMessage } = props
   const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens)
 
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
             <div className="card-body p-0">
               <ul className="list-group list-group-flush">
                 {filteredTokens.map((token, i) => (
-                  <li onClick={token.symbol !== activeToken?.symbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeToken?.symbol ? 'disabled opacity-20' : ''}`}>
+                  <li onClick={token.symbol !== activeTokenSymbol ? () => onClick(token) : null} key={i} className={`list-group-item list-group-item-action px-4 border-0 ${token.symbol === activeTokenSymbol ? 'disabled opacity-20' : ''}`}>
                     <ListItem
                       token={token}
                     />
@@ -86,11 +87,13 @@ export const TokenBalanceLabel = styled.div`
 `
 
 interface ListItemProps {
-  token: ITokenDataProvider
+  token: TokenType
 }
 
 const ListItem = (props: ListItemProps) => {
-  const { token } = props;
+  const { token } = props
+  const { tokenBalance } = useToken(token.symbol)
+
   return (
     <a className="d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center">
@@ -107,7 +110,7 @@ const ListItem = (props: ListItemProps) => {
       </div>
       <TokenBalanceLabel>
         <FormattedNumber
-          value={token.tokenBalance}
+          value={tokenBalance}
           minimumFractionDigits={2}
           maximumFractionDigits={4}
         />

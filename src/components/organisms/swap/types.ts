@@ -10,6 +10,7 @@ export interface SwapProps {
     slippage: number
     quote: number
     fee: number
+    estimatedGas: number
 }
 
 export interface SwapTokenInputProps {

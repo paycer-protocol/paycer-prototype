@@ -87,23 +87,25 @@ export default function useSwap():UseSwapProps {
             return null
         }
 
-        console.log("HI")
-
         const { fromToken, toToken, amount } = props
 
         const options = {
             chain: currentNetwork.chainName.toLowerCase(), // The blockchain you want to use (eth/bsc/polygon)
             fromTokenAddress: fromToken.chainAddresses[currentNetworkId], // The token you want to swap
             toTokenAddress: toToken.chainAddresses[currentNetworkId], // The token you want to receive
-            amount: amount,
+            amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
         }
 
         try {
             const quote = await Moralis.Plugins.oneInch.quote(options);
-            console.log(quote, 'bla');
+            if (quote) {
+                return quote
+            }
         } catch (e) {
             console.log(e.message)
         }
+
+        return null
     }
 
     const fetchAllowance = async(fromTokenAddress: string, toTokenAddress: string) => {

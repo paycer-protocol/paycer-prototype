@@ -8,7 +8,7 @@ import { FormattedNumber } from '@components/atoms/number/formatted-number'
 interface TokenInputProps extends CurrencyFieldProps{
   balance?: number
   raiseMax?: boolean
-  handleChange: (tokenValue: number) => void
+  handleChange?: (tokenValue: number) => void
 }
 
 export const TokenBalanceLabel = styled.small`
@@ -59,7 +59,7 @@ export default function TokenInput(props: TokenInputProps) {
               handleChange(tokenValue)
             }}
         />
-        {(!disabled && balance !== undefined) &&
+        {(balance !== undefined) &&
           <div className="d-flex justify-content-end">
             <TokenBalanceLabel className="text-muted">
               <span>{t`Balance:`}</span>&nbsp;
@@ -69,7 +69,7 @@ export default function TokenInput(props: TokenInputProps) {
                 maximumFractionDigits={4}
               />
             </TokenBalanceLabel>
-              {(raiseMax && balance > 0 && !readOnly) &&
+              {(raiseMax && balance > 0 && !readOnly && !disabled) &&
               <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
                   {t`max`}
               </MaxButton>

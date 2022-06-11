@@ -14,18 +14,15 @@ export interface UseTokenInterface {
 
 export default function useToken(symbol: string): UseTokenInterface {
 
+  const { data } = useERC20Balances()
+
   let tokenAddress = ''
   let tokenBalance = 0
   let tokenDecimals = 0
   let rawTokenBalance = 0
   let tokenSymbol = ''
 
-  if (!symbol && symbol !== undefined) {
-
-    console.log(symbol)
-
-    const { data } = useERC20Balances()
-    if (data) {
+    if (data && symbol) {
       const token = data.find(t => t.symbol === symbol)
       if (token) {
         tokenAddress = token.token_address
@@ -35,7 +32,7 @@ export default function useToken(symbol: string): UseTokenInterface {
         tokenDecimals = Number(token.decimals)
       }
     }
-  }
+
 
   return {
     tokenAddress,

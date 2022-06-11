@@ -8,16 +8,31 @@ import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { t } from '@lingui/macro'
 import { useDapp } from '@context/dapp-context'
+import {formatUnits} from "@ethersproject/units";
+import useSwap from "@hooks/use-swap_";
 
 export default function Token1Select(props: SwapTokenInputProps) {
     const { readOnly } = props
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const { isAuthenticated, walletAddress } = useDapp()
+    const { isAuthenticated } = useDapp()
+
+    const {
+        isLoading,
+        fetchQuote,
+    } = useSwap()
 
     const handleChange = async (token) => {
+        setErrorMessage('')
+        setFieldValue('toToken', token)
 
+        if (values.fromToken && values.fromTokenValue) {
+            const result = await fetchQuote({ fromToken: values.fromToken, toToken: token, amount: values.fromTokenValue.toString() })
+            setFieldValue('toTokenValue', formatUnits(result?.toTokenAmount.toString(), token.decimals))
+        }
+
+        setShowModal(false)
     }
 
     return (
@@ -32,8 +47,8 @@ export default function Token1Select(props: SwapTokenInputProps) {
             {isAuthenticated && (
                 <TokenSelectModal
                     show={showModal}
-                    tokens={values.toTokenMarkets}
-                    activeToken={values.toToken}
+                    tokens={values.toTokenMarkets.filter(token => token.symbol !== values.fromToken?.symbol)}
+                    activeTokenSymbol={values.toToken?.symbol}
                     onHide={() => setShowModal(false)}
                     onClick={handleChange}
                     errorMessage={errorMessage}

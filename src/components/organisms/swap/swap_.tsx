@@ -46,7 +46,8 @@ export default function Swap() {
         toTokenMarkets: swapTokens,
         slippage: 10,
         quote: 0,
-        fee: 1
+        fee: 1,
+        estimatedGas: 0,
     }
 
     const handleSubmit = () => {

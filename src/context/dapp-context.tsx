@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import {IConnectorProvider} from "@providers/connectors"
 import {useChain, useMoralis, useNativeBalance, useMoralisWeb3Api} from "react-moralis"
-import {INetworkProvider, mainNetProviders} from "@providers/networks"
+import { mainNetProviders } from "@providers/networks"
 import ChainId from "@providers/chain-id"
 import { Symbols } from "@providers/symbols"
 import { supportedChains, supportedStakingChains } from "@config/network"
