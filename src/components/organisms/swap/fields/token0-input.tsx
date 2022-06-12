@@ -44,7 +44,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             fetch()
         }, 5000)
         return () => clearInterval(interval)
-    }, [values?.toTokenValue, values?.toTokenValue, values?.fromTokenValue])
+    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromTokenValue])
 
     return (
         <TokenInput
