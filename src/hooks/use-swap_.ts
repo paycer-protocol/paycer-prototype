@@ -1,7 +1,6 @@
 import { useSendTransaction } from '@usedapp/core'
 import Moralis from "moralis";
 import {useEffect, useState} from 'react'
-import { SwapProps } from '@components/organisms/swap/types'
 import {FormikValues} from "formik";
 import { TokenType } from '../types/investment'
 import {useDapp} from "@context/dapp-context";
@@ -52,11 +51,11 @@ export default function useSwap():UseSwapProps {
 
     const handleSwap = async (props: HandleSwapProps) => {
 
-        console.log("swap")
-
         if (!Moralis?.['Plugins']?.['oneInch']) {
             return null
         }
+
+        setIsLoading(true)
 
         const {
             fromToken,
@@ -72,11 +71,13 @@ export default function useSwap():UseSwapProps {
                 toTokenAddress: toToken.chainAddresses[currentNetworkId], // The token you want to receive
                 amount: amount,
                 fromAddress: walletAddress, // Your wallet address
-                slippage: slippage.toString(),
+                slippage: slippage.toString()
             })
         } catch (e) {
             console.log(e.message)
+            setIsLoading(false)
         }
+        setIsLoading(false)
 
     }
 
@@ -86,6 +87,8 @@ export default function useSwap():UseSwapProps {
         if (!Moralis?.['Plugins']?.['oneInch']) {
             return null
         }
+
+        setIsLoading(true)
 
         const { fromToken, toToken, amount } = props
 
@@ -101,16 +104,17 @@ export default function useSwap():UseSwapProps {
             if (quote) {
                 return quote
             }
+            setIsLoading(false)
         } catch (e) {
             console.log(e.message)
         }
-
+        setIsLoading(false)
         return null
     }
 
     const fetchAllowance = async(fromTokenAddress: string, toTokenAddress: string) => {
 
-        console.log("HI")
+        setIsLoading(true)
 
         const options = {
             chain: currentNetwork.chainName.toLowerCase(), // The blockchain you want to use (eth/bsc/polygon)
@@ -123,11 +127,11 @@ export default function useSwap():UseSwapProps {
             const allowance = await Moralis.Plugins.oneInch.hasAllowance(options)
             console.log(allowance);
         } catch (e) {
+            setIsLoading(false)
             console.log(e, 'ferror')
         }
 
-
-
+        setIsLoading(false)
     }
 
     /*
@@ -160,6 +164,6 @@ export default function useSwap():UseSwapProps {
         resetStatus,
         transactionState,
         handleSwap,
-        fetchQuote,
+        fetchQuote
     }
 }

@@ -20,7 +20,7 @@ export default function Token1Select(props: SwapTokenInputProps) {
 
     const {
         isLoading,
-        fetchQuote,
+        fetchQuote
     } = useSwap()
 
     const handleChange = async (token) => {
@@ -29,7 +29,8 @@ export default function Token1Select(props: SwapTokenInputProps) {
 
         if (values.fromToken && values.fromTokenValue) {
             const result = await fetchQuote({ fromToken: values.fromToken, toToken: token, amount: values.fromTokenValue.toString() })
-            setFieldValue('toTokenValue', formatUnits(result?.toTokenAmount.toString(), token.decimals))
+            const toTokenValue = formatUnits(result?.toTokenAmount.toString(), token.decimals)
+            setFieldValue('toTokenValue', toTokenValue)
         }
 
         setShowModal(false)

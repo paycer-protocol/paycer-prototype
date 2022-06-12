@@ -31,7 +31,8 @@ export default function Token0Select(props: SwapTokenInputProps) {
         }
         if (values.toToken && values.fromTokenValue) {
             const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
-            setFieldValue('toTokenValue', formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals))
+            const toTokenValues = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+            setFieldValue('toTokenValue', toTokenValues)
         }
         setShowModal(false)
     }
