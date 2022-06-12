@@ -44,7 +44,8 @@ export default function Swap() {
         slippage: 1,
         quote: 0,
         estimatedGasFee: 0,
-        isLoading: false,
+        isReloading: false,
+        isSwapping: false
     }
 
     const handleSubmit = () => {
@@ -108,9 +109,9 @@ export default function Swap() {
                     <TransactionApproveModal
                         show={showFormApproveModal}
                         onClick={async() => {
-                            setFieldValue('isLoading', true)
+                            setFieldValue('isSwapping', true)
                             await handleSwap({amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage})
-                            setFieldValue('isLoading', false)
+                            setFieldValue('isSwapping', false)
                         }}
                         onHide={() => {
                             resetStatus()
@@ -120,7 +121,7 @@ export default function Swap() {
                         successMessage={t`Transaction was successfully executed`}
                         error={contractCallError}
                         success={swapIsSuccess}
-                        loading={values.isLoading}
+                        loading={values.isSwapping}
                     >
                         <>
                             <div className="card mb-0">

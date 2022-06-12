@@ -27,8 +27,8 @@ export default function SubmitButton() {
       || errors.toTokenValue
 
     return (
-        <GradientButton type="submit" disabled={isDisabled || values.isLoading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-75">
-          {values.isLoading && (
+        <GradientButton type="submit" disabled={isDisabled || values.isReloading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-75">
+          {values.isReloading && (
             <div className="me-2">
               <Spinner
                 animation="border"

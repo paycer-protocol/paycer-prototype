@@ -81,7 +81,7 @@ const SummaryDropdown = () => {
                         </span>
                         <span className="d-flex align-items-center">
                             {values.estimatedGasFee}
-                            &nbsp; WEI
+                            &nbsp;
                         </span>
                     </div>
                 </div>

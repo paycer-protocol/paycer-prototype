@@ -26,19 +26,19 @@ export default function Token1Select(props: SwapTokenInputProps) {
         setFieldValue('toToken', token)
 
         if (values.fromToken && values.fromTokenValue) {
-            setFieldValue('isLoading', true)
+            setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: token, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), token.decimals)
                 setFieldValue('toTokenValue', toTokenValue)
                 setFieldValue('estimatedGasFee', result?.estimatedGas)
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
             } catch(e) {
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
                 setShowModal(false)
                 console.log(e.message)
             }
-            setFieldValue('isLoading', false)
+            setFieldValue('isReloading', false)
         }
         setShowModal(false)
     }

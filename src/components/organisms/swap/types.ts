@@ -10,7 +10,8 @@ export interface SwapProps {
     slippage: number
     quote: number
     estimatedGasFee: number
-    isLoading: boolean
+    isReloading: boolean
+    isSwapping: boolean
 }
 
 export interface SwapTokenInputProps {

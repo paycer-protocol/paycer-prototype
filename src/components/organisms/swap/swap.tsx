@@ -35,7 +35,7 @@ export default function Swap() {
         swapTx,
         swapError,
         handleSwap,
-        isLoading,
+        isReloading,
         resetStatus,
         approveTx
     } = useSwap()
@@ -77,7 +77,7 @@ export default function Swap() {
 
         const nextToken1Value = Number(nextTradeContext.expectedConvertQuote)
 
-        setFieldValue('isLoading', true)
+        setFieldValue('isReloading', true)
 
         setTimeout(() => {
 
@@ -88,12 +88,12 @@ export default function Swap() {
 
             setFieldValue('token1Value', nextToken1Value)
             setFieldValue('tradeContext', nextTradeContext)
-            setFieldValue('isLoading', false)
+            setFieldValue('isReloading', false)
         }, 1200)
     }
 
     let initialValues: SwapProps = {
-        isLoading: false,
+        isReloading: false,
         token0: null,
         token0Value: null,
         token0Markets: swapTokens,
@@ -200,7 +200,7 @@ export default function Swap() {
                         loading={
                             swapTx.status === 'Mining' ||
                             approveTx.status === 'Mining' ||
-                            isLoading
+                            isReloading
                         }
                     >
                         <>

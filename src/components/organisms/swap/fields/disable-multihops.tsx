@@ -20,11 +20,11 @@ export default function DisableMultihops() {
         }
 
         if (values.token0 && values.token1) {
-            setFieldValue('isLoading', true)
+            setFieldValue('isReloading', true)
             const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
             setValues(nextValues)
             setFieldValue('tradeContext', nextTradeContext)
-            setFieldValue('isLoading', false)
+            setFieldValue('isReloading', false)
         } else {
             setValues(nextValues)
         }

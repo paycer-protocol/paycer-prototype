@@ -30,7 +30,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
         }
 
         if (values.fromToken && values.fromTokenValue) {
-            setFieldValue('isLoading', true)
+            setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
@@ -38,12 +38,12 @@ export default function Token0Select(props: SwapTokenInputProps) {
                 setFieldValue('toTokenValue', toTokenValue)
 
             } catch(e) {
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
                 setShowModal(false)
                 console.log(e.message)
             }
         }
-        setFieldValue('isLoading', false)
+        setFieldValue('isReloading', false)
         setShowModal(false)
     }
 

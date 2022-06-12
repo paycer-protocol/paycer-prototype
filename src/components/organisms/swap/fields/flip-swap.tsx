@@ -54,16 +54,16 @@ export default function FlipSwap() {
 
         try {
             if (token0 && token1) {
-                setFieldValue('isLoading', true)
+                setFieldValue('isReloading', true)
                 setValues(nextValues)
                 const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
                 setFieldValue('tradeContext', nextTradeContext)
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
             } else {
                 setValues(nextValues)
             }
         } catch (e) {
-            setFieldValue('isLoading', false)
+            setFieldValue('isReloading', false)
         }
     }
 

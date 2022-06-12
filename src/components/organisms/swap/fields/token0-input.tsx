@@ -18,15 +18,15 @@ export default function Token0Input(props: SwapTokenInputProps) {
     const handleChange = async (value: number) => {
         setFieldValue('fromTokenValue', value)
         if (values.toToken && value) {
-            setFieldValue('isLoading', true)
+            setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: value.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
                 setFieldValue('estimatedGasFee', result?.estimatedGas)
                 setFieldValue('toTokenValue', toTokenValue)
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
             } catch(e) {
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
                 console.log(e.message)
             }
         }
@@ -39,7 +39,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
         }
 
         const fetch = async () => {
-            setFieldValue('isLoading', true)
+            setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
@@ -47,9 +47,9 @@ export default function Token0Input(props: SwapTokenInputProps) {
                     setFieldValue('toTokenValue', toTokenValue)
                     setFieldValue('estimatedGasFee', result?.estimatedGas)
                 }
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
             } catch(e) {
-                setFieldValue('isLoading', false)
+                setFieldValue('isReloading', false)
                 console.log(e.message)
             }
         }
@@ -70,7 +70,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             raiseMax
             balance={balance}
             decimals={6}
-            readOnly={values.isLoading || readOnly}
+            readOnly={values.isReloading || readOnly}
         />
     )
 }
