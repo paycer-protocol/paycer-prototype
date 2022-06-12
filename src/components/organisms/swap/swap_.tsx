@@ -1,26 +1,23 @@
 import React, {useEffect, useRef} from 'react'
+import {t} from "@lingui/macro"
 import {swapTokens} from '@config/market-pairs'
-import useSwap from '@hooks/use-swap_'
-import {SwapProps} from './types'
+import useSwap from "@hooks/use-swap"
+import { useDapp } from "@context/dapp-context"
+import { SwapProps } from './types'
 import Form from '@components/atoms/form/form'
-import TokenInputPanel from "@components/organisms/token-input-panel";
-import Token0Select from "@components/organisms/swap/fields/token0-select";
-import Token0Input from "@components/organisms/swap/fields/token0-input";
-import FlipSwap from "@components/organisms/swap/fields/flip-swap";
-import Token1Select from "@components/organisms/swap/fields/token1-select";
-import Token1Input from "@components/organisms/swap/fields/token1-input";
-import SummaryDropdown from "@components/organisms/swap/summary-dropdown";
-import SettingsDropdown from "@components/organisms/swap/settings-dropdown";
-import SubmitButton from "@components/organisms/swap/fields/submit-button";
-import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
-import {t} from "@lingui/macro";
-import DashNumber from "@components/organisms/dashboard/dash-number";
-import useNetwork from "@hooks/use-network";
-import { useDapp } from "@context/dapp-context";
-import { Trade, UniswapProvider } from "../../../lib/trade";
-import { FormattedNumber } from "../../atoms/number/formatted-number";
-import {TradeContext} from "simple-uniswap-sdk";
-import {FormikProps} from "formik";
+import TokenInputPanel from "@components/organisms/token-input-panel"
+import Token0Select from "@components/organisms/swap/fields/token0-select"
+import Token0Input from "@components/organisms/swap/fields/token0-input"
+import FlipSwap from "@components/organisms/swap/fields/flip-swap"
+import Token1Select from "@components/organisms/swap/fields/token1-select"
+import Token1Input from "@components/organisms/swap/fields/token1-input"
+import SummaryDropdown from "@components/organisms/swap/summary-dropdown"
+import SettingsDropdown from "@components/organisms/swap/settings-dropdown"
+import SubmitButton from "@components/organisms/swap/fields/submit-button"
+import TransactionApproveModal from "@components/organisms/transaction-approve-modal"
+import DashNumber from "@components/organisms/dashboard/dash-number"
+import { FormattedNumber } from "../../atoms/number/formatted-number"
+import {FormikProps} from "formik"
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
@@ -31,10 +28,10 @@ export default function Swap() {
         contractCallError,
         showFormApproveModal,
         setShowFormApproveModal,
-        isLoading,
         resetStatus,
         transactionState,
         handleSwap,
+        fetchQuote
     } = useSwap()
 
     let initialValues: SwapProps = {
@@ -44,10 +41,10 @@ export default function Swap() {
         toToken: null,
         toTokenValue: null,
         toTokenMarkets: swapTokens,
-        slippage: 10,
+        slippage: 1,
         quote: 0,
-        fee: 1,
-        estimatedGas: 0,
+        estimatedGasFee: 0,
+        isLoading: false,
     }
 
     const handleSubmit = () => {
@@ -64,7 +61,7 @@ export default function Swap() {
             onSubmit={handleSubmit}
             innerRef={formRef}
         >
-            {({values}) => (
+            {({values, setFieldValue}) => (
                 <>
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-5">
@@ -110,7 +107,11 @@ export default function Swap() {
 
                     <TransactionApproveModal
                         show={showFormApproveModal}
-                        onClick={() => handleSwap({amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage})}
+                        onClick={async() => {
+                            setFieldValue('isLoading', true)
+                            await handleSwap({amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage})
+                            setFieldValue('isLoading', false)
+                        }}
                         onHide={() => {
                             resetStatus()
                             setShowFormApproveModal(false)
@@ -119,7 +120,7 @@ export default function Swap() {
                         successMessage={t`Transaction was successfully executed`}
                         error={contractCallError}
                         success={swapIsSuccess}
-                        loading={isLoading}
+                        loading={values.isLoading}
                     >
                         <>
                             <div className="card mb-0">

@@ -7,6 +7,7 @@ import Icon from '@components/atoms/icon'
 import {ArrowDropDown, ArrowDropUp} from '@styled-icons/material'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber} from '../../../atoms/number/formatted-number'
+import {useDapp} from "@context/dapp-context";
 
 const Content = styled.div`
     z-index: 2; 
@@ -25,6 +26,7 @@ const Content = styled.div`
 const SummaryDropdown = () => {
     const { values } = useFormikContext<SwapProps>()
     const [ open, setOpen ] = useState(false)
+    const { nativeSymbol } = useDapp()
 
     return (
         <div className="position-relative">
@@ -66,24 +68,20 @@ const SummaryDropdown = () => {
                         </span>
                         <span className="d-flex align-items-center">
                             <FormattedNumber
-                                value={99999999}
+                                value={values.toTokenValue - (values.toTokenValue / 100 * values.slippage)}
                                 minimumFractionDigits={2}
                                 maximumFractionDigits={4}
                             />
-                            &nbsp; { values?.toToken?.symbol }
+                            &nbsp; {values?.toToken?.symbol }
                         </span>
                     </div>
                     <div className="d-flex justify-content-between">
                         <span className="text-muted">
-                            {t`Fee`}
+                            {t`Estimated Gas`}
                         </span>
                         <span className="d-flex align-items-center">
-                            <FormattedNumber
-                                value={values.fee}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={4}
-                            />
-                            &nbsp; { values?.fromToken?.symbol }
+                            {values.estimatedGasFee}
+                            &nbsp; WEI
                         </span>
                     </div>
                 </div>

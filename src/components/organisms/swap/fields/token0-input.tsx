@@ -3,7 +3,7 @@ import { useFormikContext } from 'formik'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
 import useToken from "@hooks/use-token";
-import useSwap from "@hooks/use-swap_";
+import useSwap from "@hooks/use-swap"
 import {formatUnits } from "@ethersproject/units"
 
 export default function Token0Input(props: SwapTokenInputProps) {
@@ -12,15 +12,23 @@ export default function Token0Input(props: SwapTokenInputProps) {
     const { tokenBalance: balance} = useToken(values?.fromToken?.symbol)
 
     const {
-        isLoading,
         fetchQuote
     } = useSwap()
 
     const handleChange = async (value: number) => {
+        setFieldValue('fromTokenValue', value)
         if (values.toToken && value) {
-            const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: value.toString() })
-            const toTokenValues = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-            setFieldValue('toTokenValue', toTokenValues)
+            setFieldValue('isLoading', true)
+            try {
+                const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: value.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+                setFieldValue('estimatedGasFee', result?.estimatedGas)
+                setFieldValue('toTokenValue', toTokenValue)
+                setFieldValue('isLoading', false)
+            } catch(e) {
+                setFieldValue('isLoading', false)
+                console.log(e.message)
+            }
         }
     }
 
@@ -31,13 +39,19 @@ export default function Token0Input(props: SwapTokenInputProps) {
         }
 
         const fetch = async () => {
-            const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
-            const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-            if (toTokenValue !== values.toTokenValue.toString()) {
-                console.log('YEAAA')
-                setFieldValue('toTokenValue', toTokenValue)
+            setFieldValue('isLoading', true)
+            try {
+                const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+                if (toTokenValue !== values.toTokenValue.toString()) {
+                    setFieldValue('toTokenValue', toTokenValue)
+                    setFieldValue('estimatedGasFee', result?.estimatedGas)
+                }
+                setFieldValue('isLoading', false)
+            } catch(e) {
+                setFieldValue('isLoading', false)
+                console.log(e.message)
             }
-            console.log(formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals))
         }
 
         const interval = setInterval(() => {
@@ -56,7 +70,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             raiseMax
             balance={balance}
             decimals={6}
-            readOnly={isLoading || readOnly}
+            readOnly={values.isLoading || readOnly}
         />
     )
 }

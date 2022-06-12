@@ -59,7 +59,7 @@ const contextDefaultValues: DappContextInterface = {
     currentChainIsSupportedForDApp: false,
     currentChainIsSupportedForStaking: false,
     currentNetworkId: 0,
-    currentChainId: 'test',
+    currentChainId: 'polygon',
     currentNetworkProvider: null,
     pcrBalance: 0,
     blockNumber: 0,

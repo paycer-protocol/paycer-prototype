@@ -4,15 +4,17 @@ import { useFormikContext } from 'formik'
 import GradientButton from '@components/atoms/button/gradient-button'
 import Spinner from '@components/atoms/spinner'
 import { SwapProps } from '../types'
+import useSwap from "@hooks/use-swap"
 import useToken from "@hooks/use-token";
-import useSwap from "@hooks/use-swap_";
 
 export default function SubmitButton() {
     const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
 
-    const fromTokenBalance = 0
+    const { tokenBalance: fromTokenBalance } = useToken(values?.fromToken?.symbol || null)
+
+    const balanceWithFee = values.fromTokenValue / 100
+
     const {
-        isLoading,
     } = useSwap()
     const isDisabled =
       !dirty
@@ -25,8 +27,8 @@ export default function SubmitButton() {
       || errors.toTokenValue
 
     return (
-        <GradientButton type="submit" disabled={isDisabled} className="d-flex align-items-center justify-content-center w-75">
-          {isLoading && (
+        <GradientButton type="submit" disabled={isDisabled || values.isLoading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-75">
+          {values.isLoading && (
             <div className="me-2">
               <Spinner
                 animation="border"

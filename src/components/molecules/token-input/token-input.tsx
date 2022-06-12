@@ -1,5 +1,5 @@
 import React  from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { t } from '@lingui/macro'
 import Currency from '@components/atoms/form/currency'
 import { CurrencyFieldProps } from '@components/atoms/form/currency'
@@ -16,7 +16,11 @@ export const TokenBalanceLabel = styled.small`
    padding-top:2px;
 `
 
-export const MaxButton = styled.small`
+interface MaxButtonProps {
+    isDisabled?: boolean
+}
+
+export const MaxButton = styled.small<MaxButtonProps>`
     font-size: 9px;
     padding: 0 4px;
     line-height: 15px;
@@ -24,6 +28,9 @@ export const MaxButton = styled.small`
     top: 2px;
     font-weight: 400;
     height: 17px; &:hover { border-color #365172!important; }
+    ${props => props.isDisabled && css`
+    opacity: .5;
+   `}
 `
 
 export default function TokenInput(props: TokenInputProps) {
@@ -69,8 +76,8 @@ export default function TokenInput(props: TokenInputProps) {
                 maximumFractionDigits={4}
               />
             </TokenBalanceLabel>
-              {(raiseMax && balance > 0 && !readOnly && !disabled) &&
-              <MaxButton onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
+              {(raiseMax && balance > 0) &&
+              <MaxButton isDisabled={readOnly || disabled} onClick={() => handleChange(value ? (balance + Number(value)) : balance)} className="ms-2 border-primary border rounded-1 bg-transparent cursor-pointer">
                   {t`max`}
               </MaxButton>
               }

@@ -9,8 +9,8 @@ export interface SwapProps {
     toTokenMarkets: TokenType[]
     slippage: number
     quote: number
-    fee: number
-    estimatedGas: number
+    estimatedGasFee: number
+    isLoading: boolean
 }
 
 export interface SwapTokenInputProps {

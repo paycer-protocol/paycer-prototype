@@ -9,7 +9,7 @@ import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { useDapp } from '@context/dapp-context'
 import {formatUnits} from "@ethersproject/units";
-import useSwap from "@hooks/use-swap_";
+import useSwap from "@hooks/use-swap"
 
 export default function Token0Select(props: SwapTokenInputProps) {
     const { readOnly } = props
@@ -19,7 +19,6 @@ export default function Token0Select(props: SwapTokenInputProps) {
     const { isAuthenticated } = useDapp()
 
     const {
-        isLoading,
         fetchQuote,
     } = useSwap()
 
@@ -29,11 +28,22 @@ export default function Token0Select(props: SwapTokenInputProps) {
         if (!values.fromTokenValue) {
             setFieldValue('fromTokenValue', initialFromTokenValue)
         }
-        if (values.toToken && values.fromTokenValue) {
-            const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
-            const toTokenValues = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-            setFieldValue('toTokenValue', toTokenValues)
+
+        if (values.fromToken && values.fromTokenValue) {
+            setFieldValue('isLoading', true)
+            try {
+                const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+                setFieldValue('estimatedGasFee', result?.estimatedGas)
+                setFieldValue('toTokenValue', toTokenValue)
+
+            } catch(e) {
+                setFieldValue('isLoading', false)
+                setShowModal(false)
+                console.log(e.message)
+            }
         }
+        setFieldValue('isLoading', false)
         setShowModal(false)
     }
 

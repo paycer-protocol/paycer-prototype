@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import useSwap from '@hooks/use-swap_'
+
 import Layout from "@components/organisms/layout";
 import PageHeader from "@components/molecules/page-header";
 import Swap from '@components/organisms/swap/swap_'
 import {t} from "@lingui/macro";
-import SupplyLiquidity from "@components/organisms/supply-liquidity";
 export default function Swap_() {
     const [supplyTabActive, setSupplyTabActive] = useState(false)
 
