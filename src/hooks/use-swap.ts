@@ -29,11 +29,16 @@ interface FetchQuoteProps {
     toToken:TokenType
 }
 
+interface FetchQuoteResult {
+    toTokenAmount: number
+    estimatedGas: number
+}
+
 interface UseSwapProps {
     transactionState: TRANSACTION_STATE
     contractCallError: Error
     handleSwap: (props: HandleSwapProps) => Promise<void>
-    fetchQuote: (props: FetchQuoteProps) => Promise<number>
+    fetchQuote: (props: FetchQuoteProps) => Promise<FetchQuoteResult>
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
     swapIsSuccess: boolean

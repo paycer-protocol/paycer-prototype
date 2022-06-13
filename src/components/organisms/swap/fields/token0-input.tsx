@@ -45,7 +45,6 @@ export default function Token0Input(props: SwapTokenInputProps) {
                 return
             }
 
-            setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
@@ -54,9 +53,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
                     setFieldValue('estimatedGasFee', result?.estimatedGas)
                     setFieldValue('quoteHasChangedAlert', true)
                 }
-                setFieldValue('isReloading', false)
             } catch(e) {
-                setFieldValue('isReloading', false)
                 console.log(e.message)
             }
         }
