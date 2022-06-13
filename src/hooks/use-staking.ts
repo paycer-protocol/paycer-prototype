@@ -367,7 +367,7 @@ export default function useStaking():UseStakingProps {
         if (walletAddress && isAuthenticated) {
             const interval = setInterval(() => {
                 fetchPendingRewards()
-            }, 20000)
+            }, 100000)
             return () => clearInterval(interval)
         }
     }, [walletAddress, isAuthenticated, currentNetworkId])
