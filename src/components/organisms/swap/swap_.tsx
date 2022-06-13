@@ -110,6 +110,7 @@ export default function Swap() {
                         }}
                         onHide={() => {
                             resetStatus()
+                            setFieldValue('quoteHasChangedAlert', false)
                             setShowFormApproveModal(false)
                         }}
                         title={t`Confirm Transaction`}
