@@ -12,8 +12,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
     const { tokenBalance: balance} = useToken(values?.fromToken?.symbol)
 
     const {
-        fetchQuote,
-        showFormApproveModal
+        fetchQuote
     } = useSwap()
 
     const handleChange = async (value: number) => {
