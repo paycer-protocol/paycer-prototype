@@ -1,23 +1,16 @@
 import nftProvider from '@providers/nft';
-import Nft from '../../types/nft';
-import { ChainId, useContractCalls } from '@usedapp/core';
+import Nft, { OpenseaMetadata } from '../../types/nft';
+import { ChainId } from '@usedapp/core';
 import axios from "axios";
-import { Interface } from "@ethersproject/abi";
-import { useEffect, useMemo, useState } from "react";
-import loyaltyTiers from '@config/loyalty-tiers';
-import {useDapp} from "@context/dapp-context";
+import { useEffect, useState } from "react";
+import { useDapp } from "@context/dapp-context";
+import Moralis from 'moralis';
+import { BigNumber } from 'ethers';
 
-/* TODO: REFACTOR FOR MORALIS */
-
-interface OpenseaMetadata {
-    name: string;
-    description: string;
-    image: string;
-    attributes: {
-        display_type?: string;
-        trait_type: string;
-        value: string | boolean | number;
-    }[];
+interface Property {
+    color: BigNumber;
+    uri: string;
+    features: BigNumber[];
 }
 
 function withIpfsGateway(url: string) {
@@ -26,6 +19,43 @@ function withIpfsGateway(url: string) {
     } else {
         return url;
     }
+}
+
+export async function fetchTokensById(currentNetworkId: number, tokenIds: Nft['id'][]): Promise<Nft[]> {
+    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft;
+
+    const tokenUris = (await Promise.all(tokenIds.map((tokenId) => {
+        return Moralis.executeFunction({
+            abi,
+            contractAddress,
+            functionName: 'tokenURI',
+            params: {
+                tokenId,
+            },
+        })
+    }))) as unknown as string[];
+
+    console.log(tokenUris);
+
+    const owners = (await Promise.all(tokenIds.map((tokenId) => {
+        return Moralis.executeFunction({
+            abi,
+            contractAddress,
+            functionName: 'ownerOf',
+            params: {
+                tokenId,
+            },
+        })
+    }))) as unknown as string[];
+
+    const ipfsMetadata = (await Promise.all(tokenUris.map((tokenUri) => {
+        return axios.get<OpenseaMetadata>(withIpfsGateway(tokenUri)).then((response) => response.data);
+    })))
+
+    return tokenIds.map((tokenId, index) => ({
+        id: tokenId,
+        metadata: ipfsMetadata[index],
+    }));
 }
 
 export type UseNftsProps = {
@@ -38,66 +68,16 @@ export type UseNftsProps = {
 };
 
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
-    const { currentNetworkId } = useDapp()
+    const { currentNetworkId, walletAddress: owner, isAuthenticated, isWeb3Enabled } = useDapp()
 
-    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft;
-    const abiInterface = useMemo(() => new Interface(abi), [abi]);
-
-    const properties = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
-        abi: abiInterface,
-        address: contractAddress,
-        method: 'properties',
-        args: [tokenId],
-    })));
-
-    const owners = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
-        abi: abiInterface,
-        address: contractAddress,
-        method: 'ownerOf',
-        args: [tokenId],
-    }))).map((result) => result ? result[0] : undefined);
-
-    const tiers = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
-        abi: abiInterface,
-        address: contractAddress,
-        method: 'startLevel',
-        args: [tokenId],
-    }))).map((result) => result ? result[0] : undefined);
-
-    const jsonUrls = properties.map((prop) => prop ? withIpfsGateway(prop[1]) : undefined);
-
-    const [result, setResult] = useState<UseNftsProps>({ status: 'loading' });
+    const [status, setStatus] = useState<UseNftsProps>({ status: 'loading' })
 
     useEffect(() => {
-        async function fetch() {
-            try {
-                if (jsonUrls.includes(undefined)) {
-                    setResult({ status: 'loading' });
-                    return;
-                }
-                const results = await Promise.all(jsonUrls.map((url) => axios.get<OpenseaMetadata>(url)));
-                setResult({
-                    status: 'success',
-                    nfts: results.map((result, i) => ({
-                        id: tokenIds[i],
-                        name: result.data.name,
-                        description: result.data.description,
-                        owner: owners[i],
-                        image: withIpfsGateway(result.data.image),
-                        tier: loyaltyTiers[tiers[i] - 1],
-                        attributes: result.data.attributes.map((attribute) => ({
-                            displayType: attribute.display_type,
-                            traitType: attribute.trait_type,
-                            value: attribute.value,
-                        })),
-                    })),
-                });
-            } catch (err) {
-                setResult({ status: 'error' })
-            }
-        }
-        fetch();
-    }, [jsonUrls.join(',')]);
+        if (!owner || !isAuthenticated || !isWeb3Enabled) return;
+        fetchTokensById(currentNetworkId, tokenIds)
+            .then((nfts) => setStatus({ status: 'success', nfts }))
+            .catch(() => setStatus({ status: 'error' }));
+    }, [currentNetworkId, isAuthenticated, isWeb3Enabled, owner]);
 
-    return result;
+    return status;
 }

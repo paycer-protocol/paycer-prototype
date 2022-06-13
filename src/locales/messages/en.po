@@ -374,6 +374,10 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:16
+msgid "Choose NFT to reveal"
+msgstr "Choose NFT to reveal"
+
 #: src/components/organisms/nft/landing-page/team-section.tsx:68
 msgid "Christoff Berlage"
 msgstr "Christoff Berlage"
@@ -451,7 +455,7 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:60
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:43
 msgid "Collect"
 msgstr "Collect"
 
@@ -1071,7 +1075,7 @@ msgstr "JOIN OUR DISCORD"
 #~ msgid "JOIN PAYCER DISCORD"
 #~ msgstr "JOIN PAYCER DISCORD"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:239
+#: src/components/organisms/nft/landing-page/mint-section.tsx:199
 #: src/components/organisms/nft/landing-page/title-section.tsx:80
 msgid "JOIN WAITING LIST"
 msgstr "JOIN WAITING LIST"
@@ -1097,7 +1101,7 @@ msgstr "JOIN WAITING LIST"
 msgid "Join Waitinglist"
 msgstr "Join Waitinglist"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:200
+#: src/components/organisms/nft/landing-page/mint-section.tsx:160
 msgid "Join for the waiting list"
 msgstr "Join for the waiting list"
 
@@ -1378,7 +1382,7 @@ msgstr "Mint"
 msgid "Mint now"
 msgstr "Mint now"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:200
+#: src/components/organisms/nft/landing-page/mint-section.tsx:160
 msgid "Mint your Paycer NFT."
 msgstr "Mint your Paycer NFT."
 
@@ -1446,7 +1450,7 @@ msgstr "NFT was minted successfully"
 #~ msgid "Name"
 #~ msgstr "Name"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:247
+#: src/components/organisms/nft/landing-page/mint-section.tsx:207
 msgid "Need help?"
 msgstr "Need help?"
 
@@ -1603,7 +1607,7 @@ msgstr "Partner"
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:63
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:46
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1788,7 +1792,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:76
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:63
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -2610,7 +2614,7 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:67
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:50
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
 

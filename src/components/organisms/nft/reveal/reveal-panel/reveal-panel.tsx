@@ -3,7 +3,7 @@ import { t } from "@lingui/macro";
 import GradientButton from "@components/atoms/button/gradient-button";
 import { Countdown } from '../../common/countdown';
 import useOwnedNfts from '@hooks/nft/use-owned-nfts';
-import Nft from '@types/nft';
+import Nft from '../../../../../types/nft';
 import Select from '@components/atoms/form/select';
 import Form from '@components/atoms/form';
 
@@ -15,7 +15,7 @@ function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft
         >
             <Select label={t`Choose NFT to reveal`} name="selector">
                 {options.map((option) => (
-                    <option>{option.id}</option>
+                    <option key={option.id.toString()}>{option.id.toString()}</option>
                 ))}
             </Select>
         </Form>
