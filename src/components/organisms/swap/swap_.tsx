@@ -54,7 +54,7 @@ export default function Swap() {
 
     useEffect(() => {
         formRef.current?.resetForm()
-    }, [currentNetworkId, walletAddress])
+    }, [currentNetworkId, walletAddress, swapIsSuccess])
 
     return (
         <Form
@@ -193,7 +193,7 @@ export default function Swap() {
                                         </div>
                                     </div>
 
-                                    <Alert className="mt-5" variant="danger" show={values.quoteHasChangedAlert}>
+                                    <Alert className="mt-5 mb-0" variant="danger" show={values.quoteHasChangedAlert}>
                                         {t`Attention: Exchange rate has changed!`}
                                     </Alert>
 

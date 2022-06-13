@@ -60,7 +60,6 @@ export default function useSwap():UseSwapProps {
             amount
         } = props
 
-
         const hasAllowance = await getHasAllowance(props)
 
         if (!hasAllowance) {
@@ -68,7 +67,7 @@ export default function useSwap():UseSwapProps {
         }
 
         try {
-            const receipt = await Moralis.Plugins.oneInch.swap({
+            await Moralis.Plugins.oneInch.swap({
                 chain: currentNetwork.chainName.toLowerCase(),
                 fromTokenAddress: fromToken.chainAddresses[currentNetworkId],
                 toTokenAddress: toToken.chainAddresses[currentNetworkId],
@@ -76,6 +75,7 @@ export default function useSwap():UseSwapProps {
                 fromAddress: walletAddress,
                 slippage: slippage.toString()
             })
+            setSwapIsSuccess(true)
         } catch (e) {
             console.log(e.message)
         }

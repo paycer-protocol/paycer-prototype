@@ -13,7 +13,7 @@ const SettingsDropdown = () => {
   const { values } = useFormikContext<SwapProps>()
   return (
     <DropdownComponent>
-      <Styles.StyledDropdownToggle style={!values.token1 || !values.token0  || !values.token0Value ? {opacity: '.5', pointerEvents: 'none'} : null}>
+      <Styles.StyledDropdownToggle style={!values.fromToken || !values.toToken  || !values.fromToken ? {opacity: '.5', pointerEvents: 'none'} : null}>
         <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
           <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
             <Icon component={Settings} size={23} style={{ width: '32px' }} />
@@ -30,15 +30,8 @@ const SettingsDropdown = () => {
         <h4 className="mb-4">Transaction-Settings</h4>
         <div>
           <div className="mb-4">
-            <DisableMultihops />
-          </div>
-          <div className="mb-4">
             <SlippageTollerance />
           </div>
-          <div className="">
-            <DeadlineMinutes />
-          </div>
-
         </div>
       </Styles.StyledDropdownMenu>
     </DropdownComponent>

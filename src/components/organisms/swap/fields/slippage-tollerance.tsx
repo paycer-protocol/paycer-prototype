@@ -16,7 +16,7 @@ export default function SlippageTollerance() {
         <div className="d-flex justify-content-between w-100">
             <label className="text-muted mb-2 w-100">{t`Slippage tollerance`}</label>
             <Input
-                name="tradeSettings.slippage"
+                name="slippage"
                 style={{ padding: '4px 10px' }}
                 className="card bg-transparent mb-0"
                 type="number"
@@ -24,7 +24,6 @@ export default function SlippageTollerance() {
                 onChange={handleChange}
             />
         </div>
-
     )
 }
 

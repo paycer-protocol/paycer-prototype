@@ -40,6 +40,11 @@ export default function Token0Input(props: SwapTokenInputProps) {
         }
 
         const fetch = async () => {
+
+            if (values.isSwapping) {
+                return
+            }
+
             setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
@@ -47,9 +52,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
                 if (toTokenValue !== values.toTokenValue.toString()) {
                     setFieldValue('toTokenValue', toTokenValue)
                     setFieldValue('estimatedGasFee', result?.estimatedGas)
-                    if (showFormApproveModal) {
-                        setFieldValue('quoteHasChangedAlert', true)
-                    }
+                    setFieldValue('quoteHasChangedAlert', true)
                 }
                 setFieldValue('isReloading', false)
             } catch(e) {
