@@ -12,6 +12,7 @@ export interface SwapProps {
     estimatedGasFee: number
     isReloading: boolean
     isSwapping: boolean
+    quoteHasChangedAlert: boolean
 }
 
 export interface SwapTokenInputProps {

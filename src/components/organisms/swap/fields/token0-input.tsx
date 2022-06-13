@@ -12,7 +12,8 @@ export default function Token0Input(props: SwapTokenInputProps) {
     const { tokenBalance: balance} = useToken(values?.fromToken?.symbol)
 
     const {
-        fetchQuote
+        fetchQuote,
+        showFormApproveModal
     } = useSwap()
 
     const handleChange = async (value: number) => {
@@ -46,6 +47,9 @@ export default function Token0Input(props: SwapTokenInputProps) {
                 if (toTokenValue !== values.toTokenValue.toString()) {
                     setFieldValue('toTokenValue', toTokenValue)
                     setFieldValue('estimatedGasFee', result?.estimatedGas)
+                    if (showFormApproveModal) {
+                        setFieldValue('quoteHasChangedAlert', true)
+                    }
                 }
                 setFieldValue('isReloading', false)
             } catch(e) {
@@ -67,7 +71,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             required
             currency={values?.fromToken?.symbol}
             handleChange={handleChange}
-            raiseMax
+            raiseMax={!readOnly}
             balance={balance}
             decimals={6}
             readOnly={values.isReloading || readOnly}

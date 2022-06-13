@@ -18,6 +18,7 @@ import TransactionApproveModal from "@components/organisms/transaction-approve-m
 import DashNumber from "@components/organisms/dashboard/dash-number"
 import { FormattedNumber } from "../../atoms/number/formatted-number"
 import {FormikProps} from "formik"
+import Alert from "@components/atoms/alert";
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
@@ -29,9 +30,7 @@ export default function Swap() {
         showFormApproveModal,
         setShowFormApproveModal,
         resetStatus,
-        transactionState,
-        handleSwap,
-        fetchQuote
+        handleSwap
     } = useSwap()
 
     let initialValues: SwapProps = {
@@ -45,7 +44,8 @@ export default function Swap() {
         quote: 0,
         estimatedGasFee: 0,
         isReloading: false,
-        isSwapping: false
+        isSwapping: false,
+        quoteHasChangedAlert: false
     }
 
     const handleSubmit = () => {
@@ -65,8 +65,8 @@ export default function Swap() {
             {({values, setFieldValue}) => (
                 <>
                     <div className="d-lg-flex animated-wrapper">
-                        <div className="col-md-5">
-                            <div className="p-4 p-md-5 pe-md-0">
+                        <div className="col-md-12">
+                            <div className="p-4 p-md-5">
                                 <div className="d-flex flex-column flex-md-row mb-3">
                                     <div className="d-flex flex-column">
                                         <TokenInputPanel
@@ -97,11 +97,6 @@ export default function Swap() {
                                     className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>
                                 </div>
-                                {values.quoteChangedSignificantly &&
-                                <p className="mb-0 mt-5 fw-bold">
-                                    {t`Attention! The exchange rate has changed significantly.`}
-                                </p>
-                                }
                             </div>
                         </div>
                     </div>
@@ -131,33 +126,47 @@ export default function Swap() {
                                             tokenInputSibling={<Token0Select readOnly />}
                                             tokenInput={<Token0Input readOnly />}
                                         />
-                                        <div className="d-flex justify-content-center position-relative"
-                                             style={{zIndex: 1, top: '15px', marginTop: '-34px'}}>
-                                            <FlipSwap/>
-                                        </div>
                                         <TokenInputPanel
                                             tokenInputSibling={<Token1Select readOnly/>}
                                             tokenInput={<Token1Input readOnly/>}
                                         />
                                     </div>
 
-                                    <div className="ps-4 py-3">
-                                        1 {values.fromToken?.symbol} =&nbsp;
-                                        <FormattedNumber
-                                            value={1 / Number(values.quote|| 0)}
-                                            minimumFractionDigits={2}
-                                            maximumFractionDigits={4}
-                                        />
-                                        &nbsp; {values?.fromToken?.symbol}
-                                    </div>
-
-                                    <div className="card bg-dark shadow-none mb-0">
+                                    <div className="card bg-transparent mt-4 shadow-none mb-0">
                                         <div className="card-body">
-                                            <div className="d-flex border-bottom pb-4 mb-4">
+                                            <div className="d-flex mb-3">
                                                 <div className="col-6">
-                                                    {t`Estimated output:`}
+                                                    {t`1`} {values?.fromToken?.symbol} {t`Price`}
                                                 </div>
-                                                <div className="col-6 fw-bold d-flex">
+                                                <div className="col-6 text-end">
+                                                    <FormattedNumber
+                                                        value={values.fromTokenValue / values.toTokenValue}
+                                                        minimumFractionDigits={2}
+                                                        maximumFractionDigits={4}
+                                                    />
+                                                    &nbsp;
+                                                    {values?.toToken?.symbol}
+                                                </div>
+                                            </div>
+                                            <div className="d-flex mb-3">
+                                                <div className="col-6">
+                                                    {t`1`} {values?.toToken?.symbol} {t`Price`}
+                                                </div>
+                                                <div className="col-6 text-end">
+                                                    <FormattedNumber
+                                                        value={values.toTokenValue / values.fromTokenValue}
+                                                        minimumFractionDigits={2}
+                                                        maximumFractionDigits={4}
+                                                    />
+                                                    &nbsp;
+                                                    {values?.fromToken?.symbol}
+                                                </div>
+                                            </div>
+                                            <div className="d-flex mb-3">
+                                                <div className="col-6">
+                                                    {t`Minimum received`}
+                                                </div>
+                                                <div className="col-6 text-end">
                                                     <DashNumber
                                                         value={values.toTokenValue}
                                                         symbol={values?.toToken?.symbol}
@@ -166,25 +175,27 @@ export default function Swap() {
                                             </div>
                                             <div className="d-flex mb-3">
                                                 <div className="col-6">
-                                                    {t`Slippage:`}
+                                                    {t`Slippage`}
                                                 </div>
-                                                <div className="col-6 fw-bold d-flex">
+                                                <div className="col-6 text-end">
                                                     {values.slippage} %
                                                 </div>
                                             </div>
                                             <div className="d-flex">
                                                 <div className="col-6">
-                                                    {t`Fee:`}
+                                                    {t`Estimated Gas`}
                                                 </div>
-                                                <div className="col-6 fw-bold d-flex">
-                                                    <DashNumber
-                                                        value={values.fee}
-                                                        symbol={values?.fromToken?.symbol}
-                                                    />
+                                                <div className="col-6 text-end">
+                                                    {values.estimatedGasFee}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <Alert className="mt-5" variant="danger" show={values.quoteHasChangedAlert}>
+                                        {t`Attention: Exchange rate has changed!`}
+                                    </Alert>
+
                                 </div>
                             </div>
                         </>

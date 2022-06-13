@@ -53,7 +53,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
           token={values.fromToken}
           onClick={() => setShowModal(true)}
           placeholder={t`Select a token`}
-          label={t`Swap from`}
+          label={t`You sell`}
           readOnly={readOnly}
         />
           {isAuthenticated && (

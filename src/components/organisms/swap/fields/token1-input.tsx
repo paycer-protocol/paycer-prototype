@@ -15,7 +15,6 @@ export default function Token1Input(props: SwapTokenInputProps) {
             disabled={!values?.fromToken && !values?.toToken}
             required
             currency={values?.toToken?.symbol}
-            raiseMax
             balance={balance}
             decimals={6}
         />

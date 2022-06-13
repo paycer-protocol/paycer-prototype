@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import Layout from "@components/organisms/layout";
 import PageHeader from "@components/molecules/page-header";
 import Swap from '@components/organisms/swap/swap_'
-import {t} from "@lingui/macro";
 export default function Swap_() {
     const [supplyTabActive, setSupplyTabActive] = useState(false)
 
@@ -20,13 +19,15 @@ export default function Swap_() {
                     </div>
                 </PageHeader>
                 <div>
+                    {/*
                     <div className="d-flex">
                         <div className={supplyTabActive ? 'PCR-Tab' : 'PCR-Tab PCR-Tab--isActive'}
                              onClick={() => setSupplyTabActive(false)}>{t`Swap`}</div>
                         <div className={supplyTabActive ? 'PCR-Tab PCR-Tab--isActive' : 'PCR-Tab'}
                              onClick={() => setSupplyTabActive(true)}>{t`Liquidity`}</div>
                     </div>
-                    <div className="card blur-background">
+                    */}
+                    <div className="card blur-background col-md-5 m-auto">
                         <div className="card-body p-0">
                             <div className="d-flex flex-column flex-md-row">
                                 <div className="w-100">

@@ -12,8 +12,6 @@ export default function SubmitButton() {
 
     const { tokenBalance: fromTokenBalance } = useToken(values?.fromToken?.symbol || null)
 
-    const balanceWithFee = values.fromTokenValue / 100
-
     const {
     } = useSwap()
     const isDisabled =
@@ -27,7 +25,7 @@ export default function SubmitButton() {
       || errors.toTokenValue
 
     return (
-        <GradientButton type="submit" disabled={isDisabled || values.isReloading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-75">
+        <GradientButton type="submit" disabled={isDisabled || values.isReloading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-100">
           {values.isReloading && (
             <div className="me-2">
               <Spinner
