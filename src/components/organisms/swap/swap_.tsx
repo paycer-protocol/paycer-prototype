@@ -133,7 +133,7 @@ export default function Swap() {
                                         />
                                     </div>
 
-                                    <div className="card bg-transparent mt-4 shadow-none mb-0">
+                                    <div className="card bg-transparent mt-4 shadow-none mb-0 small-text">
                                         <div className="card-body">
                                             <div className="d-flex mb-3">
                                                 <div className="col-6">
