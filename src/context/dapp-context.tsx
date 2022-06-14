@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import {IConnectorProvider} from "@providers/connectors"
 import {useChain, useMoralis, useNativeBalance, useMoralisWeb3Api} from "react-moralis"
-import {INetworkProvider, mainNetProviders} from "@providers/networks"
+import { mainNetProviders } from "@providers/networks"
 import ChainId from "@providers/chain-id"
 import { Symbols } from "@providers/symbols"
 import { supportedChains, supportedStakingChains } from "@config/network"
@@ -26,7 +26,7 @@ export interface DappContextInterface {
     chainName: string
     explorerUrl: string
     activeWallet: string
-    currentNetwork: INetworkProvider
+    currentNetwork: any
     handleSwitchNetwork: (provider: any) => Promise<void>
     currentChainIsSupportedForDApp: boolean
     currentChainIsSupportedForStaking: boolean
@@ -36,7 +36,6 @@ export interface DappContextInterface {
     pcrBalance: number
     blockNumber: number
     fetchPcrBalance: () => void
-    setPcrBalance: React.Dispatch<React.SetStateAction<number>>
 }
 
 const contextDefaultValues: DappContextInterface = {
@@ -60,12 +59,11 @@ const contextDefaultValues: DappContextInterface = {
     currentChainIsSupportedForDApp: false,
     currentChainIsSupportedForStaking: false,
     currentNetworkId: 0,
-    currentChainId: 'test',
+    currentChainId: 'polygon',
     currentNetworkProvider: null,
     pcrBalance: 0,
     blockNumber: 0,
-    fetchPcrBalance: null,
-    setPcrBalance: null,
+    fetchPcrBalance: null
 }
 
 const DappContext = createContext<DappContextInterface>(
@@ -79,7 +77,8 @@ const DappContextProvider = ({ children }) => {
         chain,
         chainId,
         switchNetwork,
-        provider: currentNetworkProvider
+        provider: currentNetworkProvider,
+        network
     } = useChain()
 
     const {
@@ -119,8 +118,10 @@ const DappContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        fetchPcrBalance()
-        fetchDateToBlock()
+        if (isAuthenticated && walletAddress && isWeb3Enabled) {
+            fetchPcrBalance()
+            fetchDateToBlock()
+        }
     }, [isAuthenticated, walletAddress, isWeb3Enabled, chain?.chainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
@@ -143,7 +144,7 @@ const DappContextProvider = ({ children }) => {
     }
 
     const fetchPcrBalance = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: pcrContract.address,
@@ -167,7 +168,7 @@ const DappContextProvider = ({ children }) => {
     }
 
     const fetchDateToBlock = async () => {
-        if (isWeb3Enabled) {
+        if (isWeb3Enabled && chainId) {
             const options = { chain: chainId, date: Date.now() }
             // @ts-ignore
             const date = await Web3Api.native.getDateToBlock(options);
@@ -204,8 +205,7 @@ const DappContextProvider = ({ children }) => {
                 currentChainId: chain?.chainId,
                 pcrBalance,
                 fetchPcrBalance,
-                blockNumber,
-                setPcrBalance,
+                blockNumber
             }}
         >
             {children}

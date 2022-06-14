@@ -44,7 +44,11 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
+<<<<<<< Updated upstream
     const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated, pcrBalance, setPcrBalance } = useDapp()
+=======
+    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated, isWeb3Enabled } = useDapp()
+>>>>>>> Stashed changes
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
@@ -252,7 +256,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchAllowance = () => {
-        if (walletAddress && isAuthenticated && currentChainId) {
+        if (walletAddress && isAuthenticated && currentChainId && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     chain: currentChainId,
@@ -278,7 +282,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchUserInfo = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -303,7 +307,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchRewardRate = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -315,6 +319,7 @@ export default function useStaking():UseStakingProps {
                     // @ts-ignore
                     const response: BigNumber = await Moralis.executeFunction(options)
                     if (response && BigNumber.isBigNumber(response)) {
+                        console.log(response.toNumber() / 100)
                         setRewardRate(response.toNumber() / 100)
                     }
                 } catch (e) {
@@ -328,7 +333,7 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchPendingRewards = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: stakingAddress,
@@ -340,6 +345,7 @@ export default function useStaking():UseStakingProps {
                     // @ts-ignore
                     const response = await Moralis.executeFunction(options)
                     if (response && BigNumber.isBigNumber(response)) {
+                        console.log(Number(formatUnits(response, 18)))
                         setPendingReward(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {
@@ -354,13 +360,13 @@ export default function useStaking():UseStakingProps {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentNetworkId])
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentNetworkId, isWeb3Enabled])
 
     useEffect(() => {
         fetchRewardRate()
         fetchPendingRewards()
         fetchAllowance()
-    }, [walletAddress, isAuthenticated, currentNetworkId])
+    }, [walletAddress, isAuthenticated, currentNetworkId, isWeb3Enabled])
 
     // refresh pending rewards UI
     useEffect(() => {
@@ -370,7 +376,7 @@ export default function useStaking():UseStakingProps {
             }, 100000)
             return () => clearInterval(interval)
         }
-    }, [walletAddress, isAuthenticated, currentNetworkId])
+    }, [walletAddress, isAuthenticated, currentNetworkId, isWeb3Enabled])
 
     useEffect(() => {
         if (withdrawError) {
