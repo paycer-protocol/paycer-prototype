@@ -366,7 +366,7 @@ export default function useStaking():UseStakingProps {
 
     // refresh pending rewards UI
     useEffect(() => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const interval = setInterval(() => {
                 fetchPendingRewards()
             }, 20000)
