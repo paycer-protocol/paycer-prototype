@@ -36,7 +36,7 @@ type RecipientsResponse = {
 }
 
 export default function useVesting(type):UseVestingProps {
-    const { currentNetworkId, walletAddress, fetchPcrBalance, isAuthenticated, currentChainId } = useDapp()
+    const { currentNetworkId, walletAddress, fetchPcrBalance, isAuthenticated, currentChainId, isWeb3Enabled } = useDapp()
     const vestingConfig = VestingContractProvider[currentNetworkId] ? VestingContractProvider[currentNetworkId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -105,7 +105,7 @@ export default function useVesting(type):UseVestingProps {
     }
 
     useEffect(() => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -123,10 +123,10 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId])
+    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
 
     useEffect(() => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -144,10 +144,10 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId])
+    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
 
     useEffect(() => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -167,11 +167,11 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId])
+    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
 
 
     useEffect(() => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isAuthenticated && isWeb3Enabled) {
             const fetch = async () => {
                 const options = {
                     contractAddress: vestingAddress,
@@ -192,7 +192,7 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId])
+    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
 
     const resetStatus = () => {
         setWithdrawIsSuccess(false)
