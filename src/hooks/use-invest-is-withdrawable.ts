@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react'
-import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@usedapp/core'
 import { formatUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'
@@ -13,24 +12,25 @@ interface UseInvestIsWithdrawAbleProps {
 }
 
 export default function useInvestIsWithdrawable(strategy: StrategyType):UseInvestIsWithdrawAbleProps {
-    const { currentNetworkId, walletAddress, isAuthenticated } = useDapp()
+    const { currentNetworkId, walletAddress, isInitialized, currentNetwork } = useDapp()
     const strategyAddress = strategy.chainAddresses[currentNetworkId] || strategy.chainAddresses[ChainId.Polygon]
     const [balanceOf, setBalanceOf] = useState<number>(0)
     const [isWithdrawAble, setIsWithdrawAble] = useState<boolean>(false)
 
     const fetchBalanceOf = () => {
-        if (walletAddress && isAuthenticated) {
+        if (walletAddress && isInitialized) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: strategyAddress,
-                    functionName: 'balanceOf',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: strategyAddress,
+                    function_name: 'balanceOf',
                     abi: InvestAbi,
                     params: {account: walletAddress},
                 }
                 try {
                     // @ts-ignore
-                    const response: BigNumber = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
                         setBalanceOf(Number(formatUnits(response, 18)))
 
                     }
@@ -46,7 +46,7 @@ export default function useInvestIsWithdrawable(strategy: StrategyType):UseInves
 
     useEffect(() => {
         fetchBalanceOf()
-    }, [currentNetworkId, isAuthenticated])
+    }, [currentNetworkId, isInitialized, walletAddress])
 
     useEffect(() => {
         setIsWithdrawAble(balanceOf > strategy.minWithdraw)

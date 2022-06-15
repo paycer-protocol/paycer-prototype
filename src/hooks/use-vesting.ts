@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
-import { formatUnits } from '@ethersproject/units'
+import {formatUnits, parseUnits} from '@ethersproject/units'
 import VestingContractProvider from '@providers/vesting'
 import { useDapp } from '@context/dapp-context'
 import { useEffect, useState, useMemo } from 'react'
@@ -36,7 +36,7 @@ type RecipientsResponse = {
 }
 
 export default function useVesting(type):UseVestingProps {
-    const { currentNetworkId, walletAddress, fetchPcrBalance, isAuthenticated, currentChainId, isWeb3Enabled } = useDapp()
+    const { currentNetworkId, walletAddress, currentNetwork, fetchPcrBalance, isInitialized } = useDapp()
     const vestingConfig = VestingContractProvider[currentNetworkId] ? VestingContractProvider[currentNetworkId] : VestingContractProvider[ChainId.Polygon]
     const vestingAddress = vestingConfig[type].address
     const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -61,61 +61,54 @@ export default function useVesting(type):UseVestingProps {
                 params: { beneficiary: walletAddress },
             }
         )
-    }, [walletAddress, isAuthenticated])
+    }, [currentNetworkId, walletAddress, isInitialized])
 
-    const withdrawVesting = async () => {
+    const handleClaim = async () => {
+        setIsLoading(true)
 
         try {
-            setIsLoading(true)
             const withdrawTx = await withdraw({
                 params: vestingWithdrawRequestParams,
             })
 
-            console.log(withdrawTx)
-
             if (withdrawTx) {
-                try {
-                    //@ts-ignore
-                    await withdrawTx.wait()
-                    setIsLoading(false)
-                    setWithdrawAble(0)
-                    fetchPcrBalance()
+                //@ts-ignore
+                await withdrawTx.wait()
+                setIsLoading(false)
+                setWithdrawAble(0)
+                fetchPcrBalance()
+                setWithdrawIsSuccess(true)
+            }
+
+        } catch (error) {
+            if (error.code && error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    setContractCallError(new Error('Claim has been canceled.'))
+                } else {
+                    //  was speeded up
                     setWithdrawIsSuccess(true)
-                } catch (error) {
-                    if (error.code === 'TRANSACTION_REPLACED') {
-                        if (error.cancelled) {
-                            // The transaction was replaced  :'(
-                            setIsLoading(false)
-                            setContractCallError(new Error('Claim has been aborted.'))
-                        } else {
-                            //  was speeded up
-                            setWithdrawIsSuccess(true)
-                            setIsLoading(false)
-                        }
-                    }
                 }
             } else {
-                setIsLoading(false)
-                setContractCallError(new Error('Claim has been aborted.'))
+                setContractCallError(new Error('Claim failed. Please try again.'))
             }
-        } catch(error) {
-            setContractCallError(new Error('Deposit failed. Please try again.'))
+        } finally {
             setIsLoading(false)
         }
     }
 
-    useEffect(() => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+    const fetchStarttime = () => {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: vestingAddress,
-                    functionName: 'startTime',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: vestingAddress,
+                    function_name: 'startTime',
                     abi: vestingConfig.abi
                 }
                 try {
-                    const response = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
-                        setStartTime(response.toNumber())
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
+                        setStartTime(Number(response))
                     }
                 } catch (e) {
                     console.log(e)
@@ -123,20 +116,21 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
+    }
 
-    useEffect(() => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+    const fetchReleaseInterval = () => {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: vestingAddress,
-                    functionName: 'releaseInterval',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: vestingAddress,
+                    function_name: 'releaseInterval',
                     abi: vestingConfig.abi
                 }
                 try {
-                    const response = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
-                        setReleaseInterval(response.toNumber())
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
+                        setReleaseInterval(Number(response))
                     }
                 } catch (e) {
                     console.log(e)
@@ -144,21 +138,22 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
+    }
 
-    useEffect(() => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+    const fetchWithdrawable = () => {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: vestingAddress,
-                    functionName: 'withdrawable',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: vestingAddress,
+                    function_name: 'withdrawable',
                     abi: vestingConfig.abi,
                     params: {beneficiary: walletAddress},
                 }
 
                 try {
-                    const response = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
                         setWithdrawAble(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {
@@ -167,21 +162,21 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
+    }
 
-
-    useEffect(() => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+    const fetchRecipients = () => {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: vestingAddress,
-                    functionName: 'recipients',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: vestingAddress,
+                    function_name: 'recipients',
                     abi: vestingConfig.abi,
                     params: {beneficiary: walletAddress},
                 }
                 try {
                     // @ts-ignore
-                    const response: RecipientsResponse = await Moralis.executeFunction(options)
+                    const response: RecipientsResponse = await Moralis.Web3API.native.runContractFunction(options)
                     if (response) {
                         setTotalAmount(Number(formatUnits(response?.totalAmount, 18)))
                         setAmountWithdrawn(Number(formatUnits(response?.amountWithdrawn, 18)))
@@ -192,7 +187,14 @@ export default function useVesting(type):UseVestingProps {
             }
             fetch()
         }
-    }, [walletAddress, isAuthenticated, currentChainId, isWeb3Enabled])
+    }
+
+    useEffect(() => {
+        fetchRecipients()
+        fetchWithdrawable()
+        fetchReleaseInterval()
+        fetchStarttime()
+    }, [walletAddress, currentNetworkId])
 
     const resetStatus = () => {
         setWithdrawIsSuccess(false)
@@ -209,7 +211,7 @@ export default function useVesting(type):UseVestingProps {
         contractCallError,
         transactionState,
         withdrawIsSuccess,
-        withdraw: withdrawVesting,
+        withdraw: handleClaim,
         showFormApproveModal,
         setShowFormApproveModal,
         startTime: calculateStartTime(startTime).format('MM/DD/YYYY, h:mm:ss a'),

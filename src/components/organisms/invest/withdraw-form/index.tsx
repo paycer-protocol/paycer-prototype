@@ -35,8 +35,6 @@ const WithdrawForm = () => {
         isLoading
     } = useInvest(strategy)
 
-
-
     const handleSubmit = () => {
         setShowFormModal(false)
         setShowFormApproveModal(true)
@@ -45,6 +43,7 @@ const WithdrawForm = () => {
     const handleWithdraw = async (values: FormikValues) => {
         const amount = values.amount - values.fee
         await withdraw(amount)
+        setShowFormModal(false)
     }
 
     const baseToken = useToken(strategy.input.symbol)

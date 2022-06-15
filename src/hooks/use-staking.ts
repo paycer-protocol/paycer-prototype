@@ -44,7 +44,7 @@ type UserInfoRequest = {
 }
 
 export default function useStaking():UseStakingProps {
-    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isAuthenticated, isWeb3Enabled } = useDapp()
+    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isInitialized, currentNetwork } = useDapp()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
@@ -75,7 +75,7 @@ export default function useStaking():UseStakingProps {
                 abi: StakingContractProvider.abi,
             }
         )
-    }, [])
+    }, [currentNetworkId, walletAddress, isInitialized])
 
     const handleApprove = async (amount) => {
 
@@ -94,30 +94,23 @@ export default function useStaking():UseStakingProps {
             setTransactionState(1)
 
             if (approveTx) {
-                try {
-                    //@ts-ignore
-                    await approveTx.wait()
-                    // The transactions was mined without issue
-                } catch (error) {
-                    if (error.code === 'TRANSACTION_REPLACED') {
-                        if (error.cancelled) {
-                            // The transaction was replaced  :'(
-                            setIsLoading(false)
-                            setContractCallError(new Error('Approve has been canceled.'))
-                            // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
-                        } else {
-                            //console.log('approve speeded up')
-                        }
-                        setTransactionState(0)
-                    }  else {
-                        setIsLoading(false)
-                        setContractCallError(new Error('Approve failed. Please try again.'))
-                    }
-                }
+                //@ts-ignore
+                await approveTx.wait()
             }
-        } catch(e) {
+
+        } catch (error) {
+            // The transactions was mined without issue
+            if (error.code && error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    setContractCallError(new Error('Approve has been canceled.'))
+                } else {
+                    //console.log('approve speeded up')
+                }
+                setTransactionState(0)
+            }  else {
+                setContractCallError(new Error('Approve failed. Please try again.'))
+            }
             setIsLoading(false)
-            setContractCallError(new Error('Approve failed. Please try again.'))
         }
     }
 
@@ -128,43 +121,40 @@ export default function useStaking():UseStakingProps {
             await handleApprove(amount)
         }
 
+        const withdrawParams = {
+            functionName: 'withdraw',
+            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+        }
+
+        const params = { ...stakingRequestParams, ...withdrawParams}
+
         try {
-            const withdrawParams = {
-                functionName: 'withdraw',
-                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-            }
-            const params = { ...stakingRequestParams, ...withdrawParams}
+
             const withdrawTx = await withdraw({
                 params
             })
 
-            try {
-                // Wait for the transaction to be mined
+            if (withdrawTx) {
                 setTransactionState(2)
                 //@ts-ignore
                 await withdrawTx.wait()
                 setWithdrawIsSuccess(true)
                 setTransactionState(0)
                 fetchPcrBalance()
-                // The transactions was mined without issue
-            } catch (error) {
-                if (error.code === 'TRANSACTION_REPLACED') {
-                    if (error.cancelled) {
-                        // The transaction was replaced  :'(
-                        setIsLoading(false)
-                        setContractCallError(new Error('Withdraw has been canceled.'))
-                        // ELSE USER PRESSED SPEED UP IN META MASK FOR EXMAPLE
-                    } else {
-                        //console.log('withdraw speeded up')
-                    }
-                    setTransactionState(0)
+            }
+
+        } catch (error) {
+            if (error.code && error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    setContractCallError(new Error('Withdraw has been canceled.'))
                 } else {
-                    setIsLoading(false)
+                    //  was speeded up
                     setWithdrawIsSuccess(true)
                 }
+            } else {
+                setContractCallError(new Error('Withdraw failed. Please try again.'))
             }
-        } catch (error) {
-            setContractCallError(new Error('Withdraw failed. Please try again.'))
+        } finally {
             setIsLoading(false)
         }
     }
@@ -176,41 +166,40 @@ export default function useStaking():UseStakingProps {
             await handleApprove(amount)
         }
 
-        try {
-            const depositParams = {
-                functionName: 'deposit',
-                params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
-            }
+        const depositParams = {
+            functionName: 'deposit',
+            params: { to: walletAddress, amount:  parseUnits(String(amount), 18) }
+        }
 
-            const params = { ...stakingRequestParams, ...depositParams}
+        const params = { ...stakingRequestParams, ...depositParams}
+
+        try {
+
             const depositTx = await deposit({
                 params
             })
 
             if (depositTx) {
-                try {
-                    setTransactionState(2)
-                    //@ts-ignore
-                    await depositTx.wait()
-                    setDepositIsSuccess(true)
-                    setTransactionState(0)
-                    fetchPcrBalance()
-                } catch (error) {
-                    if (error.code === 'TRANSACTION_REPLACED') {
-                        if (error.cancelled) {
-                            // The transaction was replaced  :'(
-                            setIsLoading(false)
-                            setContractCallError(new Error('Deposit has been canceled.'))
-                        } else {
-                            //  was speeded up
-                            setDepositIsSuccess(true)
-                            setIsLoading(false)
-                        }
-                    }
-                }
+                setTransactionState(2)
+                //@ts-ignore
+                await depositTx.wait()
+                setDepositIsSuccess(true)
+                setTransactionState(0)
+                fetchPcrBalance()
             }
-        } catch(error) {
-            setContractCallError(new Error('Deposit failed. Please try again.'))
+
+        } catch (error) {
+            if (error.code && error.code === 'TRANSACTION_REPLACED') {
+                if (error.cancelled) {
+                    setContractCallError(new Error('Deposit has been canceled.'))
+                } else {
+                    //  was speeded up
+                    setDepositIsSuccess(true)
+                }
+            } else {
+                setContractCallError(new Error('Deposit failed. Please try again.'))
+            }
+        } finally {
             setIsLoading(false)
         }
     }
@@ -240,19 +229,20 @@ export default function useStaking():UseStakingProps {
             if (error.code === 'TRANSACTION_REPLACED') {
                 if (error.cancelled) {
                     // The transaction was replaced  :'(
-                    setIsLoading(false)
                     setContractCallError(new Error('Claim has been aborted.'))
                 } else {
                     //  was speeded up
                     setClaimIsSuccess(true)
-                    setIsLoading(false)
+
                 }
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
     const fetchAllowance = () => {
-        if (walletAddress && isAuthenticated && currentChainId && isWeb3Enabled) {
+        if (walletAddress && isInitialized) {
             const fetch = async () => {
                 const options = {
                     chain: currentChainId,
@@ -278,17 +268,18 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchUserInfo = () => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: stakingAddress,
-                    functionName: 'userInfo',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: stakingAddress,
+                    function_name: 'userInfo',
                     abi: StakingContractProvider.abi,
                     params: {beneficiary: walletAddress},
                 }
                 try {
                     // @ts-ignore
-                    const response: UserInfoRequest = await Moralis.executeFunction(options)
+                    const response: UserInfoRequest = await Moralis.Web3API.native.runContractFunction(options)
                     if (response) {
                         setUserInfo(response)
                     }
@@ -303,20 +294,20 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchRewardRate = () => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: stakingAddress,
-                    functionName: 'rewardAPY',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: stakingAddress,
+                    function_name: 'rewardAPY',
                     abi: StakingContractProvider.abi,
                     params: {_user: walletAddress},
                 }
                 try {
                     // @ts-ignore
-                    const response: BigNumber = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
-                        console.log(response.toNumber() / 100)
-                        setRewardRate(response.toNumber() / 100)
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
+                        setRewardRate(Number(response) / 100)
                     }
                 } catch (e) {
                     console.log('rewardAPY', e)
@@ -329,19 +320,20 @@ export default function useStaking():UseStakingProps {
     }
 
     const fetchPendingRewards = () => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: stakingAddress,
-                    functionName: 'pendingReward',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: stakingAddress,
+                    function_name: 'pendingReward',
                     abi: StakingContractProvider.abi,
                     params: {_user: walletAddress},
                 }
+
                 try {
                     // @ts-ignore
-                    const response = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
-                        console.log(Number(formatUnits(response, 18)))
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
                         setPendingReward(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {
@@ -356,23 +348,23 @@ export default function useStaking():UseStakingProps {
 
     useEffect(() => {
         fetchUserInfo()
-    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, isAuthenticated, currentNetworkId, isWeb3Enabled])
+    }, [walletAddress, withdrawIsSuccess, depositIsSuccess, currentNetworkId])
 
     useEffect(() => {
         fetchRewardRate()
         fetchPendingRewards()
         fetchAllowance()
-    }, [walletAddress, isAuthenticated, currentNetworkId, isWeb3Enabled])
+    }, [walletAddress, currentNetworkId])
 
     // refresh pending rewards UI
     useEffect(() => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+        if (walletAddress && isInitialized) {
             const interval = setInterval(() => {
                 fetchPendingRewards()
             }, 20000)
             return () => clearInterval(interval)
         }
-    }, [walletAddress, isAuthenticated, currentNetworkId, isWeb3Enabled])
+    }, [walletAddress, currentNetworkId])
 
     useEffect(() => {
         if (withdrawError) {
@@ -413,7 +405,7 @@ export default function useStaking():UseStakingProps {
         claim: handleClaim,
         pendingReward,
         // @ts-ignore
-        stakedBalance: BigNumber.isBigNumber(userInfo?.amount) ? Number(formatUnits(userInfo?.amount, 18)) : 0,
+        stakedBalance: Number(formatUnits(userInfo?.amount || 0)),
         // @ts-ignore
         /* TODO ADD TOTAL AMOUNT CLAIMED */
         totalAmountClaimed: 0,

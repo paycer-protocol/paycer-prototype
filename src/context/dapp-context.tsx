@@ -9,11 +9,13 @@ import {BigNumber} from "@ethersproject/bignumber";
 import Moralis from "moralis";
 import {formatUnits} from "@ethersproject/units";
 import PaycerTokenContractProvider from "@providers/paycer-token";
+import StakingContractProvider from "@providers/staking";
 
 export interface DappContextInterface {
     walletConnector: unknown | null
     walletAddress: string
     walletShortenAddress: string
+    isInitialized: boolean
     walletIsActive: boolean
     isWeb3EnableLoading: boolean
     isWeb3Enabled: boolean
@@ -43,6 +45,7 @@ const contextDefaultValues: DappContextInterface = {
     walletAddress: '',
     walletShortenAddress: '',
     walletIsActive: false,
+    isInitialized: false,
     isWeb3EnableLoading: false,
     isWeb3Enabled: false,
     isAuthenticated: false,
@@ -84,6 +87,7 @@ const DappContextProvider = ({ children }) => {
     const {
         authenticate,
         isAuthenticated,
+        isInitialized,
         connector: walletConnector,
         logout,
         account,
@@ -118,11 +122,11 @@ const DappContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        if (isAuthenticated && walletAddress && isWeb3Enabled) {
+        if (isInitialized && walletAddress) {
             fetchPcrBalance()
             fetchDateToBlock()
         }
-    }, [isAuthenticated, walletAddress, isWeb3Enabled, chain?.chainId])
+    }, [isInitialized, walletAddress, chain?.chainId])
 
     const handleWalletConnect = async (provider: IConnectorProvider) => {
         await authenticate({
@@ -144,23 +148,24 @@ const DappContextProvider = ({ children }) => {
     }
 
     const fetchPcrBalance = () => {
-        if (walletAddress && isAuthenticated && isWeb3Enabled) {
+        if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    contractAddress: pcrContract.address,
-                    functionName: 'balanceOf',
+                    chain: currentNetwork.chainName.toLowerCase(),
+                    address: pcrContract.address,
+                    function_name: 'balanceOf',
                     abi: pcrContract.abi,
-                    params: {account: walletAddress}
+                    params: {account: walletAddress},
                 }
 
                 try {
                     // @ts-ignore
-                    const response: BigNumber = await Moralis.executeFunction(options)
-                    if (response && BigNumber.isBigNumber(response)) {
+                    const response = await Moralis.Web3API.native.runContractFunction(options)
+                    if (response) {
                         setPcrBalance(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {
-                    console.log('balanceOf', e)
+                    console.log('pendingReward', e)
                 }
             }
             fetch()
@@ -168,7 +173,7 @@ const DappContextProvider = ({ children }) => {
     }
 
     const fetchDateToBlock = async () => {
-        if (isWeb3Enabled && chainId) {
+        if (isInitialized && walletAddress) {
             const options = { chain: chainId, date: Date.now() }
             // @ts-ignore
             const date = await Web3Api.native.getDateToBlock(options);
@@ -188,6 +193,7 @@ const DappContextProvider = ({ children }) => {
                 isWeb3EnableLoading,
                 isWeb3Enabled,
                 isAuthenticated,
+                isInitialized,
                 handleWalletConnect,
                 handleWalletDisconnect,
                 nativeBalance: Number(balance),
