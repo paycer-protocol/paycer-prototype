@@ -165,7 +165,7 @@ const DappContextProvider = ({ children }) => {
                         setPcrBalance(Number(formatUnits(response, 18)))
                     }
                 } catch (e) {
-                    console.log('pendingReward', e)
+                    console.log('balanceOf', e)
                 }
             }
             fetch()
