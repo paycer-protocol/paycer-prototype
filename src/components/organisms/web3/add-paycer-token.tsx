@@ -2,12 +2,10 @@ import React from 'react'
 import { useDapp } from '@context/dapp-context'
 import ChainId from '@providers/chain-id'
 import useToken from '../../../hooks/use-token'
-import {useChain} from "react-moralis";
 
 export interface AddPaycerTokenProps {
     children: React.ReactNode
 }
-
 
 const AddPaycerToken = (props: AddPaycerTokenProps) => {
     const { children } = props
@@ -37,7 +35,7 @@ const AddPaycerToken = (props: AddPaycerTokenProps) => {
     }
 
     // @ts-ignore
-    if (!isAuthenticated || (!currentNetworkId && ![ChainId.Polygon].includes(currentNetworkId) && currentNetworkProvider.isMetaMask))  {
+    if (!isAuthenticated || (!currentNetworkId && ![ChainId.Polygon].includes(currentNetworkId) && !currentNetworkProvider && !currentNetworkProvider?.isMetaMask))  {
       return null
     }
 

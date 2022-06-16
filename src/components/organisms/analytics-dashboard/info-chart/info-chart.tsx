@@ -18,6 +18,7 @@ const InfoChart = (props: InfoChartProps) => {
     const {
         isSmall,
         headline,
+        tokenPrice,
         dataType,
         chartType,
         isModal,
@@ -54,7 +55,7 @@ const InfoChart = (props: InfoChartProps) => {
     }, [values.selectedChains, timeSection])
 
     useEffect(() => {
-        document.addEventListener('click', function() {
+        document.addEventListener('click', function () {
             setShowTimeSectionDropdown(false)
         })
     }, [])
@@ -144,15 +145,15 @@ const InfoChart = (props: InfoChartProps) => {
         const seriesDate = w.globals.initialSeries[seriesIndex].dates[dataPointIndex]
         return (
             '<div class="apexcharts-tooltip-series-group d-block" style="font-size: 12px">' +
-                '<div class="d-flex align-items-center">' +
-                    '<div class="apexcharts-tooltip-text">' +
-                        '<div>' +
-                            '<div class="apexcharts-tooltip-text-y-label d-flex">'+seriesValue+' PCR' +
-                            '</div>' +
-                            '<span class="text-muted">' + seriesDate + '</span>' +
-                        '</div>' +
-                    '</div>'+
-                '</div>'+
+            '<div class="d-flex align-items-center">' +
+            '<div class="apexcharts-tooltip-text">' +
+            '<div>' +
+            '<div class="apexcharts-tooltip-text-y-label d-flex">' + seriesValue + ' PCR' +
+            '</div>' +
+            '<span class="text-muted">' + seriesDate + '</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
             '</div>'
         )
     }
@@ -163,7 +164,7 @@ const InfoChart = (props: InfoChartProps) => {
                 <div className="d-flex justify-content-between">
                     <div>
                         <h5 className="text-uppercase text-muted mb-3">{headline}</h5>
-                        <div className="d-flex align-items-baseline">
+                        <div className="d-flex flex-column align-items-baseline">
                             <h2 className="display-4 fw-normal d-flex mb-2" >
                                 <FormattedNumber
                                     value={initialValueShownHovered || initialValueShown}
@@ -171,8 +172,18 @@ const InfoChart = (props: InfoChartProps) => {
                                     maximumFractionDigits={2}
                                 />
                             </h2>
+                            <h4>
+                                <FormattedNumber
+                                    value={(initialValueShownHovered || initialValueShown) * tokenPrice}
+                                    minimumFractionDigits={2}
+                                    maximumFractionDigits={2}
+                                    style="currency"
+                                    currency="USD"
+                                    currencyDisplay="code"
+                                />
+                            </h4>
                         </div>
-                        <span style={{fontSize: '10px'}} className="text-uppercase text-muted mb-0">
+                        <span style={{ fontSize: '10px' }} className="text-uppercase text-muted mb-0">
                             {initialDateShownHovered || initialDateShown}
                         </span>
                     </div>
@@ -221,10 +232,10 @@ const InfoChart = (props: InfoChartProps) => {
 
                         {!isSmall &&
                             <div className="mt-3">
-                              <ChainLegend
-                                series={series}
-                                seriesColors={seriesColors}
-                              />
+                                <ChainLegend
+                                    series={series}
+                                    seriesColors={seriesColors}
+                                />
                             </div>
                         }
                     </div>
@@ -232,7 +243,7 @@ const InfoChart = (props: InfoChartProps) => {
 
                 <ApexChart
                     series={series}
-                    height={isSmall ? 100 : 363}
+                    height={isSmall ? 100 : 389}
                     seriesColors={seriesColors}
                     onMouseMove={onMouseMove}
                     onMouseLeave={onMouseLeave}
