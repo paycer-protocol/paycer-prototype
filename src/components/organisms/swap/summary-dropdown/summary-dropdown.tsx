@@ -8,6 +8,7 @@ import {ArrowDropDown, ArrowDropUp} from '@styled-icons/material'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber} from '../../../atoms/number/formatted-number'
 import {useDapp} from "@context/dapp-context";
+import SlippageTollerance from "@components/organisms/swap/fields/slippage-tollerance";
 
 const Content = styled.div`
     z-index: 2; 
@@ -26,7 +27,6 @@ const Content = styled.div`
 const SummaryDropdown = () => {
     const { values } = useFormikContext<SwapProps>()
     const [ open, setOpen ] = useState(false)
-    const { nativeSymbol } = useDapp()
 
     return (
         <div className="position-relative">
@@ -76,13 +76,7 @@ const SummaryDropdown = () => {
                         </span>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <span className="text-muted">
-                            {t`Estimated Gas`}
-                        </span>
-                        <span className="d-flex align-items-center">
-                            {values.estimatedGasFee}
-                            &nbsp;
-                        </span>
+                        <SlippageTollerance />
                     </div>
                 </div>
             </Content>
