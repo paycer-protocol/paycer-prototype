@@ -1,8 +1,6 @@
 import React from 'react'
 import * as Styles from './Styles'
 import SlippageTollerance from '../fields/slippage-tollerance'
-import DeadlineMinutes from '../fields/deadline-minutes'
-import DisableMultihops from '../fields/disable-multihops'
 import Icon from '@components/atoms/icon'
 import DropdownComponent from '@components/atoms/dropdown/dropdown'
 import { Settings } from '@styled-icons/fluentui-system-regular'

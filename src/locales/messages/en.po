@@ -13,8 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/organisms/swap/swap_.tsx:139
-#: src/components/organisms/swap/swap_.tsx:153
+#: src/components/organisms/swap/swap.tsx:131
+#: src/components/organisms/swap/swap.tsx:145
 msgid "1"
 msgstr "1"
 
@@ -219,10 +219,10 @@ msgid "Associate"
 msgstr "Associate"
 
 #: src/components/organisms/swap/swap.tsx:176
-msgid "Attention! The exchange rate has changed significantly."
-msgstr "Attention! The exchange rate has changed significantly."
+#~ msgid "Attention! The exchange rate has changed significantly."
+#~ msgstr "Attention! The exchange rate has changed significantly."
 
-#: src/components/organisms/swap/swap_.tsx:196
+#: src/components/organisms/swap/swap.tsx:188
 msgid "Attention: Exchange rate has changed!"
 msgstr "Attention: Exchange rate has changed!"
 
@@ -477,8 +477,7 @@ msgstr "Confirm Mint"
 #: src/components/organisms/invest/deposit-form/index.tsx:175
 #: src/components/organisms/invest/withdraw-form/index.tsx:180
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:163
-#: src/components/organisms/swap/swap.tsx:190
-#: src/components/organisms/swap/swap_.tsx:115
+#: src/components/organisms/swap/swap.tsx:107
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
 
@@ -598,7 +597,6 @@ msgstr "Daily interest:"
 #: src/components/organisms/invest/withdraw-form/index.tsx:150
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:124
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
-#: src/components/organisms/supply-liquidity/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
@@ -630,8 +628,8 @@ msgstr "Date"
 #~ msgstr "DeFi Architect & NFT Developer"
 
 #: src/components/organisms/swap/fields/deadline-minutes.tsx:37
-msgid "Deadline minutes"
-msgstr "Deadline minutes"
+#~ msgid "Deadline minutes"
+#~ msgstr "Deadline minutes"
 
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 msgid "Deposit"
@@ -675,8 +673,8 @@ msgid "Dias Lonappan"
 msgstr "Dias Lonappan"
 
 #: src/components/organisms/swap/fields/disable-multihops.tsx:35
-msgid "Disable Multihops"
-msgstr "Disable Multihops"
+#~ msgid "Disable Multihops"
+#~ msgstr "Disable Multihops"
 
 #: src/components/organisms/web3/wallet-detail.tsx:133
 msgid "Disconnect"
@@ -776,8 +774,8 @@ msgstr "Enter your email address."
 #~ msgstr "Error"
 
 #: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:80
-msgid "Estimated Gas"
-msgstr "Estimated Gas"
+#~ msgid "Estimated Gas"
+#~ msgstr "Estimated Gas"
 
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:139
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:150
@@ -785,8 +783,8 @@ msgid "Estimated fee"
 msgstr "Estimated fee"
 
 #: src/components/organisms/swap/swap.tsx:238
-msgid "Estimated output:"
-msgstr "Estimated output:"
+#~ msgid "Estimated output:"
+#~ msgstr "Estimated output:"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:61
 #~ msgid "Ethereum."
@@ -832,7 +830,6 @@ msgstr "Fee"
 #: src/components/organisms/invest/deposit-form/index.tsx:221
 #: src/components/organisms/invest/withdraw-form/index.tsx:236
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:220
-#: src/components/organisms/swap/swap.tsx:257
 msgid "Fee:"
 msgstr "Fee:"
 
@@ -1242,12 +1239,12 @@ msgid "Lightpaper"
 msgstr "Lightpaper"
 
 #: src/pages/swap/index.tsx:30
-msgid "Liquidity"
-msgstr "Liquidity"
+#~ msgid "Liquidity"
+#~ msgstr "Liquidity"
 
 #: src/components/organisms/supply-liquidity/supply-info/supply-info.tsx:16
-msgid "Liquidity Pool"
-msgstr "Liquidity Pool"
+#~ msgid "Liquidity Pool"
+#~ msgstr "Liquidity Pool"
 
 #: src/pages/token-sale/components/status-info.tsx:29
 #~ msgid "Loading"
@@ -1369,7 +1366,7 @@ msgid "Metin Demirdere"
 msgstr "Metin Demirdere"
 
 #: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:67
-#: src/components/organisms/swap/swap_.tsx:167
+#: src/components/organisms/swap/swap.tsx:159
 msgid "Minimum received"
 msgstr "Minimum received"
 
@@ -1732,8 +1729,8 @@ msgstr "Presale ends:"
 #~ msgid "Previously added network Pending, please open your Wallet"
 #~ msgstr "Previously added network Pending, please open your Wallet"
 
-#: src/components/organisms/swap/swap_.tsx:139
-#: src/components/organisms/swap/swap_.tsx:153
+#: src/components/organisms/swap/swap.tsx:131
+#: src/components/organisms/swap/swap.tsx:145
 msgid "Price"
 msgstr "Price"
 
@@ -1952,7 +1949,7 @@ msgstr "Show"
 #~ msgid "Show Details"
 #~ msgstr "Show Details"
 
-#: src/components/organisms/swap/swap_.tsx:178
+#: src/components/organisms/swap/swap.tsx:170
 msgid "Slippage"
 msgstr "Slippage"
 
@@ -1965,8 +1962,8 @@ msgid "Slippage tollerance"
 msgstr "Slippage tollerance"
 
 #: src/components/organisms/swap/swap.tsx:249
-msgid "Slippage:"
-msgstr "Slippage:"
+#~ msgid "Slippage:"
+#~ msgstr "Slippage:"
 
 #: src/components/organisms/nft/landing-page/team-section.tsx:97
 msgid "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
@@ -2109,12 +2106,12 @@ msgstr "Submit"
 #~ msgstr "Successful"
 
 #: src/components/organisms/supply-liquidity/fields/token-toggle.tsx:42
-msgid "Supplied:"
-msgstr "Supplied:"
+#~ msgid "Supplied:"
+#~ msgstr "Supplied:"
 
 #: src/components/organisms/supply-liquidity/fields/submit-button.tsx:15
-msgid "Supply"
-msgstr "Supply"
+#~ msgid "Supply"
+#~ msgstr "Supply"
 
 #: src/pages/swap/index.tsx:26
 #~ msgid "Supply Liquidity"
@@ -2123,7 +2120,6 @@ msgstr "Supply"
 #: src/components/organisms/swap/fields/submit-button.tsx:40
 #: src/config/routes.ts:52
 #: src/config/routes.ts:58
-#: src/pages/swap/index.tsx:28
 msgid "Swap"
 msgstr "Swap"
 
@@ -2298,8 +2294,8 @@ msgid "Total Investment"
 msgstr "Total Investment"
 
 #: src/components/organisms/supply-liquidity/supply-info/total-supply.tsx:18
-msgid "Total Pool Supply"
-msgstr "Total Pool Supply"
+#~ msgid "Total Pool Supply"
+#~ msgstr "Total Pool Supply"
 
 #: src/components/organisms/invest/invest-table.tsx:37
 msgid "Total Volume"
@@ -2327,7 +2323,7 @@ msgstr "Total claimed"
 msgid "Transaction"
 msgstr "Transaction"
 
-#: src/components/organisms/swap/swap_.tsx:186
+#: src/components/organisms/swap/swap.tsx:178
 msgid "Transaction Fee ({swapFeePercentage}%)"
 msgstr "Transaction Fee ({swapFeePercentage}%)"
 
@@ -2363,8 +2359,7 @@ msgstr "Transaction is processing..."
 #: src/components/organisms/invest/withdraw-form/index.tsx:182
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:165
-#: src/components/organisms/swap/swap.tsx:191
-#: src/components/organisms/swap/swap_.tsx:116
+#: src/components/organisms/swap/swap.tsx:108
 msgid "Transaction was successfully executed"
 msgstr "Transaction was successfully executed"
 

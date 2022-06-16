@@ -8,7 +8,7 @@ import {formatUnits } from "@ethersproject/units"
 
 export default function Token0Input(props: SwapTokenInputProps) {
     const { readOnly } = props
-    const { values, setValues, setFieldValue, setFieldError } = useFormikContext<SwapProps>()
+    const { values, setFieldValue } = useFormikContext<SwapProps>()
     const { tokenBalance: balance} = useToken(values?.fromToken?.symbol)
 
     const {

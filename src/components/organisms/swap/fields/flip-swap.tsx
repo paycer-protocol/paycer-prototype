@@ -4,7 +4,9 @@ import {SwapVert} from '@styled-icons/material/SwapVert'
 import styled, { css } from 'styled-components'
 import Icon from '@components/atoms/icon'
 import {SwapProps} from '@components/organisms/swap/types'
-import {CurrencyFieldProps} from "@components/atoms/form/currency";
+import {CurrencyFieldProps} from '@components/atoms/form/currency'
+import {formatUnits} from '@ethersproject/units'
+import useSwap from '@hooks/use-swap'
 
 interface CircleProps {
     isDisabled?: boolean
@@ -24,15 +26,30 @@ export const Circle = styled.div<CircleProps>`
 export default function FlipSwap() {
     const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
 
+    const {
+        fetchQuote
+    } = useSwap()
+
     const handleFlip = async () => {
-        const { toToken, toTokenValue, fromToken, fromTokenValue } = values
+        const { toToken: fromToken, toTokenValue: fromTokenValue, fromToken: toToken } = values
         if (!toToken && !fromToken) {
             return
         }
-        setFieldValue('fromToken', toToken)
-        setFieldValue('toToken', fromToken)
-        setFieldValue('fromTokenValue', toTokenValue)
-        setFieldValue('toTokenValue', fromTokenValue)
+
+        try {
+            setFieldValue('isReloading', true)
+            const result = await fetchQuote({ fromToken, toToken, amount: fromTokenValue.toString() })
+            const toTokenValue = formatUnits(result?.toTokenAmount.toString(), toToken.decimals)
+            setFieldValue('fee', Number(fromTokenValue) / 100)
+            setFieldValue('fromToken', fromToken)
+            setFieldValue('toToken', toToken)
+            setFieldValue('fromTokenValue', fromTokenValue)
+            setFieldValue('toTokenValue', toTokenValue)
+        } catch(e) {
+            console.log('flipswap')
+        } finally {
+            setFieldValue('isReloading', false)
+        }
     }
 
     return (
