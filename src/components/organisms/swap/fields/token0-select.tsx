@@ -34,7 +34,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
             try {
                 const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-                setFieldValue('estimatedGasFee', result?.estimatedGas)
+                setFieldValue('fee', values.fromTokenValue / 100)
                 setFieldValue('toTokenValue', toTokenValue)
 
             } catch(e) {

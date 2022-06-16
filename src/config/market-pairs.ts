@@ -3,6 +3,7 @@ import { MarketPairType } from '../types/market'
 import { TokenType } from '../types/investment'
 
 export const initialFromTokenValue = 0.998787
+export const swapFeePercentage = 1
 
 export const swapTokens: TokenType[] = [
   tokenProvider.PCR,

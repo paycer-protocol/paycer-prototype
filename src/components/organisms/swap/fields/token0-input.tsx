@@ -22,12 +22,11 @@ export default function Token0Input(props: SwapTokenInputProps) {
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: value.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-                setFieldValue('estimatedGasFee', result?.estimatedGas)
+                setFieldValue('fee', value / 100)
                 setFieldValue('toTokenValue', toTokenValue)
                 setFieldValue('isReloading', false)
             } catch(e) {
                 setFieldValue('isReloading', false)
-                console.log(e.message)
             }
         }
     }
@@ -49,7 +48,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
                 if (toTokenValue !== values.toTokenValue.toString()) {
                     setFieldValue('toTokenValue', toTokenValue)
-                    setFieldValue('estimatedGasFee', result?.estimatedGas)
+                    setFieldValue('fee', values.fromTokenValue / 100)
                     setFieldValue('quoteHasChangedAlert', true)
                 }
             } catch(e) {

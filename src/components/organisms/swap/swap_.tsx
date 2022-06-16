@@ -1,24 +1,24 @@
 import React, {useEffect, useRef} from 'react'
-import {t} from "@lingui/macro"
-import {swapTokens} from '@config/market-pairs'
-import useSwap from "@hooks/use-swap"
-import { useDapp } from "@context/dapp-context"
+import {t} from '@lingui/macro'
+import {FormikProps} from 'formik'
+import { swapTokens, swapFeePercentage } from '@config/market-pairs'
+import useSwap from '@hooks/use-swap'
+import { useDapp } from '@context/dapp-context'
 import { SwapProps } from './types'
+import Alert from '@components/atoms/alert'
 import Form from '@components/atoms/form/form'
-import TokenInputPanel from "@components/organisms/token-input-panel"
-import Token0Select from "@components/organisms/swap/fields/token0-select"
-import Token0Input from "@components/organisms/swap/fields/token0-input"
-import FlipSwap from "@components/organisms/swap/fields/flip-swap"
-import Token1Select from "@components/organisms/swap/fields/token1-select"
-import Token1Input from "@components/organisms/swap/fields/token1-input"
-import SummaryDropdown from "@components/organisms/swap/summary-dropdown"
-import SettingsDropdown from "@components/organisms/swap/settings-dropdown"
-import SubmitButton from "@components/organisms/swap/fields/submit-button"
-import TransactionApproveModal from "@components/organisms/transaction-approve-modal"
-import DashNumber from "@components/organisms/dashboard/dash-number"
-import { FormattedNumber } from "../../atoms/number/formatted-number"
-import {FormikProps} from "formik"
-import Alert from "@components/atoms/alert";
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import Token0Select from '@components/organisms/swap/fields/token0-select'
+import Token0Input from '@components/organisms/swap/fields/token0-input'
+import FlipSwap from '@components/organisms/swap/fields/flip-swap'
+import Token1Select from '@components/organisms/swap/fields/token1-select'
+import Token1Input from '@components/organisms/swap/fields/token1-input'
+import SummaryDropdown from '@components/organisms/swap/summary-dropdown'
+import SettingsDropdown from '@components/organisms/swap/settings-dropdown'
+import SubmitButton from '@components/organisms/swap/fields/submit-button'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import { FormattedNumber } from '../../atoms/number/formatted-number'
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
@@ -41,8 +41,7 @@ export default function Swap() {
         toTokenValue: null,
         toTokenMarkets: swapTokens,
         slippage: 1,
-        quote: 0,
-        estimatedGasFee: 0,
+        fee: 0,
         isReloading: false,
         isSwapping: false,
         quoteHasChangedAlert: false
@@ -184,10 +183,10 @@ export default function Swap() {
                                             </div>
                                             <div className="d-flex">
                                                 <div className="col-6">
-                                                    {t`Estimated Gas`}
+                                                    {t`Transaction Fee (${swapFeePercentage}%)`}
                                                 </div>
                                                 <div className="col-6 text-end">
-                                                    {values.estimatedGasFee}
+                                                    {values.fee} {values.fromToken?.symbol}
                                                 </div>
                                             </div>
                                         </div>

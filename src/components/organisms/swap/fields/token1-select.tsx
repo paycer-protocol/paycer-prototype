@@ -31,7 +31,7 @@ export default function Token1Select(props: SwapTokenInputProps) {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: token, amount: values.fromTokenValue.toString() })
                 const toTokenValue = formatUnits(result?.toTokenAmount.toString(), token.decimals)
                 setFieldValue('toTokenValue', toTokenValue)
-                setFieldValue('estimatedGasFee', result?.estimatedGas)
+                setFieldValue('fee', values.fromTokenValue / 100)
                 setFieldValue('isReloading', false)
             } catch(e) {
                 setFieldValue('isReloading', false)
