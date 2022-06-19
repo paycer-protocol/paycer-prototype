@@ -60,19 +60,18 @@ export default function useSwap():UseSwapProps {
         try {
             await Moralis.Plugins.oneInch.swap({
                 chain: currentNetwork.chainName.toLowerCase(),
-                fromTokenAddress: fromToken.chainAddresses[currentNetworkId],
-                toTokenAddress: toToken.chainAddresses[currentNetworkId],
+                fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+                toTokenAddress: toToken.chainAddresses[currentNetworkId].toLowerCase(),
                 amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
                 fromAddress: walletAddress,
                 slippage: slippage.toString()
             })
             setSwapIsSuccess(true)
         } catch (e) {
-            console.log(e.message)
+            console.log(e, e.message)
+            setContractCallError(new Error('Something went wrong, please try again'))
         }
     }
-
-
 
     const fetchQuote = async(props: FetchQuoteProps) => {
 
@@ -84,8 +83,8 @@ export default function useSwap():UseSwapProps {
 
         const options = {
             chain: currentNetwork.chainName.toLowerCase(),
-            fromTokenAddress: fromToken.chainAddresses[currentNetworkId],
-            toTokenAddress: toToken.chainAddresses[currentNetworkId],
+            fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+            toTokenAddress: toToken.chainAddresses[currentNetworkId].toLowerCase(),
             amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
         }
 
@@ -106,7 +105,7 @@ export default function useSwap():UseSwapProps {
         try {
             await Moralis.Plugins.oneInch.approve({
                 chain: currentNetwork.chainName.toLowerCase(),
-                tokenAddress: fromToken.chainAddresses[currentNetworkId],
+                tokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
                 fromAddress: walletAddress
             })
         } catch(e) {
@@ -117,17 +116,19 @@ export default function useSwap():UseSwapProps {
     const fetchHasAllowance = async (props: HandleSwapProps) => {
         const {
             fromToken,
-            toToken,
             amount
         } = props
 
         try {
-            const allowance = await Moralis.Plugins.oneInch.hasAllowance({
+
+            const options = {
                 chain: currentNetwork.chainName.toLowerCase(),
-                fromTokenAddress: fromToken.chainAddresses[currentNetworkId],
-                fromAddress: toToken.chainAddresses[currentNetworkId],
+                fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+                fromAddress: walletAddress,
                 amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
-            })
+            }
+
+            const allowance = await Moralis.Plugins.oneInch.hasAllowance(options)
 
             return allowance
 

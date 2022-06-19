@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef,useCallback, useState} from 'react'
 import {t} from '@lingui/macro'
 import {FormikProps} from 'formik'
 import { swapTokens, swapFeePercentage } from '@config/market-pairs'
@@ -14,15 +14,17 @@ import FlipSwap from '@components/organisms/swap/fields/flip-swap'
 import Token1Select from '@components/organisms/swap/fields/token1-select'
 import Token1Input from '@components/organisms/swap/fields/token1-input'
 import SummaryDropdown from '@components/organisms/swap/summary-dropdown'
-import SettingsDropdown from '@components/organisms/swap/settings-dropdown'
 import SubmitButton from '@components/organisms/swap/fields/submit-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import { FormattedNumber } from '../../atoms/number/formatted-number'
+import useToken from "@hooks/use-token"
+
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
     const formRef = useRef<FormikProps<SwapProps>>(null)
+    const { fetchERC20Balances } = useToken()
 
     const {
         swapIsSuccess,
@@ -98,6 +100,7 @@ export default function Swap() {
                             setFieldValue('isSwapping', true)
                             await handleSwap({amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage})
                             setFieldValue('isSwapping', false)
+                            fetchERC20Balances()
                         }}
                         onHide={() => {
                             resetStatus()
@@ -132,7 +135,7 @@ export default function Swap() {
                                                 </div>
                                                 <div className="col-6 text-end">
                                                     <FormattedNumber
-                                                        value={values.fromTokenValue / values.toTokenValue}
+                                                        value={values.toTokenValue / values.fromTokenValue}
                                                         minimumFractionDigits={2}
                                                         maximumFractionDigits={4}
                                                     />
@@ -146,7 +149,7 @@ export default function Swap() {
                                                 </div>
                                                 <div className="col-6 text-end">
                                                     <FormattedNumber
-                                                        value={values.toTokenValue / values.fromTokenValue}
+                                                        value={values.fromTokenValue / values.toTokenValue}
                                                         minimumFractionDigits={2}
                                                         maximumFractionDigits={4}
                                                     />
@@ -178,7 +181,14 @@ export default function Swap() {
                                                     {t`Transaction Fee (${swapFeePercentage}%)`}
                                                 </div>
                                                 <div className="col-6 text-end">
-                                                    {values.fee} {values.fromToken?.symbol}
+                                                    {values.fee}
+                                                    <FormattedNumber
+                                                        value={values.fee}
+                                                        minimumFractionDigits={2}
+                                                        maximumFractionDigits={4}
+                                                    />
+                                                    &nbsp;
+                                                    {values.fromToken?.symbol}
                                                 </div>
                                             </div>
                                         </div>

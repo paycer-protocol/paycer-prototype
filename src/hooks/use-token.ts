@@ -10,11 +10,12 @@ export interface UseTokenInterface {
   tokenSymbol: string
   totalSupply: number
   allowance: number
+  fetchERC20Balances: any
 }
 
-export default function useToken(symbol: string): UseTokenInterface {
+export default function useToken(symbol?: string): UseTokenInterface {
 
-  const { data } = useERC20Balances()
+  const { data, fetchERC20Balances } = useERC20Balances()
 
   let tokenAddress = ''
   let tokenBalance = 0
@@ -41,6 +42,7 @@ export default function useToken(symbol: string): UseTokenInterface {
     tokenBalance,
     totalSupply: 0,
     rawTokenBalance,
-    allowance: 0
+    allowance: 0,
+    fetchERC20Balances: fetchERC20Balances
   }
 }

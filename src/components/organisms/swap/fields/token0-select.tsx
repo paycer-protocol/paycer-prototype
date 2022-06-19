@@ -29,7 +29,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
             setFieldValue('fromTokenValue', initialFromTokenValue)
         }
 
-        if (values.fromToken && values.fromTokenValue) {
+        if (values.toToken && values.toTokenValue && values.fromTokenValue) {
             setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })

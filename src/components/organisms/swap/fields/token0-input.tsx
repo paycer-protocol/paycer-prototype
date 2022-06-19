@@ -2,14 +2,14 @@ import React, {useEffect} from 'react'
 import { useFormikContext } from 'formik'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenInput from '@components/molecules/token-input'
-import useToken from "@hooks/use-token";
+import useToken from "@hooks/use-token"
 import useSwap from "@hooks/use-swap"
 import {formatUnits } from "@ethersproject/units"
 
 export default function Token0Input(props: SwapTokenInputProps) {
     const { readOnly } = props
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const { tokenBalance: balance} = useToken(values?.fromToken?.symbol)
+    const { tokenBalance: balance, fetchERC20Balances} = useToken(values?.fromToken?.symbol)
 
     const {
         fetchQuote
@@ -30,6 +30,10 @@ export default function Token0Input(props: SwapTokenInputProps) {
             }
         }
     }
+
+    useEffect(() => {
+        fetchERC20Balances()
+    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromTokenValue])
 
     useEffect(() => {
 
