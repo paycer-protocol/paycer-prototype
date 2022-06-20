@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import {IConnectorProvider} from "@providers/connectors"
-import {useChain, useMoralis, useNativeBalance, useMoralisWeb3Api} from "react-moralis"
-import { mainNetProviders } from "@providers/networks"
+import { IConnectorProvider } from "@providers/connectors"
+import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api } from "react-moralis"
+import { allNetProviers, mainNetProviders } from "@providers/networks"
 import ChainId from "@providers/chain-id"
 import { Symbols } from "@providers/symbols"
 import { supportedChains, supportedStakingChains } from "@config/network"
-import {BigNumber} from "@ethersproject/bignumber";
+import { BigNumber } from "@ethersproject/bignumber";
 import Moralis from "moralis";
-import {formatUnits} from "@ethersproject/units";
+import { formatUnits } from "@ethersproject/units";
 import PaycerTokenContractProvider from "@providers/paycer-token";
 import StakingContractProvider from "@providers/staking";
 
@@ -105,7 +105,7 @@ const DappContextProvider = ({ children }) => {
     const walletAddress = account || ''
     const paycerTokenConfig = PaycerTokenContractProvider[chain?.networkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
-    const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
+    const currentNetwork = allNetProviers[chain?.networkId || ChainId.Polygon]
 
     const [pcrBalance, setPcrBalance] = useState<number>(0)
     const [blockNumber, setBlockNumber] = useState<number>(0)
@@ -151,11 +151,11 @@ const DappContextProvider = ({ children }) => {
         if (isInitialized && walletAddress) {
             const fetch = async () => {
                 const options = {
-                    chain: currentNetwork.chainName.toLowerCase(),
+                    chain: currentNetwork.chainId,
                     address: pcrContract.address,
                     function_name: 'balanceOf',
                     abi: pcrContract.abi,
-                    params: {account: walletAddress},
+                    params: { account: walletAddress },
                 }
 
                 try {

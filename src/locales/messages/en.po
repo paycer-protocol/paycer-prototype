@@ -194,7 +194,7 @@ msgstr "Approve"
 #~ msgid "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 #~ msgstr "Approving ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
-#: src/components/organisms/invest/deposit-form/index.tsx:180
+#: src/components/organisms/invest/deposit-form/index.tsx:181
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:169
 msgid "Approving..."
 msgstr "Approving..."
@@ -472,8 +472,8 @@ msgstr "Confirm Claim"
 msgid "Confirm Mint"
 msgstr "Confirm Mint"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:174
-#: src/components/organisms/invest/withdraw-form/index.tsx:181
+#: src/components/organisms/invest/deposit-form/index.tsx:175
+#: src/components/organisms/invest/withdraw-form/index.tsx:180
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:163
 #: src/components/organisms/swap/swap.tsx:192
 msgid "Confirm Transaction"
@@ -582,26 +582,26 @@ msgstr "Daily Transactions"
 msgid "Daily Vesting Withdrawn"
 msgstr "Daily Vesting Withdrawn"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:151
-#: src/components/organisms/invest/withdraw-form/index.tsx:158
+#: src/components/organisms/invest/deposit-form/index.tsx:152
+#: src/components/organisms/invest/withdraw-form/index.tsx:157
 msgid "Daily interest"
 msgstr "Daily interest"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:209
-#: src/components/organisms/invest/withdraw-form/index.tsx:226
+#: src/components/organisms/invest/deposit-form/index.tsx:210
+#: src/components/organisms/invest/withdraw-form/index.tsx:225
 msgid "Daily interest:"
 msgstr "Daily interest:"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:144
-#: src/components/organisms/invest/withdraw-form/index.tsx:151
+#: src/components/organisms/invest/deposit-form/index.tsx:145
+#: src/components/organisms/invest/withdraw-form/index.tsx:150
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:124
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:61
 #: src/components/organisms/supply-liquidity/supply-info/daily-rewards.tsx:14
 msgid "Daily rewards"
 msgstr "Daily rewards"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:198
-#: src/components/organisms/invest/withdraw-form/index.tsx:215
+#: src/components/organisms/invest/deposit-form/index.tsx:199
+#: src/components/organisms/invest/withdraw-form/index.tsx:214
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:198
 msgid "Daily rewards:"
 msgstr "Daily rewards:"
@@ -655,7 +655,7 @@ msgstr "Deposit:"
 #~ msgid "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 #~ msgstr "Depositing ... if it takes too long, you can try to open your Wallet-Extension to Speed it up."
 
-#: src/components/organisms/invest/deposit-form/index.tsx:180
+#: src/components/organisms/invest/deposit-form/index.tsx:181
 msgid "Depositing..."
 msgstr "Depositing..."
 
@@ -818,14 +818,14 @@ msgstr "FAQ"
 #~ msgid "Failed, please try again or contact the Support"
 #~ msgstr "Failed, please try again or contact the Support"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:158
-#: src/components/organisms/invest/withdraw-form/index.tsx:165
+#: src/components/organisms/invest/deposit-form/index.tsx:159
+#: src/components/organisms/invest/withdraw-form/index.tsx:164
 #: src/components/organisms/swap/summary-dropdown/summary-dropdown.tsx:78
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:220
-#: src/components/organisms/invest/withdraw-form/index.tsx:237
+#: src/components/organisms/invest/deposit-form/index.tsx:221
+#: src/components/organisms/invest/withdraw-form/index.tsx:236
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:220
 #: src/components/organisms/swap/swap.tsx:259
 msgid "Fee:"
@@ -1330,6 +1330,10 @@ msgstr "MINT NFT NOW"
 #~ msgid "MINT YOUR NFT"
 #~ msgstr "MINT YOUR NFT"
 
+#: src/pages/nft/overview/index.tsx:14
+msgid "MY NFT"
+msgstr "MY NFT"
+
 #: src/components/organisms/nft/landing-page/team-section.tsx:71
 msgid "Mahsa Doorfard"
 msgstr "Mahsa Doorfard"
@@ -1543,8 +1547,8 @@ msgstr "PAYCER NFT features"
 msgid "PAYCER TEAM"
 msgstr "PAYCER TEAM"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:108
-#: src/components/organisms/invest/withdraw-form/index.tsx:115
+#: src/components/organisms/invest/deposit-form/index.tsx:109
+#: src/components/organisms/invest/withdraw-form/index.tsx:114
 msgid "PCR"
 msgstr "PCR"
 
@@ -2345,8 +2349,8 @@ msgstr "Transaction is processing..."
 #~ msgid "Transaction submitted"
 #~ msgstr "Transaction submitted"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:176
-#: src/components/organisms/invest/withdraw-form/index.tsx:183
+#: src/components/organisms/invest/deposit-form/index.tsx:177
+#: src/components/organisms/invest/withdraw-form/index.tsx:182
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:165
 #: src/components/organisms/swap/swap.tsx:193
@@ -2580,11 +2584,11 @@ msgstr "You have no rewards"
 msgid "You have not participated in the paycer token sale."
 msgstr "You have not participated in the paycer token sale."
 
-#: src/components/organisms/invest/withdraw-form/index.tsx:204
+#: src/components/organisms/invest/withdraw-form/index.tsx:203
 msgid "You invest after:"
 msgstr "You invest after:"
 
-#: src/components/organisms/invest/deposit-form/index.tsx:187
+#: src/components/organisms/invest/deposit-form/index.tsx:188
 msgid "You will invest:"
 msgstr "You will invest:"
 
@@ -2596,7 +2600,7 @@ msgstr "You will receive a confirmation email."
 msgid "You will stake:"
 msgstr "You will stake:"
 
-#: src/components/organisms/invest/withdraw-form/index.tsx:193
+#: src/components/organisms/invest/withdraw-form/index.tsx:192
 msgid "You will withdraw:"
 msgstr "You will withdraw:"
 
@@ -2608,8 +2612,8 @@ msgstr "You will withdraw:"
 #~ msgid "You're connected to an unsupported network. Please open your browser extension and change the network."
 #~ msgstr "You're connected to an unsupported network. Please open your browser extension and change the network."
 
-#: src/components/organisms/invest/deposit-form/index.tsx:85
-#: src/components/organisms/invest/withdraw-form/index.tsx:92
+#: src/components/organisms/invest/deposit-form/index.tsx:86
+#: src/components/organisms/invest/withdraw-form/index.tsx:91
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:78
 msgid "Your APR:"
 msgstr "Your APR:"
@@ -2617,6 +2621,10 @@ msgstr "Your APR:"
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:50
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
+
+#: src/pages/nft/overview/index.tsx:17
+msgid "Your NFTs Collection"
+msgstr "Your NFTs Collection"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:77
 msgid "Your advantages"

@@ -5,30 +5,36 @@ import { useDapp } from "@context/dapp-context";
 import Moralis from 'moralis';
 import ChainId from '@providers/chain-id';
 import { BigNumber } from 'ethers';
+import { allNetProviers } from '@providers/networks';
 
-async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<BigNumber[]> {
+async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<string[]> {
+    const chainId = allNetProviers[currentNetworkId].chainId;
     const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft;
 
-    const numTokens = ((await Moralis.executeFunction({
+    const numTokensOptions = {
         abi,
-        contractAddress,
-        functionName: 'balanceOf',
+        chain: chainId as any,
+        address: contractAddress,
+        function_name: 'balanceOf',
         params: {
             owner,
         },
-    })) as unknown as BigNumber).toNumber();
+    }
+    const numTokens = Number.parseInt(await Moralis.Web3API.native.runContractFunction(numTokensOptions));
 
     const tokenIds = (await Promise.all(Array.from({ length: numTokens }, (_, index) => {
-        return Moralis.executeFunction({
+        const tokenIdOptions = {
             abi,
-            contractAddress,
-            functionName: 'tokenOfOwnerByIndex',
+            chain: chainId as any,
+            address: contractAddress,
+            function_name: 'tokenOfOwnerByIndex',
             params: {
                 owner,
-                index,
+                index: `${index}`,
             },
-        })
-    }))) as unknown as BigNumber[];
+        }
+        return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
+    })));
 
     return tokenIds;
 }
@@ -44,7 +50,10 @@ export default function useOwnedNfts(): UseNftsProps {
         fetchOwnedTokenIds(currentNetworkId, owner)
             .then((tokenIds) => fetchTokensById(currentNetworkId, tokenIds))
             .then((nfts) => setStatus({ status: 'success', nfts }))
-            .catch(() => setStatus({ status: 'error' }))
+            .catch((err) => {
+                setStatus({ status: 'error' });
+                console.error(err);
+            })
     }, [currentNetworkId, isAuthenticated, isWeb3Enabled, owner]);
 
     return status;

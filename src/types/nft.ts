@@ -15,6 +15,6 @@ export interface OpenseaMetadata {
 }
 
 export default interface Nft {
-    id: BigNumber;
+    id: string;
     metadata: OpenseaMetadata;
 }

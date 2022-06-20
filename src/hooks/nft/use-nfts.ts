@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useDapp } from "@context/dapp-context";
 import Moralis from 'moralis';
 import { BigNumber } from 'ethers';
+import { allNetProviers } from '@providers/networks';
 
 interface Property {
     color: BigNumber;
@@ -13,39 +14,44 @@ interface Property {
     features: BigNumber[];
 }
 
-function withIpfsGateway(url: string) {
+export function withIpfsGateway(url: string) {
     if (url.startsWith('ipfs://')) {
-        return `https://ipfs.io/ipfs/${url.split('ipfs://')[1]}`;
+        return `https://gateway.pinata.cloud/ipfs/${url.split('ipfs://')[1]}`;
     } else {
         return url;
     }
 }
 
 export async function fetchTokensById(currentNetworkId: number, tokenIds: Nft['id'][]): Promise<Nft[]> {
+    const chainId = allNetProviers[currentNetworkId].chainId;
     const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft;
 
     const tokenUris = (await Promise.all(tokenIds.map((tokenId) => {
-        return Moralis.executeFunction({
+        const options = {
             abi,
-            contractAddress,
-            functionName: 'tokenURI',
+            chain: chainId as any,
+            address: contractAddress,
+            function_name: 'tokenURI',
             params: {
                 tokenId,
             },
-        })
+        }
+        return Moralis.Web3API.native.runContractFunction(options)
     }))) as unknown as string[];
 
     console.log(tokenUris);
 
     const owners = (await Promise.all(tokenIds.map((tokenId) => {
-        return Moralis.executeFunction({
+        const options = {
             abi,
-            contractAddress,
-            functionName: 'ownerOf',
+            chain: chainId as any,
+            address: contractAddress,
+            function_name: 'ownerOf',
             params: {
                 tokenId,
             },
-        })
+        }
+        return Moralis.Web3API.native.runContractFunction(options)
     }))) as unknown as string[];
 
     const ipfsMetadata = (await Promise.all(tokenUris.map((tokenUri) => {
