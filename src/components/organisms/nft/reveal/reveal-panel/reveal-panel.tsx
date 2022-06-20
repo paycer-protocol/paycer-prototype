@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { t } from "@lingui/macro";
 import GradientButton from "@components/atoms/button/gradient-button";
 import { Countdown } from '../../common/countdown';
@@ -7,15 +7,20 @@ import Nft from '../../../../../types/nft';
 import Select from '@components/atoms/form/select';
 import Form from '@components/atoms/form';
 
-function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft, onChanged: (nft: Nft) => void }) {
+function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft | undefined, onChanged: (nft: Nft) => void }) {
     return (
         <Form
             initialValues={{}}
             onSubmit={() => { }}
         >
-            <Select label={t`Choose NFT to reveal`} name="selector">
+            <Select
+                label={t`Choose NFT to reveal`}
+                name="selector"
+                value={value?.id.toString()}
+                onChange={(id) => onChanged(options.find((nft) => nft.id.toString() === id))}
+            >
                 {options.map((option) => (
-                    <option key={option.id.toString()}>{option.id.toString()}</option>
+                    <option key={option.id.toString()} value={option.id.toString()}>#{option.id.toString()}</option>
                 ))}
             </Select>
         </Form>
@@ -32,6 +37,8 @@ const RevealPanel = (props: RevealPanelProps) => {
     const isRevealable = true //timeLeft <= 0
 
     const ownedNfts = useOwnedNfts();
+
+    const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined);
 
     const handleReveal = () => {
 
@@ -53,7 +60,7 @@ const RevealPanel = (props: RevealPanelProps) => {
             <div className="mb-5">
                 {
                     isRevealable
-                        ? <NftSelector options={ownedNfts.status === 'success' ? ownedNfts.nfts : []} />
+                        ? <NftSelector value={selectedNft} onChanged={setSelectedNft} options={ownedNfts.status === 'success' ? ownedNfts.nfts : []} />
                         : <Countdown timeLeft={timeLeft} />
                 }
             </div>

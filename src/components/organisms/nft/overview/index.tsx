@@ -1,8 +1,11 @@
 import useOwnedNfts from "@hooks/nft/use-owned-nfts"
+import NftCardList from "./list";
 
 export default function NftOverview() {
-  const nfts = useOwnedNfts();
+  const result = useOwnedNfts();
   return (
-    <div>{JSON.stringify(nfts, undefined, 2)}</div>
+    <div>
+      {result.status === 'success' && <NftCardList nfts={result.nfts} />}
+    </div>
   )
 }

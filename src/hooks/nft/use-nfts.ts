@@ -39,8 +39,6 @@ export async function fetchTokensById(currentNetworkId: number, tokenIds: Nft['i
         return Moralis.Web3API.native.runContractFunction(options)
     }))) as unknown as string[];
 
-    console.log(tokenUris);
-
     const owners = (await Promise.all(tokenIds.map((tokenId) => {
         const options = {
             abi,

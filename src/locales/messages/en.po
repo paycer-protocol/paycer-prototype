@@ -374,7 +374,7 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:16
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:19
 msgid "Choose NFT to reveal"
 msgstr "Choose NFT to reveal"
 
@@ -455,7 +455,7 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:43
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:52
 msgid "Collect"
 msgstr "Collect"
 
@@ -1611,7 +1611,7 @@ msgstr "Partner"
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:46
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:55
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1796,7 +1796,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:63
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:72
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -2618,7 +2618,7 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:50
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:59
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
 
