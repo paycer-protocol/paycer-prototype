@@ -38,6 +38,7 @@ const DepositForm = () => {
     const handleDeposit = async (values: FormikValues) => {
         const amount = values.amount - values.fee
         await deposit(amount)
+        setShowFormModal(false)
     }
 
     const baseToken = useToken(strategy.input.symbol)
