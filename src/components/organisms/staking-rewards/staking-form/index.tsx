@@ -1,11 +1,11 @@
 import React from 'react'
-import {t, Trans} from '@lingui/macro'
+import {t} from '@lingui/macro'
 import {FormikValues} from 'formik'
 import {rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee} from '@config/staking-rewards'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import Form from '@components/atoms/form/form'
-import useStaking from '@hooks/use-staking'
+import { useStaking } from '@context/staking-context'
 import StakeRangeSlider from './fields/stake-range-slider'
 import StakedInput from './fields/staked-input'
 import SubmitButton from './fields/submit-button'
@@ -22,8 +22,8 @@ export default function StakingForm() {
         deposit,
         stakedBalance,
         rewardRate,
-        showFormApproveModal,
-        setShowFormApproveModal,
+        showStakingApproveModal,
+        setShowStakingApproveModal,
         depositIsSuccess,
         isLoading,
         withdrawIsSuccess,
@@ -46,7 +46,7 @@ export default function StakingForm() {
     }
 
     const handleSubmit = () => {
-        setShowFormApproveModal(true)
+        setShowStakingApproveModal(true)
     }
 
     const handleStaking = async (values: FormikValues) => {
@@ -155,9 +155,9 @@ export default function StakingForm() {
                         </div>
 
                         <TransactionApproveModal
-                            show={showFormApproveModal}
+                            show={showStakingApproveModal}
                             onHide={() => {
-                                setShowFormApproveModal(false)
+                                setShowStakingApproveModal(false)
                                 resetStatus()
                             }}
                             title={t`Confirm Transaction`}

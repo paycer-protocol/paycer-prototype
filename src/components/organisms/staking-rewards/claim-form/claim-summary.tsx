@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { t, Trans } from '@lingui/macro'
-import useStaking from '@hooks/use-staking'
+import { useStaking } from '@context//staking-context'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
 import GradientButton from '@components/atoms/button/gradient-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
-import {useDapp} from "@context/dapp-context";
+import {useDapp} from '@context/dapp-context'
 
 const RewardContainer = styled.div`
   display: flex;
@@ -33,8 +33,8 @@ export default function ClaimSummary() {
         contractCallError,
         isLoading,
         claimIsSuccess,
-        showFormApproveModal,
-        setShowFormApproveModal,
+        showClaimApproveModal,
+        setShowClaimApproveModal,
         resetStatus
     } = useStaking()
 
@@ -66,7 +66,7 @@ export default function ClaimSummary() {
           </div>
 
           <div className="d-flex justify-content-center w-100">
-              <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowFormApproveModal(true) : null}>
+              <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowClaimApproveModal(true) : null}>
                   {t`Claim rewards`}
               </GradientButton>
           </div>
@@ -105,9 +105,9 @@ export default function ClaimSummary() {
           )}
 
           <TransactionApproveModal
-              show={showFormApproveModal}
+              show={showClaimApproveModal}
               onHide={() => {
-                  setShowFormApproveModal(false)
+                  setShowClaimApproveModal(false)
                   resetStatus()
               }}
               title={t`Confirm Claim`}

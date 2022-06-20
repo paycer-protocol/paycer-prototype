@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react'
+import React, {createContext, useContext, useEffect, useMemo, useState} from 'react'
 import Moralis from 'moralis'
 import { useWeb3ExecuteFunction, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-moralis'
 import { BigNumber } from '@ethersproject/bignumber'
@@ -24,15 +24,39 @@ interface UseStakingProps {
     rewardRate: number
     totalAmountClaimed: number
     lastRewardTime: string
-    showFormApproveModal: boolean
     isLoading: boolean
-    setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
+    showStakingApproveModal: boolean
+    setShowStakingApproveModal: React.Dispatch<React.SetStateAction<boolean>>
+    showClaimApproveModal: boolean
+    setShowClaimApproveModal: React.Dispatch<React.SetStateAction<boolean>>
     withdrawIsSuccess: boolean
     depositIsSuccess: boolean
     claimIsSuccess: boolean
     transactionState: TRANSACTION_STATE
     contractCallError: Error
     resetStatus: () => void
+}
+
+const contextDefaultValues: UseStakingProps = {
+    deposit: null,
+    withdraw: null,
+    claim: null,
+    pendingReward: 0,
+    stakedBalance: 0,
+    rewardRate: 0,
+    totalAmountClaimed: 0,
+    lastRewardTime: '',
+    showStakingApproveModal: null,
+    setShowStakingApproveModal: null,
+    showClaimApproveModal: false,
+    setShowClaimApproveModal: null,
+    isLoading: false,
+    withdrawIsSuccess: false,
+    depositIsSuccess: false,
+    claimIsSuccess: false,
+    transactionState: 0,
+    contractCallError: null,
+    resetStatus: null
 }
 
 type UserInfoRequest = {
@@ -43,14 +67,22 @@ type UserInfoRequest = {
     rewardDebt: BigNumber
 }
 
-export default function useStaking():UseStakingProps {
+const StakingContext = createContext<UseStakingProps>(
+    contextDefaultValues
+)
+
+export const useStaking = () => useContext(StakingContext)
+
+const StakingContextProvider = ({ children }) => {
+
     const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isInitialized, currentNetwork } = useDapp()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
 
-    const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+    const [showStakingApproveModal, setShowStakingApproveModal] = useState(false)
+    const [showClaimApproveModal, setShowClaimApproveModal] = useState(false)
 
     const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
     const [depositIsSuccess, setDepositIsSuccess] = useState<boolean>(false)
@@ -399,28 +431,39 @@ export default function useStaking():UseStakingProps {
         setTransactionState(0)
     }
 
-    return {
-        deposit: handleDeposit,
-        withdraw: handleWithdraw,
-        claim: handleClaim,
-        pendingReward,
-        // @ts-ignore
-        stakedBalance: Number(formatUnits(userInfo?.amount || 0)),
-        // @ts-ignore
-        /* TODO ADD TOTAL AMOUNT CLAIMED */
-        totalAmountClaimed: 0,
-        // @ts-ignore
-        lastRewardTime: formatLastRewardtime(userInfo?.lastRewardTime),
-        //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
-        rewardRate,
-        withdrawIsSuccess,
-        depositIsSuccess,
-        claimIsSuccess,
-        contractCallError,
-        showFormApproveModal,
-        setShowFormApproveModal,
-        isLoading,
-        resetStatus,
-        transactionState
-    }
+    return (
+        <StakingContext.Provider
+            value={{
+                deposit: handleDeposit,
+                withdraw: handleWithdraw,
+                claim: handleClaim,
+                pendingReward,
+                // @ts-ignore
+                stakedBalance: Number(formatUnits(userInfo?.amount || 0)),
+                // @ts-ignore
+                /* TODO ADD TOTAL AMOUNT CLAIMED */
+                totalAmountClaimed: 0,
+                // @ts-ignore
+                lastRewardTime: formatLastRewardtime(userInfo?.lastRewardTime),
+                //rewardDebt: BigNumber.isBigNumber(userInfo?.rewardDebt) ? userInfo?.rewardDebt.toNumber() : 0,
+                rewardRate,
+                withdrawIsSuccess,
+                depositIsSuccess,
+                claimIsSuccess,
+                contractCallError,
+                showStakingApproveModal,
+                setShowStakingApproveModal,
+                showClaimApproveModal,
+                setShowClaimApproveModal,
+                isLoading,
+                resetStatus,
+                transactionState
+            }}
+        >
+            {children}
+        </StakingContext.Provider>
+    )
 }
+
+
+export default StakingContextProvider
