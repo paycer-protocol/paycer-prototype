@@ -1,6 +1,7 @@
-import React, {useEffect, useRef,useCallback, useState} from 'react'
+import React, { useEffect, useRef } from 'react'
 import {t} from '@lingui/macro'
 import {FormikProps} from 'formik'
+import { tokenProvider } from '@providers/tokens'
 import { swapTokens, swapFeePercentage } from '@config/market-pairs'
 import useSwap from '@hooks/use-swap'
 import { useDapp } from '@context/dapp-context'
@@ -13,13 +14,12 @@ import Token0Input from '@components/organisms/swap/fields/token0-input'
 import FlipSwap from '@components/organisms/swap/fields/flip-swap'
 import Token1Select from '@components/organisms/swap/fields/token1-select'
 import Token1Input from '@components/organisms/swap/fields/token1-input'
-import SummaryDropdown from '@components/organisms/swap/summary-dropdown'
+import SettingsDropdown from '@components/organisms/swap/settings-dropdown'
 import SubmitButton from '@components/organisms/swap/fields/submit-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import { FormattedNumber } from '../../atoms/number/formatted-number'
 import useToken from "@hooks/use-token"
-
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
@@ -36,10 +36,10 @@ export default function Swap() {
     } = useSwap()
 
     let initialValues: SwapProps = {
-        fromToken: null,
+        fromToken: tokenProvider.USDC,
         fromTokenValue: null,
         fromTokenMarkets: swapTokens,
-        toToken: null,
+        toToken: tokenProvider.PCR,
         toTokenValue: null,
         toTokenMarkets: swapTokens,
         slippage: 1,
@@ -67,7 +67,7 @@ export default function Swap() {
                 <>
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-12">
-                            <div className="p-4 p-md-5">
+                            <div className="p-4 p-md-5 pb-2">
                                 <div className="d-flex flex-column flex-md-row mb-3">
                                     <div className="d-flex flex-column">
                                         <TokenInputPanel
@@ -85,9 +85,78 @@ export default function Swap() {
                                     </div>
                                 </div>
 
-                                    <SummaryDropdown/>
-                                <div
-                                    className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
+                                <SettingsDropdown />
+
+                                {(values.toTokenValue > 0 && values.fromTokenValue > 0) &&
+
+                                  <div className="card bg-transparent mt-4 shadow-none mb-0 small-text">
+                                    <div className="card-body">
+                                      <div className="d-flex mb-3">
+                                        <div className="col-6">
+                                            {t`1`} {values?.fromToken?.symbol} {t`Price`}
+                                        </div>
+                                        <div className="col-6 text-end">
+                                          <FormattedNumber
+                                            value={values.toTokenValue / values.fromTokenValue}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                          />
+                                          &nbsp;
+                                            {values?.toToken?.symbol}
+                                        </div>
+                                      </div>
+                                      <div className="d-flex mb-3">
+                                        <div className="col-6">
+                                            {t`1`} {values?.toToken?.symbol} {t`Price`}
+                                        </div>
+                                        <div className="col-6 text-end">
+                                          <FormattedNumber
+                                            value={values.fromTokenValue / values.toTokenValue}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                          />
+                                          &nbsp;
+                                            {values?.fromToken?.symbol}
+                                        </div>
+                                      </div>
+                                      <div className="d-flex mb-3">
+                                        <div className="col-6">
+                                            {t`Minimum received`}
+                                        </div>
+                                        <div className="col-6 text-end">
+                                          <DashNumber
+                                            value={values.toTokenValue}
+                                            symbol={values?.toToken?.symbol}
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="d-flex mb-3">
+                                        <div className="col-6">
+                                            {t`Slippage`}
+                                        </div>
+                                        <div className="col-6 text-end">
+                                            {values.slippage} %
+                                        </div>
+                                      </div>
+                                      <div className="d-flex">
+                                        <div className="col-6">
+                                            {t`Transaction Fee (${swapFeePercentage}%)`}
+                                        </div>
+                                        <div className="col-6 text-end">
+                                            {values.fee}
+                                          <FormattedNumber
+                                            value={values.fee}
+                                            minimumFractionDigits={2}
+                                            maximumFractionDigits={4}
+                                          />
+                                          &nbsp;
+                                            {values.fromToken?.symbol}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                }
+                                <div className="d-flex align-items-center justify-content-center w-100 mt-4 mt-md-5">
                                     <SubmitButton/>
                                 </div>
                             </div>

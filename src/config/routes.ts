@@ -55,12 +55,6 @@ export const routes:RoutesInterface[] = [
     auth: false
   },
   {
-    label: t`Swap`,
-    path: '/swap_',
-    supportedChains,
-    auth: false
-  },
-  {
     label: t`Analytics`,
     path: '/analytics',
     supportedChains,

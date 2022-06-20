@@ -21,7 +21,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             setFieldValue('isReloading', true)
             try {
                 const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: value.toString() })
-                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+                const toTokenValue = formatUnits(result?.toTokenAmount?.toString(), values.toToken.decimals)
                 setFieldValue('fee', value / 100)
                 setFieldValue('toTokenValue', toTokenValue)
                 setFieldValue('isReloading', false)
@@ -33,24 +33,20 @@ export default function Token0Input(props: SwapTokenInputProps) {
 
     useEffect(() => {
         fetchERC20Balances()
-    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromTokenValue])
+    }, [values?.toToken, values?.fromToken])
 
     useEffect(() => {
-
         if (!values.toToken || !values.fromTokenValue || !values.fromToken) {
             return
         }
-
         const fetch = async () => {
-
             if (values.isSwapping) {
                 return
             }
-
             try {
-                const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue.toString() })
-                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
-                if (toTokenValue !== values.toTokenValue.toString()) {
+                const result = await fetchQuote({ fromToken: values.fromToken, toToken: values.toToken, amount: values.fromTokenValue?.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount?.toString(), values.toToken.decimals)
+                if (toTokenValue !== values.toTokenValue?.toString()) {
                     setFieldValue('toTokenValue', toTokenValue)
                     setFieldValue('fee', values.fromTokenValue / 100)
                     setFieldValue('quoteHasChangedAlert', true)
@@ -59,12 +55,11 @@ export default function Token0Input(props: SwapTokenInputProps) {
                 console.log(e.message)
             }
         }
-
         const interval = setInterval(() => {
             fetch()
         }, 5000)
         return () => clearInterval(interval)
-    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromTokenValue])
+    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromToken, values?.toToken])
 
     return (
         <TokenInput

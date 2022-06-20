@@ -1,39 +1,63 @@
-import React from 'react'
-import * as Styles from './Styles'
-import SlippageTollerance from '../fields/slippage-tollerance'
+import React, {useState} from 'react'
+import styled from 'styled-components'
+import {useFormikContext} from 'formik'
+import {t} from '@lingui/macro'
+import {SwapProps} from '../types'
 import Icon from '@components/atoms/icon'
-import DropdownComponent from '@components/atoms/dropdown/dropdown'
-import { Settings } from '@styled-icons/fluentui-system-regular'
-import {useFormikContext} from "formik";
-import {SwapProps} from '@components/organisms/swap/types'
+import { Settings } from '@styled-icons/fluentui-system-regular/Settings'
+import { Settings as SettingsActive } from '@styled-icons/ionicons-sharp/Settings'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber} from '../../../atoms/number/formatted-number'
+import {useDapp} from "@context/dapp-context";
+import SlippageTollerance from "@components/organisms/swap/fields/slippage-tollerance";
+
+const Content = styled.div`
+    z-index: 2; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
+    margin-top: -2px;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden; font-size: 14px;
+    &.is--Open {
+        max-height: 700px;
+        transition: max-height 0.15s ease-in;
+    }
+`
 
 const SettingsDropdown = () => {
-  const { values } = useFormikContext<SwapProps>()
-  return (
-    <DropdownComponent>
-      <Styles.StyledDropdownToggle style={!values.fromToken || !values.toToken  || !values.fromToken ? {opacity: '.5', pointerEvents: 'none'} : null}>
-        <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex ms-3">
-          <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
-            <Icon component={Settings} size={23} style={{ width: '30px' }} />
-          </div>
-        </div>
+    const { values } = useFormikContext<SwapProps>()
+    const [ open, setOpen ] = useState(false)
 
-        <div className="cursor-pointer card border-0 pt-2 ps-2 shadow-none mb-2 bg-transparent d-md-none">
-          <div className="card-body bg-transparent d-flex justify-content-center p-md-3 p-2 ">
-            <Icon component={Settings} size={24} style={{ width: '27px' }} />
-          </div>
+    return (
+        <div className="position-relative">
+            <div
+                onClick={() => {
+                    if (values?.fromToken && values?.toToken) {
+                        setOpen(!open)
+                    }
+                }} className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}>
+                <div className="card-body p-3 p-md-3">
+                    <div className="d-flex align-items-center justify-content-between w-100">
+                        {t`Settings`}
+                        <Icon
+                            component={open ? SettingsActive : Settings}
+                            size={24}
+                            style={{position: 'relative', top: '-1px'}}
+                        />
+                    </div>
+                </div>
+            </div>
+            <Content
+                className={`cursor-pointer card shadow-none mb-2 bg-dark position-absolute w-100 border-bottom-0 border-top-0 ${open ? 'is--Open' : ''}`}>
+                <div className="card-body p-3 p-md-3">
+                    <div className="d-flex justify-content-between">
+                        <SlippageTollerance />
+                    </div>
+                </div>
+            </Content>
         </div>
-      </Styles.StyledDropdownToggle>
-      <Styles.StyledDropdownMenu className="bg-dark border">
-        <h4 className="mb-4">Transaction-Settings</h4>
-        <div>
-          <div className="mb-4">
-            <SlippageTollerance />
-          </div>
-        </div>
-      </Styles.StyledDropdownMenu>
-    </DropdownComponent>
-  )
+    )
 }
 
 export default SettingsDropdown
