@@ -75,7 +75,7 @@ export const useStaking = () => useContext(StakingContext)
 
 const StakingContextProvider = ({ children }) => {
 
-    const { walletAddress, currentNetworkId, currentChainId, fetchPcrBalance, isInitialized, currentNetwork } = useDapp()
+    const { walletAddress, currentNetworkId, currentChainId, isInitialized, currentNetwork, fetchERC20Balances } = useDapp()
     const Web3Api = useMoralisWeb3Api()
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
@@ -172,7 +172,7 @@ const StakingContextProvider = ({ children }) => {
                 await withdrawTx.wait()
                 setWithdrawIsSuccess(true)
                 setTransactionState(0)
-                fetchPcrBalance()
+                fetchERC20Balances()
             }
 
         } catch (error) {
@@ -217,7 +217,7 @@ const StakingContextProvider = ({ children }) => {
                 await depositTx.wait()
                 setDepositIsSuccess(true)
                 setTransactionState(0)
-                fetchPcrBalance()
+                fetchERC20Balances()
             }
 
         } catch (error) {
@@ -256,7 +256,7 @@ const StakingContextProvider = ({ children }) => {
             setIsLoading(false)
             setClaimIsSuccess(true)
             setPendingReward(0)
-            fetchPcrBalance()
+            fetchERC20Balances()
         } catch (error) {
             if (error.code === 'TRANSACTION_REPLACED') {
                 if (error.cancelled) {

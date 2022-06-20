@@ -88,7 +88,7 @@ export const useVestingDashboard = () => useContext(VestingDashboardContext)
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
 
   const vestingType = dashboardData.type
-  const { currentNetworkId, walletAddress, currentNetwork, fetchPcrBalance, isInitialized } = useDapp()
+  const { currentNetworkId, walletAddress, currentNetwork, fetchERC20Balances, isInitialized } = useDapp()
   const vestingConfig = VestingContractProvider[currentNetworkId] ? VestingContractProvider[currentNetworkId] : VestingContractProvider[ChainId.Polygon]
   const vestingAddress = vestingConfig[vestingType].address
   const [withdrawAble, setWithdrawAble] = useState<number>(0)
@@ -134,7 +134,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
         await withdrawTx.wait()
         setIsLoading(false)
         setWithdrawAble(0)
-        fetchPcrBalance()
+        fetchERC20Balances()
         setWithdrawIsSuccess(true)
       }
 

@@ -3,6 +3,7 @@ import {t} from '@lingui/macro'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
 import { connectors } from '@providers/connectors'
 import { useDapp } from '@context/dapp-context'
+import useToken from '@hooks/use-token'
 import { Wallet } from '@styled-icons/ionicons-sharp'
 import Icon from "@components/atoms/icon";
 import Dropdown from '@components/molecules/dropdown'
@@ -28,9 +29,10 @@ const WalletMenu = () => {
         explorerUrl,
         handleWalletDisconnect,
         nativeSymbol,
-        nativeBalanceFormatted,
-        pcrBalance
+        nativeBalanceFormatted
     } = useDapp()
+
+    const { tokenBalance: pcrBalance } = useToken('PCR')
 
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
