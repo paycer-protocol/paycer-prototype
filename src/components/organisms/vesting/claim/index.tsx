@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { t, Trans } from '@lingui/macro'
 import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
@@ -25,8 +25,6 @@ const Claim = () => {
         dashboardData,
         withdrawAble,
         withdraw,
-        showFormApproveModal,
-        setShowFormApproveModal,
         isLoading,
         withdrawIsSuccess,
         contractCallError,
@@ -35,6 +33,7 @@ const Claim = () => {
         resetStatus,
     } = useVestingDashboard()
 
+    const [showFormApproveModal, setShowFormApproveModal] = useState<boolean>(false)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
     const { isAuthenticated, walletAddress } = useDapp()
     const router = useRouter()

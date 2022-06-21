@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {t} from '@lingui/macro'
 import {FormikValues} from 'formik'
 import {rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee} from '@config/staking-rewards'
@@ -22,8 +22,6 @@ export default function StakingForm() {
         deposit,
         stakedBalance,
         rewardRate,
-        showStakingApproveModal,
-        setShowStakingApproveModal,
         depositIsSuccess,
         isLoading,
         withdrawIsSuccess,
@@ -31,6 +29,8 @@ export default function StakingForm() {
         resetStatus,
         transactionState
     } = useStaking()
+
+    const [showApproveModal, setShowApproveModal] = useState<boolean>(false)
 
     const { tokenBalance } = useToken('PCR')
 
@@ -46,7 +46,7 @@ export default function StakingForm() {
     }
 
     const handleSubmit = () => {
-        setShowStakingApproveModal(true)
+        setShowApproveModal(true)
     }
 
     const handleStaking = async (values: FormikValues) => {
@@ -155,9 +155,9 @@ export default function StakingForm() {
                         </div>
 
                         <TransactionApproveModal
-                            show={showStakingApproveModal}
+                            show={showApproveModal}
                             onHide={() => {
-                                setShowStakingApproveModal(false)
+                                setShowApproveModal(false)
                                 resetStatus()
                             }}
                             title={t`Confirm Transaction`}
