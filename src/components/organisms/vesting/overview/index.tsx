@@ -2,23 +2,19 @@ import React from 'react'
 import { t } from '@lingui/macro'
 import { FormattedNumber } from 'react-intl'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
-import useVesting from '@hooks/use-vesting'
 
 const Overview = () => {
   const {
     dashboardData,
     totalInvest,
-    totalReceived
-  } = useVestingDashboard()
-
-  const { bonusPercentage } = dashboardData
-
-  const {
+    totalReceived,
     startTime,
     endTime,
     totalAmount,
     amountWithdrawn
-  } = useVesting(dashboardData?.type)
+  } = useVestingDashboard()
+
+  const { bonusPercentage } = dashboardData
 
   function renderVestingLabel() {
     const type = dashboardData?.type

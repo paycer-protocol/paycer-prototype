@@ -19,12 +19,10 @@ import SubmitButton from '@components/organisms/swap/fields/submit-button'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import DashNumber from '@components/organisms/dashboard/dash-number'
 import { FormattedNumber } from '../../atoms/number/formatted-number'
-import useToken from "@hooks/use-token"
 
 export default function Swap() {
     const { walletAddress, currentNetworkId } = useDapp()
     const formRef = useRef<FormikProps<SwapProps>>(null)
-    const { fetchERC20Balances } = useToken()
 
     const {
         swapIsSuccess,
@@ -55,7 +53,7 @@ export default function Swap() {
 
     useEffect(() => {
         formRef.current?.resetForm()
-    }, [currentNetworkId, walletAddress, swapIsSuccess])
+    }, [swapIsSuccess])
 
     return (
         <Form
@@ -68,7 +66,7 @@ export default function Swap() {
                     <div className="d-lg-flex animated-wrapper">
                         <div className="col-md-12">
                             <div className="p-4 p-md-5 pb-2">
-                                <div className="d-flex flex-column flex-md-row mb-3">
+                                <div className="d-flex flex-column flex-md-row mb-3 pb-2">
                                     <div className="d-flex flex-column">
                                         <TokenInputPanel
                                             tokenInputSibling={<Token0Select/>}
@@ -169,7 +167,6 @@ export default function Swap() {
                             setFieldValue('isSwapping', true)
                             await handleSwap({amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage})
                             setFieldValue('isSwapping', false)
-                            fetchERC20Balances()
                         }}
                         onHide={() => {
                             resetStatus()

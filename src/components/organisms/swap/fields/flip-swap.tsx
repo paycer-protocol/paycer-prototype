@@ -36,19 +36,22 @@ export default function FlipSwap() {
             return
         }
 
-        try {
-            setFieldValue('isReloading', true)
-            const result = await fetchQuote({ fromToken, toToken, amount: fromTokenValue.toString() })
-            const toTokenValue = formatUnits(result?.toTokenAmount.toString(), toToken.decimals)
-            setFieldValue('fee', Number(fromTokenValue) / 100)
-            setFieldValue('fromToken', fromToken)
-            setFieldValue('toToken', toToken)
-            setFieldValue('fromTokenValue', fromTokenValue)
-            setFieldValue('toTokenValue', toTokenValue)
-        } catch(e) {
-            console.log('flipswap')
-        } finally {
-            setFieldValue('isReloading', false)
+        setFieldValue('fromToken', fromToken)
+        setFieldValue('toToken', toToken)
+
+        if (fromTokenValue) {
+            try {
+                setFieldValue('isReloading', true)
+                const result = await fetchQuote({ fromToken, toToken, amount: fromTokenValue.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), toToken.decimals)
+                setFieldValue('fee', Number(fromTokenValue) / 100)
+                setFieldValue('fromTokenValue', fromTokenValue)
+                setFieldValue('toTokenValue', toTokenValue)
+            } catch(e) {
+                console.log('flipswap')
+            } finally {
+                setFieldValue('isReloading', false)
+            }
         }
     }
 

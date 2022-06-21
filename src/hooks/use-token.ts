@@ -1,5 +1,4 @@
 import { formatUnits } from '@ethersproject/units'
-import { useERC20Balances } from 'react-moralis'
 import {useDapp} from "@context/dapp-context";
 
 export interface UseTokenInterface {
@@ -10,21 +9,19 @@ export interface UseTokenInterface {
   tokenSymbol: string
   totalSupply: number
   allowance: number
-  fetchERC20Balances: any
 }
 
-export default function useToken(symbol?: string): UseTokenInterface {
+export default function useToken(symbol: string): UseTokenInterface {
 
-  const { data, fetchERC20Balances } = useERC20Balances()
-
+  const { ERC20Balances } = useDapp()
   let tokenAddress = ''
   let tokenBalance = 0
   let tokenDecimals = 0
   let rawTokenBalance = 0
   let tokenSymbol = ''
 
-  if (data && symbol) {
-    const token = data.find(t => t.symbol === symbol)
+  if (ERC20Balances) {
+    const token = ERC20Balances.find(t => t.symbol === symbol)
     if (token) {
       tokenAddress = token.token_address
       tokenSymbol = token.symbol
@@ -41,7 +38,6 @@ export default function useToken(symbol?: string): UseTokenInterface {
     tokenBalance,
     totalSupply: 0,
     rawTokenBalance,
-    allowance: 0,
-    fetchERC20Balances: fetchERC20Balances
+    allowance: 0
   }
 }

@@ -28,7 +28,13 @@ export default function SwiperSection() {
     const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
 
     const items = [
-
+        {
+            images: [
+                '/img/nft/slider/silver-side-1.png',
+                '/img/nft/slider/silver-side-2.png'
+            ],
+            loopDelay: 2200
+        },
         {
             images: [
                 '/img/nft/slider/blue-side-1.png',

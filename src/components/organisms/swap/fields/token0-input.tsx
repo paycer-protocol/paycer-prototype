@@ -9,7 +9,7 @@ import {formatUnits } from "@ethersproject/units"
 export default function Token0Input(props: SwapTokenInputProps) {
     const { readOnly } = props
     const { values, setFieldValue } = useFormikContext<SwapProps>()
-    const { tokenBalance: balance, fetchERC20Balances} = useToken(values?.fromToken?.symbol)
+    const { tokenBalance: balance } = useToken(values?.fromToken?.symbol)
 
     const {
         fetchQuote
@@ -32,11 +32,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
     }
 
     useEffect(() => {
-        fetchERC20Balances()
-    }, [values?.toToken, values?.fromToken])
-
-    useEffect(() => {
-        if (!values.toToken || !values.fromTokenValue || !values.fromToken) {
+        if (!values.toToken || !values.fromTokenValue || !values.fromToken || readOnly) {
             return
         }
         const fetch = async () => {
@@ -59,7 +55,7 @@ export default function Token0Input(props: SwapTokenInputProps) {
             fetch()
         }, 5000)
         return () => clearInterval(interval)
-    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromToken, values?.toToken])
+    }, [values?.toTokenValue, values?.fromTokenValue, values?.fromToken, values?.toToken, values?.isSwapping])
 
     return (
         <TokenInput

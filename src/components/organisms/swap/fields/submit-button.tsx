@@ -12,8 +12,6 @@ export default function SubmitButton() {
 
     const { tokenBalance: fromTokenBalance } = useToken(values?.fromToken?.symbol || null)
 
-    const {
-    } = useSwap()
     const isDisabled =
       !dirty
       || !isValid

@@ -12,9 +12,8 @@ import useSwap from "@hooks/use-swap"
 
 export default function Token1Select(props: SwapTokenInputProps) {
     const { readOnly } = props
-    const {values, setValues, setFieldValue} = useFormikContext<SwapProps>()
+    const {values, setFieldValue} = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
     const { isAuthenticated } = useDapp()
 
     const {
@@ -22,9 +21,7 @@ export default function Token1Select(props: SwapTokenInputProps) {
     } = useSwap()
 
     const handleChange = async (token) => {
-        setErrorMessage('')
         setFieldValue('toToken', token)
-
         if (values.fromToken && values.fromTokenValue) {
             setFieldValue('isReloading', true)
             try {
@@ -59,7 +56,6 @@ export default function Token1Select(props: SwapTokenInputProps) {
                     activeTokenSymbol={values.toToken?.symbol}
                     onHide={() => setShowModal(false)}
                     onClick={handleChange}
-                    errorMessage={errorMessage}
                 />
             )}
             {!isAuthenticated && showModal && (

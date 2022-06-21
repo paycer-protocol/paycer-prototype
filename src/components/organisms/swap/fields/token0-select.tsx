@@ -4,7 +4,6 @@ import {t} from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import { initialFromTokenValue } from '@config/market-pairs'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { useDapp } from '@context/dapp-context'
@@ -15,7 +14,6 @@ export default function Token0Select(props: SwapTokenInputProps) {
     const { readOnly } = props
     const { values, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
     const { isAuthenticated } = useDapp()
 
     const {
@@ -23,11 +21,7 @@ export default function Token0Select(props: SwapTokenInputProps) {
     } = useSwap()
 
     const handleChange = async (token) => {
-        setErrorMessage('')
         setFieldValue('fromToken', token)
-        if (!values.fromTokenValue) {
-            setFieldValue('fromTokenValue', initialFromTokenValue)
-        }
 
         if (values.toToken && values.toTokenValue && values.fromTokenValue) {
             setFieldValue('isReloading', true)
@@ -63,7 +57,6 @@ export default function Token0Select(props: SwapTokenInputProps) {
               activeTokenSymbol={values.fromToken?.symbol}
               onHide={() => setShowModal(false)}
               onClick={handleChange}
-              errorMessage={errorMessage}
             />
           )}
           {!isAuthenticated && showModal && (
