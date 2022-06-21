@@ -123,7 +123,7 @@ export default function Swap() {
                                         </div>
                                         <div className="col-6 text-end">
                                           <DashNumber
-                                            value={values.toTokenValue}
+                                            value={values.toTokenValue - (values.toTokenValue/100) * values.slippage}
                                             symbol={values?.toToken?.symbol}
                                           />
                                         </div>
@@ -229,7 +229,7 @@ export default function Swap() {
                                                 </div>
                                                 <div className="col-6 text-end">
                                                     <DashNumber
-                                                        value={values.toTokenValue}
+                                                        value={values.toTokenValue - (values.toTokenValue/100) * values.slippage}
                                                         symbol={values?.toToken?.symbol}
                                                     />
                                                 </div>
