@@ -25,10 +25,6 @@ interface UseStakingProps {
     totalAmountClaimed: number
     lastRewardTime: string
     isLoading: boolean
-    showStakingApproveModal: boolean
-    setShowStakingApproveModal: React.Dispatch<React.SetStateAction<boolean>>
-    showClaimApproveModal: boolean
-    setShowClaimApproveModal: React.Dispatch<React.SetStateAction<boolean>>
     withdrawIsSuccess: boolean
     depositIsSuccess: boolean
     claimIsSuccess: boolean
@@ -46,10 +42,6 @@ const contextDefaultValues: UseStakingProps = {
     rewardRate: 0,
     totalAmountClaimed: 0,
     lastRewardTime: '',
-    showStakingApproveModal: null,
-    setShowStakingApproveModal: null,
-    showClaimApproveModal: false,
-    setShowClaimApproveModal: null,
     isLoading: false,
     withdrawIsSuccess: false,
     depositIsSuccess: false,
@@ -80,9 +72,6 @@ const StakingContextProvider = ({ children }) => {
     const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
     const paycerTokenConfig = PaycerTokenContractProvider[currentNetworkId] || PaycerTokenContractProvider[ChainId.Polygon]
     const pcrContract = paycerTokenConfig.contract
-
-    const [showStakingApproveModal, setShowStakingApproveModal] = useState(false)
-    const [showClaimApproveModal, setShowClaimApproveModal] = useState(false)
 
     const [withdrawIsSuccess, setWithdrawIsSuccess] = useState<boolean>(false)
     const [depositIsSuccess, setDepositIsSuccess] = useState<boolean>(false)
@@ -451,10 +440,6 @@ const StakingContextProvider = ({ children }) => {
                 depositIsSuccess,
                 claimIsSuccess,
                 contractCallError,
-                showStakingApproveModal,
-                setShowStakingApproveModal,
-                showClaimApproveModal,
-                setShowClaimApproveModal,
                 isLoading,
                 resetStatus,
                 transactionState

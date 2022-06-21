@@ -51,11 +51,9 @@ interface VestingProps {
   withdrawAble: number
   totalAmount: number
   amountWithdrawn: number
-  showFormApproveModal: boolean
   startTime: string
   endTime: string
   nextDistribution: string
-  setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
   isLoading: boolean
   contractCallError: Error
   transactionState: TRANSACTION_STATE
@@ -71,11 +69,9 @@ const VestingDashboardContext = React.createContext<VestingProps>({
   withdrawAble: null,
   totalAmount: 0,
   amountWithdrawn: null,
-  showFormApproveModal: false,
   startTime: '',
   endTime: '',
   nextDistribution: '',
-  setShowFormApproveModal: null,
   isLoading: false,
   contractCallError: null,
   transactionState: 0,
@@ -100,7 +96,6 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
   const [transactionState, setTransactionState] = useState<TRANSACTION_STATE>(0)
   const [contractCallError, setContractCallError] = useState<Error | null>(null)
   const [amountWithdrawn, setAmountWithdrawn] = useState<any>(null)
-  const [showFormApproveModal, setShowFormApproveModal] = useState(false)
 
   let totalReceived = dashboardData.baseAmountPCR
 
@@ -276,8 +271,6 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
         transactionState,
         withdrawIsSuccess,
         withdraw: handleClaim,
-        showFormApproveModal,
-        setShowFormApproveModal,
         startTime: calculateStartTime(startTime).format('MM/DD/YYYY, h:mm:ss a'),
         endTime: calculateEndTime(startTime, vestingType).format('MM/DD/YYYY, h:mm:ss a'),
         nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a'),
