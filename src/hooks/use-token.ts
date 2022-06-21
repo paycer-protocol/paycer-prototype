@@ -21,7 +21,7 @@ export default function useToken(symbol: string): UseTokenInterface {
   let tokenSymbol = ''
 
   if (ERC20Balances) {
-    const token = ERC20Balances.find(t => t.symbol === symbol)
+    const token = ERC20Balances.find(t => t.symbol.toLowerCase() === symbol.toLowerCase())
     if (token) {
       tokenAddress = token.token_address
       tokenSymbol = token.symbol
