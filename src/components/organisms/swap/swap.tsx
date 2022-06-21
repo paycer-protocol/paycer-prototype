@@ -91,7 +91,7 @@ export default function Swap() {
                                     <div className="card-body">
                                       <div className="d-flex mb-3">
                                         <div className="col-6">
-                                            {t`1`} {values?.fromToken?.symbol} {t`Price`}
+                                            {t`1`} {values?.fromToken?.symbol}
                                         </div>
                                         <div className="col-6 text-end">
                                           <FormattedNumber
@@ -105,7 +105,7 @@ export default function Swap() {
                                       </div>
                                       <div className="d-flex mb-3">
                                         <div className="col-6">
-                                            {t`1`} {values?.toToken?.symbol} {t`Price`}
+                                            {t`1`} {values?.toToken?.symbol}
                                         </div>
                                         <div className="col-6 text-end">
                                           <FormattedNumber
@@ -197,7 +197,7 @@ export default function Swap() {
                                         <div className="card-body">
                                             <div className="d-flex mb-3">
                                                 <div className="col-6">
-                                                    {t`1`} {values?.fromToken?.symbol} {t`Price`}
+                                                    {t`1`} {values?.fromToken?.symbol}
                                                 </div>
                                                 <div className="col-6 text-end">
                                                     <FormattedNumber
@@ -211,7 +211,7 @@ export default function Swap() {
                                             </div>
                                             <div className="d-flex mb-3">
                                                 <div className="col-6">
-                                                    {t`1`} {values?.toToken?.symbol} {t`Price`}
+                                                    {t`1`} {values?.toToken?.symbol} 
                                                 </div>
                                                 <div className="col-6 text-end">
                                                     <FormattedNumber
