@@ -1,11 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { t, Trans } from '@lingui/macro'
 import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import truncateText from '../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
-import useVesting from '@hooks/use-vesting'
 import { FormattedNumber } from '../../../atoms/number/formatted-number'
 import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
@@ -22,22 +21,22 @@ const AnimatedDiv = styled.div`
 `
 
 const Claim = () => {
-    const { dashboardData } = useVestingDashboard()
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
-    const { isAuthenticated, walletAddress } = useDapp()
-    const router = useRouter()
     const {
+        dashboardData,
         withdrawAble,
         withdraw,
-        showFormApproveModal,
-        setShowFormApproveModal,
         isLoading,
         withdrawIsSuccess,
         contractCallError,
         nextDistribution,
         transactionState,
-        resetStatus
-    } = useVesting(dashboardData?.type)
+        resetStatus,
+    } = useVestingDashboard()
+
+    const [showFormApproveModal, setShowFormApproveModal] = useState<boolean>(false)
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
+    const { isAuthenticated, walletAddress } = useDapp()
+    const router = useRouter()
 
     const handleSubmit = async () => {
         await withdraw()
