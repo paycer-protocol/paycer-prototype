@@ -32,7 +32,7 @@ export default function TokenToggle(props: TokenToggleProps) {
         }
 
         <div>
-            {(label && !readOnly) &&
+            {(label) &&
                 <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{label}</small>
             }
             <div className="d-flex align-items-center">

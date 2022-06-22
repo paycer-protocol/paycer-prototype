@@ -2,12 +2,14 @@ import { tokenProvider } from '@providers/tokens'
 import { MarketPairType } from '../types/market'
 import { TokenType } from '../types/investment'
 
+export const initialFromTokenValue = 0.998787
+export const swapFeePercentage = 1
+
 export const swapTokens: TokenType[] = [
   tokenProvider.PCR,
   tokenProvider.DAI,
   tokenProvider.USDC,
   tokenProvider.USDT,
-  tokenProvider.BUSD,
   tokenProvider.wBTC,
   tokenProvider.wETH,
 ]
@@ -19,7 +21,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.DAI,
       tokenProvider.USDC,
       tokenProvider.USDT,
-      tokenProvider.BUSD,
       tokenProvider.wBTC,
       tokenProvider.wETH,
     ]
@@ -30,7 +31,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.PCR,
       tokenProvider.USDT,
       tokenProvider.USDC,
-      tokenProvider.BUSD,
       tokenProvider.wBTC,
       tokenProvider.wETH,
     ]
@@ -41,7 +41,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.PCR,
       tokenProvider.DAI,
       tokenProvider.USDT,
-      tokenProvider.BUSD,
       tokenProvider.wBTC,
       tokenProvider.wETH,
     ]
@@ -52,18 +51,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.PCR,
       tokenProvider.DAI,
       tokenProvider.USDC,
-      tokenProvider.BUSD,
-      tokenProvider.wBTC,
-      tokenProvider.wETH,
-    ]
-  },
-  {
-    base: tokenProvider.BUSD,
-    markets: [
-      tokenProvider.PCR,
-      tokenProvider.DAI,
-      tokenProvider.USDC,
-      tokenProvider.USDT,
       tokenProvider.wBTC,
       tokenProvider.wETH,
     ]
@@ -75,7 +62,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.DAI,
       tokenProvider.USDC,
       tokenProvider.USDT,
-      tokenProvider.BUSD,
       tokenProvider.wETH,
     ]
   },
@@ -86,7 +72,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.DAI,
       tokenProvider.USDC,
       tokenProvider.USDT,
-      tokenProvider.BUSD,
       tokenProvider.wBTC,
     ]
   }

@@ -5,7 +5,6 @@ import { mainNetProviders } from "@providers/networks"
 import ChainId from "@providers/chain-id"
 import { Symbols } from "@providers/symbols"
 import { supportedChains, supportedStakingChains } from "@config/network"
-import PaycerTokenContractProvider from "@providers/paycer-token"
 
 export interface DappContextInterface {
     walletConnector: unknown | null
