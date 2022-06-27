@@ -374,7 +374,7 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:17
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:18
 msgid "Choose NFT to reveal"
 msgstr "Choose NFT to reveal"
 
@@ -455,7 +455,7 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:51
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:50
 msgid "Collect"
 msgstr "Collect"
 
@@ -471,6 +471,10 @@ msgstr "Confirm Claim"
 #: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:32
 msgid "Confirm Mint"
 msgstr "Confirm Mint"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:19
+msgid "Confirm Reveal"
+msgstr "Confirm Reveal"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:175
 #: src/components/organisms/invest/withdraw-form/index.tsx:180
@@ -1611,7 +1615,7 @@ msgstr "Partner"
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:54
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:53
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1796,7 +1800,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:71
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:70
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -1844,6 +1848,10 @@ msgstr "Researcher & Marketing Manager"
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:104
 #~ msgid "Reveal Date"
 #~ msgstr "Reveal Date"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:21
+msgid "Revealing NFT..."
+msgstr "Revealing NFT..."
 
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
@@ -2351,6 +2359,7 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:177
 #: src/components/organisms/invest/withdraw-form/index.tsx:182
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:22
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:165
 #: src/components/organisms/swap/swap.tsx:193
@@ -2464,6 +2473,10 @@ msgstr "Vesting"
 #: src/components/organisms/vesting/overview/index.tsx:109
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:34
+msgid "View Details"
+msgstr "View Details"
 
 #: src/components/organisms/portal-block-number/index.tsx:27
 msgid "View block details"
@@ -2618,9 +2631,13 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:58
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:57
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:31
+msgid "Your NFT was revealed successfully"
+msgstr "Your NFT was revealed successfully"
 
 #: src/pages/nft/overview/index.tsx:17
 msgid "Your NFTs Collection"

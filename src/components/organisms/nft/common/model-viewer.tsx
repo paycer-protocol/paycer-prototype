@@ -16,6 +16,7 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
   useEffect(() => {
     const loader = new GLTFLoader();
     loader.load(url, (gltf) => {
+      gltf.scene.traverse((object) => object.frustumCulled = false);
       setModel(gltf.scene);
     })
   }, [url])
@@ -40,6 +41,6 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
 
 const NftModelViewer = dynamic(async () => {
   return NftModelViewerInternal;
-}, { ssr: false });
+}, { ssr: false }) as unknown as (props: NftModelViewerProps) => JSX.Element;
 
 export default NftModelViewer;

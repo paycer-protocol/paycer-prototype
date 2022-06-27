@@ -6,6 +6,7 @@ import useOwnedNfts from '@hooks/nft/use-owned-nfts';
 import Nft from '../../../../../types/nft';
 import Select from '@components/atoms/form/select';
 import Form from '@components/atoms/form';
+import RevealModal from '../reveal-modal';
 
 function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft | undefined, onChanged: (nft: Nft) => void }) {
     return (
@@ -17,7 +18,10 @@ function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft
                 label={t`Choose NFT to reveal`}
                 name="selector"
                 value={value?.id.toString()}
-                onChange={(id) => onChanged(options.find((nft) => nft.id.toString() === id))}
+                onChange={(e) => {
+                    console.log(options.find((nft) => nft.id.toString() === e.target.value));
+                    onChanged(options.find((nft) => nft.id.toString() === e.target.value))
+                }}
             >
                 {options.map((option) => (
                     <option key={option.id.toString()} value={option.id.toString()}>#{option.id.toString()}</option>
@@ -41,9 +45,7 @@ const RevealPanel = (props: RevealPanelProps) => {
 
     const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined);
 
-    const handleReveal = () => {
-
-    }
+    const [revealModalShown, setRevealModalShown] = useState(false);
 
     return (
         <div>
@@ -67,10 +69,11 @@ const RevealPanel = (props: RevealPanelProps) => {
             </div>
 
 
-            <div className="d-flex justify-content-end" onClick={() => handleReveal()}>
+            <div className="d-flex justify-content-end" onClick={() => setRevealModalShown(true)}>
                 <GradientButton disabled={!isRevealable && selectedNft !== undefined}>{t`REVEAL MY NFT`}</GradientButton>
             </div>
 
+            {selectedNft && <RevealModal key={`${revealModalShown}`} tokenId={selectedNft.id} show={revealModalShown} onHide={() => setRevealModalShown(false)} />}
         </div>
     )
 
