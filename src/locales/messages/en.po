@@ -455,7 +455,7 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:50
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:53
 msgid "Collect"
 msgstr "Collect"
 
@@ -472,7 +472,7 @@ msgstr "Confirm Claim"
 msgid "Confirm Mint"
 msgstr "Confirm Mint"
 
-#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:19
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:24
 msgid "Confirm Reveal"
 msgstr "Confirm Reveal"
 
@@ -1615,7 +1615,7 @@ msgstr "Partner"
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:53
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:56
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1800,7 +1800,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:70
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:73
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -1849,7 +1849,7 @@ msgstr "Researcher & Marketing Manager"
 #~ msgid "Reveal Date"
 #~ msgstr "Reveal Date"
 
-#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:21
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:26
 msgid "Revealing NFT..."
 msgstr "Revealing NFT..."
 
@@ -1982,6 +1982,10 @@ msgstr "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:41
 msgid "Something went wrong!"
 msgstr "Something went wrong!"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:28
+msgid "Something went wrong, please try again later."
+msgstr "Something went wrong, please try again later."
 
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:68
 msgid "Something went wrong."
@@ -2359,7 +2363,7 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:177
 #: src/components/organisms/invest/withdraw-form/index.tsx:182
-#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:22
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:27
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:118
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:165
 #: src/components/organisms/swap/swap.tsx:193
@@ -2474,7 +2478,7 @@ msgstr "Vesting"
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
 
-#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:34
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:43
 msgid "View Details"
 msgstr "View Details"
 
@@ -2631,11 +2635,11 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:57
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:60
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
 
-#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:31
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:40
 msgid "Your NFT was revealed successfully"
 msgstr "Your NFT was revealed successfully"
 

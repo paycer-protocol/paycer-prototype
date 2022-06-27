@@ -7,8 +7,11 @@ import Nft from '../../../../../types/nft';
 import Select from '@components/atoms/form/select';
 import Form from '@components/atoms/form';
 import RevealModal from '../reveal-modal';
+import { useDapp } from '@context/dapp-context';
+import ConnectWalletButton from '../../landing-page/connect-wallet-button';
 
-function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft | undefined, onChanged: (nft: Nft) => void }) {
+function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined, value: Nft | undefined, onChanged: (nft: Nft) => void }) {
+
     return (
         <Form
             initialValues={{}}
@@ -17,13 +20,17 @@ function NftSelector({ options, value, onChanged }: { options: Nft[], value: Nft
             <Select
                 label={t`Choose NFT to reveal`}
                 name="selector"
-                value={value?.id.toString()}
+                value={value?.id.toString() ?? ''}
                 onChange={(e) => {
                     console.log(options.find((nft) => nft.id.toString() === e.target.value));
                     onChanged(options.find((nft) => nft.id.toString() === e.target.value))
                 }}
             >
-                {options.map((option) => (
+                {options !== undefined
+                    ? <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
+                    : <option value={undefined} selected disabled>{t`Loading NFTs...`}</option>
+                }
+                {options?.map((option) => (
                     <option key={option.id.toString()} value={option.id.toString()}>#{option.id.toString()}</option>
                 ))}
             </Select>
@@ -39,6 +46,8 @@ const RevealPanel = (props: RevealPanelProps) => {
     const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
     const timeLeft = startTime.getTime() - Date.now()
     const isRevealable = true //timeLeft <= 0
+
+    const { isAuthenticated } = useDapp();
 
     const ownedNfts = useOwnedNfts();
     const unrevealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level === 0) : undefined;
@@ -60,18 +69,29 @@ const RevealPanel = (props: RevealPanelProps) => {
                 {t`Your NFT reveal`}
             </h2>
 
-            <div className="mb-5">
-                {
-                    isRevealable
-                        ? <NftSelector value={selectedNft} onChanged={setSelectedNft} options={ownedNfts.status === 'success' ? unrevealedNfts : []} />
-                        : <Countdown timeLeft={timeLeft} />
-                }
-            </div>
+            {
+                isRevealable
+                    ?
+                    (
+                        !isAuthenticated
+                            ?
+                            <div className="mt-5">
+                                <ConnectWalletButton />
+                            </div>
+                            :
+                            <>
+                                <div className="mb-5">
+                                    <NftSelector value={selectedNft} onChanged={setSelectedNft} options={unrevealedNfts} />
+                                </div>
 
 
-            <div className="d-flex justify-content-end" onClick={() => setRevealModalShown(true)}>
-                <GradientButton disabled={!isRevealable && selectedNft !== undefined}>{t`REVEAL MY NFT`}</GradientButton>
-            </div>
+                                <div className="d-flex justify-content-end" onClick={() => selectedNft !== undefined && setRevealModalShown(true)}>
+                                    <GradientButton disabled={!isRevealable && selectedNft !== undefined}>{t`REVEAL MY NFT`}</GradientButton>
+                                </div>
+                            </>
+                    )
+                    : <Countdown timeLeft={timeLeft} />
+            }
 
             {selectedNft && <RevealModal key={`${revealModalShown}`} tokenId={selectedNft.id} show={revealModalShown} onHide={() => setRevealModalShown(false)} />}
         </div>

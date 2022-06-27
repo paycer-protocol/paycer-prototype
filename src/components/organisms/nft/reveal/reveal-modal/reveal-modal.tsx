@@ -13,7 +13,6 @@ export interface RevealModalProps {
 
 export default function RevealModal({ tokenId, show, onHide }: RevealModalProps) {
   const nftReveal = useNftReveal(tokenId);
-  console.log(nftReveal);
   return (
     <>
       {
