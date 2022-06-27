@@ -5,8 +5,8 @@ export interface OpenseaMetadata {
     name: string;
     description: string;
     image: string;
-    background_color: string;
-    animation_uri: string;
+    background_color?: string;
+    animation_url: string;
     attributes: {
         display_type?: string;
         trait_type: string;
@@ -14,7 +14,11 @@ export interface OpenseaMetadata {
     }[];
 }
 
+export interface PcrNftMetadata extends OpenseaMetadata {
+    level: number;
+}
+
 export default interface Nft {
     id: string;
-    metadata: OpenseaMetadata;
+    metadata: PcrNftMetadata;
 }

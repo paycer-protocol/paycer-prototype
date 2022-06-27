@@ -37,6 +37,7 @@ const RevealPanel = (props: RevealPanelProps) => {
     const isRevealable = true //timeLeft <= 0
 
     const ownedNfts = useOwnedNfts();
+    const unrevealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level === 0) : undefined;
 
     const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined);
 
@@ -60,14 +61,14 @@ const RevealPanel = (props: RevealPanelProps) => {
             <div className="mb-5">
                 {
                     isRevealable
-                        ? <NftSelector value={selectedNft} onChanged={setSelectedNft} options={ownedNfts.status === 'success' ? ownedNfts.nfts : []} />
+                        ? <NftSelector value={selectedNft} onChanged={setSelectedNft} options={ownedNfts.status === 'success' ? unrevealedNfts : []} />
                         : <Countdown timeLeft={timeLeft} />
                 }
             </div>
 
 
             <div className="d-flex justify-content-end" onClick={() => handleReveal()}>
-                <GradientButton disabled={!isRevealable}>{t`REVEAL MY NFT`}</GradientButton>
+                <GradientButton disabled={!isRevealable && selectedNft !== undefined}>{t`REVEAL MY NFT`}</GradientButton>
             </div>
 
         </div>

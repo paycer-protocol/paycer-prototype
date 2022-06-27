@@ -9,7 +9,7 @@ export default function NftCardList({ nfts }: NftCardListProps) {
   return (
     <div className="row">
       {nfts.map((nft) => (
-        <div className="col-6">
+        <div key={nft.id} className="col-6">
           <NftCard nft={nft} />
         </div>
       ))}

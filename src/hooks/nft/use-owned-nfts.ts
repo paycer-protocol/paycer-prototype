@@ -35,6 +35,7 @@ async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Prom
         }
         return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
     })));
+    console.log(tokenIds);
 
     return tokenIds;
 }

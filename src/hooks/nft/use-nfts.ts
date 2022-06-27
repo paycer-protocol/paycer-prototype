@@ -1,5 +1,5 @@
 import nftProvider from '@providers/nft';
-import Nft, { OpenseaMetadata } from '../../types/nft';
+import Nft, { PcrNftMetadata } from '../../types/nft';
 import { ChainId } from '@usedapp/core';
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ interface Property {
 
 export function withIpfsGateway(url: string) {
     if (url.startsWith('ipfs://')) {
-        return `https://gateway.pinata.cloud/ipfs/${url.split('ipfs://')[1]}`;
+        return `https://cf-ipfs.com/ipfs/${url.split('ipfs://')[1]}`;
     } else {
         return url;
     }
@@ -53,7 +53,7 @@ export async function fetchTokensById(currentNetworkId: number, tokenIds: Nft['i
     }))) as unknown as string[];
 
     const ipfsMetadata = (await Promise.all(tokenUris.map((tokenUri) => {
-        return axios.get<OpenseaMetadata>(withIpfsGateway(tokenUri)).then((response) => response.data);
+        return axios.get<PcrNftMetadata>(withIpfsGateway(tokenUri)).then((response) => response.data);
     })))
 
     return tokenIds.map((tokenId, index) => ({
