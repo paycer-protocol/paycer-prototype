@@ -16,7 +16,7 @@ interface Property {
 
 export function withIpfsGateway(url: string) {
     if (url.startsWith('ipfs://')) {
-        return `https://cf-ipfs.com/ipfs/${url.split('ipfs://')[1]}`;
+        return `https://paycer.mypinata.cloud/ipfs/${url.split('ipfs://')[1]}`;
     } else {
         return url;
     }
@@ -77,11 +77,12 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
     const [status, setStatus] = useState<UseNftsProps>({ status: 'loading' })
 
     useEffect(() => {
+        setStatus({ status: 'loading' });
         if (!owner || !isAuthenticated || !isWeb3Enabled) return;
         fetchTokensById(currentNetworkId, tokenIds)
             .then((nfts) => setStatus({ status: 'success', nfts }))
             .catch(() => setStatus({ status: 'error' }));
-    }, [currentNetworkId, isAuthenticated, isWeb3Enabled, owner]);
+    }, [currentNetworkId, isAuthenticated, isWeb3Enabled, owner, ...tokenIds]);
 
     return status;
 }

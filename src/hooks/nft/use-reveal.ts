@@ -5,7 +5,7 @@ import nftProvider from '@providers/nft';
 import ChainId from "@providers/chain-id";
 import { useDapp } from "@context/dapp-context";
 import Nft from "../../types/nft";
-import { fetchTokensById } from "./use-nfts";
+import useNfts, { fetchTokensById } from "./use-nfts";
 
 type UseNftRevealProps = {
   status: 'unknown'
@@ -58,8 +58,6 @@ export default function useNftReveal(tokenId: string): UseNftRevealProps {
   }, [])
 
   const [executeStatus, setExecuteStatus] = useState<'idle' | 'active' | 'success' | 'error'>('idle')
-  const [nft, setNft] = useState<Nft | undefined>(undefined)
-
 
   const reveal = useCallback(async () => {
     if (!owner || !isAuthenticated || !isWeb3Enabled) return;
@@ -79,19 +77,36 @@ export default function useNftReveal(tokenId: string): UseNftRevealProps {
     try {
       setExecuteStatus('active');
       const result = await Moralis.executeFunction(options);
-      const nft = await fetchTokensById(currentNetworkId, [tokenId]);
-      setNft(nft[0]);
       setExecuteStatus('success');
     } catch (err) {
+      console.error(err);
       setExecuteStatus('error');
     }
   }, [executeStatus, currentNetworkId]);
+
+  const [nft, setNft] = useState<Nft | 'error' | undefined>(undefined);
+  useEffect(() => {
+    (async () => {
+      if (revealStatus == RevealStatus.Revealed) {
+        try {
+          const [nft] = await fetchTokensById(currentNetworkId, [tokenId]);
+          setNft(nft);
+        } catch (err) {
+          console.error(err);
+          setNft('error');
+        }
+      }
+    })();
+  }, [currentNetworkId, revealStatus]);
 
   if (revealStatus === undefined) return { status: 'unknown' }
   if (executeStatus === 'active') return { status: 'loading' }
   if (executeStatus === 'idle') return { status: 'idle', reveal }
   if (executeStatus === 'error') return { status: 'error' }
-  if (revealStatus !== RevealStatus.Revealed) return { status: 'loading' }
+
+  if (nft === 'error') return { status: 'error' }
+  if (nft === undefined) return { status: 'loading' }
+
   if (executeStatus === 'success') return { status: 'success', nft }
 
   return { status: 'unknown' }

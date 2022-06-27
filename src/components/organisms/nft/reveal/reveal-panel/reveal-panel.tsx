@@ -11,7 +11,6 @@ import { useDapp } from '@context/dapp-context';
 import ConnectWalletButton from '../../landing-page/connect-wallet-button';
 
 function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined, value: Nft | undefined, onChanged: (nft: Nft) => void }) {
-
     return (
         <Form
             initialValues={{}}
@@ -27,7 +26,11 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
                 }}
             >
                 {options !== undefined
-                    ? <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
+                    ? (
+                        options.length === 0
+                            ? <option value={undefined} selected disabled>{t`No unrevealed NFTs available`}</option>
+                            : <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
+                    )
                     : <option value={undefined} selected disabled>{t`Loading NFTs...`}</option>
                 }
                 {options?.map((option) => (

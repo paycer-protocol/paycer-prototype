@@ -374,7 +374,7 @@ msgstr "Change your wallet provider"
 #~ msgid "Check your wallet address to check your status."
 #~ msgstr "Check your wallet address to check your status."
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:18
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:21
 msgid "Choose NFT to reveal"
 msgstr "Choose NFT to reveal"
 
@@ -455,7 +455,7 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:53
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:62
 msgid "Collect"
 msgstr "Collect"
 
@@ -1259,6 +1259,10 @@ msgstr "Liquidity Pool"
 msgid "Loading ..."
 msgstr "Loading ..."
 
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:31
+msgid "Loading NFTs..."
+msgstr "Loading NFTs..."
+
 #: src/components/organisms/transaction-status/transaction-status.tsx:21
 #~ msgid "Loading..."
 #~ msgstr "Loading..."
@@ -1615,7 +1619,7 @@ msgstr "Partner"
 #~ msgid "Paycer Token"
 #~ msgstr "Paycer Token"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:56
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:65
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1646,6 +1650,10 @@ msgstr "Paycer's experience"
 #: src/components/organisms/token-sale/timeline/index.tsx:24
 #~ msgid "Pending"
 #~ msgstr "Pending"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:30
+msgid "Pick an NFT"
+msgstr "Pick an NFT"
 
 #: src/components/organisms/token-overview/token-overview-list.tsx:42
 #~ msgid "Platform"
@@ -1800,7 +1808,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:73
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:89
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -2635,7 +2643,7 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:60
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:69
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
 
