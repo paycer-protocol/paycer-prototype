@@ -378,7 +378,7 @@ msgstr "Change your wallet provider"
 msgid "Choose NFT to reveal"
 msgstr "Choose NFT to reveal"
 
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:20
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:21
 msgid "Choose NFT to upgrade"
 msgstr "Choose NFT to upgrade"
 
@@ -460,7 +460,7 @@ msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:65
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:61
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:62
 msgid "Collect"
 msgstr "Collect"
 
@@ -478,7 +478,6 @@ msgid "Confirm Mint"
 msgstr "Confirm Mint"
 
 #: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:24
-#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:24
 msgid "Confirm Reveal"
 msgstr "Confirm Reveal"
 
@@ -488,6 +487,10 @@ msgstr "Confirm Reveal"
 #: src/components/organisms/swap/swap.tsx:192
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:24
+msgid "Confirm Upgrade"
+msgstr "Confirm Upgrade"
 
 #: src/components/organisms/token-sale/timeline/index.tsx:24
 #~ msgid "Confirmed"
@@ -1232,6 +1235,10 @@ msgstr "Launch of Sale Page"
 #~ msgid "Launching NFT Collections"
 #~ msgstr "Launching NFT Collections"
 
+#: src/components/organisms/nft/overview/card.tsx:24
+msgid "Level"
+msgstr "Level"
+
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:155
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:131
 #~ msgid "Level Up NFT function"
@@ -1266,7 +1273,7 @@ msgid "Loading ..."
 msgstr "Loading ..."
 
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:34
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:34
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:35
 msgid "Loading NFTs..."
 msgstr "Loading NFTs..."
 
@@ -1512,7 +1519,7 @@ msgstr "No available transactions"
 msgid "No unrevealed NFTs available"
 msgstr "No unrevealed NFTs available"
 
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:31
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:32
 msgid "No upgradable NFTs available"
 msgstr "No upgradable NFTs available"
 
@@ -1635,7 +1642,7 @@ msgstr "Partner"
 #~ msgstr "Paycer Token"
 
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:68
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:64
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:65
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -1668,7 +1675,7 @@ msgstr "Paycer's experience"
 #~ msgstr "Pending"
 
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:32
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:32
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:33
 msgid "Pick an NFT"
 msgstr "Pick an NFT"
 
@@ -1875,7 +1882,6 @@ msgstr "Researcher & Marketing Manager"
 #~ msgstr "Reveal Date"
 
 #: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:26
-#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:26
 msgid "Revealing NFT. This may take a while."
 msgstr "Revealing NFT. This may take a while."
 
@@ -2422,7 +2428,7 @@ msgstr "Transfer to:"
 #~ msgid "Type"
 #~ msgstr "Type"
 
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:85
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:86
 msgid "UPGRADE MY NFT"
 msgstr "UPGRADE MY NFT"
 
@@ -2486,6 +2492,10 @@ msgstr "Upgrade Your NFT"
 #: src/components/organisms/nft/landing-page/usp-section.tsx:52
 msgid "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
 msgstr "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:26
+msgid "Upgrading NFT. This may take a while."
+msgstr "Upgrading NFT. This may take a while."
 
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:190
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:167
@@ -2673,14 +2683,20 @@ msgid "Your APR:"
 msgstr "Your APR:"
 
 #: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:72
-#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:68
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
 
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:69
+msgid "Your NFT upgrade"
+msgstr "Your NFT upgrade"
+
 #: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:40
-#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:40
 msgid "Your NFT was revealed successfully"
 msgstr "Your NFT was revealed successfully"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:40
+msgid "Your NFT was upgraded successfully"
+msgstr "Your NFT was upgraded successfully"
 
 #: src/pages/nft/overview/index.tsx:17
 msgid "Your NFTs Collection"

@@ -4,7 +4,6 @@ import { fetchTokensById, UseNftsProps } from "./use-nfts";
 import { useDapp } from "@context/dapp-context";
 import Moralis from 'moralis';
 import ChainId from '@providers/chain-id';
-import { BigNumber } from 'ethers';
 import { allNetProviers } from '@providers/networks';
 
 async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<string[]> {
@@ -35,7 +34,6 @@ async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Prom
         }
         return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
     })));
-    console.log(tokenIds);
 
     return tokenIds;
 }
