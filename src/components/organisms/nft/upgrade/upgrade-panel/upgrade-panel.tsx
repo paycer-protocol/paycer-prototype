@@ -6,9 +6,10 @@ import useOwnedNfts from '@hooks/nft/use-owned-nfts';
 import Nft from '../../../../../types/nft';
 import Select from '@components/atoms/form/select';
 import Form from '@components/atoms/form';
-import RevealModal from '../reveal-modal';
+import RevealModal from '../upgrade-modal';
 import { useDapp } from '@context/dapp-context';
 import ConnectWalletButton from '../../landing-page/connect-wallet-button';
+import UpgradeModal from '../upgrade-modal';
 
 function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined, value: Nft | undefined, onChanged: (nft: Nft) => void }) {
     return (
@@ -17,7 +18,7 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
             onSubmit={() => { }}
         >
             <Select
-                label={t`Choose NFT to reveal`}
+                label={t`Choose NFT to upgrade`}
                 name="selector"
                 value={value?.id.toString() ?? ''}
                 onChange={(e) => {
@@ -28,7 +29,7 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
                 {options !== undefined
                     ? (
                         options.length === 0
-                            ? <option value={undefined} selected disabled>{t`No unrevealed NFTs available`}</option>
+                            ? <option value={undefined} selected disabled>{t`No upgradable NFTs available`}</option>
                             : <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
                     )
                     : <option value={undefined} selected disabled>{t`Loading NFTs...`}</option>
@@ -41,23 +42,19 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
     );
 }
 
-export interface RevealPanelProps {
+export interface UpgradePanelProps {
 
 }
 
-const RevealPanel = (props: RevealPanelProps) => {
-    const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
-    const timeLeft = startTime.getTime() - Date.now()
-    const isRevealable = true //timeLeft <= 0
-
+const UpgradePanel = (props: UpgradePanelProps) => {
     const { isAuthenticated } = useDapp();
 
     const ownedNfts = useOwnedNfts();
-    const unrevealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level === 0) : undefined;
+    const revealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level > 0) : undefined;
 
     const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined);
 
-    const [revealModalShown, setRevealModalShown] = useState(false);
+    const [upgradeModalShown, setUpgradeModalShown] = useState(false);
 
     return (
         <div>
@@ -69,38 +66,33 @@ const RevealPanel = (props: RevealPanelProps) => {
             </div>
 
             <h2 className="display-2 mb-4 text-end">
-                {t`Your NFT reveal`}
+                {t`Your NFT upgrade`}
             </h2>
 
             {
-                isRevealable
+                !isAuthenticated
                     ?
-                    (
-                        !isAuthenticated
-                            ?
-                            <div className="mt-5">
-                                <ConnectWalletButton />
-                            </div>
-                            :
-                            <>
-                                <div className="mb-5">
-                                    <NftSelector value={selectedNft} onChanged={setSelectedNft} options={unrevealedNfts} />
-                                </div>
+                    <div className="mt-5">
+                        <ConnectWalletButton />
+                    </div>
+                    :
+                    <>
+                        <div className="mb-5">
+                            <NftSelector value={selectedNft} onChanged={setSelectedNft} options={revealedNfts} />
+                        </div>
 
 
-                                <div className="d-flex justify-content-end" onClick={() => selectedNft !== undefined && setRevealModalShown(true)}>
-                                    <GradientButton disabled={!isRevealable || selectedNft === undefined}>{t`REVEAL MY NFT`}</GradientButton>
-                                </div>
-                            </>
-                    )
-                    : <Countdown timeLeft={timeLeft} />
+                        <div className="d-flex justify-content-end" onClick={() => selectedNft !== undefined && setUpgradeModalShown(true)}>
+                            <GradientButton disabled={selectedNft === undefined}>{t`UPGRADE MY NFT`}</GradientButton>
+                        </div>
+                    </>
             }
 
-            {selectedNft && <RevealModal key={`${revealModalShown}`} tokenId={selectedNft.id} show={revealModalShown} onHide={() => setRevealModalShown(false)} />}
+            {selectedNft && <UpgradeModal key={`${upgradeModalShown}`} tokenId={selectedNft.id} show={upgradeModalShown} onHide={() => setUpgradeModalShown(false)} />}
         </div>
     )
 
 }
 
-export default RevealPanel
+export default UpgradePanel;
 
