@@ -85,10 +85,7 @@ msgstr "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
 msgid "ADVISORS"
 msgstr "ADVISORS"
 
-#: src/components/organisms/invest/invest-card/index.tsx:43
 #: src/components/organisms/invest/invest-table.tsx:32
-#: src/components/organisms/portfolio/portfolio-item.tsx:58
-#: src/components/organisms/portfolio/portfolio-list.tsx:60
 #: src/components/organisms/staking-rewards/staking-form/staking-summary.tsx:28
 msgid "APR"
 msgstr "APR"
@@ -503,7 +500,6 @@ msgstr "Connect to Trust Wallet, Rainbow Wallet and more..."
 #: src/components/organisms/header/wallet-menu/wallet-menu.tsx:40
 #: src/components/organisms/login-card/login-card.tsx:20
 #: src/components/organisms/login-card/login-card.tsx:24
-#: src/components/organisms/portfolio/portfolio-list.tsx:130
 #: src/components/organisms/web3/wallet-connect.tsx:27
 #: src/components/organisms/web3/wallet-detail.tsx:142
 #: src/pages/referral/index.tsx:38
@@ -759,8 +755,8 @@ msgid "Email address"
 msgstr "Email address"
 
 #: src/components/molecules/languages/language-choice.tsx:9
-msgid "English"
-msgstr "English"
+#~ msgid "English"
+#~ msgstr "English"
 
 #: src/providers/connectors.ts:110
 #~ msgid "Enjoy security, ownership and ease of use for your crypto with Ledger."
@@ -899,8 +895,8 @@ msgid "General Terms and Conditions"
 msgstr "General Terms and Conditions"
 
 #: src/components/molecules/languages/language-choice.tsx:10
-msgid "German"
-msgstr "German"
+#~ msgid "German"
+#~ msgstr "German"
 
 #: src/components/organisms/nft/landing-page/mint-section.tsx:83
 #~ msgid "Get notified when the whitelisting date is fixed."
@@ -986,8 +982,8 @@ msgstr "Holding the NFT provides benefits on Paycer's DeFi and CeDeFi platform"
 #~ msgstr "Holding the NFT provides platform benefits for DeFi and CeDeFi"
 
 #: src/components/organisms/invest/invest-card/index.tsx:64
-msgid "Holdings"
-msgstr "Holdings"
+#~ msgid "Holdings"
+#~ msgstr "Holdings"
 
 #: src/components/organisms/nft/landing-page/faq-section.tsx:75
 msgid "How many NFTs may be purchased per person?"
@@ -1024,9 +1020,6 @@ msgstr "Info"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:28
 #: src/components/organisms/invest/deposit-form/fields/submit-button.tsx:13
-#: src/components/organisms/invest/invest-card/index.tsx:94
-#: src/components/organisms/invest/invest-item.tsx:49
-#: src/components/organisms/portfolio/portfolio-list.tsx:133
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:15
 #: src/config/routes.ts:41
 #: src/pages/invest/index.tsx:19
@@ -1038,8 +1031,8 @@ msgstr "Invest"
 #~ msgstr "Invest amount"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:128
-msgid "Invest now"
-msgstr "Invest now"
+#~ msgid "Invest now"
+#~ msgstr "Invest now"
 
 #: src/components/organisms/vesting/overview/index.tsx:45
 #: src/components/organisms/vesting/transactions/data-table/index.tsx:79
@@ -1048,8 +1041,8 @@ msgstr "Invested"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:63
 #: src/components/organisms/portfolio/portfolio-list.tsx:65
-msgid "Investment"
-msgstr "Investment"
+#~ msgid "Investment"
+#~ msgstr "Investment"
 
 #: src/pages/invest/create/index.tsx:80
 #~ msgid "Investment amount"
@@ -1061,8 +1054,8 @@ msgstr "Investment"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:53
 #: src/components/organisms/portfolio/portfolio-list.tsx:55
-msgid "Investment ratio"
-msgstr "Investment ratio"
+#~ msgid "Investment ratio"
+#~ msgstr "Investment ratio"
 
 #: src/components/organisms/kyc-process/timeline/data.tsx:23
 #~ msgid "Investment receivd"
@@ -1717,8 +1710,8 @@ msgstr "Please follow our announcement channels and social media. We will public
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:43
 #: src/components/organisms/portfolio/portfolio-list.tsx:45
-msgid "Pool"
-msgstr "Pool"
+#~ msgid "Pool"
+#~ msgstr "Pool"
 
 #: src/config/routes.ts:35
 #: src/pages/portfolio/index.tsx:24
@@ -1898,16 +1891,14 @@ msgid "Richard Vo"
 msgstr "Richard Vo"
 
 #: src/components/organisms/invest/invest-card/index.tsx:83
-msgid "Risk"
-msgstr "Risk"
+#~ msgid "Risk"
+#~ msgstr "Risk"
 
 #: src/components/organisms/footer/footer.tsx:193
 msgid "Risk Disclaimer"
 msgstr "Risk Disclaimer"
 
 #: src/components/organisms/invest/invest-table.tsx:22
-#: src/components/organisms/portfolio/portfolio-item.tsx:48
-#: src/components/organisms/portfolio/portfolio-list.tsx:50
 msgid "Risk Level"
 msgstr "Risk Level"
 
@@ -2343,7 +2334,6 @@ msgstr "Total Investment"
 msgid "Total Pool Supply"
 msgstr "Total Pool Supply"
 
-#: src/components/organisms/invest/invest-card/index.tsx:60
 #: src/components/organisms/invest/invest-table.tsx:37
 msgid "Total Volume"
 msgstr "Total Volume"
@@ -2608,8 +2598,6 @@ msgid "Whitepaper"
 msgstr "Whitepaper"
 
 #: src/components/molecules/step-progress-bar/step-progress-bar.tsx:54
-#: src/components/organisms/invest/invest-card/index.tsx:106
-#: src/components/organisms/invest/invest-item.tsx:57
 #: src/components/organisms/invest/withdraw-form/fields/submit-button.tsx:13
 #: src/components/organisms/staking-rewards/staking-form/fields/submit-button.tsx:28
 msgid "Withdraw"
@@ -2633,8 +2621,8 @@ msgstr "You are about to mint {amount} NFTs. Are you ready?"
 
 #: src/components/organisms/portfolio/portfolio-item.tsx:124
 #: src/components/organisms/portfolio/portfolio-list.tsx:126
-msgid "You have no investments in your portfolio"
-msgstr "You have no investments in your portfolio"
+#~ msgid "You have no investments in your portfolio"
+#~ msgstr "You have no investments in your portfolio"
 
 #: src/pages/referral/components/Referrals.tsx:38
 #~ msgid "You have no referrals"

@@ -31,7 +31,7 @@ export default function useNftUpgrade(tokenId: string): UseNftUpgradeProps {
       const message = `Upgrade Paycer NFT #${tokenId} on chain ${currentNetworkId} to level ${baseNft.metadata.level + 1}`;
       const signature = await provider.getSigner().signMessage(message);
 
-      const result = await axios.post('http://nft-pipeline-456198012.eu-central-1.elb.amazonaws.com/upgrade', {
+      const result = await axios.post('https://nft.paycer.finance/upgrade', {
         chainId: currentNetworkId,
         tokenId,
         signature,
