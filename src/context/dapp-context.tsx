@@ -1,15 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { IConnectorProvider } from "@providers/connectors"
-import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api } from "react-moralis"
-import { allNetProviers, mainNetProviders } from "@providers/networks"
+import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api, useERC20Balances } from "react-moralis"
+import { mainNetProviders } from "@providers/networks"
 import ChainId from "@providers/chain-id"
 import { Symbols } from "@providers/symbols"
 import { supportedChains, supportedStakingChains } from "@config/network"
-import { BigNumber } from "@ethersproject/bignumber";
-import Moralis from "moralis";
-import { formatUnits } from "@ethersproject/units";
-import PaycerTokenContractProvider from "@providers/paycer-token";
-import StakingContractProvider from "@providers/staking";
 
 export interface DappContextInterface {
     walletConnector: unknown | null
@@ -35,9 +30,17 @@ export interface DappContextInterface {
     currentNetworkId: number
     currentChainId: string
     currentNetworkProvider: unknown
-    pcrBalance: number
     blockNumber: number
-    fetchPcrBalance: () => void
+    ERC20Balances: {
+        token_address: string;
+        name: string;
+        symbol: string;
+        logo?: string | undefined;
+        thumbnail?: string | undefined;
+        decimals: string;
+        balance: string;
+    }[] | null;
+    fetchERC20Balances: any
 }
 
 const contextDefaultValues: DappContextInterface = {
@@ -64,9 +67,9 @@ const contextDefaultValues: DappContextInterface = {
     currentNetworkId: 0,
     currentChainId: 'polygon',
     currentNetworkProvider: null,
-    pcrBalance: 0,
     blockNumber: 0,
-    fetchPcrBalance: null
+    ERC20Balances: null,
+    fetchERC20Balances: null
 }
 
 const DappContext = createContext<DappContextInterface>(
@@ -103,11 +106,8 @@ const DappContextProvider = ({ children }) => {
     } = useNativeBalance({ chain: chain?.chainId })
 
     const walletAddress = account || ''
-    const paycerTokenConfig = PaycerTokenContractProvider[chain?.networkId] || PaycerTokenContractProvider[ChainId.Polygon]
-    const pcrContract = paycerTokenConfig.contract
-    const currentNetwork = allNetProviers[chain?.networkId || ChainId.Polygon]
-
-    const [pcrBalance, setPcrBalance] = useState<number>(0)
+    const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
+    const { fetchERC20Balances, data: ERC20Balances } = useERC20Balances()
     const [blockNumber, setBlockNumber] = useState<number>(0)
     const Web3Api = useMoralisWeb3Api()
 
@@ -123,7 +123,6 @@ const DappContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (isInitialized && walletAddress) {
-            fetchPcrBalance()
             fetchDateToBlock()
         }
     }, [isInitialized, walletAddress, chain?.chainId])
@@ -145,31 +144,6 @@ const DappContextProvider = ({ children }) => {
 
     const handleSwitchNetwork = async (provider: any) => {
         await switchNetwork(provider.chainId)
-    }
-
-    const fetchPcrBalance = () => {
-        if (isInitialized && walletAddress) {
-            const fetch = async () => {
-                const options = {
-                    chain: currentNetwork.chainId,
-                    address: pcrContract.address,
-                    function_name: 'balanceOf',
-                    abi: pcrContract.abi,
-                    params: { account: walletAddress },
-                }
-
-                try {
-                    // @ts-ignore
-                    const response = await Moralis.Web3API.native.runContractFunction(options)
-                    if (response) {
-                        setPcrBalance(Number(formatUnits(response, 18)))
-                    }
-                } catch (e) {
-                    console.log('pendingReward', e)
-                }
-            }
-            fetch()
-        }
     }
 
     const fetchDateToBlock = async () => {
@@ -209,9 +183,9 @@ const DappContextProvider = ({ children }) => {
                 currentChainIsSupportedForDApp: chain?.networkId ? supportedChains.includes(chain?.networkId) : true,
                 currentChainIsSupportedForStaking: chain?.networkId ? supportedStakingChains.includes(chain?.networkId) : true,
                 currentChainId: chain?.chainId,
-                pcrBalance,
-                fetchPcrBalance,
-                blockNumber
+                blockNumber,
+                ERC20Balances,
+                fetchERC20Balances
             }}
         >
             {children}

@@ -1,5 +1,4 @@
 import {useEffect, useMemo, useState} from 'react'
-import { BigNumber } from '@ethersproject/bignumber'
 import ChainId from '@providers/chain-id'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import InvestAbi from '../deployments/Invest.json'

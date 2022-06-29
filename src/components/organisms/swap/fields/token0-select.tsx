@@ -4,78 +4,59 @@ import {t} from '@lingui/macro'
 import { connectors } from '@providers/connectors'
 import TokenSelectModal from '@components/molecules/token-select-modal'
 import WalletProvider from '@components/organisms/web3/wallet-provider'
-import { swapTokens } from '@config/market-pairs'
 import { SwapProps, SwapTokenInputProps } from '../types'
 import TokenToggle from '@components/molecules/token-toggler'
 import { useDapp } from '@context/dapp-context'
+import {formatUnits} from "@ethersproject/units";
+import useSwap from "@hooks/use-swap"
 
 export default function Token0Select(props: SwapTokenInputProps) {
     const { readOnly } = props
-    const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
+    const { values, setFieldValue } = useFormikContext<SwapProps>()
     const [showModal, setShowModal] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
-    const { isAuthenticated, walletAddress} = useDapp()
+    const { isAuthenticated } = useDapp()
+
+    const {
+        fetchQuote,
+    } = useSwap()
 
     const handleChange = async (token) => {
-        setErrorMessage('')
+        setFieldValue('fromToken', token)
 
-        const networkSettings = values.networkSettings
-        networkSettings.walletAddress = walletAddress
-        setFieldValue('quoteChangedState', null)
+        if (values.toToken && values.toTokenValue && values.fromTokenValue) {
+            setFieldValue('isReloading', true)
+            try {
+                const result = await fetchQuote({ fromToken: token, toToken: values.toToken, amount: values.fromTokenValue.toString() })
+                const toTokenValue = formatUnits(result?.toTokenAmount.toString(), values.toToken.decimals)
+                setFieldValue('fee', values.fromTokenValue / 100)
+                setFieldValue('toTokenValue', toTokenValue)
 
-        try {
-            const nextValues = {
-                ...values,
-                ...{
-                    token0Markets: swapTokens,
-                    token0: token,
-                    token1Value: null,
-                    tradePair: {
-                        fromTokenAddress: token.chainAddresses[networkSettings.chainId],
-                        toTokenAddress: values.tradePair.toTokenAddress,
-                        amount: values.token0Value ? String(values.token0Value) : '1',
-                    },
-                    networkSettings
-                }
-            }
-
-            if (nextValues.token0 && nextValues.token1) {
-                setFieldValue('isLoading', true)
-                const nextTradeContext = await values.initFactory(nextValues, setFieldValue, setValues)
-                setValues(nextValues)
-                setFieldValue('tradeContext', nextTradeContext)
+            } catch(e) {
+                setFieldValue('isReloading', false)
                 setShowModal(false)
-                if (values.token1Value) {
-                    setFieldValue('token1Value', nextTradeContext.expectedConvertQuote)
-                }
-                setFieldValue('isLoading', false)
-            } else {
-                setValues(nextValues)
-                setShowModal(false)
+                console.log(e.message)
             }
-        } catch (e) {
-            setErrorMessage(e.message)
-            setFieldValue('isLoading', false)
         }
+        setFieldValue('isReloading', false)
+        setShowModal(false)
     }
 
     return (
       <>
         <TokenToggle
-          token={values.token0}
+          token={values.fromToken}
           onClick={() => setShowModal(true)}
           placeholder={t`Select a token`}
-          label={t`Swap from`}
+          label={t`You sell`}
           readOnly={readOnly}
         />
           {isAuthenticated && (
             <TokenSelectModal
               show={showModal}
-              tokens={values.token0Markets}
-              activeToken={values.token0}
+              tokens={values.fromTokenMarkets.filter(token => token.symbol !== values.toToken?.symbol)}
+              activeTokenSymbol={values.fromToken?.symbol}
               onHide={() => setShowModal(false)}
               onClick={handleChange}
-              errorMessage={errorMessage}
             />
           )}
           {!isAuthenticated && showModal && (

@@ -1,41 +1,76 @@
 import dynamic from 'next/dynamic';
 
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, OrbitControls, Stats, Environment } from '@react-three/drei'
-import { Group } from 'three';
-import { useEffect, useState } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { AnimationMixer, Box3, Vector3 } from 'three';
+import { useEffect, useRef, useState } from 'react';
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 interface NftModelViewerProps {
   url: string;
 }
 
+function Model({ gltf }: { gltf: GLTF | undefined }) {
+  const mixer = useRef<AnimationMixer>()
+  useEffect(() => {
+    if (gltf && gltf.animations.length > 0) {
+      mixer.current = new AnimationMixer(gltf.scene);
+      const animation = gltf.animations[Math.floor(Math.random() * gltf.animations.length)];
+      const action = mixer.current.clipAction(animation)
+      action.play()
+    }
+  }, [gltf]);
+  useFrame(({ clock }) => {
+    mixer.current && mixer.current.setTime(clock.getElapsedTime());
+  })
+
+  return (
+    <>{gltf && <primitive object={gltf.scene} />}</>
+  )
+}
+
 function NftModelViewerInternal({ url }: NftModelViewerProps) {
-  const [model, setModel] = useState<Group | undefined>(undefined);
+  const [model, setModel] = useState<GLTF | undefined>(undefined);
 
   useEffect(() => {
     const loader = new GLTFLoader();
     loader.load(url, (gltf) => {
-      gltf.scene.traverse((object) => object.frustumCulled = false);
-      setModel(gltf.scene);
+      // Center geometry around (0, 0, 0) with normalized size
+      const box = new Box3().setFromObject(gltf.scene);
+      const center = box.getCenter(new Vector3());
+      const size = box.getSize(new Vector3());
+      const longestExtent = Math.max(Math.max(size.x, size.y), size.z);
+      gltf.scene.position.x += (gltf.scene.position.x - center.x / longestExtent);
+      gltf.scene.position.y += (gltf.scene.position.y - center.y / longestExtent);
+      gltf.scene.position.z += (gltf.scene.position.z - center.z / longestExtent);
+      gltf.scene.scale.x = 1 / longestExtent;
+      gltf.scene.scale.y = 1 / longestExtent;
+      gltf.scene.scale.z = 1 / longestExtent;
+
+      setModel(gltf);
     })
   }, [url])
 
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={20} />
-      <OrbitControls minDistance={30} maxDistance={30} autoRotate enablePan={false} enableZoom={false} maxPolarAngle={Math.PI / 2} />
+      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={30} position={[0, 0, 1]} />
+      <OrbitControls
+        minDistance={2.5}
+        maxDistance={2.5}
+        autoRotate
+        enablePan={false}
+        enableZoom={false}
+        minPolarAngle={Math.PI / 5 * 1}
+        maxPolarAngle={Math.PI / 5 * 4}
+      />
 
       <Environment
-        background
-        preset="dawn"
+        preset="apartment"
         scene={undefined}
       />
 
-      {model && <primitive object={model} />}
-
-      <Stats />
-    </Canvas>
+      <Model gltf={model} />
+    </Canvas >
   )
 }
 

@@ -1,58 +1,140 @@
-import { useSendTransaction } from '@usedapp/core'
-import { useState } from 'react'
-import { SwapProps } from '@components/organisms/swap/types'
-import {FormikValues} from "formik";
+import Moralis from "moralis";
+import {useState} from 'react'
+import { TokenType } from '../types/investment'
+import {useDapp} from "@context/dapp-context"
+import {swapTokens} from '@config/market-pairs'
+
+interface HandleSwapProps {
+    amount: string
+    fromToken:TokenType
+    toToken:TokenType
+    slippage: number
+}
+
+interface FetchQuoteProps {
+    amount: string
+    fromToken:TokenType
+    toToken:TokenType
+}
+
+interface FetchQuoteResult {
+    toTokenAmount: number
+    estimatedGas: number
+}
 
 interface UseSwapProps {
-    handleSwap: (values: FormikValues) => void
-    resetStatus: () => void
-    swapTx: any
-    approveTx: any
-    swapError?: Error
-    isLoading?: boolean
+    contractCallError: Error
+    handleSwap: (props: HandleSwapProps) => Promise<void>
+    fetchQuote: (props: FetchQuoteProps) => Promise<FetchQuoteResult>
     showFormApproveModal: boolean
     setShowFormApproveModal: React.Dispatch<React.SetStateAction<boolean>>
+    swapIsSuccess: boolean
+    resetStatus: () => void
 }
 
 export default function useSwap():UseSwapProps {
-
-    const { sendTransaction: sendApproveTransaction , state: approveTx } = useSendTransaction({ transactionName: 'approve' })
-    const { sendTransaction: sendSwapTransaction , state: swapTx } = useSendTransaction({ transactionName: 'swap' })
-
+    const { walletAddress, currentNetworkId, currentNetwork, fetchERC20Balances } = useDapp()
     const [showFormApproveModal, setShowFormApproveModal] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
-    const [swapError, setSwapError] = useState<Error | null>(null)
+    const [swapIsSuccess, setSwapIsSuccess] = useState<boolean>(false)
+    const [contractCallError, setContractCallError] = useState<Error | null>(null)
 
-    const handleSwap = async (values: SwapProps) => {
-        setIsLoading(true)
-
-        try {
-            if (!values.tradeContext.hasEnoughAllowance && values.tradeContext.approvalTransaction) {
-                const approved = await sendApproveTransaction(values.tradeContext.approvalTransaction)
-            }
-            if (values.tradeContext.transaction) {
-                const transaction = values.tradeContext.transaction
-                const approved = await sendSwapTransaction(transaction)
-            }
-        } catch {
-
+    const handleSwap = async (props: HandleSwapProps) => {
+        if (!Moralis?.['Plugins']?.['oneInch']) {
+            return null
         }
-        setIsLoading(false)
+
+        const {
+            fromToken,
+            toToken,
+            slippage,
+            amount
+        } = props
+
+        const hasAllowance = await fetchHasAllowance(props)
+
+        if (!hasAllowance) {
+            await handleApprove(props)
+        }
+        try {
+            await Moralis.Plugins.oneInch.swap({
+                chain: currentNetwork.chainName.toLowerCase(),
+                fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+                toTokenAddress: toToken.chainAddresses[currentNetworkId].toLowerCase(),
+                amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
+                fromAddress: walletAddress,
+                slippage: slippage.toString()
+            })
+            fetchERC20Balances()
+            setSwapIsSuccess(true)
+        } catch (e) {
+            console.log(e, e.message)
+            setContractCallError(new Error('Something went wrong, please try again'))
+        }
+    }
+
+    const fetchQuote = async(props: FetchQuoteProps) => {
+        if (!Moralis?.['Plugins']?.['oneInch']) {
+            return null
+        }
+        const { fromToken, toToken, amount } = props
+        const options = {
+            chain: currentNetwork.chainName.toLowerCase(),
+            fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+            toTokenAddress: toToken.chainAddresses[currentNetworkId].toLowerCase(),
+            amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
+        }
+        const quote = await Moralis.Plugins.oneInch.quote(options)
+        if (quote) {
+            return quote
+        }
+        return null
+    }
+
+    const handleApprove = async(props: HandleSwapProps) => {
+        const {
+            fromToken,
+        } = props
+        try {
+            await Moralis.Plugins.oneInch.approve({
+                chain: currentNetwork.chainName.toLowerCase(),
+                tokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+                fromAddress: walletAddress
+            })
+        } catch(e) {
+            console.log(e.message)
+        }
+    }
+
+    const fetchHasAllowance = async (props: HandleSwapProps) => {
+        const {
+            fromToken,
+            amount
+        } = props
+        try {
+            const options = {
+                chain: currentNetwork.chainName.toLowerCase(),
+                fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
+                fromAddress: walletAddress,
+                amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
+            }
+            return await Moralis.Plugins.oneInch.hasAllowance(options)
+        } catch(e) {
+            console.log(e)
+        }
     }
 
     const resetStatus = () => {
-        swapTx.status = 'None'
-        approveTx.status = 'None'
+        setSwapIsSuccess(false)
+        setContractCallError(null)
     }
 
     return {
-        swapTx,
-        approveTx,
-        swapError,
-        resetStatus,
-        handleSwap,
+        swapIsSuccess,
+        contractCallError,
         showFormApproveModal,
         setShowFormApproveModal,
-        isLoading
+        resetStatus,
+        handleSwap,
+        fetchQuote
     }
 }
