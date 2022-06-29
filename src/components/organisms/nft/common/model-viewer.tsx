@@ -53,13 +53,13 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
 
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={30} position={[0, 0, 1]} />
+      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={20} position={[0, 0, 5]} />
       <OrbitControls
-        minDistance={2.5}
-        maxDistance={2.5}
+        minDistance={1.2}
+        maxDistance={3.75}
         autoRotate
         enablePan={false}
-        enableZoom={false}
+        enableZoom={true}
         minPolarAngle={Math.PI / 5 * 1}
         maxPolarAngle={Math.PI / 5 * 4}
       />
