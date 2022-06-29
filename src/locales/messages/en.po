@@ -1416,7 +1416,7 @@ msgstr "My NFTs"
 msgid "NEW COLLECTION"
 msgstr "NEW COLLECTION"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:90
+#: src/components/organisms/nft/landing-page/about-section.tsx:91
 msgid "NEXT LEVEL NFT"
 msgstr "NEXT LEVEL NFT"
 
@@ -1624,7 +1624,7 @@ msgstr "Paycer Utility NFT"
 msgid "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 msgstr "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:66
+#: src/components/organisms/nft/landing-page/about-section.tsx:67
 msgid "Paycer in the Media"
 msgstr "Paycer in the Media"
 
@@ -1632,7 +1632,7 @@ msgstr "Paycer in the Media"
 #~ msgid "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
 #~ msgstr "Paycer is about to become a Web3 Neo Bank - The NFT will add cashback rewards to your credit card"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:102
+#: src/components/organisms/nft/landing-page/about-section.tsx:103
 msgid "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 msgstr "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 
@@ -2201,7 +2201,7 @@ msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and
 #~ "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your Paycer credit card in the near future (Pay2Earn).\n"
 #~ "Paycer will be able to provide fully regulated bank accounts, crypto, CeDeFi and credit cards by end of 2022. But that is not all, you can also utilize the Paycer token (PCR) to upgrade your NFT to the next level. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:98
+#: src/components/organisms/nft/landing-page/about-section.tsx:99
 msgid ""
 "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
 "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
@@ -2529,7 +2529,7 @@ msgstr "We will launch specific campaigns to grant our community and early suppo
 msgid "What is coming up next?"
 msgstr "What is coming up next?"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:93
+#: src/components/organisms/nft/landing-page/about-section.tsx:94
 msgid "What is the Paycer NFT?"
 msgstr "What is the Paycer NFT?"
 
@@ -2663,7 +2663,7 @@ msgstr "Your advantages"
 #~ msgid "by"
 #~ msgstr "by"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:63
+#: src/components/organisms/nft/landing-page/about-section.tsx:64
 msgid "featured on"
 msgstr "featured on"
 

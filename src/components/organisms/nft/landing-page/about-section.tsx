@@ -137,7 +137,9 @@ export default function AboutSection() {
               {/* <HorseImage
                     src={`/img/nft/about-nft-3.png`}
                   /> */}
-              <NftModelViewer url="/assets/models/nft/horse1.glb" />
+              <div className="position-absolute" style={{ width: '130%', height: '130%', top: '-15%', left: '-15%' }}>
+                <NftModelViewer url="/assets/models/nft/horse1.glb" />
+              </div>
             </div>
           </div>
         </div>
