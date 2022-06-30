@@ -144,16 +144,16 @@ const InfoChart = (props: InfoChartProps) => {
     const seriesDate = w.globals.initialSeries[seriesIndex].dates[dataPointIndex];
     return (
       '<div class="apexcharts-tooltip-series-group d-block" style="font-size: 12px">'
-            + '<div class="d-flex align-items-center">'
-            + '<div class="apexcharts-tooltip-text">'
-            + '<div>'
-            + `<div class="apexcharts-tooltip-text-y-label d-flex">${seriesValue} PCR`
-            + '</div>'
-            + `<span class="text-muted">${seriesDate}</span>`
-            + '</div>'
-            + '</div>'
-            + '</div>'
-            + '</div>'
+      + '<div class="d-flex align-items-center">'
+      + '<div class="apexcharts-tooltip-text">'
+      + '<div>'
+      + `<div class="apexcharts-tooltip-text-y-label d-flex">${seriesValue} PCR`
+      + '</div>'
+      + `<span class="text-muted">${seriesDate}</span>`
+      + '</div>'
+      + '</div>'
+      + '</div>'
+      + '</div>'
     );
   };
 
@@ -226,19 +226,19 @@ const InfoChart = (props: InfoChartProps) => {
                                 </div>
                             }
                             */
-                            }
+              }
 
             </div>
 
             {!isSmall
-                            && (
-                            <div className="mt-3">
-                              <ChainLegend
-                                series={series}
-                                seriesColors={seriesColors}
-                              />
-                            </div>
-                            )}
+              && (
+                <div className="mt-3">
+                  <ChainLegend
+                    series={series}
+                    seriesColors={seriesColors}
+                  />
+                </div>
+              )}
           </div>
         </div>
 

@@ -42,7 +42,7 @@ const Overview = () => {
                   </h6>
                   <span className="h2 mb-0">
                     <FormattedNumber value={totalInvest || 0} />
-                        &nbsp;
+                    &nbsp;
                     {t`USD`}
                   </span>
                   <span className="badge bg-success-soft mt-n1" />
@@ -63,17 +63,17 @@ const Overview = () => {
                   </h6>
                   <span className="h2 mb-0">
                     <FormattedNumber value={totalReceived || 0} />
-                      &nbsp;PCR
+                    &nbsp;PCR
                     {(Number(bonusPercentage) > 0
-                        && (
+                      && (
                         <span className="text-muted">
-                              &nbsp;(+
+                          &nbsp;(+
                           {bonusPercentage}
                           {t`% Bonus included`}
                           )
                         </span>
-                        )
-                      )}
+                      )
+                    )}
                   </span>
                 </div>
                 <div className="col-auto">
@@ -92,7 +92,7 @@ const Overview = () => {
                   </h6>
                   <span className="h2 mb-0">
                     <FormattedNumber value={amountWithdrawn || 0} />
-                      &nbsp;PCR
+                    &nbsp;PCR
                   </span>
                   <span className="badge bg-success-soft mt-n1" />
                 </div>
@@ -114,12 +114,12 @@ const Overview = () => {
                     {renderVestingLabel()}
                   </span>
                   {(startTime && endTime) && (
-                  <small className="text-muted">
-                    {startTime}
-                    {' '}
-                    -
-                    {endTime}
-                  </small>
+                    <small className="text-muted">
+                      {startTime}
+                      {' '}
+                      -
+                      {endTime}
+                    </small>
                   )}
                 </div>
                 <div className="col-auto">

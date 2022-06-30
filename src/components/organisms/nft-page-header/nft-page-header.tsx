@@ -101,44 +101,21 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
           <Header />
         </div>
         {sections && sections.length > 0
-                && (
-                <div style={{ transition: 'background-color .23s ease-in', borderBottom: '1px solid #17212d' }} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark d-flex' : 'border-bottom-0 d-none'}`}>
-                  <div className="container-fluid flex-row-reverse">
-                    {isTabletOrMobile
-                      ? (
-                        <>
-                          <StyledSwiper
-                            spaceBetween={10}
-                            slidesPerView={3.6}
-                            centerInsufficientSlides
-                          >
-                            {sections.map((section, key) => (
-                              <SwiperSlide key={key} className="align-items-center">
-                                <li
-                                  className="nav-item"
-                                  key={`nav${key}`}
-                                  onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}
-                                >
-                                  <AnchorLink
-                                    rel={`anchor-${key + 1}`}
-                                    className={classnames('nav-link text-white anchor-link', 'text-nowrap')}
-                                  >
-                                    {section.label}
-                                  </AnchorLink>
-                                </li>
-                              </SwiperSlide>
-                            ))}
-                          </StyledSwiper>
-                        </>
-                      )
-                      : (
-                        <ul
-                          className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5"
-                          style={{ paddingLeft: '212px' }}
-                        >
-                          {sections.map((section, key) => (
+          && (
+            <div style={{ transition: 'background-color .23s ease-in', borderBottom: '1px solid #17212d' }} className={`navbar navbar-expand-lg py-3 ${isSticky ? 'bg-dark d-flex' : 'border-bottom-0 d-none'}`}>
+              <div className="container-fluid flex-row-reverse">
+                {isTabletOrMobile
+                  ? (
+                    <>
+                      <StyledSwiper
+                        spaceBetween={10}
+                        slidesPerView={3.6}
+                        centerInsufficientSlides
+                      >
+                        {sections.map((section, key) => (
+                          <SwiperSlide key={key} className="align-items-center">
                             <li
-                              className="nav-item me-4"
+                              className="nav-item"
                               key={`nav${key}`}
                               onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}
                             >
@@ -149,12 +126,35 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                                 {section.label}
                               </AnchorLink>
                             </li>
-                          ))}
-                        </ul>
-                      )}
-                  </div>
-                </div>
-                )}
+                          </SwiperSlide>
+                        ))}
+                      </StyledSwiper>
+                    </>
+                  )
+                  : (
+                    <ul
+                      className="d-none d-lg-flex navbar-nav ms-3 me-auto mt-1 ms-5"
+                      style={{ paddingLeft: '212px' }}
+                    >
+                      {sections.map((section, key) => (
+                        <li
+                          className="nav-item me-4"
+                          key={`nav${key}`}
+                          onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          <AnchorLink
+                            rel={`anchor-${key + 1}`}
+                            className={classnames('nav-link text-white anchor-link', 'text-nowrap')}
+                          >
+                            {section.label}
+                          </AnchorLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+              </div>
+            </div>
+          )}
       </Wrapper>
       <OffCanvas
         show={showModalNav}

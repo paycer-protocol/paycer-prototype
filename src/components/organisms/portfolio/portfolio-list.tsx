@@ -77,12 +77,21 @@ export default function PortfolioList(props: PortfolioProps) {
                 <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                   <div className="d-flex align-items-center">
                     <CurrencyIcon
+<<<<<<< HEAD
                       symbol={strategy.input.symbol}
                       className="me-3 pe-1 position-relative"
                       style={{ top: '-1px' }}
                       width={30}
                       height={30}
                     />
+=======
+                        symbol={strategy.input.symbol}
+                        className="me-3 pe-1 position-relative"
+                        style={{ top: '-1px' }}
+                        width={30}
+                        height={30}
+                      />
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                     <strong className="font-size-lg">{strategy.name}</strong>
                   </div>
                 </td>
@@ -93,6 +102,7 @@ export default function PortfolioList(props: PortfolioProps) {
                 <td className={`${tdClass} border-left-0 border-right-0`}>
                   <div className="row align-items-center g-0">
                     <div className="col-auto me-3">
+<<<<<<< HEAD
                       <Percentage
                         value={(tokenBalance * 100 / totalInvest) / 100}
                         className="mb-2"
@@ -108,6 +118,23 @@ export default function PortfolioList(props: PortfolioProps) {
                         />
                       </ProgressbarColorWrapper>
                     </div>
+=======
+                        <Percentage
+                            value={(tokenBalance * 100 / totalInvest) / 100}
+                            className="mb-2"
+                          />
+                      </div>
+                    <div className="col">
+                        <ProgressbarColorWrapper color={strategy.color}>
+                            <ProgressBar
+                                className="progress-sm"
+                                now={tokenBalance * 100 / totalInvest}
+                                min={0}
+                                max={100}
+                              />
+                          </ProgressbarColorWrapper>
+                      </div>
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                   </div>
                 </td>
                 <td className={`${tdClass} border-left-0 border-right-0`}>
@@ -123,6 +150,7 @@ export default function PortfolioList(props: PortfolioProps) {
               <td colSpan={5}>
                 <div className="text-center">
                   <h4 className="text-muted mb-4">
+<<<<<<< HEAD
                     {t`You have no investments in your portfolio`}
                   </h4>
                   <Link href="/invest">
@@ -133,6 +161,18 @@ export default function PortfolioList(props: PortfolioProps) {
                       {t`Invest`}
                     </GradientButton>
                   </Link>
+=======
+                      {t`You have no investments in your portfolio`}
+                    </h4>
+                  <Link href="/invest">
+                      <GradientButton
+                          title={t`Connect to a Wallet`}
+                          className="px-6"
+                        >
+                          {t`Invest`}
+                        </GradientButton>
+                    </Link>
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                 </div>
               </td>
             </tr>

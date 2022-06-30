@@ -57,9 +57,15 @@ const InvestListContextProvider = ({ children }) => {
       keywords = keywords.filter((f) => f !== '');
 
       const nextStrategys = investmentStrategies.filter((f) => keywords.some((k) => f.name.toLowerCase().includes(k.toLowerCase()))
+<<<<<<< HEAD
         || keywords.some((k) => f.type.toLowerCase().includes(k.toLowerCase()))
         || keywords.some((k) => riskLabels[f.riskLevel].id.toLowerCase().includes(k.toLowerCase()))
         || keywords.some((k) => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase())));
+=======
+                || keywords.some((k) => f.type.toLowerCase().includes(k.toLowerCase()))
+                || keywords.some((k) => riskLabels[f.riskLevel].id.toLowerCase().includes(k.toLowerCase()))
+                || keywords.some((k) => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase())));
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
 
       setStrategies(nextStrategys);
     } else {

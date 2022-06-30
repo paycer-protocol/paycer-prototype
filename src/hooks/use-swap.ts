@@ -6,15 +6,25 @@ import { TokenType } from '../types/investment';
 
 interface HandleSwapProps {
   amount: string
+<<<<<<< HEAD
   fromToken: TokenType
   toToken: TokenType
+=======
+  fromToken:TokenType
+  toToken:TokenType
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
   slippage: number
 }
 
 interface FetchQuoteProps {
   amount: string
+<<<<<<< HEAD
   fromToken: TokenType
   toToken: TokenType
+=======
+  fromToken:TokenType
+  toToken:TokenType
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
 }
 
 interface FetchQuoteResult {
@@ -32,7 +42,11 @@ interface UseSwapProps {
   resetStatus: () => void
 }
 
+<<<<<<< HEAD
 export default function useSwap(): UseSwapProps {
+=======
+export default function useSwap():UseSwapProps {
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
   const { walletAddress, currentNetworkId, currentNetwork, fetchERC20Balances } = useDapp();
   const [showFormApproveModal, setShowFormApproveModal] = useState(false);
   const [swapIsSuccess, setSwapIsSuccess] = useState<boolean>(false);
@@ -117,7 +131,11 @@ export default function useSwap(): UseSwapProps {
         fromAddress: walletAddress,
         amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
       };
+<<<<<<< HEAD
       return Moralis.Plugins.oneInch.hasAllowance(options);
+=======
+      return await Moralis.Plugins.oneInch.hasAllowance(options);
+>>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
     } catch (e) {
       console.log(e);
     }
