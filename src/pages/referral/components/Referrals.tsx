@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { t, Trans } from '@lingui/macro'
-import { useDapp } from '@context/dapp-context'
-import { FormattedNumber } from '@components/atoms/number'
-import TxnLink from '@components/atoms/txn-link'
-import api from '../../../api'
+import React, { useEffect, useState } from 'react';
+import { t, Trans } from '@lingui/macro';
+import { useDapp } from '@context/dapp-context';
+import { FormattedNumber } from '@components/atoms/number';
+import TxnLink from '@components/atoms/txn-link';
+import api from '../../../api';
 
 interface RewardType {
   chain: string
@@ -20,55 +20,55 @@ interface RewardType {
   value: number
 }
 
-export default function Referrals () {
-  const { walletAddress, isAuthenticated} = useDapp()
-  const [rewards, setRewards] = useState<RewardType[] | []>([])
-  const [errorMessage, setErrorMessage] = useState('')
+export default function Referrals() {
+  const { walletAddress, isAuthenticated } = useDapp();
+  const [rewards, setRewards] = useState<RewardType[] | []>([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchReferralRewards(walletAddress) {
       try {
-        const response = await api.fetchReferralRewards(walletAddress)
-        setRewards(response.data.transactions)
+        const response = await api.fetchReferralRewards(walletAddress);
+        setRewards(response.data.transactions);
       } catch (e) {
-        setErrorMessage(t`An error has occurred. Please refresh the page`)
+        setErrorMessage(t`An error has occurred. Please refresh the page`);
       }
     }
 
-    setErrorMessage('')
+    setErrorMessage('');
 
     if (isAuthenticated && walletAddress) {
-      fetchReferralRewards(walletAddress)
+      fetchReferralRewards(walletAddress);
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
   return (
     <div className="table-responsive">
       <table className="table table-sm table-nowrap card-table">
         <thead>
-        <tr>
-          <th>
-            <span className="text-muted">
-              {t`Date`}
-            </span>
-          </th>
-          <th>
-            <span className="text-muted">
-              {t`Referral Bonus`}
-            </span>
-          </th>
-          <th>
-            <span className="text-muted">
-              {t`Transaction`}
-            </span>
-          </th>
-        </tr>
+          <tr>
+            <th>
+              <span className="text-muted">
+                {t`Date`}
+              </span>
+            </th>
+            <th>
+              <span className="text-muted">
+                {t`Referral Bonus`}
+              </span>
+            </th>
+            <th>
+              <span className="text-muted">
+                {t`Transaction`}
+              </span>
+            </th>
+          </tr>
         </thead>
         <tbody className="list">
-        {rewards.length ? rewards.map((reward) => (
-          <tr key={reward.transactionHash}>
-            <td>{reward.transactionDateTime}</td>
-            <td>
+          {rewards.length ? rewards.map((reward) => (
+            <tr key={reward.transactionHash}>
+              <td>{reward.transactionDateTime}</td>
+              <td>
                 <FormattedNumber
                   value={reward.rewardPRC}
                   minimumFractionDigits={2}
@@ -77,27 +77,27 @@ export default function Referrals () {
                 />
                 <span className="ms-2">PCR</span>
               </td>
-            <td>
-              <TxnLink
-                chain={reward.chain}
-                txnHash={reward.transactionHash}
-              />
-            </td>
-          </tr>
-        )) : null}
-        {rewards.length === 0 ? (
-          <tr>
-            <td colSpan={3}>
-              <div className="text-center">
-                <h4 className="text-muted mb-4">
-                  {errorMessage ? errorMessage : t`You have no rewards`}
-                </h4>
-              </div>
-            </td>
-          </tr>
-        ) : null}
+              <td>
+                <TxnLink
+                  chain={reward.chain}
+                  txnHash={reward.transactionHash}
+                />
+              </td>
+            </tr>
+          )) : null}
+          {rewards.length === 0 ? (
+            <tr>
+              <td colSpan={3}>
+                <div className="text-center">
+                  <h4 className="text-muted mb-4">
+                    {errorMessage || t`You have no rewards`}
+                  </h4>
+                </div>
+              </td>
+            </tr>
+          ) : null}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

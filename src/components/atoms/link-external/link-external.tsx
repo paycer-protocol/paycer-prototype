@@ -18,5 +18,5 @@ export default function LinkExternal({ children, href, ...props }: LinkProps) {
         </a>
       )}
     </>
-  )
+  );
 }

@@ -9,15 +9,14 @@ import { EthersProvider } from '../../../ethers-provider';
 import { UniswapContractContextV3 } from '../../../uniswap-contract-context/uniswap-contract-context-v3';
 
 export class UniswapRouterContractFactoryV3 {
-  private _uniswapRouterContract =
-    this._ethersProvider.getContract<RouterContractContext>(
-      JSON.stringify(UniswapContractContextV3.routerAbi),
-      this._routerAddress
-    );
+  private _uniswapRouterContract = this._ethersProvider.getContract<RouterContractContext>(
+    JSON.stringify(UniswapContractContextV3.routerAbi),
+    this._routerAddress,
+  );
 
   constructor(
     private _ethersProvider: EthersProvider,
-    private _routerAddress: string = UniswapContractContextV3.routerAddress
+    private _routerAddress: string = UniswapContractContextV3.routerAddress,
   ) {}
 
   /**
@@ -27,7 +26,7 @@ export class UniswapRouterContractFactoryV3 {
   public exactInputSingle(params: ExactInputSingleRequest): string {
     return this._uniswapRouterContract.interface.encodeFunctionData(
       'exactInputSingle',
-      [params]
+      [params],
     );
   }
 
@@ -38,7 +37,7 @@ export class UniswapRouterContractFactoryV3 {
   public exactOutputSingle(params: ExactOutputSingleRequest): string {
     return this._uniswapRouterContract.interface.encodeFunctionData(
       'exactOutputSingle',
-      [params]
+      [params],
     );
   }
 
@@ -50,7 +49,7 @@ export class UniswapRouterContractFactoryV3 {
   public unwrapWETH9(amountMinimum: BigNumberish, recipient: string): string {
     return this._uniswapRouterContract.interface.encodeFunctionData(
       'unwrapWETH9',
-      [amountMinimum, recipient]
+      [amountMinimum, recipient],
     );
   }
 
@@ -61,7 +60,7 @@ export class UniswapRouterContractFactoryV3 {
   public multicall(data: BytesLike[]): string {
     return this._uniswapRouterContract.interface.encodeFunctionData(
       'multicall',
-      [data]
+      [data],
     );
   }
 }

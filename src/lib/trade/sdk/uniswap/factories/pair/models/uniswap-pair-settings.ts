@@ -32,28 +32,28 @@ export class UniswapPairSettings {
     this.customNetwork = settings?.customNetwork;
 
     if (
-      Array.isArray(settings?.uniswapVersions) &&
-      settings?.uniswapVersions.length === 0
+      Array.isArray(settings?.uniswapVersions)
+      && settings?.uniswapVersions.length === 0
     ) {
       throw new UniswapError(
         '`uniswapVersions` must not be an empty array',
-        ErrorCodes.uniswapVersionsMustNotBeAnEmptyArray
+        ErrorCodes.uniswapVersionsMustNotBeAnEmptyArray,
       );
     }
 
     if (
-      settings &&
-      Array.isArray(settings.uniswapVersions) &&
-      settings.uniswapVersions.length > 0
+      settings
+      && Array.isArray(settings.uniswapVersions)
+      && settings.uniswapVersions.length > 0
     ) {
       if (
         settings.uniswapVersions.find(
-          (u) => u !== UniswapVersion.v2 && u !== UniswapVersion.v3
+          (u) => u !== UniswapVersion.v2 && u !== UniswapVersion.v3,
         )
       ) {
         throw new UniswapError(
           '`uniswapVersions` only accepts v2 or v3',
-          ErrorCodes.uniswapVersionsUnsupported
+          ErrorCodes.uniswapVersionsUnsupported,
         );
       }
 

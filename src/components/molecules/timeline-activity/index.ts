@@ -1,1 +1,1 @@
-export { default } from './timeline-activity'
+export { default } from './timeline-activity';

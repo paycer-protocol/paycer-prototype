@@ -9,6 +9,6 @@ import { parseEther as EthersParseEther } from 'ethers-utils';
  */
 export function parseEther(value: BigNumber): BigNumber {
   return new BigNumber(
-    EthersParseEther(new BigNumber(value).toFixed()).toHexString()
+    EthersParseEther(new BigNumber(value).toFixed()).toHexString(),
   );
 }

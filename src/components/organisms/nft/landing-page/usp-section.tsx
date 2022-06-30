@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro';
 import Image from 'next/image';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 function IconElement({ title, description, icon }: { title: string, description: string, icon: string }) {
   return (
@@ -10,10 +10,10 @@ function IconElement({ title, description, icon }: { title: string, description:
       </div>
       <div className="d-flex flex-column">
         <div className="mb-3 h2"><b>{title}</b></div>
-        <small style={{fontSize: '14px'}} className="mb-0 text-muted">{description}</small>
+        <small style={{ fontSize: '14px' }} className="mb-0 text-muted">{description}</small>
       </div>
     </div>
-  )
+  );
 }
 
 const usps = [
@@ -62,33 +62,32 @@ const usps = [
     description: t`The NFT will add more cashback rewards to your credit card`,
     icon: 'cashback',
   },
-] as const
+] as const;
 
 export default function UspSection() {
-
   return (
-      <>
-        <div className="container">
-          <div className="mb-5">
-            <h5 className="text-uppercase mb-2 text-pink fw-bold">
-              {t`PAYCER NFT features`}
-            </h5>
-            <div className="h1 mb-4">
-              {t`Your advantages`}
-            </div>
-          </div>
-          <div className="row">
-            {usps.map((usp, key) => (
-                <div key={key} className="col-lg-4 mb-5">
-                  <IconElement
-                      title={usp.title}
-                      description={usp.description}
-                      icon={usp.icon}
-                  />
-                </div>
-            ))}
+    <>
+      <div className="container">
+        <div className="mb-5">
+          <h5 className="text-uppercase mb-2 text-pink fw-bold">
+            {t`PAYCER NFT features`}
+          </h5>
+          <div className="h1 mb-4">
+            {t`Your advantages`}
           </div>
         </div>
-      </>
-  )
+        <div className="row">
+          {usps.map((usp, key) => (
+            <div key={key} className="col-lg-4 mb-5">
+              <IconElement
+                title={usp.title}
+                description={usp.description}
+                icon={usp.icon}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }

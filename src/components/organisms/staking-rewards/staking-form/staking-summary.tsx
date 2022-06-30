@@ -1,31 +1,36 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useFormikContext } from 'formik'
-import { t, Trans } from '@lingui/macro'
-import Button from '@components/atoms/button'
-import ProgressBar from '@components/atoms/progress-bars'
-import DashNumber from '@components/organisms/dashboard/dash-number'
-import { StakingProps } from '../types'
+import React from 'react';
+import styled from 'styled-components';
+import { useFormikContext } from 'formik';
+import { t, Trans } from '@lingui/macro';
+import Button from '@components/atoms/button';
+import ProgressBar from '@components/atoms/progress-bars';
+import DashNumber from '@components/organisms/dashboard/dash-number';
+import { StakingProps } from '../types';
 
 const StyledProgressBar = styled(ProgressBar)`
     margin-top: 28px;
     margin-bottom: 42px;
-`
+`;
 
 const StakeContainer = styled.div`
   margin-bottom: 15px;
-`
+`;
 
 export default function StakingSummary() {
-  const { initialValues, setFieldValue } = useFormikContext<StakingProps>()
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
-  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance
+  const { initialValues, setFieldValue } = useFormikContext<StakingProps>();
+  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance;
+  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance;
 
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 className="m-0">{t`Staking`}</h2>
-        <span>{initialValues.rewardRate}% {t`APR`}</span>
+        <span>
+          {initialValues.rewardRate}
+          %
+          {' '}
+          {t`APR`}
+        </span>
       </div>
       <div className="mb-5">
         <StyledProgressBar
@@ -75,7 +80,7 @@ export default function StakingSummary() {
       <div className="d-flex align-items-center justify-content-center mb-3">
         <Button
           title={t`Apply`}
-          variant={'primary'}
+          variant="primary"
           className="px-5"
           onClick={() => setFieldValue('disabled', false)}
         >
@@ -83,5 +88,5 @@ export default function StakingSummary() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

@@ -20,7 +20,7 @@ describe('getTradePath', () => {
     const result = getTradePath(
       ChainId.MAINNET,
       WETHContract.MAINNET(),
-      MOCKFUN()
+      MOCKFUN(),
     );
     expect(result).toEqual(TradePath.erc20ToErc20);
   });
@@ -29,7 +29,7 @@ describe('getTradePath', () => {
     const result = getTradePath(
       ChainId.MAINNET,
       MOCKFUN(),
-      WETHContract.MAINNET()
+      WETHContract.MAINNET(),
     );
     expect(result).toEqual(TradePath.erc20ToErc20);
   });

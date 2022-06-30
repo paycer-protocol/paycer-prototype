@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { t } from '@lingui/macro'
-import PageHeader from '@components/molecules/page-header'
-import InvestList from '@components/organisms/invest/invest-list'
-import InvestListContextProvider from '@context/invest-list-context'
-import Layout from '@components/organisms/layout'
+import React, { useState } from 'react';
+import { t } from '@lingui/macro';
+import PageHeader from '@components/molecules/page-header';
+import InvestList from '@components/organisms/invest/invest-list';
+import InvestListContextProvider from '@context/invest-list-context';
+import Layout from '@components/organisms/layout';
 
 export default function Invest() {
   return (
@@ -29,5 +29,5 @@ export default function Invest() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }

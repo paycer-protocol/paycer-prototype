@@ -18,11 +18,11 @@ describe('UniswapPair', () => {
     // @ts-nocheck
     const context: UniswapPairContextForChainId = {};
     expect(() => new UniswapPair(context)).toThrowError(
-        // @ts-nocheck
+      // @ts-nocheck
       new UniswapError(
         'Must have a `fromTokenContractAddress` on the context',
-        ErrorCodes.fromTokenContractAddressRequired
-      )
+        ErrorCodes.fromTokenContractAddressRequired,
+      ),
     );
   });
 
@@ -34,8 +34,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         '`fromTokenContractAddress` is not a valid contract address',
-        ErrorCodes.fromTokenContractAddressNotValid
-      )
+        ErrorCodes.fromTokenContractAddressNotValid,
+      ),
     );
   });
 
@@ -47,8 +47,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         'Must have a `toTokenContractAddress` on the context',
-        ErrorCodes.toTokenContractAddressRequired
-      )
+        ErrorCodes.toTokenContractAddressRequired,
+      ),
     );
   });
 
@@ -61,8 +61,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         '`toTokenContractAddress` is not a valid contract address',
-        ErrorCodes.toTokenContractAddressNotValid
-      )
+        ErrorCodes.toTokenContractAddressNotValid,
+      ),
     );
   });
 
@@ -75,8 +75,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         'Must have a `ethereumAddress` on the context',
-        ErrorCodes.ethereumAddressRequired
-      )
+        ErrorCodes.ethereumAddressRequired,
+      ),
     );
   });
 
@@ -90,8 +90,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         '`ethereumAddress` is not a valid address',
-        ErrorCodes.ethereumAddressNotValid
-      )
+        ErrorCodes.ethereumAddressNotValid,
+      ),
     );
   });
 
@@ -105,8 +105,8 @@ describe('UniswapPair', () => {
     expect(() => new UniswapPair(context)).toThrowError(
       new UniswapError(
         'Your must supply a chainId or a ethereum provider please look at types `UniswapPairContextForEthereumProvider`, `UniswapPairContextForChainId` and `UniswapPairContextForProviderUrl` to make sure your object is correct in what your passing in',
-        ErrorCodes.invalidPairContext
-      )
+        ErrorCodes.invalidPairContext,
+      ),
     );
   });
 
@@ -120,7 +120,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-nocheck
+    // @ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 
@@ -135,7 +135,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-nocheck
+    // @ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 
@@ -149,7 +149,7 @@ describe('UniswapPair', () => {
 
     const uniswapPair = new UniswapPair(context);
 
-    //@ts-nocheck
+    // @ts-nocheck
     expect(typeof uniswapPair._ethersProvider).not.toBeUndefined();
   });
 

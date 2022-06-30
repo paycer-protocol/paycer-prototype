@@ -11,13 +11,13 @@ import { WETHContract } from './weth';
 describe('eth', () => {
   it('should append eth prefix to contract address', () => {
     expect(
-      appendEthToContractAddress(WETHContract.MAINNET().contractAddress)
+      appendEthToContractAddress(WETHContract.MAINNET().contractAddress),
     ).toEqual(ETH.MAINNET().contractAddress);
   });
 
   it('should remove eth prefix to contract address', () => {
     expect(removeEthFromContractAddress(ETH.MAINNET().contractAddress)).toEqual(
-      WETHContract.MAINNET().contractAddress
+      WETHContract.MAINNET().contractAddress,
     );
   });
 

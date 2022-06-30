@@ -1,61 +1,61 @@
-import React from 'react'
-import classnames from 'classnames'
-import styled from 'styled-components'
-import BaseModal, { ModalProps as BaseModalProps } from 'react-bootstrap/Modal'
-import ModalBody from 'react-bootstrap/ModalBody'
-import ModalContext from 'react-bootstrap/ModalContext'
-import ModalDialog from 'react-bootstrap/ModalDialog'
-import ModalTitle from 'react-bootstrap/ModalTitle'
-import ModalFooter from 'react-bootstrap/ModalFooter'
-import BaseModalHeader, { ModalHeaderProps } from 'react-bootstrap/ModalHeader'
-import { XLg } from '@styled-icons/bootstrap'
-import Icon from '@components/atoms/icon'
+import React from 'react';
+import classnames from 'classnames';
+import styled from 'styled-components';
+import BaseModal, { ModalProps as BaseModalProps } from 'react-bootstrap/Modal';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalContext from 'react-bootstrap/ModalContext';
+import ModalDialog from 'react-bootstrap/ModalDialog';
+import ModalTitle from 'react-bootstrap/ModalTitle';
+import ModalFooter from 'react-bootstrap/ModalFooter';
+import BaseModalHeader, { ModalHeaderProps } from 'react-bootstrap/ModalHeader';
+import { XLg } from '@styled-icons/bootstrap';
+import Icon from '@components/atoms/icon';
 
 const StyledModalTitle = styled(ModalTitle)`
     font-size: 22px;
     margin-bottom: 0;
     font-weight: 600;
     line-height: 20px;
-`
+`;
 
 export interface ModalProps extends BaseModalProps {
-    vertical?: boolean
+  vertical?: boolean
 }
 
 const Modal = (props: ModalProps) => {
-    const { vertical = false, ...restProps } = props
+  const { vertical = false, ...restProps } = props;
 
-    return (
-        <>
-            {/* @ts-ignore */ }
-            <BaseModal
-                {...restProps}
-                dialogClassName={classnames({'modal-dialog-vertical': vertical})}
-            />
-        </>
-    )
-}
+  return (
+    <>
+      {/* @ts-ignore */ }
+      <BaseModal
+        {...restProps}
+        dialogClassName={classnames({ 'modal-dialog-vertical': vertical })}
+      />
+    </>
+  );
+};
 
 const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
-    <BaseModalHeader className="p-4">
-        {children}
-        {closeButton && (
-            <a className="text-muted" style={{position: 'relative', top: '-2px', right: '2px'}} onClick={onHide}>
-                <Icon
-                    onClick={onHide}
-                    component={XLg}
-                    size={16}
-                />
-            </a>
-        )}
-    </BaseModalHeader>
-)
+  <BaseModalHeader className="p-4">
+    {children}
+    {closeButton && (
+    <a className="text-muted" style={{ position: 'relative', top: '-2px', right: '2px' }} onClick={onHide}>
+      <Icon
+        onClick={onHide}
+        component={XLg}
+        size={16}
+      />
+    </a>
+    )}
+  </BaseModalHeader>
+);
 
-Modal.Body = ModalBody
-Modal.Context = ModalContext
-Modal.Dialog = ModalDialog
-Modal.Title = StyledModalTitle
-Modal.Header = ModalHeader
-Modal.Footer = ModalFooter
+Modal.Body = ModalBody;
+Modal.Context = ModalContext;
+Modal.Dialog = ModalDialog;
+Modal.Title = StyledModalTitle;
+Modal.Header = ModalHeader;
+Modal.Footer = ModalFooter;
 
-export default Modal
+export default Modal;

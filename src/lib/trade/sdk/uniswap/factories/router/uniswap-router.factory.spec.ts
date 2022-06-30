@@ -30,7 +30,7 @@ describe('UniswapRouterFactory', () => {
       fromToken,
       toToken,
       new UniswapPairSettings(),
-      ethersProvider
+      ethersProvider,
     );
 
     describe('getAllPossibleRoutes', () => {
@@ -39,7 +39,7 @@ describe('UniswapRouterFactory', () => {
           const result = await uniswapRouterFactory.getAllPossibleRoutes();
           expect(result.v2.length > 0).toEqual(true);
           expect(
-            result.v2.filter((c) => c.route.length > 2).length > 0
+            result.v2.filter((c) => c.route.length > 2).length > 0,
           ).toEqual(true);
         });
 
@@ -50,12 +50,12 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
           expect(
-            result.v2.filter((c) => c.route.length > 2).length === 0
+            result.v2.filter((c) => c.route.length > 2).length === 0,
           ).toEqual(true);
         });
       });
@@ -73,12 +73,12 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
           expect(
-            result.v3.filter((c) => c.route.length > 2).length === 0
+            result.v3.filter((c) => c.route.length > 2).length === 0,
           ).toEqual(true);
         });
       });
@@ -87,11 +87,10 @@ describe('UniswapRouterFactory', () => {
     describe('getAllPossibleRoutesWithQuotes', () => {
       describe(TradeDirection.input, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.input
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.input,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -102,26 +101,25 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length === 0
+            result.filter((c) => c.routePathArray.length > 2).length === 0,
           ).toEqual(true);
         });
       });
 
       describe(TradeDirection.output, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.output
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.output,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -132,15 +130,15 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length === 0
+            result.filter((c) => c.routePathArray.length > 2).length === 0,
           ).toEqual(true);
         });
       });
@@ -156,12 +154,12 @@ describe('UniswapRouterFactory', () => {
               MOCKFUN(),
               MOCKREP(),
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v2] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(10000),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).toEqual('FUN > WETH > REP');
           });
@@ -175,12 +173,12 @@ describe('UniswapRouterFactory', () => {
               MOCKFUN(),
               MOCKREP(),
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v2] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(50),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('FUN > WETH > REP');
           });
@@ -196,12 +194,12 @@ describe('UniswapRouterFactory', () => {
               fromToken,
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v3] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(100),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > UNI');
           });
@@ -215,12 +213,12 @@ describe('UniswapRouterFactory', () => {
               fromToken,
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v3] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(100),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > UNI');
           });
@@ -231,11 +229,11 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(10000),
-            TradeDirection.input
+            TradeDirection.input,
           );
           if (result.bestRouteQuote.uniswapVersion === UniswapVersion.v2) {
             expect(result.bestRouteQuote.routeText).toEqual(
-              'AAVE > WETH > UNI'
+              'AAVE > WETH > UNI',
             );
           } else {
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > UNI');
@@ -252,16 +250,16 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           await expect(
-            factory.findBestRoute(new BigNumber(100), TradeDirection.input)
+            factory.findBestRoute(new BigNumber(100), TradeDirection.input),
           ).rejects.toThrowError(
             new UniswapError(
               `No routes found for ${MOCKFUN().symbol} > ${MOCKREP().symbol}`,
-              ErrorCodes.noRoutesFound
-            )
+              ErrorCodes.noRoutesFound,
+            ),
           );
         });
       });
@@ -270,11 +268,11 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(1000),
-            TradeDirection.output
+            TradeDirection.output,
           );
           if (result.bestRouteQuote.uniswapVersion === UniswapVersion.v2) {
             expect(result.bestRouteQuote.routeText).toEqual(
-              'AAVE > WETH > UNI'
+              'AAVE > WETH > UNI',
             );
           } else {
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > UNI');
@@ -291,16 +289,16 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           await expect(
-            factory.findBestRoute(new BigNumber(100), TradeDirection.output)
+            factory.findBestRoute(new BigNumber(100), TradeDirection.output),
           ).rejects.toThrowError(
             new UniswapError(
               `No routes found for ${MOCKFUN().symbol} > ${MOCKREP().symbol}`,
-              ErrorCodes.noRoutesFound
-            )
+              ErrorCodes.noRoutesFound,
+            ),
           );
         });
       });
@@ -317,7 +315,7 @@ describe('UniswapRouterFactory', () => {
       fromToken,
       toToken,
       new UniswapPairSettings(),
-      ethersProvider
+      ethersProvider,
     );
 
     describe('getAllPossibleRoutes', () => {
@@ -326,7 +324,7 @@ describe('UniswapRouterFactory', () => {
           const result = await uniswapRouterFactory.getAllPossibleRoutes();
           expect(result.v2.length > 0).toEqual(true);
           expect(
-            result.v2.filter((c) => c.route.length > 2).length > 0
+            result.v2.filter((c) => c.route.length > 2).length > 0,
           ).toEqual(true);
         });
 
@@ -340,7 +338,7 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
@@ -348,7 +346,7 @@ describe('UniswapRouterFactory', () => {
           expect(result.v2[0].route[0]).toEqual(fromToken);
           expect(result.v2[0].route[1]).toEqual(toToken);
           expect(
-            result.v2.filter((c) => c.route.length > 2).length > 0
+            result.v2.filter((c) => c.route.length > 2).length > 0,
           ).toEqual(false);
         });
       });
@@ -369,14 +367,14 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v3],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
           expect(result.v3[0].route[0]).toEqual(fromToken);
           expect(result.v3[0].route[1]).toEqual(toToken);
           expect(
-            result.v3.filter((c) => c.route.length > 2).length > 0
+            result.v3.filter((c) => c.route.length > 2).length > 0,
           ).toEqual(false);
         });
       });
@@ -385,11 +383,10 @@ describe('UniswapRouterFactory', () => {
     describe('getAllPossibleRoutesWithQuotes', () => {
       describe(TradeDirection.output, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.output
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.output,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -400,26 +397,25 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length > 0
+            result.filter((c) => c.routePathArray.length > 2).length > 0,
           ).toEqual(false);
         });
       });
 
       describe(TradeDirection.input, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.input
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.input,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -430,15 +426,15 @@ describe('UniswapRouterFactory', () => {
             fromToken,
             toToken,
             new UniswapPairSettings({ disableMultihops: true }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length > 0
+            result.filter((c) => c.routePathArray.length > 2).length > 0,
           ).toEqual(false);
         });
       });
@@ -454,12 +450,12 @@ describe('UniswapRouterFactory', () => {
               MOCKFUN(),
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v2] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(10000000),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).not.toBeUndefined();
           });
@@ -473,12 +469,12 @@ describe('UniswapRouterFactory', () => {
               MOCKFUN(),
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v2] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(1),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('FUN > ETH');
           });
@@ -494,12 +490,12 @@ describe('UniswapRouterFactory', () => {
               MOCKAAVE(),
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v3] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(10000),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > ETH');
           });
@@ -513,12 +509,12 @@ describe('UniswapRouterFactory', () => {
               MOCKAAVE(),
               toToken,
               new UniswapPairSettings({ uniswapVersions: [UniswapVersion.v3] }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(1),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('AAVE > ETH');
           });
@@ -529,7 +525,7 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(result.bestRouteQuote.routeText).not.toBeUndefined();
         });
@@ -543,18 +539,18 @@ describe('UniswapRouterFactory', () => {
             new UniswapPairSettings({
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.input
+            TradeDirection.input,
           );
 
           expect(result.bestRouteQuote.routeText).toEqual('AAVE > ETH');
           expect(
             result.triedRoutesQuote.filter((c) => c.routePathArray.length > 2)
-              .length > 0
+              .length > 0,
           ).toEqual(true);
         });
       });
@@ -563,7 +559,7 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(result.bestRouteQuote.routeText).toEqual('AAVE > ETH');
         });
@@ -577,18 +573,18 @@ describe('UniswapRouterFactory', () => {
             new UniswapPairSettings({
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.output
+            TradeDirection.output,
           );
 
           expect(result.bestRouteQuote.routeText).toEqual('AAVE > ETH');
           expect(
             result.triedRoutesQuote.filter((c) => c.routePathArray.length > 2)
-              .length > 0
+              .length > 0,
           ).toEqual(false);
         });
       });
@@ -607,7 +603,7 @@ describe('UniswapRouterFactory', () => {
       new UniswapPairSettings({
         uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
       }),
-      ethersProvider
+      ethersProvider,
     );
 
     describe('getAllPossibleRoutes', () => {
@@ -616,7 +612,7 @@ describe('UniswapRouterFactory', () => {
           const result = await uniswapRouterFactory.getAllPossibleRoutes();
           expect(result.v2.length > 0).toEqual(true);
           expect(
-            result.v2.filter((c) => c.route.length > 2).length > 0
+            result.v2.filter((c) => c.route.length > 2).length > 0,
           ).toEqual(true);
         });
 
@@ -630,7 +626,7 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
@@ -638,7 +634,7 @@ describe('UniswapRouterFactory', () => {
           expect(result.v2[0].route[0]).toEqual(fromToken);
           expect(result.v2[0].route[1]).toEqual(toToken);
           expect(
-            result.v2.filter((c) => c.route.length > 2).length === 0
+            result.v2.filter((c) => c.route.length > 2).length === 0,
           ).toEqual(true);
         });
       });
@@ -659,14 +655,14 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v3],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutes();
           expect(result.v3[0].route[0]).toEqual(fromToken);
           expect(result.v3[0].route[1]).toEqual(toToken);
           expect(
-            result.v3.filter((c) => c.route.length > 2).length === 0
+            result.v3.filter((c) => c.route.length > 2).length === 0,
           ).toEqual(true);
         });
       });
@@ -675,11 +671,10 @@ describe('UniswapRouterFactory', () => {
     describe('getAllPossibleRoutesWithQuotes', () => {
       describe(TradeDirection.input, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.input
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.input,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -693,25 +688,24 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length > 0
+            result.filter((c) => c.routePathArray.length > 2).length > 0,
           ).toEqual(false);
         });
       });
       describe(TradeDirection.output, () => {
         it('should get all possible routes with quote', async () => {
-          const result =
-            await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
-              new BigNumber(1),
-              TradeDirection.output
-            );
+          const result = await uniswapRouterFactory.getAllPossibleRoutesWithQuotes(
+            new BigNumber(1),
+            TradeDirection.output,
+          );
           expect(result.length > 0).toEqual(true);
         });
 
@@ -725,15 +719,15 @@ describe('UniswapRouterFactory', () => {
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
               disableMultihops: true,
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.getAllPossibleRoutesWithQuotes(
             new BigNumber(1),
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(
-            result.filter((c) => c.routePathArray.length > 2).length > 0
+            result.filter((c) => c.routePathArray.length > 2).length > 0,
           ).toEqual(false);
         });
       });
@@ -751,12 +745,12 @@ describe('UniswapRouterFactory', () => {
               new UniswapPairSettings({
                 uniswapVersions: [UniswapVersion.v2],
               }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(10000),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).not.toBeUndefined();
           });
@@ -772,12 +766,12 @@ describe('UniswapRouterFactory', () => {
               new UniswapPairSettings({
                 uniswapVersions: [UniswapVersion.v2],
               }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(10000),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('ETH > FUN');
           });
@@ -795,12 +789,12 @@ describe('UniswapRouterFactory', () => {
               new UniswapPairSettings({
                 uniswapVersions: [UniswapVersion.v3],
               }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(100),
-              TradeDirection.input
+              TradeDirection.input,
             );
             expect(result.bestRouteQuote.routeText).toEqual('ETH > AAVE');
           });
@@ -816,12 +810,12 @@ describe('UniswapRouterFactory', () => {
               new UniswapPairSettings({
                 uniswapVersions: [UniswapVersion.v3],
               }),
-              ethersProvider
+              ethersProvider,
             );
 
             const result = await factory.findBestRoute(
               new BigNumber(100),
-              TradeDirection.output
+              TradeDirection.output,
             );
             expect(result.bestRouteQuote.routeText).toEqual('ETH > AAVE');
           });
@@ -832,7 +826,7 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(result.bestRouteQuote.routeText).not.toBeUndefined();
         });
@@ -846,12 +840,12 @@ describe('UniswapRouterFactory', () => {
             new UniswapPairSettings({
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.input
+            TradeDirection.input,
           );
 
           expect(result.bestRouteQuote.routeText).toEqual('ETH > AAVE');
@@ -862,7 +856,7 @@ describe('UniswapRouterFactory', () => {
         it('should find best route', async () => {
           const result = await uniswapRouterFactory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(result.bestRouteQuote.routeText).toEqual('ETH > AAVE');
         });
@@ -876,12 +870,12 @@ describe('UniswapRouterFactory', () => {
             new UniswapPairSettings({
               uniswapVersions: [UniswapVersion.v2, UniswapVersion.v3],
             }),
-            ethersProvider
+            ethersProvider,
           );
 
           const result = await factory.findBestRoute(
             new BigNumber(100),
-            TradeDirection.output
+            TradeDirection.output,
           );
 
           expect(result.bestRouteQuote.routeText).toEqual('ETH > AAVE');

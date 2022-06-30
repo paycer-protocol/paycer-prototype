@@ -12,7 +12,7 @@ describe('EthersProvider', () => {
     it('getContract', () => {
       const result = ethersProvider.getContract<PairContractContext>(
         JSON.stringify(UniswapContractContextV2.pairAbi),
-        UniswapContractContextV2.pairAddress
+        UniswapContractContextV2.pairAddress,
       );
 
       expect(result).not.toBeUndefined();
@@ -52,15 +52,15 @@ describe('EthersProvider', () => {
       }).toThrowError(
         new UniswapError(
           'Can not find chain name for 10293. This lib only supports mainnet(1), ropsten(4), kovan(42), rinkeby(4) and görli(5)',
-          ErrorCodes.canNotFindChainId
-        )
+          ErrorCodes.canNotFindChainId,
+        ),
       );
     });
 
     it('getContract', () => {
       const result = ethersProvider.getContract<PairContractContext>(
         JSON.stringify(UniswapContractContextV2.pairAbi),
-        UniswapContractContextV2.pairAddress
+        UniswapContractContextV2.pairAddress,
       );
 
       expect(result).not.toBeUndefined();

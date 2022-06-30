@@ -1,9 +1,9 @@
-import React from 'react'
-import { t } from '@lingui/macro'
-import PageHeader from '@components/molecules/page-header'
-import PortalBlockNumber from '@components/organisms/portal-block-number'
-import VestingWrapper from '@components/organisms/vesting'
-import Layout from '@components/organisms/layout'
+import React from 'react';
+import { t } from '@lingui/macro';
+import PageHeader from '@components/molecules/page-header';
+import PortalBlockNumber from '@components/organisms/portal-block-number';
+import VestingWrapper from '@components/organisms/vesting';
+import Layout from '@components/organisms/layout';
 
 export default function Vesting() {
   return (
@@ -25,6 +25,5 @@ export default function Vesting() {
       </div>
       <PortalBlockNumber />
     </Layout>
-  )
+  );
 }
-

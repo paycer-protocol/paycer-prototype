@@ -32,18 +32,18 @@ describe('UniswapPairFactory', () => {
 
     const uniswapPairFactory = new UniswapPairFactory(
       new CoinGecko(),
-      uniswapPairFactoryContext
+      uniswapPairFactoryContext,
     );
 
     it('`toToken` should retun correctly', () => {
       expect(uniswapPairFactory.toToken).toEqual(
-        uniswapPairFactoryContext.toToken
+        uniswapPairFactoryContext.toToken,
       );
     });
 
     it('`fromToken` should retun correctly', () => {
       expect(uniswapPairFactory.fromToken).toEqual(
-        uniswapPairFactoryContext.fromToken
+        uniswapPairFactoryContext.fromToken,
       );
     });
 
@@ -59,7 +59,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(result).not.toBeUndefined();
         });
@@ -69,7 +69,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(result).not.toBeUndefined();
         });
@@ -79,22 +79,20 @@ describe('UniswapPairFactory', () => {
     describe('findAllPossibleRoutesWithQuote', () => {
       describe(TradeDirection.input, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.input
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.input,
+          );
           expect(result).not.toBeUndefined();
         });
       });
 
       describe(TradeDirection.output, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.output
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.output,
+          );
           expect(result).not.toBeUndefined();
         });
       });
@@ -168,10 +166,9 @@ describe('UniswapPairFactory', () => {
     describe('generateApproveMaxAllowanceData', () => {
       describe('v2', () => {
         it('should generate the approve max allowance data', async () => {
-          const result =
-            await uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v2
-            );
+          const result = await uniswapPairFactory.generateApproveMaxAllowanceData(
+            UniswapVersion.v2,
+          );
           expect(result).toEqual({
             data: '0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
             from: '0xB1E6079212888f0bE0cf55874B2EB9d7a5e02cD9',
@@ -183,10 +180,9 @@ describe('UniswapPairFactory', () => {
 
       describe('v2', () => {
         it('should generate the approve max allowance data', async () => {
-          const result =
-            await uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v3
-            );
+          const result = await uniswapPairFactory.generateApproveMaxAllowanceData(
+            UniswapVersion.v3,
+          );
           expect(result).toEqual({
             data: '0x095ea7b3000000000000000000000000e592427a0aece92de3edee1f18e0157c05861564ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
             from: '0xB1E6079212888f0bE0cf55874B2EB9d7a5e02cD9',
@@ -209,18 +205,18 @@ describe('UniswapPairFactory', () => {
 
     const uniswapPairFactory = new UniswapPairFactory(
       new CoinGecko(),
-      uniswapPairFactoryContext
+      uniswapPairFactoryContext,
     );
 
     it('`toToken` should retun correctly', () => {
       expect(uniswapPairFactory.toToken).toEqual(
-        uniswapPairFactoryContext.toToken
+        uniswapPairFactoryContext.toToken,
       );
     });
 
     it('`fromToken` should retun correctly', () => {
       expect(uniswapPairFactory.fromToken).toEqual(
-        uniswapPairFactoryContext.fromToken
+        uniswapPairFactoryContext.fromToken,
       );
     });
 
@@ -236,7 +232,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(result).not.toBeUndefined();
         });
@@ -246,7 +242,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(result).not.toBeUndefined();
         });
@@ -256,22 +252,20 @@ describe('UniswapPairFactory', () => {
     describe('findAllPossibleRoutesWithQuote', () => {
       describe(TradeDirection.input, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.input
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.input,
+          );
           expect(result).not.toBeUndefined();
         });
       });
 
       describe(TradeDirection.output, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.output
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.output,
+          );
           expect(result).not.toBeUndefined();
         });
       });
@@ -345,10 +339,9 @@ describe('UniswapPairFactory', () => {
     describe('generateApproveMaxAllowanceData', () => {
       describe('v2', () => {
         it('should generate the approve max allowance data', async () => {
-          const result =
-            await uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v2
-            );
+          const result = await uniswapPairFactory.generateApproveMaxAllowanceData(
+            UniswapVersion.v2,
+          );
           expect(result).toEqual({
             data: '0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
             from: '0xB1E6079212888f0bE0cf55874B2EB9d7a5e02cD9',
@@ -360,10 +353,9 @@ describe('UniswapPairFactory', () => {
 
       describe('v3', () => {
         it('should generate the approve max allowance data', async () => {
-          const result =
-            await uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v3
-            );
+          const result = await uniswapPairFactory.generateApproveMaxAllowanceData(
+            UniswapVersion.v3,
+          );
           expect(result).toEqual({
             data: '0x095ea7b3000000000000000000000000e592427a0aece92de3edee1f18e0157c05861564ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
             from: '0xB1E6079212888f0bE0cf55874B2EB9d7a5e02cD9',
@@ -386,18 +378,18 @@ describe('UniswapPairFactory', () => {
 
     const uniswapPairFactory = new UniswapPairFactory(
       new CoinGecko(),
-      uniswapPairFactoryContext
+      uniswapPairFactoryContext,
     );
 
     it('`toToken` should retun correctly', () => {
       expect(uniswapPairFactory.toToken).toEqual(
-        uniswapPairFactoryContext.toToken
+        uniswapPairFactoryContext.toToken,
       );
     });
 
     it('`fromToken` should retun correctly', () => {
       expect(uniswapPairFactory.fromToken).toEqual(
-        uniswapPairFactoryContext.fromToken
+        uniswapPairFactoryContext.fromToken,
       );
     });
 
@@ -413,7 +405,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.input
+            TradeDirection.input,
           );
           expect(result).not.toBeUndefined();
         });
@@ -423,7 +415,7 @@ describe('UniswapPairFactory', () => {
         it('should return the best route', async () => {
           const result = await uniswapPairFactory.findBestRoute(
             '1',
-            TradeDirection.output
+            TradeDirection.output,
           );
           expect(result).not.toBeUndefined();
         });
@@ -433,22 +425,20 @@ describe('UniswapPairFactory', () => {
     describe('findAllPossibleRoutesWithQuote', () => {
       describe(TradeDirection.input, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.input
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.input,
+          );
           expect(result).not.toBeUndefined();
         });
       });
 
       describe(TradeDirection.output, () => {
         it('should return all possible routes with quotes', async () => {
-          const result =
-            await uniswapPairFactory.findAllPossibleRoutesWithQuote(
-              '1',
-              TradeDirection.output
-            );
+          const result = await uniswapPairFactory.findAllPossibleRoutesWithQuote(
+            '1',
+            TradeDirection.output,
+          );
           expect(result).not.toBeUndefined();
         });
       });
@@ -466,7 +456,7 @@ describe('UniswapPairFactory', () => {
         it('should always return max hex', async () => {
           const result = await uniswapPairFactory.allowance(UniswapVersion.v2);
           expect(result).toEqual(
-            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
           );
         });
       });
@@ -475,7 +465,7 @@ describe('UniswapPairFactory', () => {
         it('should always return max hex', async () => {
           const result = await uniswapPairFactory.allowance(UniswapVersion.v3);
           expect(result).toEqual(
-            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
           );
         });
       });
@@ -486,13 +476,13 @@ describe('UniswapPairFactory', () => {
         it('should throw when generating the approve max allowance data', async () => {
           await expect(
             uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v2
-            )
+              UniswapVersion.v2,
+            ),
           ).rejects.toThrowError(
             new UniswapError(
               'You do not need to generate approve uniswap allowance when doing eth > erc20',
-              ErrorCodes.generateApproveMaxAllowanceDataNotAllowed
-            )
+              ErrorCodes.generateApproveMaxAllowanceDataNotAllowed,
+            ),
           );
         });
       });
@@ -501,13 +491,13 @@ describe('UniswapPairFactory', () => {
         it('should throw when generating the approve max allowance data', async () => {
           await expect(
             uniswapPairFactory.generateApproveMaxAllowanceData(
-              UniswapVersion.v3
-            )
+              UniswapVersion.v3,
+            ),
           ).rejects.toThrowError(
             new UniswapError(
               'You do not need to generate approve uniswap allowance when doing eth > erc20',
-              ErrorCodes.generateApproveMaxAllowanceDataNotAllowed
-            )
+              ErrorCodes.generateApproveMaxAllowanceDataNotAllowed,
+            ),
           );
         });
       });

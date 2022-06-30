@@ -1,2 +1,2 @@
-export { default } from './portal'
-export { PortalRoot, getRootElement } from './root'
+export { default } from './portal';
+export { PortalRoot, getRootElement } from './root';

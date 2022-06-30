@@ -24,12 +24,12 @@ describe('TokensFactoryPublic', () => {
         tokensFactory.getTokens([
           '0x419D0d8BdD9aF5e606Ae2232ed285Aff190E722c',
           MOCKREP().contractAddress,
-        ])
+        ]),
       ).rejects.toThrowError(
         new UniswapError(
           'invalid from or to contract tokens',
-          ErrorCodes.invalidFromOrToContractToken
-        )
+          ErrorCodes.invalidFromOrToContractToken,
+        ),
       );
     });
   });
@@ -43,7 +43,7 @@ describe('TokensFactoryPublic', () => {
           MOCKFUN().contractAddress,
           MOCKREP().contractAddress,
         ],
-        true
+        true,
       );
       expect(result[0]).toEqual({
         token: ETH.MAINNET(),
@@ -81,7 +81,7 @@ describe('TokensFactoryPublic', () => {
           MOCKFUN().contractAddress,
           MOCKREP().contractAddress,
         ],
-        false
+        false,
       );
       expect(result[0]).toEqual({
         token: ETH.MAINNET(),

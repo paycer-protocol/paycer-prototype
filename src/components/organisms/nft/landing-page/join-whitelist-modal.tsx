@@ -1,13 +1,13 @@
-import Alert from "@components/atoms/alert"
-import GradientButton from "@components/atoms/button/gradient-button"
-import Form from "@components/atoms/form"
-import Input from "@components/atoms/form/input"
-import Modal from "@components/molecules/modal"
-import { useDapp } from '@context/dapp-context'
-import { t, Trans } from "@lingui/macro"
-import api from "api"
-import { useCallback, useState } from "react"
-import * as Yup from "yup";
+import Alert from '@components/atoms/alert';
+import GradientButton from '@components/atoms/button/gradient-button';
+import Form from '@components/atoms/form';
+import Input from '@components/atoms/form/input';
+import Modal from '@components/molecules/modal';
+import { useDapp } from '@context/dapp-context';
+import { t, Trans } from '@lingui/macro';
+import api from 'api';
+import { useCallback, useState } from 'react';
+import * as Yup from 'yup';
 
 interface JoinWhitelistModalProps {
   show: boolean
@@ -23,16 +23,16 @@ const schema = Yup.object({
 });
 
 export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
-  //const { address } = useWallet();
+  // const { address } = useWallet();
 
   const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'error' | undefined>(undefined);
 
   const onSubmit = useCallback(async ({ email }: FormValues) => {
-    const result = await api.joinNftWhitelist(email,'landingPage');
+    const result = await api.joinNftWhitelist(email, 'landingPage');
     setStatus(result);
   }, []);
 
-  //if (!address) return null;
+  // if (!address) return null;
 
   return (
     <Modal centered show={props.show} onHide={props.onHide}>
@@ -43,7 +43,8 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
         <Modal.Body>
           {
             status === 'success'
-              ? <div>
+              ? (
+                <div>
                   <p>{t`An email has been sent to your address. Click the confirmation link.`}</p>
                   <div className="mt-4" onClick={props.onHide}>
                     <GradientButton className="w-100">
@@ -51,7 +52,9 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                     </GradientButton>
                   </div>
                 </div>
-              : <Form
+              )
+              : (
+                <Form
                   initialValues={{ email: '' }}
                   validationSchema={schema}
                   validateOnChange={false}
@@ -74,10 +77,11 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
                     </div>
                   )}
                 </Form>
+              )
           }
 
         </Modal.Body>
       </>
     </Modal>
-  )
+  );
 }

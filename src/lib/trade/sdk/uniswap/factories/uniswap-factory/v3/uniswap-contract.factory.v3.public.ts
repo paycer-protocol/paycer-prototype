@@ -10,7 +10,7 @@ import { UniswapContractFactoryV3 } from './uniswap-contract.factory.v3';
 export class UniswapContractFactoryV3Public extends UniswapContractFactoryV3 {
   constructor(
     providerContext: ChainIdAndProvider | EthereumProvider,
-    factoryAddress: string = UniswapContractContextV3.factoryAddress
+    factoryAddress: string = UniswapContractContextV3.factoryAddress,
   ) {
     super(new EthersProvider(providerContext), factoryAddress);
   }

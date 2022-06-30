@@ -4,10 +4,10 @@ import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
 import { BigNumber, BigNumberish, ContractTransaction } from 'ethers';
 
 export type ContractContext = EthersContractContextV5<
-  UniswapPairV2,
-  UniswapPairV2MethodNames,
-  UniswapPairV2EventsContext,
-  UniswapPairV2Events
+UniswapPairV2,
+UniswapPairV2MethodNames,
+UniswapPairV2EventsContext,
+UniswapPairV2Events
 >;
 
 export declare type EventFilter = {

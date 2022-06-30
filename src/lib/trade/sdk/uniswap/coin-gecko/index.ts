@@ -7,11 +7,12 @@ import { CoinGeckoResponse } from './models/coin-gecko-response';
 
 export class CoinGecko {
   private _fiatPriceCache:
-    | {
-        cachedResponse: CoinGeckoResponse;
-        timestamp: number;
-      }
-    | undefined = undefined;
+  | {
+    cachedResponse: CoinGeckoResponse;
+    timestamp: number;
+  }
+  | undefined = undefined;
+
   // 90 seconds cache
   private _cacheMilliseconds = 90000;
   constructor() {}
@@ -21,17 +22,15 @@ export class CoinGecko {
    * @param contractAddress The array of contract addresses
    */
   public async getCoinGeckoFiatPrices(
-    contractAddresses: string[]
+    contractAddresses: string[],
   ): Promise<CoinGeckoResponse> {
-    contractAddresses = contractAddresses.map((address) =>
-      removeEthFromContractAddress(address)
-    );
+    contractAddresses = contractAddresses.map((address) => removeEthFromContractAddress(address));
 
     if (this._fiatPriceCache) {
       const now = Date.now();
       if (
-        deepClone(this._fiatPriceCache.timestamp) >
-        now - this._cacheMilliseconds
+        deepClone(this._fiatPriceCache.timestamp)
+        > now - this._cacheMilliseconds
       ) {
         return this._fiatPriceCache.cachedResponse;
       }
@@ -42,7 +41,7 @@ export class CoinGecko {
 
       const response = await (
         await fetch(
-          `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${contractAddresses.join()}&vs_currencies=usd`
+          `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${contractAddresses.join()}&vs_currencies=usd`,
         )
       ).json();
 
@@ -50,7 +49,7 @@ export class CoinGecko {
         for (let i = 0; i < contractAddresses.length; i++) {
           const mappedKey = getAddress(key);
           // @ts-nocheck
-          coinGeckoResponse[mappedKey] = Number(value['usd']);
+          coinGeckoResponse[mappedKey] = Number(value.usd);
         }
       }
 

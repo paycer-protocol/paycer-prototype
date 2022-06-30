@@ -1,1 +1,1 @@
-export { default } from './indicator-item'
+export { default } from './indicator-item';

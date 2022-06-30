@@ -5,11 +5,11 @@ import { UniswapContractContextV3 } from './uniswap-contract-context-v3';
 export const uniswapContracts = {
   v2: {
     getRouterAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v2Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v2Override
       ) {
         return cloneUniswapContractDetails.v2Override.routerAddress;
       }
@@ -18,11 +18,11 @@ export const uniswapContracts = {
     },
 
     getFactoryAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v2Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v2Override
       ) {
         return cloneUniswapContractDetails.v2Override.factoryAddress;
       }
@@ -31,11 +31,11 @@ export const uniswapContracts = {
     },
 
     getPairAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v2Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v2Override
       ) {
         return cloneUniswapContractDetails.v2Override.pairAddress;
       }
@@ -45,11 +45,11 @@ export const uniswapContracts = {
   },
   v3: {
     getRouterAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v3Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v3Override
       ) {
         return cloneUniswapContractDetails.v3Override.routerAddress;
       }
@@ -58,11 +58,11 @@ export const uniswapContracts = {
     },
 
     getFactoryAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v3Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v3Override
       ) {
         return cloneUniswapContractDetails.v3Override.factoryAddress;
       }
@@ -71,11 +71,11 @@ export const uniswapContracts = {
     },
 
     getQuoterAddress: (
-      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined
+      cloneUniswapContractDetails: CloneUniswapContractDetails | undefined,
     ) => {
       if (
-        cloneUniswapContractDetails &&
-        cloneUniswapContractDetails.v3Override
+        cloneUniswapContractDetails
+        && cloneUniswapContractDetails.v3Override
       ) {
         return cloneUniswapContractDetails.v3Override.quoterAddress;
       }

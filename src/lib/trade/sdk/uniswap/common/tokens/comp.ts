@@ -28,7 +28,7 @@ export class COMP {
       default:
         throw new UniswapError(
           `${chainId} is not allowed`,
-          ErrorCodes.tokenChainIdContractDoesNotExist
+          ErrorCodes.tokenChainIdContractDoesNotExist,
         );
     }
   }

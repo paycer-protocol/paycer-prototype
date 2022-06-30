@@ -1,6 +1,6 @@
-import React from 'react'
-import Icon from '@components/atoms/icon'
-import * as Styles from './styles'
+import React from 'react';
+import Icon from '@components/atoms/icon';
+import * as Styles from './styles';
 
 export interface TimelineActivityProps {
   children?: any
@@ -12,13 +12,13 @@ export interface TimelineActivityProps {
 }
 
 const Content = ({ children }) => (
-    <div className="card-text small">
-      {children}
-    </div>
-)
+  <div className="card-text small">
+    {children}
+  </div>
+);
 
 const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
-  const { iconComponent, title } = props
+  const { iconComponent, title } = props;
 
   return (
     <Styles.StyledListGroupItem className="list-group-item" isIndendet={props.isIndendet} isIndendetOpener={props.isIndendetOpener} isActive={props.isActive}>
@@ -40,9 +40,9 @@ const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {
         </div>
       </div>
     </Styles.StyledListGroupItem>
-  )
-}
+  );
+};
 
-TimelineActivity.Content = Content
+TimelineActivity.Content = Content;
 
-export default TimelineActivity
+export default TimelineActivity;

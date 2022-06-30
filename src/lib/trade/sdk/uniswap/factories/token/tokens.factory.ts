@@ -21,15 +21,15 @@ import { TokenWithAllowanceInfo } from './models/token-with-allowance-info';
 export class TokensFactory {
   private _multicall = new CustomMulticall(
     this._ethersProvider.provider,
-    this._customNetwork?.multicallContractAddress
+    this._customNetwork?.multicallContractAddress,
   );
 
   constructor(
     private _ethersProvider: EthersProvider,
     private _customNetwork?: CustomNetwork | undefined,
     private _cloneUniswapContractDetails?:
-      | CloneUniswapContractDetails
-      | undefined
+    | CloneUniswapContractDetails
+    | undefined,
   ) {}
 
   /**
@@ -80,14 +80,14 @@ export class TokensFactory {
           tokens.push(
             ETH.info(
               this._ethersProvider.network().chainId,
-              this._customNetwork?.nativeWrappedTokenInfo
-            )
+              this._customNetwork?.nativeWrappedTokenInfo,
+            ),
           );
         }
       }
 
       const contractCallResults = await this._multicall.call(
-        contractCallContexts
+        contractCallContexts,
       );
 
       for (const result in contractCallResults.results) {
@@ -105,10 +105,10 @@ export class TokensFactory {
 
       return tokens;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       throw new UniswapError(
         'invalid from or to contract tokens',
-        ErrorCodes.invalidFromOrToContractToken
+        ErrorCodes.invalidFromOrToContractToken,
       );
     }
   }
@@ -122,7 +122,7 @@ export class TokensFactory {
   public async getAllowanceAndBalanceOfForContracts(
     ethereumAddress: string,
     tokenContractAddresses: string[],
-    format = false
+    format = false,
   ): Promise<TokenWithAllowanceInfo[]> {
     const results: TokenWithAllowanceInfo[] = [];
 
@@ -139,38 +139,38 @@ export class TokensFactory {
           this.buildAllowanceAndBalanceContractCallContext(
             ethereumAddress,
             tokenContractAddresses[i],
-            UniswapVersion.v2
-          )
+            UniswapVersion.v2,
+          ),
         );
 
         contractCallContexts.push(
           this.buildAllowanceAndBalanceContractCallContext(
             ethereumAddress,
             tokenContractAddresses[i],
-            UniswapVersion.v3
-          )
+            UniswapVersion.v3,
+          ),
         );
       } else {
         const token = ETH.info(
           this._ethersProvider.network().chainId,
-          this._customNetwork?.nativeWrappedTokenInfo
+          this._customNetwork?.nativeWrappedTokenInfo,
         );
 
         if (format) {
           results.push({
             allowanceAndBalanceOf: {
               allowanceV2: new BigNumber(
-                '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+                '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
               )
                 .shiftedBy(18 * -1)
                 .toFixed(),
               allowanceV3: new BigNumber(
-                '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+                '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
               )
                 .shiftedBy(18 * -1)
                 .toFixed(),
               balanceOf: new BigNumber(
-                await this._ethersProvider.balanceOf(ethereumAddress)
+                await this._ethersProvider.balanceOf(ethereumAddress),
               )
                 .shiftedBy(18 * -1)
                 .toFixed(),
@@ -188,7 +188,7 @@ export class TokensFactory {
             },
             token: ETH.info(
               this._ethersProvider.network().chainId,
-              this._customNetwork?.nativeWrappedTokenInfo
+              this._customNetwork?.nativeWrappedTokenInfo,
             ),
           });
         }
@@ -196,74 +196,71 @@ export class TokensFactory {
     }
 
     const contractCallResults = await this._multicall.call(
-      contractCallContexts
+      contractCallContexts,
     );
 
     for (const result in contractCallResults.results) {
       if (result.includes(`_${UniswapVersion.v2}`)) {
-        const overridenTokenInfo =
-          contractCallResults.results[result].originalContractCallContext
-            .context?.overridenToken;
+        const overridenTokenInfo = contractCallResults.results[result].originalContractCallContext
+          .context?.overridenToken;
 
         const resultInfoV2 = contractCallResults.results[result];
-        const resultInfoV3 =
-          contractCallResults.results[
-            result.replace(`_${UniswapVersion.v2}`, `_${UniswapVersion.v3}`)
-          ];
+        const resultInfoV3 = contractCallResults.results[
+          result.replace(`_${UniswapVersion.v2}`, `_${UniswapVersion.v3}`)
+        ];
 
         if (!format) {
           results.push({
             allowanceAndBalanceOf: {
               allowanceV2: EthersBigNumber.from(
-                resultInfoV2.callsReturnContext[ALLOWANCE].returnValues[0]
+                resultInfoV2.callsReturnContext[ALLOWANCE].returnValues[0],
               ).toHexString(),
               allowanceV3: EthersBigNumber.from(
-                resultInfoV3.callsReturnContext[ALLOWANCE].returnValues[0]
+                resultInfoV3.callsReturnContext[ALLOWANCE].returnValues[0],
               ).toHexString(),
               balanceOf: EthersBigNumber.from(
-                resultInfoV3.callsReturnContext[BALANCEOF].returnValues[0]
+                resultInfoV3.callsReturnContext[BALANCEOF].returnValues[0],
               ).toHexString(),
             },
             token:
               overridenTokenInfo !== undefined
                 ? overridenTokenInfo
                 : {
-                    chainId: this._ethersProvider.network().chainId,
-                    contractAddress:
+                  chainId: this._ethersProvider.network().chainId,
+                  contractAddress:
                       resultInfoV3.originalContractCallContext.contractAddress,
-                    symbol:
+                  symbol:
                       resultInfoV3.callsReturnContext[SYMBOL].returnValues[0],
-                    decimals:
+                  decimals:
                       resultInfoV3.callsReturnContext[DECIMALS].returnValues[0],
-                    name: resultInfoV3.callsReturnContext[NAME].returnValues[0],
-                  },
+                  name: resultInfoV3.callsReturnContext[NAME].returnValues[0],
+                },
           });
         } else {
-          const decimals =
-            overridenTokenInfo !== undefined
-              ? overridenTokenInfo.decimals
-              : resultInfoV2.callsReturnContext[DECIMALS].returnValues[0];
+          const decimals = overridenTokenInfo !== undefined
+            ? overridenTokenInfo.decimals
+            : resultInfoV2.callsReturnContext[DECIMALS].returnValues[0];
 
           results.push({
             allowanceAndBalanceOf: {
               allowanceV2: new BigNumber(
                 EthersBigNumber.from(
-                  resultInfoV2.callsReturnContext[ALLOWANCE].returnValues[0]
-                ).toHexString()
+                  resultInfoV2.callsReturnContext[ALLOWANCE].returnValues[0],
+                ).toHexString(),
               )
                 .shiftedBy(decimals * -1)
                 .toFixed(),
               allowanceV3: new BigNumber(
                 EthersBigNumber.from(
-                  resultInfoV3.callsReturnContext[ALLOWANCE].returnValues[0]
-                ).toHexString()
+                  resultInfoV3.callsReturnContext[ALLOWANCE].returnValues[0],
+                ).toHexString(),
               )
                 .shiftedBy(decimals * -1)
                 .toFixed(),
               balanceOf: new BigNumber(
                 EthersBigNumber.from(
-                  resultInfoV3.callsReturnContext[BALANCEOF].returnValues[0]
-                ).toHexString()
+                  resultInfoV3.callsReturnContext[BALANCEOF].returnValues[0],
+                ).toHexString(),
               )
                 .shiftedBy(decimals * -1)
                 .toFixed(),
@@ -272,15 +269,15 @@ export class TokensFactory {
               overridenTokenInfo !== undefined
                 ? overridenTokenInfo
                 : {
-                    chainId: this._ethersProvider.network().chainId,
-                    contractAddress:
+                  chainId: this._ethersProvider.network().chainId,
+                  contractAddress:
                       resultInfoV3.originalContractCallContext.contractAddress,
-                    symbol:
+                  symbol:
                       resultInfoV3.callsReturnContext[SYMBOL].returnValues[0],
-                    decimals:
+                  decimals:
                       resultInfoV3.callsReturnContext[DECIMALS].returnValues[0],
-                    name: resultInfoV3.callsReturnContext[NAME].returnValues[0],
-                  },
+                  name: resultInfoV3.callsReturnContext[NAME].returnValues[0],
+                },
           });
         }
       }
@@ -292,7 +289,7 @@ export class TokensFactory {
   private buildAllowanceAndBalanceContractCallContext(
     ethereumAddress: string,
     tokenContractAddress: string,
-    uniswapVersion: UniswapVersion
+    uniswapVersion: UniswapVersion,
   ): ContractCallContext {
     const defaultCallContext: ContractCallContext = {
       reference: `${tokenContractAddress}_${uniswapVersion}`,
@@ -306,11 +303,11 @@ export class TokensFactory {
             ethereumAddress,
             uniswapVersion === UniswapVersion.v2
               ? uniswapContracts.v2.getRouterAddress(
-                  this._cloneUniswapContractDetails
-                )
+                this._cloneUniswapContractDetails,
+              )
               : uniswapContracts.v3.getRouterAddress(
-                  this._cloneUniswapContractDetails
-                ),
+                this._cloneUniswapContractDetails,
+              ),
           ],
         },
         {
@@ -340,7 +337,7 @@ export class TokensFactory {
           reference: 'name',
           methodName: 'name',
           methodParameters: [],
-        }
+        },
       );
     }
 

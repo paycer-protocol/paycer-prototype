@@ -1,3 +1,3 @@
-export * from './trade'
-export * from './interfaces'
-export * from './providers/uniswap-provider'
+export * from './trade';
+export * from './interfaces';
+export * from './providers/uniswap-provider';

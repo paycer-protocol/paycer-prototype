@@ -4,9 +4,6 @@ import { MAI } from './mkr';
 
 const _tokenOverrideInfo: Token[] = [DFORCE.MAINNET(), MAI.MAINNET()];
 
-export const isTokenOverrideInfo = (contractAddress: string) => {
-  return _tokenOverrideInfo.find(
-    (info) =>
-      info.contractAddress.toLowerCase() === contractAddress.toLowerCase()
-  );
-};
+export const isTokenOverrideInfo = (contractAddress: string) => _tokenOverrideInfo.find(
+  (info) => info.contractAddress.toLowerCase() === contractAddress.toLowerCase(),
+);

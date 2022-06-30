@@ -1,1 +1,1 @@
-export { default } from './wallet-menu'
+export { default } from './wallet-menu';

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { t } from '@lingui/macro'
-import styled from 'styled-components'
-import Modal from '@components/molecules/modal'
-import CurrencyIcon from '@components/atoms/currency-icon'
-import Alert from '@components/atoms/alert'
-import { TokenType } from '../../../types/investment'
-import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token'
-import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import useToken from "@hooks/use-token";
+import React, { useEffect, useState } from 'react';
+import { t } from '@lingui/macro';
+import styled from 'styled-components';
+import Modal from '@components/molecules/modal';
+import CurrencyIcon from '@components/atoms/currency-icon';
+import Alert from '@components/atoms/alert';
+import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token';
+import { FormattedNumber } from '@components/atoms/number/formatted-number';
+import useToken from '@hooks/use-token';
+import { TokenType } from '../../../types/investment';
 
 interface TokenSelectModalProps {
   show: boolean
@@ -19,31 +19,28 @@ interface TokenSelectModalProps {
 }
 
 export default function TokenSelectModal(props: TokenSelectModalProps) {
-  const { show, onHide, onClick, tokens, activeTokenSymbol, errorMessage } = props
-  const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens)
+  const { show, onHide, onClick, tokens, activeTokenSymbol, errorMessage } = props;
+  const [filteredTokens, setFilteredTokens] = useState<TokenType[]>(tokens);
 
   useEffect(() => {
-    setFilteredTokens(tokens)
-  }, [tokens])
+    setFilteredTokens(tokens);
+  }, [tokens]);
 
   const handleSearch = (e) => {
-    let keywords = e.target.value
+    let keywords = e.target.value;
 
     if (keywords) {
-      keywords = keywords.toLowerCase().split(' ')
-      keywords = keywords.filter(f => f !== '')
+      keywords = keywords.toLowerCase().split(' ');
+      keywords = keywords.filter((f) => f !== '');
 
-      const nextTokens = tokens.filter(f =>
-        keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
-        || keywords.some(k => f.symbol.toLowerCase().includes(k.toLowerCase()))
-      )
+      const nextTokens = tokens.filter((f) => keywords.some((k) => f.name.toLowerCase().includes(k.toLowerCase()))
+        || keywords.some((k) => f.symbol.toLowerCase().includes(k.toLowerCase())));
 
-      setFilteredTokens(nextTokens)
-
+      setFilteredTokens(nextTokens);
     } else {
-      setFilteredTokens(tokens)
+      setFilteredTokens(tokens);
     }
-  }
+  };
 
   return (
     <Modal centered show={show} onHide={onHide} className="mb-5">
@@ -79,20 +76,20 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
         </Modal.Body>
       </>
     </Modal>
-  )
+  );
 }
 
 export const TokenBalanceLabel = styled.div`
   font-size: 18px; font-weight: 300;
-`
+`;
 
 interface ListItemProps {
   token: TokenType
 }
 
 const ListItem = (props: ListItemProps) => {
-  const { token } = props
-  const { tokenBalance } = useToken(token.symbol)
+  const { token } = props;
+  const { tokenBalance } = useToken(token.symbol);
 
   return (
     <a className="d-flex align-items-center justify-content-between">
@@ -116,6 +113,5 @@ const ListItem = (props: ListItemProps) => {
         />
       </TokenBalanceLabel>
     </a>
-  )
-
-}
+  );
+};

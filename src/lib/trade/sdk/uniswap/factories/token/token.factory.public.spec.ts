@@ -15,7 +15,7 @@ describe('TokenFactoryPublic', () => {
     ETH.MAINNET().contractAddress,
     {
       chainId: ChainId.MAINNET,
-    }
+    },
   );
 
   describe('getToken', () => {
@@ -40,7 +40,7 @@ describe('TokenFactoryPublic', () => {
         it('allowance', async () => {
           const result = await tokenFactory.allowance(
             UniswapVersion.v2,
-            MockEthereumAddress()
+            MockEthereumAddress(),
           );
           expect(result).not.toBeUndefined();
         });
@@ -50,7 +50,7 @@ describe('TokenFactoryPublic', () => {
         it('allowance', async () => {
           const result = await tokenFactory.allowance(
             UniswapVersion.v3,
-            MockEthereumAddress()
+            MockEthereumAddress(),
           );
           expect(result).not.toBeUndefined();
         });
@@ -62,10 +62,10 @@ describe('TokenFactoryPublic', () => {
         it('allowance', async () => {
           const result = await tokenFactoryEth.allowance(
             UniswapVersion.v2,
-            MockEthereumAddress()
+            MockEthereumAddress(),
           );
           expect(result).toEqual(
-            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
           );
         });
       });
@@ -74,10 +74,10 @@ describe('TokenFactoryPublic', () => {
         it('allowance', async () => {
           const result = await tokenFactoryEth.allowance(
             UniswapVersion.v3,
-            MockEthereumAddress()
+            MockEthereumAddress(),
           );
           expect(result).toEqual(
-            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+            '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
           );
         });
       });
@@ -90,10 +90,10 @@ describe('TokenFactoryPublic', () => {
         it('generateApproveAllowanceData', () => {
           const result = tokenFactory.generateApproveAllowanceData(
             UniswapContractContextV2.routerAddress,
-            '0x05'
+            '0x05',
           );
           expect(result).toEqual(
-            '0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488d0000000000000000000000000000000000000000000000000000000000000005'
+            '0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488d0000000000000000000000000000000000000000000000000000000000000005',
           );
         });
       });
@@ -102,10 +102,10 @@ describe('TokenFactoryPublic', () => {
         it('generateApproveAllowanceData', () => {
           const result = tokenFactory.generateApproveAllowanceData(
             UniswapContractContextV3.routerAddress,
-            '0x05'
+            '0x05',
           );
           expect(result).toEqual(
-            '0x095ea7b3000000000000000000000000e592427a0aece92de3edee1f18e0157c058615640000000000000000000000000000000000000000000000000000000000000005'
+            '0x095ea7b3000000000000000000000000e592427a0aece92de3edee1f18e0157c058615640000000000000000000000000000000000000000000000000000000000000005',
           );
         });
       });
@@ -117,7 +117,7 @@ describe('TokenFactoryPublic', () => {
           expect(() => {
             tokenFactoryEth.generateApproveAllowanceData(
               UniswapContractContextV2.routerAddress,
-              '0x05'
+              '0x05',
             );
           }).toThrowError('ETH does not need any allowance data');
         });
@@ -128,7 +128,7 @@ describe('TokenFactoryPublic', () => {
           expect(() => {
             tokenFactoryEth.generateApproveAllowanceData(
               UniswapContractContextV3.routerAddress,
-              '0x05'
+              '0x05',
             );
           }).toThrowError('ETH does not need any allowance data');
         });
@@ -142,7 +142,7 @@ describe('TokenFactoryPublic', () => {
         const spy = spyOn(
           // @ts-nocheck
           tokenFactory._erc20TokenContract,
-          'balanceOf'
+          'balanceOf',
         ).and.callThrough();
         const result = await tokenFactory.balanceOf(MockEthereumAddress());
         expect(result).not.toBeUndefined();
@@ -155,7 +155,7 @@ describe('TokenFactoryPublic', () => {
         const spy = spyOn(
           // @ts-nocheck
           tokenFactoryEth._ethersProvider,
-          'balanceOf'
+          'balanceOf',
         ).and.callThrough();
         const result = await tokenFactoryEth.balanceOf(MockEthereumAddress());
         expect(result).not.toBeUndefined();
@@ -184,7 +184,7 @@ describe('TokenFactoryPublic', () => {
     describe('erc20', () => {
       it('getAllowanceAndBalanceOf', async () => {
         const result = await tokenFactory.getAllowanceAndBalanceOf(
-          MockEthereumAddress()
+          MockEthereumAddress(),
         );
         expect(result).toEqual({
           allowanceV2: '0x2386c18764e720',
@@ -197,7 +197,7 @@ describe('TokenFactoryPublic', () => {
     describe('eth', () => {
       it('getAllowanceAndBalanceOf', async () => {
         const result = await tokenFactoryEth.getAllowanceAndBalanceOf(
-          MockEthereumAddress()
+          MockEthereumAddress(),
         );
         expect(result).toEqual({
           allowanceV2:

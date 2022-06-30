@@ -1,1 +1,1 @@
-export { default, generateAvatarSource } from './avatar'
+export { default, generateAvatarSource } from './avatar';

@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react'
-import { t } from '@lingui/macro'
-import Modal from '@components/molecules/modal'
-import GradientButton from '@components/atoms/button/gradient-button'
-import { Loading } from 'react-loading-dot'
+import React, { ReactElement } from 'react';
+import { t } from '@lingui/macro';
+import Modal from '@components/molecules/modal';
+import GradientButton from '@components/atoms/button/gradient-button';
+import { Loading } from 'react-loading-dot';
 
 interface TransactionApproveModalProps {
   show: boolean
@@ -20,98 +20,96 @@ interface TransactionApproveModalProps {
 }
 
 export default function TransactionApproveModal(props: TransactionApproveModalProps) {
-
   const {
-      show,
-      onHide,
-      onClick,
-      title,
-      children,
-      error,
-      success,
-      loading,
-      btnLabel,
-      successMessage,
-      additionalSuccessContent,
-      infoMessage
-  } = props
+    show,
+    onHide,
+    onClick,
+    title,
+    children,
+    error,
+    success,
+    loading,
+    btnLabel,
+    successMessage,
+    additionalSuccessContent,
+    infoMessage,
+  } = props;
 
   const renderTitle = ():any => {
     if (error) {
-      return t`Something went wrong!`
+      return t`Something went wrong!`;
     }
     if (success) {
-      return t`Transaction confirmed`
+      return t`Transaction confirmed`;
     }
     if (loading) {
-      return t`Loading ...`
+      return t`Loading ...`;
     }
 
-    return title
-  }
+    return title;
+  };
 
   const renderStatusContent = ():any => {
-
     if (error) {
       return (
-          <>
-              <div className="d-flex justify-content-center mt-3 mb-5">
-                  <div className="sa">
-                      <div className="sa-error">
-                          <div className="sa-error-x">
-                              <div className="sa-error-left" />
-                              <div className="sa-error-right" />
-                          </div>
-                          <div className="sa-error-placeholder" />
-                          <div className="sa-error-fix" />
-                      </div>
-                  </div>
+        <>
+          <div className="d-flex justify-content-center mt-3 mb-5">
+            <div className="sa">
+              <div className="sa-error">
+                <div className="sa-error-x">
+                  <div className="sa-error-left" />
+                  <div className="sa-error-right" />
+                </div>
+                <div className="sa-error-placeholder" />
+                <div className="sa-error-fix" />
               </div>
+            </div>
+          </div>
 
-              <p className="mb-0 text-center text-muted">
-                  {error.message}
-              </p>
-          </>
-      )
+          <p className="mb-0 text-center text-muted">
+            {error.message}
+          </p>
+        </>
+      );
     }
 
     if (success) {
       return (
-          <>
-            <div className="d-flex justify-content-center mt-3 mb-5">
-                <div className="sa">
-                    <div className="sa-success">
-                        <div className="sa-success-tip" />
-                        <div className="sa-success-long" />
-                        <div className="sa-success-placeholder" />
-                        <div className="sa-success-fix" />
-                    </div>
-                </div>
+        <>
+          <div className="d-flex justify-content-center mt-3 mb-5">
+            <div className="sa">
+              <div className="sa-success">
+                <div className="sa-success-tip" />
+                <div className="sa-success-long" />
+                <div className="sa-success-placeholder" />
+                <div className="sa-success-fix" />
+              </div>
             </div>
-            {(successMessage &&
-                <p className="mb-0 text-center text-muted">{successMessage}</p>
+          </div>
+          {(successMessage
+                && <p className="mb-0 text-center text-muted">{successMessage}</p>
             )}
-          </>
-      )
+        </>
+      );
     }
 
     if (loading) {
       return (
-          <>
-            <div className="d-flex justify-content-center mt-6 pt-6">
-                <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
-                <div>
-                    <p className="mb-0 text-center">
-                        {infoMessage || t`Transaction is processing...`}
-                    </p>
-                </div>
+        <>
+          <div className="d-flex justify-content-center mt-6 pt-6">
+            <Loading background="linear-gradient(86deg, rgb(109, 12, 136) 0%, rgb(59, 4, 189) 100%)" />
+            <div>
+              <p className="mb-0 text-center">
+                {infoMessage || t`Transaction is processing...`}
+              </p>
             </div>
-          </>
-      )
+          </div>
+        </>
+      );
     }
 
-    return ''
-  }
+    return '';
+  };
 
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null}>
@@ -123,25 +121,28 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
         </Modal.Header>
         <Modal.Body className="pt-0">
 
-            {renderStatusContent()}
+          {renderStatusContent()}
 
-            {(!success && !loading && !error &&
-                <>{children}</>
+          {(!success && !loading && !error
+                && <>{children}</>
             )}
 
-            {(success && additionalSuccessContent) &&
+          {(success && additionalSuccessContent)
+                && (
                 <>
-                    {additionalSuccessContent}
+                  {additionalSuccessContent}
                 </>
-            }
+                )}
 
-            {(!success && !error && !loading &&
+          {(!success && !error && !loading
+              && (
               <GradientButton className="w-100 mt-5" onClick={onClick} disabled={loading}>
-                {btnLabel ? btnLabel : t`Approve`}
+                {btnLabel || t`Approve`}
               </GradientButton>
+              )
             )}
         </Modal.Body>
       </>
     </Modal>
-  )
+  );
 }

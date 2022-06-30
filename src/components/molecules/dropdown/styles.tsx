@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const DropdownContent = styled.div`
     position: absolute; 
@@ -7,7 +7,7 @@ export const DropdownContent = styled.div`
     border-radius: 10px; 
     z-index: 44; 
     top: 100%;
-`
+`;
 
 export const DropdownContentChevron = styled.div`
   width: 0;
@@ -31,8 +31,4 @@ export const DropdownContentChevron = styled.div`
     top: -10px;
     left: 1px;
   }
-`
-
-
-
-
+`;

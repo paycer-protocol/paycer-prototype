@@ -19,22 +19,21 @@ import { Token } from './models/token';
 export class TokenFactory {
   private _multicall = new CustomMulticall(
     this._ethersProvider.provider,
-    this._customNetwork?.multicallContractAddress
+    this._customNetwork?.multicallContractAddress,
   );
 
-  private _erc20TokenContract =
-    this._ethersProvider.getContract<ERC20ContractContext>(
-      JSON.stringify(ContractContext.erc20Abi),
-      getAddress(this._tokenContractAddress)
-    );
+  private _erc20TokenContract = this._ethersProvider.getContract<ERC20ContractContext>(
+    JSON.stringify(ContractContext.erc20Abi),
+    getAddress(this._tokenContractAddress),
+  );
 
   constructor(
     private _tokenContractAddress: string,
     private _ethersProvider: EthersProvider,
     private _customNetwork?: CustomNetwork | undefined,
     private _cloneUniswapContractDetails?:
-      | CloneUniswapContractDetails
-      | undefined
+    | CloneUniswapContractDetails
+    | undefined,
   ) {}
 
   /**
@@ -44,7 +43,7 @@ export class TokenFactory {
     if (isNativeEth(this._tokenContractAddress)) {
       return ETH.info(
         this._ethersProvider.network().chainId,
-        this._customNetwork?.nativeWrappedTokenInfo
+        this._customNetwork?.nativeWrappedTokenInfo,
       );
     } else {
       const overridenToken = isTokenOverrideInfo(this._tokenContractAddress);
@@ -62,17 +61,17 @@ export class TokenFactory {
         abi: ContractContext.erc20Abi,
         calls: [
           {
-            reference: `symbol`,
+            reference: 'symbol',
             methodName: 'symbol',
             methodParameters: [],
           },
           {
-            reference: `decimals`,
+            reference: 'decimals',
             methodName: 'decimals',
             methodParameters: [],
           },
           {
-            reference: `name`,
+            reference: 'name',
             methodName: 'name',
             methodParameters: [],
           },
@@ -80,10 +79,9 @@ export class TokenFactory {
       };
 
       const contractCallResults = await this._multicall.call(
-        contractCallContext
+        contractCallContext,
       );
-      const results =
-        contractCallResults.results[contractCallContext.reference];
+      const results = contractCallResults.results[contractCallContext.reference];
 
       return {
         chainId: this._ethersProvider.network().chainId,
@@ -103,7 +101,7 @@ export class TokenFactory {
    */
   public async allowance(
     uniswapVersion: UniswapVersion,
-    ethereumAddress: string
+    ethereumAddress: string,
   ): Promise<string> {
     if (isNativeEth(this._tokenContractAddress)) {
       return '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
@@ -112,11 +110,11 @@ export class TokenFactory {
         ethereumAddress,
         uniswapVersion === UniswapVersion.v2
           ? uniswapContracts.v2.getRouterAddress(
-              this._cloneUniswapContractDetails
-            )
+            this._cloneUniswapContractDetails,
+          )
           : uniswapContracts.v3.getRouterAddress(
-              this._cloneUniswapContractDetails
-            )
+            this._cloneUniswapContractDetails,
+          ),
       );
 
       return allowance.toHexString();
@@ -145,7 +143,7 @@ export class TokenFactory {
    */
   public async balanceOf(ethereumAddress: string): Promise<string> {
     if (isNativeEth(this._tokenContractAddress)) {
-      return await this._ethersProvider.balanceOf(ethereumAddress);
+      return this._ethersProvider.balanceOf(ethereumAddress);
     } else {
       const balance = await this._erc20TokenContract.balanceOf(ethereumAddress);
 
@@ -167,7 +165,7 @@ export class TokenFactory {
    * @param ethereumAddress The ethereum address
    */
   public async getAllowanceAndBalanceOf(
-    ethereumAddress: string
+    ethereumAddress: string,
   ): Promise<AllowanceAndBalanceOf> {
     if (isNativeEth(this._tokenContractAddress)) {
       return {
@@ -186,31 +184,31 @@ export class TokenFactory {
       contractCallContext.push(
         this.buildAllowanceAndBalanceContractCallContext(
           ethereumAddress,
-          UniswapVersion.v2
-        )
+          UniswapVersion.v2,
+        ),
       );
       contractCallContext.push(
         this.buildAllowanceAndBalanceContractCallContext(
           ethereumAddress,
-          UniswapVersion.v3
-        )
+          UniswapVersion.v3,
+        ),
       );
 
       const contractCallResults = await this._multicall.call(
-        contractCallContext
+        contractCallContext,
       );
       const resultsV2 = contractCallResults.results[UniswapVersion.v2];
       const resultsV3 = contractCallResults.results[UniswapVersion.v3];
 
       return {
         allowanceV2: BigNumber.from(
-          resultsV2.callsReturnContext[ALLOWANCE].returnValues[0]
+          resultsV2.callsReturnContext[ALLOWANCE].returnValues[0],
         ).toHexString(),
         allowanceV3: BigNumber.from(
-          resultsV3.callsReturnContext[ALLOWANCE].returnValues[0]
+          resultsV3.callsReturnContext[ALLOWANCE].returnValues[0],
         ).toHexString(),
         balanceOf: BigNumber.from(
-          resultsV2.callsReturnContext[BALANCEOF].returnValues[0]
+          resultsV2.callsReturnContext[BALANCEOF].returnValues[0],
         ).toHexString(),
       };
     }
@@ -218,7 +216,7 @@ export class TokenFactory {
 
   private buildAllowanceAndBalanceContractCallContext(
     ethereumAddress: string,
-    uniswapVersion: UniswapVersion
+    uniswapVersion: UniswapVersion,
   ): ContractCallContext {
     return {
       reference: uniswapVersion,
@@ -232,11 +230,11 @@ export class TokenFactory {
             ethereumAddress,
             uniswapVersion === UniswapVersion.v2
               ? uniswapContracts.v2.getRouterAddress(
-                  this._cloneUniswapContractDetails
-                )
+                this._cloneUniswapContractDetails,
+              )
               : uniswapContracts.v3.getRouterAddress(
-                  this._cloneUniswapContractDetails
-                ),
+                this._cloneUniswapContractDetails,
+              ),
           ],
         },
         {

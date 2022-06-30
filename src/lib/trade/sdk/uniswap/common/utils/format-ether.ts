@@ -9,7 +9,7 @@ import { formatEther as EthersFormatEther } from 'ethers-utils';
  */
 export function formatEther(
   // tslint:disable-next-line: no-any
-  wei: any
+  wei: any,
 ): BigNumber {
   return new BigNumber(EthersFormatEther(new BigNumber(wei).toFixed()));
 }

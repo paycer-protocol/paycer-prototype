@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import Navbar from "@components/molecules/navbar";
+import styled, { css } from 'styled-components';
+import Navbar from '@components/molecules/navbar';
 
 export const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;
@@ -13,7 +13,7 @@ export const StyledBrand = styled(Navbar.Brand)`
           max-height: 26px;
         }
     }
-`
+`;
 
 export const StyledLogo = styled.a`
     order: 1;
@@ -22,7 +22,7 @@ export const StyledLogo = styled.a`
       top: 17px;
       left: 15px;
     }
-`
+`;
 
 export const DemoBadge = styled.div`
     position: absolute;
@@ -44,4 +44,4 @@ export const DemoBadge = styled.div`
     text-transform: uppercase;
     background: linear-gradient(101deg,#ca3dbf,#c3cef7);
     letter-spacing: 0.1px;
-`
+`;

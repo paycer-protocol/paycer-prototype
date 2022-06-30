@@ -79,7 +79,7 @@ export class WETHContract {
       default:
         throw new UniswapError(
           `${chainId} is not allowed`,
-          ErrorCodes.tokenChainIdContractDoesNotExist
+          ErrorCodes.tokenChainIdContractDoesNotExist,
         );
     }
   }

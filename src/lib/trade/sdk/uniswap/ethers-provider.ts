@@ -20,43 +20,42 @@ export interface EthereumProvider {
 
 export class EthersProvider {
   private _ethersProvider:
-      // @ts-nocheck
-    | providers.StaticJsonRpcProvider
-      // @ts-nocheck
-    | providers.JsonRpcProvider
-      // @ts-nocheck
-    | providers.InfuraProvider
-      // @ts-nocheck
-    | providers.Web3Provider;
+  // @ts-nocheck
+  | providers.StaticJsonRpcProvider
+  // @ts-nocheck
+  | providers.JsonRpcProvider
+  // @ts-nocheck
+  | providers.InfuraProvider
+  // @ts-nocheck
+  | providers.Web3Provider;
+
   constructor(private _providerContext: ChainIdAndProvider | EthereumProvider) {
-    const chainId = (<ChainIdAndProvider>this._providerContext).chainId;
+    const { chainId } = <ChainIdAndProvider> this._providerContext;
     if (chainId) {
       const chainName = this.getChainName(chainId);
-      const providerUrl = (<ChainIdAndProvider>this._providerContext)
-        .providerUrl;
+      const { providerUrl } = <ChainIdAndProvider> this._providerContext;
       if (providerUrl) {
         // @ts-nocheck
         this._ethersProvider = new providers.StaticJsonRpcProvider(
           providerUrl,
           {
             name: chainName,
-            chainId: chainId,
-          }
+            chainId,
+          },
         );
       } else {
         // @ts-nocheck
         this._ethersProvider = new providers.InfuraProvider(
           chainId,
-          this._getApiKey
+          this._getApiKey,
         );
       }
     } else {
-      const ethereumProvider = (<EthereumProvider>this._providerContext)
-        .ethereumProvider;
+      const { ethereumProvider } = <EthereumProvider> this._providerContext;
       if (!ethereumProvider) {
         throw new UniswapError(
           'Wrong ethers provider context',
-          ErrorCodes.wrongEthersProviderContext
+          ErrorCodes.wrongEthersProviderContext,
         );
       }
 
@@ -83,7 +82,7 @@ export class EthersProvider {
     if (!chainName) {
       throw new UniswapError(
         `Can not find chain name for ${chainId}. This lib only supports mainnet(1), ropsten(4), kovan(42), rinkeby(4) and görli(5)`,
-        ErrorCodes.canNotFindChainId
+        ErrorCodes.canNotFindChainId,
       );
     }
 
@@ -97,7 +96,7 @@ export class EthersProvider {
    */
   public getContract<TGeneratedTypedContext>(
     abi: ContractInterface,
-    contractAddress: string
+    contractAddress: string,
   ): TGeneratedTypedContext {
     const contract = new Contract(contractAddress, abi, this._ethersProvider);
 
@@ -116,7 +115,7 @@ export class EthersProvider {
     // @ts-nocheck
     if (this._ethersProvider.provider) {
       // @ts-nocheck
-      const chainId = this._ethersProvider.provider.chainId;
+      const { chainId } = this._ethersProvider.provider;
       if (chainId) {
         const chainIdNumber = new BigNumber(chainId).toNumber();
         const chainName = ChainNames.get(chainIdNumber);
@@ -131,7 +130,7 @@ export class EthersProvider {
 
     throw new UniswapError(
       'chainId can not be found on the provider',
-      ErrorCodes.chainIdCanNotBeFound
+      ErrorCodes.chainIdCanNotBeFound,
     );
   }
 
@@ -157,18 +156,17 @@ export class EthersProvider {
    * Get provider url
    */
   public getProviderUrl(): string | undefined {
-    const ethereumProvider = (<EthereumProvider>this._providerContext)
-      .ethereumProvider;
+    const { ethereumProvider } = <EthereumProvider> this._providerContext;
     if (ethereumProvider) {
       return undefined;
     }
 
-    const providerUrl = (<ChainIdAndProvider>this._providerContext).providerUrl;
+    const { providerUrl } = <ChainIdAndProvider> this._providerContext;
     if (providerUrl) {
       return providerUrl;
     }
 
-    const chainId = (<ChainIdAndProvider>this._providerContext).chainId;
+    const { chainId } = <ChainIdAndProvider> this._providerContext;
 
     switch (chainId) {
       case ChainId.MAINNET:

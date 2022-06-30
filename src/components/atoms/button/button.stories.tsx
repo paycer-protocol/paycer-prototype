@@ -1,42 +1,42 @@
-import React from 'react'
-import { Meta } from '@storybook/react'
-import theme from '../../../config/theme'
-import Button, { ButtonProps } from './button'
+import React from 'react';
+import { Meta } from '@storybook/react';
+import theme from '../../../config/theme';
+import Button, { ButtonProps } from './button';
 
 export default {
   title: 'Atom/Button',
   component: Button,
   argTypes: {
     size: {
-        control: 'radio',
-        options: theme.sizes,
+      control: 'radio',
+      options: theme.sizes,
     },
     active: {
-        control: 'boolean',
+      control: 'boolean',
     },
     block: {
-        control: 'boolean',
+      control: 'boolean',
     },
     disabled: {
       control: 'boolean',
     },
   },
-} as Meta
+} as Meta;
 
 const DefaultTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
-    theme.colors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
-)
+  theme.colors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
+);
 
 const OutlineTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
-    theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
-)
+  theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
+);
 
-export const Default = DefaultTemplate.bind({})
+export const Default = DefaultTemplate.bind({});
 Default.args = {
-    size: 'md',
-}
+  size: 'md',
+};
 
-export const Outline = OutlineTemplate.bind({})
+export const Outline = OutlineTemplate.bind({});
 Outline.args = {
-    size: 'md',
-}
+  size: 'md',
+};

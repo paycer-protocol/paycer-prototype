@@ -1,13 +1,13 @@
 // @ts-nocheck
 import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
-//@ts-nocheck
+// @ts-nocheck
 import { BigNumber, BigNumberish, ContractTransaction } from 'ethers';
 
 export type ContractContext = EthersContractContextV5<
-  UniswapFactoryV2,
-  UniswapFactoryV2MethodNames,
-  UniswapFactoryV2EventsContext,
-  UniswapFactoryV2Events
+UniswapFactoryV2,
+UniswapFactoryV2MethodNames,
+UniswapFactoryV2EventsContext,
+UniswapFactoryV2Events
 >;
 
 export declare type EventFilter = {
