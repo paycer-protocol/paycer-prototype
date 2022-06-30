@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { investmentStrategies } from '@config/investment/strategies';
-import { StrategyType } from './types/investment';
+import { StrategyType } from '../types/investment';
 import { riskLabels } from '../locales';
 
 export type InvestListContextTypes = {
@@ -57,9 +57,9 @@ const InvestListContextProvider = ({ children }) => {
       keywords = keywords.filter((f) => f !== '');
 
       const nextStrategys = investmentStrategies.filter((f) => keywords.some((k) => f.name.toLowerCase().includes(k.toLowerCase()))
-                || keywords.some((k) => f.type.toLowerCase().includes(k.toLowerCase()))
-                || keywords.some((k) => riskLabels[f.riskLevel].id.toLowerCase().includes(k.toLowerCase()))
-                || keywords.some((k) => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase())));
+        || keywords.some((k) => f.type.toLowerCase().includes(k.toLowerCase()))
+        || keywords.some((k) => riskLabels[f.riskLevel].id.toLowerCase().includes(k.toLowerCase()))
+        || keywords.some((k) => f.interest.interestRate + f.rewards.rewardRate >= parseInt(k.toLowerCase())));
 
       setStrategies(nextStrategys);
     } else {

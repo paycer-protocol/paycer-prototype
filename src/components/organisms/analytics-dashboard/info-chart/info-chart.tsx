@@ -199,9 +199,9 @@ const InfoChart = (props: InfoChartProps) => {
                 <div className="cursor-pointer card shadow-none mb-2 bg-transparent d-none d-md-flex">
                   <div className="card-body d-flex justify-content-center align-items-center bg-transparent d-flex justify-content-center">
                     <Icon
-                        component={isModal ? CloseFullscreen : ZoomOutMap}
-                        size={21}
-                      />
+                      component={isModal ? CloseFullscreen : ZoomOutMap}
+                      size={21}
+                    />
                   </div>
                 </div>
               </Styles.StyledDropdownToggle>

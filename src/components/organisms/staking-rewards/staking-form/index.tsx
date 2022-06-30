@@ -79,24 +79,24 @@ export default function StakingForm() {
                   {initialValues.rewardRate}
                   %
                   <InfoTooltip>
-  <>
-    <strong>{t`Associate`}</strong>
-    {' '}
-    - Stake min 5.000 PCR: 15%
-    <br />
-    <strong>{t`Senior`}</strong>
-    {' '}
-    - Stake min 15.000 PCR: 18%
-    <br />
-    <strong>{t`Manager`}</strong>
-    {' '}
-    - Stake min 35.000 PCR: 21%
-    <br />
-    <strong>{t`Partner`}</strong>
-    {' '}
-    - Stake min 100.000 PCR: 24%
-  </>
-</InfoTooltip>
+                    <>
+                      <strong>{t`Associate`}</strong>
+                      {' '}
+                      - Stake min 5.000 PCR: 15%
+                      <br />
+                      <strong>{t`Senior`}</strong>
+                      {' '}
+                      - Stake min 15.000 PCR: 18%
+                      <br />
+                      <strong>{t`Manager`}</strong>
+                      {' '}
+                      - Stake min 35.000 PCR: 21%
+                      <br />
+                      <strong>{t`Partner`}</strong>
+                      {' '}
+                      - Stake min 100.000 PCR: 24%
+                    </>
+                  </InfoTooltip>
                 </div>
               </span>
             </div>
@@ -109,16 +109,16 @@ export default function StakingForm() {
                 tokenInputSibling={(
                   <div className="d-flex align-items-center">
                     <CurrencyIcon
-                        symbol={values.rewardSymbol}
-                        className="me-3"
-                        width={32}
-                        height={32}
-                      />
+                      symbol={values.rewardSymbol}
+                      className="me-3"
+                      width={32}
+                      height={32}
+                    />
                     <div>
-                        <div className="d-flex align-items-center">
-                            <h3 className="mb-0 text-white">{values.rewardSymbol}</h3>
-                          </div>
+                      <div className="d-flex align-items-center">
+                        <h3 className="mb-0 text-white">{values.rewardSymbol}</h3>
                       </div>
+                    </div>
                   </div>
                                       )}
                 tokenInput={<StakedInput />}
@@ -129,28 +129,28 @@ export default function StakingForm() {
                 <div className="card-body">
                   <div className="row">
                     <div className="col-6 col-md-4">
-                        <DashNumber
-                            label={t`Daily rewards`}
-                            value={values.stakedBalance * values.rewardRate / 100 / 365}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        label={t`Daily rewards`}
+                        value={values.stakedBalance * values.rewardRate / 100 / 365}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                     <div className="col-6 col-md-4">
-                        <DashNumber
-                            label={t`Monthly rewards`}
-                            value={values.stakedBalance * values.rewardRate / 100 / 12}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        label={t`Monthly rewards`}
+                        value={values.stakedBalance * values.rewardRate / 100 / 12}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                     <div className="col-4 d-none d-md-flex">
-                        <div className="d-flex flex-column">
-                            <span className="text-muted mb-3">
-                                      {t`Estimated fee`}
+                      <div className="d-flex flex-column">
+                        <span className="text-muted mb-3">
+                          {t`Estimated fee`}
 &nbsp;
-                                    </span>
-                            <RewardFee />
-                          </div>
+                        </span>
+                        <RewardFee />
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -184,55 +184,55 @@ export default function StakingForm() {
                 <div className="card-body">
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`You will stake:`}
-                      </div>
+                      {t`You will stake:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.stakedBalance}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.stakedBalance}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`Balance after:`}
-                      </div>
+                      {t`Balance after:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.tokenBalance}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.tokenBalance}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`Daily rewards:`}
-                      </div>
+                      {t`Daily rewards:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.stakedBalance * values.rewardRate / 100 / 365}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.stakedBalance * values.rewardRate / 100 / 365}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`Monthly rewards:`}
-                      </div>
+                      {t`Monthly rewards:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.stakedBalance * values.rewardRate / 100 / 12}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.stakedBalance * values.rewardRate / 100 / 12}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row">
                     <div className="col-6">
-                        {t`Fee:`}
-                      </div>
+                      {t`Fee:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <RewardFee />
-                      </div>
+                      <RewardFee />
+                    </div>
                   </div>
                 </div>
               </div>

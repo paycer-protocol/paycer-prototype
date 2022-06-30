@@ -114,7 +114,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                           >
                             {sections.map((section, key) => (
                               <SwiperSlide key={key} className="align-items-center">
-                <li
+                                <li
                                   className="nav-item"
                                   key={`nav${key}`}
                                   onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}
@@ -126,7 +126,7 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                                     {section.label}
                                   </AnchorLink>
                                 </li>
-              </SwiperSlide>
+                              </SwiperSlide>
                             ))}
                           </StyledSwiper>
                         </>
@@ -143,11 +143,11 @@ const NftPageHeader = ({ sections }: NftPageHeaderProps) => {
                               onClick={() => section.ref.current.scrollIntoView({ behavior: 'smooth' })}
                             >
                               <AnchorLink
-                rel={`anchor-${key + 1}`}
-                className={classnames('nav-link text-white anchor-link', 'text-nowrap')}
-              >
-                {section.label}
-              </AnchorLink>
+                                rel={`anchor-${key + 1}`}
+                                className={classnames('nav-link text-white anchor-link', 'text-nowrap')}
+                              >
+                                {section.label}
+                              </AnchorLink>
                             </li>
                           ))}
                         </ul>

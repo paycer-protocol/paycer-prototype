@@ -118,7 +118,7 @@ const Overview = () => {
                     {startTime}
                     {' '}
                     -
-                        {endTime}
+                    {endTime}
                   </small>
                   )}
                 </div>

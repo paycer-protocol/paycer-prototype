@@ -64,14 +64,14 @@ export default function AchievementsSection() {
                 <Card className="h-100">
                   <div className="card-body h-100">
                     <div className="d-flex mb-4 align-items-center">
-                        <div>
-                            <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
-                          </div>
-                        <div className="h3 ms-3 mb-0">{achievement.title}</div>
+                      <div>
+                        <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
                       </div>
+                      <div className="h3 ms-3 mb-0">{achievement.title}</div>
+                    </div>
                     <span className="text-muted">
-                        {achievement.text}
-                      </span>
+                      {achievement.text}
+                    </span>
                   </div>
                 </Card>
               </div>
@@ -92,8 +92,8 @@ export default function AchievementsSection() {
                 <div className="card-body">
                   <div className="d-flex mb-4 align-items-center">
                     <div>
-                        <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
-                      </div>
+                      <Icon color="#E224A2" component={ArrowRightCircle} size={48} />
+                    </div>
                     <div className="h3 ms-3 mb-0">{achievement.title}</div>
                   </div>
                   <span className="text-muted">

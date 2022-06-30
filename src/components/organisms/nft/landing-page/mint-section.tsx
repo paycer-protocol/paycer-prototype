@@ -68,15 +68,15 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
             <PrettyLi>{t`<b>Limits:</b>&nbsp;3 NFT per transaction`}</PrettyLi>
           </ol>
           {
-          publicSaleStart.getTime() < Date.now()
-          && (
-          <p className="paragraph-content opacity-50">
-            {t`Presale ends:`}
-            {' '}
-            {publicSaleStartFormatted}
-          </p>
-          )
-        }
+            publicSaleStart.getTime() < Date.now()
+            && (
+              <p className="paragraph-content opacity-50">
+                {t`Presale ends:`}
+                {' '}
+                {publicSaleStartFormatted}
+              </p>
+            )
+          }
         </div>
       )
       : (
@@ -250,7 +250,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
               }
               */}
 
-              <button onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+              <button type="button" onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                 {t`JOIN WAITING LIST`}
                 <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
               </button>

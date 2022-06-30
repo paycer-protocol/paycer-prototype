@@ -6,15 +6,15 @@ import { TokenType } from '../types/investment';
 
 interface HandleSwapProps {
   amount: string
-  fromToken:TokenType
-  toToken:TokenType
+  fromToken: TokenType
+  toToken: TokenType
   slippage: number
 }
 
 interface FetchQuoteProps {
   amount: string
-  fromToken:TokenType
-  toToken:TokenType
+  fromToken: TokenType
+  toToken: TokenType
 }
 
 interface FetchQuoteResult {
@@ -32,7 +32,7 @@ interface UseSwapProps {
   resetStatus: () => void
 }
 
-export default function useSwap():UseSwapProps {
+export default function useSwap(): UseSwapProps {
   const { walletAddress, currentNetworkId, currentNetwork, fetchERC20Balances } = useDapp();
   const [showFormApproveModal, setShowFormApproveModal] = useState(false);
   const [swapIsSuccess, setSwapIsSuccess] = useState<boolean>(false);
@@ -117,7 +117,7 @@ export default function useSwap():UseSwapProps {
         fromAddress: walletAddress,
         amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
       };
-      return await Moralis.Plugins.oneInch.hasAllowance(options);
+      return Moralis.Plugins.oneInch.hasAllowance(options);
     } catch (e) {
       console.log(e);
     }

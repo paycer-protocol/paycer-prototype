@@ -91,29 +91,29 @@ const DepositForm = () => {
                 %
                 <InfoTooltip>
                   <>
-    <div className="d-flex align-items-center">
-      <CurrencyIcon
-        symbol={strategy.input.symbol}
-        className="me-3"
-        width={15}
-        height={15}
-      />
-      {strategy.interest.interestRate}
+                    <div className="d-flex align-items-center">
+                      <CurrencyIcon
+                        symbol={strategy.input.symbol}
+                        className="me-3"
+                        width={15}
+                        height={15}
+                      />
+                      {strategy.interest.interestRate}
 &nbsp;%&nbsp;
-      {strategy.input.symbol}
-    </div>
-    <div className="d-flex align-items-center">
-      <CurrencyIcon
-        symbol="PCR"
-        className="me-3"
-        width={15}
-        height={15}
-      />
-      {strategy.rewards.rewardRate}
+                      {strategy.input.symbol}
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <CurrencyIcon
+                        symbol="PCR"
+                        className="me-3"
+                        width={15}
+                        height={15}
+                      />
+                      {strategy.rewards.rewardRate}
 &nbsp;%&nbsp;
-      {t`PCR`}
-    </div>
-  </>
+                      {t`PCR`}
+                    </div>
+                  </>
                 </InfoTooltip>
               </div>
             </span>
@@ -190,47 +190,47 @@ const DepositForm = () => {
                 <div className="card-body">
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`You will invest:`}
-                      </div>
+                      {t`You will invest:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.amount}
-                            symbol={values.baseSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.amount}
+                        symbol={values.baseSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`Daily rewards:`}
-                      </div>
+                      {t`Daily rewards:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.dailyRewards}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.dailyRewards}
+                        symbol={values.rewardSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row mb-4">
                     <div className="col-6">
-                        {t`Daily interest:`}
-                      </div>
+                      {t`Daily interest:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.dailyInterest}
-                            symbol={values.interestSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.dailyInterest}
+                        symbol={values.interestSymbol}
+                      />
+                    </div>
                   </div>
                   <div className="row">
                     <div className="col-6">
-                        {t`Fee:`}
-                      </div>
+                      {t`Fee:`}
+                    </div>
                     <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.fee}
-                            symbol={values.feeSymbol}
-                          />
-                      </div>
+                      <DashNumber
+                        value={values.fee}
+                        symbol={values.feeSymbol}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

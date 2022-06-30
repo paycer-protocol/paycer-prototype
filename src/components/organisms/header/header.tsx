@@ -55,22 +55,22 @@ const Header = () => {
 
                   {(route?.isDropdown && !route.path && route.subroutes && route.subroutes.length)
                     ? (
-                        <div className="dropdown p-0">
-                          <a
-                              href="#"
-                              className="nav-link text-nowrap"
-                              role="button"
-                              data-bs-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              {route.label}
-                              <Icon
-                                  component={ArrowDropDown}
-                                  size={20}
-                                />
-                            </a>
-                          {(route.subroutes && route.subroutes.length)
+                      <div className="dropdown p-0">
+                        <a
+                          href="#"
+                          className="nav-link text-nowrap"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          {route.label}
+                          <Icon
+                            component={ArrowDropDown}
+                            size={20}
+                          />
+                        </a>
+                        {(route.subroutes && route.subroutes.length)
                                           && (
                                           <div className="dropdown-menu dropdown-menu-end">
                                             {route.subroutes.map((subroute, innerKey) => (
@@ -91,8 +91,8 @@ const Header = () => {
                                                   : (
                                                     <Link href={subroute.path}>
                                                       <a href="#!" className="dropdown-item">
-              {subroute?.label}
-            </a>
+                                                        {subroute?.label}
+                                                      </a>
                                                     </Link>
                                                   )}
                                               </div>
@@ -100,14 +100,14 @@ const Header = () => {
                                           </div>
                                           )}
 
-                        </div>
+                      </div>
                     )
                     : (
-                        <Link href={route.path}>
-                          <a className={classnames({ active: pathname == route.path || (route.subroutes ? route?.subroutes.find((r) => r.path === pathname) : false) }, 'nav-link', 'text-nowrap')} title={route.label}>
-                              {route.label}
-                            </a>
-                        </Link>
+                      <Link href={route.path}>
+                        <a className={classnames({ active: pathname == route.path || (route.subroutes ? route?.subroutes.find((r) => r.path === pathname) : false) }, 'nav-link', 'text-nowrap')} title={route.label}>
+                          {route.label}
+                        </a>
+                      </Link>
                     )}
 
                 </li>

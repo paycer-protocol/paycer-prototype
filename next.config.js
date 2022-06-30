@@ -5,11 +5,13 @@
 
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('nextjs-fonts');
+
+const path = require('path');
+const { withSentryConfig } = require('@sentry/nextjs');
+
 const langConfig = require('./lingui.config.js');
 
 const { locales, sourceLocale } = langConfig;
-const path = require('path');
-const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   poweredByHeader: false,
