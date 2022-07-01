@@ -1,55 +1,55 @@
 export default {
-    colors: [],
-    chart: {
-        stacked: true,
-        events: {},
-        toolbar: {
-            show: false
-        },
+  colors: [],
+  chart: {
+    stacked: true,
+    events: {},
+    toolbar: {
+      show: false,
     },
-    tooltip: {
-        enabled: true
+  },
+  tooltip: {
+    enabled: true,
+  },
+  xaxis: {
+    categories: [],
+    labels: {
+      show: false,
     },
-    xaxis: {
-        categories: [],
-        labels: {
-            show: false
-        },
-        axisBorder: {
-            show: false,
-        },
-        axisTicks: {
-            show: false,
-        },
+    axisBorder: {
+      show: false,
     },
-    yaxis: {
-        labels: {
-            show: false,
-        }
+    axisTicks: {
+      show: false,
     },
-    grid: {
-        borderColor: 'transparent'
+  },
+  yaxis: {
+    labels: {
+      show: false,
     },
-    dataLabels: {
-        enabled: false,
-        dropShadow: {
-            enabled: true,
-            left: 2,
-            top: 2,
-            opacity: 0.5
-        },
-        style: {
-            fontSize: '12px',
-            fontWeight: 'normal',
-            color: '#FFF'
-        },
+  },
+  grid: {
+    borderColor: 'transparent',
+  },
+  dataLabels: {
+    enabled: false,
+    dropShadow: {
+      enabled: true,
+      left: 2,
+      top: 2,
+      opacity: 0.5,
     },
-    plotOptions: {
-        bar: {
-            columnWidth: '40%',
-        }
+    style: {
+      fontSize: '12px',
+      fontWeight: 'normal',
+      color: '#FFF',
     },
-    legend: {
-        show: false,
-    }
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: '40%',
+    },
+  },
+  legend: {
+    show: false,
+  },
 }

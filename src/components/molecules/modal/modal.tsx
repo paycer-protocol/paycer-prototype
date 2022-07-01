@@ -19,36 +19,36 @@ const StyledModalTitle = styled(ModalTitle)`
 `
 
 export interface ModalProps extends BaseModalProps {
-    vertical?: boolean
+  vertical?: boolean
 }
 
 const Modal = (props: ModalProps) => {
-    const { vertical = false, ...restProps } = props
+  const { vertical = false, ...restProps } = props
 
-    return (
-        <>
-            {/* @ts-ignore */ }
-            <BaseModal
-                {...restProps}
-                dialogClassName={classnames({'modal-dialog-vertical': vertical})}
-            />
-        </>
-    )
+  return (
+    <>
+      {/* @ts-ignore */ }
+      <BaseModal
+        {...restProps}
+        dialogClassName={classnames({ 'modal-dialog-vertical': vertical })}
+      />
+    </>
+  )
 }
 
 const ModalHeader = ({ children, closeButton, onHide }: ModalHeaderProps) => (
-    <BaseModalHeader className="p-4">
-        {children}
-        {closeButton && (
-            <a className="text-muted" style={{position: 'relative', top: '-2px', right: '2px'}} onClick={onHide}>
-                <Icon
-                    onClick={onHide}
-                    component={XLg}
-                    size={16}
-                />
-            </a>
-        )}
-    </BaseModalHeader>
+  <BaseModalHeader className="p-4">
+    {children}
+    {closeButton && (
+    <a className="text-muted" style={{ position: 'relative', top: '-2px', right: '2px' }} onClick={onHide}>
+      <Icon
+        onClick={onHide}
+        component={XLg}
+        size={16}
+      />
+    </a>
+    )}
+  </BaseModalHeader>
 )
 
 Modal.Body = ModalBody

@@ -1,11 +1,11 @@
-import Moralis from "moralis";
-import { useCallback, useEffect, useState } from "react";
-import { allNetProviers } from '@providers/networks';
-import nftProvider from '@providers/nft';
-import ChainId from "@providers/chain-id";
-import { useDapp } from "@context/dapp-context";
-import Nft from "../../types/nft";
-import useNfts, { fetchTokensById } from "./use-nfts";
+import Moralis from 'moralis'
+import { useCallback, useEffect, useState } from 'react'
+import { allNetProviers } from '@providers/networks'
+import nftProvider from '@providers/nft'
+import ChainId from '@providers/chain-id'
+import { useDapp } from '@context/dapp-context'
+import Nft from '../../types/nft'
+import useNfts, { fetchTokensById } from './use-nfts'
 
 type UseNftRevealProps = {
   status: 'unknown'
@@ -17,7 +17,7 @@ type UseNftRevealProps = {
 } | {
   status: 'success'
   nft: Nft
-};
+}
 
 enum RevealStatus {
   NoTry = 0,
@@ -26,8 +26,8 @@ enum RevealStatus {
 }
 
 async function fetchTokenRevealStatus(currentNetworkId: number, tokenId: string): Promise<RevealStatus> {
-  const chainId = allNetProviers[currentNetworkId].chainId;
-  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft;
+  const { chainId } = allNetProviers[currentNetworkId]
+  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
   const options = {
     abi,
     chain: chainId as any,
@@ -37,34 +37,34 @@ async function fetchTokenRevealStatus(currentNetworkId: number, tokenId: string)
       '': tokenId,
     },
   }
-  const status = (await Moralis.Web3API.native.runContractFunction(options)) as unknown as number;
-  return status as RevealStatus;
+  const status = (await Moralis.Web3API.native.runContractFunction(options)) as unknown as number
+  return status as RevealStatus
 }
 
 export default function useNftReveal(tokenId: string): UseNftRevealProps {
   const { currentNetworkId, walletAddress: owner, isAuthenticated, isWeb3Enabled } = useDapp()
 
-  const [revealStatus, setRevealStatus] = useState<RevealStatus | undefined>(undefined);
+  const [revealStatus, setRevealStatus] = useState<RevealStatus | undefined>(undefined)
 
   useEffect(() => {
     async function callback() {
-      if (!owner || !isAuthenticated || !isWeb3Enabled) return;
+      if (!owner || !isAuthenticated || !isWeb3Enabled) return
       const status = await fetchTokenRevealStatus(currentNetworkId, tokenId)
-      setRevealStatus(status);
+      setRevealStatus(status)
     }
-    const id = setInterval(callback, 3000);
-    callback().catch(console.error);
+    const id = setInterval(callback, 3000)
+    callback().catch(console.error)
     return () => clearInterval(id)
   }, [])
 
   const [executeStatus, setExecuteStatus] = useState<'idle' | 'active' | 'success' | 'error'>('idle')
 
   const reveal = useCallback(async () => {
-    if (!owner || !isAuthenticated || !isWeb3Enabled) return;
-    if (executeStatus !== 'idle') return;
+    if (!owner || !isAuthenticated || !isWeb3Enabled) return
+    if (executeStatus !== 'idle') return
 
-    const chainId = allNetProviers[currentNetworkId].chainId;
-    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft;
+    const { chainId } = allNetProviers[currentNetworkId]
+    const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
     const options = {
       abi,
       chain: chainId as any,
@@ -75,29 +75,29 @@ export default function useNftReveal(tokenId: string): UseNftRevealProps {
       },
     }
     try {
-      setExecuteStatus('active');
-      const result = await Moralis.executeFunction(options);
-      setExecuteStatus('success');
+      setExecuteStatus('active')
+      const result = await Moralis.executeFunction(options)
+      setExecuteStatus('success')
     } catch (err) {
-      console.error(err);
-      setExecuteStatus('error');
+      console.error(err)
+      setExecuteStatus('error')
     }
-  }, [executeStatus, currentNetworkId]);
+  }, [executeStatus, currentNetworkId])
 
-  const [nft, setNft] = useState<Nft | 'error' | undefined>(undefined);
+  const [nft, setNft] = useState<Nft | 'error' | undefined>(undefined)
   useEffect(() => {
     (async () => {
       if (revealStatus == RevealStatus.Revealed) {
         try {
-          const [nft] = await fetchTokensById(currentNetworkId, [tokenId]);
-          setNft(nft);
+          const [nft] = await fetchTokensById(currentNetworkId, [tokenId])
+          setNft(nft)
         } catch (err) {
-          console.error(err);
-          setNft('error');
+          console.error(err)
+          setNft('error')
         }
       }
-    })();
-  }, [currentNetworkId, revealStatus]);
+    })()
+  }, [currentNetworkId, revealStatus])
 
   if (revealStatus === undefined) return { status: 'unknown' }
   if (executeStatus === 'active') return { status: 'loading' }

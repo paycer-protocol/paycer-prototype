@@ -1,7 +1,7 @@
-import { useRouter } from "next/router"
-import NftRevealLayout from "@components/organisms/nft/reveal/layout"
-import RevealPanel from "@components/organisms/nft/reveal/reveal-panel"
-import styled from "styled-components";
+import { useRouter } from 'next/router'
+import NftRevealLayout from '@components/organisms/nft/reveal/layout'
+import RevealPanel from '@components/organisms/nft/reveal/reveal-panel'
+import styled from 'styled-components'
 
 const RevealBg = styled.div`
   height: 100vh;
@@ -15,13 +15,13 @@ const RevealBg = styled.div`
 `
 
 export default function NftWhitelistConfirmationPage() {
-    const { status } = useRouter().query;
+  const { status } = useRouter().query
 
-    return (
-        <NftRevealLayout>
-            <RevealBg className="px-4 px-md-7">
-                <RevealPanel />
-            </RevealBg>
-        </NftRevealLayout>
-    )
+  return (
+    <NftRevealLayout>
+      <RevealBg className="px-4 px-md-7">
+        <RevealPanel />
+      </RevealBg>
+    </NftRevealLayout>
+  )
 }

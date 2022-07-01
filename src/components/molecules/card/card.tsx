@@ -6,12 +6,12 @@ import BaseCardColumns from 'react-bootstrap/CardColumns'
 import BaseCardGroup from 'react-bootstrap/CardGroup'
 
 export interface CardProps extends BaseCardProps {
-    style?: object
-    fill?: boolean
+  style?: object
+  fill?: boolean
 }
 export interface CardImgProps extends BaseCardImgProps {
-    src: string
-    alt?: string
+  src: string
+  alt?: string
 }
 
 export interface CardColumnsProps {}
@@ -19,12 +19,12 @@ export interface CardDeckProps {}
 export interface CardGroupProps {}
 
 const Card = ({ fill = false, children, className, ...props }: CardProps) => (
-    <BaseCard
-        className={classnames({ 'card-fill': fill }, className)}
-        {...props}
-    >
-        {children}
-    </BaseCard>
+  <BaseCard
+    className={classnames({ 'card-fill': fill }, className)}
+    {...props}
+  >
+    {children}
+  </BaseCard>
 )
 export const CardImg = (props: CardImgProps) => <BaseCardImg {...props} />
 export const CardColumns = (props: CardColumnsProps) => <BaseCardColumns {...props} />

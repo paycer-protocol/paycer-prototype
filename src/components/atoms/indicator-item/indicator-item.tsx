@@ -32,8 +32,8 @@ export default function IndicatorItem({ children, ...props }: IndicatorProps) {
 
   return (
     <StyledIndicatorItem {...props}>
-      <span className={`icon-indicator text-${state} bg-${state}`}></span>
+      <span className={`icon-indicator text-${state} bg-${state}`} />
       {children}
-    </ StyledIndicatorItem>
+    </StyledIndicatorItem>
   )
 }

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import NftUpgradeLayout from "@components/organisms/nft/upgrade/layout";
-import UpgradePanel from "@components/organisms/nft/upgrade/upgrade-panel";
+import styled from 'styled-components'
+import NftUpgradeLayout from '@components/organisms/nft/upgrade/layout'
+import UpgradePanel from '@components/organisms/nft/upgrade/upgrade-panel'
 
 const UpgradeBg = styled.div`
   height: 100vh;
@@ -14,11 +14,11 @@ const UpgradeBg = styled.div`
 `
 
 export default function NftUpgradePage() {
-    return (
-        <NftUpgradeLayout>
-            <UpgradeBg className="px-4 px-md-7">
-                <UpgradePanel />
-            </UpgradeBg>
-        </NftUpgradeLayout>
-    )
+  return (
+    <NftUpgradeLayout>
+      <UpgradeBg className="px-4 px-md-7">
+        <UpgradePanel />
+      </UpgradeBg>
+    </NftUpgradeLayout>
+  )
 }

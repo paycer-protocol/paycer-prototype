@@ -18,14 +18,15 @@ export default function RewardFee() {
   }
 
   return (
-      <span>
-          +&nbsp;
-          <FormattedNumber
-              value={fee}
-              minimumFractionDigits={2}
-              maximumFractionDigits={4}
-          />
-          &nbsp;{values.rewardSymbol}
-      </span>
+    <span>
+      +&nbsp;
+      <FormattedNumber
+        value={fee}
+        minimumFractionDigits={2}
+        maximumFractionDigits={4}
+      />
+          &nbsp;
+      {values.rewardSymbol}
+    </span>
   )
 }

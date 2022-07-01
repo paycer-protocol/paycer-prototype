@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import DropdownComponent from "@components/atoms/dropdown/dropdown";
+import DropdownComponent from '@components/atoms/dropdown/dropdown'
 
 export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     position: absolute;

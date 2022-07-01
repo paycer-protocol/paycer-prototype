@@ -4,7 +4,7 @@ import BaseProgressBar, { ProgressBarProps as BaseProgressBarProps } from 'react
 export interface ProgressBarProps extends BaseProgressBarProps {}
 
 const ProgressBar: React.FC<ProgressBarProps> = (props) => (
-    <BaseProgressBar {...props} />
+  <BaseProgressBar {...props} />
 )
 
 export default ProgressBar

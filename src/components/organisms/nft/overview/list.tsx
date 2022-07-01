@@ -1,5 +1,5 @@
-import Nft from "../../../../types/nft";
-import NftCard from "./card";
+import Nft from '../../../../types/nft'
+import NftCard from './card'
 
 interface NftCardListProps {
   nfts: Nft[]

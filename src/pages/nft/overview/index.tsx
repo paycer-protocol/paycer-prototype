@@ -1,7 +1,7 @@
-import PageHeader from "@components/molecules/page-header";
-import Layout from "@components/organisms/layout";
-import NftOverview from "@components/organisms/nft/overview";
-import { t } from "@lingui/macro";
+import PageHeader from '@components/molecules/page-header'
+import Layout from '@components/organisms/layout'
+import NftOverview from '@components/organisms/nft/overview'
+import { t } from '@lingui/macro'
 
 export default function NftOverviewPage() {
   return (

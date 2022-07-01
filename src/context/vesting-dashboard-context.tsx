@@ -1,15 +1,15 @@
-import React, {useContext, useEffect, useMemo, useState} from 'react'
-import {useDapp} from "@context/dapp-context";
-import VestingContractProvider from "@providers/vesting";
-import ChainId from "@providers/chain-id";
-import {useWeb3ExecuteFunction} from "react-moralis";
-import Moralis from "moralis";
-import {formatUnits} from "@ethersproject/units";
-import {calculateEndTime, calculateNextDistribution, calculateStartTime} from "../helpers/vesting-helper";
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { useDapp } from '@context/dapp-context'
+import VestingContractProvider from '@providers/vesting'
+import ChainId from '@providers/chain-id'
+import { useWeb3ExecuteFunction } from 'react-moralis'
+import Moralis from 'moralis'
+import { formatUnits } from '@ethersproject/units'
+import { calculateEndTime, calculateNextDistribution, calculateStartTime } from '../helpers/vesting-helper'
 
 enum TRANSACTION_STATE {
-  "NONE" = 0,
-  "TRANSACTION" = 1
+  'NONE' = 0,
+  'TRANSACTION' = 1,
 }
 
 interface DashboardProps {
@@ -82,7 +82,6 @@ const VestingDashboardContext = React.createContext<VestingProps>({
 export const useVestingDashboard = () => useContext(VestingDashboardContext)
 
 export const VestingDashboardProvider = ({ children, dashboardData }) => {
-
   const vestingType = dashboardData.type
   const { currentNetworkId, walletAddress, currentNetwork, fetchERC20Balances, isInitialized } = useDapp()
   const vestingConfig = VestingContractProvider[currentNetworkId] ? VestingContractProvider[currentNetworkId] : VestingContractProvider[ChainId.Polygon]
@@ -100,21 +99,19 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
   let totalReceived = dashboardData.baseAmountPCR
 
   if (dashboardData.bonusPercentage) {
-    totalReceived = (dashboardData.baseAmountPCR * dashboardData.bonusPercentage  / 100) + dashboardData.baseAmountPCR
+    totalReceived = (dashboardData.baseAmountPCR * dashboardData.bonusPercentage / 100) + dashboardData.baseAmountPCR
   }
 
   const { data, error: withdrawError, fetch: withdraw, isFetching: withdrawIsFetching, isLoading: withdrawIsLoading } = useWeb3ExecuteFunction()
 
-  const vestingWithdrawRequestParams = useMemo(() => {
-    return (
-        {
-          contractAddress: vestingAddress,
-          functionName: 'withdraw',
-          abi: vestingConfig.abi,
-          params: { beneficiary: walletAddress },
-        }
-    )
-  }, [currentNetworkId, walletAddress, isInitialized])
+  const vestingWithdrawRequestParams = useMemo(() => (
+    {
+      contractAddress: vestingAddress,
+      functionName: 'withdraw',
+      abi: vestingConfig.abi,
+      params: { beneficiary: walletAddress },
+    }
+  ), [currentNetworkId, walletAddress, isInitialized])
 
   const handleClaim = async () => {
     setIsLoading(true)
@@ -125,14 +122,13 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
       })
 
       if (withdrawTx) {
-        //@ts-ignore
+        // @ts-ignore
         await withdrawTx.wait()
         setIsLoading(false)
         setWithdrawAble(0)
         fetchERC20Balances()
         setWithdrawIsSuccess(true)
       }
-
     } catch (error) {
       if (error.code && error.code === 'TRANSACTION_REPLACED') {
         if (error.cancelled) {
@@ -156,7 +152,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
           chain: currentNetwork.chainName.toLowerCase(),
           address: vestingAddress,
           function_name: 'startTime',
-          abi: vestingConfig.abi
+          abi: vestingConfig.abi,
         }
         try {
           const response = await Moralis.Web3API.native.runContractFunction(options)
@@ -178,7 +174,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
           chain: currentNetwork.chainName.toLowerCase(),
           address: vestingAddress,
           function_name: 'releaseInterval',
-          abi: vestingConfig.abi
+          abi: vestingConfig.abi,
         }
         try {
           const response = await Moralis.Web3API.native.runContractFunction(options)
@@ -201,7 +197,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
           address: vestingAddress,
           function_name: 'withdrawable',
           abi: vestingConfig.abi,
-          params: {beneficiary: walletAddress},
+          params: { beneficiary: walletAddress },
         }
 
         try {
@@ -225,7 +221,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
           address: vestingAddress,
           function_name: 'recipients',
           abi: vestingConfig.abi,
-          params: {beneficiary: walletAddress},
+          params: { beneficiary: walletAddress },
         }
         try {
           // @ts-ignore
@@ -256,7 +252,6 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
     setTransactionState(0)
   }
 
-
   return (
     <VestingDashboardContext.Provider
       value={{
@@ -274,7 +269,7 @@ export const VestingDashboardProvider = ({ children, dashboardData }) => {
         startTime: calculateStartTime(startTime).format('MM/DD/YYYY, h:mm:ss a'),
         endTime: calculateEndTime(startTime, vestingType).format('MM/DD/YYYY, h:mm:ss a'),
         nextDistribution: calculateNextDistribution(startTime, releaseInterval).format('MM/DD/YYYY, h:mm:ss a'),
-        resetStatus
+        resetStatus,
       }}
     >
       {children}

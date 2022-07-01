@@ -10,7 +10,7 @@ interface PortalProps {
  * Purely functional, design agnostic portal component.
  */
 const Portal: React.FC<PortalProps> = (props: PortalProps) => {
-  const {children} = props
+  const { children } = props
   const [isMounted, setIsMounted] = useState(false)
   const rootElement: Element = getRootElement()
 
@@ -25,4 +25,3 @@ const Portal: React.FC<PortalProps> = (props: PortalProps) => {
 }
 
 export default Portal
-

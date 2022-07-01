@@ -8,14 +8,14 @@ export default {
   component: Button,
   argTypes: {
     size: {
-        control: 'radio',
-        options: theme.sizes,
+      control: 'radio',
+      options: theme.sizes,
     },
     active: {
-        control: 'boolean',
+      control: 'boolean',
     },
     block: {
-        control: 'boolean',
+      control: 'boolean',
     },
     disabled: {
       control: 'boolean',
@@ -24,19 +24,19 @@ export default {
 } as Meta
 
 const DefaultTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
-    theme.colors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
+  theme.colors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
 )
 
 const OutlineTemplate: (args) => JSX.Element[] = (args: ButtonProps) => (
-    theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
+  theme.outlineColors.map((variant) => <Button variant={variant} {...args} className="mr-2">{variant}</Button>)
 )
 
 export const Default = DefaultTemplate.bind({})
 Default.args = {
-    size: 'md',
+  size: 'md',
 }
 
 export const Outline = OutlineTemplate.bind({})
 Outline.args = {
-    size: 'md',
+  size: 'md',
 }

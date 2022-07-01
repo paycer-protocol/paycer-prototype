@@ -1,4 +1,4 @@
-import ChainId from '../providers/chain-id'
+import ChainId from './chain-id'
 import MumbaiContract from '../deployments/mumbai/nft'
 import MaticContract from '../deployments/matic/nft'
 

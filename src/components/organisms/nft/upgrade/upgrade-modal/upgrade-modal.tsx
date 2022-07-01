@@ -1,10 +1,10 @@
-import GradientButton from "@components/atoms/button/gradient-button";
-import Modal from "@components/molecules/modal";
-import TransactionApproveModal from "@components/organisms/transaction-approve-modal";
-import { withIpfsGateway } from "@hooks/nft/use-nfts";
-import useNftUpgrade from "@hooks/nft/use-upgrade";
-import { t } from "@lingui/macro";
-import NftModelViewer from "../../common/model-viewer";
+import GradientButton from '@components/atoms/button/gradient-button'
+import Modal from '@components/molecules/modal'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import { withIpfsGateway } from '@hooks/nft/use-nfts'
+import useNftUpgrade from '@hooks/nft/use-upgrade'
+import { t } from '@lingui/macro'
+import NftModelViewer from '../../common/model-viewer'
 
 export interface UpgradeModalProps {
   tokenId: string
@@ -13,7 +13,7 @@ export interface UpgradeModalProps {
 }
 
 export default function UpgradeModal({ tokenId, show, onHide }: UpgradeModalProps) {
-  const nftUpgrade = useNftUpgrade(tokenId);
+  const nftUpgrade = useNftUpgrade(tokenId)
   return (
     <>
       {
@@ -47,5 +47,5 @@ export default function UpgradeModal({ tokenId, show, onHide }: UpgradeModalProp
         )
       }
     </>
-  );
+  )
 }

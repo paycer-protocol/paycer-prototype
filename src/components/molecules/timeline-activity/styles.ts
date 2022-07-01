@@ -8,7 +8,7 @@ export const StyledTimeline = styled.div<any>`
       fill: #3B506C;
     }
     
-   ${props => props.isActive && css`
+   ${(props) => props.isActive && css`
     border: 1px solid #00D97E;
     svg {
       fill: #00D97E;
@@ -17,13 +17,12 @@ export const StyledTimeline = styled.div<any>`
     
 `
 
-
 export const StyledListGroupItem = styled.div<any>`
-  ${props => props.isIndendet && css`
+  ${(props) => props.isIndendet && css`
     margin-left: 30px;
   `}
   
-  ${props => props.isIndendetOpener && css`
+  ${(props) => props.isIndendetOpener && css`
     &:before {
       transform: rotate(150deg);
       top: 46px!important;
@@ -32,7 +31,7 @@ export const StyledListGroupItem = styled.div<any>`
     }
   `}
   
-  ${props => props.isActive && css`
+  ${(props) => props.isActive && css`
 
     &:before {
       border-color: #00D97E!important;

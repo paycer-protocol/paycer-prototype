@@ -17,7 +17,7 @@ export default function PortalBlockNumber() {
       return
     }
     const explorerBlockUrl = explorerUrl
-    setHref(explorerBlockUrl + '/block/' + blockNumber)
+    setHref(`${explorerBlockUrl}/block/${blockNumber}`)
     return () => setHref(null)
   }, [blockNumber, currentNetworkId, isAuthenticated, walletAddress])
 
@@ -31,7 +31,7 @@ export default function PortalBlockNumber() {
         </IndicatorItem>
       ) : (
         <IndicatorItem state="danger" title={t`Login to your wallet to see block details`}>
-          {/*@ts-ignore*/}
+          {/* @ts-ignore */}
           {t`Disconnected`}
         </IndicatorItem>
       )}

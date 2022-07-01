@@ -5,14 +5,14 @@ import BasePageItem, { Ellipsis, First, Last, Next, Prev } from 'react-bootstrap
 export interface PaginationProps extends BasePaginationProps {}
 
 export interface PageItemProps {
-    active?: boolean
-    disabled?: boolean
-    children?: any
+  active?: boolean
+  disabled?: boolean
+  children?: any
 }
 
 const Pagination = (props: PaginationProps) => <BasePagination {...props} />
-export const PageItem = ({ children, ...props}: PageItemProps) => (
-    <BasePageItem {...props}>{children}</BasePageItem>
+export const PageItem = ({ children, ...props }: PageItemProps) => (
+  <BasePageItem {...props}>{children}</BasePageItem>
 )
 
 Pagination.Item = PageItem

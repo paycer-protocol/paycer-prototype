@@ -11,23 +11,23 @@ import Select from './select'
 import Textarea from './textarea'
 
 type FormComponent = FC<FormProps<FormikValues>> & {
-    Group: typeof Group
-    Input: typeof Input
-    Checkbox: typeof Checkbox
-    Radio: typeof Radio
-    Range: typeof Range
-    Select: typeof Select
-    Textarea: typeof Textarea
+  Group: typeof Group
+  Input: typeof Input
+  Checkbox: typeof Checkbox
+  Radio: typeof Radio
+  Range: typeof Range
+  Select: typeof Select
+  Textarea: typeof Textarea
 }
 
 const Form: FormComponent = ({ className, children, ...restProps }: FormProps<FormikValues>) => (
-    <Formik {...restProps}>
-        {(formik: DerivedFormikProps<FormikValues>) => (
-            <BootstrapForm className={className} onSubmit={formik.handleSubmit}>
-                {typeof children === 'function' ? children(formik): children}
-            </BootstrapForm>
-        )}
-    </Formik>
+  <Formik {...restProps}>
+    {(formik: DerivedFormikProps<FormikValues>) => (
+      <BootstrapForm className={className} onSubmit={formik.handleSubmit}>
+        {typeof children === 'function' ? children(formik) : children}
+      </BootstrapForm>
+    )}
+  </Formik>
 )
 
 Form.Group = Group

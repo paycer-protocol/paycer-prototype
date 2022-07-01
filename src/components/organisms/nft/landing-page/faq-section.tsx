@@ -1,7 +1,7 @@
-import PageHeader from "@components/molecules/page-header";
-import {t, Trans} from "@lingui/macro";
-import { Accordion } from "react-bootstrap";
-import styled from "styled-components";
+import PageHeader from '@components/molecules/page-header'
+import { t, Trans } from '@lingui/macro'
+import { Accordion } from 'react-bootstrap'
+import styled from 'styled-components'
 
 const AccordionItemBorder = styled.div`
   border: 1px solid #3C506F;
@@ -54,14 +54,14 @@ export default function FaqSection() {
             </Accordion.Body>
           </Accordion.Item>
         </AccordionItemBorder>
-        {/*<AccordionItemBorder>*/}
-        {/*  <Accordion.Item eventKey="3">*/}
-        {/*    <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader>*/}
-        {/*    <Accordion.Body>*/}
-        {/*      {t`Ethereum.`}*/}
-        {/*    </Accordion.Body>*/}
-        {/*  </Accordion.Item>*/}
-        {/*</AccordionItemBorder>*/}
+        {/* <AccordionItemBorder> */}
+        {/*  <Accordion.Item eventKey="3"> */}
+        {/*    <StyledAccordionHeader>{t`On which blockchain will the NFT be launched?`}</StyledAccordionHeader> */}
+        {/*    <Accordion.Body> */}
+        {/*      {t`Ethereum.`} */}
+        {/*    </Accordion.Body> */}
+        {/*  </Accordion.Item> */}
+        {/* </AccordionItemBorder> */}
         <AccordionItemBorder>
           <Accordion.Item eventKey="4">
             <StyledAccordionHeader>{t`How much will the NFT cost?`}</StyledAccordionHeader>

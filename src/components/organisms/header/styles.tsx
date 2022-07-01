@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import Navbar from "@components/molecules/navbar";
+import Navbar from '@components/molecules/navbar'
 
 export const StyledBrand = styled(Navbar.Brand)`
     margin-top: -10px;

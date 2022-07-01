@@ -30,5 +30,3 @@ export const CurrencyInputLabel = styled.h5`
     color: #a6a6a6;
     margin-bottom: 15px;
 `
-
-

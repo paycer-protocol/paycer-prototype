@@ -23,7 +23,7 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDT,
       tokenProvider.wBTC,
       tokenProvider.wETH,
-    ]
+    ],
   },
   {
     base: tokenProvider.DAI,
@@ -33,7 +33,7 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDC,
       tokenProvider.wBTC,
       tokenProvider.wETH,
-    ]
+    ],
   },
   {
     base: tokenProvider.USDC,
@@ -43,7 +43,7 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDT,
       tokenProvider.wBTC,
       tokenProvider.wETH,
-    ]
+    ],
   },
   {
     base: tokenProvider.USDT,
@@ -53,7 +53,7 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDC,
       tokenProvider.wBTC,
       tokenProvider.wETH,
-    ]
+    ],
   },
   {
     base: tokenProvider.wBTC,
@@ -63,7 +63,7 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDC,
       tokenProvider.USDT,
       tokenProvider.wETH,
-    ]
+    ],
   },
   {
     base: tokenProvider.wETH,
@@ -73,6 +73,6 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.USDC,
       tokenProvider.USDT,
       tokenProvider.wBTC,
-    ]
-  }
+    ],
+  },
 ]

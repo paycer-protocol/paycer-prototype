@@ -1,8 +1,8 @@
-import Card from "@components/molecules/card";
-import { withIpfsGateway } from "@hooks/nft/use-nfts";
-import { t } from "@lingui/macro";
-import Nft from "../../../../types/nft";
-import NftModelViewer from "../common/model-viewer";
+import Card from '@components/molecules/card'
+import { withIpfsGateway } from '@hooks/nft/use-nfts'
+import { t } from '@lingui/macro'
+import Nft from '../../../../types/nft'
+import NftModelViewer from '../common/model-viewer'
 
 export interface NftCardProps {
   nft: Nft
@@ -18,7 +18,10 @@ export default function NftCard({ nft }: NftCardProps) {
         <Card.Body>
           <h2 className="d-flex">
             <span className="me-4">{nft.metadata.name}</span>
-            <span className="ms-auto">#{nft.id}</span>
+            <span className="ms-auto">
+              #
+              {nft.id}
+            </span>
           </h2>
           <div className="d-flex">
             <span className="me-4">{t`Level`}</span>

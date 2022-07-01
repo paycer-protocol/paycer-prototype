@@ -17,22 +17,22 @@ const StyledPortal = styled.div`
 `
 
 interface PortalOverlayProps {
-    children: any
+  children: any
 }
 
 /**
  * Generic portal overlay aligned to screen corner.
  */
 const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) => {
-    const { children } = props
+  const { children } = props
 
-    return (
-        <Portal>
-            <StyledPortal className="position-fixed">
-                {children}
-            </StyledPortal>
-        </Portal>
-    )
+  return (
+    <Portal>
+      <StyledPortal className="position-fixed">
+        {children}
+      </StyledPortal>
+    </Portal>
+  )
 }
 
 export default PortalOverlay

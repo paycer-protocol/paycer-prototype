@@ -75,4 +75,3 @@ export interface IStrategyProvider {
 }
 
 export default {}
-

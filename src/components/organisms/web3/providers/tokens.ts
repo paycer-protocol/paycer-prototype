@@ -34,6 +34,6 @@ export const tokenProvider: ITokenProvider = {
       [ChainId.Polygon]: '',
       [ChainId.Mumbai]: '',
       [ChainId.Hardhat]: '0x4826533B4897376654Bb4d4AD88B7faFD0C98528',
-    }
-  }
+    },
+  },
 }

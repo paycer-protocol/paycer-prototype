@@ -12,9 +12,9 @@ export interface TimelineActivityProps {
 }
 
 const Content = ({ children }) => (
-    <div className="card-text small">
-      {children}
-    </div>
+  <div className="card-text small">
+    {children}
+  </div>
 )
 
 const TimelineActivity = ({ children, ...props }: TimelineActivityProps) => {

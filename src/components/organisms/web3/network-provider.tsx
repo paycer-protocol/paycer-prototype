@@ -1,5 +1,5 @@
 import React from 'react'
-import {Trans, t} from '@lingui/macro'
+import { Trans, t } from '@lingui/macro'
 import { useDapp } from '@context/dapp-context'
 import Button from '@components/atoms/button'
 import Modal from '@components/molecules/modal'
@@ -21,7 +21,7 @@ const NetworkProvider = (props: NetworkProviderProps) => {
     <Modal size="sm" show={show} onHide={onHide}>
       <>
         <Modal.Header closeButton onHide={onHide}>
-          {/*@ts-ignore*/}
+          {/* @ts-ignore */}
           <Modal.Title>{t`Switch network`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -31,18 +31,18 @@ const NetworkProvider = (props: NetworkProviderProps) => {
               const isActive = isAuthenticated && Number(chainId) === currentNetworkId
 
               return (
-                  <Button
-                    key={chainId}
-                    variant="primary"
-                    className="d-flex align-items-center justify-content-center mb-3 w-100"
-                    active={isActive}
-                    onClick={async () => {
-                      await onHide()
-                      await handleSwitchNetwork(provider)
-                    }}
-                  >
-                    <strong>{provider.chainName}</strong>
-                  </Button>
+                <Button
+                  key={chainId}
+                  variant="primary"
+                  className="d-flex align-items-center justify-content-center mb-3 w-100"
+                  active={isActive}
+                  onClick={async () => {
+                    await onHide()
+                    await handleSwitchNetwork(provider)
+                  }}
+                >
+                  <strong>{provider.chainName}</strong>
+                </Button>
               )
             })}
           </div>

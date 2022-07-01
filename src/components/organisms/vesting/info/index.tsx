@@ -4,44 +4,51 @@ import Card from '@components/molecules/card'
 import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 const KycProcessInfo = () => {
+  const { dashboardData } = useVestingDashboard()
 
-    const { dashboardData } = useVestingDashboard()
+  const {
+    bonusPercentage,
+    immediateAvailabilityPercentage,
+  } = dashboardData
 
-    const {
-        bonusPercentage,
-        immediateAvailabilityPercentage
-    } = dashboardData
-
-    return (
-      <>
-        <Card.Text>
-            {( (bonusPercentage || immediateAvailabilityPercentage) &&
+  return (
+    <>
+      <Card.Text>
+        {((bonusPercentage || immediateAvailabilityPercentage)
+              && (
               <>
                 <div className="horizontal-line mt-5" />
                 <h2 className="mb-4">
-                    {t`Bonus & Availability`}
+                  {t`Bonus & Availability`}
                 </h2>
               </>
+              )
              )}
-            {(bonusPercentage &&
+        {(bonusPercentage
+              && (
               <>
                 <div className="text-muted transform-uppercase">
-                    {t`Bonus Percentage`}
+                  {t`Bonus Percentage`}
                 </div>
-                {bonusPercentage}%
+                {bonusPercentage}
+                %
               </>
+              )
             )}
-            {(immediateAvailabilityPercentage &&
+        {(immediateAvailabilityPercentage
+              && (
               <>
                 <div className="text-muted transform-uppercase mt-3">
-                    {t`Immediate Availability Percentage`}
+                  {t`Immediate Availability Percentage`}
                 </div>
-                  {immediateAvailabilityPercentage}%
+                {immediateAvailabilityPercentage}
+                %
               </>
+              )
             )}
-        </Card.Text>
-      </>
-    )
+      </Card.Text>
+    </>
+  )
 }
 
 export default KycProcessInfo

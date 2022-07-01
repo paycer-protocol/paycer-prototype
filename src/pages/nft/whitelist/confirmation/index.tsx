@@ -1,9 +1,9 @@
-import Layout from "@components/organisms/layout";
-import { useRouter } from "next/router";
-import Custom404 from "pages/404";
+import Layout from '@components/organisms/layout'
+import { useRouter } from 'next/router'
+import Custom404 from 'pages/404'
 
 export default function NftWhitelistConfirmationPage() {
-  const { status } = useRouter().query;
+  const { status } = useRouter().query
 
   if (status == 'success') {
     return (

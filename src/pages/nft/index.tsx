@@ -1,22 +1,22 @@
-import AboutSection from "@components/organisms/nft/landing-page/about-section"
-import FaqSection from "@components/organisms/nft/landing-page/faq-section"
-import UspSection from "@components/organisms/nft/landing-page/usp-section"
-import NftLandingPageLayout from "@components/organisms/nft/landing-page/layout"
-import MintSection from "@components/organisms/nft/landing-page/mint-section"
-import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section"
-import RoadmapSectionMobile from "@components/organisms/nft/landing-page/roadmap-section-mobile"
-import TeamSection from "@components/organisms/nft/landing-page/team-section"
-import TitleSection from "@components/organisms/nft/landing-page/title-section"
-import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
-import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
-import SwiperSection from "@components/organisms/nft/landing-page/swiper-section"
-import { t } from "@lingui/macro"
+import AboutSection from '@components/organisms/nft/landing-page/about-section'
+import FaqSection from '@components/organisms/nft/landing-page/faq-section'
+import UspSection from '@components/organisms/nft/landing-page/usp-section'
+import NftLandingPageLayout from '@components/organisms/nft/landing-page/layout'
+import MintSection from '@components/organisms/nft/landing-page/mint-section'
+import RoadmapSection from '@components/organisms/nft/landing-page/roadmap-section'
+import RoadmapSectionMobile from '@components/organisms/nft/landing-page/roadmap-section-mobile'
+import TeamSection from '@components/organisms/nft/landing-page/team-section'
+import TitleSection from '@components/organisms/nft/landing-page/title-section'
+import DiscordSection from '@components/organisms/nft/landing-page/discord-section'
+import AchievementsSection from '@components/organisms/nft/landing-page/achievements-section'
+import SwiperSection from '@components/organisms/nft/landing-page/swiper-section'
+import { t } from '@lingui/macro'
+import React, { useEffect, useRef, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
+import Icon from '@components/atoms/icon'
+import { ArrowUpward } from '@styled-icons/material'
+import styled from 'styled-components'
 import SectionHoc from './section-hoc'
-import React, { useEffect, useRef, useState } from "react"
-import { useMediaQuery } from "react-responsive"
-import Icon from "@components/atoms/icon";
-import { ArrowUpward } from "@styled-icons/material"
-import styled from "styled-components"
 
 const ToTopButton = styled.div`
   position: fixed;
@@ -40,11 +40,11 @@ const ToTopButton = styled.div`
   }
 `
 
-const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
-const publicSaleStart = new Date(Date.parse('30 Nov 2022 00:00:00 GMT'));
+const presaleStart = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'))
+const publicSaleStart = new Date(Date.parse('30 Nov 2022 00:00:00 GMT'))
 
 export default function NftLandingPage() {
-  const [ showScrollTopButton, setShowScrollTopButton ] = useState(false)
+  const [showScrollTopButton, setShowScrollTopButton] = useState(false)
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
@@ -69,7 +69,6 @@ export default function NftLandingPage() {
   ]
 
   function scrollHandler() {
-
     if (window.pageYOffset === 0) {
       setShowScrollTopButton(false)
     }
@@ -99,11 +98,11 @@ export default function NftLandingPage() {
         <SwiperSection />
       </div>
       <SectionHoc anchorRef={aboutSection} anchorId={1}>
-          <AboutSection />
+        <AboutSection />
       </SectionHoc>
 
       <SectionHoc anchorRef={mintSection} anchorId={2}>
-        <div className="position-relative mb-7" style={{zIndex: 1}}>
+        <div className="position-relative mb-7" style={{ zIndex: 1 }}>
           <MintSection
             onNeedHelpClicked={() => faqSection.current.scrollIntoView({ behavior: 'smooth' })}
             presaleStart={presaleStart}
@@ -112,7 +111,7 @@ export default function NftLandingPage() {
         </div>
       </SectionHoc>
       <SectionHoc anchorRef={uspSection} anchorId={3}>
-        <div className="position-relative mb-7" style={{zIndex: 2}}>
+        <div className="position-relative mb-7" style={{ zIndex: 2 }}>
           <UspSection />
         </div>
       </SectionHoc>
@@ -140,16 +139,15 @@ export default function NftLandingPage() {
         <DiscordSection />
       </div>
 
-      {showScrollTopButton &&
+      {showScrollTopButton
+          && (
           <ToTopButton>
             <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Icon size={16} component={ArrowUpward} />
             </div>
           </ToTopButton>
-      }
+          )}
 
     </NftLandingPageLayout>
   )
 }
-
-

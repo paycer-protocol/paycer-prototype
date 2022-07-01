@@ -16,8 +16,8 @@ export interface ITokenDataProvider {
 export default function useSupportedToken(): Record<string, ITokenDataProvider> {
   const { account, chainId } = useEthers()
 
-  const calls = [];
-  Object.keys(tokenProvider).forEach(symbol => {
+  const calls = []
+  Object.keys(tokenProvider).forEach((symbol) => {
     const token = tokenProvider[symbol]
     const tokenAddress = token.chainAddresses[chainId || ChainId.Polygon]
 
@@ -26,33 +26,33 @@ export default function useSupportedToken(): Record<string, ITokenDataProvider> 
         abi: ERC20Interface,
         address: tokenAddress,
         method: 'totalSupply',
-        args: []
+        args: [],
       })
       calls.push({
         abi: ERC20Interface,
         address: tokenAddress,
         method: 'balanceOf',
-        args: [account]
+        args: [account],
       })
       calls.push({
         abi: ERC20Interface,
         address: tokenAddress,
         method: 'allowance',
-        args: [tokenAddress, account]
+        args: [tokenAddress, account],
       })
     }
-  });
-  const callRes = useContractCalls(calls);
-  const res: Record<string, ITokenDataProvider> = {};
-  let resIndex = 0;
+  })
+  const callRes = useContractCalls(calls)
+  const res: Record<string, ITokenDataProvider> = {}
+  let resIndex = 0
 
-  Object.keys(tokenProvider).forEach(symbol => {
+  Object.keys(tokenProvider).forEach((symbol) => {
     const token = tokenProvider[symbol]
     const tokenAddress = token.chainAddresses[chainId || ChainId.Polygon]
     if (tokenAddress) {
-      const totalSupply = formatNumber(callRes[resIndex++], token.decimals);
-      const tokenBalance = formatNumber(callRes[resIndex++], token.decimals);
-      const allowance = formatNumber(callRes[resIndex++], token.decimals);
+      const totalSupply = formatNumber(callRes[resIndex++], token.decimals)
+      const tokenBalance = formatNumber(callRes[resIndex++], token.decimals)
+      const allowance = formatNumber(callRes[resIndex++], token.decimals)
       res[symbol] = {
         name: token.name,
         tokenAddress,
@@ -60,13 +60,11 @@ export default function useSupportedToken(): Record<string, ITokenDataProvider> 
         symbol,
         totalSupply,
         allowance,
-        tokenBalance
+        tokenBalance,
       }
     }
   })
-  return res;
+  return res
 }
 
-const formatNumber = (value, decimals) => {
-  return value && BigNumber.isBigNumber(value[0]) ? Number(formatUnits(value[0], decimals)) : 0
-}
+const formatNumber = (value, decimals) => value && BigNumber.isBigNumber(value[0]) ? Number(formatUnits(value[0], decimals)) : 0

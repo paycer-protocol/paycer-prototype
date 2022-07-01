@@ -1,10 +1,10 @@
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, OrbitControls, Stats, Environment } from '@react-three/drei'
-import { AnimationMixer, Box3, Vector3 } from 'three';
-import { useEffect, useRef, useState } from 'react';
-import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { AnimationMixer, Box3, Vector3 } from 'three'
+import { useEffect, useRef, useState } from 'react'
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 interface NftModelViewerProps {
   url: string;
@@ -14,14 +14,14 @@ function Model({ gltf }: { gltf: GLTF | undefined }) {
   const mixer = useRef<AnimationMixer>()
   useEffect(() => {
     if (gltf && gltf.animations.length > 0) {
-      mixer.current = new AnimationMixer(gltf.scene);
-      const animation = gltf.animations[Math.floor(Math.random() * gltf.animations.length)];
+      mixer.current = new AnimationMixer(gltf.scene)
+      const animation = gltf.animations[Math.floor(Math.random() * gltf.animations.length)]
       const action = mixer.current.clipAction(animation)
       action.play()
     }
-  }, [gltf]);
+  }, [gltf])
   useFrame(({ clock }) => {
-    mixer.current && mixer.current.setTime(clock.getElapsedTime());
+    mixer.current && mixer.current.setTime(clock.getElapsedTime())
   })
 
   return (
@@ -30,24 +30,24 @@ function Model({ gltf }: { gltf: GLTF | undefined }) {
 }
 
 function NftModelViewerInternal({ url }: NftModelViewerProps) {
-  const [model, setModel] = useState<GLTF | undefined>(undefined);
+  const [model, setModel] = useState<GLTF | undefined>(undefined)
 
   useEffect(() => {
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader()
     loader.load(url, (gltf) => {
       // Center geometry around (0, 0, 0) with normalized size
-      const box = new Box3().setFromObject(gltf.scene);
-      const center = box.getCenter(new Vector3());
-      const size = box.getSize(new Vector3());
-      const longestExtent = Math.max(Math.max(size.x, size.y), size.z);
-      gltf.scene.position.x += (gltf.scene.position.x - center.x / longestExtent);
-      gltf.scene.position.y += (gltf.scene.position.y - center.y / longestExtent);
-      gltf.scene.position.z += (gltf.scene.position.z - center.z / longestExtent);
-      gltf.scene.scale.x = 1 / longestExtent;
-      gltf.scene.scale.y = 1 / longestExtent;
-      gltf.scene.scale.z = 1 / longestExtent;
+      const box = new Box3().setFromObject(gltf.scene)
+      const center = box.getCenter(new Vector3())
+      const size = box.getSize(new Vector3())
+      const longestExtent = Math.max(Math.max(size.x, size.y), size.z)
+      gltf.scene.position.x += (gltf.scene.position.x - center.x / longestExtent)
+      gltf.scene.position.y += (gltf.scene.position.y - center.y / longestExtent)
+      gltf.scene.position.z += (gltf.scene.position.z - center.z / longestExtent)
+      gltf.scene.scale.x = 1 / longestExtent
+      gltf.scene.scale.y = 1 / longestExtent
+      gltf.scene.scale.z = 1 / longestExtent
 
-      setModel(gltf);
+      setModel(gltf)
     })
   }, [url])
 
@@ -59,7 +59,7 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
         maxDistance={3.75}
         autoRotate
         enablePan={false}
-        enableZoom={true}
+        enableZoom
         minPolarAngle={Math.PI / 5 * 1}
         maxPolarAngle={Math.PI / 5 * 4}
       />
@@ -70,12 +70,10 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
       />
 
       <Model gltf={model} />
-    </Canvas >
+    </Canvas>
   )
 }
 
-const NftModelViewer = dynamic(async () => {
-  return NftModelViewerInternal;
-}, { ssr: false }) as unknown as (props: NftModelViewerProps) => JSX.Element;
+const NftModelViewer = dynamic(async () => NftModelViewerInternal, { ssr: false }) as unknown as (props: NftModelViewerProps) => JSX.Element
 
-export default NftModelViewer;
+export default NftModelViewer

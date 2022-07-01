@@ -33,4 +33,3 @@ export const StyledDropdownMenu = styled.div`
         cursor: pointer;
     }
 `
-

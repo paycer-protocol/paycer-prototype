@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 import styled from 'styled-components'
-import PageHeader from "@components/molecules/page-header"
-import { t } from "@lingui/macro"
-import NftModelViewer from "../common/model-viewer";
+import PageHeader from '@components/molecules/page-header'
+import { t } from '@lingui/macro'
+import NftModelViewer from '../common/model-viewer'
 
 const partners = [
   {
@@ -55,7 +55,6 @@ export const FeatureListWrapper = styled.div`
   }
 `
 
-
 function TechnologyList() {
   return (
     <div className="mt-5 mb-6">
@@ -71,7 +70,7 @@ function TechnologyList() {
         <ul className="row">
           {partners.map((item, key) => (
             <li className="col-6 col-lg-3 mb-4 d-flex align-items-center">
-              <a href={item.url} target="_blank" key={key} className="d-flex justify-content-md-center">
+              <a href={item.url} target="_blank" key={key} className="d-flex justify-content-md-center" rel="noreferrer">
                 <img className="w-75" src={item.imagePath} />
               </a>
             </li>
@@ -85,7 +84,7 @@ function TechnologyList() {
 function AboutText() {
   return (
     <>
-      <div className="mb-2"></div>
+      <div className="mb-2" />
       <div className="mb-5">
         <h5 className="text-uppercase mb-3 text-pink">
           {t`NEXT LEVEL NFT`}
@@ -105,7 +104,6 @@ function AboutText() {
     </>
   )
 }
-
 
 const AboutWrapper = styled.div`
   position: relative;

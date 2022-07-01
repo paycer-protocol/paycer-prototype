@@ -6,7 +6,6 @@ import TokenOverviewList from '@components/organisms/token-overview/token-overvi
 import Layout from '@components/organisms/layout'
 
 export default function TokenOverview() {
-
   return (
     <Layout>
       <div className="container mt-3 mb-8">
@@ -14,25 +13,24 @@ export default function TokenOverview() {
           <div className="row align-items-center">
             <div className="col">
               <PageHeader.Subtitle>
-                  {t`PCR Token`}
+                {t`PCR Token`}
               </PageHeader.Subtitle>
               <PageHeader.Title>
-                  {t`Overview`}
+                {t`Overview`}
               </PageHeader.Title>
             </div>
           </div>
         </PageHeader>
         <div>
-            <div className="row position-relatives blur-background">
-              <div className="col-12">
-                <TokenOverviewList
-                  items={TokenOverviewListItems}
-                />
-              </div>
+          <div className="row position-relatives blur-background">
+            <div className="col-12">
+              <TokenOverviewList
+                items={TokenOverviewListItems}
+              />
             </div>
+          </div>
         </div>
       </div>
     </Layout>
   )
 }
-
