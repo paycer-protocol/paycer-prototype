@@ -1,5 +1,4 @@
-import ChainId from '@providers/chain-id'
-
+import ChainId from '@providers/chain-id';
 
 export interface IContractProvider {
   [name: string]: {
@@ -18,7 +17,6 @@ export interface IContractProvider {
   }
 }
 
-
 export const contractProvider: IContractProvider = {
   StakingRewards: {
     chainAddresses: {
@@ -32,6 +30,6 @@ export const contractProvider: IContractProvider = {
       [ChainId.Polygon]: '',
       [ChainId.Mumbai]: '',
       [ChainId.Hardhat]: '0x9d4454B023096f34B160D6B654540c56A1F81688',
-    }
+    },
   },
-}
+};

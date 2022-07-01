@@ -1,2 +1,2 @@
-export { default } from './form'
-export * from './types'
+export { default } from './form';
+export * from './types';

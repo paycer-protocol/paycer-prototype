@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core'
+import { ChainId } from '@usedapp/core';
 
 export enum RiskLevel {
   Low = 0,
@@ -74,5 +74,4 @@ export interface IStrategyProvider {
   [symbol: string]: StrategyType
 }
 
-export default {}
-
+export default {};

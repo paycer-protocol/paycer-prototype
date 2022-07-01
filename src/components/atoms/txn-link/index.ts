@@ -1,1 +1,1 @@
-export { default } from './txn-link'
+export { default } from './txn-link';

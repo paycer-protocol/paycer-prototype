@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Toolbar = styled.div`
     margin-bottom: 30px;
@@ -22,13 +22,11 @@ export const Toolbar = styled.div`
             color: #FFF; border-color: transparent;
         }
     }    
-`
+`;
 
 export const CurrencyInputLabel = styled.h5`
     text-transform: uppercase;
     letter-spacing: .08em;
     color: #a6a6a6;
     margin-bottom: 15px;
-`
-
-
+`;

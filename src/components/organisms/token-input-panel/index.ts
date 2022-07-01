@@ -1,2 +1,1 @@
-export { default } from './token-input-panel'
-
+export { default } from './token-input-panel';

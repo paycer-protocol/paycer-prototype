@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react'
-import styled from 'styled-components'
+import { HTMLAttributes } from 'react';
+import styled from 'styled-components';
 
 // state = Matches Bootstrap
 interface IndicatorProps extends HTMLAttributes<HTMLElement> {
@@ -21,19 +21,19 @@ const StyledIndicatorItem = styled.div`
     height: .5em;
     box-shadow: 0 0 0.5em 0.025em;
   }
-`
+`;
 
 /**
  * Text item with state indicator visual (dot).
  * Derived from Dashkit for online/offline states and table legends with better text alignment for scalable typefaces.
  */
 export default function IndicatorItem({ children, ...props }: IndicatorProps) {
-  const { state } = props
+  const { state } = props;
 
   return (
     <StyledIndicatorItem {...props}>
-      <span className={`icon-indicator text-${state} bg-${state}`}></span>
+      <span className={`icon-indicator text-${state} bg-${state}`} />
       {children}
-    </ StyledIndicatorItem>
-  )
+    </StyledIndicatorItem>
+  );
 }

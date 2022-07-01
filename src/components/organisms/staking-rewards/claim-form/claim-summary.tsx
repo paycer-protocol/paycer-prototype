@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import styled from 'styled-components'
-import { t, Trans } from '@lingui/macro'
-import { useStaking } from '@context//staking-context'
-import CurrencyIcon from '@components/atoms/currency-icon'
-import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import GradientButton from '@components/atoms/button/gradient-button'
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { t, Trans } from '@lingui/macro';
+import { useStaking } from '@context//staking-context';
+import CurrencyIcon from '@components/atoms/currency-icon';
+import { FormattedNumber } from '@components/atoms/number/formatted-number';
+import GradientButton from '@components/atoms/button/gradient-button';
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
 
 const RewardContainer = styled.div`
   display: flex;
@@ -14,81 +14,84 @@ const RewardContainer = styled.div`
   flex-direction: column;
   margin-bottom: 15px;
   height: 242px;
-`
+`;
 
 const HorizontalLine = styled.div`
   border-bottom: 1px solid #244166;
   width: 100%;
   margin: 1rem 2rem;
-`
+`;
 
 export default function ClaimSummary() {
+  const {
+    claim,
+    pendingReward,
+    totalAmountClaimed,
+    lastRewardTime,
+    contractCallError,
+    isLoading,
+    claimIsSuccess,
+    resetStatus,
+  } = useStaking();
 
-    const {
-        claim,
-        pendingReward,
-        totalAmountClaimed,
-        lastRewardTime,
-        contractCallError,
-        isLoading,
-        claimIsSuccess,
-        resetStatus,
-    } = useStaking()
+  const [showApproveModal, setShowApproveModal] = useState<boolean>(false);
 
-    const [showApproveModal, setShowApproveModal] = useState<boolean>(false)
-
-    const handleClaim = async () => {
-        try {
-            await claim()
-        } catch (e) {
-        }
+  const handleClaim = async () => {
+    try {
+      await claim();
+    } catch (e) {
     }
+  };
 
   return (
-      <>
-          <div className="d-flex justify-content-center mb-5">
-              <img width="75" src="/assets/paycer-gradient.svg" className="mt-3" alt="Paycer" />
-          </div>
+    <>
+      <div className="d-flex justify-content-center mb-5">
+        <img width="75" src="/assets/paycer-gradient.svg" className="mt-3" alt="Paycer" />
+      </div>
 
-          <h3 className="mb-3 text-center text-center text-muted">
-              {t`Claim your rewards`}
-          </h3>
+      <h3 className="mb-3 text-center text-center text-muted">
+        {t`Claim your rewards`}
+      </h3>
 
-          <div className="d-flex flex-column mb-4 text-center">
-              <span className="display-2 my-3">
-                  <FormattedNumber
-                      value={pendingReward}
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={4}
-                  />
-              </span>
-          </div>
+      <div className="d-flex flex-column mb-4 text-center">
+        <span className="display-2 my-3">
+          <FormattedNumber
+            value={pendingReward}
+            minimumFractionDigits={2}
+            maximumFractionDigits={4}
+          />
+        </span>
+      </div>
 
-          <div className="d-flex justify-content-center w-100">
-              <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowApproveModal(true) : null}>
-                  {t`Claim rewards`}
-              </GradientButton>
-          </div>
+      <div className="d-flex justify-content-center w-100">
+        <GradientButton className="w-75" disabled={pendingReward === 0} onClick={pendingReward > 0 ? () => setShowApproveModal(true) : null}>
+          {t`Claim rewards`}
+        </GradientButton>
+      </div>
 
-          {((lastRewardTime || totalAmountClaimed > 0) &&
+      {((lastRewardTime || totalAmountClaimed > 0)
+            && (
             <div className={(lastRewardTime && totalAmountClaimed) ? 'row justify-content-between w-100' : 'row justify-content-center w-100'}>
-                {(lastRewardTime &&
+              {(lastRewardTime
+                  && (
                   <div className="col-6">
                     <small className="text-center pt-5 d-block">
                       <div className="text-muted">
-                          {t`Last rewarded`}
+                        {t`Last rewarded`}
                       </div>
                       <div>
-                          {lastRewardTime}
+                        {lastRewardTime}
                       </div>
                     </small>
                   </div>
+                  )
                 )}
-                {(totalAmountClaimed > 0 &&
+              {(totalAmountClaimed > 0
+                  && (
                   <div className="col-6">
                     <small className="text-center pt-5 d-block">
                       <div className="text-muted">
-                          {t`Total claimed`}
+                        {t`Total claimed`}
                       </div>
                       <div>
                         <FormattedNumber
@@ -99,44 +102,45 @@ export default function ClaimSummary() {
                       </div>
                     </small>
                   </div>
+                  )
                 )}
             </div>
+            )
           )}
 
-          <TransactionApproveModal
-              show={showApproveModal}
-              onHide={() => {
-                  setShowApproveModal(false)
-                  resetStatus()
-              }}
-              title={t`Confirm Claim`}
-              btnLabel={t`Claim now`}
-              onClick={() => handleClaim()}
-              error={contractCallError}
-              success={claimIsSuccess}
-              successMessage={t`Transaction was successfully executed`}
-              loading={isLoading}
-          >
-              <div className="my-5">
-                  <div className="d-flex flex-column mb-4 text-center">
-                        <span className="display-2 my-3">
-                            <FormattedNumber
-                                value={pendingReward}
-                                minimumFractionDigits={2}
-                                maximumFractionDigits={2}
-                            />
-                            <CurrencyIcon
-                                style={{position: 'relative', top: '-5px'}}
-                                width={55}
-                                height={55}
-                                symbol="PCR"
-                                className="ms-3"
-                            />
-                        </span>
-                  </div>
-              </div>
-          </TransactionApproveModal>
-      </>
-  )
-
+      <TransactionApproveModal
+        show={showApproveModal}
+        onHide={() => {
+          setShowApproveModal(false);
+          resetStatus();
+        }}
+        title={t`Confirm Claim`}
+        btnLabel={t`Claim now`}
+        onClick={() => handleClaim()}
+        error={contractCallError}
+        success={claimIsSuccess}
+        successMessage={t`Transaction was successfully executed`}
+        loading={isLoading}
+      >
+        <div className="my-5">
+          <div className="d-flex flex-column mb-4 text-center">
+            <span className="display-2 my-3">
+              <FormattedNumber
+                value={pendingReward}
+                minimumFractionDigits={2}
+                maximumFractionDigits={2}
+              />
+              <CurrencyIcon
+                style={{ position: 'relative', top: '-5px' }}
+                width={55}
+                height={55}
+                symbol="PCR"
+                className="ms-3"
+              />
+            </span>
+          </div>
+        </div>
+      </TransactionApproveModal>
+    </>
+  );
 }

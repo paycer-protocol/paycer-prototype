@@ -1,2 +1,1 @@
-export { default } from './filter-bar'
-
+export { default } from './filter-bar';

@@ -1,1 +1,1 @@
-export { default } from './transaction-approve-modal'
+export { default } from './transaction-approve-modal';

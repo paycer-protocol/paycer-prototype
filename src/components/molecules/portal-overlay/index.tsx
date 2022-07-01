@@ -1,2 +1,1 @@
-export { default } from './portal-overlay'
-
+export { default } from './portal-overlay';

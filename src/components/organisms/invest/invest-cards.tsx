@@ -1,11 +1,11 @@
-import React from 'react'
-import InvestCard from '@components/organisms/invest/invest-card'
-import { useInvestList } from "@context/invest-list-context"
+import React from 'react';
+import InvestCard from '@components/organisms/invest/invest-card';
+import { useInvestList } from '@context/invest-list-context';
 
 export default function InvestCards() {
   const {
-    strategies
-  } = useInvestList()
+    strategies,
+  } = useInvestList();
 
   return (
     <div className="row mt-4">
@@ -15,5 +15,5 @@ export default function InvestCards() {
         </div>
       ))}
     </div>
-  )
+  );
 }

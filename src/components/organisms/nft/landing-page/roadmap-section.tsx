@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import PageHeader from "@components/molecules/page-header";
-import { t, Trans } from "@lingui/macro";
-import styled, { css } from "styled-components";
+import PageHeader from '@components/molecules/page-header';
+import { t, Trans } from '@lingui/macro';
+import styled, { css } from 'styled-components';
 import { Plus } from '@styled-icons/feather';
 import Icon from '@components/atoms/icon';
 
@@ -17,7 +17,7 @@ const StageCircleBackground = styled.div`
   height: 7rem;
   z-index: 1;
   box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
-`
+`;
 
 function StageCircle({ label, progress }: { label: string, progress: string }) {
   return (
@@ -25,7 +25,7 @@ function StageCircle({ label, progress }: { label: string, progress: string }) {
       <span className="small-text text-muted fw-bold mb-2">{label}</span>
       <span className="display-4">{progress}</span>
     </StageCircleBackground>
-  )
+  );
 }
 
 const RoadmapCardBackground = styled.div`
@@ -36,30 +36,30 @@ const RoadmapCardBackground = styled.div`
   border-radius: 5px;
   z-index: 2;
   box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
-`
+`;
 
-const RoadmapCardWrapper= styled.div<any>`
-   ${props => props.isActive && css`
+const RoadmapCardWrapper = styled.div<any>`
+   ${(props) => props.isActive && css`
     background: linear-gradient(284deg,rgba(255,0,184,1),rgba(0,209,255,1));
     padding: 1px;
     border-radius: 5px;
   `}
-`
+`;
 
 function RoadmapCard({ title, entries, isActive }: { title: string, entries: string[], isActive?: boolean }) {
   return (
-      <RoadmapCardWrapper isActive={isActive}>
-          <RoadmapCardBackground>
-              <h3>{title}</h3>
-              {entries.map((entry, key) => (
-                  <div key={key} className="d-flex mt-2 align-items-center">
-                      <span className="me-2" style={{ color: '#E224A2' }}><Icon size={16} component={Plus} /></span>
-                      <span className="text-muted small-text">{entry}</span>
-                  </div>
-              ))}
-          </RoadmapCardBackground>
-      </RoadmapCardWrapper>
-  )
+    <RoadmapCardWrapper isActive={isActive}>
+      <RoadmapCardBackground>
+        <h3>{title}</h3>
+        {entries.map((entry, key) => (
+          <div key={key} className="d-flex mt-2 align-items-center">
+            <span className="me-2" style={{ color: '#E224A2' }}><Icon size={16} component={Plus} /></span>
+            <span className="text-muted small-text">{entry}</span>
+          </div>
+        ))}
+      </RoadmapCardBackground>
+    </RoadmapCardWrapper>
+  );
 }
 
 export default function RoadmapSection() {
@@ -67,10 +67,10 @@ export default function RoadmapSection() {
     <div>
       <div className="container">
         <h5 className="text-uppercase mb-2 text-pink fw-bold">
-            {t`PAYCER NFT ROADMAP`}
+          {t`PAYCER NFT ROADMAP`}
         </h5>
         <div className="h1 mb-4">
-            {t`Awesome Milestones to be exited about!`}
+          {t`Awesome Milestones to be exited about!`}
         </div>
         <div className="d-flex align-items-center justify-content-center w-100 my-5 py-5" style={{ height: '80rem' }}>
           <div className="position-relative">
@@ -116,16 +116,16 @@ export default function RoadmapSection() {
                 ]}
               />
             </div>
-              <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
-                  <RoadmapCard
-                      title={t`Growing The NFT Fam`}
-                      entries={[
-                        t`Launch Breeding Feature`,
-                        t`Use PCR to breed the new Generation`,
-                        t`Launch of NFT Marketplace`,
-                      ]}
-                  />
-              </div>
+            <div style={{ position: 'absolute', top: '520px', left: '470px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title={t`Growing The NFT Fam`}
+                entries={[
+                  t`Launch Breeding Feature`,
+                  t`Use PCR to breed the new Generation`,
+                  t`Launch of NFT Marketplace`,
+                ]}
+              />
+            </div>
             <div style={{ position: 'absolute', top: '460px', left: '-150px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Upgrade Your NFT`}
@@ -137,16 +137,16 @@ export default function RoadmapSection() {
                 ]}
               />
             </div>
-              <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
-                  <RoadmapCard
-                      title={t`NFT Credit Cards`}
-                      entries={[
-                          t`Launch Paycer NFT Credit Cards`,
-                          t`Get your unique NFT Credit Card!`,
-                          t`Ship the NFT Credit Cards`,
-                      ]}
-                  />
-              </div>
+            <div style={{ position: 'absolute', top: '830px', left: '-130px', transform: 'translate(-50%, -50%)' }}>
+              <RoadmapCard
+                title={t`NFT Credit Cards`}
+                entries={[
+                  t`Launch Paycer NFT Credit Cards`,
+                  t`Get your unique NFT Credit Card!`,
+                  t`Ship the NFT Credit Cards`,
+                ]}
+              />
+            </div>
             <div style={{ position: 'absolute', top: '750px', left: '470px', transform: 'translate(-50%, -50%)' }}>
               <RoadmapCard
                 title={t`Ready for Metaverse`}
@@ -172,5 +172,5 @@ export default function RoadmapSection() {
         </div>
       </div>
     </div>
-  )
+  );
 }

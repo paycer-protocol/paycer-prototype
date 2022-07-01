@@ -1,18 +1,18 @@
-import Button from "@components/atoms/button"
-import { useEffect, useState } from "react"
-import { t } from "@lingui/macro"
-import Icon from "@components/atoms/icon"
-import { useLingui } from "@lingui/react"
-import { useDapp } from '@context/dapp-context'
-import { ArrowForward } from "@styled-icons/material"
-import Image from "next/image"
-import styled from "styled-components"
-import JoinWhitelistModal from "./join-whitelist-modal"
+import Button from '@components/atoms/button';
+import { useEffect, useState } from 'react';
+import { t } from '@lingui/macro';
+import Icon from '@components/atoms/icon';
+import { useLingui } from '@lingui/react';
+import { useDapp } from '@context/dapp-context';
+import { ArrowForward } from '@styled-icons/material';
+import Image from 'next/image';
+import styled from 'styled-components';
+import JoinWhitelistModal from './join-whitelist-modal';
 
 const Background = styled.div`
   position: relative;
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
-`
+`;
 
 const PrettyLi = styled.li`
   display: flex;
@@ -44,54 +44,62 @@ const PrettyLi = styled.li`
   &::marker {
     display: none;
   }
-`
+`;
 
 const StyledLink = styled.a`
   text-decoration: underline;
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, publicSaleStart: Date }) {
-  const { i18n } = useLingui()
+  const { i18n } = useLingui();
   const presaleStartFormatted = i18n.date(presaleStart);
   const publicSaleStartFormatted = i18n.date(publicSaleStart);
 
   return (
     presaleStart.getTime() < Date.now()
-      ? <div className="col-lg-6 mb-4 mb-md-0">
-        <ol className="p-0 mb-5">
-          <PrettyLi>{t`<b>Connect MetaMask wallet for minting</b>`}</PrettyLi>
-          <PrettyLi>{t`<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee`}</PrettyLi>
-          <PrettyLi>{t`<b>Limits:</b>&nbsp;3 NFT per transaction`}</PrettyLi>
-        </ol>
-        {
-          publicSaleStart.getTime() < Date.now() &&
-          <p className="paragraph-content opacity-50">
-            {t`Presale ends:`} {publicSaleStartFormatted}
-          </p>
-        }
-      </div>
-      : <div className="col-lg-6 mb-4 mb-md-0">
-        <ol className="p-0 mb-5">
-          <PrettyLi>{t`Enter your email address.`}</PrettyLi>
-          <PrettyLi>{t`You will receive a confirmation email.`}</PrettyLi>
-          <PrettyLi>{t`Click on the verification link which is in the email.`}</PrettyLi>
-          {/*
+      ? (
+        <div className="col-lg-6 mb-4 mb-md-0">
+          <ol className="p-0 mb-5">
+            <PrettyLi>{t`<b>Connect MetaMask wallet for minting</b>`}</PrettyLi>
+            <PrettyLi>{t`<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee`}</PrettyLi>
+            <PrettyLi>{t`<b>Limits:</b>&nbsp;3 NFT per transaction`}</PrettyLi>
+          </ol>
+          {
+            publicSaleStart.getTime() < Date.now()
+            && (
+              <p className="paragraph-content opacity-50">
+                {t`Presale ends:`}
+                {' '}
+                {publicSaleStartFormatted}
+              </p>
+            )
+          }
+        </div>
+      )
+      : (
+        <div className="col-lg-6 mb-4 mb-md-0">
+          <ol className="p-0 mb-5">
+            <PrettyLi>{t`Enter your email address.`}</PrettyLi>
+            <PrettyLi>{t`You will receive a confirmation email.`}</PrettyLi>
+            <PrettyLi>{t`Click on the verification link which is in the email.`}</PrettyLi>
+            {/*
           <PrettyLi>{t`Add your email to the whitelist`}</PrettyLi>
           <PrettyLi>{t`Buy your reserved NFT at launch`}</PrettyLi>
           <PrettyLi>{t`Upgrade your NFT by staking PCR`}</PrettyLi>
           */}
 
-        </ol>
+          </ol>
           {/*
           {presaleStartFormatted &&
               <p className="paragraph-content opacity-50">{t`Presale starts:`} {presaleStartFormatted}</p>
           }
           */}
-      </div>
-  )
+        </div>
+      )
+  );
 }
 
 function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amount: number) => void }) {
@@ -109,7 +117,7 @@ function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amoun
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function Countdown({ timeLeft }: { timeLeft: number }) {
@@ -121,7 +129,10 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
     <div className="row d-flex align-items-center justify-content-between">
       <div className="col-4 col-md-3 position-relative">
         <div className="card mb-0 p-3 bg-dark text-center">
-          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{days}D</span>
+          <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
+            {days}
+            D
+          </span>
         </div>
         <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
           <span className="display-4 mx-2">:</span>
@@ -133,7 +144,10 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
       </div>
       <div className="col-4 col-md-3 position-relative">
         <div className="card mb-0 p-3 bg-dark text-center">
-          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{hours}H</span>
+          <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
+            {hours}
+            H
+          </span>
         </div>
         <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
           <span className="display-4 mx-2">:</span>
@@ -144,16 +158,18 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
       </div>
       <div className="col-4 col-md-3">
         <div className="card mb-0 p-3 bg-dark text-center">
-          <span className="fw-bold p-1" style={{fontSize: '22px'}}>{minutes}M</span>
+          <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
+            {minutes}
+            M
+          </span>
         </div>
       </div>
     </div>
   );
 }
 
-
 function useWhitelistState() {
-  const { walletAddress } = useDapp()
+  const { walletAddress } = useDapp();
   const [whitelistState, setWhitelistState] = useState<undefined | {
     status: 'whitelisted' | 'notWhitelisted';
     data: {
@@ -163,7 +179,7 @@ function useWhitelistState() {
   }>(undefined);
   useEffect(() => {
     setWhitelistState(undefined);
-    fetch('/api/nft/whitelist?' + new URLSearchParams({ walletAddress })).then(async (result) => {
+    fetch(`/api/nft/whitelist?${new URLSearchParams({ walletAddress })}`).then(async (result) => {
       setWhitelistState(await result.json() as typeof whitelistState);
     });
   }, [walletAddress]);
@@ -177,21 +193,20 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
-  const presaleStartsIn = presaleStart.getTime() - Date.now()
-  const presaleStarted = presaleStartsIn <= 0
+  const presaleStartsIn = presaleStart.getTime() - Date.now();
+  const presaleStarted = presaleStartsIn <= 0;
 
-  const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
-  const publicSaleStarted = publicSaleStartsIn <= 0
+  const publicSaleStartsIn = publicSaleStart.getTime() - Date.now();
+  const publicSaleStarted = publicSaleStartsIn <= 0;
 
-  const [showWhitelistModal, setShowWhitelistModal] = useState(false)
-  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false);
+  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false);
 
   const [amount, setAmount] = useState(2);
 
   return (
     <Background className="px-4 p-md-0">
       <JoinWhitelistModal show={showWhitelistModal} onHide={() => setShowWhitelistModal(false)} />
-
 
       <div className="position-relative mx-auto px-4 py-md-6" style={{ maxWidth: '55rem' }}>
 
@@ -235,7 +250,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
               }
               */}
 
-              <button onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
+              <button type="button" onClick={() => setShowWhitelistModal(true)} className="btn w-100 btn-white fw-normal border-0 d-flex justify-content-center align-items-center px-5 py-3 mt-5">
                 {t`JOIN WAITING LIST`}
                 <div className="ms-3"><Icon size={16} component={ArrowForward} /></div>
               </button>
@@ -254,5 +269,5 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
         </div>
       </div>
     </Background>
-  )
+  );
 }

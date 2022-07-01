@@ -1,22 +1,22 @@
-import React, {useState} from 'react'
-import { t } from '@lingui/macro'
-import Modal from '@components/molecules/modal'
-import Icon from '@components/atoms/icon'
-import { LanguageChoice } from '@components/molecules/languages/language-choice'
-import { ThreeDotsVertical } from '@styled-icons/bootstrap'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import { t } from '@lingui/macro';
+import Modal from '@components/molecules/modal';
+import Icon from '@components/atoms/icon';
+import { LanguageChoice } from '@components/molecules/languages/language-choice';
+import { ThreeDotsVertical } from '@styled-icons/bootstrap';
+import styled from 'styled-components';
 
 const IconWrapper = styled.div`
   padding: 16px;
-`
+`;
 
 export const SettingsModal = (props) => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   return (
     <>
       <IconWrapper
-        style={{ padding: '16px 0 16px 16px'}}
+        style={{ padding: '16px 0 16px 16px' }}
         onClick={() => setShow(true)}
         className="cursor-pointer"
       >
@@ -38,7 +38,7 @@ export const SettingsModal = (props) => {
         </>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default SettingsModal
+export default SettingsModal;

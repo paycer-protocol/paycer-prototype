@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ArrowDropDown } from '@styled-icons/material-outlined'
-import CurrencyIcon from '@components/atoms/currency-icon'
-import Icon from '@components/atoms/icon'
-import { TokenType } from '../../../types/investment'
-import { t } from '@lingui/macro'
+import React from 'react';
+import styled from 'styled-components';
+import { ArrowDropDown } from '@styled-icons/material-outlined';
+import CurrencyIcon from '@components/atoms/currency-icon';
+import Icon from '@components/atoms/icon';
+import { t } from '@lingui/macro';
+import { TokenType } from '../../../types/investment';
 
 export const Placeholder = styled.span`
    font-size: 16px; font-weight: 300;
-`
+`;
 
 interface TokenToggleProps {
   token: TokenType
@@ -19,38 +19,37 @@ interface TokenToggleProps {
 }
 
 export default function TokenToggle(props: TokenToggleProps) {
-  const { token, onClick, placeholder, label, readOnly } = props
+  const { token, onClick, placeholder, label, readOnly } = props;
   return (
     <div className="d-flex align-items-center cursor-pointer" onClick={!readOnly ? onClick : null}>
-        {token &&
+      {token
+            && (
             <CurrencyIcon
               symbol={token.symbol}
               className="me-3"
               width={32}
               height={32}
             />
-        }
+            )}
 
-        <div>
-            {(label) &&
-                <small style={{paddingBottom: '1px'}} className="text-muted d-block fw-lighter">{label}</small>
-            }
-            <div className="d-flex align-items-center">
-                {token ?
-                  <h3 className="mb-0 text-white">{token.symbol}</h3>
-                  :
-                  <Placeholder>{placeholder}</Placeholder>
-                }
-                {!readOnly &&
+      <div>
+        {(label)
+                && <small style={{ paddingBottom: '1px' }} className="text-muted d-block fw-lighter">{label}</small>}
+        <div className="d-flex align-items-center">
+          {token
+            ? <h3 className="mb-0 text-white">{token.symbol}</h3>
+            : <Placeholder>{placeholder}</Placeholder>}
+          {!readOnly
+                    && (
                     <Icon
-                        component={ArrowDropDown}
-                        size={20}
+                      component={ArrowDropDown}
+                      size={20}
                     />
-                }
+                    )}
 
-            </div>
         </div>
+      </div>
 
     </div>
-  )
+  );
 }
