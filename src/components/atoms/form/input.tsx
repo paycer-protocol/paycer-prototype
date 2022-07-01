@@ -1,13 +1,13 @@
-import { useField } from 'formik';
-import React, { FC } from 'react';
-import { Form } from 'react-bootstrap';
-import Group from './group';
-import useChange from './useChange';
-import { FormInputFieldProps } from './types';
+import { useField } from 'formik'
+import React, { FC } from 'react'
+import { Form } from 'react-bootstrap'
+import Group from './group'
+import useChange from './useChange'
+import { FormInputFieldProps } from './types'
 
 const Input: FC<FormInputFieldProps> = ({ label, helpText, ...props }: FormInputFieldProps) => {
-  const [{ name, value, onBlur }, { error, touched }] = useField(props);
-  const handleChange = useChange(props);
+  const [{ name, value, onBlur }, { error, touched }] = useField(props)
+  const handleChange = useChange(props)
 
   return (
     <Group
@@ -26,7 +26,7 @@ const Input: FC<FormInputFieldProps> = ({ label, helpText, ...props }: FormInput
         onBlur={onBlur}
       />
     </Group>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

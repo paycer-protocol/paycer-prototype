@@ -1,12 +1,12 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import Icon from '@components/atoms/icon';
-import Button from '@components/atoms/button';
-import { Sun, Moon } from '@styled-icons/bootstrap';
-import useDarkMode from '@hooks/use-dark-mode';
+import React from 'react'
+import { t } from '@lingui/macro'
+import Icon from '@components/atoms/icon'
+import Button from '@components/atoms/button'
+import { Sun, Moon } from '@styled-icons/bootstrap'
+import useDarkMode from '@hooks/use-dark-mode'
 
 export default function Index() {
-  const darkMode = useDarkMode();
+  const darkMode = useDarkMode()
 
   return (
     <div className="btn-group-toggle d-flex align-items-center">
@@ -27,5 +27,5 @@ export default function Index() {
         </div>
       </Button>
     </div>
-  );
+  )
 }

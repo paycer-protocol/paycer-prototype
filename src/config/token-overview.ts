@@ -139,4 +139,4 @@ export const TokenOverviewListItems = [
     infoLink: 'https://paycer.gitbook.io/paycer/paycer-token/tokenomics',
     link: 'https://paycer.gitbook.io/paycer/paycer-token/tokenomics',
   },
-];
+]

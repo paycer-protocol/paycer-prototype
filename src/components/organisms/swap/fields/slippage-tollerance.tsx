@@ -1,16 +1,16 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import { useFormikContext } from 'formik';
-import Input from '@components/atoms/form/input';
-import { SwapProps } from '../types';
+import React from 'react'
+import { t } from '@lingui/macro'
+import { useFormikContext } from 'formik'
+import Input from '@components/atoms/form/input'
+import { SwapProps } from '../types'
 
 export default function SlippageTollerance() {
-  const { values, setFieldValue } = useFormikContext<SwapProps>();
+  const { values, setFieldValue } = useFormikContext<SwapProps>()
 
   const handleChange = async (e) => {
-    const slippage = e.target.value;
-    setFieldValue('slippage', slippage);
-  };
+    const slippage = e.target.value
+    setFieldValue('slippage', slippage)
+  }
 
   return (
     <div className="d-flex justify-content-between w-100">
@@ -24,5 +24,5 @@ export default function SlippageTollerance() {
         onChange={handleChange}
       />
     </div>
-  );
+  )
 }

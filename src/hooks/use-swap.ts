@@ -1,30 +1,20 @@
-import Moralis from 'moralis';
-import { useState } from 'react';
-import { useDapp } from '@context/dapp-context';
-import { swapTokens } from '@config/market-pairs';
-import { TokenType } from '../types/investment';
+import Moralis from 'moralis'
+import { useState } from 'react'
+import { useDapp } from '@context/dapp-context'
+import { swapTokens } from '@config/market-pairs'
+import { TokenType } from '../types/investment'
 
 interface HandleSwapProps {
   amount: string
-<<<<<<< HEAD
   fromToken: TokenType
   toToken: TokenType
-=======
-  fromToken:TokenType
-  toToken:TokenType
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
   slippage: number
 }
 
 interface FetchQuoteProps {
   amount: string
-<<<<<<< HEAD
   fromToken: TokenType
   toToken: TokenType
-=======
-  fromToken:TokenType
-  toToken:TokenType
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
 }
 
 interface FetchQuoteResult {
@@ -42,19 +32,15 @@ interface UseSwapProps {
   resetStatus: () => void
 }
 
-<<<<<<< HEAD
 export default function useSwap(): UseSwapProps {
-=======
-export default function useSwap():UseSwapProps {
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
-  const { walletAddress, currentNetworkId, currentNetwork, fetchERC20Balances } = useDapp();
-  const [showFormApproveModal, setShowFormApproveModal] = useState(false);
-  const [swapIsSuccess, setSwapIsSuccess] = useState<boolean>(false);
-  const [contractCallError, setContractCallError] = useState<Error | null>(null);
+  const { walletAddress, currentNetworkId, currentNetwork, fetchERC20Balances } = useDapp()
+  const [showFormApproveModal, setShowFormApproveModal] = useState(false)
+  const [swapIsSuccess, setSwapIsSuccess] = useState<boolean>(false)
+  const [contractCallError, setContractCallError] = useState<Error | null>(null)
 
   const handleSwap = async (props: HandleSwapProps) => {
     if (!Moralis?.Plugins?.oneInch) {
-      return null;
+      return null
     }
 
     const {
@@ -62,12 +48,12 @@ export default function useSwap():UseSwapProps {
       toToken,
       slippage,
       amount,
-    } = props;
+    } = props
 
-    const hasAllowance = await fetchHasAllowance(props);
+    const hasAllowance = await fetchHasAllowance(props)
 
     if (!hasAllowance) {
-      await handleApprove(props);
+      await handleApprove(props)
     }
     try {
       await Moralis.Plugins.oneInch.swap({
@@ -77,74 +63,70 @@ export default function useSwap():UseSwapProps {
         amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
         fromAddress: walletAddress,
         slippage: slippage.toString(),
-      });
-      fetchERC20Balances();
-      setSwapIsSuccess(true);
+      })
+      fetchERC20Balances()
+      setSwapIsSuccess(true)
     } catch (e) {
-      console.log(e, e.message);
-      setContractCallError(new Error('Something went wrong, please try again'));
+      console.log(e, e.message)
+      setContractCallError(new Error('Something went wrong, please try again'))
     }
-  };
+  }
 
   const fetchQuote = async (props: FetchQuoteProps) => {
     if (!Moralis?.Plugins?.oneInch) {
-      return null;
+      return null
     }
-    const { fromToken, toToken, amount } = props;
+    const { fromToken, toToken, amount } = props
     const options = {
       chain: currentNetwork.chainName.toLowerCase(),
       fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
       toTokenAddress: toToken.chainAddresses[currentNetworkId].toLowerCase(),
       amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
-    };
-    const quote = await Moralis.Plugins.oneInch.quote(options);
-    if (quote) {
-      return quote;
     }
-    return null;
-  };
+    const quote = await Moralis.Plugins.oneInch.quote(options)
+    if (quote) {
+      return quote
+    }
+    return null
+  }
 
   const handleApprove = async (props: HandleSwapProps) => {
     const {
       fromToken,
-    } = props;
+    } = props
     try {
       await Moralis.Plugins.oneInch.approve({
         chain: currentNetwork.chainName.toLowerCase(),
         tokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
         fromAddress: walletAddress,
-      });
+      })
     } catch (e) {
-      console.log(e.message);
+      console.log(e.message)
     }
-  };
+  }
 
   const fetchHasAllowance = async (props: HandleSwapProps) => {
     const {
       fromToken,
       amount,
-    } = props;
+    } = props
     try {
       const options = {
         chain: currentNetwork.chainName.toLowerCase(),
         fromTokenAddress: fromToken.chainAddresses[currentNetworkId].toLowerCase(),
         fromAddress: walletAddress,
         amount: Moralis.Units.Token(amount, fromToken.decimals).toString(),
-      };
-<<<<<<< HEAD
-      return Moralis.Plugins.oneInch.hasAllowance(options);
-=======
-      return await Moralis.Plugins.oneInch.hasAllowance(options);
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
+      }
+      return Moralis.Plugins.oneInch.hasAllowance(options)
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  };
+  }
 
   const resetStatus = () => {
-    setSwapIsSuccess(false);
-    setContractCallError(null);
-  };
+    setSwapIsSuccess(false)
+    setContractCallError(null)
+  }
 
   return {
     swapIsSuccess,
@@ -154,5 +136,5 @@ export default function useSwap():UseSwapProps {
     resetStatus,
     handleSwap,
     fetchQuote,
-  };
+  }
 }

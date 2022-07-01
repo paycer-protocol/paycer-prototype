@@ -1,13 +1,13 @@
-import React from 'react';
-import Footer from '@components/organisms/footer';
-import Header from '@components/organisms/header';
+import React from 'react'
+import Footer from '@components/organisms/footer'
+import Header from '@components/organisms/header'
 
 export interface NftRevealLayoutProps {
   children: any
 }
 
 const NftRevealLayout = (props: NftRevealLayoutProps) => {
-  const { children } = props;
+  const { children } = props
 
   return (
     <>
@@ -17,7 +17,7 @@ const NftRevealLayout = (props: NftRevealLayoutProps) => {
       </main>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default NftRevealLayout;
+export default NftRevealLayout

@@ -1,5 +1,5 @@
-import React from 'react';
-import { PieChart as BasePieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import React from 'react'
+import { PieChart as BasePieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
 export interface PieChartData {
   name: string
@@ -20,11 +20,11 @@ export interface PieChartProps {
 }
 
 const PieChart = (props: PieChartProps) => {
-  const { data, colors, dataKey, containerWidth = 200, containerHeight = 200 } = props;
+  const { data, colors, dataKey, containerWidth = 200, containerHeight = 200 } = props
 
   const renderColors = () => data.map((entry, index) => (
     <Cell key={`cell-${index}`} fill={String(colors[index % colors.length])} />
-  ));
+  ))
 
   return (
     <ResponsiveContainer width={containerWidth} height={containerHeight}>
@@ -41,7 +41,7 @@ const PieChart = (props: PieChartProps) => {
         </Pie>
       </BasePieChart>
     </ResponsiveContainer>
-  );
-};
+  )
+}
 
-export default PieChart;
+export default PieChart

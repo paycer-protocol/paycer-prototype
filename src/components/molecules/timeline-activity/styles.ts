@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const StyledTimeline = styled.div<any>`
     background: #1B2236;
@@ -15,7 +15,7 @@ export const StyledTimeline = styled.div<any>`
     }
   `}
     
-`;
+`
 
 export const StyledListGroupItem = styled.div<any>`
   ${(props) => props.isIndendet && css`
@@ -38,4 +38,4 @@ export const StyledListGroupItem = styled.div<any>`
     }
   `}
   
-`;
+`

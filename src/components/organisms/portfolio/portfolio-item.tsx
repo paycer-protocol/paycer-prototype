@@ -1,14 +1,14 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { t, Trans } from '@lingui/macro';
-import Link from 'next/link';
-import ProgressBar from '@components/atoms/progress-bars';
-import Button from '@components/atoms/button';
-import { Money, Percentage } from '@components/atoms/number';
-import Card from '@components/molecules/card';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { StrategyType } from '../../../types/investment';
-import { riskLabels } from '../../../locales';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { t, Trans } from '@lingui/macro'
+import Link from 'next/link'
+import ProgressBar from '@components/atoms/progress-bars'
+import Button from '@components/atoms/button'
+import { Money, Percentage } from '@components/atoms/number'
+import Card from '@components/molecules/card'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { StrategyType } from '../../../types/investment'
+import { riskLabels } from '../../../locales'
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -26,13 +26,13 @@ const ProgressbarColorWrapper = styled.div`
       background: ${props.color};
     }
   `}
-`;
+`
 
 export default function PortfolioList(props: PortfolioProps) {
-  const { strategies, totalInvest } = props;
+  const { strategies, totalInvest } = props
 
-  const thClass = 'bg-card-blue border border-secondary-dark';
-  const tdClass = 'bg-dark border border-purple-dark';
+  const thClass = 'bg-card-blue border border-secondary-dark'
+  const tdClass = 'bg-dark border border-purple-dark'
   return (
     <div className="table-responsive mb-0 border-0">
       <table className="table table-sm table-nowrap card-table" style={{ background: 'rgb(14 22 40 / 50%)' }}>
@@ -67,8 +67,8 @@ export default function PortfolioList(props: PortfolioProps) {
         </thead>
         <tbody className="list position-relative" style={{ top: '-10px' }}>
           {strategies.length ? strategies.map((strategy, key) => {
-            const tokenBalance = strategy.balance;
-            const interest = strategy.interest.interestRate + strategy.rewards.rewardRate;
+            const tokenBalance = strategy.balance
+            const interest = strategy.interest.interestRate + strategy.rewards.rewardRate
 
             return (
               <tr key={key}>
@@ -115,7 +115,7 @@ export default function PortfolioList(props: PortfolioProps) {
                   <Money value={tokenBalance} />
                 </td>
               </tr>
-            );
+            )
           }) : (
             <tr>
               <td colSpan={4}>
@@ -135,5 +135,5 @@ export default function PortfolioList(props: PortfolioProps) {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

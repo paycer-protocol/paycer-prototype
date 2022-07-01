@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { t } from '@lingui/macro';
-import { useDapp } from '@context/dapp-context';
-import Button from '@components/atoms/button';
-import Alert from '@components/atoms/alert';
-import Spinner from '@components/atoms/spinner';
-import ListGroup from '@components/molecules/list-group';
-import Modal from '@components/molecules/modal';
-import { IConnectorProvider } from '@providers/connectors';
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
+import { useDapp } from '@context/dapp-context'
+import Button from '@components/atoms/button'
+import Alert from '@components/atoms/alert'
+import Spinner from '@components/atoms/spinner'
+import ListGroup from '@components/molecules/list-group'
+import Modal from '@components/molecules/modal'
+import { IConnectorProvider } from '@providers/connectors'
 
 export interface WalletProviderProps {
   providers: IConnectorProvider[]
@@ -14,18 +14,18 @@ export interface WalletProviderProps {
 }
 
 const WalletProvider = (props: WalletProviderProps) => {
-  const { providers = [], onHide } = props;
-  const [errorMessage, setErrorMessage] = useState(null);
-  const { handleWalletConnect, isWeb3EnableLoading, activeWallet } = useDapp();
+  const { providers = [], onHide } = props
+  const [errorMessage, setErrorMessage] = useState(null)
+  const { handleWalletConnect, isWeb3EnableLoading, activeWallet } = useDapp()
 
   const handleConnect = async (provider: IConnectorProvider) => {
     try {
-      await handleWalletConnect(provider);
-      onHide();
+      await handleWalletConnect(provider)
+      onHide()
     } catch (e) {
-      setErrorMessage(e.message);
+      setErrorMessage(e.message)
     }
-  };
+  }
 
   return (
     <Modal show onHide={onHide}>
@@ -70,7 +70,7 @@ const WalletProvider = (props: WalletProviderProps) => {
         </Modal.Body>
       </>
     </Modal>
-  );
-};
+  )
+}
 
-export default WalletProvider;
+export default WalletProvider

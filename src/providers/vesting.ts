@@ -1,5 +1,5 @@
-import { ChainId } from '@usedapp/core';
-import VestingAbi from '../deployments/VestingAbi.json';
+import { ChainId } from '@usedapp/core'
+import VestingAbi from '../deployments/VestingAbi.json'
 
 export default {
   [ChainId.Polygon]: {
@@ -50,4 +50,4 @@ export default {
       address: '0x86bd32443eb7675D00295ff27287762D0e3D243D',
     },
   },
-};
+}

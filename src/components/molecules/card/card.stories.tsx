@@ -1,15 +1,15 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import Button from '@components/atoms/button';
-import Card from './card';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import Button from '@components/atoms/button'
+import Card from './card'
 
 export default {
   title: 'Molecule/Card',
   component: Card,
   argTypes: {},
-} as Meta;
+} as Meta
 
-const image = 'https://images.unsplash.com/photo-1546640646-89b557854b23?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80';
+const image = 'https://images.unsplash.com/photo-1546640646-89b557854b23?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80'
 
 export function Default() {
   return (
@@ -24,7 +24,7 @@ export function Default() {
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 export function Content() {
@@ -41,7 +41,7 @@ export function Content() {
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 export function HeaderFooter() {
@@ -56,7 +56,7 @@ export function HeaderFooter() {
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 export function Centered() {
@@ -72,7 +72,7 @@ export function Centered() {
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
     </Card>
-  );
+  )
 }
 
 export function withImage() {
@@ -109,5 +109,5 @@ export function withImage() {
         </Card.ImgOverlay>
       </Card>
     </>
-  );
+  )
 }

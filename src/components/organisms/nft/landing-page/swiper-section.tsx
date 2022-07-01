@@ -1,17 +1,17 @@
-import { t } from '@lingui/macro';
-import Image from 'next/image';
-import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper';
-import Card from '@components/molecules/card';
-import Icon from '@components/atoms/icon';
-import { ArrowRightCircle } from '@styled-icons/bootstrap';
-import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { t } from '@lingui/macro'
+import Image from 'next/image'
+import styled from 'styled-components'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper'
+import Card from '@components/molecules/card'
+import Icon from '@components/atoms/icon'
+import { ArrowRightCircle } from '@styled-icons/bootstrap'
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 const SwiperInner = styled.div`
     transform: skew(-20deg);
-`;
+`
 
 const SliderImage = styled.img`
     transform: skew(20deg);
@@ -19,13 +19,13 @@ const SliderImage = styled.img`
      left: -120px;
 
 
-`;
+`
 
 export default function SwiperSection() {
-  const isVeryLargeScreen = useMediaQuery({ query: '(min-width: 2600px)' });
-  const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' });
-  const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' });
-  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
+  const isVeryLargeScreen = useMediaQuery({ query: '(min-width: 2600px)' })
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 1979px)' })
+  const isMidScreen = useMediaQuery({ query: '(max-width: 1680px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
 
   const items = [
     {
@@ -78,19 +78,19 @@ export default function SwiperSection() {
       ],
       loopDelay: 6500,
     },
-  ];
+  ]
 
   const sliderSlidesPerView = () => {
     if (isMobile) {
-      return 2;
+      return 2
     }
     if (isMidScreen) {
-      return 4;
+      return 4
     }
     if (isLargeScreen) {
-      return 6;
+      return 6
     }
-  };
+  }
 
   return (
     <>
@@ -162,5 +162,5 @@ export default function SwiperSection() {
         </Swiper>
       </div>
     </>
-  );
+  )
 }

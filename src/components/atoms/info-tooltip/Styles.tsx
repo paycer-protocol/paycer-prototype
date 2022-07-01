@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import DropdownComponent from '@components/atoms/dropdown/dropdown';
+import styled from 'styled-components'
+import DropdownComponent from '@components/atoms/dropdown/dropdown'
 
 export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     position: absolute;
@@ -13,7 +13,7 @@ export const StyledDropdownToggle = styled(DropdownComponent.Toggle)`
     &:focus {
       box-shadow: none!important;
     }
-`;
+`
 
 export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
     line-height: 30px;
@@ -24,4 +24,4 @@ export const StyledDropdownMenu = styled(DropdownComponent.Menu)`
     left: 20px!important;
     border-width: 1px;
     min-width: 200px;
-`;
+`

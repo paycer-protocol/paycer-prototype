@@ -1,1 +1,1 @@
-export { default } from './apex-chart';
+export { default } from './apex-chart'

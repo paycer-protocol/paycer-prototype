@@ -1,5 +1,5 @@
-import { LoyaltyTier } from '@config/loyalty-tiers';
-import { BigNumber } from '@ethersproject/bignumber';
+import { LoyaltyTier } from '@config/loyalty-tiers'
+import { BigNumber } from '@ethersproject/bignumber'
 
 export default interface Nft {
   id: BigNumber;

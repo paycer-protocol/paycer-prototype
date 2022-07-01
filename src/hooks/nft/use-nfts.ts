@@ -1,11 +1,11 @@
-import nftProvider from '@providers/nft';
-import { ChainId, useContractCalls } from '@usedapp/core';
-import axios from 'axios';
-import { Interface } from '@ethersproject/abi';
-import { useEffect, useMemo, useState } from 'react';
-import loyaltyTiers from '@config/loyalty-tiers';
-import { useDapp } from '@context/dapp-context';
-import Nft from '../../types/nft';
+import nftProvider from '@providers/nft'
+import { ChainId, useContractCalls } from '@usedapp/core'
+import axios from 'axios'
+import { Interface } from '@ethersproject/abi'
+import { useEffect, useMemo, useState } from 'react'
+import loyaltyTiers from '@config/loyalty-tiers'
+import { useDapp } from '@context/dapp-context'
+import Nft from '../../types/nft'
 
 /* TODO: REFACTOR FOR MORALIS */
 
@@ -22,9 +22,9 @@ interface OpenseaMetadata {
 
 function withIpfsGateway(url: string) {
   if (url.startsWith('ipfs://')) {
-    return `https://ipfs.io/ipfs/${url.split('ipfs://')[1]}`;
+    return `https://ipfs.io/ipfs/${url.split('ipfs://')[1]}`
   } else {
-    return url;
+    return url
   }
 }
 
@@ -35,47 +35,47 @@ export type UseNftsProps = {
   nfts: Nft[];
 } | {
   status: 'error';
-};
+}
 
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
-  const { currentNetworkId } = useDapp();
+  const { currentNetworkId } = useDapp()
 
-  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft;
-  const abiInterface = useMemo(() => new Interface(abi), [abi]);
+  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft
+  const abiInterface = useMemo(() => new Interface(abi), [abi])
 
   const properties = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
     abi: abiInterface,
     address: contractAddress,
     method: 'properties',
     args: [tokenId],
-  })));
+  })))
 
   const owners = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
     abi: abiInterface,
     address: contractAddress,
     method: 'ownerOf',
     args: [tokenId],
-  }))).map((result) => result ? result[0] : undefined);
+  }))).map((result) => result ? result[0] : undefined)
 
   const tiers = useContractCalls(tokenIds.map((tokenId) => tokenId !== undefined && ({
     abi: abiInterface,
     address: contractAddress,
     method: 'startLevel',
     args: [tokenId],
-  }))).map((result) => result ? result[0] : undefined);
+  }))).map((result) => result ? result[0] : undefined)
 
-  const jsonUrls = properties.map((prop) => prop ? withIpfsGateway(prop[1]) : undefined);
+  const jsonUrls = properties.map((prop) => prop ? withIpfsGateway(prop[1]) : undefined)
 
-  const [result, setResult] = useState<UseNftsProps>({ status: 'loading' });
+  const [result, setResult] = useState<UseNftsProps>({ status: 'loading' })
 
   useEffect(() => {
     async function fetch() {
       try {
         if (jsonUrls.includes(undefined)) {
-          setResult({ status: 'loading' });
-          return;
+          setResult({ status: 'loading' })
+          return
         }
-        const results = await Promise.all(jsonUrls.map((url) => axios.get<OpenseaMetadata>(url)));
+        const results = await Promise.all(jsonUrls.map((url) => axios.get<OpenseaMetadata>(url)))
         setResult({
           status: 'success',
           nfts: results.map((result, i) => ({
@@ -91,13 +91,13 @@ export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
               value: attribute.value,
             })),
           })),
-        });
+        })
       } catch (err) {
-        setResult({ status: 'error' });
+        setResult({ status: 'error' })
       }
     }
-    fetch();
-  }, [jsonUrls.join(',')]);
+    fetch()
+  }, [jsonUrls.join(',')])
 
-  return result;
+  return result
 }

@@ -1,7 +1,7 @@
-import { tokenProvider } from '@providers/tokens';
-import { paycerProvider } from '@providers/protocols';
-import { ChainId } from '@usedapp/core';
-import { IStrategyProvider, RiskLevel } from '../types/investment';
+import { tokenProvider } from '@providers/tokens'
+import { paycerProvider } from '@providers/protocols'
+import { ChainId } from '@usedapp/core'
+import { IStrategyProvider, RiskLevel } from '../types/investment'
 
 export const strategyProvider: IStrategyProvider = {
   USDCStable: {
@@ -134,4 +134,4 @@ export const strategyProvider: IStrategyProvider = {
       [ChainId.Polygon]: '0x84f38466afFafC230c0273E5404087202c25F238',
     },
   },
-};
+}

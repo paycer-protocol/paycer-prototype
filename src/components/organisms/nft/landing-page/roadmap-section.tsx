@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import PageHeader from '@components/molecules/page-header';
-import { t, Trans } from '@lingui/macro';
-import styled, { css } from 'styled-components';
-import { Plus } from '@styled-icons/feather';
-import Icon from '@components/atoms/icon';
+import Image from 'next/image'
+import PageHeader from '@components/molecules/page-header'
+import { t, Trans } from '@lingui/macro'
+import styled, { css } from 'styled-components'
+import { Plus } from '@styled-icons/feather'
+import Icon from '@components/atoms/icon'
 
 const StageCircleBackground = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const StageCircleBackground = styled.div`
   height: 7rem;
   z-index: 1;
   box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
-`;
+`
 
 function StageCircle({ label, progress }: { label: string, progress: string }) {
   return (
@@ -25,7 +25,7 @@ function StageCircle({ label, progress }: { label: string, progress: string }) {
       <span className="small-text text-muted fw-bold mb-2">{label}</span>
       <span className="display-4">{progress}</span>
     </StageCircleBackground>
-  );
+  )
 }
 
 const RoadmapCardBackground = styled.div`
@@ -36,7 +36,7 @@ const RoadmapCardBackground = styled.div`
   border-radius: 5px;
   z-index: 2;
   box-shadow: 0 0.1rem 2.0rem -0.5rem #2A0073;
-`;
+`
 
 const RoadmapCardWrapper = styled.div<any>`
    ${(props) => props.isActive && css`
@@ -44,7 +44,7 @@ const RoadmapCardWrapper = styled.div<any>`
     padding: 1px;
     border-radius: 5px;
   `}
-`;
+`
 
 function RoadmapCard({ title, entries, isActive }: { title: string, entries: string[], isActive?: boolean }) {
   return (
@@ -59,7 +59,7 @@ function RoadmapCard({ title, entries, isActive }: { title: string, entries: str
         ))}
       </RoadmapCardBackground>
     </RoadmapCardWrapper>
-  );
+  )
 }
 
 export default function RoadmapSection() {
@@ -172,5 +172,5 @@ export default function RoadmapSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }

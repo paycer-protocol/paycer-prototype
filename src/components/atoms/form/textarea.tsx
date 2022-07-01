@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
-import { Form } from 'react-bootstrap';
-import { useField } from 'formik';
-import useChange from './useChange';
-import Group from './group';
-import { FormTextareaFieldProps } from './types';
+import React, { FC } from 'react'
+import { Form } from 'react-bootstrap'
+import { useField } from 'formik'
+import useChange from './useChange'
+import Group from './group'
+import { FormTextareaFieldProps } from './types'
 
 const Textarea: FC<FormTextareaFieldProps> = (props: FormTextareaFieldProps) => {
-  const { label, helpText, ...restProps } = props;
-  const [{ name, value, onBlur }, { error, touched }] = useField(restProps);
-  const handleChange = useChange(restProps);
+  const { label, helpText, ...restProps } = props
+  const [{ name, value, onBlur }, { error, touched }] = useField(restProps)
+  const handleChange = useChange(restProps)
 
   return (
     <Group
@@ -28,11 +28,11 @@ const Textarea: FC<FormTextareaFieldProps> = (props: FormTextareaFieldProps) => 
         onBlur={onBlur}
       />
     </Group>
-  );
-};
+  )
+}
 
 Textarea.defaultProps = {
   onChange: (x) => x,
-};
+}
 
-export default Textarea;
+export default Textarea

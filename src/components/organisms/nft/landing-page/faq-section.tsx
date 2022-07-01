@@ -1,7 +1,7 @@
-import PageHeader from '@components/molecules/page-header';
-import { t, Trans } from '@lingui/macro';
-import { Accordion } from 'react-bootstrap';
-import styled from 'styled-components';
+import PageHeader from '@components/molecules/page-header'
+import { t, Trans } from '@lingui/macro'
+import { Accordion } from 'react-bootstrap'
+import styled from 'styled-components'
 
 const AccordionItemBorder = styled.div`
   border: 1px solid #3C506F;
@@ -12,13 +12,13 @@ const AccordionItemBorder = styled.div`
   .accordion-button:after { transform: none!important; position: relative; top: -5px; font-size: 25px; font-weight: 300; color: #FFF; content: '+'; background: none;}
   .accordion-button:not(.collapsed):after { color: #FFF; content: '-'; background: none; }
   .accordion-body { background: #16212E; color: #FFF; }
-`;
+`
 
 const StyledAccordionHeader = styled(Accordion.Header)`
   &:hover {
     button,button:after { color: #E224A2; }
   }
-`;
+`
 
 export default function FaqSection() {
   return (
@@ -80,5 +80,5 @@ export default function FaqSection() {
         </AccordionItemBorder>
       </Accordion>
     </div>
-  );
+  )
 }

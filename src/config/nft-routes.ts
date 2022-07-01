@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { t } from '@lingui/macro'
 
 export const nftRoutes = [
   {
@@ -16,4 +16,4 @@ export const nftRoutes = [
     path: '/upgrade-nft',
     auth: true,
   },
-];
+]

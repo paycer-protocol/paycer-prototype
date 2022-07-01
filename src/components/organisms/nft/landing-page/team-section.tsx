@@ -1,6 +1,6 @@
-import { t } from '@lingui/macro';
-import Image from 'next/image';
-import styled from 'styled-components';
+import { t } from '@lingui/macro'
+import Image from 'next/image'
+import styled from 'styled-components'
 
 const TeamMemberCircle = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ const TeamMemberCircle = styled.div`
   padding: 2px;
   border-radius: 50%;
   border: 2px solid rgb(226, 36, 162);
-`;
+`
 
 const TeamMemberCircleContent = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ const TeamMemberCircleContent = styled.div`
   height: 100%;
   overflow: hidden;
   border-radius: 99999999px;
-`;
+`
 
 function TeamMember({ name, jobTitle, imgSrc }: { name: string, jobTitle: string, imgSrc: string }) {
   return (
@@ -32,7 +32,7 @@ function TeamMember({ name, jobTitle, imgSrc }: { name: string, jobTitle: string
         <span className="opacity-50">{jobTitle}</span>
       </div>
     </div>
-  );
+  )
 }
 
 export default function TeamSection() {
@@ -98,5 +98,5 @@ export default function TeamSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import GradientButton from '@components/atoms/button/gradient-button';
-import Icon from '@components/atoms/icon';
-import PageHeader from '@components/molecules/page-header';
-import { t, Trans } from '@lingui/macro';
-import styled from 'styled-components';
-import { ArrowDownward } from '@styled-icons/material';
-import React from 'react';
+import GradientButton from '@components/atoms/button/gradient-button'
+import Icon from '@components/atoms/icon'
+import PageHeader from '@components/molecules/page-header'
+import { t, Trans } from '@lingui/macro'
+import styled from 'styled-components'
+import { ArrowDownward } from '@styled-icons/material'
+import React from 'react'
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
@@ -22,7 +22,7 @@ const DownArrowButtonBorder = styled.div`
     background-color: white;
     color: black;
   }
-`;
+`
 
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
   return (
@@ -89,5 +89,5 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
       </DownArrowButtonBorder>
       <div className="content-gradient-border" />
     </div>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export { default } from './reveal-panel';
+export { default } from './reveal-panel'

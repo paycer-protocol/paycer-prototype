@@ -1,20 +1,20 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import { VestingDashboardProvider } from '@context/vesting-dashboard-context';
-import useTokenSale from '@hooks/use-token-sale';
-import { useDapp } from '@context/dapp-context';
-import Spinner from '@components/atoms/spinner';
-import LoginCard from '@components/organisms/login-card';
-import Dashboard from './dashboard';
+import React from 'react'
+import { t } from '@lingui/macro'
+import { VestingDashboardProvider } from '@context/vesting-dashboard-context'
+import useTokenSale from '@hooks/use-token-sale'
+import { useDapp } from '@context/dapp-context'
+import Spinner from '@components/atoms/spinner'
+import LoginCard from '@components/organisms/login-card'
+import Dashboard from './dashboard'
 
 const Vesting = () => {
-  const { isAuthenticated } = useDapp();
-  const { tokenSaleData, loading } = useTokenSale();
+  const { isAuthenticated } = useDapp()
+  const { tokenSaleData, loading } = useTokenSale()
 
   if (!isAuthenticated) {
     return (
       <LoginCard />
-    );
+    )
   }
 
   if (loading) {
@@ -24,7 +24,7 @@ const Vesting = () => {
           <Spinner animation="border" show />
         </div>
       </div>
-    );
+    )
   }
 
   if (!tokenSaleData?.length) {
@@ -38,7 +38,7 @@ const Vesting = () => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -51,7 +51,7 @@ const Vesting = () => {
         </VestingDashboardProvider>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default Vesting;
+export default Vesting

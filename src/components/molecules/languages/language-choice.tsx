@@ -1,17 +1,17 @@
-import React from 'react';
-import { defineMessage, Trans } from '@lingui/macro';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import Button from '@components/atoms/button';
-import { locales } from '../../../../lingui.config';
+import React from 'react'
+import { defineMessage, Trans } from '@lingui/macro'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Button from '@components/atoms/button'
+import { locales } from '../../../../lingui.config'
 
 const languageLabels = {
   en: defineMessage({ message: 'English' }),
   de: defineMessage({ message: 'German' }),
-};
+}
 
 export const LanguageChoice = () => {
-  const { locale, asPath } = useRouter();
+  const { locale, asPath } = useRouter()
 
   return (
     <div className="d-flex">
@@ -27,7 +27,7 @@ export const LanguageChoice = () => {
         </Button>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default LanguageChoice;
+export default LanguageChoice

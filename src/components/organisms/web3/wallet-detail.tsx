@@ -1,14 +1,14 @@
-import React from 'react';
-import { Trans, t } from '@lingui/macro';
-import { CheckCircle } from '@styled-icons/bootstrap';
-import Button from '@components/atoms/button';
-import Icon from '@components/atoms/icon';
-import Modal from '@components/molecules/modal';
-import { useDapp } from '@context/dapp-context';
-import useCopyClipboard from '@hooks/use-copy-clipboard';
-import ListGroup from '@components/molecules/list-group';
-import { connectors } from '@providers/connectors';
-import CurrencyIcon from '@components/atoms/currency-icon';
+import React from 'react'
+import { Trans, t } from '@lingui/macro'
+import { CheckCircle } from '@styled-icons/bootstrap'
+import Button from '@components/atoms/button'
+import Icon from '@components/atoms/icon'
+import Modal from '@components/molecules/modal'
+import { useDapp } from '@context/dapp-context'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
+import ListGroup from '@components/molecules/list-group'
+import { connectors } from '@providers/connectors'
+import CurrencyIcon from '@components/atoms/currency-icon'
 
 export interface AccountDetailProps {
   show: boolean
@@ -24,10 +24,10 @@ type ListGroupItemProps = {
   target?: string
   variant?: string
   children?: any
-};
+}
 
 const AccountAction = (props: ListGroupItemProps) => {
-  const { name, description, onClick, href, target, variant = 'outline-primary', children } = props;
+  const { name, description, onClick, href, target, variant = 'outline-primary', children } = props
 
   return (
     <Button
@@ -48,11 +48,11 @@ const AccountAction = (props: ListGroupItemProps) => {
         {children}
       </div>
     </Button>
-  );
-};
+  )
+}
 
 const AccountBalance = () => {
-  const { nativeSymbol, nativeBalanceFormatted } = useDapp();
+  const { nativeSymbol, nativeBalanceFormatted } = useDapp()
 
   return (
     <div className="d-flex align-items-center justify-content-between mb-5 px-2">
@@ -73,19 +73,19 @@ const AccountBalance = () => {
         height={40}
       />
     </div>
-  );
-};
+  )
+}
 
 const WalletDetail = (props: AccountDetailProps) => {
-  const { show, onHide, setShowWalletProviderModal } = props;
+  const { show, onHide, setShowWalletProviderModal } = props
   const {
     isAuthenticated,
     walletAddress,
     explorerUrl,
     handleWalletDisconnect,
     handleWalletConnect,
-  } = useDapp();
-  const [isCopied, setCopied] = useCopyClipboard();
+  } = useDapp()
+  const [isCopied, setCopied] = useCopyClipboard()
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -117,16 +117,16 @@ const WalletDetail = (props: AccountDetailProps) => {
                 name={t`Switch wallet`}
                 description={t`Change your wallet provider`}
                 onClick={() => {
-                  onHide();
-                  setShowWalletProviderModal(true);
+                  onHide()
+                  setShowWalletProviderModal(true)
                 }}
               />
               <a
                 className="d-flex justify-content-center mt-3 text-center text-danger"
                 onClick={async () => {
-                  await onHide();
-                  window.localStorage.setItem('walletConnectedProviderName', '');
-                  await handleWalletDisconnect;
+                  await onHide()
+                  window.localStorage.setItem('walletConnectedProviderName', '')
+                  await handleWalletDisconnect
                 }}
               >
                 <small>
@@ -146,7 +146,7 @@ const WalletDetail = (props: AccountDetailProps) => {
         </Modal.Body>
       </>
     </Modal>
-  );
-};
+  )
+}
 
-export default WalletDetail;
+export default WalletDetail

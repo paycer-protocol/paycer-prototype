@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export interface CurrencyIconProps {
   symbol: string;
@@ -17,6 +17,6 @@ const CurrencyIcon: React.FC<CurrencyIconProps> = ({ symbol, width = 20, height 
     className={className}
     style={style}
   />
-);
+)
 
-export default CurrencyIcon;
+export default CurrencyIcon

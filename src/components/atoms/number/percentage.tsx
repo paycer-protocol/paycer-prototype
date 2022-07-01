@@ -1,4 +1,4 @@
-import { FormattedNumber, FormatNumberOptions } from 'react-intl';
+import { FormattedNumber, FormatNumberOptions } from 'react-intl'
 
 export interface PercentageProps extends FormatNumberOptions {
   value: number;
@@ -13,6 +13,6 @@ export const Percentage = ({ value = 0, fractionDigits = 2, ...restProps }: Perc
     minimumFractionDigits={fractionDigits}
     {...restProps}
   />
-);
+)
 
-export default Percentage;
+export default Percentage

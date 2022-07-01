@@ -1,5 +1,5 @@
-import axios, { AxiosError } from 'axios';
-import moment from 'moment';
+import axios, { AxiosError } from 'axios'
+import moment from 'moment'
 
 interface PricePair {
   time: string;
@@ -27,21 +27,21 @@ export default {
       .then((res) => (res.data as PricePair[]).map((pp) => [moment(pp.time).valueOf(), Number(pp.quote)]))
   ),
   fetchChartData: async (selectedChains: number[], dataType: string): Promise<any> => {
-    let url = 'https://api.paycer.io/v1/analytics';
+    let url = 'https://api.paycer.io/v1/analytics'
     // filter all
     if (selectedChains.includes(0)) {
-      url += `?type=${dataType}&page=1`;
+      url += `?type=${dataType}&page=1`
     } else {
       selectedChains.map((chainId, key) => {
-        let paramUrlChar = '&';
+        let paramUrlChar = '&'
         if (!key) {
-          paramUrlChar = '?';
+          paramUrlChar = '?'
         }
-        url += `${paramUrlChar}chainId[]=${chainId}`;
-      });
-      url += `&type=${dataType}&page=1`;
+        url += `${paramUrlChar}chainId[]=${chainId}`
+      })
+      url += `&type=${dataType}&page=1`
     }
-    return axios.get(url);
+    return axios.get(url)
   },
   joinNftWhitelist: async (email: string, /* walletAddress: string, */ ref: string) => {
     try {
@@ -49,12 +49,12 @@ export default {
         email,
         // walletAddress,
         ref,
-      });
-      return result.data.status;
+      })
+      return result.data.status
     } catch (err) {
-      const error = err as AxiosError<{ status: 'noSpotsAvailable' | 'emailAlreadyUsed' /* | 'walletAlreadyUsed' */ }>;
-      if (!error.response) return 'error';
-      return error.response.data.status;
+      const error = err as AxiosError<{ status: 'noSpotsAvailable' | 'emailAlreadyUsed' /* | 'walletAlreadyUsed' */ }>
+      if (!error.response) return 'error'
+      return error.response.data.status
     }
   },
-};
+}

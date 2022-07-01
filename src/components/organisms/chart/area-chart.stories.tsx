@@ -1,19 +1,19 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import AreaChartComponent, { AreaChartProps } from './area-chart';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
+import AreaChartComponent, { AreaChartProps } from './area-chart'
 
 export default {
   title: 'Organism/Chart',
   argTypes: {},
-} as Meta;
+} as Meta
 
-type StoryOptions = Partial<AreaChartProps>;
+type StoryOptions = Partial<AreaChartProps>
 
 const Template: Story<StoryOptions> = ({ data }: StoryOptions) => (
   <AreaChartComponent data={data} />
-);
+)
 
-export const AreaChart = Template.bind({});
+export const AreaChart = Template.bind({})
 AreaChart.args = {
   data: [
     {
@@ -59,4 +59,4 @@ AreaChart.args = {
       amt: 2100,
     },
   ],
-};
+}

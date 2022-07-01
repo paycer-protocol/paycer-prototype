@@ -1,7 +1,7 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import theme from '../../../config/theme';
-import SpinnerComponent, { SpinnerProps } from './spinner';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import theme from '../../../config/theme'
+import SpinnerComponent, { SpinnerProps } from './spinner'
 
 export default {
   title: 'Atom/Spinner',
@@ -16,7 +16,7 @@ export default {
       options: theme.sizes,
     },
   },
-} as Meta;
+} as Meta
 
 const Template: (args) => JSX.Element[] = (args: SpinnerProps) => (
   theme.colors.map((variant) => (
@@ -27,9 +27,9 @@ const Template: (args) => JSX.Element[] = (args: SpinnerProps) => (
       {...args}
     />
   ))
-);
+)
 
-export const Spinner = Template.bind({});
+export const Spinner = Template.bind({})
 Spinner.args = {
   animation: 'border',
-};
+}

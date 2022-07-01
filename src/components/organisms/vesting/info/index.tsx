@@ -1,15 +1,15 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import Card from '@components/molecules/card';
-import { useVestingDashboard } from '@context/vesting-dashboard-context';
+import React from 'react'
+import { t } from '@lingui/macro'
+import Card from '@components/molecules/card'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 const KycProcessInfo = () => {
-  const { dashboardData } = useVestingDashboard();
+  const { dashboardData } = useVestingDashboard()
 
   const {
     bonusPercentage,
     immediateAvailabilityPercentage,
-  } = dashboardData;
+  } = dashboardData
 
   return (
     <>
@@ -48,7 +48,7 @@ const KycProcessInfo = () => {
             )}
       </Card.Text>
     </>
-  );
-};
+  )
+}
 
-export default KycProcessInfo;
+export default KycProcessInfo

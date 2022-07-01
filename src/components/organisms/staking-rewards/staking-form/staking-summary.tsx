@@ -1,25 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useFormikContext } from 'formik';
-import { t, Trans } from '@lingui/macro';
-import Button from '@components/atoms/button';
-import ProgressBar from '@components/atoms/progress-bars';
-import DashNumber from '@components/organisms/dashboard/dash-number';
-import { StakingProps } from '../types';
+import React from 'react'
+import styled from 'styled-components'
+import { useFormikContext } from 'formik'
+import { t, Trans } from '@lingui/macro'
+import Button from '@components/atoms/button'
+import ProgressBar from '@components/atoms/progress-bars'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import { StakingProps } from '../types'
 
 const StyledProgressBar = styled(ProgressBar)`
     margin-top: 28px;
     margin-bottom: 42px;
-`;
+`
 
 const StakeContainer = styled.div`
   margin-bottom: 15px;
-`;
+`
 
 export default function StakingSummary() {
-  const { initialValues, setFieldValue } = useFormikContext<StakingProps>();
-  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance;
-  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance;
+  const { initialValues, setFieldValue } = useFormikContext<StakingProps>()
+  const totalBalance = initialValues.stakedBalance + initialValues.tokenBalance
+  const currentStakeRatio = initialValues.stakeRange * 100 / totalBalance
 
   return (
     <div>
@@ -88,5 +88,5 @@ export default function StakingSummary() {
         </Button>
       </div>
     </div>
-  );
+  )
 }

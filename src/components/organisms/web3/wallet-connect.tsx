@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
-import { t } from '@lingui/macro';
-import Button from '@components/atoms/button';
-import { useDapp } from '@context/dapp-context';
-import { connectors } from '@providers/connectors';
-import WalletProvider from './wallet-provider';
-import WalletDetail from './wallet-detail';
+import React, { useState } from 'react'
+import classnames from 'classnames'
+import { t } from '@lingui/macro'
+import Button from '@components/atoms/button'
+import { useDapp } from '@context/dapp-context'
+import { connectors } from '@providers/connectors'
+import WalletProvider from './wallet-provider'
+import WalletDetail from './wallet-detail'
 
 export interface WalletConnectProps {
   className?: string
 }
 
 const WalletConnect = (props: WalletConnectProps) => {
-  const { className } = props;
-  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false);
-  const [showAccountModal, setShowAccountModal] = useState(false);
-  const { isAuthenticated, walletShortenAddress } = useDapp();
+  const { className } = props
+  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
+  const [showAccountModal, setShowAccountModal] = useState(false)
+  const { isAuthenticated, walletShortenAddress } = useDapp()
 
   if (!isAuthenticated) {
     return (
@@ -35,7 +35,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                   )
                 )}
       </>
-    );
+    )
   }
 
   return (
@@ -62,7 +62,7 @@ const WalletConnect = (props: WalletConnectProps) => {
               )
             )}
     </>
-  );
-};
+  )
+}
 
-export default WalletConnect;
+export default WalletConnect

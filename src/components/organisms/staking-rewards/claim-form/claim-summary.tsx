@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { t, Trans } from '@lingui/macro';
-import { useStaking } from '@context//staking-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { FormattedNumber } from '@components/atoms/number/formatted-number';
-import GradientButton from '@components/atoms/button/gradient-button';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { t, Trans } from '@lingui/macro'
+import { useStaking } from '@context//staking-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '@components/atoms/number/formatted-number'
+import GradientButton from '@components/atoms/button/gradient-button'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
 
 const RewardContainer = styled.div`
   display: flex;
@@ -14,13 +14,13 @@ const RewardContainer = styled.div`
   flex-direction: column;
   margin-bottom: 15px;
   height: 242px;
-`;
+`
 
 const HorizontalLine = styled.div`
   border-bottom: 1px solid #244166;
   width: 100%;
   margin: 1rem 2rem;
-`;
+`
 
 export default function ClaimSummary() {
   const {
@@ -32,16 +32,16 @@ export default function ClaimSummary() {
     isLoading,
     claimIsSuccess,
     resetStatus,
-  } = useStaking();
+  } = useStaking()
 
-  const [showApproveModal, setShowApproveModal] = useState<boolean>(false);
+  const [showApproveModal, setShowApproveModal] = useState<boolean>(false)
 
   const handleClaim = async () => {
     try {
-      await claim();
+      await claim()
     } catch (e) {
     }
-  };
+  }
 
   return (
     <>
@@ -111,8 +111,8 @@ export default function ClaimSummary() {
       <TransactionApproveModal
         show={showApproveModal}
         onHide={() => {
-          setShowApproveModal(false);
-          resetStatus();
+          setShowApproveModal(false)
+          resetStatus()
         }}
         title={t`Confirm Claim`}
         btnLabel={t`Claim now`}
@@ -142,5 +142,5 @@ export default function ClaimSummary() {
         </div>
       </TransactionApproveModal>
     </>
-  );
+  )
 }

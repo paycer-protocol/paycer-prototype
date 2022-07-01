@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import PageHeader from '@components/molecules/page-header';
-import { t } from '@lingui/macro';
+import React from 'react'
+import styled from 'styled-components'
+import PageHeader from '@components/molecules/page-header'
+import { t } from '@lingui/macro'
 
 const partners = [
   {
@@ -24,7 +24,7 @@ const partners = [
     url: 'https://www.benzinga.com/pressreleases/21/12/g24432433/german-fintech-startup-paycer-to-combine-defi-crypto-with-conventional-banking-services',
     imagePath: 'img/featured/bezinga.png',
   },
-];
+]
 
 export const FeatureListWrapper = styled.div`
   margin-top: -8px;
@@ -52,7 +52,7 @@ export const FeatureListWrapper = styled.div`
       }
     }
   }
-`;
+`
 
 function TechnologyList() {
   return (
@@ -77,7 +77,7 @@ function TechnologyList() {
         </ul>
       </FeatureListWrapper>
     </div>
-  );
+  )
 }
 
 function AboutText() {
@@ -101,12 +101,12 @@ function AboutText() {
         {t`Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!`}
       </p>
     </>
-  );
+  )
 }
 
 const AboutWrapper = styled.div`
   position: relative;
-`;
+`
 
 const HorseImage = styled.img`
     width: 1150px;
@@ -115,7 +115,7 @@ const HorseImage = styled.img`
     position: absolute;
     top: -60px;
     right: -16vw;
-`;
+`
 
 export default function AboutSection() {
   return (
@@ -140,5 +140,5 @@ export default function AboutSection() {
       </AboutWrapper>
     </div>
 
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Icon from '@components/atoms/icon';
-import { useMediaQuery } from 'react-responsive';
-import * as Styles from './styles';
+import React, { useState, useEffect, useRef } from 'react'
+import Icon from '@components/atoms/icon'
+import { useMediaQuery } from 'react-responsive'
+import * as Styles from './styles'
 
 export interface DropdownProps {
   // TODO: implement mouseover
@@ -12,26 +12,26 @@ export interface DropdownProps {
 }
 
 const Dropdown = (props: DropdownProps) => {
-  const dropdownRef = useRef(null);
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' });
+  const dropdownRef = useRef(null)
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
   const {
     openBy,
     children,
     desktopWidth,
     opener,
-  } = props;
+  } = props
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     document.addEventListener('click', (e) => {
       // @ts-ignore
       if (e.path !== undefined && !e.path.includes(dropdownRef.current)) {
-        setOpen(false);
+        setOpen(false)
       }
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <div ref={dropdownRef} className="d-flex justify-content-between align-items-center" onClick={() => setOpen(!open)}>
@@ -46,7 +46,7 @@ const Dropdown = (props: DropdownProps) => {
             </Styles.DropdownContent>
             )}
     </div>
-  );
-};
+  )
+}
 
-export default Dropdown;
+export default Dropdown

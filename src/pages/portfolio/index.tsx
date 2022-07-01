@@ -1,14 +1,14 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import PageHeader from '@components/molecules/page-header';
-import PortalBlockNumber from '@components/organisms/portal-block-number';
-import Portfolio from '@components/organisms/portfolio';
-import { useDapp } from '@context/dapp-context';
-import LoginCard from '@components/organisms/login-card';
-import Layout from '@components/organisms/layout';
+import React from 'react'
+import { t } from '@lingui/macro'
+import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
+import Portfolio from '@components/organisms/portfolio'
+import { useDapp } from '@context/dapp-context'
+import LoginCard from '@components/organisms/login-card'
+import Layout from '@components/organisms/layout'
 
 export default function PortfolioPage() {
-  const { isAuthenticated, walletAddress } = useDapp();
+  const { isAuthenticated, walletAddress } = useDapp()
 
   return (
     <Layout>
@@ -29,5 +29,5 @@ export default function PortfolioPage() {
         <PortalBlockNumber />
       </div>
     </Layout>
-  );
+  )
 }

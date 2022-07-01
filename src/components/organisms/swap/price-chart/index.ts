@@ -1,1 +1,1 @@
-export { default } from './price-chart';
+export { default } from './price-chart'

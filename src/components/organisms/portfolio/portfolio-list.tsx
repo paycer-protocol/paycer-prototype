@@ -1,16 +1,16 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { t, Trans } from '@lingui/macro';
-import Link from 'next/link';
-import ProgressBar from '@components/atoms/progress-bars';
-import Button from '@components/atoms/button';
-import { Money, Percentage } from '@components/atoms/number';
-import Card from '@components/molecules/card';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { useDapp } from '@context/dapp-context';
-import GradientButton from '@components/atoms/button/gradient-button';
-import { riskLabels } from '../../../locales';
-import { StrategyType } from '../../../types/investment';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { t, Trans } from '@lingui/macro'
+import Link from 'next/link'
+import ProgressBar from '@components/atoms/progress-bars'
+import Button from '@components/atoms/button'
+import { Money, Percentage } from '@components/atoms/number'
+import Card from '@components/molecules/card'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { useDapp } from '@context/dapp-context'
+import GradientButton from '@components/atoms/button/gradient-button'
+import { riskLabels } from '../../../locales'
+import { StrategyType } from '../../../types/investment'
 
 interface PortfolioStrategy extends StrategyType {
   balance?: number
@@ -28,12 +28,12 @@ const ProgressbarColorWrapper = styled.div`
       background: ${props.color};
     }
   `}
-`;
+`
 
 export default function PortfolioList(props: PortfolioProps) {
-  const { strategies, totalInvest } = props;
-  const thClass = 'bg-card-blue border border-secondary-dark';
-  const tdClass = 'bg-dark border border-purple-dark';
+  const { strategies, totalInvest } = props
+  const thClass = 'bg-card-blue border border-secondary-dark'
+  const tdClass = 'bg-dark border border-purple-dark'
 
   return (
     <div className="table-responsive mb-0 border-0">
@@ -69,29 +69,20 @@ export default function PortfolioList(props: PortfolioProps) {
         </thead>
         <tbody className="list position-relative" style={{ top: '-10px' }}>
           {strategies.length ? strategies.map((strategy, key) => {
-            const tokenBalance = strategy.balance;
-            const interest = strategy.interest.interestRate + strategy.rewards.rewardRate;
+            const tokenBalance = strategy.balance
+            const interest = strategy.interest.interestRate + strategy.rewards.rewardRate
 
             return (
               <tr key={key}>
                 <td className={`${tdClass} card-border-top-left-radius card-border-bottom-left-radius border-right-0`}>
                   <div className="d-flex align-items-center">
                     <CurrencyIcon
-<<<<<<< HEAD
                       symbol={strategy.input.symbol}
                       className="me-3 pe-1 position-relative"
                       style={{ top: '-1px' }}
                       width={30}
                       height={30}
                     />
-=======
-                        symbol={strategy.input.symbol}
-                        className="me-3 pe-1 position-relative"
-                        style={{ top: '-1px' }}
-                        width={30}
-                        height={30}
-                      />
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                     <strong className="font-size-lg">{strategy.name}</strong>
                   </div>
                 </td>
@@ -102,7 +93,6 @@ export default function PortfolioList(props: PortfolioProps) {
                 <td className={`${tdClass} border-left-0 border-right-0`}>
                   <div className="row align-items-center g-0">
                     <div className="col-auto me-3">
-<<<<<<< HEAD
                       <Percentage
                         value={(tokenBalance * 100 / totalInvest) / 100}
                         className="mb-2"
@@ -118,23 +108,6 @@ export default function PortfolioList(props: PortfolioProps) {
                         />
                       </ProgressbarColorWrapper>
                     </div>
-=======
-                        <Percentage
-                            value={(tokenBalance * 100 / totalInvest) / 100}
-                            className="mb-2"
-                          />
-                      </div>
-                    <div className="col">
-                        <ProgressbarColorWrapper color={strategy.color}>
-                            <ProgressBar
-                                className="progress-sm"
-                                now={tokenBalance * 100 / totalInvest}
-                                min={0}
-                                max={100}
-                              />
-                          </ProgressbarColorWrapper>
-                      </div>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                   </div>
                 </td>
                 <td className={`${tdClass} border-left-0 border-right-0`}>
@@ -144,13 +117,12 @@ export default function PortfolioList(props: PortfolioProps) {
                   <Money value={tokenBalance} />
                 </td>
               </tr>
-            );
+            )
           }) : (
             <tr>
               <td colSpan={5}>
                 <div className="text-center">
                   <h4 className="text-muted mb-4">
-<<<<<<< HEAD
                     {t`You have no investments in your portfolio`}
                   </h4>
                   <Link href="/invest">
@@ -161,18 +133,6 @@ export default function PortfolioList(props: PortfolioProps) {
                       {t`Invest`}
                     </GradientButton>
                   </Link>
-=======
-                      {t`You have no investments in your portfolio`}
-                    </h4>
-                  <Link href="/invest">
-                      <GradientButton
-                          title={t`Connect to a Wallet`}
-                          className="px-6"
-                        >
-                          {t`Invest`}
-                        </GradientButton>
-                    </Link>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                 </div>
               </td>
             </tr>
@@ -180,5 +140,5 @@ export default function PortfolioList(props: PortfolioProps) {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

@@ -1,6 +1,14 @@
 {
     "extends": "@byte-sapling/react",
     "rules": {
+        "semi": [
+            "warn",
+            "never"
+        ],
+        "@typescript-eslint/semi": [
+            "warn",
+            "never"
+        ],
         "no-restricted-globals": "off",
         "eqeqeq": "off",
         "no-nested-ternary": "off",

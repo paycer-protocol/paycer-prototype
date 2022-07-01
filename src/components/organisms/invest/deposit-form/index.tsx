@@ -1,23 +1,23 @@
-import React, { memo } from 'react';
-import * as Yup from 'yup';
-import { t } from '@lingui/macro';
-import useToken from '@hooks/use-token';
-import useInvest from '@hooks/use-invest';
-import Form from '@components/atoms/form/form';
-import DashNumber from '@components/organisms/dashboard/dash-number';
-import { useInvestList } from '@context/invest-list-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import TokenInputPanel from '@components/organisms/token-input-panel';
-import InfoTooltip from '@components/atoms/info-tooltip';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import { FormikValues } from 'formik';
-import { InvestFormFields } from '../types';
-import SubmitButton from './fields/submit-button';
-import InvestInput from './fields/invest-input';
-import InvestRangeSlider from './fields/invest-range-slider';
+import React, { memo } from 'react'
+import * as Yup from 'yup'
+import { t } from '@lingui/macro'
+import useToken from '@hooks/use-token'
+import useInvest from '@hooks/use-invest'
+import Form from '@components/atoms/form/form'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import { useInvestList } from '@context/invest-list-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import InfoTooltip from '@components/atoms/info-tooltip'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import { FormikValues } from 'formik'
+import { InvestFormFields } from '../types'
+import SubmitButton from './fields/submit-button'
+import InvestInput from './fields/invest-input'
+import InvestRangeSlider from './fields/invest-range-slider'
 
 const DepositForm = () => {
-  const { strategy, setShowFormModal } = useInvestList();
+  const { strategy, setShowFormModal } = useInvestList()
 
   const {
     deposit,
@@ -28,20 +28,20 @@ const DepositForm = () => {
     showFormApproveModal,
     resetStatus,
     isLoading,
-  } = useInvest(strategy);
+  } = useInvest(strategy)
 
   const handleSubmit = () => {
-    setShowFormModal(false);
-    setShowFormApproveModal(true);
-  };
+    setShowFormModal(false)
+    setShowFormApproveModal(true)
+  }
 
   const handleDeposit = async (values: FormikValues) => {
-    const amount = values.amount - values.fee;
-    await deposit(amount);
-    setShowFormModal(false);
-  };
+    const amount = values.amount - values.fee
+    await deposit(amount)
+    setShowFormModal(false)
+  }
 
-  const baseToken = useToken(strategy.input.symbol);
+  const baseToken = useToken(strategy.input.symbol)
 
   const initialValues: InvestFormFields = {
     // invest pairs
@@ -66,11 +66,11 @@ const DepositForm = () => {
     fee: 0,
 
     investRange: 0,
-  };
+  }
 
   const validationSchema = Yup.object().shape({
     amount: Yup.number().min(0).required(),
-  });
+  })
 
   return (
     <Form
@@ -91,7 +91,6 @@ const DepositForm = () => {
                 %
                 <InfoTooltip>
                   <>
-<<<<<<< HEAD
                     <div className="d-flex align-items-center">
                       <CurrencyIcon
                         symbol={strategy.input.symbol}
@@ -115,48 +114,15 @@ const DepositForm = () => {
                       {t`PCR`}
                     </div>
                   </>
-=======
-    <div className="d-flex align-items-center">
-      <CurrencyIcon
-        symbol={strategy.input.symbol}
-        className="me-3"
-        width={15}
-        height={15}
-      />
-      {strategy.interest.interestRate}
-&nbsp;%&nbsp;
-      {strategy.input.symbol}
-    </div>
-    <div className="d-flex align-items-center">
-      <CurrencyIcon
-        symbol="PCR"
-        className="me-3"
-        width={15}
-        height={15}
-      />
-      {strategy.rewards.rewardRate}
-&nbsp;%&nbsp;
-      {t`PCR`}
-    </div>
-  </>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                 </InfoTooltip>
               </div>
             </span>
           </div>
-<<<<<<< HEAD
 
           <div className="mb-5 pb-2">
             <InvestRangeSlider />
           </div>
 
-=======
-
-          <div className="mb-5 pb-2">
-            <InvestRangeSlider />
-          </div>
-
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
           <TokenInputPanel
             tokenInputSibling={(
               <div className="d-flex align-items-center cursor-pointer">
@@ -207,9 +173,9 @@ const DepositForm = () => {
           <TransactionApproveModal
             show={showFormApproveModal}
             onHide={() => {
-              resetStatus();
-              setShowFormModal(true);
-              setShowFormApproveModal(false);
+              resetStatus()
+              setShowFormModal(true)
+              setShowFormApproveModal(false)
             }}
             title={t`Confirm Transaction`}
             onClick={() => handleDeposit(values)}
@@ -224,7 +190,6 @@ const DepositForm = () => {
                 <div className="card-body">
                   <div className="row mb-4">
                     <div className="col-6">
-<<<<<<< HEAD
                       {t`You will invest:`}
                     </div>
                     <div className="col-6 fw-bold">
@@ -266,49 +231,6 @@ const DepositForm = () => {
                         symbol={values.feeSymbol}
                       />
                     </div>
-=======
-                        {t`You will invest:`}
-                      </div>
-                    <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.amount}
-                            symbol={values.baseSymbol}
-                          />
-                      </div>
-                  </div>
-                  <div className="row mb-4">
-                    <div className="col-6">
-                        {t`Daily rewards:`}
-                      </div>
-                    <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.dailyRewards}
-                            symbol={values.rewardSymbol}
-                          />
-                      </div>
-                  </div>
-                  <div className="row mb-4">
-                    <div className="col-6">
-                        {t`Daily interest:`}
-                      </div>
-                    <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.dailyInterest}
-                            symbol={values.interestSymbol}
-                          />
-                      </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                        {t`Fee:`}
-                      </div>
-                    <div className="col-6 fw-bold">
-                        <DashNumber
-                            value={values.fee}
-                            symbol={values.feeSymbol}
-                          />
-                      </div>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                   </div>
                 </div>
               </div>
@@ -321,7 +243,7 @@ const DepositForm = () => {
         </div>
       )}
     </Form>
-  );
-};
+  )
+}
 
-export default memo(DepositForm);
+export default memo(DepositForm)

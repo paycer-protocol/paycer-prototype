@@ -1,7 +1,7 @@
-import { Mainnet, Polygon, Kovan, Mumbai } from '@usedapp/core';
-import { explorers } from './explorers';
-import { rpcUrls } from './rpcs';
-import ChainId from './chain-id';
+import { Mainnet, Polygon, Kovan, Mumbai } from '@usedapp/core'
+import { explorers } from './explorers'
+import { rpcUrls } from './rpcs'
+import ChainId from './chain-id'
 
 export interface INetworkProvider {
   [chainId: number]: {
@@ -48,7 +48,7 @@ export const testNetNetworks: INetworkProvider = {
     },
     multicallAddress: '0xe9939e7Ea7D7fb619Ac57f648Da7B1D425832631',
   },
-};
+}
 
 export const mainNetProviders: INetworkProvider = {
   /*
@@ -95,12 +95,12 @@ export const mainNetProviders: INetworkProvider = {
     },
     multicallAddress: '0x275617327c958bD06b5D6b871E7f491D76113dd8',
   },
-};
+}
 
 export const infoChartProviders: INetworkProvider = {
   [ChainId.Polygon]: mainNetProviders[ChainId.Polygon],
-};
+}
 
 export const chainedNetworkProvider = {
   ...mainNetProviders,
-};
+}

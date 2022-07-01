@@ -1,5 +1,5 @@
-import React, { MutableRefObject, ReactElement, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { MutableRefObject, ReactElement, useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 export interface SectionHocProps {
   anchorRef: MutableRefObject<HTMLDivElement>
@@ -8,25 +8,25 @@ export interface SectionHocProps {
 }
 
 const SectionHoc = (props: SectionHocProps) => {
-  const { ref, inView } = useInView();
-  const { anchorRef, anchorId, children } = props;
+  const { ref, inView } = useInView()
+  const { anchorRef, anchorId, children } = props
 
   useEffect(() => {
-    const anchorLink = document.querySelector(`[rel="anchor-${anchorId}"]`);
+    const anchorLink = document.querySelector(`[rel="anchor-${anchorId}"]`)
 
     if (inView) {
-      console.log(anchorId);
-      const anchors = document.querySelectorAll('.anchor--isActive');
+      console.log(anchorId)
+      const anchors = document.querySelectorAll('.anchor--isActive')
       anchors.forEach((el, i) => {
         if (el !== anchorLink) {
-          el.classList.remove('anchor--isActive');
+          el.classList.remove('anchor--isActive')
         }
-      });
+      })
       if (anchorLink) {
-        anchorLink.classList.add('anchor--isActive');
+        anchorLink.classList.add('anchor--isActive')
       }
     }
-  }, [inView]);
+  }, [inView])
 
   return (
     <div ref={anchorRef}>
@@ -34,7 +34,7 @@ const SectionHoc = (props: SectionHocProps) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SectionHoc;
+export default SectionHoc

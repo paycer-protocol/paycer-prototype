@@ -121,4 +121,4 @@ export default {
     yvUSDC: 2,
   },
 
-};
+}

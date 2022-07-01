@@ -1,5 +1,5 @@
-import React from 'react';
-import Slider, { SliderProps } from 'rc-slider';
+import React from 'react'
+import Slider, { SliderProps } from 'rc-slider'
 
 export default function RangeSlider(props: SliderProps) {
   return (
@@ -36,5 +36,5 @@ export default function RangeSlider(props: SliderProps) {
         }}
       />
     </div>
-  );
+  )
 }

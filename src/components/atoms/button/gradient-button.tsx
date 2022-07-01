@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import Button from './button';
+import styled, { css } from 'styled-components'
+import Button from './button'
 
 interface GradientButtonProps {
   isInverted: boolean
@@ -33,6 +33,6 @@ const GradientButton = styled(Button)<any>`
   ${(props) => props.disabled && css`
     background: none;
   `}
-`;
+`
 
-export default GradientButton;
+export default GradientButton

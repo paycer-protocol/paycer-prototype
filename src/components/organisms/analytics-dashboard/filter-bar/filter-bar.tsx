@@ -1,36 +1,36 @@
-import React from 'react';
-import { infoChartProviders } from '@providers/networks';
-import { t } from '@lingui/macro';
-import { useFormikContext } from 'formik';
-import { InfoDashboardFormType } from '../types';
+import React from 'react'
+import { infoChartProviders } from '@providers/networks'
+import { t } from '@lingui/macro'
+import { useFormikContext } from 'formik'
+import { InfoDashboardFormType } from '../types'
 
 const FilterBar = () => {
-  const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>();
+  const { values, setFieldValue } = useFormikContext<InfoDashboardFormType>()
 
   const handleChange = (e):any => {
-    const chainId = Number(e.currentTarget.value);
-    const { checked } = e.currentTarget;
+    const chainId = Number(e.currentTarget.value)
+    const { checked } = e.currentTarget
 
     if (chainId === 0 && !checked) {
-      return false;
+      return false
     }
 
-    let filters;
+    let filters
     if (checked) {
       if (chainId !== 0) {
-        filters = values.selectedChains.filter((f) => f !== 0);
+        filters = values.selectedChains.filter((f) => f !== 0)
       } else {
-        filters = [];
+        filters = []
       }
-      filters.push(chainId);
+      filters.push(chainId)
     } else {
-      filters = values.selectedChains.filter((f) => f !== chainId);
+      filters = values.selectedChains.filter((f) => f !== chainId)
     }
     if (!filters.length) {
-      filters.push(0);
+      filters.push(0)
     }
-    setFieldValue('selectedChains', [...filters]);
-  };
+    setFieldValue('selectedChains', [...filters])
+  }
 
   return (
     <div className="d-flex">
@@ -57,7 +57,7 @@ const FilterBar = () => {
         <span className="checkmark card mb-0" />
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default FilterBar;
+export default FilterBar

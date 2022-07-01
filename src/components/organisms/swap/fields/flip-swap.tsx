@@ -1,12 +1,12 @@
-import React from 'react';
-import { useFormikContext } from 'formik';
-import { SwapVert } from '@styled-icons/material/SwapVert';
-import styled, { css } from 'styled-components';
-import Icon from '@components/atoms/icon';
-import { SwapProps } from '@components/organisms/swap/types';
-import { CurrencyFieldProps } from '@components/atoms/form/currency';
-import { formatUnits } from '@ethersproject/units';
-import useSwap from '@hooks/use-swap';
+import React from 'react'
+import { useFormikContext } from 'formik'
+import { SwapVert } from '@styled-icons/material/SwapVert'
+import styled, { css } from 'styled-components'
+import Icon from '@components/atoms/icon'
+import { SwapProps } from '@components/organisms/swap/types'
+import { CurrencyFieldProps } from '@components/atoms/form/currency'
+import { formatUnits } from '@ethersproject/units'
+import useSwap from '@hooks/use-swap'
 
 interface CircleProps {
   isDisabled?: boolean
@@ -21,39 +21,39 @@ export const Circle = styled.div<CircleProps>`
   ${(props) => props.isDisabled && css`
     opacity: .5;
   `}
-`;
+`
 
 export default function FlipSwap() {
-  const { values, setValues, setFieldValue } = useFormikContext<SwapProps>();
+  const { values, setValues, setFieldValue } = useFormikContext<SwapProps>()
 
   const {
     fetchQuote,
-  } = useSwap();
+  } = useSwap()
 
   const handleFlip = async () => {
-    const { toToken: fromToken, toTokenValue: fromTokenValue, fromToken: toToken } = values;
+    const { toToken: fromToken, toTokenValue: fromTokenValue, fromToken: toToken } = values
     if (!toToken && !fromToken) {
-      return;
+      return
     }
 
-    setFieldValue('fromToken', fromToken);
-    setFieldValue('toToken', toToken);
+    setFieldValue('fromToken', fromToken)
+    setFieldValue('toToken', toToken)
 
     if (fromTokenValue) {
       try {
-        setFieldValue('isReloading', true);
-        const result = await fetchQuote({ fromToken, toToken, amount: fromTokenValue.toString() });
-        const toTokenValue = formatUnits(result?.toTokenAmount.toString(), toToken.decimals);
-        setFieldValue('fee', Number(fromTokenValue) / 100);
-        setFieldValue('fromTokenValue', fromTokenValue);
-        setFieldValue('toTokenValue', toTokenValue);
+        setFieldValue('isReloading', true)
+        const result = await fetchQuote({ fromToken, toToken, amount: fromTokenValue.toString() })
+        const toTokenValue = formatUnits(result?.toTokenAmount.toString(), toToken.decimals)
+        setFieldValue('fee', Number(fromTokenValue) / 100)
+        setFieldValue('fromTokenValue', fromTokenValue)
+        setFieldValue('toTokenValue', toTokenValue)
       } catch (e) {
-        console.log('flipswap');
+        console.log('flipswap')
       } finally {
-        setFieldValue('isReloading', false);
+        setFieldValue('isReloading', false)
       }
     }
-  };
+  }
 
   return (
     <Circle
@@ -67,5 +67,5 @@ export default function FlipSwap() {
         color="#FFF"
       />
     </Circle>
-  );
+  )
 }

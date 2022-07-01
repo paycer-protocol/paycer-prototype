@@ -1,36 +1,36 @@
-import React from 'react';
-import styled from 'styled-components';
-import { t } from '@lingui/macro';
-import Icon from '@components/atoms/icon';
-import Dropdown from '@components/molecules/dropdown';
-import { Network } from '@styled-icons/entypo';
-import { useDapp } from '@context/dapp-context';
-import { toast } from 'react-toastify';
-import { chainedNetworkProvider, mainNetProviders } from '@providers/networks';
-import { Check2 } from '@styled-icons/bootstrap';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import RoundetIconButton from '@components/atoms/button/roundet-icon-button';
-import { Wallet } from '@styled-icons/ionicons-sharp';
-import { useMediaQuery } from 'react-responsive';
+import React from 'react'
+import styled from 'styled-components'
+import { t } from '@lingui/macro'
+import Icon from '@components/atoms/icon'
+import Dropdown from '@components/molecules/dropdown'
+import { Network } from '@styled-icons/entypo'
+import { useDapp } from '@context/dapp-context'
+import { toast } from 'react-toastify'
+import { chainedNetworkProvider, mainNetProviders } from '@providers/networks'
+import { Check2 } from '@styled-icons/bootstrap'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import RoundetIconButton from '@components/atoms/button/roundet-icon-button'
+import { Wallet } from '@styled-icons/ionicons-sharp'
+import { useMediaQuery } from 'react-responsive'
 
 function isDebug() {
   return window.location.hostname === 'localhost'
-        || window.location.search === '?debug=1';
+        || window.location.search === '?debug=1'
 }
 
 export const NetworkItem = styled.a`
-`;
+`
 
 const NetworkMenu = () => {
-  const providers = isDebug() ? chainedNetworkProvider : mainNetProviders;
-  const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp();
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' });
+  const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
+  const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
   if (!isAuthenticated) {
-    return null;
+    return null
   }
 
-  const activeNetworkLabel = providers[currentNetworkId]?.chainName;
+  const activeNetworkLabel = providers[currentNetworkId]?.chainName
 
   const renderMenu = () => (
     <>
@@ -43,9 +43,9 @@ const NetworkMenu = () => {
         </div>
       </div>
       {Object.keys(providers).map((chainId, index) => {
-        const provider = providers[chainId];
-        const isActive = isAuthenticated && Number(chainId) === currentNetworkId;
-        const isLast = Object.keys(providers).length === index + 1;
+        const provider = providers[chainId]
+        const isActive = isAuthenticated && Number(chainId) === currentNetworkId
+        const isLast = Object.keys(providers).length === index + 1
 
         return (
           <NetworkItem
@@ -55,7 +55,7 @@ const NetworkMenu = () => {
             className={`${!isActive ? 'cursor-pointer' : ''} ${!isLast ? 'mb-4' : ''} d-flex align-items-center`}
             onClick={async () => {
               if (!isActive) {
-                await handleSwitchNetwork(provider);
+                await handleSwitchNetwork(provider)
               }
             }}
           >
@@ -75,10 +75,10 @@ const NetworkMenu = () => {
                             </div>
                             )}
           </NetworkItem>
-        );
+        )
       })}
     </>
-  );
+  )
 
   return (
     <>
@@ -90,7 +90,7 @@ const NetworkMenu = () => {
           </Dropdown>
         )}
     </>
-  );
-};
+  )
+}
 
-export default NetworkMenu;
+export default NetworkMenu

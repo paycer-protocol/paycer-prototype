@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
-import styled from 'styled-components';
-import Button from '@components/atoms/button';
-import { useDapp } from '@context/dapp-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { FormattedNumber } from '@components/atoms/number';
-import { mainNetProviders, chainedNetworkProvider } from '@providers/networks';
-import NetworkProvider from './network-provider';
+import React, { useState } from 'react'
+import classnames from 'classnames'
+import styled from 'styled-components'
+import Button from '@components/atoms/button'
+import { useDapp } from '@context/dapp-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '@components/atoms/number'
+import { mainNetProviders, chainedNetworkProvider } from '@providers/networks'
+import NetworkProvider from './network-provider'
 
 function isDebug() {
   return window.location.hostname === 'localhost'
-    || window.location.search === '?debug=1';
+    || window.location.search === '?debug=1'
 }
 
 const StyledButton = styled(Button)`
@@ -19,14 +19,14 @@ const StyledButton = styled(Button)`
         margin-right: -100px;
         padding-right: 98px;
     }
-`;
+`
 
 const Network = (props) => {
-  const [showNetworkModal, setShowNetworkModal] = useState(false);
-  const { isAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useDapp();
+  const [showNetworkModal, setShowNetworkModal] = useState(false)
+  const { isAuthenticated, chainName, nativeSymbol, nativeBalanceFormatted } = useDapp()
 
   if (!isAuthenticated) {
-    return null;
+    return null
   }
 
   return (
@@ -59,7 +59,7 @@ const Network = (props) => {
         onHide={() => setShowNetworkModal(false)}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Network;
+export default Network

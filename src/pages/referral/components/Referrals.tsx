@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { t, Trans } from '@lingui/macro';
-import { useDapp } from '@context/dapp-context';
-import { FormattedNumber } from '@components/atoms/number';
-import TxnLink from '@components/atoms/txn-link';
-import api from '../../../api';
+import React, { useEffect, useState } from 'react'
+import { t, Trans } from '@lingui/macro'
+import { useDapp } from '@context/dapp-context'
+import { FormattedNumber } from '@components/atoms/number'
+import TxnLink from '@components/atoms/txn-link'
+import api from '../../../api'
 
 interface RewardType {
   chain: string
@@ -21,26 +21,26 @@ interface RewardType {
 }
 
 export default function Referrals() {
-  const { walletAddress, isAuthenticated } = useDapp();
-  const [rewards, setRewards] = useState<RewardType[] | []>([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const { walletAddress, isAuthenticated } = useDapp()
+  const [rewards, setRewards] = useState<RewardType[] | []>([])
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     async function fetchReferralRewards(walletAddress) {
       try {
-        const response = await api.fetchReferralRewards(walletAddress);
-        setRewards(response.data.transactions);
+        const response = await api.fetchReferralRewards(walletAddress)
+        setRewards(response.data.transactions)
       } catch (e) {
-        setErrorMessage(t`An error has occurred. Please refresh the page`);
+        setErrorMessage(t`An error has occurred. Please refresh the page`)
       }
     }
 
-    setErrorMessage('');
+    setErrorMessage('')
 
     if (isAuthenticated && walletAddress) {
-      fetchReferralRewards(walletAddress);
+      fetchReferralRewards(walletAddress)
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated])
 
   return (
     <div className="table-responsive">
@@ -99,5 +99,5 @@ export default function Referrals() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

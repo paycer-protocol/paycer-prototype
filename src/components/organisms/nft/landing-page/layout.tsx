@@ -1,9 +1,9 @@
-import React from 'react';
-import NftPageHeader, { NftPageHeaderProps } from '@components/organisms/nft-page-header';
-import Footer from '@components/organisms/footer';
-import Network from '@components/organisms/web3/network';
-import { useDapp } from '@context/dapp-context';
-import { t } from '@lingui/macro';
+import React from 'react'
+import NftPageHeader, { NftPageHeaderProps } from '@components/organisms/nft-page-header'
+import Footer from '@components/organisms/footer'
+import Network from '@components/organisms/web3/network'
+import { useDapp } from '@context/dapp-context'
+import { t } from '@lingui/macro'
 
 export interface NftLandingPageLayoutProps {
   sections?: NftPageHeaderProps['sections']
@@ -11,8 +11,8 @@ export interface NftLandingPageLayoutProps {
 }
 
 const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
-  const { children } = props;
-  const { currentChainIsSupportedForDApp } = useDapp();
+  const { children } = props
+  const { currentChainIsSupportedForDApp } = useDapp()
 
   if (currentChainIsSupportedForDApp) {
     return (
@@ -25,7 +25,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
         </main>
         <Footer />
       </>
-    );
+    )
   }
 
   return (
@@ -41,7 +41,7 @@ const NftLandingPageLayout = (props: NftLandingPageLayoutProps) => {
       </main>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default NftLandingPageLayout;
+export default NftLandingPageLayout

@@ -1,6 +1,6 @@
-import { t } from '@lingui/macro';
-import Image from 'next/image';
-import styled from 'styled-components';
+import { t } from '@lingui/macro'
+import Image from 'next/image'
+import styled from 'styled-components'
 
 function IconElement({ title, description, icon }: { title: string, description: string, icon: string }) {
   return (
@@ -13,7 +13,7 @@ function IconElement({ title, description, icon }: { title: string, description:
         <small style={{ fontSize: '14px' }} className="mb-0 text-muted">{description}</small>
       </div>
     </div>
-  );
+  )
 }
 
 const usps = [
@@ -62,7 +62,7 @@ const usps = [
     description: t`The NFT will add more cashback rewards to your credit card`,
     icon: 'cashback',
   },
-] as const;
+] as const
 
 export default function UspSection() {
   return (
@@ -89,5 +89,5 @@ export default function UspSection() {
         </div>
       </div>
     </>
-  );
+  )
 }

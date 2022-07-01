@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core';
+import { ChainId } from '@usedapp/core'
 
 export interface IRpcUrl {
   [chainId: number]: string
@@ -16,4 +16,4 @@ export const rpcUrls: IRpcUrl = {
   [ChainId.xDai]: 'https://rpc.xdaichain.com',
   [ChainId.Hardhat]: 'http://127.0.0.1:8545',
 
-};
+}

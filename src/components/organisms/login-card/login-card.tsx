@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { t, Trans } from '@lingui/macro';
-import { useDapp } from '@context/dapp-context';
-import GradientButton from '@components/atoms/button/gradient-button';
-import WalletProvider from '@components/organisms/web3/wallet-provider';
-import { connectors } from '@providers/connectors';
+import React, { useState } from 'react'
+import { t, Trans } from '@lingui/macro'
+import { useDapp } from '@context/dapp-context'
+import GradientButton from '@components/atoms/button/gradient-button'
+import WalletProvider from '@components/organisms/web3/wallet-provider'
+import { connectors } from '@providers/connectors'
 
 const LoginCard = () => {
-  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false);
+  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
 
   return (
     <div className="card">
@@ -34,7 +34,7 @@ const LoginCard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginCard;
+export default LoginCard

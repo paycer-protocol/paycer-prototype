@@ -1,6 +1,6 @@
-import React from 'react';
-import { FormattedNumber, FormatNumberOptions } from 'react-intl';
-import CurrencyIcon from '@components/atoms/currency-icon';
+import React from 'react'
+import { FormattedNumber, FormatNumberOptions } from 'react-intl'
+import CurrencyIcon from '@components/atoms/currency-icon'
 
 export interface MoneyProps extends FormatNumberOptions {
   value: number | string;
@@ -29,6 +29,6 @@ export const Money = ({ withIcon = false, value = 0, currency = 'usd', ...restPr
             )
         )}
   </>
-);
+)
 
-export default Money;
+export default Money

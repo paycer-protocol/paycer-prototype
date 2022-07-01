@@ -1,18 +1,18 @@
-import Button from '@components/atoms/button';
-import { useEffect, useState } from 'react';
-import { t } from '@lingui/macro';
-import Icon from '@components/atoms/icon';
-import { useLingui } from '@lingui/react';
-import { useDapp } from '@context/dapp-context';
-import { ArrowForward } from '@styled-icons/material';
-import Image from 'next/image';
-import styled from 'styled-components';
-import JoinWhitelistModal from './join-whitelist-modal';
+import Button from '@components/atoms/button'
+import { useEffect, useState } from 'react'
+import { t } from '@lingui/macro'
+import Icon from '@components/atoms/icon'
+import { useLingui } from '@lingui/react'
+import { useDapp } from '@context/dapp-context'
+import { ArrowForward } from '@styled-icons/material'
+import Image from 'next/image'
+import styled from 'styled-components'
+import JoinWhitelistModal from './join-whitelist-modal'
 
 const Background = styled.div`
   position: relative;
   background: linear-gradient(270deg, #3A00E3 0%, #8D0DA2 100%);
-`;
+`
 
 const PrettyLi = styled.li`
   display: flex;
@@ -44,19 +44,19 @@ const PrettyLi = styled.li`
   &::marker {
     display: none;
   }
-`;
+`
 
 const StyledLink = styled.a`
   text-decoration: underline;
   &:hover {
     text-decoration: none;
   }
-`;
+`
 
 function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, publicSaleStart: Date }) {
-  const { i18n } = useLingui();
-  const presaleStartFormatted = i18n.date(presaleStart);
-  const publicSaleStartFormatted = i18n.date(publicSaleStart);
+  const { i18n } = useLingui()
+  const presaleStartFormatted = i18n.date(presaleStart)
+  const publicSaleStartFormatted = i18n.date(publicSaleStart)
 
   return (
     presaleStart.getTime() < Date.now()
@@ -99,7 +99,7 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
           */}
         </div>
       )
-  );
+  )
 }
 
 function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amount: number) => void }) {
@@ -117,13 +117,13 @@ function AmountPicker({ amount, setAmount }: { amount: number, setAmount: (amoun
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function Countdown({ timeLeft }: { timeLeft: number }) {
-  const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
-  const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24);
-  const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24));
+  const minutes = Math.floor((timeLeft / 1000 / 60) % 60)
+  const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24)
+  const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24))
 
   return (
     <div className="row d-flex align-items-center justify-content-between">
@@ -165,25 +165,25 @@ function Countdown({ timeLeft }: { timeLeft: number }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function useWhitelistState() {
-  const { walletAddress } = useDapp();
+  const { walletAddress } = useDapp()
   const [whitelistState, setWhitelistState] = useState<undefined | {
     status: 'whitelisted' | 'notWhitelisted';
     data: {
       alloc: number;
       merkle_proof: string[];
     };
-  }>(undefined);
+  }>(undefined)
   useEffect(() => {
-    setWhitelistState(undefined);
+    setWhitelistState(undefined)
     fetch(`/api/nft/whitelist?${new URLSearchParams({ walletAddress })}`).then(async (result) => {
-      setWhitelistState(await result.json() as typeof whitelistState);
-    });
-  }, [walletAddress]);
-  return whitelistState;
+      setWhitelistState(await result.json() as typeof whitelistState)
+    })
+  }, [walletAddress])
+  return whitelistState
 }
 
 export interface MintSectionProps {
@@ -193,16 +193,16 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
-  const presaleStartsIn = presaleStart.getTime() - Date.now();
-  const presaleStarted = presaleStartsIn <= 0;
+  const presaleStartsIn = presaleStart.getTime() - Date.now()
+  const presaleStarted = presaleStartsIn <= 0
 
-  const publicSaleStartsIn = publicSaleStart.getTime() - Date.now();
-  const publicSaleStarted = publicSaleStartsIn <= 0;
+  const publicSaleStartsIn = publicSaleStart.getTime() - Date.now()
+  const publicSaleStarted = publicSaleStartsIn <= 0
 
-  const [showWhitelistModal, setShowWhitelistModal] = useState(false);
-  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false);
+  const [showWhitelistModal, setShowWhitelistModal] = useState(false)
+  const [showMintingApproveModal, setShowMintingApproveModal] = useState(false)
 
-  const [amount, setAmount] = useState(2);
+  const [amount, setAmount] = useState(2)
 
   return (
     <Background className="px-4 p-md-0">
@@ -269,5 +269,5 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
         </div>
       </div>
     </Background>
-  );
+  )
 }

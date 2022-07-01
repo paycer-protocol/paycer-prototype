@@ -1,28 +1,28 @@
-import React, { useEffect, useRef } from 'react';
-import { t } from '@lingui/macro';
-import { FormikProps } from 'formik';
-import { tokenProvider } from '@providers/tokens';
-import { swapTokens, swapFeePercentage } from '@config/market-pairs';
-import useSwap from '@hooks/use-swap';
-import { useDapp } from '@context/dapp-context';
-import Alert from '@components/atoms/alert';
-import Form from '@components/atoms/form/form';
-import TokenInputPanel from '@components/organisms/token-input-panel';
-import Token0Select from '@components/organisms/swap/fields/token0-select';
-import Token0Input from '@components/organisms/swap/fields/token0-input';
-import FlipSwap from '@components/organisms/swap/fields/flip-swap';
-import Token1Select from '@components/organisms/swap/fields/token1-select';
-import Token1Input from '@components/organisms/swap/fields/token1-input';
-import SettingsDropdown from '@components/organisms/swap/settings-dropdown';
-import SubmitButton from '@components/organisms/swap/fields/submit-button';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import DashNumber from '@components/organisms/dashboard/dash-number';
-import { SwapProps } from './types';
-import { FormattedNumber } from '../../atoms/number/formatted-number';
+import React, { useEffect, useRef } from 'react'
+import { t } from '@lingui/macro'
+import { FormikProps } from 'formik'
+import { tokenProvider } from '@providers/tokens'
+import { swapTokens, swapFeePercentage } from '@config/market-pairs'
+import useSwap from '@hooks/use-swap'
+import { useDapp } from '@context/dapp-context'
+import Alert from '@components/atoms/alert'
+import Form from '@components/atoms/form/form'
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import Token0Select from '@components/organisms/swap/fields/token0-select'
+import Token0Input from '@components/organisms/swap/fields/token0-input'
+import FlipSwap from '@components/organisms/swap/fields/flip-swap'
+import Token1Select from '@components/organisms/swap/fields/token1-select'
+import Token1Input from '@components/organisms/swap/fields/token1-input'
+import SettingsDropdown from '@components/organisms/swap/settings-dropdown'
+import SubmitButton from '@components/organisms/swap/fields/submit-button'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import { SwapProps } from './types'
+import { FormattedNumber } from '../../atoms/number/formatted-number'
 
 export default function Swap() {
-  const { walletAddress, currentNetworkId } = useDapp();
-  const formRef = useRef<FormikProps<SwapProps>>(null);
+  const { walletAddress, currentNetworkId } = useDapp()
+  const formRef = useRef<FormikProps<SwapProps>>(null)
 
   const {
     swapIsSuccess,
@@ -31,7 +31,7 @@ export default function Swap() {
     setShowFormApproveModal,
     resetStatus,
     handleSwap,
-  } = useSwap();
+  } = useSwap()
 
   const initialValues: SwapProps = {
     fromToken: tokenProvider.USDC,
@@ -45,15 +45,15 @@ export default function Swap() {
     isReloading: false,
     isSwapping: false,
     quoteHasChangedAlert: false,
-  };
+  }
 
   const handleSubmit = () => {
-    setShowFormApproveModal(true);
-  };
+    setShowFormApproveModal(true)
+  }
 
   useEffect(() => {
-    formRef.current?.resetForm();
-  }, [swapIsSuccess]);
+    formRef.current?.resetForm()
+  }, [swapIsSuccess])
 
   return (
     <Form
@@ -173,14 +173,14 @@ export default function Swap() {
           <TransactionApproveModal
             show={showFormApproveModal}
             onClick={async () => {
-              setFieldValue('isSwapping', true);
-              await handleSwap({ amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage });
-              setFieldValue('isSwapping', false);
+              setFieldValue('isSwapping', true)
+              await handleSwap({ amount: values.fromTokenValue, toToken: values.toToken, fromToken: values.fromToken, slippage: values.slippage })
+              setFieldValue('isSwapping', false)
             }}
             onHide={() => {
-              resetStatus();
-              setFieldValue('quoteHasChangedAlert', false);
-              setShowFormApproveModal(false);
+              resetStatus()
+              setFieldValue('quoteHasChangedAlert', false)
+              setShowFormApproveModal(false)
             }}
             title={t`Confirm Transaction`}
             successMessage={t`Transaction was successfully executed`}
@@ -286,5 +286,5 @@ export default function Swap() {
         </>
       )}
     </Form>
-  );
+  )
 }

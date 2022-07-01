@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ArrowDropDown } from '@styled-icons/material-outlined';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import Icon from '@components/atoms/icon';
-import { t } from '@lingui/macro';
-import { TokenType } from '../../../types/investment';
+import React from 'react'
+import styled from 'styled-components'
+import { ArrowDropDown } from '@styled-icons/material-outlined'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import Icon from '@components/atoms/icon'
+import { t } from '@lingui/macro'
+import { TokenType } from '../../../types/investment'
 
 export const Placeholder = styled.span`
    font-size: 16px; font-weight: 300;
-`;
+`
 
 interface TokenToggleProps {
   token: TokenType
@@ -19,7 +19,7 @@ interface TokenToggleProps {
 }
 
 export default function TokenToggle(props: TokenToggleProps) {
-  const { token, onClick, placeholder, label, readOnly } = props;
+  const { token, onClick, placeholder, label, readOnly } = props
   return (
     <div className="d-flex align-items-center cursor-pointer" onClick={!readOnly ? onClick : null}>
       {token
@@ -51,5 +51,5 @@ export default function TokenToggle(props: TokenToggleProps) {
       </div>
 
     </div>
-  );
+  )
 }

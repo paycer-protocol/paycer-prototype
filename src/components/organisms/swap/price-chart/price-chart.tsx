@@ -1,10 +1,10 @@
-import React, { useEffect, useState, memo } from 'react';
-import classnames from 'classnames';
-import dynamic from 'next/dynamic';
-import { ApexOptions } from 'apexcharts';
-import { TokenType } from '../../../../types/investment';
-import * as Styles from './Styles';
-import api from '../../../../api';
+import React, { useEffect, useState, memo } from 'react'
+import classnames from 'classnames'
+import dynamic from 'next/dynamic'
+import { ApexOptions } from 'apexcharts'
+import { TokenType } from '../../../../types/investment'
+import * as Styles from './Styles'
+import api from '../../../../api'
 
 interface PriceChartProps {
   token0: TokenType
@@ -13,9 +13,9 @@ interface PriceChartProps {
 }
 
 const PriceChart = (props: PriceChartProps) => {
-  const { token0, token1, token1Price } = props;
-  const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-  const [interval, setInterval] = useState<string>('');
+  const { token0, token1, token1Price } = props
+  const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
+  const [interval, setInterval] = useState<string>('')
 
   const options = {
     colors: ['#6d16eb'],
@@ -119,39 +119,39 @@ const PriceChart = (props: PriceChartProps) => {
         opacityTo: 0,
       },
     },
-  } as ApexOptions;
-  const selection = 'one_month';
+  } as ApexOptions
+  const selection = 'one_month'
 
   const [data, setData] = useState<any>({
     series: [],
     options,
     selection,
-  });
+  })
 
   const fetchChartData = async (interval = '') => {
     try {
-      const response = await api.fetchPriceChart(token0.symbol, token1.symbol, interval);
+      const response = await api.fetchPriceChart(token0.symbol, token1.symbol, interval)
 
       if (response) {
-        setInterval(interval);
+        setInterval(interval)
         setData({
           series: [{
             data: response,
           }],
           options,
           selection,
-        });
+        })
       }
     } catch (err) {
     }
-  };
+  }
 
   useEffect(() => {
     async function fetch() {
-      await fetchChartData();
+      await fetchChartData()
     }
-    fetch();
-  }, [token0, token1]);
+    fetch()
+  }, [token0, token1])
 
   return (
     <div>
@@ -225,7 +225,7 @@ const PriceChart = (props: PriceChartProps) => {
                 </>
                 )}
     </div>
-  );
-};
+  )
+}
 
-export default memo(PriceChart);
+export default memo(PriceChart)

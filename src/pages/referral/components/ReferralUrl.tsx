@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { t } from '@lingui/macro';
-import { InputGroup, FormControl } from 'react-bootstrap';
-import Icon from '@components/atoms/icon';
-import { Bookmark, BookmarkCheck } from '@styled-icons/bootstrap';
-import useCopyClipboard from '@hooks/use-copy-clipboard';
-import { useDapp } from '@context/dapp-context';
-import api from '../../../api';
+import React, { useEffect, useState } from 'react'
+import { t } from '@lingui/macro'
+import { InputGroup, FormControl } from 'react-bootstrap'
+import Icon from '@components/atoms/icon'
+import { Bookmark, BookmarkCheck } from '@styled-icons/bootstrap'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
+import { useDapp } from '@context/dapp-context'
+import api from '../../../api'
 
 export default function ReferralUrl() {
-  const [isCopied, setCopied] = useCopyClipboard();
-  const [code, setCode] = useState();
-  const { isAuthenticated, walletAddress } = useDapp();
+  const [isCopied, setCopied] = useCopyClipboard()
+  const [code, setCode] = useState()
+  const { isAuthenticated, walletAddress } = useDapp()
 
   useEffect(() => {
     async function fetchReferralCode(walletAddress) {
       try {
-        const response = await api.fetchReferralCode(walletAddress);
-        setCode(response.data.code);
+        const response = await api.fetchReferralCode(walletAddress)
+        setCode(response.data.code)
       } catch (e) {
-        const response = await api.createReferralCode(walletAddress);
-        setCode(response.data.code);
+        const response = await api.createReferralCode(walletAddress)
+        setCode(response.data.code)
       }
     }
 
     if (isAuthenticated && walletAddress) {
-      fetchReferralCode(walletAddress);
+      fetchReferralCode(walletAddress)
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated])
 
   return (
     <div className="mb-5">
@@ -47,5 +47,5 @@ export default function ReferralUrl() {
         </InputGroup>
       </div>
     </div>
-  );
+  )
 }

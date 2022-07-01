@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import classnames from 'classnames';
-import { TextLeft } from '@styled-icons/bootstrap';
-import { routes } from '@config/routes';
-import { ArrowDropDown } from '@styled-icons/material-outlined';
-import Image from '@components/atoms/image';
-import Icon from '@components/atoms/icon';
-import OffCanvas from '@components/organisms/off-canvas';
-import { useDapp } from '@context/dapp-context';
-import WalletMenu from './wallet-menu';
-import NetworkMenu from './network-menu';
-import * as Styles from './styles';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import classnames from 'classnames'
+import { TextLeft } from '@styled-icons/bootstrap'
+import { routes } from '@config/routes'
+import { ArrowDropDown } from '@styled-icons/material-outlined'
+import Image from '@components/atoms/image'
+import Icon from '@components/atoms/icon'
+import OffCanvas from '@components/organisms/off-canvas'
+import { useDapp } from '@context/dapp-context'
+import WalletMenu from './wallet-menu'
+import NetworkMenu from './network-menu'
+import * as Styles from './styles'
 
 const Header = () => {
-  const { pathname } = useRouter();
-  const [showModalNav, setShowModalNav] = useState(false);
-  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp();
+  const { pathname } = useRouter()
+  const [showModalNav, setShowModalNav] = useState(false)
+  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp()
 
-  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true);
+  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
 
   const qualifiedRoutes = routes.filter((route) => {
     if (!currentNetworkId) {
-      return true;
+      return true
     }
 
     return route.supportedChains.includes(currentNetworkId)
-          && isAuthenticatedRoute(route);
-  });
+      && isAuthenticatedRoute(route)
+  })
 
   return (
     <>
@@ -55,7 +55,6 @@ const Header = () => {
 
                   {(route?.isDropdown && !route.path && route.subroutes && route.subroutes.length)
                     ? (
-<<<<<<< HEAD
                       <div className="dropdown p-0">
                         <a
                           href="#"
@@ -72,59 +71,35 @@ const Header = () => {
                           />
                         </a>
                         {(route.subroutes && route.subroutes.length)
-=======
-                        <div className="dropdown p-0">
-                          <a
-                              href="#"
-                              className="nav-link text-nowrap"
-                              role="button"
-                              data-bs-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              {route.label}
-                              <Icon
-                                  component={ArrowDropDown}
-                                  size={20}
-                                />
-                            </a>
-                          {(route.subroutes && route.subroutes.length)
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
+                          && (
+                            <div className="dropdown-menu dropdown-menu-end">
+                              {route.subroutes.map((subroute, innerKey) => (
+                                <div key={innerKey}>
+                                  {(subroute?.auth)
+                                    ? (
+                                      <>
+                                        {isAuthenticated && subroute?.supportedChains.includes(currentNetworkId)
                                           && (
-                                          <div className="dropdown-menu dropdown-menu-end">
-                                            {route.subroutes.map((subroute, innerKey) => (
-                                              <div key={innerKey}>
-                                                {(subroute?.auth)
-                                                  ? (
-                                                    <>
-                                                      {isAuthenticated && subroute?.supportedChains.includes(currentNetworkId)
-                                                                && (
-                                                                <Link href={subroute.path}>
-                                                                  <a href="#!" className="dropdown-item">
-                                                                    {subroute?.label}
-                                                                  </a>
-                                                                </Link>
-                                                                )}
-                                                    </>
-                                                  )
-                                                  : (
-                                                    <Link href={subroute.path}>
-                                                      <a href="#!" className="dropdown-item">
-<<<<<<< HEAD
-                                                        {subroute?.label}
-                                                      </a>
-=======
-              {subroute?.label}
-            </a>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
-                                                    </Link>
-                                                  )}
-                                              </div>
-                                            ))}
-                                          </div>
+                                            <Link href={subroute.path}>
+                                              <a href="#!" className="dropdown-item">
+                                                {subroute?.label}
+                                              </a>
+                                            </Link>
                                           )}
+                                      </>
+                                    )
+                                    : (
+                                      <Link href={subroute.path}>
+                                        <a href="#!" className="dropdown-item">
+                                          {subroute?.label}
+                                        </a>
+                                      </Link>
+                                    )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
 
-<<<<<<< HEAD
                       </div>
                     )
                     : (
@@ -133,16 +108,6 @@ const Header = () => {
                           {route.label}
                         </a>
                       </Link>
-=======
-                        </div>
-                    )
-                    : (
-                        <Link href={route.path}>
-                          <a className={classnames({ active: pathname == route.path || (route.subroutes ? route?.subroutes.find((r) => r.path === pathname) : false) }, 'nav-link', 'text-nowrap')} title={route.label}>
-                              {route.label}
-                            </a>
-                        </Link>
->>>>>>> 7453f9d (PNS-273 Add eslint and eslint config, apply)
                     )}
 
                 </li>
@@ -168,7 +133,7 @@ const Header = () => {
       />
     </>
 
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

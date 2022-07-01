@@ -1,6 +1,6 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import { ProgressBar, Step } from 'react-step-progress-bar';
+import React from 'react'
+import { t } from '@lingui/macro'
+import { ProgressBar, Step } from 'react-step-progress-bar'
 
 export interface StepLineProps {
   steps: any,
@@ -11,7 +11,7 @@ export interface StepLineProps {
 
 const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName, symbolShort }: StepLineProps) => {
   if (!steps) {
-    return null;
+    return null
   }
 
   return (
@@ -61,7 +61,7 @@ const StepProgressBar: React.FC<StepLineProps> = ({ steps, progress, symbolName,
         </Step>
       </ProgressBar>
     </div>
-  );
-};
+  )
+}
 
-export default StepProgressBar;
+export default StepProgressBar

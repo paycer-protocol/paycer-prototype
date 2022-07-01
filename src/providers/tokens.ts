@@ -1,6 +1,6 @@
-import { ChainId } from '@usedapp/core';
-import { yVaultProvider, paycerProvider } from '@providers/protocols';
-import { ITokenProvider } from '../types/investment';
+import { ChainId } from '@usedapp/core'
+import { yVaultProvider, paycerProvider } from '@providers/protocols'
+import { ITokenProvider } from '../types/investment'
 
 export const tokenProvider: ITokenProvider = {
   ...yVaultProvider,
@@ -80,4 +80,4 @@ export const tokenProvider: ITokenProvider = {
       },
     },
   },
-};
+}

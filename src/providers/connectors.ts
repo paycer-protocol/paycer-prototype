@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { t } from '@lingui/macro'
 
 type Web3ProviderType =
     | 'metamask'
@@ -6,7 +6,7 @@ type Web3ProviderType =
     | 'walletConnect'
     | 'wc'
     | 'magicLink'
-    | 'web3Auth';
+    | 'web3Auth'
 
 export interface IConnectorProvider {
   name: string
@@ -29,4 +29,4 @@ export const connectors: IConnectorProvider[] = [
     description: t`Connect to Trust Wallet, Rainbow Wallet and more...`,
     icon: '/assets/wallets/wallet-connect.svg',
   },
-];
+]

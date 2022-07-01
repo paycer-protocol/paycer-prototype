@@ -1,27 +1,27 @@
-import { Form } from 'react-bootstrap';
-import { useField, useFormikContext, FormikProps } from 'formik';
-import React, { FC, useContext, useCallback, useMemo } from 'react';
-import classnames from 'classnames';
-import { GroupContext } from './group';
-import { FormCheckboxFieldProps } from './types';
+import { Form } from 'react-bootstrap'
+import { useField, useFormikContext, FormikProps } from 'formik'
+import React, { FC, useContext, useCallback, useMemo } from 'react'
+import classnames from 'classnames'
+import { GroupContext } from './group'
+import { FormCheckboxFieldProps } from './types'
 
 export const Checkbox: FC<FormCheckboxFieldProps> = ({ isSwitch, ...props }: FormCheckboxFieldProps) => {
-  const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>();
-  const { name: groupName = '' } = useContext(GroupContext);
-  const [{ name, onBlur }] = useField(props);
-  const isChecked = useMemo(() => values[groupName].includes(name), [groupName, name, values]);
-  const isInvalid = Boolean(errors[groupName]) && touched[groupName];
+  const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>()
+  const { name: groupName = '' } = useContext(GroupContext)
+  const [{ name, onBlur }] = useField(props)
+  const isChecked = useMemo(() => values[groupName].includes(name), [groupName, name, values])
+  const isInvalid = Boolean(errors[groupName]) && touched[groupName]
   const handleChange = useCallback((e) => {
-    props.onChange(e);
-    setFieldTouched(groupName, true);
+    props.onChange(e)
+    setFieldTouched(groupName, true)
     setFieldValue(
       groupName,
       isChecked
         ? values[groupName].filter((value: string) => value !== name)
         : [...values[groupName], name],
-    );
+    )
   },
-  [groupName, isChecked, name, props, setFieldTouched, setFieldValue, values]);
+  [groupName, isChecked, name, props, setFieldTouched, setFieldValue, values])
 
   return (
     <Form.Check
@@ -43,7 +43,7 @@ export const Checkbox: FC<FormCheckboxFieldProps> = ({ isSwitch, ...props }: For
         {props.label}
       </Form.Check.Label>
     </Form.Check>
-  );
-};
+  )
+}
 
-export default Checkbox;
+export default Checkbox

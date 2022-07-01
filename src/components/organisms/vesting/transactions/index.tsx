@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useVestingDashboard } from '@context/vesting-dashboard-context';
-import { t } from '@lingui/macro';
-import DataTable from './data-table';
+import React from 'react'
+import styled from 'styled-components'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
+import { t } from '@lingui/macro'
+import DataTable from './data-table'
 
 export const Wrapper = styled.div`
     padding: 30px;
@@ -10,18 +10,18 @@ export const Wrapper = styled.div`
     @media only screen and (max-width : 978px) {
         padding: 25px;
     }
-`;
+`
 
 const Transactions = () => {
-  const { dashboardData } = useVestingDashboard();
-  const { transactions } = dashboardData;
+  const { dashboardData } = useVestingDashboard()
+  const { transactions } = dashboardData
 
   if (!transactions) {
     return (
       <Wrapper>
         {t`No available transactions`}
       </Wrapper>
-    );
+    )
   }
 
   return (
@@ -37,7 +37,7 @@ const Transactions = () => {
         ))}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Transactions;
+export default Transactions

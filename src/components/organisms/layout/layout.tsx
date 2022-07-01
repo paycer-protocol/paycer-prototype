@@ -1,17 +1,17 @@
-import React from 'react';
-import Header from '@components/organisms/header';
-import Footer from '@components/organisms/footer';
-import { useDapp } from '@context/dapp-context';
-import Spinner from '@components/atoms/spinner';
-import { t } from '@lingui/macro';
+import React from 'react'
+import Header from '@components/organisms/header'
+import Footer from '@components/organisms/footer'
+import { useDapp } from '@context/dapp-context'
+import Spinner from '@components/atoms/spinner'
+import { t } from '@lingui/macro'
 
 export interface LayoutProps {
   children: any
 }
 
 const Layout = (props: LayoutProps) => {
-  const { children } = props;
-  const { currentChainIsSupportedForDApp, isWeb3EnableLoading } = useDapp();
+  const { children } = props
+  const { currentChainIsSupportedForDApp, isWeb3EnableLoading } = useDapp()
 
   if (currentChainIsSupportedForDApp) {
     return (
@@ -24,7 +24,7 @@ const Layout = (props: LayoutProps) => {
         </main>
         <Footer />
       </>
-    );
+    )
   }
 
   if (isWeb3EnableLoading) {
@@ -32,7 +32,7 @@ const Layout = (props: LayoutProps) => {
       <div className="d-flex flex-column align-items-center justify-content-center mt-8">
         <Spinner animation="border" show />
       </div>
-    );
+    )
   }
 
   return (
@@ -48,7 +48,7 @@ const Layout = (props: LayoutProps) => {
       </main>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

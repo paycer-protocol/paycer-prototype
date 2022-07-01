@@ -1,8 +1,8 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { CurrencyDollar } from '@styled-icons/bootstrap';
-import DashCardComponent, { DashCardProps } from './dash-card';
-import theme from '../../../config/theme';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
+import { CurrencyDollar } from '@styled-icons/bootstrap'
+import DashCardComponent, { DashCardProps } from './dash-card'
+import theme from '../../../config/theme'
 
 export default {
   title: 'Organism/Dashboard',
@@ -11,9 +11,9 @@ export default {
     value: { control: 'text' },
     variant: { control: 'select', options: theme.colors },
   },
-} as Meta;
+} as Meta
 
-type StoryOptions = Partial<DashCardProps>;
+type StoryOptions = Partial<DashCardProps>
 
 const Template: Story<StoryOptions> = ({ title = 'Dash KPI', variant }: StoryOptions) => (
   <DashCardComponent
@@ -24,7 +24,7 @@ const Template: Story<StoryOptions> = ({ title = 'Dash KPI', variant }: StoryOpt
   >
     100
   </DashCardComponent>
-);
+)
 
-export const DashCard = Template.bind({});
-DashCard.args = {};
+export const DashCard = Template.bind({})
+DashCard.args = {}

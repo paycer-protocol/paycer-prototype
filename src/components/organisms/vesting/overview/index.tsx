@@ -1,7 +1,7 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import { FormattedNumber } from 'react-intl';
-import { useVestingDashboard } from '@context/vesting-dashboard-context';
+import React from 'react'
+import { t } from '@lingui/macro'
+import { FormattedNumber } from 'react-intl'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 const Overview = () => {
   const {
@@ -12,20 +12,20 @@ const Overview = () => {
     endTime,
     totalAmount,
     amountWithdrawn,
-  } = useVestingDashboard();
+  } = useVestingDashboard()
 
-  const { bonusPercentage } = dashboardData;
+  const { bonusPercentage } = dashboardData
 
   function renderVestingLabel() {
-    const type = dashboardData?.type;
+    const type = dashboardData?.type
     switch (type) {
       case 'public':
       case 'public_v2':
-        return t`6 months`;
+        return t`6 months`
       case 'team':
-        return t`36 months`;
+        return t`36 months`
       default:
-        return t`12 months`;
+        return t`12 months`
     }
   }
 
@@ -131,7 +131,7 @@ const Overview = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Overview;
+export default Overview

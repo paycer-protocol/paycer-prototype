@@ -1,15 +1,15 @@
-import React from 'react';
-import PageHeader from '@components/molecules/page-header';
-import PortalBlockNumber from '@components/organisms/portal-block-number';
-import StakingForm from '@components/organisms/staking-rewards/staking-form';
-import ClaimForm from '@components/organisms/staking-rewards/claim-form';
-import StakingContextProvider from '@context/staking-context';
-import Layout from '@components/organisms/layout';
-import { useDapp } from '@context/dapp-context';
-import { t } from '@lingui/macro';
+import React from 'react'
+import PageHeader from '@components/molecules/page-header'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
+import StakingForm from '@components/organisms/staking-rewards/staking-form'
+import ClaimForm from '@components/organisms/staking-rewards/claim-form'
+import StakingContextProvider from '@context/staking-context'
+import Layout from '@components/organisms/layout'
+import { useDapp } from '@context/dapp-context'
+import { t } from '@lingui/macro'
 
 export default function Staking() {
-  const { currentChainIsSupportedForStaking, isAuthenticated, walletAddress } = useDapp();
+  const { currentChainIsSupportedForStaking, isAuthenticated, walletAddress } = useDapp()
 
   if (!currentChainIsSupportedForStaking) {
     return (
@@ -21,7 +21,7 @@ export default function Staking() {
           {t`Change network`}
         </div>
       </Layout>
-    );
+    )
   }
 
   return (
@@ -56,5 +56,5 @@ export default function Staking() {
       </div>
       <PortalBlockNumber />
     </Layout>
-  );
+  )
 }

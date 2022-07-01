@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { t } from '@lingui/macro';
-import { useFormikContext } from 'formik';
-import GradientButton from '@components/atoms/button/gradient-button';
-import Spinner from '@components/atoms/spinner';
-import useSwap from '@hooks/use-swap';
-import useToken from '@hooks/use-token';
-import { SwapProps } from '../types';
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
+import { useFormikContext } from 'formik'
+import GradientButton from '@components/atoms/button/gradient-button'
+import Spinner from '@components/atoms/spinner'
+import useSwap from '@hooks/use-swap'
+import useToken from '@hooks/use-token'
+import { SwapProps } from '../types'
 
 export default function SubmitButton() {
-  const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>();
+  const { values, dirty, isValid, isValidating, errors } = useFormikContext<SwapProps>()
 
-  const { tokenBalance: fromTokenBalance } = useToken(values?.fromToken?.symbol || null);
+  const { tokenBalance: fromTokenBalance } = useToken(values?.fromToken?.symbol || null)
 
   const isDisabled = !dirty
       || !isValid
@@ -19,7 +19,7 @@ export default function SubmitButton() {
       || !values.toTokenValue
       // || !values.tradeContext.fromBalance.hasEnough
       // @ts-ignore
-      || errors.toTokenValue;
+      || errors.toTokenValue
 
   return (
     <GradientButton type="submit" disabled={isDisabled || values.isReloading || values.fromTokenValue > Number(fromTokenBalance)} className="d-flex align-items-center justify-content-center w-100">
@@ -37,5 +37,5 @@ export default function SubmitButton() {
         {values.fromTokenValue > Number(fromTokenBalance) ? t`insufficient balance` : t`Swap` }
       </div>
     </GradientButton>
-  );
+  )
 }

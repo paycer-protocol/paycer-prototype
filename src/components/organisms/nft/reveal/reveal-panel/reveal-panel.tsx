@@ -1,20 +1,20 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import GradientButton from '@components/atoms/button/gradient-button';
+import React from 'react'
+import { t } from '@lingui/macro'
+import GradientButton from '@components/atoms/button/gradient-button'
 
 export interface RevealPanelProps {
 
 }
 
 const RevealPanel = (props: RevealPanelProps) => {
-  const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'));
-  const timeLeft = startTime.getTime() - Date.now();
-  const isRevealAble = true;
+  const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'))
+  const timeLeft = startTime.getTime() - Date.now()
+  const isRevealAble = true
 
   function Countdown({ timeLeft }: { timeLeft: number }) {
-    const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
-    const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24);
-    const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24));
+    const minutes = Math.floor((timeLeft / 1000 / 60) % 60)
+    const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24)
+    const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24))
 
     return (
       <div className="row d-flex align-items-center justify-content-between">
@@ -56,12 +56,12 @@ const RevealPanel = (props: RevealPanelProps) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   const handleReveal = () => {
 
-  };
+  }
 
   return (
     <div>
@@ -85,7 +85,7 @@ const RevealPanel = (props: RevealPanelProps) => {
       </div>
 
     </div>
-  );
-};
+  )
+}
 
-export default RevealPanel;
+export default RevealPanel

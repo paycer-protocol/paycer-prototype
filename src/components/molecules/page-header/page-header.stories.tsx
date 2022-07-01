@@ -1,13 +1,13 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import Button from '@components/atoms/button';
-import PageHeader, { PageHeaderProps } from './page-header';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import Button from '@components/atoms/button'
+import PageHeader, { PageHeaderProps } from './page-header'
 
 export default {
   title: 'Molecule/PageHeader',
   component: PageHeader,
   argTypes: {},
-} as Meta;
+} as Meta
 
 export const Default = (args: PageHeaderProps) => (
   <PageHeader {...args}>
@@ -18,7 +18,7 @@ export const Default = (args: PageHeaderProps) => (
       Casey Fyfe
     </PageHeader.Subtitle>
   </PageHeader>
-);
+)
 
 export const WidthButton = (args: PageHeaderProps) => (
   <PageHeader {...args}>
@@ -38,4 +38,4 @@ export const WidthButton = (args: PageHeaderProps) => (
       </div>
     </div>
   </PageHeader>
-);
+)

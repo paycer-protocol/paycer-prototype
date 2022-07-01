@@ -1,5 +1,5 @@
-import { StrategyType } from '../../types/investment';
-import { strategyProvider } from '../../providers/strategies';
+import { StrategyType } from '../../types/investment'
+import { strategyProvider } from '../../providers/strategies'
 
 export const investmentStrategies: StrategyType[] = [
   strategyProvider.USDCStable,
@@ -7,4 +7,4 @@ export const investmentStrategies: StrategyType[] = [
   strategyProvider.USDTStable,
   strategyProvider.WBTCPool,
   strategyProvider.WETHPool,
-];
+]

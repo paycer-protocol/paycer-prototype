@@ -1,15 +1,15 @@
-import React from 'react';
-import PageHeader from '@components/molecules/page-header';
-import { t } from '@lingui/macro';
-import { connectors } from '@providers/connectors';
-import Button from '@components/atoms/button';
-import { useDapp } from '@context/dapp-context';
-import Layout from '@components/organisms/layout';
-import ReferralUrl from './components/ReferralUrl';
-import Referrals from './components/Referrals';
+import React from 'react'
+import PageHeader from '@components/molecules/page-header'
+import { t } from '@lingui/macro'
+import { connectors } from '@providers/connectors'
+import Button from '@components/atoms/button'
+import { useDapp } from '@context/dapp-context'
+import Layout from '@components/organisms/layout'
+import ReferralUrl from './components/ReferralUrl'
+import Referrals from './components/Referrals'
 
 export default function Referral() {
-  const { isAuthenticated, handleWalletConnect } = useDapp();
+  const { isAuthenticated, handleWalletConnect } = useDapp()
 
   return (
     <Layout>
@@ -43,5 +43,5 @@ export default function Referral() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }

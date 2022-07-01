@@ -1,7 +1,7 @@
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import useNftSale from '@hooks/nft/use-nft-sale';
-import { t } from '@lingui/macro';
-import { useCallback } from 'react';
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import useNftSale from '@hooks/nft/use-nft-sale'
+import { t } from '@lingui/macro'
+import { useCallback } from 'react'
 
 export interface MintingApproveModalProps {
   amount: number;
@@ -13,21 +13,21 @@ export interface MintingApproveModalProps {
 }
 
 const MintingApproveModal = ({ amount, publicSaleStarted, alloc, merkleProof, show, onHide }: MintingApproveModalProps) => {
-  const nftPresale = useNftSale('presale');
-  const nftPublicSale = useNftSale('publicSale');
+  const nftPresale = useNftSale('presale')
+  const nftPublicSale = useNftSale('publicSale')
 
   const onMintClicked = useCallback(() => {
     if (publicSaleStarted) {
-      nftPublicSale.buy(amount);
+      nftPublicSale.buy(amount)
     } else {
-      nftPresale.buy(amount, alloc, merkleProof);
+      nftPresale.buy(amount, alloc, merkleProof)
     }
-  }, [nftPresale, nftPublicSale, amount, publicSaleStarted]);
+  }, [nftPresale, nftPublicSale, amount, publicSaleStarted])
 
   return (
     <TransactionApproveModal
       show={show}
-      onHide={() => { nftPresale.resetState(); nftPublicSale.resetState(); onHide(); }}
+      onHide={() => { nftPresale.resetState(); nftPublicSale.resetState(); onHide() }}
       onClick={onMintClicked}
       title={t`Confirm Mint`}
       btnLabel={t`Mint now`}
@@ -42,7 +42,7 @@ const MintingApproveModal = ({ amount, publicSaleStarted, alloc, merkleProof, sh
                   : <p className="text-center">{t`You are about to mint ${amount} NFTs. Are you ready?`}</p>
             }
     </TransactionApproveModal>
-  );
-};
+  )
+}
 
-export default MintingApproveModal;
+export default MintingApproveModal

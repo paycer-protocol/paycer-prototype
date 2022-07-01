@@ -1,9 +1,9 @@
-import Layout from '@components/organisms/layout';
-import { useRouter } from 'next/router';
-import Custom404 from 'pages/404';
+import Layout from '@components/organisms/layout'
+import { useRouter } from 'next/router'
+import Custom404 from 'pages/404'
 
 export default function NftWhitelistConfirmationPage() {
-  const { status } = useRouter().query;
+  const { status } = useRouter().query
 
   if (status == 'success') {
     return (
@@ -13,7 +13,7 @@ export default function NftWhitelistConfirmationPage() {
           <p>You joined the Paycer NFT Whitelist.</p>
         </div>
       </Layout>
-    );
+    )
   }
 
   if (status == 'alreadyConfirmed') {
@@ -24,7 +24,7 @@ export default function NftWhitelistConfirmationPage() {
           <p>You already used this link to confirm your spot on the Paycer NFT Whitelist.</p>
         </div>
       </Layout>
-    );
+    )
   }
 
   if (status == 'invalidToken') {
@@ -35,8 +35,8 @@ export default function NftWhitelistConfirmationPage() {
           <p>The link you used is invalid or expired.</p>
         </div>
       </Layout>
-    );
+    )
   }
 
-  return (<Custom404 />);
+  return (<Custom404 />)
 }

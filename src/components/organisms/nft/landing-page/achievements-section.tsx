@@ -1,11 +1,11 @@
-import Card from '@components/molecules/card';
-import PageHeader from '@components/molecules/page-header';
-import { t } from '@lingui/macro';
-import { ArrowRightCircle } from '@styled-icons/bootstrap';
-import Icon from '@components/atoms/icon';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import Card from '@components/molecules/card'
+import PageHeader from '@components/molecules/page-header'
+import { t } from '@lingui/macro'
+import { ArrowRightCircle } from '@styled-icons/bootstrap'
+import Icon from '@components/atoms/icon'
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 
 const achievements = [
   {
@@ -42,7 +42,7 @@ const achievements = [
         text: 'Lorem Ypsum ... TBD'
     }
      */
-];
+]
 
 export default function AchievementsSection() {
   return (
@@ -106,5 +106,5 @@ export default function AchievementsSection() {
         </Swiper>
       </div>
     </div>
-  );
+  )
 }

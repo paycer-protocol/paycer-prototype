@@ -17,4 +17,4 @@ export default [
     txnSearchParam: '/tx/',
     chain: 'matic',
   },
-];
+]

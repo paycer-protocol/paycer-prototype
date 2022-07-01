@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { t, Trans } from '@lingui/macro';
-import { useMediaQuery } from 'react-responsive';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import GradientButton from '@components/atoms/button/gradient-button';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import { useVestingDashboard } from '@context/vesting-dashboard-context';
-import { useDapp } from '@context/dapp-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { FormattedNumber } from '../../../atoms/number/formatted-number';
-import truncateText from '../../../../helpers/truncate-text';
+import React, { useState } from 'react'
+import { t, Trans } from '@lingui/macro'
+import { useMediaQuery } from 'react-responsive'
+import styled from 'styled-components'
+import { useRouter } from 'next/router'
+import GradientButton from '@components/atoms/button/gradient-button'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
+import { useDapp } from '@context/dapp-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import truncateText from '../../../../helpers/truncate-text'
 
 const AnimatedDiv = styled.div`
     animation: fadeIn 2s;
@@ -18,7 +18,7 @@ const AnimatedDiv = styled.div`
       0% { opacity:0; }
       100% { opacity:1; }
     }
-`;
+`
 
 const Claim = () => {
   const {
@@ -31,16 +31,16 @@ const Claim = () => {
     nextDistribution,
     transactionState,
     resetStatus,
-  } = useVestingDashboard();
+  } = useVestingDashboard()
 
-  const [showFormApproveModal, setShowFormApproveModal] = useState<boolean>(false);
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' });
-  const { isAuthenticated, walletAddress } = useDapp();
-  const router = useRouter();
+  const [showFormApproveModal, setShowFormApproveModal] = useState<boolean>(false)
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
+  const { isAuthenticated, walletAddress } = useDapp()
+  const router = useRouter()
 
   const handleSubmit = async () => {
-    await withdraw();
-  };
+    await withdraw()
+  }
 
   return (
     <AnimatedDiv className="list-group list-group-flush list-group-activity h-100">
@@ -86,8 +86,8 @@ const Claim = () => {
           <TransactionApproveModal
             show={showFormApproveModal}
             onHide={() => {
-              setShowFormApproveModal(false);
-              resetStatus();
+              setShowFormApproveModal(false)
+              resetStatus()
             }}
             title={t`Claim confirmation`}
             btnLabel={t`Claim now`}
@@ -141,7 +141,7 @@ const Claim = () => {
         </div>
       </div>
     </AnimatedDiv>
-  );
-};
+  )
+}
 
-export default Claim;
+export default Claim

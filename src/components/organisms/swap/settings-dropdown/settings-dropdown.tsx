@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useFormikContext } from 'formik';
-import { t } from '@lingui/macro';
-import Icon from '@components/atoms/icon';
-import { Settings } from '@styled-icons/fluentui-system-regular/Settings';
-import { Settings as SettingsActive } from '@styled-icons/ionicons-sharp/Settings';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { useDapp } from '@context/dapp-context';
-import SlippageTollerance from '@components/organisms/swap/fields/slippage-tollerance';
-import { FormattedNumber } from '../../../atoms/number/formatted-number';
-import { SwapProps } from '../types';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { useFormikContext } from 'formik'
+import { t } from '@lingui/macro'
+import Icon from '@components/atoms/icon'
+import { Settings } from '@styled-icons/fluentui-system-regular/Settings'
+import { Settings as SettingsActive } from '@styled-icons/ionicons-sharp/Settings'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { useDapp } from '@context/dapp-context'
+import SlippageTollerance from '@components/organisms/swap/fields/slippage-tollerance'
+import { FormattedNumber } from '../../../atoms/number/formatted-number'
+import { SwapProps } from '../types'
 
 const Content = styled.div`
     z-index: 2; 
@@ -23,18 +23,18 @@ const Content = styled.div`
         max-height: 700px;
         transition: max-height 0.15s ease-in;
     }
-`;
+`
 
 const SettingsDropdown = () => {
-  const { values } = useFormikContext<SwapProps>();
-  const [open, setOpen] = useState(false);
+  const { values } = useFormikContext<SwapProps>()
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="position-relative">
       <div
         onClick={() => {
           if (values?.fromToken && values?.toToken) {
-            setOpen(!open);
+            setOpen(!open)
           }
         }}
         className={`cursor-pointer card shadow-none mb-0  ${open ? 'bg-dark border-bottom-0' : ''}`}
@@ -60,7 +60,7 @@ const SettingsDropdown = () => {
         </div>
       </Content>
     </div>
-  );
-};
+  )
+}
 
-export default SettingsDropdown;
+export default SettingsDropdown

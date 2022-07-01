@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
-import dynamic from 'next/dynamic';
-import options from '@components/organisms/chart/apex-chart/options';
-import { ApexChartProps } from './types';
+import React, { useMemo } from 'react'
+import dynamic from 'next/dynamic'
+import options from '@components/organisms/chart/apex-chart/options'
+import { ApexChartProps } from './types'
 
 const ApexChart = (props: ApexChartProps) => {
   const {
@@ -15,33 +15,33 @@ const ApexChart = (props: ApexChartProps) => {
     renderToolTip,
     type,
     isSmall,
-  } = props;
+  } = props
 
-  const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-  const newOptions = JSON.parse(JSON.stringify(options));
+  const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
+  const newOptions = JSON.parse(JSON.stringify(options))
 
-  newOptions.xaxis.categories = categories;
-  newOptions.colors = seriesColors;
-  newOptions.plotOptions.bar.borderRadius = borderRadius;
+  newOptions.xaxis.categories = categories
+  newOptions.colors = seriesColors
+  newOptions.plotOptions.bar.borderRadius = borderRadius
 
   if (renderToolTip) {
     newOptions.tooltip.custom = function ({ series, seriesIndex, dataPointIndex, w }) {
-      return renderToolTip(series, seriesIndex, dataPointIndex, w);
-    };
+      return renderToolTip(series, seriesIndex, dataPointIndex, w)
+    }
   }
 
   if (onMouseMove) {
     // @ts-ignore
     newOptions.chart.events.mouseMove = function (event, chartContext, config) {
-      onMouseMove(event, chartContext, config);
-    };
+      onMouseMove(event, chartContext, config)
+    }
   }
 
   if (onMouseMove && onMouseLeave) {
     // @ts-ignore
     newOptions.chart.events.mouseLeave = function (event, chartContext, config) {
-      onMouseLeave();
-    };
+      onMouseLeave()
+    }
   }
 
   if (type === 'area') {
@@ -53,7 +53,7 @@ const ApexChart = (props: ApexChartProps) => {
         opacityTo: 0.1,
         stops: [0, 100],
       },
-    };
+    }
     newOptions.stroke = {
       show: true,
       curve: 'smooth',
@@ -61,16 +61,16 @@ const ApexChart = (props: ApexChartProps) => {
       colors: undefined,
       width: 2,
       dashArray: 0,
-    };
+    }
   }
 
-  let chartHeight = '105%';
+  let chartHeight = '105%'
   if (isSmall) {
     if (type === 'area') {
-      chartHeight = '130%';
+      chartHeight = '130%'
     }
     if (type === 'bar') {
-      chartHeight = '120%';
+      chartHeight = '120%'
     }
   }
 
@@ -85,7 +85,7 @@ const ApexChart = (props: ApexChartProps) => {
         width="101%"
       />
     </div>
-  ), [series]);
-};
+  ), [series])
+}
 
-export default ApexChart;
+export default ApexChart

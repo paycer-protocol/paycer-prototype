@@ -1,9 +1,9 @@
-import React from 'react';
-import { Trans, t } from '@lingui/macro';
-import { useDapp } from '@context/dapp-context';
-import Button from '@components/atoms/button';
-import Modal from '@components/molecules/modal';
-import { INetworkProvider } from '@providers/networks';
+import React from 'react'
+import { Trans, t } from '@lingui/macro'
+import { useDapp } from '@context/dapp-context'
+import Button from '@components/atoms/button'
+import Modal from '@components/molecules/modal'
+import { INetworkProvider } from '@providers/networks'
 
 export interface NetworkProviderProps {
   providers: {
@@ -14,8 +14,8 @@ export interface NetworkProviderProps {
 }
 
 const NetworkProvider = (props: NetworkProviderProps) => {
-  const { providers = [], show = false, onHide } = props;
-  const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp();
+  const { providers = [], show = false, onHide } = props
+  const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
 
   return (
     <Modal size="sm" show={show} onHide={onHide}>
@@ -27,8 +27,8 @@ const NetworkProvider = (props: NetworkProviderProps) => {
         <Modal.Body>
           <div className="d-flex flex-column align-items-center">
             {Object.keys(providers).map((chainId) => {
-              const provider = providers[chainId];
-              const isActive = isAuthenticated && Number(chainId) === currentNetworkId;
+              const provider = providers[chainId]
+              const isActive = isAuthenticated && Number(chainId) === currentNetworkId
 
               return (
                 <Button
@@ -37,19 +37,19 @@ const NetworkProvider = (props: NetworkProviderProps) => {
                   className="d-flex align-items-center justify-content-center mb-3 w-100"
                   active={isActive}
                   onClick={async () => {
-                    await onHide();
-                    await handleSwitchNetwork(provider);
+                    await onHide()
+                    await handleSwitchNetwork(provider)
                   }}
                 >
                   <strong>{provider.chainName}</strong>
                 </Button>
-              );
+              )
             })}
           </div>
         </Modal.Body>
       </>
     </Modal>
-  );
-};
+  )
+}
 
-export default NetworkProvider;
+export default NetworkProvider
