@@ -130,13 +130,15 @@ export default function AboutSection() {
         </div>
         <div className="pb-6 container">
           <div className="row">
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-lg-6" style={{ zIndex: 1 }}>
               <AboutText />
             </div>
-            <div className="col-lg-6 d-none d-lg-block position-relative">
-              {/* <HorseImage
-                    src={`/img/nft/about-nft-3.png`}
-                  /> */}
+            {/* <div className="col-lg-6 d-none d-lg-block position-relative">
+              <HorseImage
+                src={`/img/nft/about-nft-3.png`}
+              />
+            </div> */}
+            <div className="col-12 col-lg-6 position-relative" style={{ minHeight: '20rem' }}>
               <div className="position-absolute" style={{ width: '130%', height: '130%', top: '-15%', left: '-15%' }}>
                 <NftModelViewer url="/assets/models/nft/horse1.glb" />
               </div>
