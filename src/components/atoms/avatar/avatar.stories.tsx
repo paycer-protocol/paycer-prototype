@@ -1,7 +1,7 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import theme from '../../../config/theme';
-import AvatarComponent, { AvatarProps } from './avatar';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import theme from '../../../config/theme'
+import AvatarComponent, { AvatarProps } from './avatar'
 
 export default {
   title: 'Atom/Avatar',
@@ -24,14 +24,14 @@ export default {
       control: 'string',
     },
   },
-} as Meta;
+} as Meta
 
 const Template: (args: AvatarProps) => JSX.Element = (args: AvatarProps) => (
   <AvatarComponent {...args} />
-);
+)
 
-export const Avatar = Template.bind({});
+export const Avatar = Template.bind({})
 Avatar.args = {
   size: 'md',
   src: 'https://www.gravatar.com/avatar/awesome?s=80&d=identicon&r=g',
-};
+}

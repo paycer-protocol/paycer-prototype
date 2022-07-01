@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { t, Trans } from '@lingui/macro';
-import TxnLink from '@components/atoms/txn-link';
-import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price';
-import { FormattedNumber } from '@components/atoms/number';
-import Button from '@components/atoms/button';
-import { useVestingDashboard } from '@context/vesting-dashboard-context';
+import React, { useState } from 'react'
+import { t, Trans } from '@lingui/macro'
+import TxnLink from '@components/atoms/txn-link'
+import { privateSalePriceUSD, preSalePriceUSD, publicSalePriceUSD } from '@config/token-price'
+import { FormattedNumber } from '@components/atoms/number'
+import Button from '@components/atoms/button'
+import { useVestingDashboard } from '@context/vesting-dashboard-context'
 
 export interface DataTableProps {
   unixTimestamp: number
@@ -23,23 +23,23 @@ export interface DataTableProps {
 }
 
 const DataTable = (props: DataTableProps) => {
-  const { dashboardData } = useVestingDashboard();
-  const [showTable, setShowTable] = useState(props?.initiallyOpen);
-  const date = new Date(props.transactionDateTime);
-  let received = 0;
+  const { dashboardData } = useVestingDashboard()
+  const [showTable, setShowTable] = useState(props?.initiallyOpen)
+  const date = new Date(props.transactionDateTime)
+  let received = 0
 
-  let tokenSalePriceUSD = publicSalePriceUSD;
+  let tokenSalePriceUSD = publicSalePriceUSD
   if (dashboardData.type === 'private') {
-    tokenSalePriceUSD = privateSalePriceUSD;
+    tokenSalePriceUSD = privateSalePriceUSD
   } else if (dashboardData.type === 'pre') {
-    tokenSalePriceUSD = preSalePriceUSD;
+    tokenSalePriceUSD = preSalePriceUSD
   }
 
   if (props.historicalUSDPrice) {
-    const USDAmount = props.value * props.historicalUSDPrice;
-    received = USDAmount / tokenSalePriceUSD;
+    const USDAmount = props.value * props.historicalUSDPrice
+    received = USDAmount / tokenSalePriceUSD
   } else {
-    received = props.value / tokenSalePriceUSD;
+    received = props.value / tokenSalePriceUSD
   }
 
   const formattedDate = `${date.getDate()
@@ -47,7 +47,7 @@ const DataTable = (props: DataTableProps) => {
   }/${date.getFullYear()
   } ${date.getHours()
   }:${date.getMinutes()
-  }:${date.getSeconds()}`;
+  }:${date.getSeconds()}`
 
   return (
     <div className="table-responsive mb-0">
@@ -111,7 +111,7 @@ const DataTable = (props: DataTableProps) => {
           )}
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default DataTable;
+export default DataTable

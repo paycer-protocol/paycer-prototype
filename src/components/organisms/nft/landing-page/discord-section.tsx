@@ -1,17 +1,17 @@
-import { t, Trans } from '@lingui/macro';
-import Image from 'next/image';
-import styled from 'styled-components';
-import Icon from '@components/atoms/icon';
-import { ArrowForward } from '@styled-icons/material';
-import Button from '@components/atoms/button';
-import React from 'react';
-import { Discord } from '@styled-icons/bootstrap';
+import { t, Trans } from '@lingui/macro'
+import Image from 'next/image'
+import styled from 'styled-components'
+import Icon from '@components/atoms/icon'
+import { ArrowForward } from '@styled-icons/material'
+import Button from '@components/atoms/button'
+import React from 'react'
+import { Discord } from '@styled-icons/bootstrap'
 
 const Background = styled.div`
   background: url("/img/nft/icon-section/background.png");
   background-size: cover;
 }
-`;
+`
 
 export default function UspSection() {
   return (
@@ -49,5 +49,5 @@ export default function UspSection() {
         </div>
       </Background>
     </>
-  );
+  )
 }

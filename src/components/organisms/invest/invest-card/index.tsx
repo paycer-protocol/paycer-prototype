@@ -1,26 +1,26 @@
-import React from 'react';
-import { t, Trans } from '@lingui/macro';
-import Card from '@components/molecules/card';
-import { FormattedNumber } from '@components/atoms/number';
-import useToken from '@hooks/use-token';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import GradientButton from '@components/atoms/button/gradient-button';
-import { useInvestList } from '@context/invest-list-context';
-import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable';
-import { riskLabels } from '../../../../locales';
-import { StrategyType } from '../../../../types/investment';
+import React from 'react'
+import { t, Trans } from '@lingui/macro'
+import Card from '@components/molecules/card'
+import { FormattedNumber } from '@components/atoms/number'
+import useToken from '@hooks/use-token'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import GradientButton from '@components/atoms/button/gradient-button'
+import { useInvestList } from '@context/invest-list-context'
+import useInvestIsWithdrawable from '@hooks/use-invest-is-withdrawable'
+import { riskLabels } from '../../../../locales'
+import { StrategyType } from '../../../../types/investment'
 
 const InvestCard = (strategy: StrategyType) => {
-  const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate;
-  const investedToken = useToken(strategy.input.symbol);
-  const investedBalance = investedToken.tokenBalance;
+  const totalInterestRate = strategy.interest.interestRate + strategy.rewards.rewardRate
+  const investedToken = useToken(strategy.input.symbol)
+  const investedBalance = investedToken.tokenBalance
 
   const {
     setStrategy,
     setInvestType,
-  } = useInvestList();
+  } = useInvestList()
 
-  const { isWithdrawAble } = useInvestIsWithdrawable(strategy);
+  const { isWithdrawAble } = useInvestIsWithdrawable(strategy)
 
   return (
     <Card className="box-shadow overflow-hidden">
@@ -93,8 +93,8 @@ const InvestCard = (strategy: StrategyType) => {
             <GradientButton
               className="me-4 w-100"
               onClick={() => {
-                setInvestType('deposit');
-                setStrategy(strategy);
+                setInvestType('deposit')
+                setStrategy(strategy)
               }}
             >
               <span>{t`Invest`}</span>
@@ -107,8 +107,8 @@ const InvestCard = (strategy: StrategyType) => {
               disabled={!isWithdrawAble}
               onClick={() => {
                 if (isWithdrawAble) {
-                  setInvestType('withdraw');
-                  setStrategy(strategy);
+                  setInvestType('withdraw')
+                  setStrategy(strategy)
                 }
               }}
             >
@@ -118,7 +118,7 @@ const InvestCard = (strategy: StrategyType) => {
         </div>
       </Card.Body>
     </Card>
-  );
-};
+  )
+}
 
-export default InvestCard;
+export default InvestCard

@@ -1,21 +1,21 @@
-import React, { FC, useContext, useCallback } from 'react';
-import { useField, useFormikContext, FormikProps } from 'formik';
-import { Form } from 'react-bootstrap';
-import classnames from 'classnames';
-import { GroupContext } from './group';
-import { FormCheckboxFieldProps } from './types';
+import React, { FC, useContext, useCallback } from 'react'
+import { useField, useFormikContext, FormikProps } from 'formik'
+import { Form } from 'react-bootstrap'
+import classnames from 'classnames'
+import { GroupContext } from './group'
+import { FormCheckboxFieldProps } from './types'
 
 export const Radio: FC<FormCheckboxFieldProps> = ({ ...props }: FormCheckboxFieldProps) => {
-  const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>();
-  const { name: groupName = '' } = useContext(GroupContext);
-  const [{ name, onBlur }] = useField(props);
-  const isInvalid = Boolean(errors[groupName]) && touched[groupName];
+  const { values, errors, touched, setFieldValue, setFieldTouched } = useFormikContext<FormikProps<FormCheckboxFieldProps>>()
+  const { name: groupName = '' } = useContext(GroupContext)
+  const [{ name, onBlur }] = useField(props)
+  const isInvalid = Boolean(errors[groupName]) && touched[groupName]
   const handleChange = useCallback((e) => {
-    props.onChange(e);
-    setFieldTouched(groupName, true);
-    setFieldValue(groupName, name);
+    props.onChange(e)
+    setFieldTouched(groupName, true)
+    setFieldValue(groupName, name)
   },
-  [groupName, name, props.onChange, setFieldTouched, setFieldValue]);
+  [groupName, name, props.onChange, setFieldTouched, setFieldValue])
   return (
     <Form.Check
       {...props}
@@ -37,11 +37,11 @@ export const Radio: FC<FormCheckboxFieldProps> = ({ ...props }: FormCheckboxFiel
         {props.label}
       </Form.Check.Label>
     </Form.Check>
-  );
-};
+  )
+}
 
 Radio.defaultProps = {
   onChange: (x) => x,
-};
+}
 
-export default Radio;
+export default Radio

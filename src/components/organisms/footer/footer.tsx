@@ -1,40 +1,40 @@
-import React from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
-import Image from '@components/atoms/image';
-import Icon from '@components/atoms/icon';
-import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord } from '@styled-icons/bootstrap';
-import Button from '@components/atoms/button';
-import { t, Trans } from '@lingui/macro';
-import { useRouter } from 'next/router';
-import { useDapp } from '@context/dapp-context';
-import { routes } from '@config/routes';
-import classnames from 'classnames';
+import React from 'react'
+import Link from 'next/link'
+import styled from 'styled-components'
+import Image from '@components/atoms/image'
+import Icon from '@components/atoms/icon'
+import { Twitter, Github, Linkedin, Telegram, ArrowDown, Discord } from '@styled-icons/bootstrap'
+import Button from '@components/atoms/button'
+import { t, Trans } from '@lingui/macro'
+import { useRouter } from 'next/router'
+import { useDapp } from '@context/dapp-context'
+import { routes } from '@config/routes'
+import classnames from 'classnames'
 
 const StyledLogo = styled.a`
   img {
     width: 110px;
   }
-`;
+`
 
 const NavHeader = styled.div`
   font-size: 15px;
-`;
+`
 
 const Footer = () => {
-  const { pathname } = useRouter();
-  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp();
+  const { pathname } = useRouter()
+  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp()
 
-  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true);
+  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
 
   const qualifiedRoutes = routes.filter((route) => {
     if (!currentNetworkId) {
-      return true;
+      return true
     }
 
     return route.supportedChains.includes(currentNetworkId)
-          && isAuthenticatedRoute(route);
-  });
+          && isAuthenticatedRoute(route)
+  })
 
   return (
     <>
@@ -220,7 +220,7 @@ const Footer = () => {
       </footer>
     </>
 
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

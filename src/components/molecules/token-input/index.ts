@@ -1,1 +1,1 @@
-export { default } from './token-input';
+export { default } from './token-input'

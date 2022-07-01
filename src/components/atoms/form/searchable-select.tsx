@@ -1,6 +1,6 @@
-import { FieldProps } from 'formik';
-import React from 'react';
-import Select, { Option, ReactSelectProps } from 'react-select';
+import { FieldProps } from 'formik'
+import React from 'react'
+import Select, { Option, ReactSelectProps } from 'react-select'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -26,11 +26,11 @@ const customStyles = {
     display: 'none',
   }),
   singleValue: (provided, state) => {
-    const opacity = state.isDisabled ? 0 : 1;
-    const transition = 'opacity 300ms';
-    const color = '#FFF';
-    const fontSize = '22px';
-    return { ...provided, opacity, transition, color, fontSize };
+    const opacity = state.isDisabled ? 0 : 1
+    const transition = 'opacity 300ms'
+    const color = '#FFF'
+    const fontSize = '22px'
+    return { ...provided, opacity, transition, color, fontSize }
   },
   input: () => ({
     marginRight: '4px',
@@ -53,7 +53,7 @@ const customStyles = {
     ...provided,
     paddingLeft: '0',
   }),
-};
+}
 
 const SelectField: React.SFC<ReactSelectProps & FieldProps> = ({
   options,
@@ -66,13 +66,13 @@ const SelectField: React.SFC<ReactSelectProps & FieldProps> = ({
     name={field.name}
     value={(options && field.value) ? options.find((option) => option.value === field.value) : ''}
     onChange={(option: Option) => {
-      form.setFieldValue(field.name, option.value);
-      onChange(option.value);
+      form.setFieldValue(field.name, option.value)
+      onChange(option.value)
     }}
     escapeClearsValue
     onBlur={field.onBlur}
     styles={customStyles}
   />
-);
+)
 
-export default SelectField;
+export default SelectField

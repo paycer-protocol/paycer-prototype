@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export interface PageHeaderProps {
   children?: any
@@ -8,13 +8,13 @@ const Subtitle = ({ children }) => (
   <h5 className="header-pretitle">
     {children}
   </h5>
-);
+)
 
 const Title = ({ children }) => (
   <h1 className="header-title">
     {children}
   </h1>
-);
+)
 
 const PageHeader = ({ children }: PageHeaderProps) => (
   <div className="header">
@@ -22,9 +22,9 @@ const PageHeader = ({ children }: PageHeaderProps) => (
       {children}
     </div>
   </div>
-);
+)
 
-PageHeader.Title = Title;
-PageHeader.Subtitle = Subtitle;
+PageHeader.Title = Title
+PageHeader.Subtitle = Subtitle
 
-export default PageHeader;
+export default PageHeader

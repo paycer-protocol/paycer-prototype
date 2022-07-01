@@ -1,1 +1,1 @@
-export { default } from './chain-legend';
+export { default } from './chain-legend'

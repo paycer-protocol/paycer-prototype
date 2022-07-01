@@ -1,5 +1,5 @@
-import { ChainId } from '@usedapp/core';
-import { ITokenProvider } from '../../types/investment';
+import { ChainId } from '@usedapp/core'
+import { ITokenProvider } from '../../types/investment'
 
 export const yVaultProvider: ITokenProvider = {
   yvUSDC: {
@@ -26,4 +26,4 @@ export const yVaultProvider: ITokenProvider = {
       [ChainId.Mainnet]: '0x7Da96a3891Add058AdA2E826306D812C638D87a7',
     },
   },
-};
+}

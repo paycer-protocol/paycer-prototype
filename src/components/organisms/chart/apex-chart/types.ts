@@ -16,4 +16,4 @@ export type SeriesType = Array<{
   dates: Array<string>
   chainId: number
   name?: string
-}>;
+}>

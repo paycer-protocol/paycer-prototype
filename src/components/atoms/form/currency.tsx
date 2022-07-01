@@ -1,9 +1,9 @@
-import { useField } from 'formik';
-import React, { FC } from 'react';
-import Cleave from 'cleave.js/react';
-import useChange from './useChange';
-import Group from './group';
-import { FormInputFieldProps } from './types';
+import { useField } from 'formik'
+import React, { FC } from 'react'
+import Cleave from 'cleave.js/react'
+import useChange from './useChange'
+import Group from './group'
+import { FormInputFieldProps } from './types'
 
 export interface CurrencyFieldProps extends FormInputFieldProps {
   currency: string
@@ -12,10 +12,10 @@ export interface CurrencyFieldProps extends FormInputFieldProps {
 }
 
 const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals = 2, showCurrencyPrefix = true, ...props }: CurrencyFieldProps) => {
-  const [{ name, value, onBlur }, { error, touched }] = useField(props);
-  const handleChange = useChange(props);
+  const [{ name, value, onBlur }, { error, touched }] = useField(props)
+  const handleChange = useChange(props)
 
-  const { className } = props;
+  const { className } = props
 
   return (
     <Group
@@ -44,7 +44,7 @@ const Currency: FC<CurrencyFieldProps> = ({ label, helpText, currency, decimals 
         }}
       />
     </Group>
-  );
-};
+  )
+}
 
-export default Currency;
+export default Currency

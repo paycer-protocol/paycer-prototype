@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { t } from '@lingui/macro';
-import Currency, { CurrencyFieldProps } from '@components/atoms/form/currency';
-import { FormattedNumber } from '@components/atoms/number/formatted-number';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { t } from '@lingui/macro'
+import Currency, { CurrencyFieldProps } from '@components/atoms/form/currency'
+import { FormattedNumber } from '@components/atoms/number/formatted-number'
 
 interface TokenInputProps extends CurrencyFieldProps{
   balance?: number
@@ -13,7 +13,7 @@ interface TokenInputProps extends CurrencyFieldProps{
 export const TokenBalanceLabel = styled.small`
    font-size: 12px;
    padding-top:2px;
-`;
+`
 
 interface MaxButtonProps {
   isDisabled?: boolean
@@ -30,7 +30,7 @@ export const MaxButton = styled.small<MaxButtonProps>`
     ${(props) => props.isDisabled && css`
     opacity: .5;
    `}
-`;
+`
 
 export default function TokenInput(props: TokenInputProps) {
   const {
@@ -44,7 +44,7 @@ export default function TokenInput(props: TokenInputProps) {
     disabled,
     decimals,
     readOnly,
-  } = props;
+  } = props
 
   return (
     <div className="d-flex flex-column text-end">
@@ -61,8 +61,8 @@ export default function TokenInput(props: TokenInputProps) {
         className="border-0 bg-transparent p-0 m-0 display-4 w-100 text-light-grey fw-normal text-end no-focus mb-1"
         readOnly={readOnly}
         onChange={(e) => {
-          const tokenValue = Number(e.target.rawValue);
-          handleChange(tokenValue);
+          const tokenValue = Number(e.target.rawValue)
+          handleChange(tokenValue)
         }}
       />
       {(balance !== undefined)
@@ -86,5 +86,5 @@ export default function TokenInput(props: TokenInputProps) {
           </div>
           )}
     </div>
-  );
+  )
 }

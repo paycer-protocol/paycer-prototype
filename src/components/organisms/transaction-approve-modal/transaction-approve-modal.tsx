@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { t } from '@lingui/macro';
-import Modal from '@components/molecules/modal';
-import GradientButton from '@components/atoms/button/gradient-button';
-import { Loading } from 'react-loading-dot';
+import React, { ReactElement } from 'react'
+import { t } from '@lingui/macro'
+import Modal from '@components/molecules/modal'
+import GradientButton from '@components/atoms/button/gradient-button'
+import { Loading } from 'react-loading-dot'
 
 interface TransactionApproveModalProps {
   show: boolean
@@ -33,21 +33,21 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
     successMessage,
     additionalSuccessContent,
     infoMessage,
-  } = props;
+  } = props
 
   const renderTitle = ():any => {
     if (error) {
-      return t`Something went wrong!`;
+      return t`Something went wrong!`
     }
     if (success) {
-      return t`Transaction confirmed`;
+      return t`Transaction confirmed`
     }
     if (loading) {
-      return t`Loading ...`;
+      return t`Loading ...`
     }
 
-    return title;
-  };
+    return title
+  }
 
   const renderStatusContent = ():any => {
     if (error) {
@@ -70,7 +70,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
             {error.message}
           </p>
         </>
-      );
+      )
     }
 
     if (success) {
@@ -90,7 +90,7 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
                 && <p className="mb-0 text-center text-muted">{successMessage}</p>
             )}
         </>
-      );
+      )
     }
 
     if (loading) {
@@ -105,11 +105,11 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
             </div>
           </div>
         </>
-      );
+      )
     }
 
-    return '';
-  };
+    return ''
+  }
 
   return (
     <Modal centered show={show} onHide={!loading ? onHide : null}>
@@ -144,5 +144,5 @@ export default function TransactionApproveModal(props: TransactionApproveModalPr
         </Modal.Body>
       </>
     </Modal>
-  );
+  )
 }

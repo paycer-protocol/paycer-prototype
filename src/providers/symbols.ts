@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core';
+import { ChainId } from '@usedapp/core'
 
 export const Symbols = {
   [ChainId.Mainnet]: 'ETH',
@@ -12,4 +12,4 @@ export const Symbols = {
   [ChainId.Mumbai]: 'Matic',
   [ChainId.Localhost]: 'ETH',
   [ChainId.Hardhat]: 'ETH',
-};
+}

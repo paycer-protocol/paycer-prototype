@@ -1,1 +1,1 @@
-export { default } from './content-loader';
+export { default } from './content-loader'

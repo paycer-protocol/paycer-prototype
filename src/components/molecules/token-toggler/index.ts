@@ -1,1 +1,1 @@
-export { default } from './token-toggle';
+export { default } from './token-toggle'

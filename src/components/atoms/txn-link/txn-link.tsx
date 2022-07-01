@@ -1,8 +1,8 @@
-import React from 'react';
-import BlockExplorers from '@config/block-explorers';
-import { ArrowDown, Link45deg } from '@styled-icons/bootstrap';
-import Icon from '@components/atoms/icon';
-import TruncateText from '../../../helpers/truncate-text';
+import React from 'react'
+import BlockExplorers from '@config/block-explorers'
+import { ArrowDown, Link45deg } from '@styled-icons/bootstrap'
+import Icon from '@components/atoms/icon'
+import TruncateText from '../../../helpers/truncate-text'
 
 interface TxnLinkProps {
   chain: string
@@ -10,16 +10,16 @@ interface TxnLinkProps {
 }
 
 const TxnLink = (props: TxnLinkProps) => {
-  const { chain, txnHash } = props;
-  const blockExplorer = BlockExplorers.find((b) => b.chain === chain);
+  const { chain, txnHash } = props
+  const blockExplorer = BlockExplorers.find((b) => b.chain === chain)
   if (!blockExplorer) {
     return (
       <span>
         {txnHash}
       </span>
-    );
+    )
   }
-  const href = `${blockExplorer.url}${blockExplorer.txnSearchParam}${txnHash}`;
+  const href = `${blockExplorer.url}${blockExplorer.txnSearchParam}${txnHash}`
   return (
     <div className="d-flex align-items-center">
       <Icon
@@ -31,7 +31,7 @@ const TxnLink = (props: TxnLinkProps) => {
       <a target="_blank" className="d-none d-lg-block" href={href} rel="noreferrer">{txnHash}</a>
       <a target="_blank" className="d-lg-none" href={href} rel="noreferrer">{TruncateText(txnHash, 30)}</a>
     </div>
-  );
-};
+  )
+}
 
-export default TxnLink;
+export default TxnLink

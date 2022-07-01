@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Portal from '@components/atoms/portal';
+import React from 'react'
+import styled from 'styled-components'
+import Portal from '@components/atoms/portal'
 
 /**
  * z-index is intentionally below any of Bootstrap's components.
@@ -14,7 +14,7 @@ const StyledPortal = styled.div`
     left: 1rem;
     bottom: 1rem;
     padding: 0.25rem 0.5rem;
-`;
+`
 
 interface PortalOverlayProps {
   children: any
@@ -24,7 +24,7 @@ interface PortalOverlayProps {
  * Generic portal overlay aligned to screen corner.
  */
 const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) => {
-  const { children } = props;
+  const { children } = props
 
   return (
     <Portal>
@@ -32,7 +32,7 @@ const PortalOverlay: React.FC<PortalOverlayProps> = (props: PortalOverlayProps) 
         {children}
       </StyledPortal>
     </Portal>
-  );
-};
+  )
+}
 
-export default PortalOverlay;
+export default PortalOverlay

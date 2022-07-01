@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import Icon from '@components/atoms/icon';
-import { Search } from '@styled-icons/bootstrap';
-import { useInvestList } from '@context/invest-list-context';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import Icon from '@components/atoms/icon'
+import { Search } from '@styled-icons/bootstrap'
+import { useInvestList } from '@context/invest-list-context'
 
 const StyledInput = styled.input`
     @media screen and (max-width: 350px) {
@@ -10,12 +10,12 @@ const StyledInput = styled.input`
     }    @media screen and (max-width: 295px) {
       width: 120px;
     }
-`;
+`
 
 export default function SearchForm() {
   const {
     handleSearch,
-  } = useInvestList();
+  } = useInvestList()
 
   return (
     <div className="input-group input-group-flush input-group-merge justify-content-end justify-content-md-start flex-wr">
@@ -30,5 +30,5 @@ export default function SearchForm() {
         style={{ width: '90%' }}
       />
     </div>
-  );
+  )
 }

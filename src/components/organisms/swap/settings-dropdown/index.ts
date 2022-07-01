@@ -1,1 +1,1 @@
-export { default } from './settings-dropdown';
+export { default } from './settings-dropdown'

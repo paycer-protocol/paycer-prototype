@@ -1,1 +1,1 @@
-export { default } from './token-select-modal';
+export { default } from './token-select-modal'

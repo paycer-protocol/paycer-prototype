@@ -1,6 +1,6 @@
-import React from 'react';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import { FormattedNumber } from '../../atoms/number/formatted-number';
+import React from 'react'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import { FormattedNumber } from '../../atoms/number/formatted-number'
 
 export interface DashNumberProps {
   label?: string
@@ -10,7 +10,7 @@ export interface DashNumberProps {
 }
 
 const DashNumber = (props: DashNumberProps) => {
-  const { withIcon = false, label, value, symbol } = props;
+  const { withIcon = false, label, value, symbol } = props
 
   return (
     <div className="d-flex flex-column">
@@ -44,7 +44,7 @@ const DashNumber = (props: DashNumberProps) => {
               )}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default DashNumber;
+export default DashNumber

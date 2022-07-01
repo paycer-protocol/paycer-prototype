@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { t } from '@lingui/macro';
-import InfoChart from '@components/organisms/analytics-dashboard/info-chart';
-import Modal from '@components/molecules/modal';
-import { useMediaQuery } from 'react-responsive';
-import axios from 'axios';
-import { InfoChartProps } from '../types';
+import React, { useEffect, useState } from 'react'
+import { t } from '@lingui/macro'
+import InfoChart from '@components/organisms/analytics-dashboard/info-chart'
+import Modal from '@components/molecules/modal'
+import { useMediaQuery } from 'react-responsive'
+import axios from 'axios'
+import { InfoChartProps } from '../types'
 
-const TOKEN_PRICE_ENDPOINT = 'https://api.paycer.io/v1/trade/exchange_rate?base=USD&symbol=PCR';
+const TOKEN_PRICE_ENDPOINT = 'https://api.paycer.io/v1/trade/exchange_rate?base=USD&symbol=PCR'
 
 function useTokenPrice(): number | undefined {
-  const [price, setPrice] = useState<number | undefined>(undefined);
+  const [price, setPrice] = useState<number | undefined>(undefined)
   useEffect(() => {
     axios.get<{ rate: number }>(TOKEN_PRICE_ENDPOINT).then((response) => {
-      setPrice(response.data.rate);
-    });
-  }, []);
-  return price;
+      setPrice(response.data.rate)
+    })
+  }, [])
+  return price
 }
 
 const ChartList = () => {
-  const [modalChartProps, setModalChartProps] = useState<InfoChartProps>(null);
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' });
+  const [modalChartProps, setModalChartProps] = useState<InfoChartProps>(null)
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
   const handleShowModal = (modalProps: InfoChartProps) => {
-    setModalChartProps({ ...modalProps, isSmall: false, isModal: true });
-  };
+    setModalChartProps({ ...modalProps, isSmall: false, isModal: true })
+  }
 
-  const tokenPrice = useTokenPrice();
+  const tokenPrice = useTokenPrice()
 
   return (
     <div style={{ background: 'rgba(14, 22, 40, 0.3)' }}>
@@ -109,7 +109,7 @@ const ChartList = () => {
                 </Modal>
                 )}
     </div>
-  );
-};
+  )
+}
 
-export default ChartList;
+export default ChartList

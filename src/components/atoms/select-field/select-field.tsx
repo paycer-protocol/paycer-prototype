@@ -1,6 +1,6 @@
-import { FieldProps } from 'formik';
-import React from 'react';
-import Select, { Option, ReactSelectProps } from 'react-select';
+import { FieldProps } from 'formik'
+import React from 'react'
+import Select, { Option, ReactSelectProps } from 'react-select'
 
 const SelectField: React.SFC<ReactSelectProps & FieldProps> = ({
   options,
@@ -14,6 +14,6 @@ const SelectField: React.SFC<ReactSelectProps & FieldProps> = ({
     onChange={(option: Option) => form.setFieldValue(field.name, option.value)}
     onBlur={field.onBlur}
   />
-);
+)
 
-export default SelectField;
+export default SelectField

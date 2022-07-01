@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const StyledDropdownToggle = styled.div`
     background: transparent!important;
@@ -15,7 +15,7 @@ export const StyledDropdownToggle = styled.div`
         padding: 11px 8px 10px;
         font-size: 14px; font-weight: 600;
     }
-`;
+`
 
 export const StyledDropdownMenu = styled.div`
     position: absolute; z-index: 1;
@@ -32,4 +32,4 @@ export const StyledDropdownMenu = styled.div`
         }
         cursor: pointer;
     }
-`;
+`

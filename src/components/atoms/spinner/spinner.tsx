@@ -1,5 +1,5 @@
-import React from 'react';
-import BaseSpinner, { SpinnerProps as BaseSpinnerProps } from 'react-bootstrap/Spinner';
+import React from 'react'
+import BaseSpinner, { SpinnerProps as BaseSpinnerProps } from 'react-bootstrap/Spinner'
 
 export interface SpinnerProps extends BaseSpinnerProps {
   show?: boolean
@@ -7,12 +7,12 @@ export interface SpinnerProps extends BaseSpinnerProps {
 
 const Spinner: React.FC<SpinnerProps> | any = (props) => {
   if (!props.show) {
-    return null;
+    return null
   }
 
   return (
     <BaseSpinner size={props.size} animation={props.animation} />
-  );
-};
+  )
+}
 
-export default Spinner;
+export default Spinner

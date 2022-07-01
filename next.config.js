@@ -3,15 +3,15 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-const withPlugins = require('next-compose-plugins');
-const withFonts = require('nextjs-fonts');
+const withPlugins = require('next-compose-plugins')
+const withFonts = require('nextjs-fonts')
 
-const path = require('path');
-const { withSentryConfig } = require('@sentry/nextjs');
+const path = require('path')
+const { withSentryConfig } = require('@sentry/nextjs')
 
-const langConfig = require('./lingui.config.js');
+const langConfig = require('./lingui.config.js')
 
-const { locales, sourceLocale } = langConfig;
+const { locales, sourceLocale } = langConfig
 
 const nextConfig = {
   poweredByHeader: false,
@@ -36,16 +36,16 @@ const nextConfig = {
           },
         },
       },
-    );
+    )
 
     // Prevent Analytics page from being blocked by uBlock Origin.
     if (config.output.filename === 'static/chunks/[name]-[contenthash].js') {
-      config.output.filename = 'static/chunks/[name].bundle.[contenthash].js';
+      config.output.filename = 'static/chunks/[name].bundle.[contenthash].js'
     }
 
-    return config;
+    return config
   },
-};
+}
 
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -57,8 +57,8 @@ const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
+}
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(withPlugins([[withFonts]], nextConfig), sentryWebpackPluginOptions);
+module.exports = withSentryConfig(withPlugins([[withFonts]], nextConfig), sentryWebpackPluginOptions)

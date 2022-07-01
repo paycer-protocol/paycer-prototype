@@ -1,7 +1,7 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import theme from '../../../config/theme';
-import DropdownComponent, { DropdownProps } from './dropdown';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import theme from '../../../config/theme'
+import DropdownComponent, { DropdownProps } from './dropdown'
 
 export default {
   title: 'Atom/Dropdown',
@@ -39,7 +39,7 @@ export default {
     },
 
   },
-} as Meta;
+} as Meta
 
 export const Dropdown = (props: DropdownProps) => (
   theme.colors.map((variant) => (
@@ -56,4 +56,4 @@ export const Dropdown = (props: DropdownProps) => (
       </DropdownComponent.Menu>
     </DropdownComponent>
   ))
-);
+)

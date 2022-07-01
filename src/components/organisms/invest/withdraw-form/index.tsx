@@ -1,26 +1,26 @@
-import React, { memo } from 'react';
-import * as Yup from 'yup';
-import { t } from '@lingui/macro';
-import useToken from '@hooks/use-token';
-import useInvest from '@hooks/use-invest';
-import Form from '@components/atoms/form/form';
-import DashNumber from '@components/organisms/dashboard/dash-number';
-import { useInvestList } from '@context/invest-list-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import TokenInputPanel from '@components/organisms/token-input-panel';
-import InfoTooltip from '@components/atoms/info-tooltip';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import { FormikValues } from 'formik';
-import { InvestFormFields } from '../types';
-import SubmitButton from './fields/submit-button';
-import InvestInput from './fields/invest-input';
-import InvestRangeSlider from './fields/invest-range-slider';
+import React, { memo } from 'react'
+import * as Yup from 'yup'
+import { t } from '@lingui/macro'
+import useToken from '@hooks/use-token'
+import useInvest from '@hooks/use-invest'
+import Form from '@components/atoms/form/form'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import { useInvestList } from '@context/invest-list-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import InfoTooltip from '@components/atoms/info-tooltip'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import { FormikValues } from 'formik'
+import { InvestFormFields } from '../types'
+import SubmitButton from './fields/submit-button'
+import InvestInput from './fields/invest-input'
+import InvestRangeSlider from './fields/invest-range-slider'
 
 const WithdrawForm = () => {
   const {
     strategy,
     setShowFormModal,
-  } = useInvestList();
+  } = useInvestList()
 
   const {
     withdrawAbleAmount,
@@ -32,20 +32,20 @@ const WithdrawForm = () => {
     showFormApproveModal,
     resetStatus,
     isLoading,
-  } = useInvest(strategy);
+  } = useInvest(strategy)
 
   const handleSubmit = () => {
-    setShowFormModal(false);
-    setShowFormApproveModal(true);
-  };
+    setShowFormModal(false)
+    setShowFormApproveModal(true)
+  }
 
   const handleWithdraw = async (values: FormikValues) => {
-    const amount = values.amount - values.fee;
-    await withdraw(amount);
-    setShowFormModal(false);
-  };
+    const amount = values.amount - values.fee
+    await withdraw(amount)
+    setShowFormModal(false)
+  }
 
-  const baseToken = useToken(strategy.input.symbol);
+  const baseToken = useToken(strategy.input.symbol)
 
   const initialValues: InvestFormFields = {
     // invest pairs
@@ -70,11 +70,11 @@ const WithdrawForm = () => {
     fee: 0,
 
     investRange: 100,
-  };
+  }
 
   const validationSchema = Yup.object().shape({
     amount: Yup.number().min(0).required(),
-  });
+  })
 
   return (
     <Form
@@ -177,9 +177,9 @@ const WithdrawForm = () => {
           <TransactionApproveModal
             show={showFormApproveModal}
             onHide={() => {
-              resetStatus();
-              setShowFormModal(true);
-              setShowFormApproveModal(false);
+              resetStatus()
+              setShowFormModal(true)
+              setShowFormApproveModal(false)
             }}
             title={t`Confirm Transaction`}
             onClick={() => handleWithdraw(values)}
@@ -257,7 +257,7 @@ const WithdrawForm = () => {
         </div>
       )}
     </Form>
-  );
-};
+  )
+}
 
-export default memo(WithdrawForm);
+export default memo(WithdrawForm)

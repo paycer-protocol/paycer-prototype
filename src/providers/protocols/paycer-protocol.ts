@@ -1,5 +1,5 @@
-import { ChainId } from '@usedapp/core';
-import { ITokenProvider } from '../../types/investment';
+import { ChainId } from '@usedapp/core'
+import { ITokenProvider } from '../../types/investment'
 
 export const paycerProvider: ITokenProvider = {
   pUSDC: {
@@ -50,4 +50,4 @@ export const paycerProvider: ITokenProvider = {
       [ChainId.Mainnet]: '',
     },
   },
-};
+}

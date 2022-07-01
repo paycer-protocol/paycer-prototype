@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import { t } from '@lingui/macro';
-import Modal from '@components/molecules/modal';
-import DepositForm from '@components/organisms/invest/deposit-form';
-import WithdrawForm from '@components/organisms/invest/withdraw-form';
-import { useInvestList } from '@context/invest-list-context';
+import React, { memo } from 'react'
+import { t } from '@lingui/macro'
+import Modal from '@components/molecules/modal'
+import DepositForm from '@components/organisms/invest/deposit-form'
+import WithdrawForm from '@components/organisms/invest/withdraw-form'
+import { useInvestList } from '@context/invest-list-context'
 
 const InvestModal = () => {
   const {
@@ -11,10 +11,10 @@ const InvestModal = () => {
     strategy,
     showFormModal,
     investType,
-  } = useInvestList();
+  } = useInvestList()
 
   if (!strategy) {
-    return null;
+    return null
   }
 
   return (
@@ -30,7 +30,7 @@ const InvestModal = () => {
         </Modal.Body>
       </div>
     </Modal>
-  );
-};
+  )
+}
 
-export default InvestModal;
+export default InvestModal

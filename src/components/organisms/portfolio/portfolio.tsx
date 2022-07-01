@@ -1,10 +1,10 @@
-import React from 'react';
-import Header from '@components/organisms/portfolio/portfolio-header';
-import PortfolioList from '@components/organisms/portfolio/portfolio-list';
-import usePortfolio from '@hooks/use-portfolio';
+import React from 'react'
+import Header from '@components/organisms/portfolio/portfolio-header'
+import PortfolioList from '@components/organisms/portfolio/portfolio-list'
+import usePortfolio from '@hooks/use-portfolio'
 
 export default function Portfolio() {
-  const { qualifiedStrategies, totalInvest } = usePortfolio();
+  const { qualifiedStrategies, totalInvest } = usePortfolio()
 
   return (
     <>
@@ -25,5 +25,5 @@ export default function Portfolio() {
         </div>
       </div>
     </>
-  );
+  )
 }

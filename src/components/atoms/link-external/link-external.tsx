@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes } from 'react'
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: any,
@@ -18,5 +18,5 @@ export default function LinkExternal({ children, href, ...props }: LinkProps) {
         </a>
       )}
     </>
-  );
+  )
 }

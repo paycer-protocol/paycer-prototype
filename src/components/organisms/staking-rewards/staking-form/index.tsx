@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { t } from '@lingui/macro';
-import { FormikValues } from 'formik';
-import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards';
-import DashNumber from '@components/organisms/dashboard/dash-number';
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal';
-import Form from '@components/atoms/form/form';
-import { useStaking } from '@context/staking-context';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import InfoTooltip from '@components/atoms/info-tooltip';
-import TokenInputPanel from '@components/organisms/token-input-panel';
-import useToken from '@hooks/use-token';
-import StakeRangeSlider from './fields/stake-range-slider';
-import StakedInput from './fields/staked-input';
-import SubmitButton from './fields/submit-button';
-import RewardFee from './reward-fee';
-import { StakingProps } from '../types';
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
+import { FormikValues } from 'formik'
+import { rewardSymbol, rewardDepositFee as depositFee, rewardWithdrawFee as withdrawFee } from '@config/staking-rewards'
+import DashNumber from '@components/organisms/dashboard/dash-number'
+import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import Form from '@components/atoms/form/form'
+import { useStaking } from '@context/staking-context'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import InfoTooltip from '@components/atoms/info-tooltip'
+import TokenInputPanel from '@components/organisms/token-input-panel'
+import useToken from '@hooks/use-token'
+import StakeRangeSlider from './fields/stake-range-slider'
+import StakedInput from './fields/staked-input'
+import SubmitButton from './fields/submit-button'
+import RewardFee from './reward-fee'
+import { StakingProps } from '../types'
 
 export default function StakingForm() {
   const {
@@ -28,11 +28,11 @@ export default function StakingForm() {
     contractCallError,
     resetStatus,
     transactionState,
-  } = useStaking();
+  } = useStaking()
 
-  const [showApproveModal, setShowApproveModal] = useState<boolean>(false);
+  const [showApproveModal, setShowApproveModal] = useState<boolean>(false)
 
-  const { tokenBalance } = useToken('PCR');
+  const { tokenBalance } = useToken('PCR')
 
   const initialValues: StakingProps = {
     rewardSymbol,
@@ -43,23 +43,23 @@ export default function StakingForm() {
     depositFee,
     withdrawFee,
     disabled: true,
-  };
+  }
 
   const handleSubmit = () => {
-    setShowApproveModal(true);
-  };
+    setShowApproveModal(true)
+  }
 
   const handleStaking = async (values: FormikValues) => {
     if (values.stakedBalance > initialValues.stakedBalance) {
-      console.log('deposit');
-      const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee;
-      await deposit(depositAmount);
+      console.log('deposit')
+      const depositAmount = (values.stakedBalance - initialValues.stakedBalance) - values.depositFee
+      await deposit(depositAmount)
     } else {
-      console.log('withdraw');
-      const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee;
-      await withdraw(withdrawAmount);
+      console.log('withdraw')
+      const withdrawAmount = (initialValues.stakedBalance - values.stakedBalance) - values.withdrawFee
+      await withdraw(withdrawAmount)
     }
-  };
+  }
 
   return (
     <Form
@@ -120,7 +120,7 @@ export default function StakingForm() {
                       </div>
                     </div>
                   </div>
-                                      )}
+                )}
                 tokenInput={<StakedInput />}
               />
             </div>
@@ -146,7 +146,7 @@ export default function StakingForm() {
                       <div className="d-flex flex-column">
                         <span className="text-muted mb-3">
                           {t`Estimated fee`}
-&nbsp;
+                          &nbsp;
                         </span>
                         <RewardFee />
                       </div>
@@ -158,7 +158,7 @@ export default function StakingForm() {
             <div className="mb-4 d-md-none">
               <span className="text-muted mb-1">
                 {t`Estimated fee`}
-&nbsp;&nbsp;
+                &nbsp;&nbsp;
               </span>
               <RewardFee />
             </div>
@@ -168,8 +168,8 @@ export default function StakingForm() {
           <TransactionApproveModal
             show={showApproveModal}
             onHide={() => {
-              setShowApproveModal(false);
-              resetStatus();
+              setShowApproveModal(false)
+              resetStatus()
             }}
             title={t`Confirm Transaction`}
             onClick={() => handleStaking(values)}
@@ -241,5 +241,5 @@ export default function StakingForm() {
         </>
       )}
     </Form>
-  );
+  )
 }

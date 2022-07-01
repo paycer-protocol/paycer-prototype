@@ -1,5 +1,5 @@
-import React from 'react';
-import { AreaChart as BaseAreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React from 'react'
+import { AreaChart as BaseAreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 export interface AreaChartData {
   name: string
@@ -21,7 +21,7 @@ const AreaChart = (props: AreaChartProps) => {
     containerHeight = 500,
     strokeColor = '#8884d8',
     fillColor = '#8884d8',
-  } = props;
+  } = props
 
   return (
     <ResponsiveContainer width={containerWidth} height={containerHeight}>
@@ -48,7 +48,7 @@ const AreaChart = (props: AreaChartProps) => {
         />
       </BaseAreaChart>
     </ResponsiveContainer>
-  );
-};
+  )
+}
 
-export default AreaChart;
+export default AreaChart

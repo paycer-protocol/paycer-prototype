@@ -1,8 +1,8 @@
-import React from 'react';
-import classnames from 'classnames';
-import { StyledIcon } from '@styled-icons/styled-icon';
-import { Variant } from 'react-bootstrap/types';
-import Card from '@components/molecules/card';
+import React from 'react'
+import classnames from 'classnames'
+import { StyledIcon } from '@styled-icons/styled-icon'
+import { Variant } from 'react-bootstrap/types'
+import Card from '@components/molecules/card'
 
 export interface DashCardProps {
   title: string
@@ -22,9 +22,9 @@ const DashCard = (props: DashCardProps) => {
     children,
     className,
     ...restProps
-  } = props;
+  } = props
 
-  const textColor = variant && variant !== 'light' ? 'white' : null;
+  const textColor = variant && variant !== 'light' ? 'white' : null
 
   return (
     <Card
@@ -46,7 +46,7 @@ const DashCard = (props: DashCardProps) => {
         </div>
       </Card.Body>
     </Card>
-  );
-};
+  )
+}
 
-export default DashCard;
+export default DashCard

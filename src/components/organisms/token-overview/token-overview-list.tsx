@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { t, Trans } from '@lingui/macro';
-import styled from 'styled-components';
-import Icon from '@components/atoms/icon';
-import { Search } from '@styled-icons/bootstrap';
-import GradientButton from '@components/atoms/button/gradient-button';
+import React, { useState } from 'react'
+import { t, Trans } from '@lingui/macro'
+import styled from 'styled-components'
+import Icon from '@components/atoms/icon'
+import { Search } from '@styled-icons/bootstrap'
+import GradientButton from '@components/atoms/button/gradient-button'
 
 const StyledInput = styled.input`
     @media screen and (max-width: 350px) {
@@ -11,7 +11,7 @@ const StyledInput = styled.input`
     }    @media screen and (max-width: 295px) {
       width: 120px;
     }
-`;
+`
 
 export interface TokenOverviewListProps {
   items: Array<{
@@ -27,10 +27,10 @@ export interface TokenOverviewListProps {
 }
 
 export default function TokenOverviewList(props: TokenOverviewListProps) {
-  const { items } = props;
-  const thClass = 'bg-card-blue border border-secondary-dark';
-  const tdClass = 'bg-dark border border-purple-dark';
-  const [tokenOverviewListItems, setTokenOverviewListItems] = useState<any>(items);
+  const { items } = props
+  const thClass = 'bg-card-blue border border-secondary-dark'
+  const tdClass = 'bg-dark border border-purple-dark'
+  const [tokenOverviewListItems, setTokenOverviewListItems] = useState<any>(items)
 
   return (
     <div className="table-responsive mb-0 border-0">
@@ -65,5 +65,5 @@ export default function TokenOverviewList(props: TokenOverviewListProps) {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

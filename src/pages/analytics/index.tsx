@@ -1,9 +1,9 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import PageHeader from '@components/molecules/page-header';
-import AnalyticsDashboard from '@components/organisms/analytics-dashboard';
-import PortalBlockNumber from '@components/organisms/portal-block-number';
-import Layout from '@components/organisms/layout';
+import React from 'react'
+import { t } from '@lingui/macro'
+import PageHeader from '@components/molecules/page-header'
+import AnalyticsDashboard from '@components/organisms/analytics-dashboard'
+import PortalBlockNumber from '@components/organisms/portal-block-number'
+import Layout from '@components/organisms/layout'
 
 export default function Analytics() {
   return (
@@ -27,5 +27,5 @@ export default function Analytics() {
       </div>
       <PortalBlockNumber />
     </Layout>
-  );
+  )
 }

@@ -19,4 +19,4 @@ module.exports = {
   pseudoLocale: '',
   rootDir: '.',
   runtimeConfigModule: ['@lingui/core', 'i18n'],
-};
+}

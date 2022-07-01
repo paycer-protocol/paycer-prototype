@@ -1,7 +1,7 @@
-import React from 'react';
-import Layout from '@components/organisms/layout';
-import PageHeader from '@components/molecules/page-header';
-import Swap from '@components/organisms/swap';
+import React from 'react'
+import Layout from '@components/organisms/layout'
+import PageHeader from '@components/molecules/page-header'
+import Swap from '@components/organisms/swap'
 
 export default function SwapPage() {
   return (
@@ -29,5 +29,5 @@ export default function SwapPage() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }

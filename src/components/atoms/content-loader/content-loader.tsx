@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactContentLoader from 'react-content-loader';
+import React from 'react'
+import ReactContentLoader from 'react-content-loader'
 
 export interface ContentLoader{
   rowCount?: number,
@@ -8,7 +8,7 @@ export interface ContentLoader{
 }
 
 const ContentLoader: React.FC<ContentLoader> = ({ rowCount, rowWidth, height }: ContentLoader) => {
-  const initialY = 56;
+  const initialY = 56
 
   return (
     <ReactContentLoader
@@ -25,13 +25,13 @@ const ContentLoader: React.FC<ContentLoader> = ({ rowCount, rowWidth, height }: 
         </>
       ))}
     </ReactContentLoader>
-  );
-};
+  )
+}
 
 ContentLoader.defaultProps = {
   rowCount: 4,
   rowWidth: 400,
   height: 160,
-};
+}
 
-export default ContentLoader;
+export default ContentLoader

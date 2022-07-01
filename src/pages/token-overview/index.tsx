@@ -1,9 +1,9 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import PageHeader from '@components/molecules/page-header';
-import { TokenOverviewListItems } from '@config/token-overview';
-import TokenOverviewList from '@components/organisms/token-overview/token-overview-list';
-import Layout from '@components/organisms/layout';
+import React from 'react'
+import { t } from '@lingui/macro'
+import PageHeader from '@components/molecules/page-header'
+import { TokenOverviewListItems } from '@config/token-overview'
+import TokenOverviewList from '@components/organisms/token-overview/token-overview-list'
+import Layout from '@components/organisms/layout'
 
 export default function TokenOverview() {
   return (
@@ -32,5 +32,5 @@ export default function TokenOverview() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }

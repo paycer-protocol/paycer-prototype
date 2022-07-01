@@ -1,4 +1,4 @@
-import ChainId from '@providers/chain-id';
+import ChainId from '@providers/chain-id'
 
 export interface IContractProvider {
   [name: string]: {
@@ -32,4 +32,4 @@ export const contractProvider: IContractProvider = {
       [ChainId.Hardhat]: '0x9d4454B023096f34B160D6B654540c56A1F81688',
     },
   },
-};
+}

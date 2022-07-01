@@ -1,4 +1,4 @@
-import { ChainId } from '@usedapp/core';
+import { ChainId } from '@usedapp/core'
 
 export interface ITokenProvider {
   [symbol: string]: {
@@ -36,4 +36,4 @@ export const tokenProvider: ITokenProvider = {
       [ChainId.Hardhat]: '0x4826533B4897376654Bb4d4AD88B7faFD0C98528',
     },
   },
-};
+}

@@ -1,6 +1,6 @@
-import React from 'react';
-import Claim from '@components/organisms/vesting/claim';
-import Overview from '@components/organisms/vesting/overview';
+import React from 'react'
+import Claim from '@components/organisms/vesting/claim'
+import Overview from '@components/organisms/vesting/overview'
 
 const VestingDashboard = () => (
   <div className="row flex-column-reverse flex-md-row">
@@ -11,6 +11,6 @@ const VestingDashboard = () => (
       <Claim />
     </div>
   </div>
-);
+)
 
-export default VestingDashboard;
+export default VestingDashboard

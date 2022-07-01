@@ -1,2 +1,2 @@
-export * from './staking-form';
-export * from './claim-form';
+export * from './staking-form'
+export * from './claim-form'

@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { IConnectorProvider } from '@providers/connectors';
-import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api, useERC20Balances } from 'react-moralis';
-import { mainNetProviders } from '@providers/networks';
-import ChainId from '@providers/chain-id';
-import { Symbols } from '@providers/symbols';
-import { supportedChains, supportedStakingChains } from '@config/network';
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { IConnectorProvider } from '@providers/connectors'
+import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api, useERC20Balances } from 'react-moralis'
+import { mainNetProviders } from '@providers/networks'
+import ChainId from '@providers/chain-id'
+import { Symbols } from '@providers/symbols'
+import { supportedChains, supportedStakingChains } from '@config/network'
 
 export interface DappContextInterface {
   walletConnector: unknown | null
@@ -70,13 +70,13 @@ const contextDefaultValues: DappContextInterface = {
   blockNumber: 0,
   ERC20Balances: null,
   fetchERC20Balances: null,
-};
+}
 
 const DappContext = createContext<DappContextInterface>(
   contextDefaultValues,
-);
+)
 
-export const useDapp = () => useContext(DappContext);
+export const useDapp = () => useContext(DappContext)
 
 const DappContextProvider = ({ children }) => {
   const {
@@ -85,7 +85,7 @@ const DappContextProvider = ({ children }) => {
     switchNetwork,
     provider: currentNetworkProvider,
     network,
-  } = useChain();
+  } = useChain()
 
   const {
     authenticate,
@@ -98,64 +98,64 @@ const DappContextProvider = ({ children }) => {
     web3,
     isWeb3Enabled,
     isWeb3EnableLoading,
-  } = useMoralis();
+  } = useMoralis()
 
   const {
     data: balance,
     // @ts-ignore
-  } = useNativeBalance({ chain: chain?.chainId });
+  } = useNativeBalance({ chain: chain?.chainId })
 
-  const walletAddress = account || '';
-  const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon];
+  const walletAddress = account || ''
+  const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
 
-  const { fetchERC20Balances, data: ERC20Balances } = useERC20Balances();
-  const [blockNumber, setBlockNumber] = useState<number>(0);
-  const Web3Api = useMoralisWeb3Api();
+  const { fetchERC20Balances, data: ERC20Balances } = useERC20Balances()
+  const [blockNumber, setBlockNumber] = useState<number>(0)
+  const Web3Api = useMoralisWeb3Api()
 
   useEffect(() => {
     const stayLoggedIn = async () => {
       if (!isWeb3Enabled && isAuthenticated) {
-        await enableWeb3();
+        await enableWeb3()
       }
-    };
-    stayLoggedIn();
-  }, [web3, chain?.networkId, isAuthenticated]);
+    }
+    stayLoggedIn()
+  }, [web3, chain?.networkId, isAuthenticated])
 
   useEffect(() => {
     if (isInitialized && walletAddress) {
-      fetchDateToBlock();
+      fetchDateToBlock()
     }
-  }, [isInitialized, walletAddress, chain?.chainId]);
+  }, [isInitialized, walletAddress, chain?.chainId])
 
   const handleWalletConnect = async (provider: IConnectorProvider) => {
     await authenticate({
       provider: provider.providerId,
       signingMessage: 'Paycer Authentication',
-    });
+    })
 
     if (!isWeb3Enabled) {
-      await enableWeb3({ provider: provider.providerId });
+      await enableWeb3({ provider: provider.providerId })
     }
-  };
+  }
 
   const handleWalletDisconnect = async () => {
-    await logout();
-  };
+    await logout()
+  }
 
   const handleSwitchNetwork = async (provider: any) => {
-    await switchNetwork(provider.chainId);
-  };
+    await switchNetwork(provider.chainId)
+  }
 
   const fetchDateToBlock = async () => {
     if (isInitialized && walletAddress) {
-      const options = { chain: chainId, date: Date.now() };
+      const options = { chain: chainId, date: Date.now() }
       // @ts-ignore
-      const date = await Web3Api.native.getDateToBlock(options);
+      const date = await Web3Api.native.getDateToBlock(options)
       if (date) {
-        setBlockNumber(date.block);
+        setBlockNumber(date.block)
       }
     }
-  };
+  }
 
   return (
     <DappContext.Provider
@@ -190,7 +190,7 @@ const DappContextProvider = ({ children }) => {
     >
       {children}
     </DappContext.Provider>
-  );
-};
+  )
+}
 
-export default DappContextProvider;
+export default DappContextProvider

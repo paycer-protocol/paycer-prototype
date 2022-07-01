@@ -1,7 +1,7 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import theme from '../../../config/theme';
-import TableComponent, { TableProps } from './table';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import theme from '../../../config/theme'
+import TableComponent, { TableProps } from './table'
 
 export default {
   title: 'Molecule/Table',
@@ -15,7 +15,7 @@ export default {
     size: { control: 'select', options: theme.sizes },
     variant: { control: 'select', options: theme.colors },
   },
-} as Meta;
+} as Meta
 
 const Template: (args: TableProps) => JSX.Element = (args: TableProps) => (
   <TableComponent {...args}>
@@ -47,10 +47,10 @@ const Template: (args: TableProps) => JSX.Element = (args: TableProps) => (
       </tr>
     </tbody>
   </TableComponent>
-);
+)
 
-export const Table = Template.bind({});
+export const Table = Template.bind({})
 Table.args = {
   size: 'md',
   variant: 'light',
-};
+}

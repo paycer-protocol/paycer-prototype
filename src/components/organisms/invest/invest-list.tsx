@@ -1,14 +1,14 @@
-import React from 'react';
-import Icon from '@components/atoms/icon';
-import { Grid, List } from '@styled-icons/bootstrap';
-import { useInvestList } from '@context/invest-list-context';
-import SearchForm from './search-form';
-import InvestModal from './invest-modal';
-import ListTable from './invest-table';
-import InvestCards from './invest-cards';
+import React from 'react'
+import Icon from '@components/atoms/icon'
+import { Grid, List } from '@styled-icons/bootstrap'
+import { useInvestList } from '@context/invest-list-context'
+import SearchForm from './search-form'
+import InvestModal from './invest-modal'
+import ListTable from './invest-table'
+import InvestCards from './invest-cards'
 
 export default function InvestList() {
-  const { isListView, toggleListView } = useInvestList();
+  const { isListView, toggleListView } = useInvestList()
 
   return (
     <div>
@@ -35,5 +35,5 @@ export default function InvestList() {
       {!isListView ? <InvestCards /> : null}
       <InvestModal />
     </div>
-  );
+  )
 }

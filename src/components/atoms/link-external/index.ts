@@ -1,1 +1,1 @@
-export { default } from './link-external';
+export { default } from './link-external'

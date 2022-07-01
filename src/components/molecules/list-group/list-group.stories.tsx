@@ -1,7 +1,7 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import theme from '../../../config/theme';
-import ListGroupComponent, { ListGroupProps } from './list-group';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
+import theme from '../../../config/theme'
+import ListGroupComponent, { ListGroupProps } from './list-group'
 
 export default {
   title: 'Molecule/ListGroup',
@@ -11,13 +11,13 @@ export default {
     variant: { control: 'select', options: ['default', 'flush'] },
     itemVariant: { control: 'select', options: theme.colors },
   },
-} as Meta;
+} as Meta
 
 interface VariantProps {
   itemVariant?: string
 }
 
-type StoryOptions = Partial<ListGroupProps> & Partial<VariantProps>;
+type StoryOptions = Partial<ListGroupProps> & Partial<VariantProps>
 
 const Template: Story<StoryOptions> = ({ itemVariant, ...args }: StoryOptions) => (
   <ListGroupComponent {...args}>
@@ -32,7 +32,7 @@ const Template: Story<StoryOptions> = ({ itemVariant, ...args }: StoryOptions) =
       Porta ac consectetur ac
     </ListGroupComponent.Item>
   </ListGroupComponent>
-);
+)
 
-export const ListGroup = Template.bind({});
-ListGroup.args = {};
+export const ListGroup = Template.bind({})
+ListGroup.args = {}

@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import classnames from 'classnames';
-import { TextLeft } from '@styled-icons/bootstrap';
-import { routes } from '@config/routes';
-import { ArrowDropDown } from '@styled-icons/material-outlined';
-import Image from '@components/atoms/image';
-import Icon from '@components/atoms/icon';
-import OffCanvas from '@components/organisms/off-canvas';
-import { useDapp } from '@context/dapp-context';
-import WalletMenu from './wallet-menu';
-import NetworkMenu from './network-menu';
-import * as Styles from './styles';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import classnames from 'classnames'
+import { TextLeft } from '@styled-icons/bootstrap'
+import { routes } from '@config/routes'
+import { ArrowDropDown } from '@styled-icons/material-outlined'
+import Image from '@components/atoms/image'
+import Icon from '@components/atoms/icon'
+import OffCanvas from '@components/organisms/off-canvas'
+import { useDapp } from '@context/dapp-context'
+import WalletMenu from './wallet-menu'
+import NetworkMenu from './network-menu'
+import * as Styles from './styles'
 
 const Header = () => {
-  const { pathname } = useRouter();
-  const [showModalNav, setShowModalNav] = useState(false);
-  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp();
+  const { pathname } = useRouter()
+  const [showModalNav, setShowModalNav] = useState(false)
+  const { currentNetworkId, isAuthenticated, isWeb3Enabled } = useDapp()
 
-  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true);
+  const isAuthenticatedRoute = (route) => (route.auth ? (isWeb3Enabled && isAuthenticated) : true)
 
   const qualifiedRoutes = routes.filter((route) => {
     if (!currentNetworkId) {
-      return true;
+      return true
     }
 
     return route.supportedChains.includes(currentNetworkId)
-          && isAuthenticatedRoute(route);
-  });
+      && isAuthenticatedRoute(route)
+  })
 
   return (
     <>
@@ -71,34 +71,34 @@ const Header = () => {
                           />
                         </a>
                         {(route.subroutes && route.subroutes.length)
+                          && (
+                            <div className="dropdown-menu dropdown-menu-end">
+                              {route.subroutes.map((subroute, innerKey) => (
+                                <div key={innerKey}>
+                                  {(subroute?.auth)
+                                    ? (
+                                      <>
+                                        {isAuthenticated && subroute?.supportedChains.includes(currentNetworkId)
                                           && (
-                                          <div className="dropdown-menu dropdown-menu-end">
-                                            {route.subroutes.map((subroute, innerKey) => (
-                                              <div key={innerKey}>
-                                                {(subroute?.auth)
-                                                  ? (
-                                                    <>
-                                                      {isAuthenticated && subroute?.supportedChains.includes(currentNetworkId)
-                                                                && (
-                                                                <Link href={subroute.path}>
-                                                                  <a href="#!" className="dropdown-item">
-                                                                    {subroute?.label}
-                                                                  </a>
-                                                                </Link>
-                                                                )}
-                                                    </>
-                                                  )
-                                                  : (
-                                                    <Link href={subroute.path}>
-                                                      <a href="#!" className="dropdown-item">
-                                                        {subroute?.label}
-                                                      </a>
-                                                    </Link>
-                                                  )}
-                                              </div>
-                                            ))}
-                                          </div>
+                                            <Link href={subroute.path}>
+                                              <a href="#!" className="dropdown-item">
+                                                {subroute?.label}
+                                              </a>
+                                            </Link>
                                           )}
+                                      </>
+                                    )
+                                    : (
+                                      <Link href={subroute.path}>
+                                        <a href="#!" className="dropdown-item">
+                                          {subroute?.label}
+                                        </a>
+                                      </Link>
+                                    )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
 
                       </div>
                     )
@@ -133,7 +133,7 @@ const Header = () => {
       />
     </>
 
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

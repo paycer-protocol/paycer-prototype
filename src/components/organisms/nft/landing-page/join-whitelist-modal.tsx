@@ -1,13 +1,13 @@
-import Alert from '@components/atoms/alert';
-import GradientButton from '@components/atoms/button/gradient-button';
-import Form from '@components/atoms/form';
-import Input from '@components/atoms/form/input';
-import Modal from '@components/molecules/modal';
-import { useDapp } from '@context/dapp-context';
-import { t, Trans } from '@lingui/macro';
-import api from 'api';
-import { useCallback, useState } from 'react';
-import * as Yup from 'yup';
+import Alert from '@components/atoms/alert'
+import GradientButton from '@components/atoms/button/gradient-button'
+import Form from '@components/atoms/form'
+import Input from '@components/atoms/form/input'
+import Modal from '@components/molecules/modal'
+import { useDapp } from '@context/dapp-context'
+import { t, Trans } from '@lingui/macro'
+import api from 'api'
+import { useCallback, useState } from 'react'
+import * as Yup from 'yup'
 
 interface JoinWhitelistModalProps {
   show: boolean
@@ -20,17 +20,17 @@ interface FormValues {
 
 const schema = Yup.object({
   email: Yup.string().required(t`This field is required`).email(t`Please enter a valid email address`),
-});
+})
 
 export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
   // const { address } = useWallet();
 
-  const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'error' | undefined>(undefined);
+  const [status, setStatus] = useState<'success' | 'noSpotsAvailable' | 'emailAlreadyUsed' | 'error' | undefined>(undefined)
 
   const onSubmit = useCallback(async ({ email }: FormValues) => {
-    const result = await api.joinNftWhitelist(email, 'landingPage');
-    setStatus(result);
-  }, []);
+    const result = await api.joinNftWhitelist(email, 'landingPage')
+    setStatus(result)
+  }, [])
 
   // if (!address) return null;
 
@@ -83,5 +83,5 @@ export default function JoinWhitelistModal(props: JoinWhitelistModalProps) {
         </Modal.Body>
       </>
     </Modal>
-  );
+  )
 }

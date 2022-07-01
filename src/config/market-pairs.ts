@@ -1,9 +1,9 @@
-import { tokenProvider } from '@providers/tokens';
-import { MarketPairType } from '../types/market';
-import { TokenType } from '../types/investment';
+import { tokenProvider } from '@providers/tokens'
+import { MarketPairType } from '../types/market'
+import { TokenType } from '../types/investment'
 
-export const initialFromTokenValue = 0.998787;
-export const swapFeePercentage = 1;
+export const initialFromTokenValue = 0.998787
+export const swapFeePercentage = 1
 
 export const swapTokens: TokenType[] = [
   tokenProvider.PCR,
@@ -12,7 +12,7 @@ export const swapTokens: TokenType[] = [
   tokenProvider.USDT,
   tokenProvider.wBTC,
   tokenProvider.wETH,
-];
+]
 
 export const marketPairs: MarketPairType[] = [
   {
@@ -75,4 +75,4 @@ export const marketPairs: MarketPairType[] = [
       tokenProvider.wBTC,
     ],
   },
-];
+]

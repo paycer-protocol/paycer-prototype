@@ -1,14 +1,14 @@
-import PageHeader from '@components/molecules/page-header';
-import Layout from '@components/organisms/layout';
-import { t } from '@lingui/macro';
-import { useRouter } from 'next/router';
-import React from 'react';
+import PageHeader from '@components/molecules/page-header'
+import Layout from '@components/organisms/layout'
+import { t } from '@lingui/macro'
+import { useRouter } from 'next/router'
+import React from 'react'
 
 export default function Custom404() {
-  const router = useRouter();
+  const router = useRouter()
 
   if (router.asPath === '/token-sale') {
-    router.push('/vesting');
+    router.push('/vesting')
   }
 
   return (
@@ -26,5 +26,5 @@ export default function Custom404() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { t } from '@lingui/macro'
 
 export const loyaltyTiers = <const>[
   'basic',
@@ -6,9 +6,9 @@ export const loyaltyTiers = <const>[
   'senior',
   'manager',
   'partner',
-];
+]
 
-export type LoyaltyTier = typeof loyaltyTiers[number];
+export type LoyaltyTier = typeof loyaltyTiers[number]
 
 export const loyaltyTierLabels: Record<LoyaltyTier, string> = {
   basic: t`Basic`,
@@ -16,7 +16,7 @@ export const loyaltyTierLabels: Record<LoyaltyTier, string> = {
   senior: t`Senior`,
   manager: t`Manager`,
   partner: t`Partner`,
-};
+}
 
 export interface StakingRequirement {
   minimum: number;
@@ -29,6 +29,6 @@ export const stakingRequirements: Record<LoyaltyTier, StakingRequirement> = {
   senior: { minimum: 15000, maximum: 35000 },
   manager: { minimum: 35000, maximum: 100000 },
   partner: { minimum: 100000, maximum: Infinity },
-};
+}
 
-export default loyaltyTiers;
+export default loyaltyTiers

@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import './divider.styles.scss';
+import React, { ReactElement } from 'react'
+import './divider.styles.scss'
 
 export interface DividerProps {
   children?: ReactElement | string | number | null,
@@ -11,6 +11,6 @@ const Divider = ({ children }: DividerProps) => (
       {children}
     </h3>
   </div>
-);
+)
 
-export default Divider;
+export default Divider

@@ -1,8 +1,8 @@
 export type InfoDashboardFormType = {
   selectedChains: Array<number>
-};
+}
 
-export type TimeSectionStateType = '1M' | '3M' | '1Y';
+export type TimeSectionStateType = '1M' | '3M' | '1Y'
 
 export interface InfoChartProps {
   headline?: string

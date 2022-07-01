@@ -1,4 +1,4 @@
-import { FormattedNumber as BaseFormattedNumber, FormatNumberOptions } from 'react-intl';
+import { FormattedNumber as BaseFormattedNumber, FormatNumberOptions } from 'react-intl'
 
 export interface FormattedNumberProps extends FormatNumberOptions {
   value: number | string
@@ -11,6 +11,6 @@ export const FormattedNumber = ({ value = 0, minimumFractionDigits = 2, maximumS
     style="decimal"
     {...restProps}
   />
-);
+)
 
-export default FormattedNumber;
+export default FormattedNumber

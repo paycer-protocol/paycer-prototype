@@ -1,1 +1,1 @@
-export { default } from './staking';
+export { default } from './staking'

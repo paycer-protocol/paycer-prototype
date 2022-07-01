@@ -1,1 +1,1 @@
-export { default } from './dash-card';
+export { default } from './dash-card'

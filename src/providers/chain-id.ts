@@ -33,4 +33,4 @@ enum ChainId {
   ArbitrumRinkeby = 421611,
 }
 
-export default ChainId;
+export default ChainId

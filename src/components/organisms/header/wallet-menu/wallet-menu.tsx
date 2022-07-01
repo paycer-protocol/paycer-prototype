@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { t } from '@lingui/macro';
-import WalletProvider from '@components/organisms/web3/wallet-provider';
-import { connectors } from '@providers/connectors';
-import { useDapp } from '@context/dapp-context';
-import useToken from '@hooks/use-token';
-import { Wallet } from '@styled-icons/ionicons-sharp';
-import Icon from '@components/atoms/icon';
-import Dropdown from '@components/molecules/dropdown';
-import useCopyClipboard from '@hooks/use-copy-clipboard';
-import { Copy, CheckCircle, Compass } from '@styled-icons/feather';
-import { SwitchCamera } from '@styled-icons/material';
-import { PlugDisconnected, AddCircle } from '@styled-icons/fluentui-system-regular';
-import CurrencyIcon from '@components/atoms/currency-icon';
-import AddPaycerToken from '@components/organisms/web3/add-paycer-token';
-import RoundetIconButton from '@components/atoms/button/roundet-icon-button';
-import { useMediaQuery } from 'react-responsive';
-import { FormattedNumber } from '../../../atoms/number/formatted-number';
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
+import WalletProvider from '@components/organisms/web3/wallet-provider'
+import { connectors } from '@providers/connectors'
+import { useDapp } from '@context/dapp-context'
+import useToken from '@hooks/use-token'
+import { Wallet } from '@styled-icons/ionicons-sharp'
+import Icon from '@components/atoms/icon'
+import Dropdown from '@components/molecules/dropdown'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
+import { Copy, CheckCircle, Compass } from '@styled-icons/feather'
+import { SwitchCamera } from '@styled-icons/material'
+import { PlugDisconnected, AddCircle } from '@styled-icons/fluentui-system-regular'
+import CurrencyIcon from '@components/atoms/currency-icon'
+import AddPaycerToken from '@components/organisms/web3/add-paycer-token'
+import RoundetIconButton from '@components/atoms/button/roundet-icon-button'
+import { useMediaQuery } from 'react-responsive'
+import { FormattedNumber } from '../../../atoms/number/formatted-number'
 
 const WalletMenu = () => {
-  const [copiedWalletAdress, setCopiedWalletAdress] = useCopyClipboard();
-  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false);
+  const [copiedWalletAdress, setCopiedWalletAdress] = useCopyClipboard()
+  const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)
   const {
     isAuthenticated,
     walletAddress,
@@ -28,11 +28,11 @@ const WalletMenu = () => {
     handleWalletDisconnect,
     nativeSymbol,
     nativeBalanceFormatted,
-  } = useDapp();
+  } = useDapp()
 
-  const { tokenBalance: pcrBalance } = useToken('PCR');
+  const { tokenBalance: pcrBalance } = useToken('PCR')
 
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 
   if (!isAuthenticated) {
     return (
@@ -47,7 +47,7 @@ const WalletMenu = () => {
                   )
                 )}
       </>
-    );
+    )
   }
 
   const renderMenu = () => (
@@ -78,7 +78,7 @@ const WalletMenu = () => {
 
       <a
         onClick={() => {
-          setShowWalletProviderModal(true);
+          setShowWalletProviderModal(true)
         }}
         className="mb-4 d-flex"
       >
@@ -108,8 +108,8 @@ const WalletMenu = () => {
       </AddPaycerToken>
       <a
         onClick={async () => {
-          window.localStorage.setItem('walletConnectedProviderName', '');
-          await handleWalletDisconnect();
+          window.localStorage.setItem('walletConnectedProviderName', '')
+          await handleWalletDisconnect()
         }}
         className="d-flex"
       >
@@ -163,7 +163,7 @@ const WalletMenu = () => {
         </div>
       </div>
     </>
-  );
+  )
 
   return (
     <>
@@ -184,7 +184,7 @@ const WalletMenu = () => {
               )
             )}
     </>
-  );
-};
+  )
+}
 
-export default WalletMenu;
+export default WalletMenu

@@ -1,11 +1,11 @@
-import React from 'react';
-import { t } from '@lingui/macro';
-import { useInvestList } from '@context/invest-list-context';
-import InvestItem from './invest-item';
+import React from 'react'
+import { t } from '@lingui/macro'
+import { useInvestList } from '@context/invest-list-context'
+import InvestItem from './invest-item'
 
 export default function InvestList() {
-  const { strategies } = useInvestList();
-  const thClass = 'bg-card-blue border border-secondary-dark';
+  const { strategies } = useInvestList()
+  const thClass = 'bg-card-blue border border-secondary-dark'
 
   return (
     <div className="table-responsive mb-0 border-0">
@@ -51,5 +51,5 @@ export default function InvestList() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }

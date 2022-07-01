@@ -1,8 +1,8 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import * as BootstrapIconsSet from '@styled-icons/bootstrap';
-import * as CryptoIconsSet from '@styled-icons/crypto';
-import IconComponent, { IconProps } from './icon';
+import React from 'react'
+import { Meta } from '@storybook/react'
+import * as BootstrapIconsSet from '@styled-icons/bootstrap'
+import * as CryptoIconsSet from '@styled-icons/crypto'
+import IconComponent, { IconProps } from './icon'
 
 export default {
   title: 'Atom/Icon',
@@ -18,7 +18,7 @@ export default {
       control: 'text',
     },
   },
-} as Meta;
+} as Meta
 
 const buildIcons = (iconSet, props) => (
   <div className="row">
@@ -38,24 +38,24 @@ const buildIcons = (iconSet, props) => (
       </div>
     ))}
   </div>
-);
+)
 
 const BootstrapTemplate: (args: IconProps) => JSX.Element = (args: IconProps) => (
   <div>
     <h3>Bootstrap Icons</h3>
     {buildIcons(BootstrapIconsSet, args)}
   </div>
-);
+)
 
 const CryptoTemplate: (args: IconProps) => JSX.Element = (args: IconProps) => (
   <div>
     <h3>Crypto Icons</h3>
     {buildIcons(CryptoIconsSet, args)}
   </div>
-);
+)
 
-export const Bootstrap = BootstrapTemplate.bind({});
-Bootstrap.args = { size: 25, color: 'black' };
+export const Bootstrap = BootstrapTemplate.bind({})
+Bootstrap.args = { size: 25, color: 'black' }
 
-export const Crypto = CryptoTemplate.bind({});
-Crypto.args = { size: 45, color: 'black' };
+export const Crypto = CryptoTemplate.bind({})
+Crypto.args = { size: 45, color: 'black' }

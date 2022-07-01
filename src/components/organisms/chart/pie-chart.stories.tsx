@@ -1,13 +1,13 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import PieChartComponent, { PieChartProps } from './pie-chart';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
+import PieChartComponent, { PieChartProps } from './pie-chart'
 
 export default {
   title: 'Organism/Chart',
   argTypes: {},
-} as Meta;
+} as Meta
 
-type StoryOptions = Partial<PieChartProps>;
+type StoryOptions = Partial<PieChartProps>
 
 const Template: Story<StoryOptions> = ({ data, colors, dataKey }: StoryOptions) => (
   <PieChartComponent
@@ -15,9 +15,9 @@ const Template: Story<StoryOptions> = ({ data, colors, dataKey }: StoryOptions) 
     colors={colors}
     dataKey={dataKey}
   />
-);
+)
 
-export const PieChart = Template.bind({});
+export const PieChart = Template.bind({})
 PieChart.args = {
   data: [
     { name: 'Group A', value: 400 },
@@ -32,4 +32,4 @@ PieChart.args = {
     '#FF8042',
   ],
   dataKey: 'value',
-};
+}
