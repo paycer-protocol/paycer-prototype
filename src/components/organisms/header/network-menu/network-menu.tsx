@@ -6,7 +6,7 @@ import Dropdown from '@components/molecules/dropdown'
 import { Network } from '@styled-icons/entypo'
 import { useDapp } from '@context/dapp-context'
 import { toast } from 'react-toastify'
-import { chainedNetworkProvider, mainNetProviders } from '@providers/networks'
+import { allNetProviders, chainedNetworkProvider, mainNetProviders } from '@providers/networks'
 import { Check2 } from '@styled-icons/bootstrap'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import RoundetIconButton from '@components/atoms/button/roundet-icon-button'
@@ -22,7 +22,7 @@ export const NetworkItem = styled.a`
 `
 
 const NetworkMenu = () => {
-  const providers = isDebug() ? chainedNetworkProvider : mainNetProviders
+  const providers = isDebug() ? allNetProviders : mainNetProviders
   const { isAuthenticated, currentNetworkId, handleSwitchNetwork } = useDapp()
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991.98px)' })
 

@@ -97,7 +97,7 @@ export const mainNetProviders: INetworkProvider = {
   },
 }
 
-export const allNetProviers: INetworkProvider = {
+export const allNetProviders: INetworkProvider = {
   ...mainNetProviders,
   ...testNetNetworks,
 }
