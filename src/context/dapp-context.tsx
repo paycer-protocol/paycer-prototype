@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { IConnectorProvider } from '@providers/connectors'
 import { useChain, useMoralis, useNativeBalance, useMoralisWeb3Api, useERC20Balances } from 'react-moralis'
-import { mainNetProviders } from '@providers/networks'
+import { allNetProviders } from '@providers/networks'
 import ChainId from '@providers/chain-id'
 import { Symbols } from '@providers/symbols'
 import { supportedChains, supportedStakingChains } from '@config/network'
@@ -106,7 +106,7 @@ const DappContextProvider = ({ children }) => {
   } = useNativeBalance({ chain: chain?.chainId })
 
   const walletAddress = account || ''
-  const currentNetwork = mainNetProviders[chain?.networkId || ChainId.Polygon]
+  const currentNetwork = allNetProviders[chain?.networkId || ChainId.Polygon]
 
   const { fetchERC20Balances, data: ERC20Balances } = useERC20Balances()
   const [blockNumber, setBlockNumber] = useState<number>(0)
