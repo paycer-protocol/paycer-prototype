@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <>
       <header className="mx-md-4 mx-lg-5 pt-0 pt-md-2 pb-md-3" style={{ position: 'relative', zIndex: 10 }}>
-        <div className="navbar navbar-expand-lg border-bottom-0 pb-4">
+        <div className="navbar navbar-expand-lg border-bottom-0 py-3">
           <div className="container-fluid flex-row-reverse">
             <Link href="/">
               <Styles.StyledLogo>
