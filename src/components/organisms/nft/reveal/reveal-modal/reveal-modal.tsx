@@ -1,10 +1,6 @@
-import GradientButton from '@components/atoms/button/gradient-button'
-import Modal from '@components/molecules/modal'
 import RevealApproveModal from '@components/organisms/nft/reveal/reveal-modal/reveal-approve-modal'
-import useNfts, { withIpfsGateway } from '@hooks/nft/use-nfts'
 import useNftReveal from '@hooks/nft/use-reveal'
 import { t } from '@lingui/macro'
-import NftModelViewer from '../../common/model-viewer'
 
 export interface RevealModalProps {
   tokenId: string
