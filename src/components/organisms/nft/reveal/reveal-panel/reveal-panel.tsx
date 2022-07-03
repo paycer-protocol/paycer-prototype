@@ -19,6 +19,7 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
       <Select
         label={t`Choose NFT to reveal`}
         name="selector"
+        disabled={options === undefined}
         value={value?.id.toString() ?? ''}
         onChange={(e) => {
           console.log(options.find((nft) => nft.id.toString() === e.target.value))
