@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useDapp } from '@context/dapp-context'
 import Moralis from 'moralis'
 import { BigNumber } from 'ethers'
-import { allNetProviers } from '@providers/networks'
+import { allNetProviders } from '@providers/networks'
 import Nft, { PcrNftMetadata } from '../../types/nft'
 
 interface Property {
@@ -23,7 +23,7 @@ export function withIpfsGateway(url: string) {
 }
 
 export async function fetchTokensById(currentNetworkId: number, tokenIds: Nft['id'][]): Promise<Nft[]> {
-  const { chainId } = allNetProviers[currentNetworkId]
+  const { chainId } = allNetProviders[currentNetworkId]
   const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
 
   const tokenUris = (await Promise.all(tokenIds.map((tokenId) => {

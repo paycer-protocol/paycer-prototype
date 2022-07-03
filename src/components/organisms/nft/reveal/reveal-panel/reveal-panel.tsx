@@ -55,7 +55,7 @@ const RevealPanel = (props: RevealPanelProps) => {
   const { isAuthenticated } = useDapp()
 
   const ownedNfts = useOwnedNfts()
-  const unrevealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level === 0) : undefined
+  const unrevealedNfts = ownedNfts.nfts
 
   const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined)
 

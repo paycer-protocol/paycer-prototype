@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 import { useDapp } from '@context/dapp-context'
 import Moralis from 'moralis'
 import ChainId from '@providers/chain-id'
-import { allNetProviers } from '@providers/networks'
+import { allNetProviders } from '@providers/networks'
 import { fetchTokensById, UseNftsProps } from './use-nfts'
 
 async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<string[]> {
-  const { chainId } = allNetProviers[currentNetworkId]
+  const { chainId } = allNetProviders[currentNetworkId]
   const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
 
   const numTokensOptions = {

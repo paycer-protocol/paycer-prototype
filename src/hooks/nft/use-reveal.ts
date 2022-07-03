@@ -1,6 +1,6 @@
 import Moralis from 'moralis'
 import { useCallback, useEffect, useState } from 'react'
-import { allNetProviers } from '@providers/networks'
+import { allNetProviders } from '@providers/networks'
 import nftProvider from '@providers/nft'
 import ChainId from '@providers/chain-id'
 import { useDapp } from '@context/dapp-context'
@@ -26,7 +26,7 @@ enum RevealStatus {
 }
 
 async function fetchTokenRevealStatus(currentNetworkId: number, tokenId: string): Promise<RevealStatus> {
-  const { chainId } = allNetProviers[currentNetworkId]
+  const { chainId } = allNetProviders[currentNetworkId]
   const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
   const options = {
     abi,
@@ -63,7 +63,7 @@ export default function useNftReveal(tokenId: string): UseNftRevealProps {
     if (!owner || !isAuthenticated || !isWeb3Enabled) return
     if (executeStatus !== 'idle') return
 
-    const { chainId } = allNetProviers[currentNetworkId]
+    const { chainId } = allNetProviders[currentNetworkId]
     const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
     const options = {
       abi,

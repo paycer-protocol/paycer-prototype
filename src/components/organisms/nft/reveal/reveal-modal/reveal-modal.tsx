@@ -1,6 +1,6 @@
 import GradientButton from '@components/atoms/button/gradient-button'
 import Modal from '@components/molecules/modal'
-import TransactionApproveModal from '@components/organisms/transaction-approve-modal'
+import RevealApproveModal from '@components/organisms/nft/reveal/reveal-modal/reveal-approve-modal'
 import useNfts, { withIpfsGateway } from '@hooks/nft/use-nfts'
 import useNftReveal from '@hooks/nft/use-reveal'
 import { t } from '@lingui/macro'
@@ -15,37 +15,14 @@ export interface RevealModalProps {
 export default function RevealModal({ tokenId, show, onHide }: RevealModalProps) {
   const nftReveal = useNftReveal(tokenId)
   return (
-    <>
-      {
-        nftReveal.status !== 'success' && (
-          <TransactionApproveModal
-            show={show}
-            onHide={onHide}
-            title={t`Confirm Reveal`}
-            onClick={() => { nftReveal.status === 'idle' && nftReveal.reveal() }}
-            infoMessage={t`Revealing NFT. This may take a while.`}
-            successMessage={t`Transaction was successfully executed`}
-            error={nftReveal.status === 'error' ? new Error(t`Something went wrong, please try again later.`) : undefined}
-            success={false}
-            loading={nftReveal.status === 'loading'}
-          >
-            <></>
-          </TransactionApproveModal>
-        )
-      }
-      {
-        nftReveal.status === 'success' && (
-          <Modal show={show} onHide={onHide} centered>
-            <>
-              <Modal.Title>{t`Your NFT was revealed successfully`}</Modal.Title>
-              <NftModelViewer url={withIpfsGateway(nftReveal.nft.metadata.animation_url)} />
-              <Modal.Footer>
-                <GradientButton>{t`View Details`}</GradientButton>
-              </Modal.Footer>
-            </>
-          </Modal>
-        )
-      }
-    </>
+      <RevealApproveModal
+          show={show}
+          onHide={onHide}
+          title={t`Confirm Reveal`}
+          onClick={() => { nftReveal.status === 'idle' && nftReveal.reveal() }}
+          infoMessage={t`Revealing NFT. This may take a while.`}
+          successMessage={t`Transaction was successfully executed`}
+          nftReveal={nftReveal}
+      />
   )
 }

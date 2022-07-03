@@ -1,7 +1,7 @@
 import Moralis from 'moralis'
 import { useCallback, useState } from 'react'
 import { useDapp } from '@context/dapp-context'
-import { allNetProviers } from '@providers/networks'
+import { allNetProviders } from '@providers/networks'
 import axios from 'axios'
 import Nft from '../../types/nft'
 import { fetchTokensById } from './use-nfts'
