@@ -58,7 +58,10 @@ $reveal-finish-color-two: #ceae03;
   }
 
   .nft-reveal-sparkle {
-    position: relative;
+    position: absolute;
+    z-index: 22;
+    width: 100%;
+    height: 100%;
     canvas {
       height: 400px;
     }
