@@ -1,33 +1,59 @@
 import nftProvider from '@providers/nft'
-import { ChainId, useContractCall, useContractCalls } from '@usedapp/core'
-import { useMemo } from 'react'
-import { Interface } from '@ethersproject/abi'
+import { useEffect, useState } from 'react'
 import { useDapp } from '@context/dapp-context'
-import useNfts, { UseNftsProps } from './use-nfts'
+import Moralis from 'moralis'
+import ChainId from '@providers/chain-id'
+import { allNetProviders } from '@providers/networks'
+import { fetchTokensById, UseNftsProps } from './use-nfts'
 
-/* TODO: REFACTOR FOR MORALIS */
+async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<string[]> {
+  const { chainId } = allNetProviders[currentNetworkId]
+  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
+
+  const numTokensOptions = {
+    abi,
+    chain: chainId as any,
+    address: contractAddress,
+    function_name: 'balanceOf',
+    params: {
+      owner,
+    },
+  }
+  const numTokens = Number.parseInt(await Moralis.Web3API.native.runContractFunction(numTokensOptions))
+
+  const tokenIds = (await Promise.all(Array.from({ length: numTokens }, (_, index) => {
+    const tokenIdOptions = {
+      abi,
+      chain: chainId as any,
+      address: contractAddress,
+      function_name: 'tokenOfOwnerByIndex',
+      params: {
+        owner,
+        index: `${index}`,
+      },
+    }
+    return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
+  })))
+
+  return tokenIds
+}
 
 export default function useOwnedNfts(): UseNftsProps {
-  const { currentNetworkId, walletAddress: owner, isAuthenticated } = useDapp()
+  const { currentNetworkId, walletAddress: owner, isAuthenticated, isWeb3Enabled } = useDapp()
 
-  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).nft
-  const abiInterface = useMemo(() => new Interface(abi), [abi])
+  const [status, setStatus] = useState<UseNftsProps>({ status: 'loading' })
 
-  const [numberOfTokens] = useContractCall(isAuthenticated && {
-    abi: abiInterface,
-    address: contractAddress,
-    method: 'balanceOf',
-    args: [owner],
-  }) ?? []
+  useEffect(() => {
+    if (!owner || !isAuthenticated || !isWeb3Enabled) return
+    setStatus({ status: 'loading' })
+    fetchOwnedTokenIds(currentNetworkId, owner)
+      .then((tokenIds) => fetchTokensById(currentNetworkId, tokenIds))
+      .then((nfts) => setStatus({ status: 'success', nfts }))
+      .catch((err) => {
+        setStatus({ status: 'error' })
+        console.error(err)
+      })
+  }, [currentNetworkId, isAuthenticated, isWeb3Enabled, owner])
 
-  const tokenIds = (
-    useContractCalls(Array.from({ length: numberOfTokens ?? 0 }, (_, i) => ({
-      abi: abiInterface,
-      address: contractAddress,
-      method: 'tokenOfOwnerByIndex',
-      args: [owner, i],
-    })))
-  ).map((result) => result ? result[0] : undefined)
-
-  return useNfts(tokenIds)
+  return status
 }

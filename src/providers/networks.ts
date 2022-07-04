@@ -30,7 +30,7 @@ export interface INetworkProvider {
 export const testNetNetworks: INetworkProvider = {
   [ChainId.Mumbai]: {
     chainId: '0x13881',
-    chainName: 'Polygon - Testnet',
+    chainName: 'Mumbai',
     nativeCurrency: {
       name: 'Polygon (MATIC Mumbai)',
       symbol: 'MATIC',
@@ -95,6 +95,11 @@ export const mainNetProviders: INetworkProvider = {
     },
     multicallAddress: '0x275617327c958bD06b5D6b871E7f491D76113dd8',
   },
+}
+
+export const allNetProviders: INetworkProvider = {
+  ...mainNetProviders,
+  ...testNetNetworks,
 }
 
 export const infoChartProviders: INetworkProvider = {

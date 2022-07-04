@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PageHeader from '@components/molecules/page-header'
 import { t } from '@lingui/macro'
+import NftModelViewer from '../common/model-viewer'
 
 const partners = [
   {
@@ -131,9 +132,12 @@ export default function AboutSection() {
               <AboutText />
             </div>
             <div className="col-lg-6 d-none d-lg-block position-relative">
-              <HorseImage
-                src="/img/nft/about-nft-3.png"
-              />
+              {/* <HorseImage
+                    src={`/img/nft/about-nft-3.png`}
+                  /> */}
+              <div className="position-absolute" style={{ width: '130%', height: '130%', top: '-15%', left: '-15%' }}>
+                <NftModelViewer url="/assets/models/nft/horse1.glb" />
+              </div>
             </div>
           </div>
         </div>

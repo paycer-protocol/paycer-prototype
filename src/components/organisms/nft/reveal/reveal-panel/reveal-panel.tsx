@@ -1,6 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { t } from '@lingui/macro'
 import GradientButton from '@components/atoms/button/gradient-button'
+import useOwnedNfts from '@hooks/nft/use-owned-nfts'
+import Select from '@components/atoms/form/select'
+import Form from '@components/atoms/form'
+import { useDapp } from '@context/dapp-context'
+import RevealModal from '../reveal-modal'
+import Nft from '../../../../../types/nft'
+import { Countdown } from '../../common/countdown'
+import ConnectWalletButton from '../../landing-page/connect-wallet-button'
+
+function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined, value: Nft | undefined, onChanged: (nft: Nft) => void }) {
+  return (
+    <Form
+      initialValues={{}}
+      onSubmit={() => { }}
+    >
+      <Select
+        label={t`Choose NFT to reveal`}
+        name="selector"
+        disabled={options === undefined}
+        value={value?.id.toString() ?? ''}
+        onChange={(e) => {
+          console.log(options.find((nft) => nft.id.toString() === e.target.value))
+          onChanged(options.find((nft) => nft.id.toString() === e.target.value))
+        }}
+      >
+        {options !== undefined
+          ? (
+            options.length === 0
+              ? <option value={undefined} selected disabled>{t`No unrevealed NFTs available`}</option>
+              : <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
+          )
+          : <option value={undefined} selected disabled>{t`Loading NFTs...`}</option>}
+        {options?.map((option) => (
+          <option key={option.id.toString()} value={option.id.toString()}>
+            #
+            {option.id.toString()}
+          </option>
+        ))}
+      </Select>
+    </Form>
+  )
+}
 
 export interface RevealPanelProps {
 
@@ -9,59 +51,16 @@ export interface RevealPanelProps {
 const RevealPanel = (props: RevealPanelProps) => {
   const startTime = new Date(Date.parse('30 Oct 2022 00:00:00 GMT'))
   const timeLeft = startTime.getTime() - Date.now()
-  const isRevealAble = true
+  const isRevealable = true // timeLeft <= 0
 
-  function Countdown({ timeLeft }: { timeLeft: number }) {
-    const minutes = Math.floor((timeLeft / 1000 / 60) % 60)
-    const hours = Math.floor((timeLeft / 1000 / 60 / 60) % 24)
-    const days = Math.floor((timeLeft / 1000 / 60 / 60 / 24))
+  const { isAuthenticated } = useDapp()
 
-    return (
-      <div className="row d-flex align-items-center justify-content-between">
-        <div className="col-4 col-md-3 position-relative">
-          <div className="card mb-0 p-3 bg-dark text-center">
-            <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
-              {days}
-              D
-            </span>
-          </div>
-          <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
-            <span className="display-4 mx-2">:</span>
-          </div>
-        </div>
+  const ownedNfts = useOwnedNfts()
+  const unrevealedNfts = ownedNfts.status === 'success' ? ownedNfts.nfts.filter((nft) => nft.metadata.level === 0) : undefined
 
-        <div className="col-1 d-none d-md-block">
-          <span className="display-4 mx-1">:</span>
-        </div>
-        <div className="col-4 col-md-3 position-relative">
-          <div className="card mb-0 p-3 bg-dark text-center">
-            <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
-              {hours}
-              H
-            </span>
-          </div>
-          <div className="d-md-none position-absolute" style={{ right: '-11px', top: '20px' }}>
-            <span className="display-4 mx-1">:</span>
-          </div>
-        </div>
-        <div className="col-1 d-none d-md-block">
-          <span className="display-4 mx-2">:</span>
-        </div>
-        <div className="col-4 col-md-3">
-          <div className="card mb-0 p-3 bg-dark text-center">
-            <span className="fw-bold p-1" style={{ fontSize: '22px' }}>
-              {minutes}
-              M
-            </span>
-          </div>
-        </div>
-      </div>
-    )
-  }
+  const [selectedNft, setSelectedNft] = useState<Nft | undefined>(undefined)
 
-  const handleReveal = () => {
-
-  }
+  const [revealModalShown, setRevealModalShown] = useState(false)
 
   return (
     <div>
@@ -72,18 +71,35 @@ const RevealPanel = (props: RevealPanelProps) => {
         {t`Paycer Utility NFT`}
       </div>
 
-      <h2 className="display-2 mb-3 mb-md-4 text-end">
+      <h2 className="display-2 mb-4 text-end">
         {t`Your NFT reveal`}
       </h2>
 
-      <div className="mb-5">
-        <Countdown timeLeft={timeLeft} />
-      </div>
+      {
+        isRevealable
+          ? (
+            !isAuthenticated
+              ? (
+                <div className="mt-5">
+                  <ConnectWalletButton />
+                </div>
+              )
+              : (
+                <>
+                  <div className="mb-5">
+                    <NftSelector value={selectedNft} onChanged={setSelectedNft} options={unrevealedNfts} />
+                  </div>
 
-      <div className="d-flex justify-content-end" onClick={() => handleReveal()}>
-        <GradientButton disabled={!isRevealAble}>{t`REVEAL MY NFT`}</GradientButton>
-      </div>
+                  <div className="d-flex justify-content-end" onClick={() => selectedNft !== undefined && setRevealModalShown(true)}>
+                    <GradientButton disabled={!isRevealable || selectedNft === undefined}>{t`REVEAL MY NFT`}</GradientButton>
+                  </div>
+                </>
+              )
+          )
+          : <Countdown timeLeft={timeLeft} />
+      }
 
+      {selectedNft && <RevealModal key={`${revealModalShown}`} tokenId={selectedNft.id} show={revealModalShown} onHide={() => setRevealModalShown(false)} />}
     </div>
   )
 }
