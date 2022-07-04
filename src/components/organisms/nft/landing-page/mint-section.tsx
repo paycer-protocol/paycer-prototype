@@ -7,6 +7,7 @@ import { useDapp } from '@context/dapp-context'
 import { ArrowForward } from '@styled-icons/material'
 import Image from 'next/image'
 import styled from 'styled-components'
+import useNftSale from '@hooks/nft/use-nft-sale'
 import JoinWhitelistModal from './join-whitelist-modal'
 
 const Background = styled.div`
@@ -63,9 +64,9 @@ function InfoColumn({ presaleStart, publicSaleStart }: { presaleStart: Date, pub
       ? (
         <div className="col-lg-6 mb-4 mb-md-0">
           <ol className="p-0 mb-5">
-            <PrettyLi>{t`<b>Connect MetaMask wallet for minting</b>`}</PrettyLi>
-            <PrettyLi>{t`<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee`}</PrettyLi>
-            <PrettyLi>{t`<b>Limits:</b>&nbsp;3 NFT per transaction`}</PrettyLi>
+            <PrettyLi>{t`Connect MetaMask wallet for minting`}</PrettyLi>
+            <PrettyLi>{t`Price: 5000 PCR per NFT + Gas fee`}</PrettyLi>
+            <PrettyLi>{t`Limits: 3 NFT per transaction`}</PrettyLi>
           </ol>
           {
             publicSaleStart.getTime() < Date.now()
@@ -193,6 +194,10 @@ export interface MintSectionProps {
 }
 
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
+  const nftSale = useNftSale()
+
+  console.log(nftSale)
+
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
@@ -215,7 +220,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             {presaleStarted ? t`Mint your Paycer NFT.` : t`Join for the waiting list`}
           </h2>
           <div className="row mt-5">
-            <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
+            {nftSale.status !== 'loading' && <InfoColumn presaleStart={nftSale.info.presale.startTime} publicSaleStart={nftSale.info.publicSale.startTime} />}
             <div className="col-lg-6">
 
               {/*
