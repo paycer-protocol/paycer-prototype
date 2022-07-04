@@ -218,7 +218,7 @@ export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpC
             {presaleStarted ? t`Mint your Paycer NFT.` : t`Join for the waiting list`}
           </h2>
           <div className="row mt-5">
-            {nftSale.status !== 'loading' && <InfoColumn presaleStart={nftSale.info.presale.startTime} publicSaleStart={nftSale.info.publicSale.startTime} />}
+            <InfoColumn presaleStart={presaleStart} publicSaleStart={publicSaleStart} />
             <div className="col-lg-6">
 
               {/*
