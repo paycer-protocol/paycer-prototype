@@ -97,12 +97,11 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
                 {nftReveal.status === 'success' &&
                     //@ts-ignore
                     <Sparkle
-                        count={1}
+                        count={50}
                         fadeOutSpeed={2}
                         flickerSpeed={'slowest'}
-                        newSparkleOnFadeOut={false}
                         minSize={5}
-                        maxSize={8}
+                        maxSize={10}
                         color="#fdeea0"
                     />
                 }
