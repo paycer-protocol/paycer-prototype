@@ -196,8 +196,6 @@ export interface MintSectionProps {
 export default function MintSection({ presaleStart, publicSaleStart, onNeedHelpClicked }: MintSectionProps) {
   const nftSale = useNftSale()
 
-  console.log(nftSale)
-
   const presaleStartsIn = presaleStart.getTime() - Date.now()
   const presaleStarted = presaleStartsIn <= 0
 
