@@ -4,20 +4,19 @@ import { rpcUrls } from '@providers/rpcs'
 import { multicallAddrs } from '@providers/multicall'
 
 const config: Config = {
-    readOnlyChainId: ChainId.Polygon,
-    readOnlyUrls: rpcUrls,
-    multicallAddresses: multicallAddrs
+  readOnlyChainId: ChainId.Polygon,
+  readOnlyUrls: rpcUrls,
+  multicallAddresses: multicallAddrs,
 }
 
 export interface DappContextProps {
-    children: any
+  children: any
 }
 
 export default function DappContext({ children }: DappContextProps) {
-    return (
-        <DAppProvider config={config}>
-            {children}
-        </DAppProvider>
-    )
+  return (
+    <DAppProvider config={config}>
+      {children}
+    </DAppProvider>
+  )
 }
-

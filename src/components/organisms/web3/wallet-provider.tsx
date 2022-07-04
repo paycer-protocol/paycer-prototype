@@ -32,7 +32,7 @@ const WalletProvider = (props: WalletProviderProps) => {
       <>
         <Modal.Header closeButton onHide={onHide}>
           <Modal.Title>
-            {/*@ts-ignore*/}
+            {/* @ts-ignore */}
             {t`Connect to a wallet`}
           </Modal.Title>
         </Modal.Header>
@@ -41,33 +41,31 @@ const WalletProvider = (props: WalletProviderProps) => {
             {errorMessage}
           </Alert>
           <ListGroup>
-            {providers.map(item => {
-              return (
-                <Button
-                  style={{ borderRadius: '10px' }}
-                  key={item.name}
-                  variant="outline-primary"
-                  className="mb-2"
-                  active={item.providerId === activeWallet}
-                  disabled={isWeb3EnableLoading}
-                  onClick={() => handleConnect(item)}
-                >
-                  <div className="d-flex align-items-center justify-content-between py-3 px-2">
-                    <div className="text-start">
-                      <strong className="text-white">{item.name}</strong>
-                      <p className="mb-0">
-                        <small className="text-muted">{item.description}</small>
-                      </p>
-                    </div>
-                    {
+            {providers.map((item) => (
+              <Button
+                style={{ borderRadius: '10px' }}
+                key={item.name}
+                variant="outline-primary"
+                className="mb-2"
+                active={item.providerId === activeWallet}
+                disabled={isWeb3EnableLoading}
+                onClick={() => handleConnect(item)}
+              >
+                <div className="d-flex align-items-center justify-content-between py-3 px-2">
+                  <div className="text-start">
+                    <strong className="text-white">{item.name}</strong>
+                    <p className="mb-0">
+                      <small className="text-muted">{item.description}</small>
+                    </p>
+                  </div>
+                  {
                       isWeb3EnableLoading
                         ? <Spinner animation="border" />
                         : <img src={item.icon} alt={item.name} width="28" />
                     }
-                  </div>
-                </Button>
-              )
-            })}
+                </div>
+              </Button>
+            ))}
           </ListGroup>
         </Modal.Body>
       </>

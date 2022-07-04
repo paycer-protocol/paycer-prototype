@@ -1,55 +1,55 @@
-import {FormikProps, FormikConfig } from 'formik'
+import { FormikProps, FormikConfig } from 'formik'
 import { FormEvent, RefObject } from 'react'
 import { FormControlProps, FormGroupProps } from 'react-bootstrap'
 
 export type FormProps<Values> = FormikConfig<Values> & {
-    className?: string
+  className?: string
 }
 
 export type DerivedFormikProps<Values> = FormikProps<Values> & {
-    handleSubmit: (event: FormEvent<HTMLElement>) => void
+  handleSubmit: (event: FormEvent<HTMLElement>) => void
 }
 
 export type FormFieldProps = {
-    name: string
-    label?: string
-    helpText?: string
+  name: string
+  label?: string
+  helpText?: string
 }
 
 export type FormGroupFieldProps = FormGroupProps & {
-    name: string
-    label?: string
-    helpText?: string
-    error?: string
+  name: string
+  label?: string
+  helpText?: string
+  error?: string
 }
 
 export type FormInputFieldProps = FormControlProps &
-    JSX.IntrinsicElements['input'] &
-    FormFieldProps
+JSX.IntrinsicElements['input'] &
+FormFieldProps
 
 export type FormTextareaFieldProps = Omit<FormControlProps, 'type'> &
-    Omit<JSX.IntrinsicElements['textarea'], 'ref'> &
-    FormFieldProps
+Omit<JSX.IntrinsicElements['textarea'], 'ref'> &
+FormFieldProps
 
 export type FormSelectFieldProps = Omit<FormControlProps, 'select'> &
-    Omit<JSX.IntrinsicElements['select'], 'ref'> &
-    FormFieldProps & {
-    ref?:
-        | RefObject<HTMLSelectElement>
-        | ((instance: HTMLSelectElement | null) => void)
+Omit<JSX.IntrinsicElements['select'], 'ref'> &
+FormFieldProps & {
+  ref?:
+  | RefObject<HTMLSelectElement>
+  | ((instance: HTMLSelectElement | null) => void)
 }
 
 export type FormRangeFieldProps = Omit<FormInputFieldProps, 'type'>
 
 export type FormCheckboxFieldProps = Omit<FormControlProps, 'type'> &
-    JSX.IntrinsicElements['input'] & {
-    name: string
-    label: string
-    isSwitch?: boolean
+JSX.IntrinsicElements['input'] & {
+  name: string
+  label: string
+  isSwitch?: boolean
 }
 
 export type FormSwitchFieldProps = Omit<FormControlProps, 'type'> &
-    JSX.IntrinsicElements['input'] & {
-    name: string
-    label: string
+JSX.IntrinsicElements['input'] & {
+  name: string
+  label: string
 }

@@ -5,10 +5,13 @@
 
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('nextjs-fonts')
-const langConfig = require('./lingui.config.js')
-const { locales, sourceLocale } = langConfig
+
 const path = require('path')
 const { withSentryConfig } = require('@sentry/nextjs')
+
+const langConfig = require('./lingui.config.js')
+
+const { locales, sourceLocale } = langConfig
 
 const nextConfig = {
   poweredByHeader: false,
@@ -29,9 +32,9 @@ const nextConfig = {
           loader: 'url-loader',
           options: {
             limit: 100000,
-            name: '[name].[ext]'
-          }
-        }
+            name: '[name].[ext]',
+          },
+        },
       },
     )
 
@@ -44,7 +47,6 @@ const nextConfig = {
   },
 }
 
-
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
@@ -55,8 +57,8 @@ const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
+}
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(withPlugins([[withFonts]], nextConfig),sentryWebpackPluginOptions);
+module.exports = withSentryConfig(withPlugins([[withFonts]], nextConfig), sentryWebpackPluginOptions)

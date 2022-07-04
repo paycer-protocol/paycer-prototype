@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import Modal from '@components/molecules/modal'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import Alert from '@components/atoms/alert'
-import { TokenType } from '../../../types/investment'
 import useSupportedTokens, { ITokenDataProvider } from '@hooks/use-supported-token'
 import { FormattedNumber } from '@components/atoms/number/formatted-number'
-import useToken from "@hooks/use-token";
+import useToken from '@hooks/use-token'
+import { TokenType } from '../../../types/investment'
 
 interface TokenSelectModalProps {
   show: boolean
@@ -31,15 +31,12 @@ export default function TokenSelectModal(props: TokenSelectModalProps) {
 
     if (keywords) {
       keywords = keywords.toLowerCase().split(' ')
-      keywords = keywords.filter(f => f !== '')
+      keywords = keywords.filter((f) => f !== '')
 
-      const nextTokens = tokens.filter(f =>
-        keywords.some(k => f.name.toLowerCase().includes(k.toLowerCase()))
-        || keywords.some(k => f.symbol.toLowerCase().includes(k.toLowerCase()))
-      )
+      const nextTokens = tokens.filter((f) => keywords.some((k) => f.name.toLowerCase().includes(k.toLowerCase()))
+        || keywords.some((k) => f.symbol.toLowerCase().includes(k.toLowerCase())))
 
       setFilteredTokens(nextTokens)
-
     } else {
       setFilteredTokens(tokens)
     }
@@ -117,5 +114,4 @@ const ListItem = (props: ListItemProps) => {
       </TokenBalanceLabel>
     </a>
   )
-
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { t } from '@lingui/macro'
 import Modal from '@components/molecules/modal'
 import Icon from '@components/atoms/icon'
@@ -16,7 +16,7 @@ export const SettingsModal = (props) => {
   return (
     <>
       <IconWrapper
-        style={{ padding: '16px 0 16px 16px'}}
+        style={{ padding: '16px 0 16px 16px' }}
         onClick={() => setShow(true)}
         className="cursor-pointer"
       >

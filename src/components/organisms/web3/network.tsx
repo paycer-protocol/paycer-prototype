@@ -5,8 +5,8 @@ import Button from '@components/atoms/button'
 import { useDapp } from '@context/dapp-context'
 import CurrencyIcon from '@components/atoms/currency-icon'
 import { FormattedNumber } from '@components/atoms/number'
-import NetworkProvider  from './network-provider'
 import { mainNetProviders, chainedNetworkProvider } from '@providers/networks'
+import NetworkProvider from './network-provider'
 
 function isDebug() {
   return window.location.hostname === 'localhost'
@@ -35,22 +35,22 @@ const Network = (props) => {
         className={classnames('d-flex align-items-center justify-content-center bg-dark text-light w-100', props.className)}
         onClick={() => setShowNetworkModal(true)}
       >
-          <div className="me-3">
-              <div className="d-flex">
-                  <CurrencyIcon
-                      style={{ marginTop: '1px' }}
-                      className="me-3"
-                      symbol={nativeSymbol}
-                      width={20}
-                  />
-                  {nativeBalanceFormatted}
-              </div>
+        <div className="me-3">
+          <div className="d-flex">
+            <CurrencyIcon
+              style={{ marginTop: '1px' }}
+              className="me-3"
+              symbol={nativeSymbol}
+              width={20}
+            />
+            {nativeBalanceFormatted}
           </div>
+        </div>
 
       </StyledButton>
 
       <Button onClick={() => setShowNetworkModal(true)} className="mb-3 mb-md-0 w-100 d-flex align-items-center justify-content-center bg-dark text-light bg-primary">
-          <span className="mx-2">{chainName}</span>
+        <span className="mx-2">{chainName}</span>
       </Button>
 
       <NetworkProvider

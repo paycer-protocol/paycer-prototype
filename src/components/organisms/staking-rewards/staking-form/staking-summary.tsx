@@ -25,7 +25,12 @@ export default function StakingSummary() {
     <div>
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 className="m-0">{t`Staking`}</h2>
-        <span>{initialValues.rewardRate}% {t`APR`}</span>
+        <span>
+          {initialValues.rewardRate}
+          %
+          {' '}
+          {t`APR`}
+        </span>
       </div>
       <div className="mb-5">
         <StyledProgressBar
@@ -75,7 +80,7 @@ export default function StakingSummary() {
       <div className="d-flex align-items-center justify-content-center mb-3">
         <Button
           title={t`Apply`}
-          variant={'primary'}
+          variant="primary"
           className="px-5"
           onClick={() => setFieldValue('disabled', false)}
         >

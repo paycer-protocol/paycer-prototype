@@ -8,11 +8,9 @@ export default class AppDocument extends Document {
     const originalRenderPage = ctx.renderPage
 
     try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
+      ctx.renderPage = () => originalRenderPage({
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      })
 
       const initialProps = await Document.getInitialProps(ctx)
       return {
@@ -42,7 +40,8 @@ export default class AppDocument extends Document {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-6MBKTRME01');
-            `}}
+            `,
+            }}
           />
         </Head>
         <body>
@@ -51,6 +50,6 @@ export default class AppDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

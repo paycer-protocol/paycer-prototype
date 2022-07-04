@@ -11,34 +11,34 @@ export interface DropdownButtonProps extends BaseDropdownButtonProps {}
 export interface DropdownItemProps extends BaseDropdownItemProps {}
 export interface DropdownMenuProps extends BaseDropdownMenuProps {}
 
-const Dropdown = ({ children, ...restProps}: DropdownProps) => (
-    <BaseDropdown {...restProps}>
-        {children}
-    </BaseDropdown>
+const Dropdown = ({ children, ...restProps }: DropdownProps) => (
+  <BaseDropdown {...restProps}>
+    {children}
+  </BaseDropdown>
 )
 
-export const DropdownToggle = ({ children, ...restProps}: DropdownToggleProps) => (
-    <BaseDropdownToggle {...restProps}>
-        {children}
-    </BaseDropdownToggle>
+export const DropdownToggle = ({ children, ...restProps }: DropdownToggleProps) => (
+  <BaseDropdownToggle {...restProps}>
+    {children}
+  </BaseDropdownToggle>
 )
 
-export const DropdownButton = ({ children, ...restProps}: DropdownButtonProps) => (
-    <BaseDropdownButton {...restProps}>
-        {children}
-    </BaseDropdownButton>
+export const DropdownButton = ({ children, ...restProps }: DropdownButtonProps) => (
+  <BaseDropdownButton {...restProps}>
+    {children}
+  </BaseDropdownButton>
 )
 
-export const DropdownItem = ({ children, ...restProps}: DropdownItemProps) => (
-    <BaseDropdownItem {...restProps}>
-        {children}
-    </BaseDropdownItem>
+export const DropdownItem = ({ children, ...restProps }: DropdownItemProps) => (
+  <BaseDropdownItem {...restProps}>
+    {children}
+  </BaseDropdownItem>
 )
 
-export const DropdownMenu = ({ children, ...restProps}: DropdownMenuProps) => (
-    <BaseDropdownMenu {...restProps}>
-        {children}
-    </BaseDropdownMenu>
+export const DropdownMenu = ({ children, ...restProps }: DropdownMenuProps) => (
+  <BaseDropdownMenu {...restProps}>
+    {children}
+  </BaseDropdownMenu>
 )
 
 Dropdown.Toggle = DropdownToggle

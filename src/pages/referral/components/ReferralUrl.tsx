@@ -7,7 +7,7 @@ import useCopyClipboard from '@hooks/use-copy-clipboard'
 import { useDapp } from '@context/dapp-context'
 import api from '../../../api'
 
-export default function ReferralUrl () {
+export default function ReferralUrl() {
   const [isCopied, setCopied] = useCopyClipboard()
   const [code, setCode] = useState()
   const { isAuthenticated, walletAddress } = useDapp()
@@ -41,7 +41,7 @@ export default function ReferralUrl () {
             value={code ? `https://paycer.io?r=${code}` : ''}
             aria-describedby="copy-btn"
           />
-          <InputGroup.Text id="copy-btn" onClick={() => setCopied(code ? `https://paycer.io?r=${code}`: '')}>
+          <InputGroup.Text id="copy-btn" onClick={() => setCopied(code ? `https://paycer.io?r=${code}` : '')}>
             {isCopied ? (<Icon component={BookmarkCheck} size={22} />) : (<Icon component={Bookmark} size={22} />)}
           </InputGroup.Text>
         </InputGroup>

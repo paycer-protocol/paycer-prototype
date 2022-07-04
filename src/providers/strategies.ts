@@ -1,7 +1,7 @@
 import { tokenProvider } from '@providers/tokens'
 import { paycerProvider } from '@providers/protocols'
-import { IStrategyProvider, RiskLevel } from '../types/investment'
 import { ChainId } from '@usedapp/core'
+import { IStrategyProvider, RiskLevel } from '../types/investment'
 
 export const strategyProvider: IStrategyProvider = {
   USDCStable: {
@@ -27,8 +27,8 @@ export const strategyProvider: IStrategyProvider = {
       feeSymbol: tokenProvider.USDC.symbol,
     },
     chainAddresses: {
-      [ChainId.Polygon]: '0x007f4817dDacd820690303e21A9505AdF9ea32F8'
-    }
+      [ChainId.Polygon]: '0x007f4817dDacd820690303e21A9505AdF9ea32F8',
+    },
   },
   DAIStable: {
     riskLevel: RiskLevel.Medium,
@@ -53,8 +53,8 @@ export const strategyProvider: IStrategyProvider = {
       feeSymbol: tokenProvider.DAI.symbol,
     },
     chainAddresses: {
-      [ChainId.Polygon]: '0xb667841138d226962fAB5b85907650BEA08A9733'
-    }
+      [ChainId.Polygon]: '0xb667841138d226962fAB5b85907650BEA08A9733',
+    },
   },
   USDTStable: {
     riskLevel: RiskLevel.High,
@@ -79,8 +79,8 @@ export const strategyProvider: IStrategyProvider = {
       feeSymbol: tokenProvider.USDT.symbol,
     },
     chainAddresses: {
-      [ChainId.Polygon]: '0xbB40e77Fd13DcF70CAF737a2AE74cAdE11219620'
-    }
+      [ChainId.Polygon]: '0xbB40e77Fd13DcF70CAF737a2AE74cAdE11219620',
+    },
   },
   WBTCPool: {
     riskLevel: RiskLevel.High,
@@ -105,8 +105,8 @@ export const strategyProvider: IStrategyProvider = {
       feeSymbol: tokenProvider.wBTC.symbol,
     },
     chainAddresses: {
-      [ChainId.Polygon]: '0xE99D420a0e36850F3C3876C0a06725102801dfeB'
-    }
+      [ChainId.Polygon]: '0xE99D420a0e36850F3C3876C0a06725102801dfeB',
+    },
   },
   WETHPool: {
     riskLevel: RiskLevel.High,
@@ -131,7 +131,7 @@ export const strategyProvider: IStrategyProvider = {
       feeSymbol: tokenProvider.wETH.symbol,
     },
     chainAddresses: {
-      [ChainId.Polygon]: '0x84f38466afFafC230c0273E5404087202c25F238'
-    }
-  }
+      [ChainId.Polygon]: '0x84f38466afFafC230c0273E5404087202c25F238',
+    },
+  },
 }

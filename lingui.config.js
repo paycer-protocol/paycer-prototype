@@ -4,7 +4,7 @@ module.exports = {
       path: '<rootDir>/src/locales/messages/{locale}',
       include: ['<rootDir>/src'],
       exclude: ['**/node_modules/**'],
-    }
+    },
   ],
   compileNamespace: 'cjs',
   extractBabelOptions: {},

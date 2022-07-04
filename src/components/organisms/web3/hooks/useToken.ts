@@ -12,6 +12,6 @@ export default function useToken(symbol: string) {
       const rawTokenBalance = useTokenBalance(tokenAddress, account)
 
       return Number(formatUnits(rawTokenBalance || 0, token.decimals))
-    }
+    },
   }
 }

@@ -1,10 +1,10 @@
-import Button from "@components/atoms/button";
-import Icon from "@components/atoms/icon";
-import WalletProvider from "@components/organisms/web3/wallet-provider";
-import { t } from "@lingui/macro";
-import { connectors } from "@providers/connectors";
-import { ArrowForward } from "@styled-icons/material";
-import { useState } from "react";
+import Button from '@components/atoms/button'
+import Icon from '@components/atoms/icon'
+import WalletProvider from '@components/organisms/web3/wallet-provider'
+import { t } from '@lingui/macro'
+import { connectors } from '@providers/connectors'
+import { ArrowForward } from '@styled-icons/material'
+import { useState } from 'react'
 
 export default function ConnectWalletButton() {
   const [showWalletProviderModal, setShowWalletProviderModal] = useState(false)

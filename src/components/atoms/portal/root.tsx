@@ -1,6 +1,6 @@
 import React from 'react'
 
-const rootSelectorName: string = 'paycer-portal-root'
+const rootSelectorName = 'paycer-portal-root'
 
 export const PortalRoot: React.FC = () => <div id={rootSelectorName} />
 

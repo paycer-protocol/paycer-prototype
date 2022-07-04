@@ -5,29 +5,26 @@ import ChartList from '@components/organisms/analytics-dashboard/chart-list'
 import { InfoDashboardFormType } from './types'
 
 const AnalyticsDashboard = () => {
+  const initialValues: InfoDashboardFormType = {
+    selectedChains: [0],
+  }
 
-    const initialValues: InfoDashboardFormType = {
-        selectedChains: [0]
-    }
-
-    return (
-        <Form
-            initialValues={initialValues}
-            onSubmit={() => {}}
-            enableReinitialize
-        >
-            {() => {
-                return (
-                   <>
-                       {/*<div className="mb-5">*/}
-                       {/*    <FilterBar />*/}
-                       {/*</div>*/}
-                       <ChartList />
-                   </>
-                )
-            }}
-        </Form>
-    )
+  return (
+    <Form
+      initialValues={initialValues}
+      onSubmit={() => {}}
+      enableReinitialize
+    >
+      {() => (
+        <>
+          {/* <div className="mb-5"> */}
+          {/*    <FilterBar /> */}
+          {/* </div> */}
+          <ChartList />
+        </>
+      )}
+    </Form>
+  )
 }
 
 export default AnalyticsDashboard

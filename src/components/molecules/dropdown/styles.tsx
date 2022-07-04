@@ -32,7 +32,3 @@ export const DropdownContentChevron = styled.div`
     left: 1px;
   }
 `
-
-
-
-

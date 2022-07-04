@@ -1,33 +1,31 @@
 import ChainId from './chain-id'
 
 interface ExplorerUrlsType {
-    [index: number]: string
+  [index: number]: string
 }
 
-const explorerBlockURLs = (blockNumber: number): ExplorerUrlsType => {
-    return {
-        [ChainId.Mainnet]: `/block/${blockNumber}`,
-        [ChainId.Ropsten]: `/block/${blockNumber}`,
-        [ChainId.Kovan]: `/block/${blockNumber}`,
-        [ChainId.Rinkeby]: `/block/${blockNumber}`,
-        [ChainId.Goerli]: `/block/${blockNumber}`,
-        [ChainId.BSC]: `/block/${blockNumber}`,
-        [ChainId.xDai]: `/xdai/mainnet/blocks/${blockNumber}`,
-        [ChainId.Polygon]: `/blocks/${blockNumber}/transactions`,
-        [ChainId.Mumbai]: `/blocks/${blockNumber}/transactions`,
-    }
-}
+const explorerBlockURLs = (blockNumber: number): ExplorerUrlsType => ({
+  [ChainId.Mainnet]: `/block/${blockNumber}`,
+  [ChainId.Ropsten]: `/block/${blockNumber}`,
+  [ChainId.Kovan]: `/block/${blockNumber}`,
+  [ChainId.Rinkeby]: `/block/${blockNumber}`,
+  [ChainId.Goerli]: `/block/${blockNumber}`,
+  [ChainId.BSC]: `/block/${blockNumber}`,
+  [ChainId.xDai]: `/xdai/mainnet/blocks/${blockNumber}`,
+  [ChainId.Polygon]: `/blocks/${blockNumber}/transactions`,
+  [ChainId.Mumbai]: `/blocks/${blockNumber}/transactions`,
+})
 
 export const explorers: ExplorerUrlsType = {
-    [ChainId.Mainnet]: 'https://etherscan.io',
-    [ChainId.Ropsten]: 'https://ropsten.etherscan.io',
-    [ChainId.Kovan]: 'https://kovan.etherscan.io',
-    [ChainId.Rinkeby]: 'https://rinkeby.etherscan.io',
-    [ChainId.Goerli]: 'https://goerli.etherscan.io',
-    [ChainId.BSC]: 'https://bscscan.com',
-    [ChainId.xDai]: 'https://blockscout.com/xdai/mainnet',
-    [ChainId.Polygon]: 'https://polygon-explorer-mainnet.chainstacklabs.com',
-    [ChainId.Mumbai]: 'https://polygon-explorer-mumbai.chainstacklabs.com',
+  [ChainId.Mainnet]: 'https://etherscan.io',
+  [ChainId.Ropsten]: 'https://ropsten.etherscan.io',
+  [ChainId.Kovan]: 'https://kovan.etherscan.io',
+  [ChainId.Rinkeby]: 'https://rinkeby.etherscan.io',
+  [ChainId.Goerli]: 'https://goerli.etherscan.io',
+  [ChainId.BSC]: 'https://bscscan.com',
+  [ChainId.xDai]: 'https://blockscout.com/xdai/mainnet',
+  [ChainId.Polygon]: 'https://polygon-explorer-mainnet.chainstacklabs.com',
+  [ChainId.Mumbai]: 'https://polygon-explorer-mumbai.chainstacklabs.com',
 }
 
 /**
@@ -41,9 +39,9 @@ export const explorers: ExplorerUrlsType = {
  * @throws blockNumber: Non-numeric, tampered with values are rejected.
  */
 export const getExplorerBlockUrl = (chainId: ChainId, blockNumberUnsafe: number): string => {
-    const blockNumber: number = Number(blockNumberUnsafe)
-    const url: string = explorers[chainId] + explorerBlockURLs(blockNumber)[chainId]
-    const isValid: boolean = (chainId && url && !isNaN(blockNumber))
+  const blockNumber = Number(blockNumberUnsafe)
+  const url: string = explorers[chainId] + explorerBlockURLs(blockNumber)[chainId]
+  const isValid: boolean = (chainId && url && !isNaN(blockNumber))
 
-    return isValid ? url : ''
+  return isValid ? url : ''
 }

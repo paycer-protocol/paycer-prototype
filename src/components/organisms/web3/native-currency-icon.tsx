@@ -6,7 +6,7 @@ import { useDapp } from '@context/dapp-context'
 
 export const NativeCurrencyMap = {
   [ChainId.BSC]: Bnb,
-  default: Eth
+  default: Eth,
 }
 
 export interface NativeCurrencyIconProps {

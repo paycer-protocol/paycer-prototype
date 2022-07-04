@@ -20,8 +20,8 @@ interface RewardType {
   value: number
 }
 
-export default function Referrals () {
-  const { walletAddress, isAuthenticated} = useDapp()
+export default function Referrals() {
+  const { walletAddress, isAuthenticated } = useDapp()
   const [rewards, setRewards] = useState<RewardType[] | []>([])
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -46,29 +46,29 @@ export default function Referrals () {
     <div className="table-responsive">
       <table className="table table-sm table-nowrap card-table">
         <thead>
-        <tr>
-          <th>
-            <span className="text-muted">
-              {t`Date`}
-            </span>
-          </th>
-          <th>
-            <span className="text-muted">
-              {t`Referral Bonus`}
-            </span>
-          </th>
-          <th>
-            <span className="text-muted">
-              {t`Transaction`}
-            </span>
-          </th>
-        </tr>
+          <tr>
+            <th>
+              <span className="text-muted">
+                {t`Date`}
+              </span>
+            </th>
+            <th>
+              <span className="text-muted">
+                {t`Referral Bonus`}
+              </span>
+            </th>
+            <th>
+              <span className="text-muted">
+                {t`Transaction`}
+              </span>
+            </th>
+          </tr>
         </thead>
         <tbody className="list">
-        {rewards.length ? rewards.map((reward) => (
-          <tr key={reward.transactionHash}>
-            <td>{reward.transactionDateTime}</td>
-            <td>
+          {rewards.length ? rewards.map((reward) => (
+            <tr key={reward.transactionHash}>
+              <td>{reward.transactionDateTime}</td>
+              <td>
                 <FormattedNumber
                   value={reward.rewardPRC}
                   minimumFractionDigits={2}
@@ -77,25 +77,25 @@ export default function Referrals () {
                 />
                 <span className="ms-2">PCR</span>
               </td>
-            <td>
-              <TxnLink
-                chain={reward.chain}
-                txnHash={reward.transactionHash}
-              />
-            </td>
-          </tr>
-        )) : null}
-        {rewards.length === 0 ? (
-          <tr>
-            <td colSpan={3}>
-              <div className="text-center">
-                <h4 className="text-muted mb-4">
-                  {errorMessage ? errorMessage : t`You have no rewards`}
-                </h4>
-              </div>
-            </td>
-          </tr>
-        ) : null}
+              <td>
+                <TxnLink
+                  chain={reward.chain}
+                  txnHash={reward.transactionHash}
+                />
+              </td>
+            </tr>
+          )) : null}
+          {rewards.length === 0 ? (
+            <tr>
+              <td colSpan={3}>
+                <div className="text-center">
+                  <h4 className="text-muted mb-4">
+                    {errorMessage || t`You have no rewards`}
+                  </h4>
+                </div>
+              </td>
+            </tr>
+          ) : null}
         </tbody>
       </table>
     </div>

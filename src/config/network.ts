@@ -3,15 +3,15 @@ import ChainId from '@providers/chain-id'
 export const supportedChains = [
   ChainId.Mainnet,
   ChainId.Polygon,
-  ChainId.Mumbai
+  ChainId.Mumbai,
 ]
 
 export const supportedStakingChains = [
   ChainId.Polygon,
-  ChainId.Mumbai
+  ChainId.Mumbai,
 ]
 
 export const supportedVestingChains = [
   ChainId.Polygon,
-  ChainId.Mumbai
+  ChainId.Mumbai,
 ]
