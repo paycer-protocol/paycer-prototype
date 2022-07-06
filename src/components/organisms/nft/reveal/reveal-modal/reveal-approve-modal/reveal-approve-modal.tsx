@@ -31,7 +31,7 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
     nftReveal,
   } = props
 
-  const renderTitle = ():any => {
+  const renderTitle = (): any => {
     if (nftReveal.status === 'error') {
       return t`Something went wrong!`
     }
@@ -45,7 +45,7 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
     return title
   }
 
-  const renderStatusContent = ():any => {
+  const renderStatusContent = (): any => {
     if (nftReveal.status === 'error') {
       return (
         <>
@@ -91,12 +91,12 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
     <Modal backdropClassName="reveal-loading-backdrop" centered show={show} onHide={nftReveal.status === 'loading' ? null : onHide} className={`reveal-modal ${nftReveal.status}`}>
       <>
         {nftReveal.status !== 'error'
-            && (
+          && (
             <div className="nft-reveal-stars">
               <div className="nft-reveal-sparkle">
                 {nftReveal.status === 'success'
+                  && (
                     // @ts-ignore
-                    && (
                     <Sparkle
                       count={50}
                       fadeOutSpeed={2}
@@ -105,12 +105,12 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
                       maxSize={10}
                       color="#fdeea0"
                     />
-                    )}
+                  )}
               </div>
               <div className="nft-reveal-stars-1" />
               <div className="nft-reveal-stars-2" />
             </div>
-            )}
+          )}
 
         <Modal.Header closeButton={nftReveal.status !== 'loading'} onHide={onHide}>
           <Modal.Title className="text-center w-100" style={{ fontSize: '30px' }}>
@@ -120,12 +120,12 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
         <Modal.Body className="pt-0">
           {renderStatusContent()}
           {(nftReveal.status !== 'success' && nftReveal.status !== 'error' && nftReveal.status !== 'loading'
-              && (
+            && (
               <GradientButton className="w-100 mt-5" onClick={onClick}>
                 {btnLabel || t`Confirm`}
               </GradientButton>
-              )
-            )}
+            )
+          )}
         </Modal.Body>
       </>
     </Modal>
