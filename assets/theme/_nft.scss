@@ -1,0 +1,174 @@
+$stars-color: #fdeea0;
+$reveal-color-one: #030409;
+$reveal-color-two: #FFD700;
+$reveal-color-three: #ffffff;
+$reveal-finish-color-one: #FFD700;
+$reveal-finish-color-two: #ceae03;
+
+@mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration, $opacity, $bg-size) {
+  &:after {
+    position: absolute;
+    content: "";
+    top: $y;
+    left: $x;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale($size);
+    -webkit-filter: blur($spread);
+    -moz-filter: blur($spread);
+    -ms-filter: blur($spread);
+    filter: blur($spread);
+    background: linear-gradient(270deg, $colorA, $colorB);
+    background-size: $bg-size;
+    animation: animateGlow $duration ease infinite;
+    opacity: $opacity;
+
+    @keyframes animateGlow {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+  }
+}
+
+.reveal-modal {
+
+  .modal-content {
+    position: relative;
+    text-align: center;
+    background-color: #0a0a12 !important;
+    border: 1px solid #2c244f !important;
+    @include backlight(0, 0, 4vw, 0.85, $reveal-color-one, $reveal-finish-color-one, 6s, .73, 210% 210%);
+    border-radius: 1rem!important;
+  }
+
+  .nft-reveal-stars {
+    position: absolute;
+    letter-spacing: 0;
+    z-index: -1;
+    overflow: hidden;
+    width: 150%;
+    height: 70%;
+    left: -30%;
+    top: -21%;
+    opacity: 0.48;
+  }
+
+  .nft-reveal-sparkle {
+    position: absolute;
+    z-index: 22;
+    width: 100%;
+    height: 100%;
+    canvas {
+      height: 400px;
+    }
+  }
+
+  &.loading {
+    .modal-content {
+      @include backlight(0, 0, 4vw, 0.85, $reveal-color-one, $reveal-finish-color-two, 2s, .73, 210% 210%);
+    }
+
+    .nft-reveal-stars {
+      width: 150%;
+      height: 70%;
+      left: -30%;
+      top: -21%;
+      opacity: .68;
+    }
+  }
+
+  &.success {
+    .modal-content {
+      @include backlight(0, 0, 8.5vw, 0.75, $reveal-finish-color-one, $reveal-finish-color-two, 2s, 1, 900% 900%);
+      box-shadow: 2px 2px 20px 2px rgb(140 113 6 / 37%);
+      border: 1px solid rgb(255 252 217 / 70%) !important;
+    }
+    .nft-model canvas {
+      display: block;
+      touch-action: none;
+      width: 420px;
+      height: 350px;
+      position: relative;
+      top: -80px;
+    }
+
+    .nft-reveal-stars {
+      width: 150%;
+      height: 150%;
+      left: -30%;
+      top: -21%;
+      opacity: .88;
+    }
+  }
+}
+
+.reveal-loading-backdrop {
+  opacity: .95!important;
+}
+
+@keyframes shake {
+
+  0% { transform:translate(0,0) }
+  1.78571% { transform:translate(5px,0) }
+  3.57143% { transform:translate(0,0) }
+  5.35714% { transform:translate(0,5px) }
+  7.14286% { transform:translate(0,0) }
+  8.92857% { transform:translate(5px,0) }
+  10.71429% { transform:translate(0,0) }
+  100% { transform:translate(0,0) }
+}
+
+.loading-chest {
+  animation: shake 2.4s ease infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.nft-reveal-stars-1 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 1907px 1575px $stars-color , 893px 268px $stars-color , 1819px 666px $stars-color , 366px 1985px $stars-color , 1736px 1062px $stars-color , 1124px 45px $stars-color , 905px 1674px $stars-color , 1570px 711px $stars-color , 255px 1747px $stars-color , 147px 1032px $stars-color , 865px 1813px $stars-color , 1721px 1461px $stars-color , 202px 724px $stars-color , 1860px 812px $stars-color , 634px 1410px $stars-color , 927px 1264px $stars-color , 1648px 620px $stars-color , 1915px 1309px $stars-color , 731px 778px $stars-color , 91px 1185px $stars-color , 829px 1003px $stars-color , 174px 1784px $stars-color , 1094px 1874px $stars-color , 1464px 484px $stars-color , 1639px 1717px $stars-color , 959px 573px $stars-color , 1686px 1287px $stars-color , 906px 356px $stars-color , 970px 499px $stars-color , 626px 890px $stars-color , 1344px 1070px $stars-color , 1351px 544px $stars-color , 708px 68px $stars-color , 1870px 130px $stars-color , 556px 1270px $stars-color , 1432px 618px $stars-color , 769px 673px $stars-color , 1289px 1410px $stars-color , 1499px 1969px $stars-color , 749px 1163px $stars-color , 1198px 198px $stars-color , 399px 133px $stars-color , 1856px 1280px $stars-color , 904px 194px $stars-color , 973px 1107px $stars-color , 1371px 1785px $stars-color , 989px 1835px $stars-color , 1043px 1517px $stars-color , 787px 916px $stars-color , 1635px 1155px $stars-color , 752px 524px $stars-color , 1926px 1279px $stars-color , 1052px 1163px $stars-color , 719px 1963px $stars-color , 786px 519px $stars-color , 1440px 500px $stars-color , 156px 1265px $stars-color , 1691px 429px $stars-color , 1349px 1474px $stars-color , 736px 459px $stars-color , 248px 1678px $stars-color , 1136px 510px $stars-color , 1317px 10px $stars-color , 1209px 1323px $stars-color , 54px 469px $stars-color , 730px 1939px $stars-color , 960px 23px $stars-color , 112px 941px $stars-color , 1852px 1522px $stars-color , 1993px 1972px $stars-color , 265px 129px $stars-color , 222px 1897px $stars-color , 1766px 1804px $stars-color , 1530px 1786px $stars-color , 1045px 432px $stars-color , 1916px 1980px $stars-color , 309px 1780px $stars-color , 1420px 559px $stars-color , 1708px 103px $stars-color , 324px 1407px $stars-color , 1175px 943px $stars-color , 80px 1221px $stars-color , 1016px 1933px $stars-color , 318px 560px $stars-color , 190px 1489px $stars-color , 1095px 892px $stars-color , 1975px 1191px $stars-color , 1197px 955px $stars-color , 1482px 873px $stars-color , 1912px 300px $stars-color , 2000px 1636px $stars-color , 1473px 1808px $stars-color , 507px 192px $stars-color , 924px 1300px $stars-color , 1485px 1636px $stars-color , 41px 1822px $stars-color , 689px 120px $stars-color , 769px 273px $stars-color , 1039px 976px $stars-color , 1057px 1520px $stars-color , 1417px 1187px $stars-color , 512px 1507px $stars-color , 519px 45px $stars-color , 1207px 1687px $stars-color , 1824px 1488px $stars-color , 1694px 31px $stars-color , 1859px 52px $stars-color , 1368px 268px $stars-color , 190px 1404px $stars-color , 940px 1003px $stars-color , 167px 942px $stars-color , 1641px 647px $stars-color , 1051px 654px $stars-color , 233px 1640px $stars-color , 554px 511px $stars-color , 1705px 1866px $stars-color , 240px 1430px $stars-color , 140px 668px $stars-color , 648px 1617px $stars-color , 252px 101px $stars-color , 676px 1774px $stars-color , 889px 1698px $stars-color , 595px 853px $stars-color , 249px 1768px $stars-color , 1091px 1529px $stars-color , 223px 839px $stars-color , 239px 699px $stars-color , 1547px 356px $stars-color , 249px 1130px $stars-color , 1209px 1946px $stars-color , 1967px 1274px $stars-color , 430px 298px $stars-color , 1305px 134px $stars-color , 156px 91px $stars-color , 1712px 264px $stars-color , 1256px 991px $stars-color , 1887px 1844px $stars-color , 1957px 1275px $stars-color , 1718px 666px $stars-color , 1090px 543px $stars-color , 933px 1411px $stars-color , 801px 323px $stars-color , 202px 1659px $stars-color , 1117px 549px $stars-color , 290px 1859px $stars-color , 1380px 1516px $stars-color , 557px 1165px $stars-color , 1953px 1758px $stars-color , 1901px 1407px $stars-color , 1144px 347px $stars-color , 1640px 271px $stars-color , 1996px 43px $stars-color , 838px 488px $stars-color , 1151px 1529px $stars-color , 306px 460px $stars-color , 1666px 635px $stars-color , 1572px 633px $stars-color , 1797px 1076px $stars-color , 1727px 1119px $stars-color , 474px 871px $stars-color , 1491px 1398px $stars-color , 1301px 868px $stars-color , 1632px 454px $stars-color , 1611px 466px $stars-color , 498px 1162px $stars-color , 796px 269px $stars-color , 1988px 747px $stars-color , 502px 12px $stars-color , 276px 1260px $stars-color , 1536px 974px $stars-color , 956px 656px $stars-color , 107px 701px $stars-color , 965px 491px $stars-color , 1646px 247px $stars-color , 1515px 921px $stars-color , 1813px 519px $stars-color , 697px 143px $stars-color , 591px 1452px $stars-color , 1773px 1411px $stars-color , 1622px 1401px $stars-color , 534px 340px $stars-color , 1590px 284px $stars-color , 1464px 528px $stars-color , 734px 1718px $stars-color , 1929px 1683px $stars-color , 656px 480px $stars-color , 833px 705px $stars-color , 1567px 109px $stars-color , 1055px 330px $stars-color , 1943px 1367px $stars-color , 1935px 1512px $stars-color , 355px 1024px $stars-color , 1894px 218px $stars-color , 1703px 1772px $stars-color , 781px 1394px $stars-color , 367px 42px $stars-color , 100px 690px $stars-color , 1831px 458px $stars-color , 1884px 1878px $stars-color , 814px 1013px $stars-color;
+  animation: animStar 100s linear infinite;
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 1907px 1575px $stars-color , 893px 268px $stars-color , 1819px 666px $stars-color , 366px 1985px $stars-color , 1736px 1062px $stars-color , 1124px 45px $stars-color , 905px 1674px $stars-color , 1570px 711px $stars-color , 255px 1747px $stars-color , 147px 1032px $stars-color , 865px 1813px $stars-color , 1721px 1461px $stars-color , 202px 724px $stars-color , 1860px 812px $stars-color , 634px 1410px $stars-color , 927px 1264px $stars-color , 1648px 620px $stars-color , 1915px 1309px $stars-color , 731px 778px $stars-color , 91px 1185px $stars-color , 829px 1003px $stars-color , 174px 1784px $stars-color , 1094px 1874px $stars-color , 1464px 484px $stars-color , 1639px 1717px $stars-color , 959px 573px $stars-color , 1686px 1287px $stars-color , 906px 356px $stars-color , 970px 499px $stars-color , 626px 890px $stars-color , 1344px 1070px $stars-color , 1351px 544px $stars-color , 708px 68px $stars-color , 1870px 130px $stars-color , 556px 1270px $stars-color , 1432px 618px $stars-color , 769px 673px $stars-color , 1289px 1410px $stars-color , 1499px 1969px $stars-color , 749px 1163px $stars-color , 1198px 198px $stars-color , 399px 133px $stars-color , 1856px 1280px $stars-color , 904px 194px $stars-color , 973px 1107px $stars-color , 1371px 1785px $stars-color , 989px 1835px $stars-color , 1043px 1517px $stars-color , 787px 916px $stars-color , 1635px 1155px $stars-color , 752px 524px $stars-color , 1926px 1279px $stars-color , 1052px 1163px $stars-color , 719px 1963px $stars-color , 786px 519px $stars-color , 1440px 500px $stars-color , 156px 1265px $stars-color , 1691px 429px $stars-color , 1349px 1474px $stars-color , 736px 459px $stars-color , 248px 1678px $stars-color , 1136px 510px $stars-color , 1317px 10px $stars-color , 1209px 1323px $stars-color , 54px 469px $stars-color , 730px 1939px $stars-color , 960px 23px $stars-color , 112px 941px $stars-color , 1852px 1522px $stars-color , 1993px 1972px $stars-color , 265px 129px $stars-color , 222px 1897px $stars-color , 1766px 1804px $stars-color , 1530px 1786px $stars-color , 1045px 432px $stars-color , 1916px 1980px $stars-color , 309px 1780px $stars-color , 1420px 559px $stars-color , 1708px 103px $stars-color , 324px 1407px $stars-color , 1175px 943px $stars-color , 80px 1221px $stars-color , 1016px 1933px $stars-color , 318px 560px $stars-color , 190px 1489px $stars-color , 1095px 892px $stars-color , 1975px 1191px $stars-color , 1197px 955px $stars-color , 1482px 873px $stars-color , 1912px 300px $stars-color , 2000px 1636px $stars-color , 1473px 1808px $stars-color , 507px 192px $stars-color , 924px 1300px $stars-color , 1485px 1636px $stars-color , 41px 1822px $stars-color , 689px 120px $stars-color , 769px 273px $stars-color , 1039px 976px $stars-color , 1057px 1520px $stars-color , 1417px 1187px $stars-color , 512px 1507px $stars-color , 519px 45px $stars-color , 1207px 1687px $stars-color , 1824px 1488px $stars-color , 1694px 31px $stars-color , 1859px 52px $stars-color , 1368px 268px $stars-color , 190px 1404px $stars-color , 940px 1003px $stars-color , 167px 942px $stars-color , 1641px 647px $stars-color , 1051px 654px $stars-color , 233px 1640px $stars-color , 554px 511px $stars-color , 1705px 1866px $stars-color , 240px 1430px $stars-color , 140px 668px $stars-color , 648px 1617px $stars-color , 252px 101px $stars-color , 676px 1774px $stars-color , 889px 1698px $stars-color , 595px 853px $stars-color , 249px 1768px $stars-color , 1091px 1529px $stars-color , 223px 839px $stars-color , 239px 699px $stars-color , 1547px 356px $stars-color , 249px 1130px $stars-color , 1209px 1946px $stars-color , 1967px 1274px $stars-color , 430px 298px $stars-color , 1305px 134px $stars-color , 156px 91px $stars-color , 1712px 264px $stars-color , 1256px 991px $stars-color , 1887px 1844px $stars-color , 1957px 1275px $stars-color , 1718px 666px $stars-color , 1090px 543px $stars-color , 933px 1411px $stars-color , 801px 323px $stars-color , 202px 1659px $stars-color , 1117px 549px $stars-color , 290px 1859px $stars-color , 1380px 1516px $stars-color , 557px 1165px $stars-color , 1953px 1758px $stars-color , 1901px 1407px $stars-color , 1144px 347px $stars-color , 1640px 271px $stars-color , 1996px 43px $stars-color , 838px 488px $stars-color , 1151px 1529px $stars-color , 306px 460px $stars-color , 1666px 635px $stars-color , 1572px 633px $stars-color , 1797px 1076px $stars-color , 1727px 1119px $stars-color , 474px 871px $stars-color , 1491px 1398px $stars-color , 1301px 868px $stars-color , 1632px 454px $stars-color , 1611px 466px $stars-color , 498px 1162px $stars-color , 796px 269px $stars-color , 1988px 747px $stars-color , 502px 12px $stars-color , 276px 1260px $stars-color , 1536px 974px $stars-color , 956px 656px $stars-color , 107px 701px $stars-color , 965px 491px $stars-color , 1646px 247px $stars-color , 1515px 921px $stars-color , 1813px 519px $stars-color , 697px 143px $stars-color , 591px 1452px $stars-color , 1773px 1411px $stars-color , 1622px 1401px $stars-color , 534px 340px $stars-color , 1590px 284px $stars-color , 1464px 528px $stars-color , 734px 1718px $stars-color , 1929px 1683px $stars-color , 656px 480px $stars-color , 833px 705px $stars-color , 1567px 109px $stars-color , 1055px 330px $stars-color , 1943px 1367px $stars-color , 1935px 1512px $stars-color , 355px 1024px $stars-color , 1894px 218px $stars-color , 1703px 1772px $stars-color , 781px 1394px $stars-color , 367px 42px $stars-color , 100px 690px $stars-color , 1831px 458px $stars-color , 1884px 1878px $stars-color , 814px 1013px $stars-color;
+  }
+}
+
+.nft-reveal-stars-2 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 1994px 1692px $stars-color , 961px 1928px $stars-color , 819px 1320px $stars-color , 1899px 52px $stars-color , 28px 1937px $stars-color , 157px 88px $stars-color , 860px 1909px $stars-color , 720px 427px $stars-color , 1319px 1469px $stars-color , 677px 960px $stars-color , 1265px 1181px $stars-color , 1176px 1361px $stars-color , 1957px 753px $stars-color , 1674px 1355px $stars-color , 929px 1206px $stars-color , 1038px 898px $stars-color , 1229px 365px $stars-color , 1085px 51px $stars-color , 851px 650px $stars-color , 385px 21px $stars-color , 41px 1153px $stars-color , 718px 70px $stars-color , 1321px 579px $stars-color , 497px 1458px $stars-color , 1981px 813px $stars-color , 776px 1187px $stars-color , 1345px 31px $stars-color , 1571px 400px $stars-color , 339px 587px $stars-color , 146px 750px $stars-color , 64px 61px $stars-color , 307px 981px $stars-color , 388px 849px $stars-color , 1398px 936px $stars-color , 522px 765px $stars-color , 1146px 350px $stars-color , 19px 206px $stars-color , 1767px 319px $stars-color , 1203px 425px $stars-color , 1917px 1018px $stars-color , 91px 1401px $stars-color , 898px 697px $stars-color , 1712px 1121px $stars-color , 633px 1119px $stars-color , 137px 1266px $stars-color , 1006px 931px $stars-color , 1644px 1804px $stars-color , 1596px 1057px $stars-color , 1298px 543px $stars-color , 1505px 996px $stars-color , 1972px 1383px $stars-color , 1210px 1497px $stars-color , 804px 1840px $stars-color , 913px 1047px $stars-color , 187px 1824px $stars-color , 1564px 1994px $stars-color , 557px 1737px $stars-color , 508px 1609px $stars-color , 1259px 1911px $stars-color , 1294px 1381px $stars-color , 1845px 1843px $stars-color , 667px 1497px $stars-color , 1046px 945px $stars-color , 937px 1889px $stars-color , 982px 1806px $stars-color , 1293px 671px $stars-color , 668px 904px $stars-color , 358px 1971px $stars-color , 133px 766px $stars-color , 1152px 1573px $stars-color , 318px 694px $stars-color , 578px 1184px $stars-color , 1620px 1701px $stars-color , 1359px 354px $stars-color , 1807px 1367px $stars-color , 458px 911px $stars-color , 1387px 806px $stars-color , 523px 81px $stars-color , 1243px 341px $stars-color , 906px 1730px $stars-color , 1629px 474px $stars-color , 1690px 419px $stars-color , 847px 808px $stars-color , 528px 1627px $stars-color , 480px 718px $stars-color , 537px 593px $stars-color , 1432px 1333px $stars-color , 200px 1228px $stars-color , 1800px 1375px $stars-color , 725px 1231px $stars-color , 1749px 1432px $stars-color , 1948px 303px $stars-color , 1889px 252px $stars-color , 1114px 1400px $stars-color , 759px 646px $stars-color , 222px 571px $stars-color , 1908px 1401px $stars-color , 1856px 1204px $stars-color , 338px 1645px $stars-color , 1528px 1050px $stars-color;
+  animation: animStar 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    background: transparent;
+    box-shadow: 1994px 1692px $stars-color , 961px 1928px $stars-color , 819px 1320px $stars-color , 1899px 52px $stars-color , 28px 1937px $stars-color , 157px 88px $stars-color , 860px 1909px $stars-color , 720px 427px $stars-color , 1319px 1469px $stars-color , 677px 960px $stars-color , 1265px 1181px $stars-color , 1176px 1361px $stars-color , 1957px 753px $stars-color , 1674px 1355px $stars-color , 929px 1206px $stars-color , 1038px 898px $stars-color , 1229px 365px $stars-color , 1085px 51px $stars-color , 851px 650px $stars-color , 385px 21px $stars-color , 41px 1153px $stars-color , 718px 70px $stars-color , 1321px 579px $stars-color , 497px 1458px $stars-color , 1981px 813px $stars-color , 776px 1187px $stars-color , 1345px 31px $stars-color , 1571px 400px $stars-color , 339px 587px $stars-color , 146px 750px $stars-color , 64px 61px $stars-color , 307px 981px $stars-color , 388px 849px $stars-color , 1398px 936px $stars-color , 522px 765px $stars-color , 1146px 350px $stars-color , 19px 206px $stars-color , 1767px 319px $stars-color , 1203px 425px $stars-color , 1917px 1018px $stars-color , 91px 1401px $stars-color , 898px 697px $stars-color , 1712px 1121px $stars-color , 633px 1119px $stars-color , 137px 1266px $stars-color , 1006px 931px $stars-color , 1644px 1804px $stars-color , 1596px 1057px $stars-color , 1298px 543px $stars-color , 1505px 996px $stars-color , 1972px 1383px $stars-color , 1210px 1497px $stars-color , 804px 1840px $stars-color , 913px 1047px $stars-color , 187px 1824px $stars-color , 1564px 1994px $stars-color , 557px 1737px $stars-color , 508px 1609px $stars-color , 1259px 1911px $stars-color , 1294px 1381px $stars-color , 1845px 1843px $stars-color , 667px 1497px $stars-color , 1046px 945px $stars-color , 937px 1889px $stars-color , 982px 1806px $stars-color , 1293px 671px $stars-color , 668px 904px $stars-color , 358px 1971px $stars-color , 133px 766px $stars-color , 1152px 1573px $stars-color , 318px 694px $stars-color , 578px 1184px $stars-color , 1620px 1701px $stars-color , 1359px 354px $stars-color , 1807px 1367px $stars-color , 458px 911px $stars-color , 1387px 806px $stars-color , 523px 81px $stars-color , 1243px 341px $stars-color , 906px 1730px $stars-color , 1629px 474px $stars-color , 1690px 419px $stars-color , 847px 808px $stars-color , 528px 1627px $stars-color , 480px 718px $stars-color , 537px 593px $stars-color , 1432px 1333px $stars-color , 200px 1228px $stars-color , 1800px 1375px $stars-color , 725px 1231px $stars-color , 1749px 1432px $stars-color , 1948px 303px $stars-color , 1889px 252px $stars-color , 1114px 1400px $stars-color , 759px 646px $stars-color , 222px 571px $stars-color , 1908px 1401px $stars-color , 1856px 1204px $stars-color , 338px 1645px $stars-color , 1528px 1050px $stars-color;
+  }
+}
+
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+

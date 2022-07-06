@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-07-04 12:32+0200\n"
+"POT-Creation-Date: 2022-07-06 09:37+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,18 +37,6 @@ msgstr "36 months"
 #: src/components/organisms/vesting/overview/index.tsx:24
 msgid "6 months"
 msgstr "6 months"
-
-#: src/components/organisms/nft/landing-page/mint-section.tsx:67
-msgid "<b>Connect MetaMask wallet for minting</b>"
-msgstr "<b>Connect MetaMask wallet for minting</b>"
-
-#: src/components/organisms/nft/landing-page/mint-section.tsx:69
-msgid "<b>Limits:</b>&nbsp;3 NFT per transaction"
-msgstr "<b>Limits:</b>&nbsp;3 NFT per transaction"
-
-#: src/components/organisms/nft/landing-page/mint-section.tsx:68
-msgid "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
-msgstr "<b>Price:</b>&nbsp;5000 PCR per NFT + Gas fee"
 
 #: src/components/organisms/nft/landing-page/team-section.tsx:86
 msgid "ADVISORS"
@@ -222,6 +210,14 @@ msgstr "Change network"
 msgid "Change your wallet provider"
 msgstr "Change your wallet provider"
 
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:20
+msgid "Choose NFT to reveal"
+msgstr "Choose NFT to reveal"
+
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:19
+msgid "Choose NFT to upgrade"
+msgstr "Choose NFT to upgrade"
+
 #: src/components/organisms/nft/landing-page/team-section.tsx:68
 msgid "Christoff Berlage"
 msgstr "Christoff Berlage"
@@ -279,17 +275,22 @@ msgstr "Co-Founder & CRO"
 msgid "Co-Founder & Fullstack DApp Developer"
 msgstr "Co-Founder & Fullstack DApp Developer"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:69
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:68
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:62
 msgid "Collect"
 msgstr "Collect"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:124
+msgid "Confirm"
+msgstr "Confirm"
 
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:117
 msgid "Confirm Claim"
 msgstr "Confirm Claim"
 
-#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:32
-msgid "Confirm Mint"
-msgstr "Confirm Mint"
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:17
+msgid "Confirm Reveal"
+msgstr "Confirm Reveal"
 
 #: src/components/organisms/invest/deposit-form/index.tsx:180
 #: src/components/organisms/invest/withdraw-form/index.tsx:184
@@ -297,6 +298,18 @@ msgstr "Confirm Mint"
 #: src/components/organisms/swap/swap.tsx:185
 msgid "Confirm Transaction"
 msgstr "Confirm Transaction"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:24
+msgid "Confirm Upgrade"
+msgstr "Confirm Upgrade"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:40
+msgid "Congratulations!"
+msgstr "Congratulations!"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:67
+msgid "Connect MetaMask wallet for minting"
+msgstr "Connect MetaMask wallet for minting"
 
 #: src/providers/connectors.ts:29
 msgid "Connect to Trust Wallet, Rainbow Wallet and more..."
@@ -627,7 +640,7 @@ msgstr "Investment ratio"
 msgid "JOIN OUR DISCORD"
 msgstr "JOIN OUR DISCORD"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:259
+#: src/components/organisms/nft/landing-page/mint-section.tsx:209
 #: src/components/organisms/nft/landing-page/title-section.tsx:80
 msgid "JOIN WAITING LIST"
 msgstr "JOIN WAITING LIST"
@@ -636,7 +649,7 @@ msgstr "JOIN WAITING LIST"
 msgid "Join Waitinglist"
 msgstr "Join Waitinglist"
 
-#: src/components/organisms/nft/landing-page/mint-section.tsx:220
+#: src/components/organisms/nft/landing-page/mint-section.tsx:170
 msgid "Join for the waiting list"
 msgstr "Join for the waiting list"
 
@@ -710,6 +723,10 @@ msgstr "Launch of Reveal Page"
 msgid "Launch of Sale Page"
 msgstr "Launch of Sale Page"
 
+#: src/components/organisms/nft/overview/card.tsx:27
+msgid "Level"
+msgstr "Level"
+
 #: src/components/molecules/dark-mode-toggle/index.tsx:18
 msgid "Light Mode"
 msgstr "Light Mode"
@@ -718,9 +735,18 @@ msgstr "Light Mode"
 msgid "Lightpaper"
 msgstr "Lightpaper"
 
+#: src/components/organisms/nft/landing-page/mint-section.tsx:69
+msgid "Limits: 3 NFT per transaction"
+msgstr "Limits: 3 NFT per transaction"
+
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:46
 msgid "Loading ..."
 msgstr "Loading ..."
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:35
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:33
+msgid "Loading NFTs..."
+msgstr "Loading NFTs..."
 
 #: src/components/organisms/portal-block-number/index.tsx:33
 msgid "Login to your wallet to see block details"
@@ -737,6 +763,10 @@ msgstr "Lukas Gurschler"
 #: src/components/organisms/nft/landing-page/title-section.tsx:80
 msgid "MINT NFT NOW"
 msgstr "MINT NFT NOW"
+
+#: src/pages/nft/overview/index.tsx:14
+msgid "MY NFT"
+msgstr "MY NFT"
 
 #: src/components/organisms/nft/landing-page/team-section.tsx:71
 msgid "Mahsa Doorfard"
@@ -769,11 +799,7 @@ msgstr "Minimum received"
 msgid "Mint"
 msgstr "Mint"
 
-#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:33
-msgid "Mint now"
-msgstr "Mint now"
-
-#: src/components/organisms/nft/landing-page/mint-section.tsx:220
+#: src/components/organisms/nft/landing-page/mint-section.tsx:170
 msgid "Mint your Paycer NFT."
 msgstr "Mint your Paycer NFT."
 
@@ -794,7 +820,7 @@ msgstr "My NFTs"
 msgid "NEW COLLECTION"
 msgstr "NEW COLLECTION"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:89
+#: src/components/organisms/nft/landing-page/about-section.tsx:90
 msgid "NEXT LEVEL NFT"
 msgstr "NEXT LEVEL NFT"
 
@@ -821,11 +847,7 @@ msgstr "NFT Reveal Event"
 msgid "NFT Sale"
 msgstr "NFT Sale"
 
-#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:37
-msgid "NFT was minted successfully"
-msgstr "NFT was minted successfully"
-
-#: src/components/organisms/nft/landing-page/mint-section.tsx:267
+#: src/components/organisms/nft/landing-page/mint-section.tsx:217
 msgid "Need help?"
 msgstr "Need help?"
 
@@ -850,6 +872,14 @@ msgstr "Nils Gregersen"
 #: src/components/organisms/vesting/transactions/index.tsx:22
 msgid "No available transactions"
 msgstr "No available transactions"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:32
+msgid "No unrevealed NFTs available"
+msgstr "No unrevealed NFTs available"
+
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:30
+msgid "No upgradable NFTs available"
+msgstr "No upgradable NFTs available"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:37
 msgid "Our 3D NFT is ready for the implementation in Metaverse partner projects"
@@ -916,7 +946,8 @@ msgstr "Page not found"
 msgid "Partner"
 msgstr "Partner"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:72
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:71
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:65
 msgid "Paycer Utility NFT"
 msgstr "Paycer Utility NFT"
 
@@ -924,17 +955,22 @@ msgstr "Paycer Utility NFT"
 msgid "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 msgstr "Paycer has is own utility token \"PCR\" that interacts with the NFT"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:65
+#: src/components/organisms/nft/landing-page/about-section.tsx:66
 msgid "Paycer in the Media"
 msgstr "Paycer in the Media"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:101
+#: src/components/organisms/nft/landing-page/about-section.tsx:102
 msgid "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 msgstr "Paycer will be able to provide fully regulated bank accounts, crypto custody, CeDeFi and branded credit cards by end of 2022. You can utilize the Paycer token (PCR) to upgrade your NFT to the next level to get more benefits. So what are you waiting for? Jump on your Paycer NFT and ride into the Metaverse!"
 
 #: src/components/organisms/nft/landing-page/achievements-section.tsx:54
 msgid "Paycer's experience"
 msgstr "Paycer's experience"
+
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:33
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:31
+msgid "Pick an NFT"
+msgstr "Pick an NFT"
 
 #: src/components/organisms/login-card/login-card.tsx:15
 msgid "Please connect to your wallet."
@@ -966,6 +1002,10 @@ msgstr "Presale Event"
 #: src/components/organisms/nft/landing-page/mint-section.tsx:75
 msgid "Presale ends:"
 msgstr "Presale ends:"
+
+#: src/components/organisms/nft/landing-page/mint-section.tsx:68
+msgid "Price: 5000 PCR per NFT + Gas fee"
+msgstr "Price: 5000 PCR per NFT + Gas fee"
 
 #: src/components/organisms/footer/footer.tsx:199
 msgid "Privacy"
@@ -1008,7 +1048,7 @@ msgstr "Q4/Q1"
 msgid "Q4/Q1+"
 msgstr "Q4/Q1+"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:84
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:94
 msgid "REVEAL MY NFT"
 msgstr "REVEAL MY NFT"
 
@@ -1043,6 +1083,14 @@ msgstr "Released Vesting Tokens"
 #: src/components/organisms/nft/landing-page/team-section.tsx:71
 msgid "Researcher & Marketing Manager"
 msgstr "Researcher & Marketing Manager"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:19
+msgid "Revealing NFT. This may take a while."
+msgstr "Revealing NFT. This may take a while."
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:43
+msgid "Revealing..."
+msgstr "Revealing..."
 
 #: src/components/organisms/invest/invest-table.tsx:27
 msgid "Rewards"
@@ -1113,9 +1161,15 @@ msgstr "Slippage tollerance"
 msgid "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 msgstr "Smart Contract & DeFi Advisor | CTO at CACHE GOLD"
 
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:37
 #: src/components/organisms/transaction-approve-modal/transaction-approve-modal.tsx:40
 msgid "Something went wrong!"
 msgstr "Something went wrong!"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:67
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:28
+msgid "Something went wrong, please try again later."
+msgstr "Something went wrong, please try again later."
 
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:71
 msgid "Something went wrong."
@@ -1218,7 +1272,7 @@ msgstr "The NFT will add more cashback rewards to your credit card"
 msgid "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 msgstr "The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain."
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:97
+#: src/components/organisms/nft/landing-page/about-section.tsx:98
 msgid ""
 "The Paycer team will drop a fresh and creative 3D utility NFT collection. With the Paycer NFT you get your unique & full 3D robot horse that is ready for game implementations and the Metaverse.\n"
 "The NFT will also provide utilities on our DeFi and CeDeFi platform. Get your own unique Paycer NFT and enjoy cashback rewards with your branded Paycer credit card."
@@ -1249,6 +1303,10 @@ msgstr "This email is already on the whitelist."
 #: src/components/organisms/nft/landing-page/join-whitelist-modal.tsx:22
 msgid "This field is required"
 msgstr "This field is required"
+
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-approve-modal/reveal-approve-modal.tsx:77
+msgid "This is your new unique Paycer NFT"
+msgstr "This is your new unique Paycer NFT"
 
 #: src/components/organisms/portfolio/portfolio-header.tsx:77
 msgid "Total Investment"
@@ -1287,6 +1345,8 @@ msgstr "Transaction is processing..."
 
 #: src/components/organisms/invest/deposit-form/index.tsx:182
 #: src/components/organisms/invest/withdraw-form/index.tsx:186
+#: src/components/organisms/nft/reveal/reveal-modal/reveal-modal.tsx:20
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:27
 #: src/components/organisms/staking-rewards/claim-form/claim-summary.tsx:122
 #: src/components/organisms/staking-rewards/staking-form/index.tsx:176
 #: src/components/organisms/swap/swap.tsx:186
@@ -1300,6 +1360,10 @@ msgstr "Transaction was successfully executed."
 #: src/components/organisms/vesting/claim/index.tsx:132
 msgid "Transfer to:"
 msgstr "Transfer to:"
+
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:86
+msgid "UPGRADE MY NFT"
+msgstr "UPGRADE MY NFT"
 
 #: src/components/organisms/vesting/overview/index.tsx:46
 msgid "USD"
@@ -1338,6 +1402,10 @@ msgstr "Upgrade Your NFT"
 msgid "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
 msgstr "Upgrade your NFT by staking PCR tokens to add utilities and visual features to your NFT"
 
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:26
+msgid "Upgrading NFT. This may take a while."
+msgstr "Upgrading NFT. This may take a while."
+
 #: src/components/organisms/nft/landing-page/roadmap-section-mobile.tsx:190
 #: src/components/organisms/nft/landing-page/roadmap-section.tsx:167
 msgid "Use NFT Credit Card in Metaverse"
@@ -1360,6 +1428,10 @@ msgstr "Vesting"
 #: src/components/organisms/vesting/overview/index.tsx:111
 msgid "Vesting Phase"
 msgstr "Vesting Phase"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:43
+msgid "View Details"
+msgstr "View Details"
 
 #: src/components/organisms/portal-block-number/index.tsx:27
 msgid "View block details"
@@ -1389,7 +1461,7 @@ msgstr "We will launch specific campaigns to grant our community and early suppo
 msgid "What is coming up next?"
 msgstr "What is coming up next?"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:92
+#: src/components/organisms/nft/landing-page/about-section.tsx:93
 msgid "What is the Paycer NFT?"
 msgstr "What is the Paycer NFT?"
 
@@ -1425,14 +1497,6 @@ msgstr "Withdraw"
 #: src/components/organisms/invest/invest-modal.tsx:25
 msgid "Withdraw:"
 msgstr "Withdraw:"
-
-#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:41
-msgid "You are about to mint an NFT. Are you ready?"
-msgstr "You are about to mint an NFT. Are you ready?"
-
-#: src/components/organisms/nft/landing-page/minting-approve-modal.tsx:42
-msgid "You are about to mint {amount} NFTs. Are you ready?"
-msgstr "You are about to mint {amount} NFTs. Are you ready?"
 
 #: src/components/organisms/swap/fields/token1-select.tsx:49
 msgid "You get"
@@ -1481,15 +1545,27 @@ msgstr "You will withdraw:"
 msgid "Your APR:"
 msgstr "Your APR:"
 
-#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:76
+#: src/components/organisms/nft/reveal/reveal-panel/reveal-panel.tsx:75
 msgid "Your NFT reveal"
 msgstr "Your NFT reveal"
+
+#: src/components/organisms/nft/upgrade/upgrade-panel/upgrade-panel.tsx:69
+msgid "Your NFT upgrade"
+msgstr "Your NFT upgrade"
+
+#: src/components/organisms/nft/upgrade/upgrade-modal/upgrade-modal.tsx:40
+msgid "Your NFT was upgraded successfully"
+msgstr "Your NFT was upgraded successfully"
+
+#: src/pages/nft/overview/index.tsx:17
+msgid "Your NFTs Collection"
+msgstr "Your NFTs Collection"
 
 #: src/components/organisms/nft/landing-page/usp-section.tsx:76
 msgid "Your advantages"
 msgstr "Your advantages"
 
-#: src/components/organisms/nft/landing-page/about-section.tsx:62
+#: src/components/organisms/nft/landing-page/about-section.tsx:63
 msgid "featured on"
 msgstr "featured on"
 
