@@ -11,14 +11,14 @@ export interface RevealModalProps {
 export default function RevealModal({ tokenId, show, onHide }: RevealModalProps) {
   const nftReveal = useNftReveal(tokenId)
   return (
-      <RevealApproveModal
-          show={show}
-          onHide={onHide}
-          title={t`Confirm Reveal`}
-          onClick={() => { nftReveal.status === 'idle' && nftReveal.reveal() }}
-          infoMessage={t`Revealing NFT. This may take a while.`}
-          successMessage={t`Transaction was successfully executed`}
-          nftReveal={nftReveal}
-      />
+    <RevealApproveModal
+      show={show}
+      onHide={onHide}
+      title={t`Confirm Reveal`}
+      onClick={() => { nftReveal.status === 'idle' && nftReveal.reveal() }}
+      infoMessage={t`Revealing NFT. This may take a while.`}
+      successMessage={t`Transaction was successfully executed`}
+      nftReveal={nftReveal}
+    />
   )
 }
