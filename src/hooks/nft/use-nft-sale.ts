@@ -1,63 +1,154 @@
 import { useDapp } from '@context/dapp-context'
+import { useCallback, useEffect, useState } from 'react'
+import Moralis from 'moralis'
 import nftProvider from '@providers/nft'
-import { ChainId, ERC20, useContractCall, useContractFunction, useTokenAllowance } from '@usedapp/core'
-import { Contract } from '@ethersproject/contracts'
-import { useMemo } from 'react'
-import { BigNumber } from '@ethersproject/bignumber'
-import { Interface } from '@ethersproject/abi'
+import ChainId from '@providers/chain-id'
+import { allNetProviders } from '@providers/networks'
 
-/* TODO: REFACTOR FOR MORALIS */
+interface TimeRange {
+  startTime: Date
+  endTime: Date
+}
 
-export default function useNftSale(type: 'presale' | 'publicSale') {
-  const { currentNetworkId, walletAddress } = useDapp()
+interface Info {
+  presale: TimeRange
+  publicSale: TimeRange
+  currentPhase: 'whitelisting' | 'presale' | 'publicSale' | 'postSale'
+}
 
-  const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon])[type]
-  const contract = useMemo(() => new Contract(contractAddress, abi), [contractAddress, abi])
-  const abiInterface = useMemo(() => new Interface(abi), [abi])
+type UseNftSaleProps = {
+  status: 'loading'
+} | {
+  status: 'idle'
+  info: Info
+  buyPresale: (amount: number, alloc: number, proof: string[]) => void
+  buyPublicSale: (amount: number) => void
+} | {
+  status: 'inProgress' | 'success' | 'error'
+  info: Info
+}
 
-  const fundTokenAddress = (useContractCall({
-    abi: abiInterface,
-    address: contractAddress,
-    method: 'fundToken',
-    args: [],
-  }) ?? [])[0]
-  const price = (useContractCall({
-    abi: abiInterface,
-    address: contractAddress,
-    method: 'price',
-    args: [],
-  }) ?? [])[0]
+export default function useNftSale(): UseNftSaleProps {
+  const { currentNetworkId, isAuthenticated, walletAddress } = useDapp()
 
-  const allowance = useTokenAllowance(fundTokenAddress, walletAddress, contractAddress)
+  const { address: presaleAddress, abi: presaleAbi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).presale
+  const { address: publicSaleAddress, abi: publicSaleAbi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Mumbai]).publicSale
 
-  const fundTokenContract = useMemo(() => fundTokenAddress && new Contract(fundTokenAddress, ERC20.abi), [fundTokenAddress])
+  const [info, setInfo] = useState<Info | undefined>(undefined)
+  useEffect(() => {
+    if (!isAuthenticated || !currentNetworkId) return
+    const { chainId } = allNetProviders[currentNetworkId];
 
-  // @ts-ignore
-  const { send: sendApprove, state: approveTx, resetState: resetApproveState } = useContractFunction(fundTokenContract, 'approve')
+    (async () => {
+      let presaleStartTime: Date
+      let presaleEndTime: Date
+      let publicSaleStartTime: Date
+      let publicSaleEndTime: Date
+      {
+        const options = {
+          abi: presaleAbi,
+          chain: chainId as any,
+          address: presaleAddress,
+          function_name: 'startTime',
+          params: {},
+        }
+        presaleStartTime = new Date(Number.parseInt(await Moralis.Web3API.native.runContractFunction(options)) * 1000)
+      }
+      {
+        const options = {
+          abi: presaleAbi,
+          chain: chainId as any,
+          address: presaleAddress,
+          function_name: 'endTime',
+          params: {},
+        }
+        presaleEndTime = new Date(Number.parseInt(await Moralis.Web3API.native.runContractFunction(options)) * 1000)
+      }
+      {
+        const options = {
+          abi: publicSaleAbi,
+          chain: chainId as any,
+          address: publicSaleAddress,
+          function_name: 'startTime',
+          params: {},
+        }
+        publicSaleStartTime = new Date(Number.parseInt(await Moralis.Web3API.native.runContractFunction(options)) * 1000)
+      }
+      {
+        const options = {
+          abi: publicSaleAbi,
+          chain: chainId as any,
+          address: publicSaleAddress,
+          function_name: 'endTime',
+          params: {},
+        }
+        publicSaleEndTime = new Date(Number.parseInt(await Moralis.Web3API.native.runContractFunction(options)) * 1000)
+      }
 
-  // @ts-ignore
-  const { send: sendBuy, state: buyTx, resetState: resetBuyState } = useContractFunction(contract, 'buy')
+      let currentPhase: Info['currentPhase']
+      if (presaleStartTime.getTime() > Date.now()) currentPhase = 'whitelisting'
+      else if (presaleEndTime.getTime() > Date.now()) currentPhase = 'presale'
+      else if (publicSaleEndTime.getTime() > Date.now()) currentPhase = 'publicSale'
+      else currentPhase = 'postSale'
 
-  const tx = [approveTx.status, buyTx.status]
+      setInfo({
+        presale: { startTime: presaleStartTime, endTime: presaleEndTime },
+        publicSale: { startTime: publicSaleStartTime, endTime: publicSaleEndTime },
+        currentPhase,
+      })
+    })()
+  }, [currentNetworkId, isAuthenticated])
 
-  let status = 'idle'
-  if (tx.includes('Success')) status = 'success'
-  if (tx.includes('PendingSignature') || tx.includes('Mining')) status = 'loading'
-  if (tx.includes('Fail') || tx.includes('Exception')) status = 'error'
+  const [status, setStatus] = useState<'idle' | 'inProgress' | 'error' | 'success'>('idle')
+
+  const buyPresale = useCallback(async (amount: number, alloc: number, proof: string[]) => {
+    if (!isAuthenticated || !currentNetworkId) return
+    if (status !== 'idle') return
+    const { chainId } = allNetProviders[currentNetworkId]
+    const options = {
+      abi: presaleAbi,
+      chain: chainId,
+      contractAddress: presaleAddress,
+      functionName: 'buy',
+      params: { amount, alloc, proof },
+    }
+    try {
+      setStatus('inProgress')
+      await Moralis.executeFunction(options)
+      setStatus('success')
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
+  }, [status, currentNetworkId, isAuthenticated])
+
+  const buyPublicSale = useCallback(async (amount: number) => {
+    if (!isAuthenticated || !currentNetworkId) return
+    if (status !== 'idle') return
+    const { chainId } = allNetProviders[currentNetworkId]
+    const options = {
+      abi: publicSaleAbi,
+      chain: chainId,
+      contractAddress: publicSaleAddress,
+      functionName: 'buy',
+      params: { amount },
+    }
+    try {
+      setStatus('inProgress')
+      await Moralis.executeFunction(options)
+      setStatus('success')
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
+  }, [status, currentNetworkId, isAuthenticated])
+
+  if (info === undefined) return { status: 'loading' }
 
   return {
     status,
-    async buy(amount: number, alloc?: number, merkleProof?: string[]) {
-      if (!BigNumber.isBigNumber(price)) return
-      const total = price.mul(amount)
-      if (allowance.sub(total).isNegative()) {
-        await sendApprove(contractAddress, total.sub(allowance))
-      }
-      await sendBuy(amount, alloc, merkleProof)
-    },
-    resetState: () => {
-      resetApproveState()
-      resetBuyState()
-    },
+    info,
+    buyPresale,
+    buyPublicSale,
   }
 }
