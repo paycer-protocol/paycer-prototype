@@ -1,13 +1,10 @@
 import React, {createContext, useContext, useEffect, useMemo, useState} from 'react'
 import Moralis from 'moralis'
-import { useWeb3ExecuteFunction, useMoralisWeb3Api, useMoralisWeb3ApiCall } from 'react-moralis'
-import { BigNumber } from '@ethersproject/bignumber'
+import { useWeb3ExecuteFunction, useMoralisWeb3Api } from 'react-moralis'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import AirdropContractProvider from '@providers/airdrop'
 import ChainId from '@providers/chain-id'
-import { formatLastRewardtime } from '../helpers/staking-helper'
 import { useDapp } from '@context/dapp-context'
-import PaycerTokenContractProvider from "@providers/paycer-token";
 
 enum TRANSACTION_STATE {
   "NONE" = 0,
@@ -38,15 +35,14 @@ const contextDefaultValues: UseAirdropProps = {
 }
 
 const AirdropContext = createContext<UseAirdropProps>(
-    contextDefaultValues
+  contextDefaultValues
 )
 
 export const useAirdrop = () => useContext(AirdropContext)
 
 const AirdropContextProvider = ({ children }) => {
 
-  const { walletAddress, currentNetworkId, currentChainId, isInitialized, currentNetwork, fetchERC20Balances } = useDapp()
-  const Web3Api = useMoralisWeb3Api()
+  const { walletAddress, currentNetworkId, isInitialized, currentNetwork, fetchERC20Balances } = useDapp()
   const airdropAddress = AirdropContractProvider[currentNetworkId] || AirdropContractProvider[ChainId.Polygon]
 
   const [claimIsSuccess, setClaimIsSuccess] = useState<boolean>(false)
@@ -60,20 +56,20 @@ const AirdropContextProvider = ({ children }) => {
 
   const airdropRequestParams = useMemo(() => {
     return (
-        {
-          contractAddress: airdropAddress,
-          abi: AirdropContractProvider.abi,
-        }
+      {
+        contractAddress: airdropAddress,
+        abi: AirdropContractProvider.abi,
+      }
     )
   }, [currentNetworkId, walletAddress, isInitialized])
 
   const airdropClaimRequestParams = useMemo(() => {
     return (
-        {
-          contractAddress: airdropAddress,
-          functionName: 'claim',
-          abi: AirdropContractProvider.abi
-        }
+      {
+        contractAddress: airdropAddress,
+        functionName: 'claim',
+        abi: AirdropContractProvider.abi
+      }
     )
   }, [currentNetworkId, walletAddress, isInitialized])
 
@@ -181,20 +177,20 @@ const AirdropContextProvider = ({ children }) => {
   }
 
   return (
-      <AirdropContext.Provider
-          value={{
-            inAirdrop,
-            airdropAmount,
-            claim: handleClaim,
-            claimIsSuccess,
-            contractCallError,
-            isLoading,
-            resetStatus,
-            transactionState
-          }}
-      >
-        {children}
-      </AirdropContext.Provider>
+    <AirdropContext.Provider
+      value={{
+        inAirdrop,
+        airdropAmount,
+        claim: handleClaim,
+        claimIsSuccess,
+        contractCallError,
+        isLoading,
+        resetStatus,
+        transactionState
+      }}
+    >
+      {children}
+    </AirdropContext.Provider>
   )
 }
 
