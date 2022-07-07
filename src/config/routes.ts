@@ -32,11 +32,6 @@ export const routes:RoutesInterface[] = [
     supportedChains: supportedVestingChains
   },
   {
-    label: t`Airdrop`,
-    path: '/airdrop',
-    supportedChains: supportedAirdropChains
-  },
-  {
     label: t`Portfolio`,
     path: '/portfolio',
     supportedChains,
