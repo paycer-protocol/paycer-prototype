@@ -88,7 +88,8 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
   }
 
   return (
-    <Modal backdropClassName="reveal-loading-backdrop" centered show={show} onHide={nftReveal.status === 'loading' ? null : onHide} className={`reveal-modal ${nftReveal.status}`}>
+      // @ts-ignore
+    <Modal size={nftReveal.status === 'success' ? 'lg' : ''} backdropClassName="reveal-loading-backdrop" centered show={show} onHide={nftReveal.status === 'loading' ? null : onHide} className={`reveal-modal ${nftReveal.status}`}>
       <>
         {nftReveal.status !== 'error'
           && (
@@ -125,6 +126,25 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
                 {btnLabel || t`Confirm`}
               </GradientButton>
             )
+          )}
+
+          {(nftReveal.status === 'success'
+            && (
+              <div className="row">
+                <div className="col-md-4 offset-md-2 mb-4 mb-md-0">
+                  <GradientButton onClick={() => onHide()} isInverted className="w-100">
+                    <span className="bg-dark">{btnLabel || t`Reveal another NFT`}
+                    </span>
+                  </GradientButton>
+                </div>
+                <div className="col-md-4">
+                  <GradientButton isInverted className="w-100">
+                    <span className="bg-dark">{btnLabel || t`Show Details`}
+                    </span>
+                  </GradientButton>
+                </div>
+              </div>
+              )
           )}
         </Modal.Body>
       </>
