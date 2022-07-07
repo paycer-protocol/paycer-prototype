@@ -28,7 +28,6 @@ const Airdrop = () => {
         isLoading,
         claimIsSuccess,
         contractCallError,
-        transactionState,
         resetStatus,
     } = useAirdrop()
 
