@@ -169,18 +169,17 @@ $reveal-finish-color-two: #ceae03;
 .nft-reveal-twinkles {
   position: absolute;
   z-index: 1;
-  top: -121px;
-  left: 70px;
-  opacity: 0.8;
+  top: -141px;
+  left: 130px;
 
   svg {
-    width: 280px;
+    width: 250px;
   }
 
   &--right {
-    right: -70%;
+    right: -65%;
     transform: rotate(218deg);
-    top: -309px;
+    top: -280px;
   }
 }
 
@@ -196,7 +195,7 @@ $reveal-finish-color-two: #ceae03;
 @keyframes twinkle1 {
   to {
     zoom:10%;
-    opacity:0;
+    opacity:.4;
   }
   from{
     zoom:80%;
@@ -224,14 +223,14 @@ $reveal-finish-color-two: #ceae03;
   animation-name: twinkle1;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-duration: 1s;
+  animation-duration: 1.7s;
   animation-direction: alternate;
 }
 
 @keyframes twinkle3 {
   to {
     zoom:10%;
-    opacity:0;
+    opacity:0.4;
   }
   from{
     zoom:80%;
@@ -242,13 +241,13 @@ $reveal-finish-color-two: #ceae03;
   animation-name: twinkle3;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-duration: 1s;
+  animation-duration: 1.7s;
   animation-direction: alternate;
 }
 @keyframes twinkle4 {
   to {
 
-    opacity:0;
+    opacity:0.4;
   }
   from{
 
@@ -260,5 +259,23 @@ $reveal-finish-color-two: #ceae03;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 1s;
+  animation-direction: alternate;
+}
+
+@keyframes twinkle5 {
+  to {
+
+    opacity:0.4;
+  }
+  from{
+
+    opacity:1;
+  }
+}
+.twinkle5 {
+  animation-name: twinkle4;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 1.4s;
   animation-direction: alternate;
 }
