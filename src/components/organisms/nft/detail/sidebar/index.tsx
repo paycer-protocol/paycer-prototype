@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useNftDetail } from '@context/nft-detail-context'
+import useOwnedNft from '@hooks/nft/use-owned-nft'
 import { useRouter } from 'next/router'
 import Spinner from '@components/atoms/spinner'
 import NftModelViewer from '@components/organisms/nft/common/model-viewer'
@@ -12,18 +12,14 @@ export const ModelWrapper = styled.div`
  > div { top: -270px; }
 `
 
-export default function NftDetail() {
+export default function NftDetailSidebar() {
+  const router = useRouter()
+  const { pid } = router.query
+  const result = useOwnedNft(pid)
 
 
-  const {
-      status,
-      id,
-      name,
-      animation_url,
-      description,
-  } = useNftDetail()
 
-  if (status === 'loading') {
+  if (result.status === 'loading' ) {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center mt-8">
         <Spinner animation="border" show />
@@ -31,15 +27,20 @@ export default function NftDetail() {
     )
   }
 
-  if (status === 'success') {
+  if (result.status === 'success' && result.nfts.length) {
 
-      /*
     const {
         id,
         metadata
     } = result.nfts[0]
 
-       */
+    const {
+        animation_url,
+        attributes,
+        description,
+        level,
+        name,
+    } = metadata
 
     return (
       <div className="row">
