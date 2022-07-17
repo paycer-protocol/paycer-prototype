@@ -12,7 +12,7 @@ export default function NftOverviewPage() {
      <div className="container mt-3">
        <PageHeader>
          <div className="row align-items-center position-relative" style={{ zIndex: 1 }}>
-             <Link href="/my-nfts">
+             <Link href="/nft/my-nfts">
                  <a href="#!" title={t`Back to NFT Overview`}>
                      {t`Back`}
                  </a>
