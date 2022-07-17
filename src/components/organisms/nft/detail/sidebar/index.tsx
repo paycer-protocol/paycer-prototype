@@ -8,10 +8,11 @@ import NftRarityColorBadge from '@components/atoms/nft/nft-rarity-color-badge/st
 import useStaking from '@hooks/use-staking'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
 import { NftRarities, MaxMintable } from '@config/nft'
+import { getStakingTierByBalance, stakingTiers } from '@config/staking-rewards'
 import * as Styles from './styles'
 import { useNftDetail } from '@context/nft-detail-context'
 import Icon from '@components/atoms/icon'
-import DashNumber from "@components/organisms/dashboard/dash-number";
+import DashNumber from '@components/organisms/dashboard/dash-number'
 
 export default function NftDetailSidebar() {
   const [copiedTokenId, setCopiedTokenId] = useCopyClipboard()
@@ -28,7 +29,7 @@ export default function NftDetailSidebar() {
   const { stakedBalance } = useStaking()
 
   return (
-    <div>
+    <section>
       <div className="mb-4 d-flex">
         <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}} className="px-4 py-2 me-3 text-uppercase">
           {NftRarities[rarity].label}
@@ -67,14 +68,19 @@ export default function NftDetailSidebar() {
           {t`Minted NFT`}:
         </div>
         <div className="row mb-3">
-          <div className="col-lg-6">
+          <div className="col-lg-4">
             {t`Staked`}:
           </div>
-          <div className="col-lg-6 text-end">
-              <DashNumber
+          <div className="col-lg-8 justify-content-end d-flex">
+            {stakedBalance &&
+              <>
+                <DashNumber
                   value={stakedBalance}
                   symbol="PCR"
-              />
+                />&nbsp;
+                ({stakingTiers[getStakingTierByBalance(stakedBalance)].label})
+              </>
+            }
           </div>
         </div>
         <div className="row mb-3">
@@ -96,6 +102,6 @@ export default function NftDetailSidebar() {
           </div>
         }
       </div>
-    </div>
+    </section>
   )
 }

@@ -7,7 +7,7 @@ import Moralis from 'moralis'
 import StakingContractProvider from '@providers/staking'
 
 interface UseStakingProps {
-  stakedBalance: number
+  stakedBalance: number | null
 }
 
 type UserInfoRequest = {

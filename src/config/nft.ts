@@ -25,4 +25,37 @@ export const NftRarities = {
   },
 }
 
+export const NftPropetiess = {
+  1: {
+    label: 'Hooves',
+    rarity: 'Uncommon',
+    dropChance: '30'
+  },
+  2: {
+    label: 'Tail',
+    rarity: 'Legendary',
+    dropChance: '4'
+  },
+  3: {
+    label: 'Eyes',
+    rarity: 'Rare',
+    dropChance: '15'
+  },
+  4: {
+    label: 'Hooves',
+    rarity: 'Uncommon',
+    dropChance: '30'
+  },
+  5: {
+    label: 'Tail',
+    rarity: 'Legendary',
+    dropChance: '4'
+  },
+  6: {
+    label: 'Eyes',
+    rarity: 'Rare',
+    dropChance: '15'
+  },
+}
+
 export const MaxMintable = 200

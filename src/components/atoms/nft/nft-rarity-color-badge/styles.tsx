@@ -9,6 +9,6 @@ export default styled.div<NftRarityColorBadgeProps>`
     background: ${props.color};
   `}
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
 `
