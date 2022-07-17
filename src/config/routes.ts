@@ -68,13 +68,6 @@ export const routes:RoutesInterface[] = [
   },
   {
     label: t`NFT`,
-    path: '/nft',
-    supportedChains,
-    auth: false,
-  },
-  /*
-  {
-    label: t`NFT`,
     path: '',
     supportedChains,
     auth: false,
@@ -87,12 +80,7 @@ export const routes:RoutesInterface[] = [
       },
       {
         label: t`My NFTs`,
-        path: '/my-nfts',
-        auth: false
-      },
-      {
-        label: t`Upgrade NFT`,
-        path: '/upgrade-nft',
+        path: '/nft/my-nfts',
         auth: false
       },
       {
@@ -102,5 +90,4 @@ export const routes:RoutesInterface[] = [
       },
     ],
   }
-     */
 ]
