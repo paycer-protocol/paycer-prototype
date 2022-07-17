@@ -18,7 +18,7 @@ type UserInfoRequest = {
   rewardDebt: BigNumber
 }
 
-export default function useInvest():UseStakingProps {
+export default function useStaking():UseStakingProps {
   const { currentNetworkId, walletAddress, currentNetwork, isInitialized } = useDapp()
   const stakingAddress = StakingContractProvider[currentNetworkId] || StakingContractProvider[ChainId.Polygon]
   const [userInfo, setUserInfo] = useState<UserInfoRequest | null>(null)
