@@ -31,18 +31,18 @@ export default function NftDetailSidebar() {
   return (
     <section>
       <div className="mb-4 d-flex">
-        <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}} className="px-4 py-2 me-3 text-uppercase">
+        <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}} className="px-4 py-2 me-3 text-uppercase fw-bold">
           {NftRarities[rarity].label}
         </Styles.Batch>
           {attributes.length > 0 &&
-            <Styles.BlueBatch className="px-4 py-2 text-uppercase">
+            <Styles.BlueBatch className="px-4 py-2 text-uppercase fw-bold">
               {attributes.length} {attributes.length > 1 ? t`Utilities` : t`Utility`}
             </Styles.BlueBatch>
           }
       </div>
-      <h2 className="display-2">{name}</h2>
-      <div className="mb-3">
-        <span className="text-muted">Token-ID: {id}</span>
+      <h2 style={{ fontSize: '50px' }} className="display-2">{name}</h2>
+      <div className="mb-2">
+        <span className="text-muted">Token ID: {id}</span>
         <Icon style={{top: '-2px'}} className="ms-2 position-relative cur" onClick={() => setCopiedTokenId(id)} component={Copy} color="#FFFFFF" size={20} />
         {copiedTokenId && <Icon className="ms-2 ps-2" component={CheckCircle} color="#00FF00" size={23} />}
       </div>

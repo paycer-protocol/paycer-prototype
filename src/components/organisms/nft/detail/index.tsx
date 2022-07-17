@@ -66,22 +66,21 @@ export default function NftDetail() {
             <div className="mb-5 pb-3">
               <div className="row">
                 <div className="col-lg-4">
-                    <small className="text-muted text-uppercase mb-2 d-block">Current Price</small>
-                    <div>3 ETH</div>
-                    <small className="text-muted">3.769 USD</small>
+                  <small className="text-muted text-uppercase mb-2 d-block">{t`Current Price`}</small>
+                  <div>3 ETH</div>
+                  <small className="text-muted">3.769 USD</small>
                 </div>
                   <div className="col-lg-4">
-                      <small className="text-muted text-uppercase mb-2 d-block">Owner</small>
-                      <div>{TruncateText(walletAddress, 20)}</div>
-                      <small className="text-muted">3.769 USD</small>
+                    <small className="text-muted text-uppercase mb-2 d-block">{t`Owner`}</small>
+                    <div>{TruncateText(walletAddress, 20)}</div>
+                    <small className="text-muted">3.769 USD</small>
                   </div>
                   <div className="col-lg-4 d-flex align-items-center">
-                      <GradientButton className="w-100">
-                          {t`Upgrade NFT`}
-                      </GradientButton>
+                    <GradientButton className="w-100">
+                      {t`Upgrade NFT`}
+                    </GradientButton>
                   </div>
               </div>
-
             </div>
             <div className="mb-5">
               <SubLine className="mb-4 fw-bold">
