@@ -6,6 +6,8 @@ import { PcrNftMetadata } from '@types/nft'
 export interface NftDetailContextTypes extends PcrNftMetadata {
   status: string
   id: string
+  rarity: number
+  mintedCount: number
 }
 
 const contextDefaultValues: NftDetailContextTypes = {
@@ -16,7 +18,9 @@ const contextDefaultValues: NftDetailContextTypes = {
   level: 0,
   name: '',
   id: '',
-  attributes: null
+  attributes: null,
+  rarity: 0,
+  mintedCount: 0,
 }
 
 const NftDetailContext = createContext<NftDetailContextTypes>(
@@ -58,7 +62,9 @@ const NftDetailContextProvider = ({ children }) => {
       name,
       status: result.status,
       attributes,
-      image
+      image,
+      rarity: 4,
+      mintedCount: 150
     }
   }
 

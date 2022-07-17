@@ -4,7 +4,9 @@ import { useNftDetail } from '@context/nft-detail-context'
 import { useRouter } from 'next/router'
 import Spinner from '@components/atoms/spinner'
 import NftModelViewer from '@components/organisms/nft/common/model-viewer'
+import NftDetailSidebar from './sidebar'
 import { withIpfsGateway } from '@hooks/nft/use-nfts'
+
 
 export const ModelWrapper = styled.div`
  width: 100%;
@@ -13,7 +15,6 @@ export const ModelWrapper = styled.div`
 `
 
 export default function NftDetail() {
-
 
   const {
       status,
@@ -49,11 +50,7 @@ export default function NftDetail() {
           </ModelWrapper>
         </div>
         <div className="col-lg-5">
-          <h2 className="display-2">{name}</h2>
-            <span>{id}</span>
-          <p>
-            {description}
-          </p>
+          <NftDetailSidebar />
         </div>
       </div>
     )

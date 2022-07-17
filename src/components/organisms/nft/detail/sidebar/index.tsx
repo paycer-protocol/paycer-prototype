@@ -1,62 +1,101 @@
 import React from 'react'
-import styled from 'styled-components'
-import useOwnedNft from '@hooks/nft/use-owned-nft'
-import { useRouter } from 'next/router'
-import Spinner from '@components/atoms/spinner'
-import NftModelViewer from '@components/organisms/nft/common/model-viewer'
-import { withIpfsGateway } from '@hooks/nft/use-nfts'
-
-export const ModelWrapper = styled.div`
- width: 100%;
- height: 600px;
- > div { top: -270px; }
-`
+import { t } from '@lingui/macro'
+import { ThreeDots } from '@styled-icons/bootstrap'
+import { EventAvailable } from '@styled-icons/material-outlined'
+import {CheckCircle} from '@styled-icons/feather'
+import { Copy } from '@styled-icons/boxicons-regular/'
+import NftRarityColorBadge from '@components/atoms/nft/nft-rarity-color-badge/styles'
+import useStaking from '@hooks/use-staking'
+import useCopyClipboard from '@hooks/use-copy-clipboard'
+import { NftRarities, MaxMintable } from '@config/nft'
+import * as Styles from './styles'
+import { useNftDetail } from '@context/nft-detail-context'
+import Icon from '@components/atoms/icon'
+import DashNumber from "@components/organisms/dashboard/dash-number";
 
 export default function NftDetailSidebar() {
-  const router = useRouter()
-  const { pid } = router.query
-  const result = useOwnedNft(pid)
+  const [copiedTokenId, setCopiedTokenId] = useCopyClipboard()
 
+  const {
+    id,
+    name,
+    description,
+    attributes,
+    rarity,
+    mintedCount
+  } = useNftDetail()
 
+  const { stakedBalance } = useStaking()
 
-  if (result.status === 'loading' ) {
-    return (
-      <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-        <Spinner animation="border" show />
+  return (
+    <div>
+      <div className="mb-4 d-flex">
+        <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}} className="px-4 py-2 me-3 text-uppercase">
+          {NftRarities[rarity].label}
+        </Styles.Batch>
+          {attributes.length > 0 &&
+            <Styles.BlueBatch className="px-4 py-2 text-uppercase">
+              {attributes.length} {attributes.length > 1 ? t`Utilities` : t`Utility`}
+            </Styles.BlueBatch>
+          }
       </div>
-    )
-  }
-
-  if (result.status === 'success' && result.nfts.length) {
-
-    const {
-        id,
-        metadata
-    } = result.nfts[0]
-
-    const {
-        animation_url,
-        attributes,
-        description,
-        level,
-        name,
-    } = metadata
-
-    return (
-      <div className="row">
-        <div className="col-lg-7">
-          <ModelWrapper>
-            <NftModelViewer url={withIpfsGateway(animation_url)} />
-          </ModelWrapper>
+      <h2 className="display-2">{name}</h2>
+      <div className="mb-3">
+        <span className="text-muted">Token-ID: {id}</span>
+        <Icon style={{top: '-2px'}} className="ms-2 position-relative cur" onClick={() => setCopiedTokenId(id)} component={Copy} color="#FFFFFF" size={20} />
+        {copiedTokenId && <Icon className="ms-2 ps-2" component={CheckCircle} color="#00FF00" size={23} />}
+      </div>
+      <p className="text-muted mb-4">
+       {description}
+      </p>
+      <div className="d-flex mb-4">
+        <div className="d-flex align-items-center me-4">
+          <Icon className="me-3 position-relative" component={Copy} color="#FFFFFF" size={16} />
+          {mintedCount} / {MaxMintable} {t`minted`}
         </div>
-        <div className="col-lg-5">
-          <h2 className="display-2">{name}</h2>
-            <span>{id}</span>
-          <p>
-            {description}
-          </p>
+        <div className="d-flex align-items-center me-4">
+          <Icon className="me-3 position-relative" component={EventAvailable} color="#FFFFFF" size={16} />
+          {mintedCount} / {MaxMintable} {t`in stock`}
+        </div>
+        <div className="d-flex align-items-center">
+          <Icon className="me-3 position-relative" component={ThreeDots} color="#FFFFFF" size={16} />
+          {rarity} / {Object.keys(NftRarities).length} {t`qualities`}
         </div>
       </div>
-    )
-  }
+      <div className="mb-4">
+        <div className="text-uppercase mb-3 fw-bold">
+          {t`Minted NFT`}:
+        </div>
+        <div className="row mb-3">
+          <div className="col-lg-6">
+            {t`Staked`}:
+          </div>
+          <div className="col-lg-6 text-end">
+              <DashNumber
+                  value={stakedBalance}
+                  symbol="PCR"
+              />
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-lg-6">
+            {t`NFT Rarity color`}:
+          </div>
+          <div className="col-lg-6 d-flex align-items-center justify-content-end ">
+            <NftRarityColorBadge color={NftRarities[rarity].color} />
+          </div>
+        </div>
+        {attributes.length > 0 &&
+          <div className="row mb-3">
+            <div className="col-lg-6">
+              {t`Utilities`}:
+            </div>
+            <div className="col-lg-6 text-end">
+              {attributes.length} {attributes.length > 1 ? t`Utilities` : t`Utility`}
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  )
 }
