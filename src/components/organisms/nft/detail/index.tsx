@@ -59,7 +59,7 @@ export default function NftDetail() {
       <article className="row">
         <div className="col-lg-7">
           <div className="pe-lg-4">
-          <ModelWrapper>
+          <ModelWrapper className="position-relative blur-background">
             <NftModelViewer url={withIpfsGateway(animation_url)} />
           </ModelWrapper>
           <Content>

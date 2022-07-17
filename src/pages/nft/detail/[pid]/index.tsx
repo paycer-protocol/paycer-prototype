@@ -19,7 +19,7 @@ export default function NftOverviewPage() {
              </Link>
          </div>
        </PageHeader>
-       <div className="position-relative blur-background">
+       <div>
          <NftDetailContextProvider>
            <NftDetail />
          </NftDetailContextProvider>
