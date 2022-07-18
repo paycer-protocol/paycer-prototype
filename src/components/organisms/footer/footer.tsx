@@ -138,6 +138,13 @@ const Footer = () => {
                                     </Link>
                                 </li>
                             ))}
+                            <li className="nav-item m-0">
+                                <Link href="/airdrop">
+                                    <a className={classnames({active: pathname == '/airdrop'}, 'nav-link pt-0 pb-4 border-0')} title="airdrop">
+                                        {t`Airdrop`}
+                                    </a>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

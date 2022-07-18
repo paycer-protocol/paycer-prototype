@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import {ChainId} from '@usedapp/core'
-import {supportedChains, supportedStakingChains, supportedVestingChains} from './network'
+import {supportedAirdropChains, supportedChains, supportedStakingChains, supportedVestingChains} from './network'
 
 interface SubRoutesInterface {
   label?: string
