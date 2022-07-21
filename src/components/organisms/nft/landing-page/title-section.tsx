@@ -77,7 +77,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
               {t`The first utility NFT designed by a CeDeFi platform`}
             </h1>
             <span onClick={onMintNowClicked}>
-              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
+              <GradientButton className="m-auto">{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
             </span>
           </PageHeader>
         </div>

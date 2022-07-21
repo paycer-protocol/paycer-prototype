@@ -41,9 +41,9 @@ export default function NftDetail() {
   } = useDapp()
 
   const {
-      status,
-      animation_url,
-      attributes
+    status,
+    animation_url,
+    attributes
   } = useNftDetail()
 
   if (status === 'loading') {
