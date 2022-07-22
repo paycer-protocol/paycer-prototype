@@ -12,11 +12,12 @@ import { infoChartProviders } from '@providers/networks'
 import NftRarityColorBadge from '@components/atoms/nft/nft-rarity-color-badge/styles'
 import TruncateText from '../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
+import {Vector3} from "three";
 
 export const ModelWrapper = styled.div`
- width: 100%;
- height: 600px;
- > div { top: -270px; }
+  position: absolute;
+  width: 600px; height: 600px;
+  canvas { height: 700px; width: 600px; position: absolute; top: -235px}
 `
 
 export const SubLine = styled.h4`
@@ -24,7 +25,7 @@ export const SubLine = styled.h4`
 `
 
 export const Content = styled.section`
-  margin-top: -200px;
+
 `
 
 export const AttributeCardImageContainer = styled.div`
@@ -59,9 +60,13 @@ export default function NftDetail() {
       <article className="row">
         <div className="col-lg-7">
           <div className="pe-lg-4">
-          <ModelWrapper className="position-relative blur-background">
-            <NftModelViewer url={withIpfsGateway(animation_url)} />
-          </ModelWrapper>
+            <div style={{height :'400px'}} className="card bg-transparent blur-background border-purple-dark mb-5">
+              <div className="card-body">
+                <ModelWrapper>
+                  <NftModelViewer position={new Vector3(-10, 0, 5)} autoRotate={false} fov={30} url={withIpfsGateway(animation_url)} />
+                </ModelWrapper>
+              </div>
+            </div>
           <Content>
             <div className="mb-5 pb-3">
               <div className="row">
@@ -87,15 +92,15 @@ export default function NftDetail() {
                 {t`Your Basic NFT Properties`}
               </SubLine>
               <div className="row">
-                {Object.keys(NftPropetiess).map((key) => (
+                {attributes.map((item) => (
                   <div className="col-lg-4">
                     <div className="card mb-4 shadow-none">
                       <div className="card-body p-3">
                         <div className="text-uppercase fw-bold mb-2">
-                          {NftPropetiess[key].label}
+                          {item.trait_type}
                         </div>
                         <small>
-                          {NftPropetiess[key].rarity} {NftPropetiess[key].dropChance}% {t`chance`}
+                          {item.value}
                         </small>
                       </div>
                     </div>
