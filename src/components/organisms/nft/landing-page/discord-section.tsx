@@ -1,9 +1,7 @@
-import { t, Trans } from '@lingui/macro'
-import Image from 'next/image'
+import { t } from '@lingui/macro'
 import styled from 'styled-components'
 import Icon from '@components/atoms/icon'
 import { ArrowForward } from '@styled-icons/material'
-import Button from '@components/atoms/button'
 import React from 'react'
 import { Discord } from '@styled-icons/bootstrap'
 

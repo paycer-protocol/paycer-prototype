@@ -2,17 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useNftDetail } from '@context/nft-detail-context'
-import { useDapp } from '@context/dapp-context'
-import { NftPropetiess, NftRarities } from '@config/nft'
 import Spinner from '@components/atoms/spinner'
 import NftModelViewer from '@components/organisms/nft/common/model-viewer'
 import NftDetailSidebar from './sidebar'
 import { withIpfsGateway } from '@hooks/nft/use-nfts'
-import { infoChartProviders } from '@providers/networks'
 import NftRarityColorBadge from '@components/atoms/nft/nft-rarity-color-badge/styles'
-import TruncateText from '../../../../helpers/truncate-text'
-import GradientButton from '@components/atoms/button/gradient-button'
-import {Vector3} from "three";
+import { Vector3 } from 'three'
 
 export const ModelWrapper = styled.div`
   position: absolute;
@@ -36,10 +31,6 @@ export const AttributeCardImageContainer = styled.div`
 `
 
 export default function NftDetail() {
-
-  const {
-    walletAddress
-  } = useDapp()
 
   const {
     status,
@@ -68,25 +59,6 @@ export default function NftDetail() {
               </div>
             </div>
           <Content>
-            <div className="mb-5 pb-3">
-              <div className="row">
-                <div className="col-lg-4">
-                  <small className="text-muted text-uppercase mb-2 d-block">{t`Current Price`}</small>
-                  <div>3 ETH</div>
-                  <small className="text-muted">3.769 USD</small>
-                </div>
-                  <div className="col-lg-4">
-                    <small className="text-muted text-uppercase mb-2 d-block">{t`Owner`}</small>
-                    <div>{TruncateText(walletAddress, 20)}</div>
-                    <small className="text-muted">3.769 USD</small>
-                  </div>
-                  <div className="col-lg-4 d-flex align-items-center">
-                    <GradientButton className="w-100">
-                      {t`Upgrade NFT`}
-                    </GradientButton>
-                  </div>
-              </div>
-            </div>
             <div className="mb-5">
               <SubLine className="mb-4 fw-bold">
                 {t`Your Basic NFT Properties`}
