@@ -23,8 +23,11 @@ export default function NftDetailSidebar() {
     description,
     attributes,
     rarity,
-    mintedCount
+    mintedCount,
+      ownerHistory
   } = useNftDetail()
+
+    console.log(ownerHistory, 'yoyoyoy')
 
   const { stakedBalance } = useStaking()
 
