@@ -64,28 +64,33 @@ export default function NftDetail() {
               </div>
             </div>
           <Content>
-            <div className="mb-5">
-              <SubLine className="mb-4 fw-bold">
-                {t`Your Basic NFT Properties`}
-              </SubLine>
-              <div className="row">
-                {attributes.map((item) => (
-                  <div className="col-lg-4">
-                    <div className="card mb-4 shadow-none">
-                      <div className="card-body p-3">
-                        <div className="text-uppercase fw-bold mb-2">
-                          {item.trait_type}
+            {attributes.length > 90 &&
+              <>
+                <div className="mb-5">
+                  <SubLine className="mb-4 fw-bold">
+                    {t`Your Basic NFT Properties`}
+                  </SubLine>
+                  <div className="row">
+                    {attributes.map((item) => (
+                      <div className="col-lg-4">
+                        <div className="card mb-4 shadow-none">
+                          <div className="card-body p-3">
+                            <div className="text-uppercase fw-bold mb-2">
+                              {item.trait_type}
+                            </div>
+                            <small>
+                              {item.value}
+                            </small>
+                          </div>
                         </div>
-                        <small>
-                          {item.value}
-                        </small>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-            <div>
+                </div>
+              </>
+            }
+            {attributes.length > 90 &&
+            <>
               <SubLine className="mb-4 fw-bold">
                 {t`Your NFT utilies and rareties`}
               </SubLine>
@@ -95,25 +100,26 @@ export default function NftDetail() {
                     <div className="card mb-4 shadow-none">
                       <div className="card-body p-0">
                         <AttributeCardImageContainer className="px-4 py-5 d-flex justify-content-center align-items-center">
-                            <img src={`/img/nft/attributes/${item.trait_type.toLowerCase()}.svg`} />
+                          <img src={`/img/nft/attributes/${item.trait_type.toLowerCase()}.svg`} />
                         </AttributeCardImageContainer>
-                          <div className="p-3">
-                            <div className="d-flex align-items-center mb-2">
-                              <NftRarityColorBadge color="#FF9901" />
-                                <div className="text-uppercase fw-bold ms-2">
-                                  {item.trait_type}
-                                </div>
+                        <div className="p-3">
+                          <div className="d-flex align-items-center mb-2">
+                            <NftRarityColorBadge color="#FF9901" />
+                            <div className="text-uppercase fw-bold ms-2">
+                              {item.trait_type}
                             </div>
-                            <small>
-                              {item.value}
-                            </small>
                           </div>
+                          <small>
+                            {item.value}
+                          </small>
+                        </div>
                       </div>
                     </div>
-                   </div>
+                  </div>
                 ))}
               </div>
-            </div>
+            </>
+            }
           </Content>
           </div>
         </div>

@@ -30,7 +30,6 @@ export default function useNftOwnerHistory(id): UseNftOwnerHistoryProps {
         url: process.env.NEXT_PUBLIC_SUBGRAPH_NFT_API_URL,
       })
       const data = await client.query(tokensQuery).toPromise()
-      console.log(data, 'oka')
       if (data) {
         const token = data.data.tokens.find(t => t.id = id)
         if (token) {

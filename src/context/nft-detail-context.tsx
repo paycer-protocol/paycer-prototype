@@ -46,6 +46,8 @@ const NftDetailContextProvider = ({ children }) => {
 
   if (result.status === 'success' && result.nfts.length) {
 
+    console.log(result, 'hi')
+
     const {
       id,
       metadata
@@ -74,8 +76,6 @@ const NftDetailContextProvider = ({ children }) => {
       ownerHistory
     }
   }
-
-  console.log(values)
 
   return (
     <NftDetailContext.Provider

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {t} from '@lingui/macro'
 import {ThreeDots} from '@styled-icons/bootstrap'
 import {EventAvailable} from '@styled-icons/material-outlined'
@@ -12,9 +12,12 @@ import {useNftDetail} from '@context/nft-detail-context'
 import Icon from '@components/atoms/icon'
 import TruncateText from '../../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
+import UpgradeModal from "@components/organisms/nft/upgrade/upgrade-modal";
+import RevealModal from "@components/organisms/nft/reveal/reveal-modal";
 
 export default function NftDetailSidebar() {
   const [copiedTokenId, setCopiedTokenId] = useCopyClipboard()
+  const [showModal, setShowModal] = useState(false)
 
   const {
     id,
@@ -29,6 +32,11 @@ export default function NftDetailSidebar() {
   const {
     walletAddress
   } = useDapp()
+
+  // TODO CHECK THIS MORE PRECISELY
+  const isReveal = !attributes.length
+
+  const ModalComponent = isReveal ? RevealModal : UpgradeModal
 
   return (
     <section className="mt-5 mt-md-0">
@@ -84,8 +92,8 @@ export default function NftDetailSidebar() {
         </div>
 
         <div className="d-flex align-items-center">
-          <GradientButton className="w-100">
-            {t`Upgrade NFT`}
+          <GradientButton onClick={() => setShowModal(true)} className="w-100">
+            {isReveal ? t`Reveal NFT` : t`Upgrade NFT`}
           </GradientButton>
         </div>
 
@@ -109,6 +117,7 @@ export default function NftDetailSidebar() {
           </div>
         </div>
       </div>
+      {<ModalComponent key={`${showModal}`} tokenId={id} show={showModal} onHide={() => setShowModal(false)} />}
     </section>
   )
 }
