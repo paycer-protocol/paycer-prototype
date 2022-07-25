@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {t} from '@lingui/macro'
+import moment from 'moment'
 import {ThreeDots} from '@styled-icons/bootstrap'
 import {EventAvailable} from '@styled-icons/material-outlined'
 import {CheckCircle} from '@styled-icons/feather'
@@ -12,8 +13,8 @@ import {useNftDetail} from '@context/nft-detail-context'
 import Icon from '@components/atoms/icon'
 import TruncateText from '../../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
-import UpgradeModal from "@components/organisms/nft/upgrade/upgrade-modal";
-import RevealModal from "@components/organisms/nft/reveal/reveal-modal";
+import UpgradeModal from '@components/organisms/nft/upgrade/upgrade-modal'
+import RevealModal from '@components/organisms/nft/reveal/reveal-modal'
 
 export default function NftDetailSidebar() {
   const [copiedTokenId, setCopiedTokenId] = useCopyClipboard()
@@ -103,13 +104,34 @@ export default function NftDetailSidebar() {
           </div>
           <div className="card">
             <div className="card-body">
-              <div className="text-uppercase mb-4 text-muted fw-bold">
-                {t`Seller`}:
+              <div className="row">
+                <div className="col-6">
+                  <div className="mb-4 text-muted fw-bold">
+                    {t`Seller`}
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="mb-4 text-muted fw-bold">
+                    {t`Transaction Date`}
+                  </div>
+                </div>
               </div>
+              
               {ownerHistory.length > 0 && ownerHistory.map((item) => (
                 <div className="border-bottom pb-3 mb-3">
-                  <div className="text-uppercase fw-bold">
-                    {TruncateText(item.id, 20)}
+                  <div className="row">
+                    <div className="col-6">
+                      <div className="text-uppercase fw-bold">
+                        {TruncateText(item.id, 20)}
+                      </div>
+                    </div>
+                    {item.nfts[id].timestamps.length > 0 &&
+                      <div className="col-6">
+                        <div className="text-uppercase fw-bold">
+                          {moment(item.nfts[id].timestamps[0] * 1000).format('MM/DD/YYYY, h:mm:ss a')}
+                        </div>
+                      </div>
+                    }
                   </div>
                 </div>
               ))}

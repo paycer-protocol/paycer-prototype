@@ -4,12 +4,18 @@ import {createClient} from 'urql'
 interface UseNftOwnerHistoryProps {
   ownerHistory: Array<{
     id: number
+    nfts: Array<{
+      timestamps: number[]
+    }>
   }>
 }
 
 export default function useNftOwnerHistory(id): UseNftOwnerHistoryProps {
   const [ownerHistory, setOwnerHistory] = useState<Array<{
     id: number
+    nfts: Array<{
+      timestamps: number[]
+    }>
   }> | null>(null)
 
   const fetchTokens = async () => {
@@ -21,7 +27,9 @@ export default function useNftOwnerHistory(id): UseNftOwnerHistoryProps {
                     id
                     owners {
                       id
-                      nfts
+                      nfts {
+                        timestamps
+                      }
                     }
                   }
               }
@@ -34,6 +42,7 @@ export default function useNftOwnerHistory(id): UseNftOwnerHistoryProps {
         const token = data.data.tokens.find(t => t.id = id)
         if (token) {
           setOwnerHistory(token.owners)
+          console.log(token.owners, 'blubb')
         }
       }
     } catch (e) {

@@ -11,6 +11,9 @@ export interface NftDetailContextTypes extends PcrNftMetadata {
   mintedCount: number
   ownerHistory: Array<{
     id: number
+    nfts: Array<{
+      timestamps: number[]
+    }>
   }>
 }
 
