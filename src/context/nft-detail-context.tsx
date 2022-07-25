@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import useOwnedNft from '@hooks/nft/use-owned-nft'
 import useNftOwnerHistory from '@hooks/nft/use-nft-owner-history'
-import { PcrNftMetadata } from '@types/nft'
+import { PcrNftMetadata } from '../types/nft'
 
 export interface NftDetailContextTypes extends PcrNftMetadata {
   status: string

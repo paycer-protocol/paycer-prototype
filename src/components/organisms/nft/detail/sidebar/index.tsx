@@ -31,7 +31,7 @@ export default function NftDetailSidebar() {
   } = useDapp()
 
   return (
-    <section>
+    <section className="mt-5 mt-md-0">
       <div className="mb-4 d-flex">
         <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}}
                       className="px-4 py-2 me-3 text-uppercase fw-bold">

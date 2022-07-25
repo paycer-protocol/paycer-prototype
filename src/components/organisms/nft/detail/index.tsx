@@ -12,7 +12,12 @@ import { Vector3 } from 'three'
 export const ModelWrapper = styled.div`
   position: absolute;
   width: 600px; height: 600px;
-  canvas { height: 700px; width: 600px; position: absolute; top: -235px}
+  canvas { 
+    height: 700px; width: 600px; position: absolute; top: -235px;
+    @media screen and (max-width: 768px) {
+      left: -35vw;
+    }
+  }
 `
 
 export const SubLine = styled.h4`
