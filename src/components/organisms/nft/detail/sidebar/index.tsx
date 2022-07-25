@@ -15,6 +15,7 @@ import TruncateText from '../../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
 import UpgradeModal from '@components/organisms/nft/upgrade/upgrade-modal'
 import RevealModal from '@components/organisms/nft/reveal/reveal-modal'
+import { SubLine } from '../Styles'
 
 export default function NftDetailSidebar() {
   const [copiedTokenId, setCopiedTokenId] = useCopyClipboard()
@@ -99,9 +100,9 @@ export default function NftDetailSidebar() {
         </div>
 
         <div className="mt-5">
-          <div className="text-uppercase mb-3 fw-bold">
+          <SubLine className="mb-4 fw-bold">
             {t`Owner History`}:
-          </div>
+          </SubLine>
           <div className="card">
             <div className="card-body">
               <div className="row">
@@ -116,18 +117,18 @@ export default function NftDetailSidebar() {
                   </div>
                 </div>
               </div>
-              
+
               {ownerHistory.length > 0 && ownerHistory.map((item) => (
                 <div className="border-bottom pb-3 mb-3">
                   <div className="row">
                     <div className="col-6">
-                      <div className="text-uppercase fw-bold">
+                      <div className="text-uppercase">
                         {TruncateText(item.id, 20)}
                       </div>
                     </div>
                     {item.nfts[id].timestamps.length > 0 &&
                       <div className="col-6">
-                        <div className="text-uppercase fw-bold">
+                        <div className="text-uppercase">
                           {moment(item.nfts[id].timestamps[0] * 1000).format('MM/DD/YYYY, h:mm:ss a')}
                         </div>
                       </div>
