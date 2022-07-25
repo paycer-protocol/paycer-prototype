@@ -64,7 +64,7 @@ export default function NftDetail() {
               </div>
             </div>
           <Content>
-            {attributes.length > 90 &&
+            {attributes.length > 0 &&
               <>
                 <div className="mb-5">
                   <SubLine className="mb-4 fw-bold">
@@ -89,7 +89,7 @@ export default function NftDetail() {
                 </div>
               </>
             }
-            {attributes.length > 90 &&
+            {attributes.length > 0 &&
             <>
               <SubLine className="mb-4 fw-bold">
                 {t`Your NFT utilies and rareties`}
