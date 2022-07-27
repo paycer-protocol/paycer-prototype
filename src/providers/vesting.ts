@@ -31,6 +31,9 @@ export default {
         advisor: {
             address: '0x4702f9794d0B8DEDD55a488D8198a1781396BCE6'
         },
+        team_v2: {
+            address: '0xf20842CAb0529662F42cff74C850b2863ffFc1e3'
+        },
     },
     [ChainId.Mumbai]: {
         abi: VestingAbi,
