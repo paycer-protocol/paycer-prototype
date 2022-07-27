@@ -8,8 +8,6 @@ function getVestingMonthsByType(type):number {
             return 6
         case 'team':
             return 36
-        case 'team_v2':
-            return 36
         default:
             return 12
     }
