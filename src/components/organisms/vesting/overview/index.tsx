@@ -24,6 +24,8 @@ const Overview = () => {
         return t`6 months`
       case 'team':
         return t`36 months`
+      case 'team_v2':
+        return t`36 months`
       default:
         return t`12 months`
     }
