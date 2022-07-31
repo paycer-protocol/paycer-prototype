@@ -53,7 +53,7 @@ export default function NftDetailSidebar() {
           </Styles.BlueBatch>
         }
       </div>
-      <h2 style={{fontSize: '50px'}} className="display-2">{name}</h2>
+      <h2 style={{fontSize: '50px', lineHeight: '64px'}} className="display-2">{name}</h2>
       <div className="mb-2">
         <span className="text-muted">Token ID: {id}</span>
         <Icon style={{top: '-2px'}} className="ms-2 position-relative cur" onClick={() => setCopiedTokenId(id)}

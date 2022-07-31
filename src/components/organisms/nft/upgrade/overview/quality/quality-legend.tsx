@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { t } from "@lingui/macro"
-import { qualityColors } from '@config/nft-qualities'
+import { NftRarities } from '@config/nft'
 import React from "react";
 import {infoChartProviders} from "@providers/networks";
 import QualityCircle from "@components/organisms/nft/upgrade/overview/quality/quality-circle";
@@ -17,7 +17,7 @@ const Background = styled.div`
 
 const BottomLine = styled.div`
     height: 1px;
-    background: linear-gradient(270deg,rgba(112,0,255,0) 0%,#E14B4B 12.28%,#FF9900 25.31%,#634ec1ad 41.79%,#5043d3 58.66%,#75EA8E 75.01%,#F1E265 91.49%,rgba(196,196,196,0) 99.38%);
+    background: linear-gradient(270deg,rgba(112,0,255,0) 0%,#E14B4B 12.28%,#FF9900 25.31%,#634ec1ad 41.79%,#5043d3 58.66%,#75EA8E 75.01%,#FFFFFF 91.49%,rgba(196,196,196,0) 99.38%);
 `
 
 const LegendEntryLabel = styled.div`
@@ -52,12 +52,13 @@ const LegendEntry = (props: LegendEntryProps) => {
 const QualityLegend = () => {
     return (
         <div>
-            <h2 className="display-4 mb-5">
-                {t`NFT Qualities`}
-            </h2>
+          <div className="mb-5">
+            <h5 className="header-pretitle">{t`utilitys and rareties`}</h5>
+            <div className="header-title h1">{t`5 unique utilities in differnet rareties`}</div>
+          </div>
             <div className="d-flex p-2 pt-4 position-relative">
-                {Object.keys(qualityColors).map((key) => (
-                    <LegendEntry name={key} color={qualityColors[key]} />
+                {Object.keys(NftRarities).map((key) => (
+                    <LegendEntry name={NftRarities[key].label} color={NftRarities[key].color} />
                 ))}
                 <Background />
             </div>
