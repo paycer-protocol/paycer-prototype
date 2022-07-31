@@ -19,40 +19,39 @@ export default function Overview() {
       <div className="mb-7">
         <Stage/>
       </div>
-      
-      <div className="mb-6">
-        <HowItWorks/>
+
+      <div className="container">
+
+        <div className="mb-6">
+          <HowItWorks/>
+        </div>
+
+        <div className="mb-6">
+          <QualityLegend/>
+        </div>
+
+        <div className="mt-6">
+          <Usps/>
+        </div>
+
+        <div className="mt-6" ref={tierListRef}>
+          <TierList/>
+        </div>
+        <div className="mt-6">
+          <CreditCardTeaser/>
+        </div>
+
+        <NftList/>
+
+        <div className="mt-6">
+          <MarketingHero/>
+        </div>
+
+        <div className="mt-6" ref={explanationSectionRef}>
+          <Explanatory/>
+        </div>
       </div>
 
-      <div className="mb-6">
-        <QualityLegend/>
-      </div>
-
-      <div className="mt-6">
-        <Usps/>
-      </div>
-
-
-
-
-
-
-      <div className="mt-6" ref={tierListRef}>
-        <TierList/>
-      </div>
-      <div className="mt-6">
-        <CreditCardTeaser/>
-      </div>
-
-      <NftList/>
-
-      <div className="mt-6">
-        <MarketingHero/>
-      </div>
-
-      <div className="mt-6" ref={explanationSectionRef}>
-        <Explanatory/>
-      </div>
     </>
   )
 }
