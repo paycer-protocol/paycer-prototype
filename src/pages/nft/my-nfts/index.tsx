@@ -19,7 +19,7 @@ export default function MyNfts() {
             </div>
           </div>
         </PageHeader>
-        <div className="position-relative blur-background">
+        <div className="position-relative">
           <NftOverview />
         </div>
       </div>

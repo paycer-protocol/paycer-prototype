@@ -3,7 +3,6 @@ import React from 'react'
 import NftCardList from './list'
 import Spinner from "@components/atoms/spinner"
 
-
 export default function NftOverview() {
   const result = useOwnedNfts()
 
