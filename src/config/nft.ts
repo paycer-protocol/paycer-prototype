@@ -1,25 +1,25 @@
 export const NftRarities = {
-  1: {
+  common : {
     label: 'Common',
     color: '#FFF',
   },
-  2: {
+  uncommon: {
     label: 'Uncommon',
     color: '#77EA8E',
   },
-  3: {
+  rare: {
     label: 'Rare',
     color: '#0135F2'
   },
-  4: {
+  epic: {
     label: 'Epic',
     color: '#5605C5'
   },
-  5: {
+  legendary: {
     label: 'Legendary',
     color: '#FF9901'
   },
-  6: {
+  artefact: {
     label: 'Artefact',
     color: '#E14D4C'
   },

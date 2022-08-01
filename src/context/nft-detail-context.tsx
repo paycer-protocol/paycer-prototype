@@ -1,14 +1,18 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext } from 'react'
 import { useRouter } from 'next/router'
-import useOwnedNft from '@hooks/nft/use-owned-nft'
 import useNftOwnerHistory from '@hooks/nft/use-nft-owner-history'
 import { PcrNftMetadata } from '../types/nft'
+import useNfts from '@hooks/nft/use-nfts'
+import { NftRarities } from '@config/nft'
 
 export interface NftDetailContextTypes extends PcrNftMetadata {
   status: string
   id: string
-  rarity: number
   mintedCount: number
+  rarity: {
+    label: string,
+    color: string,
+  } | null
   ownerHistory: Array<{
     id: number
     nfts: Array<{
@@ -26,9 +30,9 @@ const contextDefaultValues: NftDetailContextTypes = {
   name: '',
   id: '',
   attributes: null,
-  rarity: 0,
   mintedCount: 0,
-  ownerHistory: null
+  ownerHistory: null,
+  rarity: null,
 }
 
 const NftDetailContext = createContext<NftDetailContextTypes>(
@@ -41,15 +45,13 @@ const NftDetailContextProvider = ({ children }) => {
 
   const router = useRouter()
   const { pid } = router.query
-  const result = useOwnedNft(pid)
+  const result = useNfts([pid])
   const { ownerHistory } = useNftOwnerHistory(pid)
   const status = result.status
 
   let values:NftDetailContextTypes = { ...contextDefaultValues, ...{ status }}
 
   if (result.status === 'success' && result.nfts.length) {
-
-    console.log(result, 'hi')
 
     const {
       id,
@@ -62,8 +64,10 @@ const NftDetailContextProvider = ({ children }) => {
       description,
       level,
       name,
-      image
+      image,
     } = metadata
+
+    const rarityAttr = attributes.find(a => a.trait_type === 'Rarity')
 
     values = {
       id,
@@ -74,7 +78,7 @@ const NftDetailContextProvider = ({ children }) => {
       status: result.status,
       attributes,
       image,
-      rarity: 4,
+      rarity: NftRarities[rarityAttr.value.toString().toLowerCase()],
       mintedCount: 150,
       ownerHistory
     }

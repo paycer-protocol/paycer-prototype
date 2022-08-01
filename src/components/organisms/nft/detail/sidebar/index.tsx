@@ -26,9 +26,9 @@ export default function NftDetailSidebar() {
     name,
     description,
     attributes,
-    rarity,
     mintedCount,
-    ownerHistory
+    ownerHistory,
+    rarity,
   } = useNftDetail()
 
   const {
@@ -43,9 +43,9 @@ export default function NftDetailSidebar() {
   return (
     <section className="mt-5 mt-md-0">
       <div className="mb-4 d-flex">
-        <Styles.Batch style={{backgroundColor: NftRarities[rarity].color}}
+        <Styles.Batch style={{ backgroundColor: rarity.color, color: rarity.label === 'Common' ? '#000' : '#FFF' }}
                       className="px-4 py-2 me-3 text-uppercase fw-bold">
-          {NftRarities[rarity].label}
+          {rarity.label}
         </Styles.Batch>
         {attributes.length > 0 &&
           <Styles.BlueBatch className="px-4 py-2 text-uppercase fw-bold">
@@ -74,7 +74,7 @@ export default function NftDetailSidebar() {
         </div>
         <div className="d-flex align-items-center">
           <Icon className="me-3 position-relative" component={ThreeDots} color="#FFFFFF" size={16}/>
-          {rarity} / {Object.keys(NftRarities).length} {t`qualities`}
+          1 / {Object.keys(NftRarities).length} {t`qualities`}
         </div>
       </div>
       <div className="mb-4">
@@ -98,47 +98,48 @@ export default function NftDetailSidebar() {
             {isReveal ? t`Reveal NFT` : t`Upgrade NFT`}
           </GradientButton>
         </div>
-
-        <div className="mt-5">
-          <SubLine className="mb-4 fw-bold">
-            {t`Owner History`}:
-          </SubLine>
-          <div className="card">
-            <div className="card-body">
-              <div className="row">
-                <div className="col-6">
-                  <div className="mb-4 text-muted fw-bold">
-                    {t`Seller`}
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="mb-4 text-muted fw-bold">
-                    {t`Transaction Date`}
-                  </div>
-                </div>
-              </div>
-
-              {ownerHistory?.length > 0 && ownerHistory?.map((item) => (
-                <div className="border-bottom pb-3 mb-3">
-                  <div className="row">
-                    <div className="col-6">
-                      <div className="text-uppercase">
-                        {TruncateText(item.id, 20)}
-                      </div>
+        {ownerHistory?.length > 0 &&
+          <div className="mt-5">
+            <SubLine className="mb-4 fw-bold">
+              {t`Owner History`}:
+            </SubLine>
+            <div className="card">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-6">
+                    <div className="mb-4 text-muted fw-bold">
+                      {t`Seller`}
                     </div>
-                    {item.nfts[id].timestamps.length > 0 &&
+                  </div>
+                  <div className="col-6">
+                    <div className="mb-4 text-muted fw-bold">
+                      {t`Transaction Date`}
+                    </div>
+                  </div>
+                </div>
+
+                {ownerHistory?.map((item) => (
+                  <div className="border-bottom pb-3 mb-3">
+                    <div className="row">
                       <div className="col-6">
                         <div className="text-uppercase">
-                          {moment(item.nfts[id].timestamps[0] * 1000).format('MM/DD/YYYY, h:mm:ss a')}
+                          {TruncateText(item.id, 20)}
                         </div>
                       </div>
-                    }
+                      {(item.nfts[id]?.timestamps && item.nfts[id].timestamps.length > 0) &&
+                        <div className="col-6">
+                          <div className="text-uppercase">
+                            {moment(item.nfts[id].timestamps[0] * 1000).format('MM/DD/YYYY, h:mm:ss a')}
+                          </div>
+                        </div>
+                      }
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
       {<ModalComponent key={`${showModal}`} tokenId={id} show={showModal} onHide={() => setShowModal(false)} />}
     </section>

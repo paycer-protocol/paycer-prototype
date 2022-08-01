@@ -5,6 +5,8 @@ import GradientButton from '@components/atoms/button/gradient-button'
 import Sparkle from 'react-sparkle'
 import NftModelViewer from '@components/organisms/nft/common/model-viewer'
 import { withIpfsGateway } from '@hooks/nft/use-nfts'
+import Link from "next/link";
+import NftCard from "@components/organisms/nft/overview/card";
 
 interface RevealApproveModalProps {
   onClick: () => void
@@ -160,10 +162,14 @@ export default function RevealApproveModal(props: RevealApproveModalProps) {
                   </GradientButton>
                 </div>
                 <div className="col-md-4">
-                  <GradientButton isInverted className="w-100">
+                  <Link href={`/nft/detail/${nftReveal.nft.id}`}>
+                    <a href="#!">
+                      <GradientButton isInverted className="w-100">
                     <span className="bg-dark">{btnLabel || t`Show Details`}
                     </span>
-                  </GradientButton>
+                      </GradientButton>
+                    </a>
+                  </Link>
                 </div>
               </div>
               )
