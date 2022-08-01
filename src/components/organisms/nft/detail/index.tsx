@@ -30,14 +30,14 @@ export default function NftDetail() {
       <article className="row">
         <div className="col-lg-7">
           <div className="pe-lg-4">
-            <div style={{ height :'414px', borderColor: '#1b2f47' }} className="card bg-transparent blur-background-2  mb-5">
+            <div style={{ height :'414px', borderColor: '#1b2f47' }} className="card bg-transparent blur-background-2 mb-0">
               <div className="card-body">
                 <Styles.ModelWrapper>
                   <NftModelViewer position={new Vector3(-10, 0, 5)} autoRotate={false} fov={30} url={withIpfsGateway(animation_url)} />
                 </Styles.ModelWrapper>
               </div>
             </div>
-          <Styles.Content>
+          <div className="mt-5 pt-2">
             {attributes.length > 0 &&
               <>
                 <div className="mb-5">
@@ -94,7 +94,7 @@ export default function NftDetail() {
               </div>
             </>
             }
-          </Styles.Content>
+          </div>
           </div>
         </div>
         <div className="col-lg-5">

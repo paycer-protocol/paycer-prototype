@@ -78,7 +78,7 @@ export default function NftDetailSidebar() {
         </div>
       </div>
       <div className="mb-4">
-        <div className="mb-4 pb-3 mt-4">
+        <div className="mb-5 pb-2 mt-4">
           <div className="row">
             <div className="col-lg-4">
               <small className="text-muted text-uppercase mb-2 d-block">{t`Current Price`}</small>
