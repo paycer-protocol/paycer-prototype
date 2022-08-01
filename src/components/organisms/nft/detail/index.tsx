@@ -30,7 +30,7 @@ export default function NftDetail() {
       <article className="row">
         <div className="col-lg-7">
           <div className="pe-lg-4">
-            <div style={{ height :'400px', borderColor: '#1b2f47' }} className="card bg-transparent blur-background-2  mb-5">
+            <div style={{ height :'414px', borderColor: '#1b2f47' }} className="card bg-transparent blur-background-2  mb-5">
               <div className="card-body">
                 <Styles.ModelWrapper>
                   <NftModelViewer position={new Vector3(-10, 0, 5)} autoRotate={false} fov={30} url={withIpfsGateway(animation_url)} />
