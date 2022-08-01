@@ -22,28 +22,28 @@ export default function Overview() {
 
       <div className="container">
 
-        <div className="mb-6">
+        <div className="mb-7">
           <HowItWorks/>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-7">
           <QualityLegend/>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-7">
           <Usps/>
         </div>
 
-        <div className="mt-6" ref={tierListRef}>
+        <div className="mt-7" ref={tierListRef}>
           <TierList/>
         </div>
-        <div className="mt-6">
+        <div className="mt-7">
           <CreditCardTeaser/>
         </div>
 
         <NftList/>
 
-        <div className="mt-6">
+        <div className="mt-7">
           <MarketingHero/>
         </div>
 

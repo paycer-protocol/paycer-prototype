@@ -53,7 +53,7 @@ const QualityLegend = () => {
     return (
         <div>
           <div className="mb-5">
-            <h5 className="header-pretitle">{t`utilitys and rareties`}</h5>
+            <h5 className="text-uppercase mb-3 text-pink">{t`utilitys and rareties`}</h5>
             <div className="header-title h1">{t`5 unique utilities in differnet rareties`}</div>
           </div>
             <div className="d-flex p-2 pt-4 position-relative">

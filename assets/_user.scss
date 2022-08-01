@@ -211,12 +211,12 @@ a:focus, button:focus {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(101, 108, 170, 0.3) 0, rgba(13, 17, 36, 0.3), #0f0d27 100%);
-    filter: blur(60px);
+    background: radial-gradient(circle at center, rgba(101, 108, 170, 0.3) 0, rgba(13, 17, 36, 0.3), #000000 140%);
+    filter: blur(40px);
     z-index: -1;
     border-radius: 25%;
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
   }
 }
 

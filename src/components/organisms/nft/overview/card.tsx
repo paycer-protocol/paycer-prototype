@@ -10,7 +10,7 @@ export interface NftCardProps {
 
 export default function NftCard({ nft }: NftCardProps) {
   return (
-    <div className="card bg-transparent blur-background-2 border-purple-dark mb-4 overflow-hidden">
+    <div style={{ borderColor: '#1b2f47' }} className="card bg-transparent blur-background-2 mb-4 overflow-hidden">
       <div style={{ width: '100%', height: '16rem' }}>
         <NftModelViewer url={withIpfsGateway(nft.metadata.animation_url)} />
       </div>

@@ -25,7 +25,7 @@ const Stage = () => {
             opacity: '50%',
           }}
         />
-        <div className="container">
+        <div className="container py-6">
           <div className="row position-relative">
             <div className="col-md-6">
 
@@ -48,50 +48,7 @@ const Stage = () => {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-md-3">
-                  <div className="mb-2 d-flex align-items-center">
-                    <div className="fw-normal display-3">
-                      6
-                    </div>
-                    <div className="ps-3">
-                      x
-                    </div>
-                  </div>
-                  {t`different`}<br/>
-                  {t`Qualities`}
-                </div>
-                <div className="col-md-3">
-                  <div className="mb-2 d-flex align-items-center">
-                    <div className="fw-normal display-3">
-                      5
-                    </div>
-                    <div className="ps-3">
-                      x
-                    </div>
-                  </div>
-                  {t`different NFT Tiers`}
-                </div>
-                <div className="col-md-3">
-                  <div className="mb-2 d-flex align-items-center">
-                    <div className="fw-normal display-3">
-                      20K
-                    </div>
-                  </div>
-                  {t`possible combinations`}
-                </div>
-                <div className="col-md-3">
-                  <div className="mb-2 d-flex align-items-center">
-                    <div className="fw-normal display-3">
-                      40
-                    </div>
-                    <div className="ps-3">
-                      %
-                    </div>
-                  </div>
-                  {t`possible rewards`}
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

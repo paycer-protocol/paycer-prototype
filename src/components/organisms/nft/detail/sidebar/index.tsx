@@ -118,7 +118,7 @@ export default function NftDetailSidebar() {
                 </div>
               </div>
 
-              {ownerHistory.length > 0 && ownerHistory.map((item) => (
+              {ownerHistory?.length > 0 && ownerHistory?.map((item) => (
                 <div className="border-bottom pb-3 mb-3">
                   <div className="row">
                     <div className="col-6">

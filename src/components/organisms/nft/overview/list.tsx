@@ -10,7 +10,7 @@ export default function NftCardList({ nfts }: NftCardListProps) {
   return (
     <div className="row">
       {nfts.map((nft, key) => (
-        <div key={nft.id} className="col-12 col-md-6">
+        <div key={nft.id} className="col-12 col-md-4">
           <Link href={`/nft/detail/${key}`}>
             <a href="#!">
               <NftCard nft={nft} />
