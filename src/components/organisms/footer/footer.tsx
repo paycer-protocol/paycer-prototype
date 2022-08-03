@@ -101,7 +101,7 @@ const Footer = () => {
                                         />
                                     </Button>
                                 </a>
-                                <a className="me-3"  target="_blank" rel="noopener noreferrer" href="https://discord.gg/BVbrZh5A4H">
+                                <a className="me-3"  target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/4hG5mG6pRW">
                                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                                         <Icon
                                             component={Discord}
