@@ -69,13 +69,13 @@ export const ModelViewerWrapper = styled.div<ModelViewerWrapperProps>`
   height: 600px;
   top: -60px;
   left: -10px;
-  @media (max-width: 770px) {
+  @media (max-width: 767px) {
      width: 350px;
      height: 350px;  
      top: 25px;
-  ${props => props.isBuggedOutGlb && css`
-    top: -40px;
-  `}
+    ${props => props.isBuggedOutGlb && css`
+      top: -40px;
+    `}
   }
   ${props => props.isBuggedOutGlb && css`
     top: -150px;
