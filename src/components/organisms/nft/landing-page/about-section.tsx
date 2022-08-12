@@ -1,13 +1,13 @@
-import React, {ReactElement} from "react";
+import React, {ReactElement, useState} from "react";
 import styled, { css }  from 'styled-components'
 import { CubeRotate } from "@styled-icons/fluentui-system-regular/CubeRotate"
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide, useSwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from 'swiper'
 import PageHeader from "@components/molecules/page-header"
 import { t } from "@lingui/macro"
 import NftModelViewer from "../common/model-viewer"
 import Icon from "@components/atoms/icon"
-
+import {InfoChartProps} from "@components/organisms/analytics-dashboard/types";
 
 const partners = [
   {
@@ -135,6 +135,24 @@ function AboutText() {
 }
 
 
+export interface SlideProps {
+  isBuggedOutGlb?: boolean
+  url: string
+}
+
+const SlideContent = (props: SlideProps) => {
+
+  const { isBuggedOutGlb, url } = props
+  const swiperSlide = useSwiperSlide()
+
+  return (
+    <ModelViewerWrapper isBuggedOutGlb={isBuggedOutGlb} className="position-relative">
+      <NftModelViewer url={swiperSlide.isActive ? url : ''} />
+    </ModelViewerWrapper>
+  )
+}
+
+
 const AboutWrapper = styled.div`
   position: relative;
 `
@@ -181,19 +199,13 @@ export default function AboutSection() {
                 modules={[Autoplay]}
               >
                 <SwiperSlide>
-                  <ModelViewerWrapper isBuggedOutGlb={true} className="position-relative">
-                    <NftModelViewer url="/assets/models/nft/paycer_guardian.glb" />
-                  </ModelViewerWrapper>
+                  <SlideContent isBuggedOutGlb url="/assets/models/nft/paycer_guardian.glb" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ModelViewerWrapper className="position-relative">
-                    <NftModelViewer url="/assets/models/nft/paycer_one.glb" />
-                  </ModelViewerWrapper>
+                  <SlideContent url="/assets/models/nft/paycer_one.glb" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ModelViewerWrapper className="position-relative">
-                    <NftModelViewer url="/assets/models/nft/paycer_sentinel.glb" />
-                  </ModelViewerWrapper>
+                  <SlideContent url="/assets/models/nft/paycer_sentinel.glb" />
                 </SwiperSlide>
               </Swiper>
 
