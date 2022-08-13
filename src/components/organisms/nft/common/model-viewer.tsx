@@ -2,9 +2,9 @@ import dynamic from 'next/dynamic';
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera, OrbitControls, Stats, Environment } from '@react-three/drei'
-import { AnimationMixer, Box3, Group, Vector3 } from 'three';
-import { useEffect, useRef, useState } from 'react';
-import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { AnimationMixer, Box3, Group, Vector3 } from 'three'
+import { useEffect, useRef, useState } from 'react'
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 interface NftModelViewerProps {
   url: string;
