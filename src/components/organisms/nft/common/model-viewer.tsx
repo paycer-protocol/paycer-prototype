@@ -30,10 +30,12 @@ function Model({ gltf }: { gltf: GLTF | undefined }) {
 }
 
 function NftModelViewerInternal({ url }: NftModelViewerProps) {
+
   const [model, setModel] = useState<GLTF | undefined>(undefined);
 
   useEffect(() => {
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader()
+    if (!url) return
     loader.load(url, (gltf) => {
       // Center geometry around (0, 0, 0) with normalized size
       const box = new Box3().setFromObject(gltf.scene);
