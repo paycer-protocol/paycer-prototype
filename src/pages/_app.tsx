@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import I18nProvider from '../locales/i18n'
 import DappContextProvider from '@context/dapp-context'
 import { MoralisProvider } from 'react-moralis'
+import HelpButton from 'components/atoms/help-button'
 import '../../assets/theme-universe.scss'
 
 Router.events.on('routeChangeStart', NProgress.start)
@@ -20,6 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <ToastContainer position="top-center" />
                 {/* @ts-ignore */ }
                 <Component {...pageProps} />
+                <HelpButton />
             </I18nProvider>
         </DappContextProvider>
     </MoralisProvider>

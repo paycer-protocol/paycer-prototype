@@ -34,7 +34,6 @@ export default class AppDocument extends Document {
       <Html>
         <Head>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MBKTRME01" />
-          <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=5eb5bfb8-ac86-4838-a870-41f8923504fd" />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -63,6 +62,6 @@ export default class AppDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
