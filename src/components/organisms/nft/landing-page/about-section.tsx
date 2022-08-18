@@ -205,7 +205,7 @@ export default function AboutSection() {
                   <SlideContent url="/assets/models/nft/paycer_one.glb" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <SlideContent url="/assets/models/nft/paycer_sentinel.glb" />
+                  <SlideContent url="/assets/models/nft/Horse_3_lp_final.glb" />
                 </SwiperSlide>
                 <SwiperSlide>
                   <SlideContent url="/assets/models/nft/paycer_nft_2_2.glb" />
