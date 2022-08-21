@@ -45,6 +45,7 @@ const NftDetailContextProvider = ({ children }) => {
 
   const router = useRouter()
   const { pid } = router.query
+  // @ts-ignore
   const result = useNfts([pid])
   const { ownerHistory } = useNftOwnerHistory(pid)
   const status = result.status

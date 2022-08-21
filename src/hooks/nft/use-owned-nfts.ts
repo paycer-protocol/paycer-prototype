@@ -6,6 +6,8 @@ import ChainId from '@providers/chain-id'
 import { allNetProviders } from '@providers/networks'
 import { fetchTokensById, UseNftsProps } from './use-nfts'
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Promise<string[]> {
   const { chainId } = allNetProviders[currentNetworkId]
   const { address: contractAddress, abi } = (nftProvider[currentNetworkId] || nftProvider[ChainId.Polygon]).nft
@@ -19,24 +21,33 @@ async function fetchOwnedTokenIds(currentNetworkId: number, owner: string): Prom
       owner,
     },
   }
+
   const numTokens = Number.parseInt(await Moralis.Web3API.native.runContractFunction(numTokensOptions))
 
-  const tokenIds = (await Promise.all(Array.from({ length: numTokens }, (_, index) => {
-    const tokenIdOptions = {
-      abi,
-      chain: chainId as any,
-      address: contractAddress,
-      function_name: 'tokenOfOwnerByIndex',
-      params: {
-        owner,
-        index: `${index}`,
-      },
-    }
-    return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
-  })))
+  const fetchTokenIds = async(numTokens) => {
+    return await Promise.all(
+      Array.from({ length: numTokens }, async (_, index) => {
+        await sleep(index * 1600)
+        const tokenIdOptions = {
+          abi,
+          chain: chainId as any,
+          address: contractAddress,
+          function_name: 'tokenOfOwnerByIndex',
+          params: {
+            owner,
+            index: `${index}`,
+          },
+        }
+        return Moralis.Web3API.native.runContractFunction(tokenIdOptions)
+      })
+    )
+  }
+
+  const tokenIds = await fetchTokenIds(numTokens)
 
   return tokenIds
 }
+
 
 export default function useOwnedNfts(): UseNftsProps {
   const { currentNetworkId, walletAddress: owner, isAuthenticated, isWeb3Enabled } = useDapp()

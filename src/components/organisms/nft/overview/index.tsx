@@ -6,17 +6,17 @@ import Spinner from "@components/atoms/spinner"
 export default function NftOverview() {
   const result = useOwnedNfts()
 
-  if (result.status === 'loading' ) {
+  if (result.status === 'loading') {
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center mt-8">
-          <Spinner animation="border" show />
-        </div>
+      <div className="d-flex flex-column align-items-center justify-content-center mt-8">
+        <Spinner animation="border" show/>
+      </div>
     )
   }
 
   return (
     <div>
-      {result.status === 'success' && <NftCardList nfts={result.nfts} />}
+      {result.status === 'success' && <NftCardList nfts={result.nfts}/>}
     </div>
   )
 }

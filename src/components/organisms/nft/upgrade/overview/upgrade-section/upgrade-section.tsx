@@ -61,8 +61,8 @@ const StyledLink = styled.a`
 export const ModelViewerWrapper = styled.div`
   width: 700px;
   height: 700px;
-  top: -60px;
-  left: -200px;
+  top: -30px;
+  right: -100px;
   @media (max-width: 767px) {
      width: 350px;
      height: 350px;  
@@ -87,7 +87,7 @@ export default function UpgradeSection() {
 
   return (
     <Background className="px-4 p-md-0">
-      <div className="position-relative mx-auto px-4 pt-md-6" style={{ maxWidth: '75rem' }}>
+      <div className="position-relative mx-auto px-4 py-md-6" style={{ maxWidth: '75rem' }}>
         <div className="row">
           <div className="col-md-7">
             <div>
@@ -122,7 +122,7 @@ export default function UpgradeSection() {
             </div>
           </div>
           <div className="col-md-5">
-            <ModelViewerWrapper className="position-relative">
+            <ModelViewerWrapper className="position-absolute">
               <NftModelViewer url="/assets/models/nft/Horse_3_lp_final.glb"  />
             </ModelViewerWrapper>
           </div>

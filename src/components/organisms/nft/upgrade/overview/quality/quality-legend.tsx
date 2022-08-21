@@ -44,7 +44,7 @@ const LegendEntry = (props: LegendEntryProps) => {
     return (
         <div className="flex-fill d-flex flex-column align-items-center">
             <LegendEntryLabel>{props.name}</LegendEntryLabel>
-            <LegendEntryCircle css={{ background: props.color }} />
+            <LegendEntryCircle style={{ background: props.color }} />
         </div>
     )
 }

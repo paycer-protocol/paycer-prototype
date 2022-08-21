@@ -8,9 +8,6 @@ import UpgradeSection from '@components/organisms/nft/upgrade/overview/upgrade-s
 
 export default function Overview() {
 
-  const tierListRef = useRef<HTMLDivElement>();
-  const explanationSectionRef = useRef<HTMLDivElement>();
-
   return (
     <>
       <div className="mb-7">
@@ -36,7 +33,7 @@ export default function Overview() {
         <UpgradeSection />
       </div>
       <div className="container">
-        <div className="mt-6">
+        <div className="mt-7 mb-7">
           <Explanatory/>
         </div>
       </div>
