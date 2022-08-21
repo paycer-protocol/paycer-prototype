@@ -35,7 +35,7 @@ const Stage = () => {
               </div>
 
               <h2 style={{fontSize: '50px', lineHeight: '64px'}}
-                  className="display-2 mb-5">{t`Mint your unique Paycer Utility NFT`}</h2>
+                  className="display-2 mb-5">{t`Upgrade your Paycer NFT`}</h2>
 
               <div className="d-flex mb-5">
                 <div className="w-50">

@@ -43,7 +43,7 @@ const usps = [
     icon: 'team',
   },
 
-] as const
+]
 
 export default function Usps() {
   return (

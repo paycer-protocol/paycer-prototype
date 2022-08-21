@@ -30,21 +30,21 @@ const Explanatory = () => {
     return (
         <div>
             <h2 className="display-4 mb-5">
-                {t`Learn more`}
+                {t`Steps to perform a upgrade`}
             </h2>
             <div className="row">
                 <ExplanatoryCard
-                    title={t`Mixed reward Qualites`}
+                    title={t`Step 1`}
                     icon={Reward}
                     description={t`Claim your special NFT utlity token simply by owning and staking Paycer PCR Tokens. There more you stake the more rare your Paycer NFT Tier and the higher your change for exclusiv utilites connected with your nft like higher staking rewards.`}
                 />
                 <ExplanatoryCard
-                    title={t`Locked Period`}
+                    title={t`Step 2`}
                     icon={Lock}
                     description={t`Claim your special NFT utlity token simply by owning and staking Paycer PCR Tokens. There more you stake the more rare your Paycer NFT Tier and the higher your change for exclusiv utilites connected with your nft like higher staking rewards`}
                 />
                 <ExplanatoryCard
-                    title={t`Value in value Out`}
+                    title={t`Step 3`}
                     icon={ArrowsAngleContract}
                     description={t`Claim your special NFT utlity token simply by owning and staking Paycer PCR Tokens. There more you stake the more rare your Paycer NFT Tier and the higher your change for exclusiv utilites connected with your nft like higher staking rewards.`}
                 />

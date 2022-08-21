@@ -1,9 +1,7 @@
 import {t} from '@lingui/macro'
 import React from 'react'
-import {useDapp} from "@context/dapp-context"
 
 const HowItWorks = () => {
-  const {isAuthenticated} = useDapp()
 
   return (
     <div>
