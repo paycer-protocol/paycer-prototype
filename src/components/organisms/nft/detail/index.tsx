@@ -50,11 +50,11 @@ export default function NftDetail() {
                         <div className="card mb-4 shadow-none">
                           <div className="card-body p-3">
                             <div className="text-uppercase fw-bold mb-2">
-                {item.trait_type}
-              </div>
+                              {item.trait_type}
+                            </div>
                             <small>
-                {item.value}
-              </small>
+                              {item.value}
+                            </small>
                           </div>
                         </div>
                       </div>
@@ -79,14 +79,14 @@ export default function NftDetail() {
                         </Styles.AttributeCardImageContainer>
                         <div className="p-3">
                           <div className="d-flex align-items-center mb-2">
-                <NftRarityColorBadge color="#FF9901" />
-                <div className="text-uppercase fw-bold ms-2">
+                            <NftRarityColorBadge color="#FF9901" />
+                            <div className="text-uppercase fw-bold ms-2">
                               {item.trait_type}
                             </div>
-              </div>
+                          </div>
                           <small>
-                {item.value}
-              </small>
+                            {item.value}
+                          </small>
                         </div>
                       </div>
                     </div>

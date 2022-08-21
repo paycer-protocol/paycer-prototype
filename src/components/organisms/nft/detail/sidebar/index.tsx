@@ -153,8 +153,8 @@ export default function NftDetailSidebar() {
                     <div className="row">
                       <div className="col-6">
                         <div className="text-uppercase">
-                {TruncateText(item.id, 20)}
-              </div>
+                          {TruncateText(item.id, 20)}
+                        </div>
                       </div>
                       {(item.nfts[id]?.timestamps && item.nfts[id].timestamps.length > 0)
                         && (

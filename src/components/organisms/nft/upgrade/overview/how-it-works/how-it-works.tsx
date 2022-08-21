@@ -15,11 +15,11 @@ const HowItWorks = () => (
               <div className="col-md-6">
                 <div className="mb-2 d-flex align-items-center">
                   <div className="fw-normal display-3">
-                      6
-                    </div>
+                    6
+                  </div>
                   <div className="ps-3">
-                      x
-                    </div>
+                    x
+                  </div>
                 </div>
                 {t`different Qualities`}
                 <br />
@@ -27,11 +27,11 @@ const HowItWorks = () => (
               <div className="col-md-6">
                 <div className="mb-2 d-flex align-items-center">
                   <div className="fw-normal display-3">
-                      5
-                    </div>
+                    5
+                  </div>
                   <div className="ps-3">
-                      x
-                    </div>
+                    x
+                  </div>
                 </div>
                 {t`different NFT Tiers`}
               </div>
@@ -41,19 +41,19 @@ const HowItWorks = () => (
               <div className="col-md-6">
                 <div className="mb-2 d-flex align-items-center">
                   <div className="fw-normal display-3">
-                      20K
-                    </div>
+                    20K
+                  </div>
                 </div>
                 {t`possible combinations`}
               </div>
               <div className="col-md-6">
                 <div className="mb-2 d-flex align-items-center">
                   <div className="fw-normal display-3">
-                      40
-                    </div>
+                    40
+                  </div>
                   <div className="ps-3">
-                      %
-                    </div>
+                    %
+                  </div>
                 </div>
                 {t`possible rewards`}
               </div>
