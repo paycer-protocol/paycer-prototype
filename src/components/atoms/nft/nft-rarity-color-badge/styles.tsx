@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface NftRarityColorBadgeProps {
-    color: string
+  color: string
 }
 
 export default styled.div<NftRarityColorBadgeProps>`

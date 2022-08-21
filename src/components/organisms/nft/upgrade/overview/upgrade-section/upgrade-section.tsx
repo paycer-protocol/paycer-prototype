@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { t } from '@lingui/macro'
 import Icon from '@components/atoms/icon'
@@ -9,10 +8,10 @@ import Button from '@components/atoms/button'
 import Image from 'next/image'
 import styled from 'styled-components'
 import useNftSale from '@hooks/nft/use-nft-sale'
-import Link from "next/link";
-import GradientButton from "@components/atoms/button/gradient-button";
-import {ModelViewerWrapperProps} from "@components/organisms/nft/landing-page/about-section";
-import NftModelViewer from "@components/organisms/nft/common/model-viewer";
+import Link from 'next/link'
+import GradientButton from '@components/atoms/button/gradient-button'
+import { ModelViewerWrapperProps } from '@components/organisms/nft/landing-page/about-section'
+import NftModelViewer from '@components/organisms/nft/common/model-viewer'
 
 const Background = styled.div`
   position: relative;
@@ -71,7 +70,6 @@ export const ModelViewerWrapper = styled.div`
 `
 
 function InfoColumn() {
-
   return (
     <div className="col-lg-6 mb-4 mb-md-0">
       <ol className="p-0 mb-5">
@@ -84,7 +82,6 @@ function InfoColumn() {
 }
 
 export default function UpgradeSection() {
-
   return (
     <Background className="px-4 p-md-0">
       <div className="position-relative mx-auto px-4 py-md-6" style={{ maxWidth: '75rem' }}>
@@ -123,7 +120,7 @@ export default function UpgradeSection() {
           </div>
           <div className="col-md-5">
             <ModelViewerWrapper className="position-absolute">
-              <NftModelViewer url="/assets/models/nft/Horse_3_lp_final.glb"  />
+              <NftModelViewer url="/assets/models/nft/Horse_3_lp_final.glb" />
             </ModelViewerWrapper>
           </div>
         </div>

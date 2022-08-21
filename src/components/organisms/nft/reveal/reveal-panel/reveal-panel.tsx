@@ -29,16 +29,17 @@ function NftSelector({ options, value, onChanged }: { options: Nft[] | undefined
           ? (
             options.length === 0
               ? <option value={undefined} selected disabled>{t`No unrevealed NFTs available`}</option>
-              :
-              <>
-                <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
-                {options?.map((option) => (
-                  <option key={option.id.toString()} value={option.id.toString()}>
-                    #
-                    {option.id.toString()}
-                  </option>
-                ))}
-              </>
+              : (
+                <>
+                  <option value={undefined} selected disabled>{t`Pick an NFT`}</option>
+                  {options?.map((option) => (
+                    <option key={option.id.toString()} value={option.id.toString()}>
+                      #
+                      {option.id.toString()}
+                    </option>
+                  ))}
+                </>
+              )
           )
           : <option value={undefined} selected disabled>{t`Loading NFTs...`}</option>}
       </Select>

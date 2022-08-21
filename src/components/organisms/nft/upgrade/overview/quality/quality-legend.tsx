@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { t } from "@lingui/macro"
+import { t } from '@lingui/macro'
 import { NftRarities } from '@config/nft'
-import React from "react";
-import {infoChartProviders} from "@providers/networks";
-import QualityCircle from "@components/organisms/nft/upgrade/overview/quality/quality-circle";
+import React from 'react'
+import { infoChartProviders } from '@providers/networks'
+import QualityCircle from '@components/organisms/nft/upgrade/overview/quality/quality-circle'
 
 const Background = styled.div`
     position: absolute;
@@ -36,35 +36,31 @@ const LegendEntryCircle = styled.div`
 `
 
 interface LegendEntryProps {
-    name: string;
-    color: string;
+  name: string;
+  color: string;
 }
 
-const LegendEntry = (props: LegendEntryProps) => {
-    return (
-        <div className="flex-fill d-flex flex-column align-items-center">
-            <LegendEntryLabel>{props.name}</LegendEntryLabel>
-            <LegendEntryCircle style={{ background: props.color }} />
-        </div>
-    )
-}
+const LegendEntry = (props: LegendEntryProps) => (
+  <div className="flex-fill d-flex flex-column align-items-center">
+    <LegendEntryLabel>{props.name}</LegendEntryLabel>
+    <LegendEntryCircle style={{ background: props.color }} />
+  </div>
+)
 
-const QualityLegend = () => {
-    return (
-        <div>
-          <div className="mb-5">
-            <h5 className="text-uppercase mb-3 text-pink">{t`utilitys and rareties`}</h5>
-            <div className="header-title h1">{t`5 unique utilities in differnet rareties`}</div>
-          </div>
-            <div className="d-flex p-2 pt-4 position-relative">
-                {Object.keys(NftRarities).map((key) => (
-                    <LegendEntry name={NftRarities[key].label} color={NftRarities[key].color} />
-                ))}
-                <Background />
-            </div>
-            <BottomLine />
-        </div>
-    )
-}
+const QualityLegend = () => (
+  <div>
+    <div className="mb-5">
+      <h5 className="text-uppercase mb-3 text-pink">{t`utilitys and rareties`}</h5>
+      <div className="header-title h1">{t`5 unique utilities in differnet rareties`}</div>
+    </div>
+    <div className="d-flex p-2 pt-4 position-relative">
+      {Object.keys(NftRarities).map((key) => (
+        <LegendEntry name={NftRarities[key].label} color={NftRarities[key].color} />
+      ))}
+      <Background />
+    </div>
+    <BottomLine />
+  </div>
+)
 
 export default QualityLegend

@@ -1,11 +1,11 @@
-import {t} from '@lingui/macro'
+import { t } from '@lingui/macro'
 import React from 'react'
 import GradientButton from '@components/atoms/button/gradient-button'
-import {useDapp} from "@context/dapp-context"
+import { useDapp } from '@context/dapp-context'
 import ConnectWalletButton from '@components/organisms/nft/landing-page/connect-wallet-button'
 
 const Stage = () => {
-  const {isAuthenticated} = useDapp()
+  const { isAuthenticated } = useDapp()
 
   return (
     <div>
@@ -34,26 +34,30 @@ const Stage = () => {
                 <h1 className="header-title">{t`Paycer Utility NFT`}</h1>
               </div>
 
-              <h2 style={{fontSize: '50px', lineHeight: '64px'}}
-                  className="display-2 mb-5">{t`Upgrade your Paycer NFT`}</h2>
+              <h2
+                style={{ fontSize: '50px', lineHeight: '64px' }}
+                className="display-2 mb-5"
+              >
+                {t`Upgrade your Paycer NFT`}
+              </h2>
 
               <div className="d-flex mb-5">
                 <div className="w-50">
-                  {isAuthenticated ?
-                    <GradientButton className="w-100">
-                      {t`Upgrade NFT`}
-                    </GradientButton>
-                    : <ConnectWalletButton/>
-                  }
+                  {isAuthenticated
+                    ? (
+                      <GradientButton className="w-100">
+                        {t`Upgrade NFT`}
+                      </GradientButton>
+                    )
+                    : <ConnectWalletButton />}
                 </div>
               </div>
-
 
             </div>
           </div>
         </div>
       </div>
-      <div className="content-gradient-border"/>
+      <div className="content-gradient-border" />
     </div>
   )
 }

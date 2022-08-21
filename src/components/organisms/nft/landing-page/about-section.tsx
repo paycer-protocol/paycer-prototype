@@ -1,13 +1,13 @@
-import React, {ReactElement, useState} from "react";
-import styled, { css }  from 'styled-components'
-import { CubeRotate } from "@styled-icons/fluentui-system-regular/CubeRotate"
+import React, { ReactElement, useState } from 'react'
+import styled, { css } from 'styled-components'
+import { CubeRotate } from '@styled-icons/fluentui-system-regular/CubeRotate'
 import { Swiper, SwiperSlide, useSwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from 'swiper'
-import PageHeader from "@components/molecules/page-header"
-import { t } from "@lingui/macro"
-import NftModelViewer from "../common/model-viewer"
-import Icon from "@components/atoms/icon"
-import {InfoChartProps} from "@components/organisms/analytics-dashboard/types";
+import PageHeader from '@components/molecules/page-header'
+import { t } from '@lingui/macro'
+import Icon from '@components/atoms/icon'
+import { InfoChartProps } from '@components/organisms/analytics-dashboard/types'
+import NftModelViewer from '../common/model-viewer'
 
 const partners = [
   {
@@ -73,16 +73,15 @@ export const ModelViewerWrapper = styled.div<ModelViewerWrapperProps>`
      width: 350px;
      height: 350px;  
      top: 25px;
-    ${props => props.isBuggedOutGlb && css`
+    ${(props) => props.isBuggedOutGlb && css`
       top: -40px;
     `}
   }
-  ${props => props.isBuggedOutGlb && css`
+  ${(props) => props.isBuggedOutGlb && css`
     top: -150px;
   `}
 
 `
-
 
 function TechnologyList() {
   return (
@@ -99,7 +98,7 @@ function TechnologyList() {
         <ul className="row">
           {partners.map((item, key) => (
             <li className="col-6 col-lg-3 mb-4 d-flex align-items-center">
-              <a href={item.url} target="_blank" key={key} className="d-flex justify-content-md-center">
+              <a href={item.url} target="_blank" key={key} className="d-flex justify-content-md-center" rel="noreferrer">
                 <img className="w-75" src={item.imagePath} />
               </a>
             </li>
@@ -113,7 +112,7 @@ function TechnologyList() {
 function AboutText() {
   return (
     <>
-      <div className="mb-2"></div>
+      <div className="mb-2" />
       <div className="mb-5">
         <h5 className="text-uppercase mb-3 text-pink">
           {t`NEXT LEVEL NFT`}
@@ -134,14 +133,12 @@ function AboutText() {
   )
 }
 
-
 export interface SlideProps {
   isBuggedOutGlb?: boolean
   url: string
 }
 
 const SlideContent = (props: SlideProps) => {
-
   const { isBuggedOutGlb, url } = props
   const swiperSlide = useSwiperSlide()
 
@@ -151,7 +148,6 @@ const SlideContent = (props: SlideProps) => {
     </ModelViewerWrapper>
   )
 }
-
 
 const AboutWrapper = styled.div`
   position: relative;
@@ -194,7 +190,7 @@ export default function AboutSection() {
                 autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
-                  pauseOnMouseEnter: true
+                  pauseOnMouseEnter: true,
                 }}
                 modules={[Autoplay]}
               >

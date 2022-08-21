@@ -1,20 +1,20 @@
-import React, {useState} from 'react'
-import {t} from '@lingui/macro'
+import React, { useState } from 'react'
+import { t } from '@lingui/macro'
 import moment from 'moment'
-import {ThreeDots} from '@styled-icons/bootstrap'
-import {EventAvailable} from '@styled-icons/material-outlined'
-import {CheckCircle} from '@styled-icons/feather'
-import {Copy} from '@styled-icons/boxicons-regular/'
-import {useDapp} from '@context/dapp-context'
+import { ThreeDots } from '@styled-icons/bootstrap'
+import { EventAvailable } from '@styled-icons/material-outlined'
+import { CheckCircle } from '@styled-icons/feather'
+import { Copy } from '@styled-icons/boxicons-regular/'
+import { useDapp } from '@context/dapp-context'
 import useCopyClipboard from '@hooks/use-copy-clipboard'
-import {NftRarities, MaxMintable} from '@config/nft'
-import * as Styles from './styles'
-import {useNftDetail} from '@context/nft-detail-context'
+import { NftRarities, MaxMintable } from '@config/nft'
+import { useNftDetail } from '@context/nft-detail-context'
 import Icon from '@components/atoms/icon'
-import TruncateText from '../../../../../helpers/truncate-text'
 import GradientButton from '@components/atoms/button/gradient-button'
 import UpgradeModal from '@components/organisms/nft/upgrade/upgrade-modal'
 import RevealModal from '@components/organisms/nft/reveal/reveal-modal'
+import TruncateText from '../../../../../helpers/truncate-text'
+import * as Styles from './styles'
 import { SubLine } from '../Styles'
 
 export default function NftDetailSidebar() {
@@ -32,7 +32,7 @@ export default function NftDetailSidebar() {
   } = useNftDetail()
 
   const {
-    walletAddress
+    walletAddress,
   } = useDapp()
 
   // TODO CHECK THIS MORE PRECISELY
@@ -43,38 +43,66 @@ export default function NftDetailSidebar() {
   return (
     <section className="mt-5 mt-md-0">
       <div className="mb-4 d-flex">
-        <Styles.Batch style={{ backgroundColor: rarity.color, color: rarity.label === 'Common' ? '#000' : '#FFF' }}
-                      className="px-4 py-2 me-3 text-uppercase fw-bold">
+        <Styles.Batch
+          style={{ backgroundColor: rarity.color, color: rarity.label === 'Common' ? '#000' : '#FFF' }}
+          className="px-4 py-2 me-3 text-uppercase fw-bold"
+        >
           {rarity.label}
         </Styles.Batch>
-        {attributes.length > 0 &&
+        {attributes.length > 0
+          && (
           <Styles.BlueBatch className="px-4 py-2 text-uppercase fw-bold">
-            {attributes.length} {attributes.length > 1 ? t`Utilities` : t`Utility`}
+            {attributes.length}
+            {' '}
+            {attributes.length > 1 ? t`Utilities` : t`Utility`}
           </Styles.BlueBatch>
-        }
+          )}
       </div>
-      <h2 style={{fontSize: '50px', lineHeight: '64px'}} className="display-2">{name}</h2>
+      <h2 style={{ fontSize: '50px', lineHeight: '64px' }} className="display-2">{name}</h2>
       <div className="mb-2">
-        <span className="text-muted">Token ID: {id}</span>
-        <Icon style={{top: '-2px'}} className="ms-2 position-relative cur" onClick={() => setCopiedTokenId(id)}
-              component={Copy} color="#FFFFFF" size={20}/>
-        {copiedTokenId && <Icon className="ms-2 ps-2" component={CheckCircle} color="#00FF00" size={23}/>}
+        <span className="text-muted">
+          Token ID:
+          {id}
+        </span>
+        <Icon
+          style={{ top: '-2px' }}
+          className="ms-2 position-relative cur"
+          onClick={() => setCopiedTokenId(id)}
+          component={Copy}
+          color="#FFFFFF"
+          size={20}
+        />
+        {copiedTokenId && <Icon className="ms-2 ps-2" component={CheckCircle} color="#00FF00" size={23} />}
       </div>
       <p className="text-muted mb-4">
         {description}
       </p>
       <div className="d-flex mb-4">
         <div className="d-flex align-items-center me-4">
-          <Icon className="me-3 position-relative" component={Copy} color="#FFFFFF" size={16}/>
-          {mintedCount} / {MaxMintable} {t`minted`}
+          <Icon className="me-3 position-relative" component={Copy} color="#FFFFFF" size={16} />
+          {mintedCount}
+          {' '}
+          /
+          {MaxMintable}
+          {' '}
+          {t`minted`}
         </div>
         <div className="d-flex align-items-center me-4">
-          <Icon className="me-3 position-relative" component={EventAvailable} color="#FFFFFF" size={16}/>
-          {mintedCount} / {MaxMintable} {t`in stock`}
+          <Icon className="me-3 position-relative" component={EventAvailable} color="#FFFFFF" size={16} />
+          {mintedCount}
+          {' '}
+          /
+          {MaxMintable}
+          {' '}
+          {t`in stock`}
         </div>
         <div className="d-flex align-items-center">
-          <Icon className="me-3 position-relative" component={ThreeDots} color="#FFFFFF" size={16}/>
-          1 / {Object.keys(NftRarities).length} {t`qualities`}
+          <Icon className="me-3 position-relative" component={ThreeDots} color="#FFFFFF" size={16} />
+          1 /
+          {' '}
+          {Object.keys(NftRarities).length}
+          {' '}
+          {t`qualities`}
         </div>
       </div>
       <div className="mb-4">
@@ -98,10 +126,12 @@ export default function NftDetailSidebar() {
             {isReveal ? t`Reveal NFT` : t`Upgrade NFT`}
           </GradientButton>
         </div>
-        {ownerHistory?.length > 0 &&
+        {ownerHistory?.length > 0
+          && (
           <div className="mt-5">
             <SubLine className="mb-4 fw-bold">
-              {t`Owner History`}:
+              {t`Owner History`}
+              :
             </SubLine>
             <div className="card">
               <div className="card-body">
@@ -123,25 +153,26 @@ export default function NftDetailSidebar() {
                     <div className="row">
                       <div className="col-6">
                         <div className="text-uppercase">
-                          {TruncateText(item.id, 20)}
-                        </div>
+                {TruncateText(item.id, 20)}
+              </div>
                       </div>
-                      {(item.nfts[id]?.timestamps && item.nfts[id].timestamps.length > 0) &&
+                      {(item.nfts[id]?.timestamps && item.nfts[id].timestamps.length > 0)
+                        && (
                         <div className="col-6">
                           <div className="text-uppercase">
                             {moment(item.nfts[id].timestamps[0] * 1000).format('MM/DD/YYYY, h:mm:ss a')}
                           </div>
                         </div>
-                      }
+                        )}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        }
+          )}
       </div>
-      {<ModalComponent key={`${showModal}`} tokenId={id} show={showModal} onHide={() => setShowModal(false)} />}
+      <ModalComponent key={`${showModal}`} tokenId={id} show={showModal} onHide={() => setShowModal(false)} />
     </section>
   )
 }

@@ -1,11 +1,11 @@
-import { Quality } from "@config/nft-qualities";
+import { Quality } from '@config/nft-qualities'
 
 export interface QualityBarProps {
-    qualities: Quality[];
+  qualities: Quality[];
 }
 
 const QualityBar = () => {
 
-};
+}
 
-export default QualityBar;
+export default QualityBar

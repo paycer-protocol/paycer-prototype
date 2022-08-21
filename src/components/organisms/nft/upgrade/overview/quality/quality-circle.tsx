@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { Quality, qualityColors } from "@config/nft-qualities"
-
+import { Quality, qualityColors } from '@config/nft-qualities'
 
 const CitcleWrapper = styled.div`
 padding: 1px;
@@ -12,30 +11,26 @@ border: 1px solid #6e6abd;
 `
 
 export interface QualityCircleProps {
-    quality: Quality,
+  quality: Quality,
 }
 
-const QualityCircle = (props: QualityCircleProps) => {
-    return (
-        <CitcleWrapper
-            style={{
-                backgroundColor: qualityColors[props.quality],
-            }}
-        />
-    )
-}
+const QualityCircle = (props: QualityCircleProps) => (
+  <CitcleWrapper
+    style={{
+      backgroundColor: qualityColors[props.quality],
+    }}
+  />
+)
 
 interface QualityCircleGroupProps {
-    qualities: Quality[];
+  qualities: Quality[];
 }
 
-const QualityCircleGroup = ({ qualities }: QualityCircleGroupProps) => {
-    return (
-        <div className="d-flex">
-            {qualities.map((quality, index) => <div className={index == qualities.length - 1 ? '' : 'me-2'}><QualityCircle quality={quality} /></div>)}
-        </div>
-    )
-}
+const QualityCircleGroup = ({ qualities }: QualityCircleGroupProps) => (
+  <div className="d-flex">
+    {qualities.map((quality, index) => <div className={index == qualities.length - 1 ? '' : 'me-2'}><QualityCircle quality={quality} /></div>)}
+  </div>
+)
 
 QualityCircle.Group = QualityCircleGroup
 
