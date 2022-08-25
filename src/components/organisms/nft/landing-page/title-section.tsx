@@ -1,10 +1,11 @@
+import React, {useEffect, useState} from 'react'
 import GradientButton from "@components/atoms/button/gradient-button"
 import Icon from "@components/atoms/icon"
 import PageHeader from "@components/molecules/page-header"
 import {t, Trans} from "@lingui/macro"
 import styled from "styled-components"
 import { ArrowDownward } from "@styled-icons/material"
-import React from 'react'
+import Fade from 'react-reveal/Fade'
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
@@ -25,6 +26,36 @@ const DownArrowButtonBorder = styled.div`
 `
 
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
+  const [showStageContent, setShowStageContent] = useState<boolean>(false)
+
+  useEffect(() => {
+    setShowStageContent(true)
+  }, [])
+
+
+  useEffect(() => {
+    const hide = setTimeout(() => {
+      setShowStageContent(false)
+    }, 4000)
+
+    return () => {
+      clearTimeout(hide)
+    }
+    return undefined
+  }, [])
+
+
+  useEffect(() => {
+    const show = setTimeout(() => {
+      setShowStageContent(true)
+    }, 35500)
+
+    return () => {
+      clearTimeout(show)
+    }
+    return undefined
+  }, [])
+
   return (
     <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
         {
@@ -49,29 +80,31 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         <source src="/video/Paycer_Horse_NFT_V22.mp4" type="video/mp4" />
       </video>
       }
-      <div className="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
-          <PageHeader>
-              <h5 className="text-uppercase mb-2 text-pink fw-bold">
-                  {t`NEW COLLECTION`}
-              </h5>
-              <div className="h1 mb-4">
-                  {t`Unique 3D artworks`}
-              </div>
-            <h1 className="display-1 mb-5">
-                {t`The first utility NFT designed by a CeDeFi platform`}
-            </h1>
-            <span onClick={onMintNowClicked}>
-              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
-            </span>
-          </PageHeader>
+      <Fade when={showStageContent}>
+        <div className="flex-grow-1 d-flex justify-content-center align-items-center">
+          <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
+            <PageHeader>
+                <h5 className="text-uppercase mb-2 text-pink fw-bold">
+                    {t`NEW COLLECTION`}
+                </h5>
+                <div className="h1 mb-4">
+                    {t`Unique 3D artworks`}
+                </div>
+              <h1 className="display-1 mb-5">
+                  {t`The first utility NFT designed by a CeDeFi platform`}
+              </h1>
+              <span onClick={onMintNowClicked}>
+                <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
+              </span>
+            </PageHeader>
+          </div>
         </div>
-      </div>
-      <DownArrowButtonBorder>
-        <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
-          <Icon size={16} component={ArrowDownward} />
-        </div>
-      </DownArrowButtonBorder>
+        <DownArrowButtonBorder>
+          <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
+            <Icon size={16} component={ArrowDownward} />
+          </div>
+        </DownArrowButtonBorder>
+      </Fade>
     <div className="content-gradient-border" />
     </div>
   )
