@@ -27,6 +27,7 @@ const DownArrowButtonBorder = styled.div`
 
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
   const [showStageContent, setShowStageContent] = useState<boolean>(false)
+  const [showStageButton, setShowStageButton] = useState<boolean>(false)
 
   useEffect(() => {
     setShowStageContent(true)
@@ -48,6 +49,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
   useEffect(() => {
     const show = setTimeout(() => {
       setShowStageContent(true)
+      setShowStageButton(true)
     }, 35500)
 
     return () => {
@@ -80,31 +82,40 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         <source src="/video/Paycer_Horse_NFT_V22.mp4" type="video/mp4" />
       </video>
       }
-      <Fade when={showStageContent}>
+
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
           <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
             <PageHeader>
+              <Fade when={showStageContent}>
                 <h5 className="text-uppercase mb-2 text-pink fw-bold">
                     {t`NEW COLLECTION`}
                 </h5>
                 <div className="h1 mb-4">
                     {t`Unique 3D artworks`}
                 </div>
-              <h1 className="display-1 mb-5">
-                  {t`The first utility NFT designed by a CeDeFi platform`}
-              </h1>
-              <span onClick={onMintNowClicked}>
-                <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
-              </span>
+                <h1 className="display-1 mb-5">
+                    {t`The first utility NFT designed by a CeDeFi platform`}
+                </h1>
+              </Fade>
+                <Fade bottom={showStageButton} when={showStageButton || showStageContent}>
+                  <div>
+                    <span onClick={onMintNowClicked}>
+                      <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
+                    </span>
+                  </div>
+                </Fade>
             </PageHeader>
           </div>
         </div>
-        <DownArrowButtonBorder>
-          <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
-            <Icon size={16} component={ArrowDownward} />
-          </div>
-        </DownArrowButtonBorder>
-      </Fade>
+
+      <DownArrowButtonBorder>
+        <div onClick={() => {
+          window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+          setShowStageContent(true)
+        }}>
+          <Icon size={16} component={ArrowDownward} />
+        </div>
+      </DownArrowButtonBorder>
     <div className="content-gradient-border" />
     </div>
   )
