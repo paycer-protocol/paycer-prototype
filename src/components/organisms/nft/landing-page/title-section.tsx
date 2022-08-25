@@ -50,7 +50,7 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
     const show = setTimeout(() => {
       setShowStageContent(true)
       setShowStageButton(true)
-    }, 35500)
+    }, 36000)
 
     return () => {
       clearTimeout(show)
