@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import GradientButton from "@components/atoms/button/gradient-button"
 import Icon from "@components/atoms/icon"
 import PageHeader from "@components/molecules/page-header"
@@ -28,6 +28,11 @@ const DownArrowButtonBorder = styled.div`
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
   const [showStageContent, setShowStageContent] = useState<boolean>(false)
   const [showStageButton, setShowStageButton] = useState<boolean>(false)
+  const [videoLoadet, setVideoLoadet] = useState<boolean>(false)
+  const videoRef = useRef(undefined)
+  useEffect(() => {
+    videoRef.current.defaultMuted = true;
+  })
 
   useEffect(() => {
     setShowStageContent(true)
@@ -43,20 +48,20 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
       clearTimeout(hide)
     }
     return undefined
-  }, [])
+  }, [videoLoadet])
 
 
   useEffect(() => {
     const show = setTimeout(() => {
       setShowStageContent(true)
       setShowStageButton(true)
-    }, 36000)
+    }, 33500)
 
     return () => {
       clearTimeout(show)
     }
     return undefined
-  }, [])
+  }, [videoLoadet])
 
   return (
     <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
@@ -77,7 +82,12 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         autoPlay
         loop
         muted
+        playsInline
+        ref={videoRef}
         poster=""
+        onLoadedData={() => {
+          setVideoLoadet(true)
+        }}
       >
         <source src="/video/Paycer_Horse_NFT_V22.mp4" type="video/mp4" />
       </video>
