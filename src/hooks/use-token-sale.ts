@@ -17,7 +17,7 @@ export default function UseTokenSale():TokenSaleProps {
             setLoading(true)
             const response = await api.fetchAllTokenSaleInfo(walletAddress)
             const payload = response?.data || null
-            setTokenSaleData(payload['hydra:member'])
+            setTokenSaleData(payload)
             setLoading(false)
         } catch (err) {
             setLoading(false)
