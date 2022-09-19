@@ -43,7 +43,7 @@ const InfoChart = (props: InfoChartProps) => {
             try {
                 const response = await api.fetchChartData(values.selectedChains, dataType)
                 const payload = response?.data || null
-                const chartData = payload['hydra:member']
+                const chartData = payload
 
                 if (chartData) {
                     transformChartSeries(chartData)
