@@ -1,10 +1,11 @@
+import React, {useEffect, useState, useRef} from 'react'
 import GradientButton from "@components/atoms/button/gradient-button"
 import Icon from "@components/atoms/icon"
 import PageHeader from "@components/molecules/page-header"
 import {t, Trans} from "@lingui/macro"
 import styled from "styled-components"
 import { ArrowDownward } from "@styled-icons/material"
-import React from "react";
+import Fade from 'react-reveal/Fade'
 
 const DownArrowButtonBorder = styled.div`
   display: inline-block;
@@ -25,9 +26,46 @@ const DownArrowButtonBorder = styled.div`
 `
 
 export default function TitleSection({ onMintNowClicked, presaleStarted }: { onMintNowClicked: () => void, presaleStarted: boolean }) {
+  const [showStageContent, setShowStageContent] = useState<boolean>(false)
+  const [showStageButton, setShowStageButton] = useState<boolean>(false)
+  const [videoLoadet, setVideoLoadet] = useState<boolean>(false)
+  const videoRef = useRef(undefined)
+  useEffect(() => {
+    videoRef.current.defaultMuted = true;
+  })
+
+  useEffect(() => {
+    setShowStageContent(true)
+  }, [])
+
+
+  useEffect(() => {
+    const hide = setTimeout(() => {
+      setShowStageContent(false)
+    }, 4000)
+
+    return () => {
+      clearTimeout(hide)
+    }
+    return undefined
+  }, [videoLoadet])
+
+
+  useEffect(() => {
+    const show = setTimeout(() => {
+      setShowStageContent(true)
+      setShowStageButton(true)
+    }, 33500)
+
+    return () => {
+      clearTimeout(show)
+    }
+    return undefined
+  }, [videoLoadet])
+
   return (
     <div className="position-relative overflow-hidden d-flex flex-column align-items-center" style={{ marginTop: '-128px', minHeight: '100vh'}}>
-        {/*
+        {
       <video
         style={{
           position: 'absolute',
@@ -44,46 +82,47 @@ export default function TitleSection({ onMintNowClicked, presaleStarted }: { onM
         autoPlay
         loop
         muted
-        poster="https://assets.codepen.io/6093409/river.jpg"
+        playsInline
+        ref={videoRef}
+        poster=""
+        onLoadedData={() => {
+          setVideoLoadet(true)
+        }}
       >
-        <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
+        <source src="/video/Paycer_Horse_NFT_V22.mp4" type="video/mp4" />
       </video>
-      */}
-        <img
-            src={`/img/nft/bg-stage.jpg`}
-            style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: -5,
-                opacity: '50%',
-            }}
-        />
-      <div className="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
-          <PageHeader>
-              <h5 className="text-uppercase mb-2 text-pink fw-bold">
-                  {t`NEW COLLECTION`}
-              </h5>
-              <div className="h1 mb-4">
-                  {t`Unique 3D artworks`}
-              </div>
-            <h1 className="display-1 mb-5">
-                {t`The first utility NFT designed by a CeDeFi platform`}
-            </h1>
-            <span onClick={onMintNowClicked}>
-              <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
-            </span>
-          </PageHeader>
+      }
+
+        <div className="flex-grow-1 d-flex justify-content-center align-items-center">
+          <div className="text-center m-5 mt-6 pt-6" style={{ maxWidth: '60rem' }}>
+            <PageHeader>
+              <Fade when={showStageContent}>
+                <h5 className="text-uppercase mb-2 text-pink fw-bold">
+                    {t`NEW COLLECTION`}
+                </h5>
+                <div className="h1 mb-4">
+                    {t`Unique 3D artworks`}
+                </div>
+                <h1 className="display-1 mb-5">
+                    {t`The first utility NFT designed by a CeDeFi platform`}
+                </h1>
+              </Fade>
+                <Fade bottom={showStageButton} when={showStageButton || showStageContent}>
+                  <div>
+                    <span onClick={onMintNowClicked}>
+                      <GradientButton>{presaleStarted ? t`MINT NFT NOW` : t`JOIN WAITING LIST`}</GradientButton>
+                    </span>
+                  </div>
+                </Fade>
+            </PageHeader>
+          </div>
         </div>
-      </div>
+
       <DownArrowButtonBorder>
-        <div onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
+        <div onClick={() => {
+          window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+          setShowStageContent(true)
+        }}>
           <Icon size={16} component={ArrowDownward} />
         </div>
       </DownArrowButtonBorder>
