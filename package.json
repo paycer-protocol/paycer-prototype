@@ -47,7 +47,7 @@
     "ethers-multicall": "^0.2.2",
     "ethers-utils": "^2.1.11",
     "magic-sdk": "^8.1.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "moralis": "^1.5.11",
     "next": "^v12.1.6",
     "node-fetch": "^2.6.1",
