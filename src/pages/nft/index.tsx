@@ -126,11 +126,6 @@ export default function NftLandingPage() {
           {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
         </div>
       </SectionHoc>
-      <SectionHoc anchorRef={teamSection} anchorId={6}>
-        <div className="mb-7">
-          <TeamSection />
-        </div>
-      </SectionHoc>
       <SectionHoc anchorRef={faqSection} anchorId={7}>
         <div className="mb-7">
           <FaqSection />
