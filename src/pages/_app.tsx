@@ -5,6 +5,7 @@ import NProgress from 'nprogress'
 import { ToastContainer } from 'react-toastify'
 import DappContextProvider from '@context/dapp-context'
 import { MoralisProvider } from 'react-moralis'
+import HelpButton from 'components/atoms/help-button'
 import I18nProvider from '../locales/i18n'
 import '../../assets/theme-universe.scss'
 
@@ -19,6 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => (
         <ToastContainer position="top-center" />
         {/* @ts-ignore */ }
         <Component {...pageProps} />
+        <HelpButton />
       </I18nProvider>
     </DappContextProvider>
   </MoralisProvider>

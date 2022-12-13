@@ -3,7 +3,7 @@ import Layout from '@components/organisms/layout'
 import NftOverview from '@components/organisms/nft/overview'
 import { t } from '@lingui/macro'
 
-export default function NftOverviewPage() {
+export default function MyNfts() {
   return (
     <Layout>
       <div className="container mt-3">
@@ -19,7 +19,7 @@ export default function NftOverviewPage() {
             </div>
           </div>
         </PageHeader>
-        <div className="position-relative blur-background">
+        <div className="position-relative">
           <NftOverview />
         </div>
       </div>

@@ -49,6 +49,7 @@ const Footer = () => {
                   <br />
                 </StyledLogo>
               </Link>
+
               <div className="row">
                 <small className="text-muted col-lg-8 mt-4 text-center text-lg-start" style={{ lineHeight: '25px' }}>
                   {t`The Paycer team is developing a bridge protocol that aggregates DeFi and crypto services cross-chain.`}
@@ -103,7 +104,7 @@ const Footer = () => {
                       />
                     </Button>
                   </a>
-                  <a className="me-3" target="_blank" rel="noopener noreferrer" href="https://discord.gg/BVbrZh5A4H">
+                  <a className="me-3" target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/4hG5mG6pRW">
                     <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
                       <Icon
                         component={Discord}
@@ -133,6 +134,34 @@ const Footer = () => {
                   </a>
                 </div>
               </div>
+              <div className="row">
+                <small className="text-muted col-lg-8 mt-4 text-center text-lg-start" style={{ lineHeight: '25px' }}>
+                  {t`For support please join our Discord and open a support-ticket.`}
+                  <br />
+                  <span className="text-light px-2 fw-bold">
+                    {t`Support`}
+                  </span>
+                  <Icon
+                    component={ArrowDown}
+                    size={12}
+                    color="white"
+                    className=""
+                  />
+                </small>
+              </div>
+              <div className="mt-lg-4 mb-lg-5 my-5">
+                <div className="d-flex justify-content-center justify-content-lg-start">
+                  <a className="me-3" target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/4hG5mG6pRW">
+                    <Button className="d-flex align-items-center justify-content-center bg-dark btn-rounded-circle">
+                      <Icon
+                        component={Discord}
+                        size={17}
+                        color="white"
+                      />
+                    </Button>
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="col-md-2 mb-5 mb-lg-0 text-center text-lg-start">
@@ -149,6 +178,13 @@ const Footer = () => {
                     </Link>
                   </li>
                 ))}
+                <li className="nav-item m-0">
+                  <Link href="/airdrop">
+                    <a className={classnames({ active: pathname == '/airdrop' }, 'nav-link pt-0 pb-4 border-0')} title="airdrop">
+                      {t`Airdrop`}
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </div>
 

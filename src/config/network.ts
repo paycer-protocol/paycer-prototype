@@ -15,3 +15,8 @@ export const supportedVestingChains = [
   ChainId.Polygon,
   ChainId.Mumbai,
 ]
+
+export const supportedAirdropChains = [
+  ChainId.Polygon,
+  ChainId.Mumbai
+]

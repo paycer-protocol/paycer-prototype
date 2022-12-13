@@ -8,6 +8,9 @@ import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 interface NftModelViewerProps {
   url: string;
+  fov?: number
+  position?: Vector3
+  autoRotate?: boolean
 }
 
 function Model({ gltf }: { gltf: GLTF | undefined }) {
@@ -29,7 +32,7 @@ function Model({ gltf }: { gltf: GLTF | undefined }) {
   )
 }
 
-function NftModelViewerInternal({ url }: NftModelViewerProps) {
+function NftModelViewerInternal({ url, fov = 20, position = new Vector3(0, 0, 5), autoRotate = true }: NftModelViewerProps) {
   const [model, setModel] = useState<GLTF | undefined>(undefined)
 
   useEffect(() => {
@@ -53,12 +56,12 @@ function NftModelViewerInternal({ url }: NftModelViewerProps) {
 
   return (
     <Canvas>
-      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={20} position={[0, 0, 5]} />
+      <PerspectiveCamera makeDefault near={0.1} far={100.0} fov={fov} position={position} />
       <OrbitControls
         minDistance={1.2}
         maxDistance={3.75}
-        autoRotate
         enablePan={false}
+        autoRotate={autoRotate}
         enableZoom
         minPolarAngle={Math.PI / 5 * 1}
         maxPolarAngle={Math.PI / 5 * 4}

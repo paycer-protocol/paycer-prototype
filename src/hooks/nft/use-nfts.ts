@@ -72,6 +72,8 @@ export type UseNftsProps = {
 export default function useNfts(tokenIds: Nft['id'][]): UseNftsProps {
   const { currentNetworkId, walletAddress: owner, isAuthenticated, isWeb3Enabled } = useDapp()
 
+  console.log(tokenIds)
+
   const [status, setStatus] = useState<UseNftsProps>({ status: 'loading' })
 
   useEffect(() => {

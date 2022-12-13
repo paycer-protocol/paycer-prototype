@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import { ChainId } from '@usedapp/core'
-import { supportedChains, supportedStakingChains, supportedVestingChains } from './network'
+import {ChainId} from '@usedapp/core'
+import {supportedChains, supportedStakingChains, supportedVestingChains} from './network'
 
 interface SubRoutesInterface {
   label?: string
@@ -44,9 +44,9 @@ export const routes:RoutesInterface[] = [
     subroutes: [
       {
         path: '/invest/create',
-      },
+      }
     ],
-    auth: false,
+    auth: false
   },
   {
     label: t`Swap`,
@@ -68,13 +68,6 @@ export const routes:RoutesInterface[] = [
   },
   {
     label: t`NFT`,
-    path: '/nft',
-    supportedChains,
-    auth: false,
-  },
-  /*
-  {
-    label: t`NFT`,
     path: '',
     supportedChains,
     auth: false,
@@ -87,12 +80,7 @@ export const routes:RoutesInterface[] = [
       },
       {
         label: t`My NFTs`,
-        path: '/my-nfts',
-        auth: false
-      },
-      {
-        label: t`Upgrade NFT`,
-        path: '/upgrade-nft',
+        path: '/nft/my-nfts',
         auth: false
       },
       {
@@ -102,5 +90,4 @@ export const routes:RoutesInterface[] = [
       },
     ],
   }
-     */
 ]

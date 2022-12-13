@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import NftUpgradeLayout from '@components/organisms/nft/upgrade/layout'
+import NftUpgradeLayout from '@components/organisms/nft/upgrade/upgrade-panel/layout'
 import UpgradePanel from '@components/organisms/nft/upgrade/upgrade-panel'
 
 const UpgradeBg = styled.div`
