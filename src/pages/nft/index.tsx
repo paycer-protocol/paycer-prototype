@@ -5,7 +5,6 @@ import NftLandingPageLayout from "@components/organisms/nft/landing-page/layout"
 import MintSection from "@components/organisms/nft/landing-page/mint-section"
 import RoadmapSection from "@components/organisms/nft/landing-page/roadmap-section"
 import RoadmapSectionMobile from "@components/organisms/nft/landing-page/roadmap-section-mobile"
-import TeamSection from "@components/organisms/nft/landing-page/team-section"
 import TitleSection from "@components/organisms/nft/landing-page/title-section"
 import DiscordSection from "@components/organisms/nft/landing-page/discord-section"
 import AchievementsSection from "@components/organisms/nft/landing-page/achievements-section"
@@ -124,11 +123,6 @@ export default function NftLandingPage() {
       <SectionHoc anchorRef={roadmapSection} anchorId={5}>
         <div className="mb-8 pb-md-5">
           {isTabletOrMobile ? <RoadmapSectionMobile /> : <RoadmapSection />}
-        </div>
-      </SectionHoc>
-      <SectionHoc anchorRef={teamSection} anchorId={6}>
-        <div className="mb-7">
-          <TeamSection />
         </div>
       </SectionHoc>
       <SectionHoc anchorRef={faqSection} anchorId={7}>
